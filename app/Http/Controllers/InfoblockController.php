@@ -9,11 +9,13 @@ use function Symfony\Component\Console\Tests\Command\createClosure;
 class InfoblockController extends Controller
 {
     public function index(Request $request) {
+        $infoblocks = Infoblock::all();
+
         if ($request->ajax()) {
-            return response()->json(Infoblock::all(), 200);
+            return response()->json($infoblocks, 200);
         }
 
-        return response()->json(['message' => 'success'], 200);
+        return view('structure.infoblocks', compact('infoblocks'));
     }
 
     public function store(Request $request) {
