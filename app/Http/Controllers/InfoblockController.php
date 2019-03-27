@@ -8,30 +8,44 @@ use function Symfony\Component\Console\Tests\Command\createClosure;
 
 class InfoblockController extends Controller
 {
-    public function index(Request $request) {
+    public function index(Request $request)
+    {
         if ($request->ajax()) {
             return response()->json(Infoblock::all(), 200);
         }
 
-        return response()->json(['message' => 'success'], 200);
+        return view('structure.infoblock');
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         if ($request->ajax()) {
             $infoblock = Infoblock::create([
                 'name' => $request->name,
                 'url' => $request->url,
                 'menu' => $request->menu,
-                'menu_priority' => $request->menu_priority,
-                'start_page' => $request->start_page,
-                'start_page_priority' => $request->start_page_priority,
+                'menuPriority' => $request->menuPriority,
+                'startPage' => $request->startPage,
+                'startPagePriority' => $request->startPagePriority,
                 'activity' => $request->activity,
-                'activity_from' => $request->activity_from,
-                'activity_to' => $request->activity_to,
+                'activityFrom' => $request->activityFrom,
+                'activityTo' => $request->activityTo,
             ]);
             return response()->json([
                 'message' => "Infoblock was created",
                 'infoblock' => $infoblock
+            ], 200);
+        }
+
+        return response()->json(['message' => 'Oops'], 404);
+    }
+
+    public function destroy(Request $request, $id)
+    {
+        if ($request->ajax()) {
+            Infoblock::destroy($id);
+            return response()->json([
+                'message' => "Infoblock was deleted",
             ], 200);
         }
 
