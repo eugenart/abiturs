@@ -15,7 +15,7 @@ class InfoblockController extends Controller
             return response()->json($infoblocks, 200);
         }
 
-        return view('structure.infoblocks', compact('infoblocks'));
+        return view('structure.infoblock', compact('infoblocks'));
     }
 
     public function store(Request $request) {
