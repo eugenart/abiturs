@@ -25,6 +25,9 @@ class InfoblockController extends Controller
                 'menu_priority' => $request->menu_priority,
                 'start_page' => $request->start_page,
                 'start_page_priority' => $request->start_page_priority,
+                'activity' => $request->activity,
+                'activity_from' => $request->activity_from,
+                'activity_to' => $request->activity_to,
             ]);
             return response()->json([
                 'message' => "Infoblock was created",
