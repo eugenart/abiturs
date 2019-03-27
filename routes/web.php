@@ -12,5 +12,14 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('structure.index');
 });
+
+Route::get('/infoblock', function () {
+    return view('structure.infoblock');
+});
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
