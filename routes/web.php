@@ -19,6 +19,7 @@ Route::get('/', function () {
 
 Route::get('/infoblocks', 'InfoblockController@index')->name('infoblock.index');
 Route::post('/infoblock', 'InfoblockController@store')->name('infoblock.store');
+Route::post('/infoblock/{id}', 'InfoblockController@destroy')->name('infoblock.destroy');
 
 Auth::routes();
 
