@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Infoblock;
 use Illuminate\Http\Request;
-use function Symfony\Component\Console\Tests\Command\createClosure;
 
 class InfoblockController extends Controller
 {
@@ -24,12 +23,12 @@ class InfoblockController extends Controller
                 'name' => $request->name,
                 'url' => $request->url,
                 'menu' => $request->menu,
-                'menu_priority' => $request->menu_priority,
-                'start_page' => $request->start_page,
-                'start_page_priority' => $request->start_page_priority,
+                'menuPriority' => $request->menuPriority,
+                'startPage' => $request->startPage,
+                'startPagePriority' => $request->startPagePriority,
                 'activity' => $request->activity,
-                'activity_from' => $request->activity_from,
-                'activity_to' => $request->activity_to,
+                'activityFrom' => $request->activityFrom,
+                'activityTo' => $request->activityTo,
             ]);
             return response()->json([
                 'message' => "Infoblock was created",

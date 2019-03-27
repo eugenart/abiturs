@@ -18,12 +18,12 @@ class CreateInfoblocksTable extends Migration
             $table->string('name');
             $table->string('url');
             $table->boolean('menu')->default(true);
-            $table->boolean('start_page')->default(true);
-            $table->integer('menu_priority')->default(500);
-            $table->integer('start_page_priority')->default(500);
+            $table->boolean('startPage')->default(true);
+            $table->integer('menuPriority')->default(500);
+            $table->integer('startPagePriority')->default(500);
             $table->boolean('activity')->default(true);
-            $table->date('activity_from')->nullable();
-            $table->date('activity_to')->nullable();
+            $table->date('activityFrom')->nullable();
+            $table->date('activityTo')->nullable();
             $table->timestamps();
         });
     }

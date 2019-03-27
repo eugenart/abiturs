@@ -19,3 +19,7 @@ Route::get('/', function () {
 
 Route::get('/infoblocks', 'InfoblockController@index')->name('infoblock.index');
 Route::post('/infoblock', 'InfoblockController@store')->name('infoblock.store');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
