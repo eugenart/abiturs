@@ -8,8 +8,9 @@
                 <label><input v-model="infoblock.menuPriority" type="number">Приоритет в меню</label>
                 <label><input v-model="infoblock.startPage" type="checkbox">Отображать на главной странице</label>
                 <label><input v-model="infoblock.startPagePriority" type="number">Приоритет на главной странице</label>
-                <input v-model="infoblock.activity.from" type="date">
-                <input v-model="infoblock.activity.to" type="date">
+                <label><input v-model="infoblock.activity" type="checkbox">Активность</label>
+                <input v-model="infoblock.activityFrom" type="date">
+                <input v-model="infoblock.activityTo" type="date">
                 <button type="submit">Создать</button>
             </form>
         </div>
@@ -24,20 +25,25 @@
                     <th>Приоритет в меню</th>
                     <th>На главной</th>
                     <th>Приоритет на главной</th>
-                    <th></th>
+                    <th>Активность</th>
+                    <th>От</th>
+                    <th>До</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr v-for="(infoblock, index) in infoblockList">
-                    <td>{{infoblock.name}}</td>
-                    <td>{{infoblock.url}}</td>
-                    <td>{{infoblock.menu}}</td>
-                    <td>{{infoblock.menuPriority}}</td>
-                    <td>{{infoblock.startPage}}</td>
-                    <td>{{infoblock.startPagePriority}}</td>
+                <tr v-for="(block, index) in infoblockList">
+                    <td>{{block.name}}</td>
+                    <td>{{block.url}}</td>
+                    <td>{{block.menu}}</td>
+                    <td>{{block.menuPriority}}</td>
+                    <td>{{block.startPage}}</td>
+                    <td>{{block.startPagePriority}}</td>
+                    <td>{{block.activity}}</td>
+                    <td>{{block.activityFrom}}</td>
+                    <td>{{block.activityTo}}</td>
                     <td>
-                        <button @click="changeInfoblock(infoblock)">Редактировать</button>
-                        <button @click="removeInfoblock(index)">Удалить</button>
+                        <button @click="changeInfoblock(block)">Редактировать</button>
+                        <button @click="removeInfoblock(block.id,index)">Удалить</button>
                     </td>
                 </tr>
                 </tbody>
@@ -58,13 +64,10 @@
                     menuPriority: 500,
                     startPage: true,
                     startPagePriority: 500,
-                    activity: {
-                        from: null,
-                        to: null,
-                    }
+                    activity: null,
+                    activityFrom: null,
+                    activityTo: null,
                 },
-
-                newInfoblock: {},
 
                 infoblockList: []
             }
@@ -72,33 +75,52 @@
 
         methods: {
 
+            getInfoblockList() {
+                axios.get('/infoblocks')
+                    .then(response => (this.infoblockList = response.data, console.log(this.infoblockList)))
+            },
+
             changeInfoblock(block) {
-                this.infoblock.name = block.name
-                this.infoblock.url = block.url
-                this.infoblock.menu = block.menu
-                this.infoblock.menuPriority = block.menuPriority
-                this.infoblock.startPage = block.startPage
-                this.infoblock.startPagePriority = block.startPagePriority
-                this.infoblock.activity.from = block.activity.from
-                this.infoblock.activity.to = block.activity.to
             },
 
             addInfoblock() {
-                this.infoblockList.push(this.infoblock)
-                this.infoblock.name = ''
-                this.infoblock.url = ''
-                this.infoblock.menu = ''
-                this.infoblock.menuPriority = ''
-                this.infoblock.startPage = ''
-                this.infoblock.startPagePriority = ''
-                this.infoblock.activity.from = ''
-                this.infoblock.activity.to = ''
+                axios.post('/infoblock', {
+                    name: this.infoblock.name,
+                    url: this.infoblock.url,
+                    menu: this.infoblock.menu,
+                    menuPriority: this.infoblock.menuPriority,
+                    startPage: this.infoblock.startPage,
+                    startPagePriority: this.infoblock.startPagePriority,
+                    activityFrom: this.infoblock.activityFrom,
+                    activityTo: this.infoblock.activityTo,
+                    activity: this.infoblock.activity,
+                }).then((response) => {
+                    console.log(response);
+                    this.infoblockList.push(response.data.infoblock)
+                    this.infoblock.name = '';
+                    this.infoblock.url = '';
+                    this.infoblock.menu = '';
+                    this.infoblock.menuPriority = 500;
+                    this.infoblock.startPage = '';
+                    this.infoblock.startPagePriority = 500;
+                    this.infoblock.activityFrom = '';
+                    this.infoblock.activityTo = '';
+                    this.infoblock.activity = '';
+
+                })
             },
 
-            removeInfoblock(index) {
-                this.infoblockList.splice(index, 1)
+            removeInfoblock(id,index) {
+                axios.delete('/infoblock/' + id)
+                    .then((response) => {
+                        this.infoblockList.splice(index,1)
+                    })
             }
 
+        },
+
+        created() {
+            this.getInfoblockList();
         }
     }
 </script>

@@ -39,6 +39,27 @@ class InfoblockController extends Controller
         return response()->json(['message' => 'Oops'], 404);
     }
 
+    public function update(Request $request, $id) {
+        if ($request->ajax()) {
+            Infoblock::findOrFail($id)->update([
+                'name' => $request->name,
+                'url' => $request->url,
+                'menu' => $request->menu? 1 : 0,
+                'menuPriority' => $request->menuPriority,
+                'startPage' => $request->startPage? 1 : 0,
+                'startPagePriority' => $request->startPagePriority,
+                'activity' => $request->activity? 1 : 0,
+                'activityFrom' => $request->activityFrom,
+                'activityTo' => $request->activityTo,
+            ]);
+            return response()->json([
+                'message' => "Infoblock was updated"
+            ], 200);
+        }
+
+        return response()->json(['message' => 'Oops'], 404);
+    }
+
     public function destroy(Request $request, $id) {
         if ($request->ajax()) {
             Infoblock::destroy($id);

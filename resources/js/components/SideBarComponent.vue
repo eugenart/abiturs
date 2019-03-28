@@ -11,7 +11,7 @@
                 <!--</a>-->
             <!--</li>-->
             <li class="pb-2">
-                <a href="/infoblock">Инфоблоки</a>
+                <a href="/infoblocks">Инфоблоки</a>
             </li>
             <li class="pb-2">
                 <a href="">Разделы</a>
