@@ -1,7 +1,7 @@
 <template>
     <div class="row">
         <div class="col-12">
-            <form @submit.prevent="addInfoblock">
+            <form @submit.prevent="!isBlockUpdate? addInfoblock() : updateInfoblock()">
                 <input v-model="infoblock.name" type="text" placeholder="Название инфоблока">
                 <input v-model="infoblock.url" type="text" placeholder="Ссылка на инфоблок">
                 <label><input v-model="infoblock.menu" type="checkbox">Отображать в меню</label>
@@ -11,7 +11,8 @@
                 <label><input v-model="infoblock.activity" type="checkbox">Активность</label>
                 <input v-model="infoblock.activityFrom" type="date">
                 <input v-model="infoblock.activityTo" type="date">
-                <button type="submit">Создать</button>
+                <button v-show="!isBlockUpdate" type="submit">Создать</button>
+                <button v-show="isBlockUpdate" type="submit">Сохранить изменения</button>
             </form>
         </div>
 
@@ -28,10 +29,11 @@
                     <th>Активность</th>
                     <th>От</th>
                     <th>До</th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr v-for="(block, index) in infoblockList">
+                <tr v-for="(block, index) in blocks">
                     <td>{{block.name}}</td>
                     <td>{{block.url}}</td>
                     <td>{{block.menu}}</td>
@@ -53,6 +55,7 @@
 </template>
 
 <script>
+
     export default {
         name: 'Infoblock',
         data() {
@@ -64,63 +67,68 @@
                     menuPriority: 500,
                     startPage: true,
                     startPagePriority: 500,
-                    activity: null,
+                    activity: true,
                     activityFrom: null,
                     activityTo: null,
                 },
-
-                infoblockList: []
+                isBlockUpdate: false,
+                currentInfoblock: {}
             }
+        },
+
+
+        mounted() {
+            this.currentInfoblock = {...this.infoblock}
+            this.$store.dispatch('GET_BLOCKS')
+        },
+
+        computed: {
+
+            blocks() {
+                return this.$store.getters.BLOCKS
+            }
+
         },
 
         methods: {
 
-            getInfoblockList() {
-                axios.get('/infoblocks')
-                    .then(response => (this.infoblockList = response.data, console.log(this.infoblockList)))
+            addInfoblock() {
+                this.isBlockUpdate = false;
+                this.$store.dispatch('SAVE_BLOCK', this.infoblock);
+                this.clearCurrentInfoblock();
+
             },
 
             changeInfoblock(block) {
+                this.infoblock = block
+                this.isBlockUpdate = true
             },
 
-            addInfoblock() {
-                axios.post('/infoblock', {
-                    name: this.infoblock.name,
-                    url: this.infoblock.url,
-                    menu: this.infoblock.menu,
-                    menuPriority: this.infoblock.menuPriority,
-                    startPage: this.infoblock.startPage,
-                    startPagePriority: this.infoblock.startPagePriority,
-                    activityFrom: this.infoblock.activityFrom,
-                    activityTo: this.infoblock.activityTo,
-                    activity: this.infoblock.activity,
-                }).then((response) => {
-                    console.log(response);
-                    this.infoblockList.push(response.data.infoblock)
-                    this.infoblock.name = '';
-                    this.infoblock.url = '';
-                    this.infoblock.menu = '';
-                    this.infoblock.menuPriority = 500;
-                    this.infoblock.startPage = '';
-                    this.infoblock.startPagePriority = 500;
-                    this.infoblock.activityFrom = '';
-                    this.infoblock.activityTo = '';
-                    this.infoblock.activity = '';
+            updateInfoblock() {
+                console.log('up')
+                this.$store.dispatch('UPDATE_BLOCK', this.infoblock);
+                this.isBlockUpdate = false
+                this.clearCurrentInfoblock()
 
-                })
             },
 
-            removeInfoblock(id,index) {
-                axios.delete('/infoblock/' + id)
-                    .then((response) => {
-                        this.infoblockList.splice(index,1)
-                    })
+            removeInfoblock(id, index) {
+                this.$store.dispatch('DELETE_BLOCK', id, index)
+            },
+
+            clearCurrentInfoblock() {
+                this.infoblock = {...this.currentInfoblock}
+                // this.infoblock.name = '';
+                // this.infoblock.url = '';
+                // this.infoblock.menu = true;
+                // this.infoblock.menuPriority = 500;
+                // this.infoblock.startPage = true;
+                // this.infoblock.startPagePriority = 500;
+                // this.infoblock.activityFrom = '';
+                // this.infoblock.activityTo = '';
+                // this.infoblock.activity = true;
             }
 
-        },
-
-        created() {
-            this.getInfoblockList();
         }
     }
 </script>

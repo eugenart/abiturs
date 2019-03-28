@@ -18,6 +18,7 @@ Route::get('/', function () {
 Route::get('/infoblocks', 'InfoblockController@index')->name('infoblock.index');
 Route::post('/infoblock', 'InfoblockController@store')->name('infoblock.store');
 Route::delete('/infoblock/{id}', 'InfoblockController@destroy')->name('infoblock.destroy');
+Route::put('/infoblock/{id}', 'InfoblockController@update')->name('infoblock.update');
 
 
 Auth::routes();
