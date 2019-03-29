@@ -9,6 +9,7 @@ window.$ = window.jQuery = jQuery;
 
 Vue.component('sidebar', require('./components/SideBarComponent.vue').default);
 Vue.component('infoblock', require('./components/Infoblock').default);
+Vue.component('section', require('./components/Section').default);
 
 const app = new Vue({
     store,
