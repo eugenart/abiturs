@@ -118,15 +118,6 @@
 
             clearCurrentInfoblock() {
                 this.infoblock = {...this.currentInfoblock}
-                // this.infoblock.name = '';
-                // this.infoblock.url = '';
-                // this.infoblock.menu = true;
-                // this.infoblock.menuPriority = 500;
-                // this.infoblock.startPage = true;
-                // this.infoblock.startPagePriority = 500;
-                // this.infoblock.activityFrom = '';
-                // this.infoblock.activityTo = '';
-                // this.infoblock.activity = true;
             }
 
         }
