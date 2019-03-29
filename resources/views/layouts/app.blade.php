@@ -23,11 +23,9 @@
 </head>
 <body>
 <div id="app">
-    <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+    <nav class="navbar navbar-expand-md bg-dark flex-md-nowrap p-0 shadow navbar-laravel fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('app.name', 'Laravel') }}
-            </a>
+            <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Company name</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="{{ __('Toggle navigation') }}">
@@ -77,19 +75,14 @@
             </div>
         </div>
     </nav>
-
-    <main class="">
-        <div class="container-fluid p-0 ">
-            <div class="row">
-                <div class="col-2">
-                    <sidebar></sidebar>
-                </div>
-                <div class="col-10 p-3 row">
-                    @yield('content')
-                </div>
-            </div>
+    <div class="container-fluid">
+        <div class="row">
+            <sidebar></sidebar>
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 mt-3">
+                @yield('content')
+            </main>
         </div>
-    </main>
+    </div>
 </div>
 </body>
 </html>

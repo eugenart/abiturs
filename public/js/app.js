@@ -1883,15 +1883,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.$store.dispatch('DELETE_BLOCK', id, index);
     },
     clearCurrentInfoblock: function clearCurrentInfoblock() {
-      this.infoblock = _objectSpread({}, this.currentInfoblock); // this.infoblock.name = '';
-      // this.infoblock.url = '';
-      // this.infoblock.menu = true;
-      // this.infoblock.menuPriority = 500;
-      // this.infoblock.startPage = true;
-      // this.infoblock.startPagePriority = 500;
-      // this.infoblock.activityFrom = '';
-      // this.infoblock.activityTo = '';
-      // this.infoblock.activity = true;
+      this.infoblock = _objectSpread({}, this.currentInfoblock);
     }
   }
 });
@@ -1907,6 +1899,75 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -38809,29 +38870,63 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12 sidebar" }, [
-      _c("ul", { staticClass: "sidebar-list pt-2" }, [
-        _c("li", { staticClass: "pb-2" }, [
-          _c("a", { attrs: { href: "" } }, [_vm._v("Настройки сайта")])
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "pb-2" }, [
-          _c("a", { attrs: { href: "/infoblocks" } }, [_vm._v("Инфоблоки")])
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "pb-2" }, [
-          _c("a", { attrs: { href: "" } }, [_vm._v("Разделы")])
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "pb-2" }, [
-          _c("a", { attrs: { href: "" } }, [_vm._v("Документы")])
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "pb-2" }, [
-          _c("a", { attrs: { href: "" } }, [_vm._v("Мультимедиа")])
+    return _c(
+      "nav",
+      { staticClass: "col-md-2 d-none d-md-block bg-light sidebar" },
+      [
+        _c("div", { staticClass: "sidebar-sticky" }, [
+          _c("ul", { staticClass: "nav flex-column" }, [
+            _c("li", { staticClass: "nav-item" }, [
+              _c(
+                "a",
+                { staticClass: "nav-link active", attrs: { href: "#" } },
+                [
+                  _c("span", { attrs: { "data-feather": "home" } }),
+                  _vm._v("\n                    Настройки сайта "),
+                  _c("span", { staticClass: "sr-only" }, [_vm._v("(current)")])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("li", { staticClass: "nav-item" }, [
+              _c(
+                "a",
+                { staticClass: "nav-link", attrs: { href: "/infoblocks" } },
+                [
+                  _c("span", { attrs: { "data-feather": "file" } }),
+                  _vm._v("\n                    Инфоблоки\n                ")
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("li", { staticClass: "nav-item" }, [
+              _c(
+                "a",
+                { staticClass: "nav-link", attrs: { href: "/sections" } },
+                [
+                  _c("span", { attrs: { "data-feather": "shopping-cart" } }),
+                  _vm._v("\n                    Разделы\n                ")
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("li", { staticClass: "nav-item" }, [
+              _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
+                _c("span", { attrs: { "data-feather": "users" } }),
+                _vm._v("\n                    Документы\n                ")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("li", { staticClass: "nav-item" }, [
+              _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
+                _c("span", { attrs: { "data-feather": "bar-chart-2" } }),
+                _vm._v("\n                    Мультимедиа\n                ")
+              ])
+            ])
+          ])
         ])
-      ])
-    ])
+      ]
+    )
   }
 ]
 render._withStripped = true

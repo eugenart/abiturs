@@ -2,37 +2,37 @@
 
 namespace App\Http\Controllers;
 
-use App\Infoblock;
+use App\Section;
 use Illuminate\Http\Request;
 
-class InfoblockController extends Controller
+class SectionController extends Controller
 {
     public function index(Request $request) {
-        $infoblocks = Infoblock::all();
+        $sections = Section::all();
 
         if ($request->ajax()) {
-            return response()->json($infoblocks, 200);
+            return response()->json($sections, 200);
         }
 
-        return view('structure.infoblock', compact('infoblocks'));
+        return view('structure.section', compact('sections'));
     }
 
     public function store(Request $request) {
         if ($request->ajax()) {
-            $infoblock = Infoblock::create([
+            $section = Section::create([
                 'name' => $request->name,
                 'url' => $request->url,
-                'menu' => $request->menu? 1 : 0,
-                'menuPriority' => $request->menuPriority,
                 'startPage' => $request->startPage? 1 : 0,
                 'startPagePriority' => $request->startPagePriority,
                 'activity' => $request->activity? 1 : 0,
                 'activityFrom' => $request->activityFrom,
                 'activityTo' => $request->activityTo,
+                'sectionID' => $request->sectionID,
+                'infoblockID' => $request->infoblockID,
             ]);
             return response()->json([
-                'message' => "Infoblock was created",
-                'infoblock' => $infoblock
+                'message' => "Section was created",
+                'section' => $section
             ], 200);
         }
 
@@ -41,19 +41,19 @@ class InfoblockController extends Controller
 
     public function update(Request $request, $id) {
         if ($request->ajax()) {
-            Infoblock::findOrFail($id)->update([
+            Section::findOrFail($id)->update([
                 'name' => $request->name,
                 'url' => $request->url,
-                'menu' => $request->menu? 1 : 0,
-                'menuPriority' => $request->menuPriority,
                 'startPage' => $request->startPage? 1 : 0,
                 'startPagePriority' => $request->startPagePriority,
                 'activity' => $request->activity? 1 : 0,
                 'activityFrom' => $request->activityFrom,
                 'activityTo' => $request->activityTo,
+                'sectionID' => $request->sectionID,
+                'infoblockID' => $request->infoblockID,
             ]);
             return response()->json([
-                'message' => "Infoblock was updated"
+                'message' => "Section was updated"
             ], 200);
         }
 
@@ -62,10 +62,10 @@ class InfoblockController extends Controller
 
     public function destroy(Request $request, $id) {
         if ($request->ajax()) {
-            $infoblock = Infoblock::findOrFail($id);
-            $infoblock->sections->count() !== 0 ? ($infoblock->childrenSections->update(['infoblockID', ''])) : null;
-            $infoblock->delete();
-            return response()->json(['message' => 'Infoblock was deleted'], 200);
+            $section = Section::findOrFail($id);
+            $section->childrenSections->count() !==0 ? $section->childrenSections->update(['sectionID', '']) : null;
+            $section->delete();
+            return response()->json(['message' => 'Section was deleted'], 200);
         }
         return response()->json(['message' => 'Oops'], 404);
     }
