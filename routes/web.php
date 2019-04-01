@@ -11,14 +11,21 @@
 |
 */
 
+use Illuminate\Support\Facades\Route;
+
 Route::get('/', function () {
     return view('structure.index');
 });
 
 Route::get('/infoblocks', 'InfoblockController@index')->name('infoblock.index');
 Route::post('/infoblock', 'InfoblockController@store')->name('infoblock.store');
-Route::delete('/infoblock/{id}', 'InfoblockController@destroy')->name('infoblock.destroy');
 Route::put('/infoblock/{id}', 'InfoblockController@update')->name('infoblock.update');
+Route::delete('/infoblock/{id}', 'InfoblockController@destroy')->name('infoblock.destroy');
+
+Route::get('/sections', 'SectionController@index')->name('section.index');
+Route::post('/section', 'SectionController@store')->name('section.store');
+Route::put('/section/{id}', 'SectionController@update')->name('section.update');
+Route::delete('/section/{id}', 'SectionController@destroy')->name('section.destroy');
 
 Auth::routes();
 

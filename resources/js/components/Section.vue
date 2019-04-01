@@ -1,29 +1,46 @@
 <template>
     <div class="row">
         <div class="col-12">
-            <form @submit.prevent="!isBlockUpdate? addInfoblock() : updateInfoblock()">
-                <input v-model="infoblock.name" type="text" placeholder="Название инфоблока">
-                <input v-model="infoblock.url" type="text" placeholder="Ссылка на инфоблок">
-                <label><input v-model="infoblock.menu" type="checkbox">Отображать в меню</label>
-                <label><input v-model="infoblock.menuPriority" type="number">Приоритет в меню</label>
-                <label><input v-model="infoblock.startPage" type="checkbox">Отображать на главной странице</label>
-                <label><input v-model="infoblock.startPagePriority" type="number">Приоритет на главной странице</label>
-                <label><input v-model="infoblock.activity" type="checkbox">Активность</label>
-                <input v-model="infoblock.activityFrom" type="date">
-                <input v-model="infoblock.activityTo" type="date">
-                <button v-show="!isBlockUpdate" type="submit">Создать</button>
-                <button v-show="isBlockUpdate" type="submit">Сохранить изменения</button>
+            <form @submit.prevent="!isSectionUpdate? addSection() : updateSection()">
+                <input v-model="section.name" type="text" placeholder="Название раздела">
+                <input v-model="section.url" type="text" placeholder="Ссылка на раздел">
+                <input v-model="section.description" type="text" placeholder="Описание раздела">
+                <label><input v-model="section.startPage" type="checkbox">Отображать на главной странице</label>
+                <label><input v-model="section.startPagePriority" type="number">Приоритет на главной странице</label>
+                <label><input v-model="section.activity" type="checkbox">Активность</label>
+                <input v-model="section.activityFrom" type="date">
+                <input v-model="section.activityTo" type="date">
+                <select v-model="section.sectionID">
+                    <option :value="sec.id" v-for="sec in sections"
+                            v-if="sec.id !== section.id && section.id !== sec.sectionID">
+                        {{sec.name}} {{sec.id}}
+                    </option>
+                </select>
+                <select v-model="section.infoblockID">
+                    <option :value="block.id" v-for="block in blocks">
+                        {{block.name}}
+                    </option>
+                </select>
+                <button v-show="!isSectionUpdate" type="submit">Создать</button>
+                <button v-show="isSectionUpdate" type="submit">Сохранить изменения</button>
             </form>
         </div>
-
         <div class="col-12">
-            <table class="table">
+            <ul v-for="block in blocks">
+                <li>
+                    <a href="#" @click="getBlockSections(block.id)">{{block.name}}</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-12">
+            <table class="table" v-show="blocksections.length">
                 <thead>
                 <tr>
                     <th>Название</th>
                     <th>Ссылка</th>
-                    <th>В меню</th>
-                    <th>Приоритет в меню</th>
+                    <th>Описание</th>
+                    <th>SectionID</th>
+                    <th>infoblockID</th>
                     <th>На главной</th>
                     <th>Приоритет на главной</th>
                     <th>Активность</th>
@@ -33,19 +50,20 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr v-for="(block, index) in blocks">
-                    <td>{{block.name}}</td>
-                    <td>{{block.url}}</td>
-                    <td>{{block.menu}}</td>
-                    <td>{{block.menuPriority}}</td>
-                    <td>{{block.startPage}}</td>
-                    <td>{{block.startPagePriority}}</td>
-                    <td>{{block.activity}}</td>
-                    <td>{{block.activityFrom}}</td>
-                    <td>{{block.activityTo}}</td>
+                <tr v-for="(section, index) in blocksections">
+                    <td>{{section.name}} {{section.id}}</td>
+                    <td>{{section.url}}</td>
+                    <td>{{section.description}}</td>
+                    <td>{{section.sectionID}}</td>
+                    <td>{{section.infoblockID}}</td>
+                    <td>{{section.startPage}}</td>
+                    <td>{{section.startPagePriority}}</td>
+                    <td>{{section.activity}}</td>
+                    <td>{{section.activityFrom}}</td>
+                    <td>{{section.activityTo}}</td>
                     <td>
-                        <button @click="changeInfoblock(block)">Редактировать</button>
-                        <button @click="removeInfoblock(block.id,index)">Удалить</button>
+                        <button @click="changeSection(section)">Редактировать</button>
+                        <button @click="removeSection(section.id,index)">Удалить</button>
                     </td>
                 </tr>
                 </tbody>
@@ -57,28 +75,31 @@
 <script>
 
     export default {
-        name: 'Infoblock',
+        name: 'Section',
         data() {
             return {
-                infoblock: {
+                section: {
                     name: null,
                     url: null,
-                    menu: true,
-                    menuPriority: 500,
                     startPage: true,
                     startPagePriority: 500,
                     activity: true,
                     activityFrom: null,
                     activityTo: null,
+                    sectionID: null,
+                    infoblockID: null,
+                    description: null,
                 },
-                isBlockUpdate: false,
-                currentInfoblock: {}
+                isSectionUpdate: false,
+                currentSection: {},
+                currentBlockID: null
             }
         },
 
 
         mounted() {
-            this.currentInfoblock = {...this.infoblock}
+            this.currentSection = {...this.section}
+            this.$store.dispatch('GET_SECTIONS')
             this.$store.dispatch('GET_BLOCKS')
         },
 
@@ -86,38 +107,51 @@
 
             blocks() {
                 return this.$store.getters.BLOCKS
+            },
+
+            sections() {
+                return this.$store.getters.SECTIONS
+            },
+
+            blocksections() {
+                return this.$store.getters.BLOCKSECTIONS
             }
 
         },
 
         methods: {
 
-            addInfoblock() {
-                this.isBlockUpdate = false;
-                this.$store.dispatch('SAVE_BLOCK', this.infoblock);
-                this.clearCurrentInfoblock();
+            getBlockSections(id) {
+                console.log(id)
+                this.$store.dispatch('GET_INFOBLOCK_SECTIONS', id)
+            },
+
+            addSection() {
+                this.isSectionUpdate = false;
+                this.$store.dispatch('SAVE_SECTION', this.section);
+                this.clearCurrentSection();
 
             },
 
-            changeInfoblock(block) {
-                this.infoblock = block
-                this.isBlockUpdate = true
+            changeSection(section) {
+                this.section = section;
+                this.isSectionUpdate = true
             },
 
-            updateInfoblock() {
+            updateSection() {
                 console.log('up')
-                this.$store.dispatch('UPDATE_BLOCK', this.infoblock);
-                this.isBlockUpdate = false
-                this.clearCurrentInfoblock()
+                this.$store.dispatch('UPDATE_SECTION', this.section);
+                this.isSectionUpdate = false
+                this.clearCurrentSection()
 
             },
 
-            removeInfoblock(id, index) {
-                this.$store.dispatch('DELETE_BLOCK', id, index)
+            removeSection(id, index) {
+                this.$store.dispatch('DELETE_SECTION', id, index)
             },
 
-            clearCurrentInfoblock() {
-                this.infoblock = {...this.currentInfoblock}
+            clearCurrentSection() {
+                this.section = {...this.currentSection}
             }
 
         }

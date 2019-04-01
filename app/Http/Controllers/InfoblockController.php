@@ -7,8 +7,7 @@ use Illuminate\Http\Request;
 
 class InfoblockController extends Controller
 {
-    public function index(Request $request)
-    {
+    public function index(Request $request) {
         $infoblocks = Infoblock::all();
 
         if ($request->ajax()) {
@@ -18,17 +17,16 @@ class InfoblockController extends Controller
         return view('structure.infoblock', compact('infoblocks'));
     }
 
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
         if ($request->ajax()) {
             $infoblock = Infoblock::create([
                 'name' => $request->name,
                 'url' => $request->url,
-                'menu' => $request->menu ? 1 : 0,
+                'menu' => $request->menu? 1 : 0,
                 'menuPriority' => $request->menuPriority,
-                'startPage' => $request->startPage ? 1 : 0,
+                'startPage' => $request->startPage? 1 : 0,
                 'startPagePriority' => $request->startPagePriority,
-                'activity' => $request->activity ? 1 : 0,
+                'activity' => $request->activity? 1 : 0,
                 'activityFrom' => $request->activityFrom,
                 'activityTo' => $request->activityTo,
             ]);
@@ -41,17 +39,16 @@ class InfoblockController extends Controller
         return response()->json(['message' => 'Oops'], 404);
     }
 
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, $id) {
         if ($request->ajax()) {
             Infoblock::findOrFail($id)->update([
                 'name' => $request->name,
                 'url' => $request->url,
-                'menu' => $request->menu ? 1 : 0,
+                'menu' => $request->menu? 1 : 0,
                 'menuPriority' => $request->menuPriority,
-                'startPage' => $request->startPage ? 1 : 0,
+                'startPage' => $request->startPage? 1 : 0,
                 'startPagePriority' => $request->startPagePriority,
-                'activity' => $request->activity ? 1 : 0,
+                'activity' => $request->activity? 1 : 0,
                 'activityFrom' => $request->activityFrom,
                 'activityTo' => $request->activityTo,
             ]);
@@ -63,10 +60,11 @@ class InfoblockController extends Controller
         return response()->json(['message' => 'Oops'], 404);
     }
 
-    public function destroy(Request $request, $id)
-    {
+    public function destroy(Request $request, $id) {
         if ($request->ajax()) {
-            Infoblock::destroy($id);
+            $infoblock = Infoblock::findOrFail($id);
+            $infoblock->sections->count() !== 0 ? ($infoblock->childrenSections->update(['infoblockID' => ''])) : null;
+            $infoblock->delete();
             return response()->json(['message' => 'Infoblock was deleted'], 200);
         }
         return response()->json(['message' => 'Oops'], 404);
