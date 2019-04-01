@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Section extends Model
 {
-    protected $fillable = ['name', 'url', 'startPage', 'startPagePriority', 'activity', 'activityFrom', 'activityTo', 'infoblockID', 'sectionID'];
+    protected $fillable = ['name', 'url', 'description', 'startPage', 'startPagePriority', 'activity', 'activityFrom', 'activityTo', 'infoblockID', 'sectionID'];
 
     public function infoblock() {
-        return $this->belongsTo('App\Infoblock', 'infoblockID');
+        return $this->belongsTo(Infoblock::class, 'infoblockID');
     }
 
     public function parentSection() {

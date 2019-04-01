@@ -17,13 +17,14 @@ class CreateSectionsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('url');
+            $table->longText('description')->nullable();
             $table->boolean('startPage')->default(true);
             $table->integer('startPagePriority')->default(500);
             $table->boolean('activity')->default(true);
             $table->date('activityFrom')->nullable();
             $table->date('activityTo')->nullable();
-            $table->bigInteger('infoblockID')->nullable();
-            $table->bigInteger('sectionID')->nullable();
+            $table->bigInteger('infoblockID')->unsigned()->nullable();
+            $table->bigInteger('sectionID')->unsigned()->nullable();
             $table->timestamps();
         });
     }

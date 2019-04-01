@@ -22,6 +22,7 @@ class SectionController extends Controller
             $section = Section::create([
                 'name' => $request->name,
                 'url' => $request->url,
+                'description' => $request->description,
                 'startPage' => $request->startPage? 1 : 0,
                 'startPagePriority' => $request->startPagePriority,
                 'activity' => $request->activity? 1 : 0,
@@ -44,6 +45,7 @@ class SectionController extends Controller
             Section::findOrFail($id)->update([
                 'name' => $request->name,
                 'url' => $request->url,
+                'description' => $request->description,
                 'startPage' => $request->startPage? 1 : 0,
                 'startPagePriority' => $request->startPagePriority,
                 'activity' => $request->activity? 1 : 0,
