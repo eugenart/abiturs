@@ -63,7 +63,7 @@ class InfoblockController extends Controller
     public function destroy(Request $request, $id) {
         if ($request->ajax()) {
             $infoblock = Infoblock::findOrFail($id);
-            $infoblock->sections->count() !== 0 ? ($infoblock->childrenSections->update(['infoblockID', ''])) : null;
+            $infoblock->sections->count() !== 0 ? ($infoblock->childrenSections->update(['infoblockID' => ''])) : null;
             $infoblock->delete();
             return response()->json(['message' => 'Infoblock was deleted'], 200);
         }

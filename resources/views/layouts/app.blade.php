@@ -77,7 +77,43 @@
     </nav>
     <div class="container-fluid">
         <div class="row">
-            <sidebar></sidebar>
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                <div class="sidebar-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <span data-feather="home"></span>
+                                Настройки сайта <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ Request::is('infoblock*') ? 'active' : null }}"
+                               href="{{route('infoblock.index')}}">
+                                <span data-feather="file"></span>
+                                Инфоблоки
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ Request::is('section*') ? 'active' : null }}" href="/sections">
+                                <span data-feather="shopping-cart"></span>
+                                Разделы
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <span data-feather="users"></span>
+                                Документы
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <span data-feather="bar-chart-2"></span>
+                                Мультимедиа
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 mt-3">
                 @yield('content')
             </main>
