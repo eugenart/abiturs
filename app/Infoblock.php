@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Infoblock extends Model
 {
-    protected $fillable = ['name', 'url', 'menu', 'menuPriority', 'startPage', 'startPagePriority', 'activity', 'activityFrom', 'activityTo'];
+    protected $fillable = ['name', 'url', 'menu', 'menuPriority', 'startPage', 'startPagePriority', 'activity', 'activityFrom', 'activityTo', 'image'];
 
     public function sections() {
-        return $this->hasMany('App\Section', 'infoblockID');
+        return $this->hasMany(Section::class, 'infoblockID');
     }
 }

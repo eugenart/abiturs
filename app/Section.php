@@ -8,18 +8,15 @@ class Section extends Model
 {
     protected $fillable = ['name', 'url', 'description', 'startPage', 'startPagePriority', 'activity', 'activityFrom', 'activityTo', 'infoblockID', 'sectionID'];
 
-    public function infoblock()
-    {
-        return $this->belongsTo('App\Infoblock', 'infoblockID');
+    public function infoblock() {
+        return $this->belongsTo(Infoblock::class, 'infoblockID');
     }
 
-    public function parentSection()
-    {
+    public function parentSection() {
         return $this->belongsTo(self::class, 'sectionID');
     }
 
-    public function childrenSections()
-    {
+    public function childrenSections() {
         return $this->hasMany(self::class, 'sectionID');
     }
 }
