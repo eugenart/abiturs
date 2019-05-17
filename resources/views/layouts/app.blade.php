@@ -90,13 +90,13 @@
                             <a class="nav-link {{ Request::is('infoblock*') ? 'active' : null }}"
                                href="{{route('infoblock.index')}}">
                                 <span data-feather="file"></span>
-                                Инфоблоки
+                                Разделы сайта
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{ Request::is('section*') ? 'active' : null }}" href="/sections">
                                 <span data-feather="shopping-cart"></span>
-                                Разделы
+                                Подразделы сайта
                             </a>
                         </li>
                         <li class="nav-item">
