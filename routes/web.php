@@ -14,7 +14,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('structure.index');
+    return view('pages.priem');
 });
 
 Route::get('/infoblocks', 'InfoblockController@index')->name('infoblock.index');

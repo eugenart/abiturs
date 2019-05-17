@@ -1835,6 +1835,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Infoblock',
   data: function data() {
@@ -1848,7 +1849,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         startPagePriority: 500,
         activity: true,
         activityFrom: null,
-        activityTo: null
+        activityTo: null,
+        image: null
       },
       isBlockUpdate: false,
       currentInfoblock: {}
@@ -1864,6 +1866,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   },
   methods: {
+    addImage: function addImage(e) {
+      console.log(e.target.files);
+      this.infoblock.image = e.target.files;
+    },
     addInfoblock: function addInfoblock() {
       this.isBlockUpdate = false;
       this.$store.dispatch('SAVE_BLOCK', this.infoblock);
@@ -38105,6 +38111,11 @@ var render = function() {
             }
           }),
           _vm._v(" "),
+          _c("input", {
+            attrs: { type: "file" },
+            on: { change: _vm.addImage }
+          }),
+          _vm._v(" "),
           _c(
             "button",
             {
@@ -52536,8 +52547,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Applications/MAMP/htdocs/abitur/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/abitur/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Applications/MAMP/htdocs/abiturs/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/abiturs/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
