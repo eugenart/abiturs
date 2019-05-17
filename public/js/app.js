@@ -52434,6 +52434,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   headers: {
                     'Content-Type': 'multipart/form-data'
                   }
+                }).then(function (response) {
+                  console.log(response);
                 });
 
               case 13:

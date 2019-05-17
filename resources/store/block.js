@@ -37,7 +37,10 @@ export default {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
-            });
+            })
+                .then(response => {
+                    console.log(response)
+                });
             context.commit('ADD_BLOCK', data.infoblock)
         },
 
@@ -57,7 +60,8 @@ export default {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
-            });
+            })
+
             context.commit('EDIT_BLOCK', payload)
         },
 
