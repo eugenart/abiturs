@@ -22,32 +22,41 @@ export default {
     },
     actions: {
         SAVE_BLOCK: async (context, payload) => {
-
-            let {data} = await axios.post('/infoblock', {
-                name: payload.name,
-                url: payload.url,
-                menu: payload.menu,
-                menuPriority: payload.menuPriority,
-                startPage: payload.startPage,
-                startPagePriority: payload.startPagePriority,
-                activityFrom: payload.activityFrom,
-                activityTo: payload.activityTo,
-                activity: payload.activity,
+            let formData = new FormData();
+            formData.append('name', payload.name);
+            formData.append('url', payload.url);
+            formData.append('menu', payload.menu);
+            formData.append('menuPriority', payload.menuPriority);
+            formData.append('startPage', payload.startPage);
+            formData.append('startPagePriority', payload.startPagePriority);
+            formData.append('activityFrom', payload.activityFrom);
+            formData.append('activityTo', payload.activityTo);
+            formData.append('activity', payload.activity);
+            formData.append('image', payload.image);
+            let {data} = await axios.post('/infoblock', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
             });
             context.commit('ADD_BLOCK', data.infoblock)
         },
 
         UPDATE_BLOCK: (context, payload) => {
-            axios.put('/infoblock/' + payload.id, {
-                name: payload.name,
-                url: payload.url,
-                menu: payload.menu,
-                menuPriority: payload.menuPriority,
-                startPage: payload.startPage,
-                startPagePriority: payload.startPagePriority,
-                activityFrom: payload.activityFrom,
-                activityTo: payload.activityTo,
-                activity: payload.activity
+            let formData = new FormData();
+            formData.append('name', payload.name);
+            formData.append('url', payload.url);
+            formData.append('menu', payload.menu);
+            formData.append('menuPriority', payload.menuPriority);
+            formData.append('startPage', payload.startPage);
+            formData.append('startPagePriority', payload.startPagePriority);
+            formData.append('activityFrom', payload.activityFrom);
+            formData.append('activityTo', payload.activityTo);
+            formData.append('activity', payload.activity);
+            formData.append('image', payload.image);
+            axios.put('/infoblock/' + payload.id, formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
             });
             context.commit('EDIT_BLOCK', payload)
         },
