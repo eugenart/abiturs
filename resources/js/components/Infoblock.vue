@@ -11,7 +11,7 @@
                 <label><input v-model="infoblock.activity" type="checkbox">Активность</label>
                 <input v-model="infoblock.activityFrom" type="date">
                 <input v-model="infoblock.activityTo" type="date">
-                <input type="file" @change="addImage">
+                <input type="file" name="image" ref="image" @change="addImage">
                 <button v-show="!isBlockUpdate" type="submit">Создать</button>
                 <button v-show="isBlockUpdate" type="submit">Сохранить изменения</button>
             </form>
@@ -95,15 +95,14 @@
         methods: {
 
             addImage(e) {
-                console.log(e.target.files)
-                this.infoblock.image = e.target.files
+                console.log(this.$refs.image.files[0]);
+                this.infoblock.image = this.$refs.image.files[0]
             },
 
             addInfoblock() {
                 this.isBlockUpdate = false;
                 this.$store.dispatch('SAVE_BLOCK', this.infoblock);
                 this.clearCurrentInfoblock();
-
             },
 
             changeInfoblock(block) {

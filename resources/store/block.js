@@ -22,18 +22,14 @@ export default {
     },
     actions: {
         SAVE_BLOCK: async (context, payload) => {
-
-            let {data} = await axios.post('/infoblock', {
-                name: payload.name,
-                url: payload.url,
-                menu: payload.menu,
-                menuPriority: payload.menuPriority,
-                startPage: payload.startPage,
-                startPagePriority: payload.startPagePriority,
-                activityFrom: payload.activityFrom,
-                activityTo: payload.activityTo,
-                activity: payload.activity,
+            let formData = new FormData();
+            formData.append('image', payload.image);
+            let {data} = await axios.post('/infoblock', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
             });
+            console.log(data)
             context.commit('ADD_BLOCK', data.infoblock)
         },
 
@@ -47,7 +43,8 @@ export default {
                 startPagePriority: payload.startPagePriority,
                 activityFrom: payload.activityFrom,
                 activityTo: payload.activityTo,
-                activity: payload.activity
+                activity: payload.activity,
+                image: payload.image
             });
             context.commit('EDIT_BLOCK', payload)
         },

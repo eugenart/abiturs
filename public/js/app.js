@@ -1867,8 +1867,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   methods: {
     addImage: function addImage(e) {
-      console.log(e.target.files);
-      this.infoblock.image = e.target.files;
+      console.log(this.$refs.image.files[0]);
+      this.infoblock.image = this.$refs.image.files[0];
     },
     addInfoblock: function addInfoblock() {
       this.isBlockUpdate = false;
@@ -38112,7 +38112,8 @@ var render = function() {
           }),
           _vm._v(" "),
           _c("input", {
-            attrs: { type: "file" },
+            ref: "image",
+            attrs: { type: "file", name: "image" },
             on: { change: _vm.addImage }
           }),
           _vm._v(" "),
@@ -52188,31 +52189,28 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _SAVE_BLOCK = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(context, payload) {
-        var _ref, data;
+        var formData, _ref, data;
 
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _context.next = 2;
-                return axios.post('/infoblock', {
-                  name: payload.name,
-                  url: payload.url,
-                  menu: payload.menu,
-                  menuPriority: payload.menuPriority,
-                  startPage: payload.startPage,
-                  startPagePriority: payload.startPagePriority,
-                  activityFrom: payload.activityFrom,
-                  activityTo: payload.activityTo,
-                  activity: payload.activity
+                formData = new FormData();
+                formData.append('image', payload.image);
+                _context.next = 4;
+                return axios.post('/infoblock', formData, {
+                  headers: {
+                    'Content-Type': 'multipart/form-data'
+                  }
                 });
 
-              case 2:
+              case 4:
                 _ref = _context.sent;
                 data = _ref.data;
+                console.log(data);
                 context.commit('ADD_BLOCK', data.infoblock);
 
-              case 5:
+              case 8:
               case "end":
                 return _context.stop();
             }
@@ -52236,7 +52234,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         startPagePriority: payload.startPagePriority,
         activityFrom: payload.activityFrom,
         activityTo: payload.activityTo,
-        activity: payload.activity
+        activity: payload.activity,
+        image: payload.image
       });
       context.commit('EDIT_BLOCK', payload);
     },
@@ -52547,8 +52546,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Applications/MAMP/htdocs/abiturs/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/abiturs/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Applications/MAMP/htdocs/abitur/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/abitur/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
