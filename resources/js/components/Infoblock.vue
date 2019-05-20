@@ -149,8 +149,8 @@
                     startPage: true,
                     startPagePriority: 500,
                     activity: true,
-                    activityFrom: null,
-                    activityTo: null,
+                    activityFrom: '',
+                    activityTo: '',
                     image: null
                 },
                 isBlockUpdate: false,

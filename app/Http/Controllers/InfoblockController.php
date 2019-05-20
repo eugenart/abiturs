@@ -22,12 +22,8 @@ class InfoblockController extends Controller
     public function store(Request $request)
     {
         if ($request->ajax()) {
-            return $request;
-            Log::debug($request);
-            $file = $request->image;
-            Log::debug(count($file));
+            $fileName = 'default.png';
             if ($request->hasFile('image')) {
-                Log::debug('true');
                 $original = $request->image->getClientOriginalName();
                 $date = new \DateTime();
                 $fileName = $date->format('Ymd_His') . '_' . $original;
@@ -43,7 +39,7 @@ class InfoblockController extends Controller
                 'activity' => $request->activity ? 1 : 0,
                 'activityFrom' => $request->activityFrom,
                 'activityTo' => $request->activityTo,
-
+                'image' => $fileName ? $fileName : null
             ]);
             return response()->json([
                 'message' => "Infoblock was created",
@@ -57,6 +53,13 @@ class InfoblockController extends Controller
     public function update(Request $request, $id)
     {
         if ($request->ajax()) {
+            $fileName = 'default.png';
+            if ($request->hasFile('image')) {
+                $original = $request->image->getClientOriginalName();
+                $date = new \DateTime();
+                $fileName = $date->format('Ymd_His') . '_' . $original;
+                $request->image->storeAs('public/preview', $fileName);
+            }
             Infoblock::findOrFail($id)->update([
                 'name' => $request->name,
                 'url' => $request->url,
@@ -67,6 +70,7 @@ class InfoblockController extends Controller
                 'activity' => $request->activity ? 1 : 0,
                 'activityFrom' => $request->activityFrom,
                 'activityTo' => $request->activityTo,
+                'image' => $fileName ? $fileName : null
             ]);
             return response()->json([
                 'message' => "Infoblock was updated"
@@ -81,6 +85,7 @@ class InfoblockController extends Controller
         if ($request->ajax()) {
             $infoblock = Infoblock::findOrFail($id);
             $infoblock->sections->count() !== 0 ? ($infoblock->childrenSections->update(['infoblockID' => ''])) : null;
+            $infoblock->image != 'default.png' ? Storage::delete('public/preview/' . $infoblock->image) : null;
             $infoblock->delete();
             return response()->json(['message' => 'Infoblock was deleted'], 200);
         }
