@@ -1916,6 +1916,52 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Infoblock',
   data: function data() {
@@ -1928,12 +1974,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         startPage: true,
         startPagePriority: 500,
         activity: true,
-        activityFrom: null,
-        activityTo: null,
+        activityFrom: '',
+        activityTo: '',
         image: null
       },
       isBlockUpdate: false,
-      currentInfoblock: {}
+      currentInfoblock: {},
+      errorImage: ''
     };
   },
   mounted: function mounted() {
@@ -1947,8 +1994,22 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   methods: {
     addImage: function addImage(e) {
-      console.log(this.$refs.file.files[0]);
-      this.infoblock.image = this.$refs.file.files[0];
+      window.URL = window.URL || window.webkitURL;
+      var file = this.$refs.file.files[0];
+      var needWidth = 800;
+      var needHeight = 450;
+      var img = new Image();
+      img.src = window.URL.createObjectURL(file);
+
+      img.onload = function () {
+        if (img.width != needWidth || img.height != needHeight) {
+          this.errorImage = 'Изображение должно быть ' + needWidth.toString() + 'px X ' + needHeight.toString() + ' px';
+          console.log(this.errorImage);
+        } else {
+          this.errorImage = '';
+          this.infoblock.image = file;
+        }
+      };
     },
     addInfoblock: function addInfoblock() {
       this.isBlockUpdate = false;
@@ -1960,7 +2021,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.isBlockUpdate = true;
     },
     updateInfoblock: function updateInfoblock() {
-      console.log('up');
       this.$store.dispatch('UPDATE_BLOCK', this.infoblock);
       this.isBlockUpdate = false;
       this.clearCurrentInfoblock();
@@ -37910,196 +37970,230 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row" }, [
-    _c("div", { staticClass: "col-12" }, [
-      _c("div", { staticClass: "card" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c("div", { staticClass: "card-body" }, [
-          _c(
-            "form",
-            {
-              staticClass: "col-12",
-              attrs: { enctype: "multipart/form-data" },
-              on: {
-                submit: function($event) {
-                  $event.preventDefault()
-                  !_vm.isBlockUpdate
-                    ? _vm.addInfoblock()
-                    : _vm.updateInfoblock()
+  return _c("div", [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-12" }, [
+        _c("div", { staticClass: "card" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c(
+              "form",
+              {
+                staticClass: "col-12",
+                attrs: { enctype: "multipart/form-data" },
+                on: {
+                  submit: function($event) {
+                    $event.preventDefault()
+                    !_vm.isBlockUpdate
+                      ? _vm.addInfoblock()
+                      : _vm.updateInfoblock()
+                  }
                 }
-              }
-            },
-            [
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "form-group col-6" }, [
-                  _c("label", { staticClass: "badge" }, [
-                    _vm._v("Название инфоблока")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.infoblock.name,
-                        expression: "infoblock.name"
-                      }
-                    ],
-                    staticClass: "form-control form-control-sm",
-                    attrs: { type: "text" },
-                    domProps: { value: _vm.infoblock.name },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.infoblock, "name", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group col-6" }, [
-                  _c("label", { staticClass: "badge" }, [
-                    _vm._v("Ссылка на инфоблок")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.infoblock.url,
-                        expression: "infoblock.url"
-                      }
-                    ],
-                    staticClass: "form-control form-control-sm",
-                    attrs: { type: "text" },
-                    domProps: { value: _vm.infoblock.url },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.infoblock, "url", $event.target.value)
-                      }
-                    }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "form-group col-6" }, [
-                  _c("div", { staticClass: "form-check" }, [
+              },
+              [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "form-group col-6" }, [
+                    _c("label", { staticClass: "badge" }, [
+                      _vm._v("Название инфоблока")
+                    ]),
+                    _vm._v(" "),
                     _c("input", {
                       directives: [
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.infoblock.menu,
-                          expression: "infoblock.menu"
+                          value: _vm.infoblock.name,
+                          expression: "infoblock.name"
                         }
                       ],
-                      attrs: { type: "checkbox" },
-                      domProps: {
-                        checked: Array.isArray(_vm.infoblock.menu)
-                          ? _vm._i(_vm.infoblock.menu, null) > -1
-                          : _vm.infoblock.menu
-                      },
+                      staticClass: "form-control form-control-sm",
+                      attrs: { type: "text" },
+                      domProps: { value: _vm.infoblock.name },
                       on: {
-                        change: function($event) {
-                          var $$a = _vm.infoblock.menu,
-                            $$el = $event.target,
-                            $$c = $$el.checked ? true : false
-                          if (Array.isArray($$a)) {
-                            var $$v = null,
-                              $$i = _vm._i($$a, $$v)
-                            if ($$el.checked) {
-                              $$i < 0 &&
-                                _vm.$set(
-                                  _vm.infoblock,
-                                  "menu",
-                                  $$a.concat([$$v])
-                                )
-                            } else {
-                              $$i > -1 &&
-                                _vm.$set(
-                                  _vm.infoblock,
-                                  "menu",
-                                  $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                                )
-                            }
-                          } else {
-                            _vm.$set(_vm.infoblock, "menu", $$c)
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
                           }
+                          _vm.$set(_vm.infoblock, "name", $event.target.value)
                         }
                       }
-                    }),
-                    _vm._v(" "),
-                    _c("label", [_vm._v("Отображать в меню")])
+                    })
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "form-check" }, [
+                  _c("div", { staticClass: "form-group col-6" }, [
+                    _c("label", { staticClass: "badge" }, [
+                      _vm._v("Ссылка на инфоблок")
+                    ]),
+                    _vm._v(" "),
                     _c("input", {
                       directives: [
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.infoblock.startPage,
-                          expression: "infoblock.startPage"
+                          value: _vm.infoblock.url,
+                          expression: "infoblock.url"
                         }
                       ],
-                      attrs: { type: "checkbox" },
-                      domProps: {
-                        checked: Array.isArray(_vm.infoblock.startPage)
-                          ? _vm._i(_vm.infoblock.startPage, null) > -1
-                          : _vm.infoblock.startPage
-                      },
+                      staticClass: "form-control form-control-sm",
+                      attrs: { type: "text" },
+                      domProps: { value: _vm.infoblock.url },
                       on: {
-                        change: function($event) {
-                          var $$a = _vm.infoblock.startPage,
-                            $$el = $event.target,
-                            $$c = $$el.checked ? true : false
-                          if (Array.isArray($$a)) {
-                            var $$v = null,
-                              $$i = _vm._i($$a, $$v)
-                            if ($$el.checked) {
-                              $$i < 0 &&
-                                _vm.$set(
-                                  _vm.infoblock,
-                                  "startPage",
-                                  $$a.concat([$$v])
-                                )
-                            } else {
-                              $$i > -1 &&
-                                _vm.$set(
-                                  _vm.infoblock,
-                                  "startPage",
-                                  $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                                )
-                            }
-                          } else {
-                            _vm.$set(_vm.infoblock, "startPage", $$c)
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
                           }
+                          _vm.$set(_vm.infoblock, "url", $event.target.value)
                         }
                       }
-                    }),
-                    _vm._v(" "),
-                    _c("label", [
-                      _vm._v(
-                        "Отображать на главной\n                                    странице"
-                      )
-                    ])
+                    })
                   ])
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "col-6" }, [
-                  _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "col-6" }, [
-                      _c("div", { staticClass: "form-group" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "form-group col-6" }, [
+                    _c("div", { staticClass: "form-check" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.infoblock.menu,
+                            expression: "infoblock.menu"
+                          }
+                        ],
+                        attrs: { type: "checkbox" },
+                        domProps: {
+                          checked: Array.isArray(_vm.infoblock.menu)
+                            ? _vm._i(_vm.infoblock.menu, null) > -1
+                            : _vm.infoblock.menu
+                        },
+                        on: {
+                          change: function($event) {
+                            var $$a = _vm.infoblock.menu,
+                              $$el = $event.target,
+                              $$c = $$el.checked ? true : false
+                            if (Array.isArray($$a)) {
+                              var $$v = null,
+                                $$i = _vm._i($$a, $$v)
+                              if ($$el.checked) {
+                                $$i < 0 &&
+                                  _vm.$set(
+                                    _vm.infoblock,
+                                    "menu",
+                                    $$a.concat([$$v])
+                                  )
+                              } else {
+                                $$i > -1 &&
+                                  _vm.$set(
+                                    _vm.infoblock,
+                                    "menu",
+                                    $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                                  )
+                              }
+                            } else {
+                              _vm.$set(_vm.infoblock, "menu", $$c)
+                            }
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("label", [_vm._v("Отображать в меню")])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-check" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.infoblock.startPage,
+                            expression: "infoblock.startPage"
+                          }
+                        ],
+                        attrs: { type: "checkbox" },
+                        domProps: {
+                          checked: Array.isArray(_vm.infoblock.startPage)
+                            ? _vm._i(_vm.infoblock.startPage, null) > -1
+                            : _vm.infoblock.startPage
+                        },
+                        on: {
+                          change: function($event) {
+                            var $$a = _vm.infoblock.startPage,
+                              $$el = $event.target,
+                              $$c = $$el.checked ? true : false
+                            if (Array.isArray($$a)) {
+                              var $$v = null,
+                                $$i = _vm._i($$a, $$v)
+                              if ($$el.checked) {
+                                $$i < 0 &&
+                                  _vm.$set(
+                                    _vm.infoblock,
+                                    "startPage",
+                                    $$a.concat([$$v])
+                                  )
+                              } else {
+                                $$i > -1 &&
+                                  _vm.$set(
+                                    _vm.infoblock,
+                                    "startPage",
+                                    $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                                  )
+                              }
+                            } else {
+                              _vm.$set(_vm.infoblock, "startPage", $$c)
+                            }
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("label", [
+                        _vm._v(
+                          "Отображать на главной\n                                        странице"
+                        )
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-6" }, [
+                    _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "col-6" }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", { staticClass: "badge" }, [
+                            _vm._v("Приоритет в меню")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.infoblock.menuPriority,
+                                expression: "infoblock.menuPriority"
+                              }
+                            ],
+                            staticClass: "form-control form-control-sm",
+                            attrs: { type: "number" },
+                            domProps: { value: _vm.infoblock.menuPriority },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.infoblock,
+                                  "menuPriority",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-6" }, [
                         _c("label", { staticClass: "badge" }, [
-                          _vm._v("Приоритет в меню")
+                          _vm._v("Приоритет на главной странице")
                         ]),
                         _vm._v(" "),
                         _c("input", {
@@ -38107,13 +38201,13 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.infoblock.menuPriority,
-                              expression: "infoblock.menuPriority"
+                              value: _vm.infoblock.startPagePriority,
+                              expression: "infoblock.startPagePriority"
                             }
                           ],
                           staticClass: "form-control form-control-sm",
                           attrs: { type: "number" },
-                          domProps: { value: _vm.infoblock.menuPriority },
+                          domProps: { value: _vm.infoblock.startPagePriority },
                           on: {
                             input: function($event) {
                               if ($event.target.composing) {
@@ -38121,18 +38215,77 @@ var render = function() {
                               }
                               _vm.$set(
                                 _vm.infoblock,
-                                "menuPriority",
+                                "startPagePriority",
                                 $event.target.value
                               )
                             }
                           }
                         })
                       ])
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-4" }, [
+                    _c("label", { staticClass: "badge" }, [
+                      _vm._v("Активность инфоблока")
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "col-6" }, [
+                    _c("div", { staticClass: "form-check" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.infoblock.activity,
+                            expression: "infoblock.activity"
+                          }
+                        ],
+                        attrs: { type: "checkbox" },
+                        domProps: {
+                          checked: Array.isArray(_vm.infoblock.activity)
+                            ? _vm._i(_vm.infoblock.activity, null) > -1
+                            : _vm.infoblock.activity
+                        },
+                        on: {
+                          change: function($event) {
+                            var $$a = _vm.infoblock.activity,
+                              $$el = $event.target,
+                              $$c = $$el.checked ? true : false
+                            if (Array.isArray($$a)) {
+                              var $$v = null,
+                                $$i = _vm._i($$a, $$v)
+                              if ($$el.checked) {
+                                $$i < 0 &&
+                                  _vm.$set(
+                                    _vm.infoblock,
+                                    "activity",
+                                    $$a.concat([$$v])
+                                  )
+                              } else {
+                                $$i > -1 &&
+                                  _vm.$set(
+                                    _vm.infoblock,
+                                    "activity",
+                                    $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                                  )
+                              }
+                            } else {
+                              _vm.$set(_vm.infoblock, "activity", $$c)
+                            }
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("label", [_vm._v("Активность")])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-4" }, [
+                    _c("div", { staticClass: "form-group" }, [
                       _c("label", { staticClass: "badge" }, [
-                        _vm._v("Приоритет на главной странице")
+                        _vm._v("Дата начала активности")
                       ]),
                       _vm._v(" "),
                       _c("input", {
@@ -38140,13 +38293,13 @@ var render = function() {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.infoblock.startPagePriority,
-                            expression: "infoblock.startPagePriority"
+                            value: _vm.infoblock.activityFrom,
+                            expression: "infoblock.activityFrom"
                           }
                         ],
                         staticClass: "form-control form-control-sm",
-                        attrs: { type: "number" },
-                        domProps: { value: _vm.infoblock.startPagePriority },
+                        attrs: { type: "date" },
+                        domProps: { value: _vm.infoblock.activityFrom },
                         on: {
                           input: function($event) {
                             if ($event.target.composing) {
@@ -38154,7 +38307,41 @@ var render = function() {
                             }
                             _vm.$set(
                               _vm.infoblock,
-                              "startPagePriority",
+                              "activityFrom",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-4" }, [
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("label", { staticClass: "badge" }, [
+                        _vm._v("Дата конца активности")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.infoblock.activityTo,
+                            expression: "infoblock.activityTo"
+                          }
+                        ],
+                        staticClass: "form-control form-control-sm",
+                        attrs: { type: "date" },
+                        domProps: { value: _vm.infoblock.activityTo },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.infoblock,
+                              "activityTo",
                               $event.target.value
                             )
                           }
@@ -38162,262 +38349,270 @@ var render = function() {
                       })
                     ])
                   ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col-4" }, [
-                  _c("label", { staticClass: "badge" }, [
-                    _vm._v("Активность инфоблока")
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-check" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.infoblock.activity,
-                          expression: "infoblock.activity"
-                        }
-                      ],
-                      attrs: { type: "checkbox" },
-                      domProps: {
-                        checked: Array.isArray(_vm.infoblock.activity)
-                          ? _vm._i(_vm.infoblock.activity, null) > -1
-                          : _vm.infoblock.activity
-                      },
-                      on: {
-                        change: function($event) {
-                          var $$a = _vm.infoblock.activity,
-                            $$el = $event.target,
-                            $$c = $$el.checked ? true : false
-                          if (Array.isArray($$a)) {
-                            var $$v = null,
-                              $$i = _vm._i($$a, $$v)
-                            if ($$el.checked) {
-                              $$i < 0 &&
-                                _vm.$set(
-                                  _vm.infoblock,
-                                  "activity",
-                                  $$a.concat([$$v])
-                                )
-                            } else {
-                              $$i > -1 &&
-                                _vm.$set(
-                                  _vm.infoblock,
-                                  "activity",
-                                  $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                                )
-                            }
-                          } else {
-                            _vm.$set(_vm.infoblock, "activity", $$c)
-                          }
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("label", [_vm._v("Активность")])
-                  ])
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "col-4" }, [
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("label", { staticClass: "badge" }, [
-                      _vm._v("Дата начала активности")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.infoblock.activityFrom,
-                          expression: "infoblock.activityFrom"
-                        }
-                      ],
-                      staticClass: "form-control form-control-sm",
-                      attrs: { type: "date" },
-                      domProps: { value: _vm.infoblock.activityFrom },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.infoblock,
-                            "activityFrom",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-4" }, [
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("label", { staticClass: "badge" }, [
-                      _vm._v("Дата конца активности")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.infoblock.activityTo,
-                          expression: "infoblock.activityTo"
-                        }
-                      ],
-                      staticClass: "form-control form-control-sm",
-                      attrs: { type: "date" },
-                      domProps: { value: _vm.infoblock.activityTo },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.infoblock,
-                            "activityTo",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    })
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col-6" }, [
-                  _c("div", { staticClass: "custom-file" }, [
-                    _c("input", {
-                      ref: "file",
-                      staticClass: "custom-file-input form-control-sm",
-                      attrs: { type: "file", name: "image", id: "customFile" },
-                      on: { change: _vm.addImage }
-                    }),
-                    _vm._v(" "),
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-6" }, [
                     _c(
                       "label",
                       {
-                        staticClass: "custom-file-label",
-                        attrs: { for: "customFile" }
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.errorImage,
+                            expression: "errorImage"
+                          }
+                        ],
+                        staticClass: "badge badge-danger"
                       },
-                      [_vm._v("Выберите файл")]
+                      [_vm._v(_vm._s(_vm.errorImage))]
+                    ),
+                    _vm._v(" "),
+                    _c("input", {
+                      ref: "file",
+                      attrs: { type: "file", accept: "image/*", name: "image" },
+                      on: { change: _vm.addImage }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-6" }, [
+                    _c(
+                      "button",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: !_vm.isBlockUpdate,
+                            expression: "!isBlockUpdate"
+                          }
+                        ],
+                        staticClass: "btn col-6 float-right btn-primary",
+                        attrs: { type: "submit" }
+                      },
+                      [
+                        _vm._v(
+                          "\n                                    Создать\n                                "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.isBlockUpdate,
+                            expression: "isBlockUpdate"
+                          }
+                        ],
+                        staticClass: "btn col-6 float-right btn-success",
+                        attrs: { type: "submit" }
+                      },
+                      [
+                        _vm._v(
+                          "\n                                    Сохранить изменения\n                                "
+                        )
+                      ]
                     )
                   ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-6" }, [
-                  _c(
-                    "button",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: !_vm.isBlockUpdate,
-                          expression: "!isBlockUpdate"
-                        }
-                      ],
-                      staticClass: "btn col-6 float-right btn-primary",
-                      attrs: { type: "submit" }
-                    },
-                    [
-                      _vm._v(
-                        "\n                                Создать\n                            "
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.isBlockUpdate,
-                          expression: "isBlockUpdate"
-                        }
-                      ],
-                      staticClass: "btn col-6 float-right btn-success",
-                      attrs: { type: "submit" }
-                    },
-                    [
-                      _vm._v(
-                        "\n                                Сохранить изменения\n                            "
-                      )
-                    ]
-                  )
                 ])
-              ])
-            ]
-          )
+              ]
+            )
+          ])
         ])
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "col-12" }, [
-      _c("table", { staticClass: "table" }, [
-        _vm._m(1),
-        _vm._v(" "),
-        _c(
-          "tbody",
-          _vm._l(_vm.blocks, function(block, index) {
-            return _c("tr", [
-              _c("td", [_vm._v(_vm._s(block.name))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(block.url))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(block.menu))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(block.menuPriority))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(block.startPage))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(block.startPagePriority))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(block.activity))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(block.image))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(block.activityFrom))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(block.activityTo))]),
-              _vm._v(" "),
-              _c("td", [
-                _c(
-                  "button",
-                  {
-                    on: {
-                      click: function($event) {
-                        return _vm.changeInfoblock(block)
-                      }
-                    }
-                  },
-                  [_vm._v("Редактировать")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    on: {
-                      click: function($event) {
-                        return _vm.removeInfoblock(block.id, index)
-                      }
-                    }
-                  },
-                  [_vm._v("Удалить")]
-                )
-              ])
-            ])
-          }),
-          0
-        )
+    _c("div", { staticClass: "row mt-3" }, [
+      _c("div", { staticClass: "col-12" }, [
+        _c("div", { staticClass: "card" }, [
+          _vm._m(1),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c(
+              "div",
+              { staticClass: "row" },
+              _vm._l(_vm.blocks, function(block, index) {
+                return _c("div", { staticClass: "col-3" }, [
+                  _c("div", { staticClass: "card" }, [
+                    _c("div", { staticClass: "card-header" }, [
+                      _c("p", { staticClass: "m-0" }, [
+                        _vm._v(_vm._s(block.name))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "card-body" }, [
+                      _c("div", [
+                        _c("label", { staticClass: "badge m-0" }, [
+                          _vm._v("Ссылка")
+                        ]),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "ml-2 mb-1" }, [
+                          _vm._v(_vm._s(block.url))
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", [
+                        _c("label", { staticClass: "badge m-0" }, [
+                          _vm._v("Отображать в меню")
+                        ]),
+                        _vm._v(" "),
+                        block.menu
+                          ? _c("p", { staticClass: "ml-2 mb-1" }, [
+                              _vm._v("Да")
+                            ])
+                          : _c("p", { staticClass: "ml-2 mb-1" }, [
+                              _vm._v("Нет")
+                            ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", [
+                        _c("label", { staticClass: "badge m-0" }, [
+                          _vm._v("Приоритет в меню")
+                        ]),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "ml-2 mb-1" }, [
+                          _vm._v(_vm._s(block.menuPriority))
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", [
+                        _c("label", { staticClass: "badge m-0" }, [
+                          _vm._v("Отображать на главной странице")
+                        ]),
+                        _vm._v(" "),
+                        block.startPage
+                          ? _c("p", { staticClass: "ml-2 mb-1" }, [
+                              _vm._v("Да")
+                            ])
+                          : _c("p", { staticClass: "ml-2 mb-1" }, [
+                              _vm._v("Нет")
+                            ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", [
+                        _c("label", { staticClass: "badge m-0" }, [
+                          _vm._v("Приоритет на главной странице")
+                        ]),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "ml-2 mb-1" }, [
+                          _vm._v(_vm._s(block.startPagePriority))
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", [
+                        _c("label", { staticClass: "badge m-0" }, [
+                          _vm._v("Активность")
+                        ]),
+                        _vm._v(" "),
+                        block.activity
+                          ? _c("p", { staticClass: "ml-2 mb-1" }, [
+                              _vm._v("Да")
+                            ])
+                          : _c("p", { staticClass: "ml-2 mb-1" }, [
+                              _vm._v("Нет")
+                            ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", [
+                        _c("label", { staticClass: "badge m-0" }, [
+                          _vm._v("Активность от")
+                        ]),
+                        _vm._v(" "),
+                        block.activityFrom
+                          ? _c("p", { staticClass: "ml-2 mb-1" }, [
+                              _vm._v("Да")
+                            ])
+                          : _c("p", { staticClass: "ml-2 mb-1" }, [_vm._v("-")])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", [
+                        _c("label", { staticClass: "badge m-0" }, [
+                          _vm._v("Активность до")
+                        ]),
+                        _vm._v(" "),
+                        block.activityTo
+                          ? _c("p", { staticClass: "ml-2 mb-1" }, [
+                              _vm._v("Да")
+                            ])
+                          : _c("p", { staticClass: "ml-2 mb-1" }, [_vm._v("-")])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", [
+                        _c("label", { staticClass: "badge m-0" }, [
+                          _vm._v("Предпросмотр изображения")
+                        ]),
+                        _vm._v(" "),
+                        block.image
+                          ? _c("img", {
+                              staticClass: "w-100",
+                              attrs: {
+                                src: "../../../storage/preview/" + block.image,
+                                alt: ""
+                              }
+                            })
+                          : _c("img", {
+                              staticClass: "w-100",
+                              attrs: {
+                                src: __webpack_require__(/*! ../../../storage/app/public/preview/default.jpg */ "./storage/app/public/preview/default.jpg"),
+                                alt: ""
+                              }
+                            })
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "card-footer" }, [
+                      _c("div", { staticClass: "row" }, [
+                        _c("div", { staticClass: "col-6" }, [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-sm btn-dark col-12",
+                              on: {
+                                click: function($event) {
+                                  return _vm.changeInfoblock(block)
+                                }
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                                                Изменить\n                                            "
+                              )
+                            ]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-6" }, [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-sm col-12",
+                              on: {
+                                click: function($event) {
+                                  return _vm.removeInfoblock(block.id, index)
+                                }
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "Удалить\n                                            "
+                              )
+                            ]
+                          )
+                        ])
+                      ])
+                    ])
+                  ])
+                ])
+              }),
+              0
+            )
+          ])
+        ])
       ])
     ])
   ])
@@ -38437,30 +38632,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [_vm._v("Название")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Ссылка")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("В меню")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Приоритет в меню")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("На главной")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Приоритет на главной")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Активность")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Изображение")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("От")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("До")]),
-        _vm._v(" "),
-        _c("th")
-      ])
+    return _c("div", { staticClass: "card-header" }, [
+      _c("p", { staticClass: "m-0" }, [_vm._v("Инфоблоки")])
     ])
   }
 ]
@@ -52400,8 +52573,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       });
       block = payload;
     },
-    REMOVE_BLOCK: function REMOVE_BLOCK(state, index) {
-      state.blocks.splice(index, 1);
+    REMOVE_BLOCK: function REMOVE_BLOCK(state, id) {
+      //state.blocks.splice(index, 1)
+      state.blocks = $.grep(state.blocks, function (item) {
+        return item.id != id;
+      });
     },
     SET_BLOCKS: function SET_BLOCKS(state, payload) {
       state.blocks = payload;
@@ -52429,21 +52605,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 formData.append('activityTo', payload.activityTo);
                 formData.append('activity', payload.activity);
                 formData.append('image', payload.image);
-                _context.next = 13;
+                console.log(formData);
+                _context.next = 14;
                 return axios.post('/infoblock', formData, {
                   headers: {
                     'Content-Type': 'multipart/form-data'
                   }
-                }).then(function (response) {
-                  console.log(response);
                 });
 
-              case 13:
+              case 14:
                 _ref = _context.sent;
                 data = _ref.data;
                 context.commit('ADD_BLOCK', data.infoblock);
 
-              case 16:
+              case 17:
               case "end":
                 return _context.stop();
             }
@@ -52457,40 +52632,40 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       return SAVE_BLOCK;
     }(),
-    UPDATE_BLOCK: function UPDATE_BLOCK(context, payload) {
-      var formData = new FormData();
-      formData.append('name', payload.name);
-      formData.append('url', payload.url);
-      formData.append('menu', payload.menu);
-      formData.append('menuPriority', payload.menuPriority);
-      formData.append('startPage', payload.startPage);
-      formData.append('startPagePriority', payload.startPagePriority);
-      formData.append('activityFrom', payload.activityFrom);
-      formData.append('activityTo', payload.activityTo);
-      formData.append('activity', payload.activity);
-      formData.append('image', payload.image);
-      axios.put('/infoblock/' + payload.id, formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      });
-      context.commit('EDIT_BLOCK', payload);
-    },
-    DELETE_BLOCK: function () {
-      var _DELETE_BLOCK = _asyncToGenerator(
+    UPDATE_BLOCK: function () {
+      var _UPDATE_BLOCK = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(context, payload, index) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(context, payload) {
+        var formData, _ref2, data;
+
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                _context2.next = 2;
-                return axios.delete('/infoblock/' + payload);
+                formData = new FormData();
+                formData.append('name', payload.name);
+                formData.append('url', payload.url);
+                formData.append('menu', payload.menu);
+                formData.append('menuPriority', payload.menuPriority);
+                formData.append('startPage', payload.startPage);
+                formData.append('startPagePriority', payload.startPagePriority);
+                formData.append('activityFrom', payload.activityFrom ? payload.activityFrom : '');
+                formData.append('activityTo', payload.activityTo ? payload.activityTo : '');
+                formData.append('activity', payload.activity);
+                formData.append('image', payload.image);
+                _context2.next = 13;
+                return axios.post('/infoblock/' + payload.id, formData, {
+                  headers: {
+                    'Content-Type': 'multipart/form-data'
+                  }
+                });
 
-              case 2:
-                context.commit('REMOVE_BLOCK', index);
+              case 13:
+                _ref2 = _context2.sent;
+                data = _ref2.data;
+                context.commit('EDIT_BLOCK', payload);
 
-              case 3:
+              case 16:
               case "end":
                 return _context2.stop();
             }
@@ -52498,7 +52673,35 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee2);
       }));
 
-      function DELETE_BLOCK(_x3, _x4, _x5) {
+      function UPDATE_BLOCK(_x3, _x4) {
+        return _UPDATE_BLOCK.apply(this, arguments);
+      }
+
+      return UPDATE_BLOCK;
+    }(),
+    DELETE_BLOCK: function () {
+      var _DELETE_BLOCK = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(context, payload, index) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.next = 2;
+                return axios.delete('/infoblock/' + payload);
+
+              case 2:
+                context.commit('REMOVE_BLOCK', payload);
+
+              case 3:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
+      }));
+
+      function DELETE_BLOCK(_x5, _x6, _x7) {
         return _DELETE_BLOCK.apply(this, arguments);
       }
 
@@ -52507,30 +52710,30 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     GET_BLOCKS: function () {
       var _GET_BLOCKS = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(context, payload) {
-        var _ref2, data;
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(context, payload) {
+        var _ref3, data;
 
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
           while (1) {
-            switch (_context3.prev = _context3.next) {
+            switch (_context4.prev = _context4.next) {
               case 0:
-                _context3.next = 2;
+                _context4.next = 2;
                 return axios.get('/infoblocks');
 
               case 2:
-                _ref2 = _context3.sent;
-                data = _ref2.data;
+                _ref3 = _context4.sent;
+                data = _ref3.data;
                 context.commit('SET_BLOCKS', data);
 
               case 5:
               case "end":
-                return _context3.stop();
+                return _context4.stop();
             }
           }
-        }, _callee3);
+        }, _callee4);
       }));
 
-      function GET_BLOCKS(_x6, _x7) {
+      function GET_BLOCKS(_x8, _x9) {
         return _GET_BLOCKS.apply(this, arguments);
       }
 
@@ -52773,6 +52976,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }
   }
 });
+
+/***/ }),
+
+/***/ "./storage/app/public/preview/default.jpg":
+/*!************************************************!*\
+  !*** ./storage/app/public/preview/default.jpg ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/default.jpg?22a342b258ccd44f2e33e8488eb5a369";
 
 /***/ }),
 

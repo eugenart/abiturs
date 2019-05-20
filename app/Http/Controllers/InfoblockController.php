@@ -22,12 +22,8 @@ class InfoblockController extends Controller
     public function store(Request $request)
     {
         if ($request->ajax()) {
-            return $request;
-            Log::debug($request);
-            $file = $request->image;
-            Log::debug(count($file));
+            $fileName = null;
             if ($request->hasFile('image')) {
-                Log::debug('true');
                 $original = $request->image->getClientOriginalName();
                 $date = new \DateTime();
                 $fileName = $date->format('Ymd_His') . '_' . $original;
@@ -43,6 +39,7 @@ class InfoblockController extends Controller
                 'activity' => $request->activity ? 1 : 0,
                 'activityFrom' => $request->activityFrom,
                 'activityTo' => $request->activityTo,
+                'image' => $fileName ? $fileName : null
 
             ]);
             return response()->json([
@@ -66,7 +63,7 @@ class InfoblockController extends Controller
                 'startPagePriority' => $request->startPagePriority,
                 'activity' => $request->activity ? 1 : 0,
                 'activityFrom' => $request->activityFrom,
-                'activityTo' => $request->activityTo,
+                'activityTo' => $request->activityTo
             ]);
             return response()->json([
                 'message' => "Infoblock was updated"
