@@ -22,7 +22,7 @@ class InfoblockController extends Controller
     public function store(Request $request)
     {
         if ($request->ajax()) {
-            $fileName = 'default.png';
+            $fileName = 'default.jpg';
             if ($request->hasFile('image')) {
                 $original = $request->image->getClientOriginalName();
                 $date = new \DateTime();
@@ -53,7 +53,7 @@ class InfoblockController extends Controller
     public function update(Request $request, $id)
     {
         if ($request->ajax()) {
-            $fileName = 'default.png';
+            $fileName = 'default.jpg';
             if ($request->hasFile('image')) {
                 $original = $request->image->getClientOriginalName();
                 $date = new \DateTime();

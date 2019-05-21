@@ -2,7 +2,6 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 import store from '../store/index'
-
 import jQuery from 'jquery';
 
 window.$ = window.jQuery = jQuery;
