@@ -140,12 +140,12 @@
                                         </div>
                                         <div>
                                             <label class="badge m-0">Активность от</label>
-                                            <p class="ml-2 mb-1" v-if="block.activityFrom">Да</p>
+                                            <p class="ml-2 mb-1" v-if="block.activityFrom">{{block.activityFrom}}</p>
                                             <p class="ml-2 mb-1" v-else>-</p>
                                         </div>
                                         <div>
                                             <label class="badge m-0">Активность до</label>
-                                            <p class="ml-2 mb-1" v-if="block.activityTo">Да</p>
+                                            <p class="ml-2 mb-1" v-if="block.activityTo">{{block.activityTo}}</p>
                                             <p class="ml-2 mb-1" v-else>-</p>
                                         </div>
                                         <div>
@@ -227,15 +227,16 @@
                 let needHeight = 450;
                 let img = new Image();
                 img.src = window.URL.createObjectURL(file)
-                img.onload = function () {
-                    if (img.width != needWidth || img.height != needHeight) {
-                        this.errorImage = 'Изображение должно быть ' + needWidth.toString() + 'px X ' + needHeight.toString() + ' px'
-                        console.log(this.errorImage)
-                    } else {
-                        this.errorImage = '';
-                        this.infoblock.image = file
-                    }
-                };
+                this.infoblock.image = file
+                // img.onload = function () {
+                //     // if (img.width != needWidth || img.height != needHeight) {
+                //     //  this.errorImage = 'Изображение должно быть ' + needWidth.toString() + 'px X ' + needHeight.toString() + ' px'
+                //     console.log(this.errorImage)
+                //     // } else {
+                //     this.errorImage = '';
+                //
+                //     // }
+                // };
 
 
             },

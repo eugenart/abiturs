@@ -2000,16 +2000,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var needHeight = 450;
       var img = new Image();
       img.src = window.URL.createObjectURL(file);
-
-      img.onload = function () {
-        if (img.width != needWidth || img.height != needHeight) {
-          this.errorImage = 'Изображение должно быть ' + needWidth.toString() + 'px X ' + needHeight.toString() + ' px';
-          console.log(this.errorImage);
-        } else {
-          this.errorImage = '';
-          this.infoblock.image = file;
-        }
-      };
+      this.infoblock.image = file; // img.onload = function () {
+      //     // if (img.width != needWidth || img.height != needHeight) {
+      //     //  this.errorImage = 'Изображение должно быть ' + needWidth.toString() + 'px X ' + needHeight.toString() + ' px'
+      //     console.log(this.errorImage)
+      //     // } else {
+      //     this.errorImage = '';
+      //
+      //     // }
+      // };
     },
     addInfoblock: function addInfoblock() {
       this.isBlockUpdate = false;
@@ -38525,7 +38524,7 @@ var render = function() {
                         _vm._v(" "),
                         block.activityFrom
                           ? _c("p", { staticClass: "ml-2 mb-1" }, [
-                              _vm._v("Да")
+                              _vm._v(_vm._s(block.activityFrom))
                             ])
                           : _c("p", { staticClass: "ml-2 mb-1" }, [_vm._v("-")])
                       ]),
@@ -38537,7 +38536,7 @@ var render = function() {
                         _vm._v(" "),
                         block.activityTo
                           ? _c("p", { staticClass: "ml-2 mb-1" }, [
-                              _vm._v("Да")
+                              _vm._v(_vm._s(block.activityTo))
                             ])
                           : _c("p", { staticClass: "ml-2 mb-1" }, [_vm._v("-")])
                       ]),
