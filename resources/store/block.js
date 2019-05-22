@@ -8,8 +8,8 @@ export default {
         },
 
         EDIT_BLOCK(state, payload) {
-            let block = state.blocks.find(block => block.id === payload.id);
-            block = payload
+            let index = state.blocks.findIndex(el => el.id === payload.id)
+            Vue.set(state.blocks, index, payload)
         },
 
         REMOVE_BLOCK(state, id) {
@@ -42,7 +42,9 @@ export default {
                     'Content-Type': 'multipart/form-data'
                 }
             })
+
             context.commit('ADD_BLOCK', data.infoblock)
+
         },
 
         UPDATE_BLOCK: async (context, payload) => {
@@ -62,8 +64,8 @@ export default {
                     'Content-Type': 'multipart/form-data'
                 }
             });
-
-            context.commit('EDIT_BLOCK', payload)
+            console.log(data.infoblock)
+            context.commit('EDIT_BLOCK', data.infoblock)
         },
 
         DELETE_BLOCK:

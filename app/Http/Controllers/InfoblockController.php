@@ -33,11 +33,11 @@ class InfoblockController extends Controller
             $infoblock = Infoblock::create([
                 'name' => $request->name,
                 'url' => $request->url,
-                'menu' => $request->menu ? 1 : 0,
+                'menu' => in_array($request->menu, ['true', 1]) ? 1 : 0,
                 'menuPriority' => $request->menuPriority,
-                'startPage' => $request->startPage ? 1 : 0,
+                'startPage' => in_array($request->startPage, ['true', 1]) ? 1 : 0,
                 'startPagePriority' => $request->startPagePriority,
-                'activity' => $request->activity ? 1 : 0,
+                'activity' => in_array($request->activity, ['true', 1]) ? 1 : 0,
                 'activityFrom' => $request->activityFrom,
                 'activityTo' => $request->activityTo,
                 'image' => $fileName ? $fileName : null
@@ -53,22 +53,24 @@ class InfoblockController extends Controller
 
     public function update(Request $request, $id)
     {
+        Log::debug($request);
         if ($request->ajax()) {
-            $fileName = $request->image? $request->image : 'default.jpg';
+            $fileName = $request->image ? $request->image : 'default.jpg';
             if ($request->hasFile('image')) {
                 $original = $request->image->getClientOriginalName();
                 $date = new \DateTime();
                 $fileName = $date->format('Ymd_His') . '_' . $original;
                 $request->image->storeAs('public/preview', $fileName);
             }
-            $infoblock = Infoblock::findOrFail($id)->update([
+            $infoblock = Infoblock::findOrFail($id);
+            $infoblock->update([
                 'name' => $request->name,
                 'url' => $request->url,
-                'menu' => $request->menu ? 1 : 0,
+                'menu' => in_array($request->menu, ['true', 1]) ? 1 : 0,
                 'menuPriority' => $request->menuPriority,
-                'startPage' => $request->startPage ? 1 : 0,
+                'startPage' => in_array($request->startPage, ['true', 1]) ? 1 : 0,
                 'startPagePriority' => $request->startPagePriority,
-                'activity' => $request->activity ? 1 : 0,
+                'activity' => in_array($request->activity, ['true', 1]) ? 1 : 0,
                 'activityFrom' => $request->activityFrom,
                 'activityTo' => $request->activityTo,
                 'image' => $fileName ? $fileName : null
