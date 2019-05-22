@@ -1960,6 +1960,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Infoblock',
   data: function data() {
@@ -38439,11 +38440,25 @@ var render = function() {
                   _c("div", { staticClass: "card" }, [
                     _c("div", { staticClass: "card-header" }, [
                       _c("p", { staticClass: "m-0" }, [
-                        _vm._v(_vm._s(block.name))
+                        _c("b", [_vm._v(_vm._s(block.name))])
                       ])
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "card-body" }, [
+                      _c("div", [
+                        _c("label", { staticClass: "badge m-0" }, [
+                          _vm._v("Предпросмотр изображения")
+                        ]),
+                        _vm._v(" "),
+                        _c("img", {
+                          staticClass: "w-100",
+                          attrs: {
+                            src: "../../../storage/preview/" + block.image,
+                            alt: ""
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
                       _c("div", [
                         _c("label", { staticClass: "badge m-0" }, [
                           _vm._v("Ссылка")
@@ -38538,20 +38553,6 @@ var render = function() {
                               _vm._v(_vm._s(block.activityTo))
                             ])
                           : _c("p", { staticClass: "ml-2 mb-1" }, [_vm._v("-")])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", [
-                        _c("label", { staticClass: "badge m-0" }, [
-                          _vm._v("Предпросмотр изображения")
-                        ]),
-                        _vm._v(" "),
-                        _c("img", {
-                          staticClass: "w-100",
-                          attrs: {
-                            src: "../../../storage/preview/" + block.image,
-                            alt: ""
-                          }
-                        })
                       ])
                     ]),
                     _vm._v(" "),

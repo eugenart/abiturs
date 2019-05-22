@@ -108,9 +108,14 @@
                             <div class="col-3" v-for="(block, index) in blocks">
                                 <div class="card">
                                     <div class="card-header">
-                                        <p class="m-0">{{block.name}}</p>
+                                        <p class="m-0"><b>{{block.name}}</b></p>
                                     </div>
                                     <div class="card-body">
+                                        <div>
+                                            <label class="badge m-0">Предпросмотр изображения</label>
+                                            <img class="w-100"
+                                                 :src="'../../../storage/preview/' + block.image" alt="">
+                                        </div>
                                         <div>
                                             <label class="badge m-0">Ссылка</label>
                                             <p class="ml-2 mb-1">{{block.url}}</p>
@@ -148,11 +153,7 @@
                                             <p class="ml-2 mb-1" v-if="block.activityTo">{{block.activityTo}}</p>
                                             <p class="ml-2 mb-1" v-else>-</p>
                                         </div>
-                                        <div>
-                                            <label class="badge m-0">Предпросмотр изображения</label>
-                                            <img class="w-100"
-                                                 :src="'../../../storage/preview/' + block.image" alt="">
-                                        </div>
+
                                     </div>
                                     <div class="card-footer">
                                         <div class="row">
