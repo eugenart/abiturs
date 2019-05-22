@@ -224,16 +224,17 @@
                 let needWidth = 800;
                 let needHeight = 450;
                 let img = new Image();
-                img.src = window.URL.createObjectURL(file)
-                img.onload = function () {
-                    if (img.width != needWidth || img.height != needHeight) {
-                        this.errorImage = 'Изображение должно быть ' + needWidth.toString() + 'px X ' + needHeight.toString() + ' px'
-                        console.log(this.errorImage)
-                    } else {
-                        this.errorImage = '';
-                        this.infoblock.image = file
-                    }
-                };
+                // img.src = window.URL.createObjectURL(file)
+                // img.onload = function () {
+                //     if (false) {
+                //         this.errorImage = 'Изображение должно быть ' + needWidth.toString() + 'px X ' + needHeight.toString() + ' px'
+                //         console.log(this.errorImage)
+                //     } else {
+                //         this.errorImage = '';
+                //         this.infoblock.image = file
+                //     }
+                // };
+                this.infoblock.image = file
 
 
             },

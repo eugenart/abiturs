@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Infoblock;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
@@ -25,5 +26,11 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+
+        view()->composer('pages.layout', function($view)
+        {
+            $infoblocks = Infoblock::all();
+            $view->with('pages', $infoblocks);
+        });
     }
 }

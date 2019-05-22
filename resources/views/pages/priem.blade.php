@@ -14,7 +14,7 @@
 <div class="container">
     <div class="row header p-3">
         <div class="col-6">
-            <img src="storage/images/logo_mrsu.png" class="mrsu-logo-img" alt="">
+            <img src="/images/logo_mrsu.png" class="mrsu-logo-img" alt="">
         </div>
         <div class="col-6 justify-content-end d-flex align-items-center p-0">
             <img src="storage/images/icon_eng.gif" class="mr-3" width="20" height="13" alt="">

@@ -1996,18 +1996,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var file = this.$refs.file.files[0];
       var needWidth = 800;
       var needHeight = 450;
-      var img = new Image();
-      img.src = window.URL.createObjectURL(file);
+      var img = new Image(); // img.src = window.URL.createObjectURL(file)
+      // img.onload = function () {
+      //     if (false) {
+      //         this.errorImage = 'Изображение должно быть ' + needWidth.toString() + 'px X ' + needHeight.toString() + ' px'
+      //         console.log(this.errorImage)
+      //     } else {
+      //         this.errorImage = '';
+      //         this.infoblock.image = file
+      //     }
+      // };
 
-      img.onload = function () {
-        if (img.width != needWidth || img.height != needHeight) {
-          this.errorImage = 'Изображение должно быть ' + needWidth.toString() + 'px X ' + needHeight.toString() + ' px';
-          console.log(this.errorImage);
-        } else {
-          this.errorImage = '';
-          this.infoblock.image = file;
-        }
-      };
+      this.infoblock.image = file;
     },
     addInfoblock: function addInfoblock() {
       this.isBlockUpdate = false;
