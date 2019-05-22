@@ -189,11 +189,11 @@
                 infoblock: {
                     name: null,
                     url: null,
-                    menu: true,
+                    menu: 1,
                     menuPriority: 500,
-                    startPage: true,
+                    startPage: 1,
                     startPagePriority: 500,
-                    activity: true,
+                    activity: 1,
                     activityFrom: '',
                     activityTo: '',
                     image: null

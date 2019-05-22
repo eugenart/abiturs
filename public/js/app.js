@@ -1969,11 +1969,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       infoblock: {
         name: null,
         url: null,
-        menu: true,
+        menu: 1,
         menuPriority: 500,
-        startPage: true,
+        startPage: 1,
         startPagePriority: 500,
-        activity: true,
+        activity: 1,
         activityFrom: '',
         activityTo: '',
         image: null
@@ -85128,10 +85128,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       state.blocks.push(payload);
     },
     EDIT_BLOCK: function EDIT_BLOCK(state, payload) {
-      var block = state.blocks.find(function (block) {
-        return block.id === payload.id;
+      var index = state.blocks.findIndex(function (el) {
+        return el.id === payload.id;
       });
-      block = payload;
+      Vue.set(state.blocks, index, payload);
     },
     REMOVE_BLOCK: function REMOVE_BLOCK(state, id) {
       //state.blocks.splice(index, 1)
@@ -85223,9 +85223,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 13:
                 _ref2 = _context2.sent;
                 data = _ref2.data;
-                context.commit('EDIT_BLOCK', payload);
+                console.log(data.infoblock);
+                context.commit('EDIT_BLOCK', data.infoblock);
 
-              case 16:
+              case 17:
               case "end":
                 return _context2.stop();
             }
