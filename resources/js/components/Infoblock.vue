@@ -74,11 +74,13 @@
                                 </div>
                             </div>
                             <div class="row">
-
                                 <div class="col-6">
-
-                                    <label class="badge badge-danger" v-show="errorImage">{{errorImage}}</label>
-                                    <input type="file" accept="image/*" @change="addImage" name="image" ref="file">
+                                    <b-form-file v-model="infoblock.image"
+                                                 accept="image/*"
+                                                 placeholder="Выберите файл изображения"
+                                                 drop-placeholder="Перенесите сюда изображение"
+                                                 browse-text='Oбзор'></b-form-file>
+                                    <span class="badge badge-info" v-show="isBlockUpdate">Текущее изображение {{infoblock.image}}</span>
                                 </div>
                                 <div class="col-6">
                                     <button v-show="!isBlockUpdate" class="btn col-6 float-right btn-primary"
@@ -108,9 +110,14 @@
                             <div class="col-3" v-for="(block, index) in blocks">
                                 <div class="card">
                                     <div class="card-header">
-                                        <p class="m-0">{{block.name}}</p>
+                                        <p class="m-0"><strong>{{block.name}}</strong></p>
                                     </div>
                                     <div class="card-body">
+                                        <div>
+                                            <label class="badge m-0">Предпросмотр изображения</label>
+                                            <img class="w-100"
+                                                 :src="'../../../storage/preview/' + block.image" alt="">
+                                        </div>
                                         <div>
                                             <label class="badge m-0">Ссылка</label>
                                             <p class="ml-2 mb-1">{{block.url}}</p>
@@ -147,13 +154,6 @@
                                             <label class="badge m-0">Активность до</label>
                                             <p class="ml-2 mb-1" v-if="block.activityTo">{{block.activityTo}}</p>
                                             <p class="ml-2 mb-1" v-else>-</p>
-                                        </div>
-                                        <div>
-                                            <label class="badge m-0">Предпросмотр изображения</label>
-                                            <img v-if="block.image" class="w-100"
-                                                 :src="'../../../storage/preview/' + block.image" alt="">
-                                            <img v-else class="w-100"
-                                                 src="../../../storage/app/public/preview/default.jpg" alt="">
                                         </div>
                                     </div>
                                     <div class="card-footer">
@@ -220,27 +220,6 @@
 
         methods: {
 
-            addImage(e) {
-                window.URL = window.URL || window.webkitURL
-                let file = this.$refs.file.files[0];
-                let needWidth = 800;
-                let needHeight = 450;
-                let img = new Image();
-                img.src = window.URL.createObjectURL(file)
-                this.infoblock.image = file
-                // img.onload = function () {
-                //     // if (img.width != needWidth || img.height != needHeight) {
-                //     //  this.errorImage = 'Изображение должно быть ' + needWidth.toString() + 'px X ' + needHeight.toString() + ' px'
-                //     console.log(this.errorImage)
-                //     // } else {
-                //     this.errorImage = '';
-                //
-                //     // }
-                // };
-
-
-            },
-
             addInfoblock() {
                 this.isBlockUpdate = false;
                 this.$store.dispatch('SAVE_BLOCK', this.infoblock);
@@ -250,6 +229,7 @@
 
             changeInfoblock(block) {
                 this.infoblock = block
+                console.log(this.infoblock)
                 this.isBlockUpdate = true
             },
 
