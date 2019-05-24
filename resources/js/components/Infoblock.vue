@@ -2,11 +2,19 @@
     <div>
         <div class="row">
             <div class="col-12">
-                <form @submit.prevent="!isBlockUpdate? addInfoblock() : updateInfoblock()" class="col-12"
-                      enctype="multipart/form-data">
+                <form @submit.prevent="!isBlockUpdate? addInfoblock() : updateInfoblock()" class="col-12 p-0"
+                      enctype="multipart/form-data" id="infoblockForm">
                     <div class="card">
                         <div class="card-header">
-                            <p class="m-0">Создание/редактирование инфоблока</p>
+                            <div class="row">
+                                <div class="col-6"><p class="m-0">Создание/редактирование инфоблока</p></div>
+                                <div class="col-6 text-right">
+                                    <button type="button" onclick="$('#infoblockForm').hide()" class="close"
+                                            aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                         <div class="card-body">
 
@@ -123,7 +131,8 @@
                                     </button>
                                 </div>
                                 <div class="col-6">
-                                    <button class="btn btn-light col-12" type="button" @click="clearCurrentInfoblock">Очистить
+                                    <button class="btn btn-light col-12" type="button" @click="clearCurrentInfoblock">
+                                        Очистить
                                         форму
                                     </button>
                                 </div>
@@ -137,12 +146,21 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <p class="m-0">Инфоблоки</p>
+                        <div class="row">
+                            <div class="col-6">
+                                <p class="m-0">Инфоблоки</p>
+                            </div>
+                            <div class="col-6">
+                                <button class="float-right btn btn-sm btn-info" onclick="$('#infoblockForm').show()">
+                                    Добавить
+                                </button>
+                            </div>
+                        </div>
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-3" v-for="(block, index) in blocks">
-                                <div class="card">
+                                <div class="card infoblock-сard-text">
                                     <div class="card-header">
                                         <p class="m-0"><strong>{{block.name}}</strong></p>
                                     </div>
@@ -157,37 +175,34 @@
                                             <p class="ml-2 mb-1">{{block.url}}</p>
                                         </div>
                                         <div>
-                                            <label class="badge m-0">Отображать в меню</label>
-                                            <p class="ml-2 mb-1" v-if="block.menu">Да</p>
-                                            <p class="ml-2 mb-1" v-else>Нет</p>
+                                            <label class="badge m-0">В меню (приоритет)</label>
+                                            <p class="ml-2 mb-1">
+                                                <span v-if="block.menu">Да</span>
+                                                <span v-else>Нет</span>
+                                                <span> ({{block.menuPriority}})</span>
+                                            </p>
                                         </div>
                                         <div>
-                                            <label class="badge m-0">Приоритет в меню</label>
-                                            <p class="ml-2 mb-1">{{block.menuPriority}}</p>
+                                            <label class="badge m-0">На главной странице (приоритет)</label>
+                                            <p class="ml-2 mb-1">
+                                                <span v-if="block.startPage">Да</span>
+                                                <span v-else>Нет</span>
+                                                <span> ({{block.startPagePriority}})</span>
+                                            </p>
                                         </div>
                                         <div>
-                                            <label class="badge m-0">Отображать на главной странице</label>
-                                            <p class="ml-2 mb-1" v-if="block.startPage">Да</p>
-                                            <p class="ml-2 mb-1" v-else>Нет</p>
-                                        </div>
-                                        <div>
-                                            <label class="badge m-0">Приоритет на главной странице</label>
-                                            <p class="ml-2 mb-1">{{block.startPagePriority}}</p>
-                                        </div>
-                                        <div>
-                                            <label class="badge m-0">Активность</label>
-                                            <p class="ml-2 mb-1" v-if="block.activity">Да</p>
-                                            <p class="ml-2 mb-1" v-else>Нет</p>
-                                        </div>
-                                        <div>
-                                            <label class="badge m-0">Активность от</label>
-                                            <p class="ml-2 mb-1" v-if="block.activityFrom">{{block.activityFrom}}</p>
-                                            <p class="ml-2 mb-1" v-else>-</p>
-                                        </div>
-                                        <div>
-                                            <label class="badge m-0">Активность до</label>
-                                            <p class="ml-2 mb-1" v-if="block.activityTo">{{block.activityTo}}</p>
-                                            <p class="ml-2 mb-1" v-else>-</p>
+                                            <label class="badge m-0">Активность (от / до)</label>
+                                            <p class="ml-2 mb-1">
+                                                <span class="ml-2 mb-1" v-if="block.activity">Да </span>
+                                                <span class="ml-2 mb-1" v-else>Нет </span>
+                                                (
+                                                <span v-if="block.activityFrom">{{(new Date (Date.parse(block.activityFrom + ' UTC'))) | formatDate}}</span>
+                                                <span v-else>-</span>
+                                               /
+                                                <span v-if="block.activityTo">{{block.activityTo}}</span>
+                                                <span v-else>-</span>
+                                                )
+                                            </p>
                                         </div>
                                     </div>
                                     <div class="card-footer">
@@ -244,6 +259,7 @@
         mounted() {
             this.currentInfoblock = {...this.infoblock}
             this.$store.dispatch('GET_BLOCKS')
+            $('#infoblockForm').hide()
         },
 
         computed: {
@@ -295,7 +311,7 @@
                     "Ф": "F",
                     "Ы": "I",
                     "В": "V",
-                    "А": "a",
+                    "А": "A",
                     "П": "P",
                     "Р": "R",
                     "О": "O",
@@ -356,6 +372,7 @@
                 this.infoblock = block
                 this.previewUrl = '../../storage/preview/' + this.infoblock.image
                 this.isBlockUpdate = true
+                $('#infoblockForm').show()
             },
 
             updateInfoblock() {
@@ -378,3 +395,14 @@
         }
     }
 </script>
+
+<style scoped>
+    .badge {
+        color: gray;
+        margin: 0;
+    }
+
+    .infoblock-сard-text p > span {
+        font-size: 14px;
+    }
+</style>

@@ -13,7 +13,7 @@ export default {
             Vue.set(state.sections, index, payload)
         },
 
-        REMOVE_SECTION(state, index) {
+        REMOVE_SECTION(state, id) {
             state.sections = $.grep(state.sections, function (item) {
                 return item.id != id
             })
