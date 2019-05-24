@@ -36,7 +36,6 @@ export default {
             formData.append('activityTo', payload.activityTo);
             formData.append('activity', payload.activity);
             formData.append('image', payload.image);
-            console.log(formData)
             let {data} = await axios.post('/infoblock', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
@@ -52,13 +51,14 @@ export default {
             formData.append('name', payload.name);
             formData.append('url', payload.url);
             formData.append('menu', payload.menu);
-            formData.append('menuPriority', payload.menuPriority);
+            formData.append('menuPriority', (payload.menuPriority));
             formData.append('startPage', payload.startPage);
             formData.append('startPagePriority', payload.startPagePriority);
             formData.append('activityFrom', payload.activityFrom ? payload.activityFrom : '');
             formData.append('activityTo', payload.activityTo ? payload.activityTo : '');
             formData.append('activity', payload.activity);
             formData.append('image', payload.image);
+            console.log(typeof payload.menu)
             let {data} = await axios.post('/infoblock/' + payload.id, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'

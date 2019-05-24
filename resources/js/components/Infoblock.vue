@@ -2,101 +2,135 @@
     <div>
         <div class="row">
             <div class="col-12">
-                <div class="card">
-                    <div class="card-header">
-                        <p class="m-0">Создание/редактирование инфоблока</p>
-                    </div>
-                    <div class="card-body">
-                        <form @submit.prevent="!isBlockUpdate? addInfoblock() : updateInfoblock()" class="col-12"
-                              enctype="multipart/form-data">
+                <form @submit.prevent="!isBlockUpdate? addInfoblock() : updateInfoblock()" class="col-12"
+                      enctype="multipart/form-data">
+                    <div class="card">
+                        <div class="card-header">
+                            <p class="m-0">Создание/редактирование инфоблока</p>
+                        </div>
+                        <div class="card-body">
+
                             <div class="row">
-                                <div class="form-group col-6">
-                                    <label class="badge">Название инфоблока</label>
-                                    <input v-model="infoblock.name" type="text"
-                                           class="form-control form-control-sm">
-                                </div>
-                                <div class="form-group col-6">
-                                    <label class="badge">Ссылка на инфоблок</label>
-                                    <input v-model="infoblock.url" type="text"
-                                           class="form-control form-control-sm">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-6">
-                                    <div class="form-check">
-                                        <input v-model="infoblock.menu" type="checkbox">
-                                        <label>Отображать в меню</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input v-model="infoblock.startPage" type="checkbox">
-                                        <label>Отображать на главной
-                                            странице</label>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <div class="form-group">
-                                                <label class="badge">Приоритет в меню</label>
-                                                <input v-model="infoblock.menuPriority" type="number"
-                                                       class="form-control form-control-sm">
+                                <div class="col-12">
+                                    <b-tabs content-class="mt-3">
+                                        <b-tab title="Основные" active>
+                                            <div class="row">
+                                                <div class="form-group col-6">
+                                                    <label class="badge">Название инфоблока</label>
+                                                    <input v-model="infoblock.name" @keyup="transliterate" type="text"
+                                                           class="form-control form-control-sm" required>
+                                                </div>
+                                                <div class="col-6">
+                                                    <label class="badge">Превью инфоблока</label>
+                                                    <b-form-file v-model="infoblock.image"
+                                                                 accept="image/*"
+                                                                 placeholder="Выберите файл изображения"
+                                                                 drop-placeholder="Перенесите сюда изображение"
+                                                                 browse-text='Oбзор'
+                                                                 @change="getPreview"
+                                                    ></b-form-file>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <label class="badge">Приоритет на главной странице</label>
-                                            <input v-model="infoblock.startPagePriority" type="number"
-                                                   class="form-control form-control-sm">
-                                        </div>
-                                    </div>
+                                            <div class="row">
+                                                <div class="form-group col-6">
+                                                    <label class="badge">Ссылка на инфоблок</label>
+                                                    <input v-model="infoblock.url" type="text"
+                                                           class="form-control form-control-sm" required
+                                                           @keyup="transliterate">
+                                                </div>
+
+                                                <div class="col-6">
+                                                    <img :src="previewUrl" width="320" height="180" alt=""
+                                                         v-show="previewUrl" class="d-block m-auto">
+                                                </div>
+                                            </div>
+                                        </b-tab>
+                                        <b-tab title="Отображение и приоритет">
+                                            <div class="row">
+                                                <div class="form-group col-6">
+                                                    <div class="form-check">
+                                                        <input v-model="infoblock.menu" type="checkbox">
+                                                        <label>Отображать в меню</label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input v-model="infoblock.startPage" type="checkbox">
+                                                        <label>Отображать на главной
+                                                            странице</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <div class="form-group">
+                                                                <label class="badge">Приоритет в меню</label>
+                                                                <input required v-model="infoblock.menuPriority"
+                                                                       type="number"
+                                                                       class="form-control form-control-sm">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <label class="badge">Приоритет на главной странице</label>
+                                                            <input required v-model="infoblock.startPagePriority"
+                                                                   type="number"
+                                                                   class="form-control form-control-sm">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </b-tab>
+                                        <b-tab title="Активность">
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <label class="badge">Активность инфоблока</label>
+                                                    <div class="form-check">
+                                                        <input v-model="infoblock.activity" type="checkbox">
+                                                        <label>Активность</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-4">
+                                                    <div class="form-group">
+                                                        <label class="badge">Дата начала активности</label>
+                                                        <input class="form-control form-control-sm"
+                                                               v-model="infoblock.activityFrom"
+                                                               type="date">
+                                                    </div>
+                                                </div>
+                                                <div class="col-4">
+                                                    <div class="form-group">
+                                                        <label class="badge">Дата конца активности</label>
+                                                        <input class="form-control form-control-sm"
+                                                               v-model="infoblock.activityTo"
+                                                               type="date">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </b-tab>
+                                    </b-tabs>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-4">
-                                    <label class="badge">Активность инфоблока</label>
-                                    <div class="form-check">
-                                        <input v-model="infoblock.activity" type="checkbox">
-                                        <label>Активность</label>
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label class="badge">Дата начала активности</label>
-                                        <input class="form-control form-control-sm" v-model="infoblock.activityFrom"
-                                               type="date">
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label class="badge">Дата конца активности</label>
-                                        <input class="form-control form-control-sm" v-model="infoblock.activityTo"
-                                               type="date">
-                                    </div>
-                                </div>
-                            </div>
+
+                        </div>
+                        <div class="card-footer">
                             <div class="row">
                                 <div class="col-6">
-                                    <b-form-file v-model="infoblock.image"
-                                                 accept="image/*"
-                                                 placeholder="Выберите файл изображения"
-                                                 drop-placeholder="Перенесите сюда изображение"
-                                                 browse-text='Oбзор'></b-form-file>
-                                    <span class="badge badge-info" v-show="isBlockUpdate">Текущее изображение {{infoblock.image}}</span>
-                                </div>
-                                <div class="col-6">
-                                    <button v-show="!isBlockUpdate" class="btn col-6 float-right btn-primary"
+                                    <button v-show="!isBlockUpdate" class="btn col-12 btn-primary"
                                             type="submit">
                                         Создать
                                     </button>
-                                    <button v-show="isBlockUpdate" class="btn col-6 float-right btn-success"
+                                    <button v-show="isBlockUpdate" class="btn col-12 btn-success"
                                             type="submit">
                                         Сохранить изменения
                                     </button>
                                 </div>
+                                <div class="col-6">
+                                    <button class="btn btn-light col-12" type="button" @click="clearCurrentInfoblock">Очистить
+                                        форму
+                                    </button>
+                                </div>
                             </div>
-
-                        </form>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
         <div class="row mt-3">
@@ -189,18 +223,20 @@
                 infoblock: {
                     name: null,
                     url: null,
-                    menu: 1,
+                    menu: true,
                     menuPriority: 500,
-                    startPage: 1,
+                    startPage: true,
                     startPagePriority: 500,
-                    activity: 1,
+                    activity: true,
                     activityFrom: '',
                     activityTo: '',
                     image: null
                 },
                 isBlockUpdate: false,
                 currentInfoblock: {},
-                errorImage: ''
+                errorImage: '',
+                previewUrl: '../../storage/preview/default.jpg',
+                formStatus: false
             }
         },
 
@@ -220,6 +256,95 @@
 
         methods: {
 
+            //
+
+            checkForm(e) {
+                if (this.infoblock.name || this.infoblock.url || this.infoblock.menuPriority || this.infoblock.startPagePriority) {
+                    this.formStatus = 'Не все обязательные поля заполнены'
+                } else {
+                    !this.isBlockUpdate ? this.addInfoblock() : this.updateInfoblock()
+                }
+            },
+
+            transliterate() {
+                let a = {
+                    "Ё": "YO",
+                    "Й": "I",
+                    "Ц": "TS",
+                    "У": "U",
+                    "К": "K",
+                    "Е": "E",
+                    "Н": "N",
+                    "Г": "G",
+                    "Ш": "SH",
+                    "Щ": "SCH",
+                    "З": "Z",
+                    "Х": "H",
+                    "ё": "yo",
+                    "й": "i",
+                    "ц": "ts",
+                    "у": "u",
+                    "к": "k",
+                    "е": "e",
+                    "н": "n",
+                    "г": "g",
+                    "ш": "sh",
+                    "щ": "sch",
+                    "з": "z",
+                    "х": "h",
+                    "Ф": "F",
+                    "Ы": "I",
+                    "В": "V",
+                    "А": "a",
+                    "П": "P",
+                    "Р": "R",
+                    "О": "O",
+                    "Л": "L",
+                    "Д": "D",
+                    "Ж": "ZH",
+                    "Э": "E",
+                    "ф": "f",
+                    "ы": "i",
+                    "в": "v",
+                    "а": "a",
+                    "п": "p",
+                    "р": "r",
+                    "о": "o",
+                    "л": "l",
+                    "д": "d",
+                    "ж": "zh",
+                    "э": "e",
+                    "Я": "Ya",
+                    "Ч": "CH",
+                    "С": "S",
+                    "М": "M",
+                    "И": "I",
+                    "Т": "T",
+                    "Ь": "I",
+                    "Б": "B",
+                    "Ю": "YU",
+                    "я": "ya",
+                    "ч": "ch",
+                    "с": "s",
+                    "м": "m",
+                    "и": "i",
+                    "т": "t",
+                    "ь": "i",
+                    "б": "b",
+                    "ю": "yu",
+                    ' ': '-'
+                };
+                let letters = /^[A-Za-z]+$/;
+                this.infoblock.url = this.infoblock.name.split('').map(function (char) {
+                    return a[char] || char.match(letters);
+                }).join("");
+            },
+
+            getPreview(e) {
+                let file = e.target.files[0];
+                this.previewUrl = URL.createObjectURL(file)
+            },
+
             addInfoblock() {
                 this.isBlockUpdate = false;
                 this.$store.dispatch('SAVE_BLOCK', this.infoblock);
@@ -229,7 +354,7 @@
 
             changeInfoblock(block) {
                 this.infoblock = block
-                console.log(this.infoblock)
+                this.previewUrl = '../../storage/preview/' + this.infoblock.image
                 this.isBlockUpdate = true
             },
 
@@ -245,7 +370,9 @@
             },
 
             clearCurrentInfoblock() {
+                this.isBlockUpdate = false
                 this.infoblock = {...this.currentInfoblock}
+                this.previewUrl = '../../storage/preview/default.jpg'
             }
 
         }
