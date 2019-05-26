@@ -1,7 +1,7 @@
 @extends('pages.layout')
 
 @section('page')
-    @foreach($infoblocks as $infoblock)
+    @foreach($infoblocks->sortByDesc('startPagePriority') as $infoblock)
         <div class="col-lg-4 col-md-6 col-sm-6 mb-4">
             <div class="card infoblock-card">
                 <a href="{{ $infoblock->url }}">

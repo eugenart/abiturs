@@ -14,6 +14,14 @@ window.$ = window.jQuery = jQuery;
 
 Vue.component('infoblock', require('./components/Infoblock').default);
 Vue.component('paragraph', require('./components/Section').default);
+Vue.component('slider', require('./components/Slider').default);
+
+Vue.filter("formatDate", function (value) {
+    if (value) {
+        let dateSplit = value.split('-')
+        return dateSplit[2] + '.' + dateSplit[1] + '.' + dateSplit[0]
+    }
+})
 
 const app = new Vue({
     store,

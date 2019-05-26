@@ -36,7 +36,7 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="#">Университет <span class="sr-only">(current)</span></a>
                 </li>
-                @foreach($pages as $page)
+                @foreach($pages->sortByDesc('menuPriority') as $page)
                     <li class="nav-item active">
                         <a class="nav-link" href="{{ $page->url }}">{{ $page->name }}</a>
                     </li>

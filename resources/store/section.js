@@ -9,12 +9,14 @@ export default {
         },
 
         EDIT_SECTION(state, payload) {
-            let section = state.sections.find(section => section.id === payload.id);
-            section = payload
+            let index = state.sections.findIndex(el => el.id === payload.id)
+            Vue.set(state.sections, index, payload)
         },
 
-        REMOVE_SECTION(state, index) {
-            state.sections.splice(index, 1)
+        REMOVE_SECTION(state, id) {
+            state.sections = $.grep(state.sections, function (item) {
+                return item.id != id
+            })
         },
 
         SET_SECTIONS: (state, payload) => {

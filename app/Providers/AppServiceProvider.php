@@ -29,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
 
         view()->composer('pages.layout', function($view)
         {
-            $infoblocks = Infoblock::all();
+            $infoblocks = Infoblock::where('activity', true)->where('menu', true)->get();
             $view->with('pages', $infoblocks);
         });
     }
