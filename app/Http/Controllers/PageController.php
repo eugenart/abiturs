@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class PageController extends Controller
 {
     public function index() {
-        $infoblocks = Infoblock::all();
+        $infoblocks = Infoblock::where('activity', true)->where('startPage', true)->get();
         return view('pages.home', compact('infoblocks'));
     }
 }

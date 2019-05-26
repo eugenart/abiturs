@@ -53,7 +53,6 @@ class InfoblockController extends Controller
 
     public function update(Request $request, $id)
     {
-        Log::debug($request);
         if ($request->ajax()) {
             $fileName = $request->image ? $request->image : 'default.jpg';
             if ($request->hasFile('image')) {
