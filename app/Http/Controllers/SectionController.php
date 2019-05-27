@@ -2,19 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Infoblock;
 use App\Section;
 use Illuminate\Http\Request;
 
 class SectionController extends Controller
 {
     public function index(Request $request) {
-        $sections = Section::all();
+        $infoblocks = Infoblock::all();
 
-        if ($request->ajax()) {
-            return response()->json($sections, 200);
+        foreach ($infoblocks as $infoblock) {
+            $infoblock->sectionsList = $infoblock->sections;
         }
 
-        return view('structure.section', compact('sections'));
+        if ($request->ajax()) {
+            return response()->json($infoblocks, 200);
+        }
+
+        return view('structure.section', compact('infoblocks'));
     }
 
     public function store(Request $request) {
