@@ -14,7 +14,7 @@ export default {
 
         REMOVE_SLIDE(state, id) {
             state.slides = $.grep(state.slides, function (item) {
-                return item.id != id
+                return item.id !== id
             })
         },
 
