@@ -25,6 +25,11 @@ Route::post('/section', 'SectionController@store')->name('section.store');
 Route::post('/section/{id}', 'SectionController@update')->name('section.update');
 Route::delete('/section/{id}', 'SectionController@destroy')->name('section.destroy');
 
+Route::get('/slider', 'SliderController@index')->name('slider.index');
+Route::post('/slider', 'SliderController@store')->name('slider.store');
+Route::post('/slider/{id}', 'SliderController@update')->name('slider.update');
+Route::delete('/slider/{id}', 'SliderController@destroy')->name('slider.destroy');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

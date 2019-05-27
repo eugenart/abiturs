@@ -21,7 +21,8 @@
         <div class="col-6 justify-content-end d-flex align-items-center p-0">
             <img src="storage/images/icon_eng.gif" class="mr-3" width="20" height="13" alt="">
             <img src="storage/images/eye.png" class="mr-2" width="22" height="13" alt="">
-            <button class="navbar-toggler d-lg-none d-md-block" type="button" data-toggle="collapse" data-target="#navbarNav"
+            <button class="navbar-toggler d-lg-none d-md-block" type="button" data-toggle="collapse"
+                    data-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>
             </button>
@@ -48,43 +49,10 @@
 </nav>
 
 <div class="container">
-    <div class="row">
-        <div class="col-12 mt-4">
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img class="d-block w-100" src="storage/images/bg-s1.jpg" alt="First slide">
-                    </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src="storage/images/bg-s1.jpg" alt="Second slide">
-                    </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src="storage/images/bg-s1.jpg" alt="Third slide">
-                    </div>
-                </div>
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
-        </div>
-    </div>
-    <div class="row mt-4">
 
-        @section('page')
-            
-        @show
+    @section('page')
 
-    </div>
+    @show
     <hr class="mrsu-hr mrsu-bg w-100">
 
 </div>

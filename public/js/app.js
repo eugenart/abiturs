@@ -2685,6 +2685,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Slide',
   data: function data() {
@@ -2692,6 +2703,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       slide: {
         name: null,
         url: null,
+        priority: 500,
         activity: true,
         activityFrom: '',
         activityTo: '',
@@ -2700,7 +2712,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       isSlideUpdate: false,
       currentSlide: {},
       errorImage: '',
-      previewUrl: '../../storage/preview/default.jpg',
+      previewUrl: '../../storage/slider/default.jpg',
       formStatus: false
     };
   },
@@ -2710,14 +2722,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     $('#slideForm').hide();
   },
   computed: {
-    blocks: function blocks() {
+    slides: function slides() {
       return this.$store.getters.SLIDES;
     }
   },
   methods: {
     //
     checkForm: function checkForm(e) {
-      if (this.slide.name) {
+      if (this.slide.name && this.slide.priority) {
         this.formStatus = 'Не все обязательные поля заполнены';
       } else {
         !this.isBlockUpdate ? this.addSlide() : this.updateSlide();
@@ -2734,7 +2746,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     changeSlide: function changeSlide(slide) {
       this.slide = slide;
-      this.previewUrl = '../../storage/preview/' + this.slide.image;
+      this.previewUrl = '../../storage/slider/' + this.slide.image;
       this.isSlideUpdate = true;
       $('#slideForm').show();
     },
@@ -2749,7 +2761,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     clearCurrentSlide: function clearCurrentSlide() {
       this.isSlideUpdate = false;
       this.slide = _objectSpread({}, this.currentSlide);
-      this.previewUrl = '../../storage/preview/default.jpg';
+      this.previewUrl = '../../storage/slider/default.jpg';
     }
   }
 });
@@ -72793,7 +72805,6 @@ var render = function() {
                                     attrs: { type: "text", required: "" },
                                     domProps: { value: _vm.slide.name },
                                     on: {
-                                      keyup: _vm.transliterate,
                                       input: function($event) {
                                         if ($event.target.composing) {
                                           return
@@ -72888,6 +72899,40 @@ var render = function() {
                                       width: "320",
                                       height: "180",
                                       alt: ""
+                                    }
+                                  })
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "row" }, [
+                                _c("div", { staticClass: "form-group col-6" }, [
+                                  _c("label", { staticClass: "badge" }, [
+                                    _vm._v("Приоритет")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.slide.priority,
+                                        expression: "slide.priority"
+                                      }
+                                    ],
+                                    staticClass: "form-control form-control-sm",
+                                    attrs: { type: "text" },
+                                    domProps: { value: _vm.slide.priority },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.$set(
+                                          _vm.slide,
+                                          "priority",
+                                          $event.target.value
+                                        )
+                                      }
                                     }
                                   })
                                 ])
@@ -73128,7 +73173,7 @@ var render = function() {
                         _c("img", {
                           staticClass: "w-100",
                           attrs: {
-                            src: "../../../storage/preview/" + slide.image,
+                            src: "../../../storage/slider/" + slide.image,
                             alt: ""
                           }
                         })
@@ -73141,6 +73186,16 @@ var render = function() {
                         _vm._v(" "),
                         _c("p", { staticClass: "ml-2 mb-1" }, [
                           _vm._v(_vm._s(slide.url))
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", [
+                        _c("label", { staticClass: "badge m-0" }, [
+                          _vm._v("Приоритет")
+                        ]),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "ml-2 mb-1" }, [
+                          _vm._v(_vm._s(slide.priority))
                         ])
                       ]),
                       _vm._v(" "),
@@ -87278,7 +87333,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   mutations: {
     ADD_SLIDE: function ADD_SLIDE(state, payload) {
-      state.blocks.push(payload);
+      state.slides.push(payload);
     },
     EDIT_SLIDE: function EDIT_SLIDE(state, payload) {
       var index = state.slides.findIndex(function (el) {
@@ -87313,19 +87368,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 formData.append('activityTo', payload.activityTo);
                 formData.append('activity', payload.activity);
                 formData.append('image', payload.image);
-                _context.next = 9;
+                formData.append('priority', payload.priority);
+                _context.next = 10;
                 return axios.post('/slider', formData, {
                   headers: {
                     'Content-Type': 'multipart/form-data'
                   }
                 });
 
-              case 9:
+              case 10:
                 _ref = _context.sent;
                 data = _ref.data;
-                context.commit('ADD_SLIDE', data.slide);
+                context.commit('ADD_SLIDE', data.slider);
 
-              case 12:
+              case 13:
               case "end":
                 return _context.stop();
             }
@@ -87356,20 +87412,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 formData.append('activityTo', payload.activityTo ? payload.activityTo : '');
                 formData.append('activity', payload.activity);
                 formData.append('image', payload.image);
-                _context2.next = 9;
+                formData.append('priority', payload.priority);
+                _context2.next = 10;
                 return axios.post('/slider/' + payload.id, formData, {
                   headers: {
                     'Content-Type': 'multipart/form-data'
                   }
                 });
 
-              case 9:
+              case 10:
                 _ref2 = _context2.sent;
                 data = _ref2.data;
-                console.log(data.slide);
-                context.commit('EDIT_SLIDE', data.slide);
+                console.log(data.slider);
+                context.commit('EDIT_SLIDE', data.slider);
 
-              case 13:
+              case 14:
               case "end":
                 return _context2.stop();
             }
@@ -87392,10 +87449,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context3.prev = _context3.next) {
               case 0:
                 _context3.next = 2;
-                return axios.delete('/infoblock/' + payload);
+                return axios.delete('/slider/' + payload);
 
               case 2:
-                context.commit('REMOVE_BLOCK', payload);
+                context.commit('REMOVE_SLIDE', payload);
 
               case 3:
               case "end":

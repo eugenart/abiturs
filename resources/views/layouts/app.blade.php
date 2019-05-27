@@ -100,6 +100,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link {{ Request::is('slider*') ? 'active' : null }}" href="/slider">
+                                <span data-feather="users"></span>
+                                Слайдер
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="#">
                                 <span data-feather="users"></span>
                                 Документы
