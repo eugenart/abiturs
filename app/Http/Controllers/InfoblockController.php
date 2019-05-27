@@ -54,15 +54,14 @@ class InfoblockController extends Controller
     public function update(Request $request, $id)
     {
         if ($request->ajax()) {
-            $fileName = $request->image ? $request->image : 'default.jpg';
+            $fileName = $request->image? $request->image : 'default.jpg';
             if ($request->hasFile('image')) {
                 $original = $request->image->getClientOriginalName();
                 $date = new \DateTime();
                 $fileName = $date->format('Ymd_His') . '_' . $original;
                 $request->image->storeAs('public/preview', $fileName);
             }
-            $infoblock = Infoblock::findOrFail($id);
-            $infoblock->update([
+            $infoblock = Infoblock::findOrFail($id)->update([
                 'name' => $request->name,
                 'url' => $request->url,
                 'menu' => $request->menu ? 1 : 0,
