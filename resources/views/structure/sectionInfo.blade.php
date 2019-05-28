@@ -1,4 +1,4 @@
 @extends('layouts.app')
 @section('content')
-    <sectionInfo></sectionInfo>
+    <sectioninfo></sectioninfo>
 @endsection

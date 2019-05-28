@@ -5,7 +5,7 @@ import store from '../store/index'
 import jQuery from 'jquery';
 import BootstrapVue from 'bootstrap-vue'
 
-Vue.use(BootstrapVue)
+Vue.use(BootstrapVue);
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -16,7 +16,7 @@ window.$ = window.jQuery = jQuery;
 Vue.component('infoblock', require('./components/Infoblock').default);
 Vue.component('paragraph', require('./components/Section').default);
 Vue.component('slider', require('./components/Slider').default);
-Vue.component('sectionInfo', require('./components/sectionInfo').default);
+Vue.component('sectioninfo', require('./components/sectionInfo').default);
 
 Vue.filter("formatDate", function (value) {
     if (value) {

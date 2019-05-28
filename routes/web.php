@@ -30,6 +30,10 @@ Route::post('/slider', 'SliderController@store')->name('slider.store');
 Route::post('/slider/{id}', 'SliderController@update')->name('slider.update');
 Route::delete('/slider/{id}', 'SliderController@destroy')->name('slider.destroy');
 
+Route::get('/section-info', function () {
+    return view('structure.sectionInfo');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
