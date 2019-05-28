@@ -34,6 +34,8 @@ Route::get('/section-info', function () {
     return view('structure.sectionInfo');
 });
 
+Route::post('/section-content', 'SectionContentController@index');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

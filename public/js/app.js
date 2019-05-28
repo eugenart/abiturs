@@ -2876,7 +2876,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         id: null,
         position: null,
         content: null,
-        vmodel: null,
         name: null
       },
       currentInput: {}
@@ -2887,7 +2886,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   methods: {
     sendForm: function sendForm() {
-      console.log(this.inputs);
+      var formData = new FormData();
+      formData.append('inputs', JSON.stringify(this.inputs));
+      axios.post('/section-content', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      }).then(function (response) {
+        console.log(response.data);
+      });
     },
     addFileGroup: function addFileGroup() {
       this.input.type = 'files';
@@ -2899,7 +2906,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     addTextField: function addTextField() {
       this.input.type = 'text';
       this.input.position = this.inputs.length;
-      this.input.vmodel = this.input.type + '-' + this.input.position.toString();
       this.inputs.push(this.input);
       this.clearCurrentInput();
     },
@@ -2907,7 +2913,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       !this.inputs[i].content ? this.inputs[i].content = [] : null;
       this.input.type = 'file';
       this.input.position = this.inputs[i].content.length;
-      this.input.vmodel = this.input.type + '-' + this.input.position.toString();
       this.inputs[i].content.push(this.input);
       this.clearCurrentInput();
     },
@@ -87187,7 +87192,10 @@ var render = function() {
                   _c(
                     "form",
                     {
-                      attrs: { enctype: "multipart/form-data" },
+                      attrs: {
+                        enctype: "multipart/form-data",
+                        id: "inputsForm"
+                      },
                       on: {
                         submit: function($event) {
                           $event.preventDefault()
@@ -106088,8 +106096,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Applications/MAMP/htdocs/abitur/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/abitur/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Applications/MAMP/htdocs/abiturs/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/abiturs/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

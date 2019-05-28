@@ -7,7 +7,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <div id="comps">
-                                    <form @submit.prevent="sendForm" enctype="multipart/form-data">
+                                    <form @submit.prevent="sendForm" enctype="multipart/form-data" id="inputsForm">
                                         <input type="submit">
                                         <div v-for="(input,index) in inputs">
                                             <vue-editor v-if="input.type === 'text'" v-model="input.content">
@@ -61,7 +61,6 @@
                     id: null,
                     position: null,
                     content: null,
-                    vmodel: null,
                     name: null
                 },
 
@@ -76,7 +75,17 @@
         methods: {
 
             sendForm() {
-                console.log(this.inputs)
+                let formData = new FormData();
+                formData.append('inputs', JSON.stringify(this.inputs));
+                axios.post('/section-content', formData,
+                    {
+                        headers: {
+                            'Content-Type': 'multipart/form-data'
+                        }
+                    })
+                    .then(function (response) {
+                        console.log(response.data);
+                    })
             },
 
             addFileGroup() {
@@ -91,7 +100,6 @@
             addTextField() {
                 this.input.type = 'text'
                 this.input.position = this.inputs.length
-                this.input.vmodel = this.input.type + '-' + this.input.position.toString()
                 this.inputs.push(this.input)
                 this.clearCurrentInput()
             },
@@ -100,7 +108,6 @@
                 !this.inputs[i].content ? this.inputs[i].content = [] : null
                 this.input.type = 'file'
                 this.input.position = this.inputs[i].content.length
-                this.input.vmodel = this.input.type + '-' + this.input.position.toString()
                 this.inputs[i].content.push(this.input)
                 this.clearCurrentInput()
             },
