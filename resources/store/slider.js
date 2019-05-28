@@ -4,7 +4,7 @@ export default {
     },
     mutations: {
         ADD_SLIDE(state, payload) {
-            state.blocks.push(payload)
+            state.slides.push(payload)
         },
 
         EDIT_SLIDE(state, payload) {
@@ -14,7 +14,7 @@ export default {
 
         REMOVE_SLIDE(state, id) {
             state.slides = $.grep(state.slides, function (item) {
-                return item.id !== id
+                return item.id != id
             })
         },
 
@@ -31,13 +31,14 @@ export default {
             formData.append('activityTo', payload.activityTo);
             formData.append('activity', payload.activity);
             formData.append('image', payload.image);
+            formData.append('priority', payload.priority);
             let {data} = await axios.post('/slider', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
             })
 
-            context.commit('ADD_SLIDE', data.slide)
+            context.commit('ADD_SLIDE', data.slider)
 
         },
 
@@ -49,19 +50,20 @@ export default {
             formData.append('activityTo', payload.activityTo ? payload.activityTo : '');
             formData.append('activity', payload.activity);
             formData.append('image', payload.image);
+            formData.append('priority', payload.priority);
             let {data} = await axios.post('/slider/' + payload.id, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
             });
-            console.log(data.slide)
-            context.commit('EDIT_SLIDE', data.slide)
+            console.log(data.slider)
+            context.commit('EDIT_SLIDE', data.slider)
         },
 
         DELETE_SLIDE:
             async (context, payload, index) => {
-                await axios.delete('/infoblock/' + payload);
-                context.commit('REMOVE_BLOCK', payload)
+                await axios.delete('/slider/' + payload);
+                context.commit('REMOVE_SLIDE', payload)
             },
 
         GET_SLIDES:

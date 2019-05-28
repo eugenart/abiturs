@@ -17,7 +17,6 @@
                             </div>
                         </div>
                         <div class="card-body">
-
                             <div class="row">
                                 <div class="col-12">
                                     <b-tabs content-class="mt-3">
@@ -159,10 +158,32 @@
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-3" v-for="(block, index) in blocks">
+                            <div class="col-4" v-for="(block, index) in blocks">
                                 <div class="card infoblock-сard-text">
                                     <div class="card-header">
-                                        <p class="m-0"><strong>{{block.name}}</strong></p>
+                                        <div class="row">
+                                            <div class="col-8">
+                                                <p class="m-0"><strong>{{block.name}}</strong></p>
+                                            </div>
+                                            <div class="col-4">
+                                                <p>
+                                                    <span class="float-right">
+                                                        <i class="far fa-eye" style="cursor: pointer"
+                                                           v-if="block.activity"
+                                                           @click="changeActivity(block)"></i>
+                                                        <i class="far fa-eye-slash" style="cursor: pointer"
+                                                           v-else
+                                                           @click="changeActivity(block)"></i>
+                                                        &nbsp;
+                                                        <i class="fas fa-pen" style="cursor: pointer"
+                                                           @click="changeInfoblock(block)"></i>
+                                                         &nbsp;
+                                                        <i class="fas fa-trash-alt" style="cursor: pointer; color:red;"
+                                                           @click="removeInfoblock(block.id,index)"></i>
+                                                    </span>
+                                                </p>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="card-body">
                                         <div>
@@ -196,28 +217,14 @@
                                                 <span class="ml-2 mb-1" v-if="block.activity">Да </span>
                                                 <span class="ml-2 mb-1" v-else>Нет </span>
                                                 (
-                                                <span v-if="block.activityFrom">{{block.activityFrom | formatDate}}</span>
+                                                <span
+                                                    v-if="block.activityFrom">{{block.activityFrom | formatDate}}</span>
                                                 <span v-else>-</span>
                                                 /
                                                 <span v-if="block.activityTo">{{block.activityTo | formatDate}}</span>
                                                 <span v-else>-</span>
                                                 )
                                             </p>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer">
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <button class="btn btn-sm btn-dark col-12"
-                                                        @click="changeInfoblock(block)">
-                                                    Изменить
-                                                </button>
-                                            </div>
-                                            <div class="col-6">
-                                                <button class='btn btn-sm col-12'
-                                                        @click="removeInfoblock(block.id,index)">Удалить
-                                                </button>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -272,7 +279,12 @@
 
         methods: {
 
-            //
+            changeActivity(block) {
+                console.log('lol')
+                block.activity = !block.activity
+                this.infoblock = block
+                this.updateInfoblock()
+            },
 
             checkForm(e) {
                 if (this.infoblock.name || this.infoblock.url || this.infoblock.menuPriority || this.infoblock.startPagePriority) {

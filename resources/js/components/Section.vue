@@ -35,6 +35,9 @@
                                                            class="form-control form-control-sm" required
                                                            @keyup="transliterate">
                                                 </div>
+
+                                                <p>Блок - {{section.infoblockID}} </p>
+                                                <p> Секция - {{section.sectionID}} </p>
                                             </div>
                                         </b-tab>
                                         <b-tab title="Отображение и приоритет">
@@ -85,33 +88,6 @@
                                                 </div>
                                             </div>
                                         </b-tab>
-                                        <b-tab title="Родительский элемент">
-                                            <div class="row">
-                                                <div class="col-6">
-                                                    <label class="badge">Родительский подраздел</label>
-                                                    <div class="form-group">
-                                                        <select v-model="section.sectionID"
-                                                                class="form-control form-control-sm">
-                                                            <option :value="sec.id" v-for="sec in sections"
-                                                                    v-if="sec.id !== section.id && section.id !== sec.sectionID">
-                                                                {{sec.name}} {{sec.id}}
-                                                            </option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-6">
-                                                    <label class="badge">Родительский инфоблок</label>
-                                                    <div class="form-group">
-                                                        <select v-model="section.infoblockID"
-                                                                class="form-control form-control-sm">
-                                                            <option :value="block.id" v-for="block in blocks">
-                                                                {{block.name}}
-                                                            </option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </b-tab>
                                     </b-tabs>
                                 </div>
                             </div>
@@ -140,42 +116,6 @@
                     </div>
                 </form>
             </div>
-            <div class="col-12">
-                <table class="table" v-show="blocksections.length">
-                    <thead>
-                    <tr>
-                        <th>Название</th>
-                        <th>Ссылка</th>
-                        <th>Описание</th>
-                        <th>SectionID</th>
-                        <th>infoblockID</th>
-                        <th>На главной</th>
-                        <th>Приоритет на главной</th>
-                        <th>Активность</th>
-                        <th>От</th>
-                        <th>До</th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr v-for="(section, index) in blocksections">
-                        <td>{{section.name}} {{section.id}}</td>
-                        <td>{{section.url}}</td>
-                        <td>{{section.sectionID}}</td>
-                        <td>{{section.infoblockID}}</td>
-                        <td>{{section.startPage}}</td>
-                        <td>{{section.startPagePriority}}</td>
-                        <td>{{section.activity}}</td>
-                        <td>{{section.activityFrom}}</td>
-                        <td>{{section.activityTo}}</td>
-                        <td>
-                            <button @click="changeSection(section)">Редактировать</button>
-                            <button @click="removeSection(section.id,index)">Удалить</button>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
         </div>
         <div class="row mt-4">
             <div class="col-12">
@@ -186,13 +126,54 @@
                     <div class="card-body">
                         <div class="col-12">
                             <div class="row">
-                                <div class="col-4" v-for="block in blocks">
+                                <div class="col-6" v-for="section in sections">
                                     <div class="card">
                                         <div class="card-header">
-                                            <p class="m-0">{{block.name}}</p>
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    {{section.name}}
+                                                </div>
+                                                <div class="col-6 float-right">
+                                                    <p class="text-right m-0">
+                                                        <i style="font-size: 20px; cursor: pointer"
+                                                           class="fas fa-file-medical"
+                                                           v-b-tooltip.hover title="Добавить элемент"
+                                                           @click="chageParents(section.id, null)">
+                                                        </i>
+                                                    </p>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="card-body">
-
+                                            <div v-for="sec in section.sectionsList">
+                                                <div class="row">
+                                                    <div class="col-9">
+                                                        <p>
+                                                            <i class="far fa-file-alt"></i>
+                                                            <span>{{sec.name}}</span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <p>
+                                                    <span class="float-right">
+                                                        <i class="far fa-eye" style="cursor: pointer"
+                                                           v-if="sec.activity"
+                                                           @click="changeActivity(sec)"></i>
+                                                        <i class="far fa-eye-slash" style="cursor: pointer"
+                                                           v-else
+                                                           @click="changeActivity(sec)"></i>
+                                                        &nbsp;
+                                                        <i class="fas fa-pen" style="cursor: pointer"
+                                                           @click="changeSection(sec)"></i>
+                                                         &nbsp;
+                                                        <i class="fas fa-trash-alt" style="cursor: pointer; color:red;"
+                                                           @click="removeSection(sec.id, sec.infoblockID, sec.sectionID)"></i>
+                                                    </span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -246,13 +227,24 @@
                 return this.$store.getters.SECTIONS
             },
 
-            blocksections() {
-                return this.$store.getters.BLOCKSECTIONS
-            }
-
         },
 
         methods: {
+
+            changeActivity(section) {
+                console.log('lol')
+                section.activity = !section.activity
+                this.section = section
+                this.updateSection()
+            },
+
+            chageParents(block, section) {
+                this.isSectionUpdate = false;
+                this.clearCurrentSection();
+                console.log(block, section)
+                this.section.infoblockID = block;
+                this.section.sectionID = section;
+            },
 
             transliterate() {
                 let a = {
@@ -328,16 +320,10 @@
                 }).join("");
             },
 
-            getBlockSections(id) {
-                console.log(id)
-                this.$store.dispatch('GET_INFOBLOCK_SECTIONS', id)
-            },
-
             addSection() {
                 this.isSectionUpdate = false;
                 this.$store.dispatch('SAVE_SECTION', this.section);
                 this.clearCurrentSection();
-
             },
 
             changeSection(section) {
@@ -346,15 +332,18 @@
             },
 
             updateSection() {
-                console.log('up')
                 this.$store.dispatch('UPDATE_SECTION', this.section);
                 this.isSectionUpdate = false
                 this.clearCurrentSection()
 
             },
 
-            removeSection(id) {
-                this.$store.dispatch('DELETE_SECTION', id)
+            removeSection(id, iId, sId) {
+                let payload = {}
+                payload.id = id
+                payload.iId = iId
+                payload.sId = sId
+                this.$store.dispatch('DELETE_SECTION', payload)
             },
 
             clearCurrentSection() {

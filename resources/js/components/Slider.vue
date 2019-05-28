@@ -25,7 +25,7 @@
                                             <div class="row">
                                                 <div class="form-group col-6">
                                                     <label class="badge">Название слайда</label>
-                                                    <input v-model="slide.name" @keyup="transliterate" type="text"
+                                                    <input v-model="slide.name" type="text"
                                                            class="form-control form-control-sm" required>
                                                 </div>
                                                 <div class="col-6">
@@ -49,6 +49,13 @@
                                                 <div class="col-6">
                                                     <img :src="previewUrl" width="320" height="180" alt=""
                                                          v-show="previewUrl" class="d-block m-auto">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group col-6">
+                                                    <label class="badge">Приоритет</label>
+                                                    <input v-model="slide.priority" type="text"
+                                                           class="form-control form-control-sm">
                                                 </div>
                                             </div>
                                         </b-tab>
@@ -134,11 +141,15 @@
                                         <div>
                                             <label class="badge m-0">Предпросмотр изображения</label>
                                             <img class="w-100"
-                                                 :src="'../../../storage/preview/' + slide.image" alt="">
+                                                 :src="'../../../storage/slider/' + slide.image" alt="">
                                         </div>
                                         <div>
                                             <label class="badge m-0">Ссылка</label>
                                             <p class="ml-2 mb-1">{{slide.url}}</p>
+                                        </div>
+                                        <div>
+                                            <label class="badge m-0">Приоритет</label>
+                                            <p class="ml-2 mb-1">{{slide.priority}}</p>
                                         </div>
                                         <div>
                                             <label class="badge m-0">Активность (от / до)</label>
@@ -188,6 +199,7 @@
                 slide: {
                     name: null,
                     url: null,
+                    priority: 500,
                     activity: true,
                     activityFrom: '',
                     activityTo: '',
@@ -196,7 +208,7 @@
                 isSlideUpdate: false,
                 currentSlide: {},
                 errorImage: '',
-                previewUrl: '../../storage/preview/default.jpg',
+                previewUrl: '../../storage/slider/default.jpg',
                 formStatus: false
             }
         },
@@ -210,7 +222,7 @@
 
         computed: {
 
-            blocks() {
+            slides() {
                 return this.$store.getters.SLIDES
             }
 
@@ -221,7 +233,7 @@
             //
 
             checkForm(e) {
-                if (this.slide.name) {
+                if (this.slide.name && this.slide.priority) {
                     this.formStatus = 'Не все обязательные поля заполнены'
                 } else {
                     !this.isBlockUpdate ? this.addSlide() : this.updateSlide()
@@ -242,7 +254,7 @@
 
             changeSlide(slide) {
                 this.slide = slide
-                this.previewUrl = '../../storage/preview/' + this.slide.image
+                this.previewUrl = '../../storage/slider/' + this.slide.image
                 this.isSlideUpdate = true
                 $('#slideForm').show()
             },
@@ -261,7 +273,7 @@
             clearCurrentSlide() {
                 this.isSlideUpdate = false
                 this.slide = {...this.currentSlide}
-                this.previewUrl = '../../storage/preview/default.jpg'
+                this.previewUrl = '../../storage/slider/default.jpg'
             }
 
         }

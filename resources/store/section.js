@@ -1,11 +1,14 @@
 export default {
     state: {
-        sections: [],
-        blocksections: []
+        sections: []
     },
     mutations: {
         ADD_SECTION(state, payload) {
-            state.sections.push(payload)
+            console.log(state.sections, payload)
+            let needSection = state.sections.find(item => item.id === payload.infoblockID)
+            needSection.sectionsList.push(payload)
+            console.log(needSection)
+            //state.sections.push(payload)
         },
 
         EDIT_SECTION(state, payload) {
@@ -13,20 +16,17 @@ export default {
             Vue.set(state.sections, index, payload)
         },
 
-        REMOVE_SECTION(state, id) {
-            state.sections = $.grep(state.sections, function (item) {
-                return item.id != id
+        REMOVE_SECTION(state, payload) {
+            console.log(payload)
+            let needSection = state.sections.find(item => item.id === payload.iId)
+            //needSection.sectionsList.splice()
+            needSection.sectionsList = $.grep(needSection.sectionsList, function (item) {
+                return item.id != payload.id
             })
         },
 
         SET_SECTIONS: (state, payload) => {
             state.sections = payload;
-        },
-
-        SET_BLOCK_SECTIONS: (state, id) => {
-            state.blocksections = state.sections.filter(section => section.infoblockID === id);
-            console.log(state.sections)
-            console.log(state.blocksections)
         }
     },
     actions: {
@@ -47,7 +47,7 @@ export default {
         },
 
         UPDATE_SECTION: (context, payload) => {
-            axios.put('/section/' + payload.id, {
+            axios.post('/section/' + payload.id, {
                 name: payload.name,
                 url: payload.url,
                 description: payload.description,
@@ -63,27 +63,21 @@ export default {
         },
 
         DELETE_SECTION:
-            async (context, payload, index) => {
-                await axios.delete('/section/' + payload);
-                context.commit('REMOVE_SECTION', index)
+            async (context, payload) => {
+                await axios.delete('/section/' + payload.id);
+                console.log(payload)
+                context.commit('REMOVE_SECTION', payload)
             },
 
         GET_SECTIONS:
             async (context, payload) => {
                 let {data} = await axios.get('/sections');
                 context.commit('SET_SECTIONS', data)
-            },
-        GET_INFOBLOCK_SECTIONS:
-            async (context, id) => {
-                context.commit('SET_BLOCK_SECTIONS', id)
             }
     },
     getters: {
         SECTIONS: state => {
             return state.sections
-        },
-        BLOCKSECTIONS: state => {
-            return state.blocksections
         }
     }
 }

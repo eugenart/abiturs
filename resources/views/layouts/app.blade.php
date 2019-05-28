@@ -87,12 +87,6 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="home"></span>
-                                Слайдер <span class="sr-only">(current)</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link {{ Request::is('infoblock*') ? 'active' : null }}"
                                href="{{route('infoblock.index')}}">
                                 <span data-feather="file"></span>
@@ -103,6 +97,12 @@
                             <a class="nav-link {{ Request::is('section*') ? 'active' : null }}" href="/sections">
                                 <span data-feather="shopping-cart"></span>
                                 Подразделы сайта
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ Request::is('slider*') ? 'active' : null }}" href="/slider">
+                                <span data-feather="users"></span>
+                                Слайдер
                             </a>
                         </li>
                         <li class="nav-item">
