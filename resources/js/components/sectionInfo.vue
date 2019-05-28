@@ -8,21 +8,47 @@
                             <div class="card-body">
                                 <div id="comps">
                                     <form @submit.prevent="sendForm" enctype="multipart/form-data" id="inputsForm">
-                                        <input type="submit">
+                                        <input type="submit" class="btn btn-sm btn-success col-4">
                                         <div v-for="(input,index) in inputs">
-                                            <vue-editor v-if="input.type === 'text'" v-model="input.content">
+                                            <vue-editor class="mt-3" v-if="input.type === 'text'"
+                                                        v-model="input.content">
                                             </vue-editor>
-                                            <div v-if="input.type === 'files'">
-                                                <input type="text" v-model="input.name">
-                                                <button type="button" @click="addDocField(index)">Add file</button>
-                                                <div v-for="(file,i) in input.content">
-                                                    <input type="text" :v-model="file.name">
-                                                    <b-form-file v-model="file.content"
-                                                                 accept="image/*"
-                                                                 placeholder="Выберите файл изображения"
-                                                                 drop-placeholder="Перенесите сюда изображение"
-                                                                 browse-text='Oбзор'
-                                                    ></b-form-file>
+                                            <div v-if="input.type === 'files'" class="card mt-3">
+                                                <div class="card-header">
+                                                    <div class="row mb-3 mb-0" style="margin-bottom: 0 !important;">
+                                                        <div class="col-4">
+                                                            <p class="m-0">Название блока</p>
+                                                        </div>
+                                                        <div class="col-8"><input type="text"
+                                                                                  class="form-control form-control-sm"
+                                                                                  v-model="input.name">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="col-4">
+                                                        <button type="button" class="btn btn-sm btn-primary col-12"
+                                                                @click="addDocField(index)">Add file
+                                                        </button>
+                                                    </div>
+                                                    <div v-for="(file,i) in input.content">
+                                                        <div class="row mt-3">
+                                                            <div class="col-6">
+                                                                <input type="text"
+                                                                       class="form-control"
+                                                                       :v-model="file.name"
+                                                                       placeholder="Название файла">
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <b-form-file v-model="file.content"
+                                                                             placeholder="Выберите файл"
+                                                                             drop-placeholder="Перенесите сюда файл"
+                                                                             browse-text='Oбзор'
+                                                                             :name=""
+                                                                ></b-form-file>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -34,8 +60,8 @@
                     <div class="col-4">
                         <div class="card">
                             <div class="card-body">
-                                <button @click="addTextField">Text</button>
-                                <button @click="addFileGroup">Files</button>
+                                <button class="btn btn-sm btn-primary col-12 mb-2" @click="addTextField">Text</button>
+                                <button class="btn btn-sm btn-primary col-12" @click="addFileGroup">Files</button>
                             </div>
                         </div>
                     </div>
