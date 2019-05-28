@@ -17,9 +17,10 @@ class CreateSectionsContentsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name')->nullable();
             $table->integer('position');
-            $table->string('content')->nullable();
-            $table->boolean('vmodel');
-            $table->date('type');
+            $table->longText('content')->nullable();
+            $table->string('type');
+            $table->bigInteger('section_id')->unsigned()->nullable();
+            $table->bigInteger('parent_id')->unsigned()->nullable();
             $table->timestamps();
         });
     }
