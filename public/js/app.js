@@ -2887,7 +2887,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -87203,8 +87202,235 @@ render._withStripped = true
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function () {}
-var staticRenderFns = []
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-12" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-8" }, [
+            _c("div", { staticClass: "card" }, [
+              _c("div", { staticClass: "card-body" }, [
+                _c("div", { attrs: { id: "comps" } }, [
+                  _c(
+                    "form",
+                    {
+                      attrs: {
+                        enctype: "multipart/form-data",
+                        id: "inputsForm"
+                      },
+                      on: {
+                        submit: function($event) {
+                          $event.preventDefault()
+                          return _vm.sendForm($event)
+                        }
+                      }
+                    },
+                    [
+                      _c("input", {
+                        staticClass: "btn btn-sm btn-success col-4",
+                        attrs: { type: "submit" }
+                      }),
+                      _vm._v(" "),
+                      _vm._l(_vm.inputs, function(input, index) {
+                        return _c(
+                          "div",
+                          [
+                            input.type === "text"
+                              ? _c("vue-editor", {
+                                  staticClass: "mt-3",
+                                  model: {
+                                    value: input.content,
+                                    callback: function($$v) {
+                                      _vm.$set(input, "content", $$v)
+                                    },
+                                    expression: "input.content"
+                                  }
+                                })
+                              : _vm._e(),
+                            _vm._v(" "),
+                            input.type === "files"
+                              ? _c("div", { staticClass: "card mt-3" }, [
+                                  _c("div", { staticClass: "card-header" }, [
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass: "row mb-3 mb-0",
+                                        staticStyle: {
+                                          "margin-bottom": "0 !important"
+                                        }
+                                      },
+                                      [
+                                        _vm._m(0, true),
+                                        _vm._v(" "),
+                                        _c("div", { staticClass: "col-8" }, [
+                                          _c("input", {
+                                            directives: [
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value: input.name,
+                                                expression: "input.name"
+                                              }
+                                            ],
+                                            staticClass:
+                                              "form-control form-control-sm",
+                                            attrs: { type: "text" },
+                                            domProps: { value: input.name },
+                                            on: {
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.$set(
+                                                  input,
+                                                  "name",
+                                                  $event.target.value
+                                                )
+                                              }
+                                            }
+                                          })
+                                        ])
+                                      ]
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "card-body" },
+                                    [
+                                      _c("div", { staticClass: "col-4" }, [
+                                        _c(
+                                          "button",
+                                          {
+                                            staticClass:
+                                              "btn btn-sm btn-primary col-12",
+                                            attrs: { type: "button" },
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.addDocField(index)
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _vm._v(
+                                              "Add file\n                                                    "
+                                            )
+                                          ]
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _vm._l(input.content, function(file, i) {
+                                        return _c("div", [
+                                          _c(
+                                            "div",
+                                            { staticClass: "row mt-3" },
+                                            [
+                                              _c(
+                                                "div",
+                                                { staticClass: "col-6" },
+                                                [
+                                                  _c("input", {
+                                                    staticClass: "form-control",
+                                                    attrs: {
+                                                      type: "text",
+                                                      "v-model": file.name,
+                                                      placeholder:
+                                                        "Название файла"
+                                                    }
+                                                  })
+                                                ]
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "div",
+                                                { staticClass: "col-6" },
+                                                [
+                                                  _c("b-form-file", {
+                                                    attrs: {
+                                                      placeholder:
+                                                        "Выберите файл",
+                                                      "drop-placeholder":
+                                                        "Перенесите сюда файл",
+                                                      "browse-text": "Oбзор"
+                                                    },
+                                                    model: {
+                                                      value: file.content,
+                                                      callback: function($$v) {
+                                                        _vm.$set(
+                                                          file,
+                                                          "content",
+                                                          $$v
+                                                        )
+                                                      },
+                                                      expression: "file.content"
+                                                    }
+                                                  })
+                                                ],
+                                                1
+                                              )
+                                            ]
+                                          )
+                                        ])
+                                      })
+                                    ],
+                                    2
+                                  )
+                                ])
+                              : _vm._e()
+                          ],
+                          1
+                        )
+                      })
+                    ],
+                    2
+                  )
+                ])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-4" }, [
+            _c("div", { staticClass: "card" }, [
+              _c("div", { staticClass: "card-body" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-sm btn-primary col-12 mb-2",
+                    on: { click: _vm.addTextField }
+                  },
+                  [_vm._v("Text")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-sm btn-primary col-12",
+                    on: { click: _vm.addFileGroup }
+                  },
+                  [_vm._v("Files")]
+                )
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-4" }, [
+      _c("p", { staticClass: "m-0" }, [_vm._v("Название блока")])
+    ])
+  }
+]
+render._withStripped = true
 
 
 

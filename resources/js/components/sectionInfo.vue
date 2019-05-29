@@ -44,7 +44,6 @@
                                                                              placeholder="Выберите файл"
                                                                              drop-placeholder="Перенесите сюда файл"
                                                                              browse-text='Oбзор'
-                                                                             :name=""
                                                                 ></b-form-file>
                                                             </div>
                                                         </div>
