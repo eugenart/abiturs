@@ -2887,6 +2887,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2901,7 +2902,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         id: null,
         position: null,
         content: null,
-        name: null
+        name: null,
+        vmodel: null
       },
       currentInput: {}
     };
@@ -2913,6 +2915,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     sendForm: function sendForm() {
       var formData = new FormData();
       formData.append('inputs', JSON.stringify(this.inputs));
+      console.log(this.inputs);
+      $.each(this.inputs, function (key, value) {
+        if (value.type === 'files') {
+          console.log('if');
+          $.each(value.content, function (k, v) {
+            console.log(v.vmodel, v.content);
+            formData.append(v.vmodel, v.content);
+          });
+        }
+      });
       axios.post('/section-content', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
@@ -2924,7 +2936,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     addFileGroup: function addFileGroup() {
       this.input.type = 'files';
       this.input.position = this.inputs.length;
-      this.input.vmodel = this.input.type + '-' + this.input.position.toString();
+      this.input.vmodel = '';
       this.inputs.push(this.input);
       this.clearCurrentInput();
     },
@@ -2937,6 +2949,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     addDocField: function addDocField(i) {
       !this.inputs[i].content ? this.inputs[i].content = [] : null;
       this.input.type = 'file';
+      this.input.vmodel = (Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)).toString();
       this.input.position = this.inputs[i].content.length;
       this.inputs[i].content.push(this.input);
       this.clearCurrentInput();
@@ -87354,7 +87367,8 @@ var render = function() {
                                                         "Выберите файл",
                                                       "drop-placeholder":
                                                         "Перенесите сюда файл",
-                                                      "browse-text": "Oбзор"
+                                                      "browse-text": "Oбзор",
+                                                      name: file.vmodel
                                                     },
                                                     model: {
                                                       value: file.content,
