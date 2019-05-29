@@ -133,6 +133,9 @@ class SectionContentController extends Controller
                     $file->delete();
                 }
             }
+            if ($sectionContent->type == 'file') {
+                Storage::delete('public/public/section-files/' . $sectionContent->file_name);
+            }
             $sectionContent->delete();
             return response()->json(['message' => 'Content was deleted'], 200);
         }

@@ -2932,6 +2932,53 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2959,6 +3006,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     this.getSectionInfo();
   },
   methods: {
+    deleteInput: function deleteInput(id) {
+      axios.delete('/section-content/' + id);
+      this.getSectionInfo();
+    },
     getSectionInfo: function () {
       var _getSectionInfo = _asyncToGenerator(
       /*#__PURE__*/
@@ -2994,7 +3045,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var _sendForm = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-        var formData, reload;
+        var formData;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
@@ -3008,18 +3059,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                     });
                   }
                 });
-                reload = this.getSectionInfo();
-                _context2.next = 6;
+                _context2.next = 5;
                 return axios.post('/section-content', formData, {
                   headers: {
                     'Content-Type': 'multipart/form-data'
                   }
-                }).then(function (response) {});
+                });
 
-              case 6:
+              case 5:
                 this.getSectionInfo();
 
-              case 7:
+              case 6:
               case "end":
                 return _context2.stop();
             }
@@ -87434,12 +87484,42 @@ var render = function() {
                                             "inline-block text-right m-0"
                                         },
                                         [
+                                          !input.isEdit
+                                            ? _c("i", {
+                                                staticClass: "fas fa-pen",
+                                                staticStyle: {
+                                                  cursor: "pointer"
+                                                },
+                                                on: {
+                                                  click: function($event) {
+                                                    input.isEdit = !input.isEdit
+                                                  }
+                                                }
+                                              })
+                                            : _vm._e(),
+                                          _vm._v(" "),
+                                          input.isEdit
+                                            ? _c("i", {
+                                                staticClass: "fas fa-times",
+                                                staticStyle: {
+                                                  cursor: "pointer"
+                                                },
+                                                on: {
+                                                  click: function($event) {
+                                                    input.isEdit = !input.isEdit
+                                                  }
+                                                }
+                                              })
+                                            : _vm._e(),
+                                          _vm._v(
+                                            "\n                                                             \n                                                            "
+                                          ),
                                           _c("i", {
-                                            staticClass: "fas fa-pen",
+                                            staticClass: "fas fa-trash-alt",
                                             staticStyle: { cursor: "pointer" },
                                             on: {
                                               click: function($event) {
-                                                input.isEdit = !input.isEdit
+                                                return _vm.deleteInput(input.id)
                                               }
                                             }
                                           })
@@ -87557,6 +87637,64 @@ var render = function() {
                                             ])
                                           ]
                                         )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("div", { staticClass: "col-4" }, [
+                                        _c(
+                                          "p",
+                                          {
+                                            staticClass:
+                                              "inline-block text-right m-0"
+                                          },
+                                          [
+                                            !input.isEdit
+                                              ? _c("i", {
+                                                  staticClass: "fas fa-pen",
+                                                  staticStyle: {
+                                                    cursor: "pointer"
+                                                  },
+                                                  on: {
+                                                    click: function($event) {
+                                                      input.isEdit = !input.isEdit
+                                                    }
+                                                  }
+                                                })
+                                              : _vm._e(),
+                                            _vm._v(" "),
+                                            input.isEdit
+                                              ? _c("i", {
+                                                  staticClass: "fas fa-times",
+                                                  staticStyle: {
+                                                    cursor: "pointer"
+                                                  },
+                                                  on: {
+                                                    click: function($event) {
+                                                      input.isEdit = !input.isEdit
+                                                    }
+                                                  }
+                                                })
+                                              : _vm._e(),
+                                            _vm._v(
+                                              "\n                                                             \n                                                            "
+                                            ),
+                                            input.id
+                                              ? _c("i", {
+                                                  staticClass:
+                                                    "fas fa-trash-alt",
+                                                  staticStyle: {
+                                                    cursor: "pointer"
+                                                  },
+                                                  on: {
+                                                    click: function($event) {
+                                                      return _vm.deleteInput(
+                                                        input.id
+                                                      )
+                                                    }
+                                                  }
+                                                })
+                                              : _vm._e()
+                                          ]
+                                        )
                                       ])
                                     ]
                                   )
@@ -87605,7 +87743,7 @@ var render = function() {
                                           [
                                             _c(
                                               "div",
-                                              { staticClass: "col-6" },
+                                              { staticClass: "col-4" },
                                               [
                                                 _c(
                                                   "span",
@@ -87620,6 +87758,72 @@ var render = function() {
                                                 _c("p", [
                                                   _vm._v(_vm._s(file.name))
                                                 ])
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "div",
+                                              { staticClass: "col-4" },
+                                              [
+                                                _c(
+                                                  "span",
+                                                  { staticClass: "badge" },
+                                                  [_vm._v("Загруженный файл")]
+                                                ),
+                                                _vm._v(" "),
+                                                _c("p", [
+                                                  _vm._v(_vm._s(file.content))
+                                                ])
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "div",
+                                              { staticClass: "col-4" },
+                                              [
+                                                _c(
+                                                  "p",
+                                                  {
+                                                    staticClass:
+                                                      "inline-block text-right m-0"
+                                                  },
+                                                  [
+                                                    _c("i", {
+                                                      staticClass: "fas fa-pen",
+                                                      staticStyle: {
+                                                        cursor: "pointer"
+                                                      },
+                                                      on: {
+                                                        click: function(
+                                                          $event
+                                                        ) {
+                                                          file.isEdit = !file.isEdit
+                                                        }
+                                                      }
+                                                    }),
+                                                    _vm._v(
+                                                      "\n                                                                 \n                                                                "
+                                                    ),
+                                                    file.id
+                                                      ? _c("i", {
+                                                          staticClass:
+                                                            "fas fa-trash-alt",
+                                                          staticStyle: {
+                                                            cursor: "pointer"
+                                                          },
+                                                          on: {
+                                                            click: function(
+                                                              $event
+                                                            ) {
+                                                              return _vm.deleteInput(
+                                                                file.id
+                                                              )
+                                                            }
+                                                          }
+                                                        })
+                                                      : _vm._e()
+                                                  ]
+                                                )
                                               ]
                                             )
                                           ]
@@ -87641,8 +87845,18 @@ var render = function() {
                                           [
                                             _c(
                                               "div",
-                                              { staticClass: "col-6" },
+                                              { staticClass: "col-4" },
                                               [
+                                                _c(
+                                                  "span",
+                                                  { staticClass: "badge" },
+                                                  [
+                                                    _vm._v(
+                                                      "Отображаемое название"
+                                                    )
+                                                  ]
+                                                ),
+                                                _vm._v(" "),
                                                 _c("input", {
                                                   directives: [
                                                     {
@@ -87683,6 +87897,17 @@ var render = function() {
                                               "div",
                                               { staticClass: "col-6" },
                                               [
+                                                _c(
+                                                  "span",
+                                                  { staticClass: "badge" },
+                                                  [
+                                                    _vm._v(
+                                                      "Загруженный файл: " +
+                                                        _vm._s(file.content)
+                                                    )
+                                                  ]
+                                                ),
+                                                _vm._v(" "),
                                                 _c("b-form-file", {
                                                   attrs: {
                                                     placeholder:
@@ -87706,6 +87931,38 @@ var render = function() {
                                                 })
                                               ],
                                               1
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "div",
+                                              { staticClass: "col-2" },
+                                              [
+                                                file.id
+                                                  ? _c(
+                                                      "p",
+                                                      {
+                                                        staticClass:
+                                                          "inline-block text-right m-0"
+                                                      },
+                                                      [
+                                                        _c("i", {
+                                                          staticClass:
+                                                            "fas fa-times",
+                                                          staticStyle: {
+                                                            cursor: "pointer"
+                                                          },
+                                                          on: {
+                                                            click: function(
+                                                              $event
+                                                            ) {
+                                                              file.isEdit = !file.isEdit
+                                                            }
+                                                          }
+                                                        })
+                                                      ]
+                                                    )
+                                                  : _vm._e()
+                                              ]
                                             )
                                           ]
                                         )
