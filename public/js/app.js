@@ -2809,8 +2809,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue2_editor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue2-editor */ "./node_modules/vue2-editor/dist/vue2-editor.common.js");
-/* harmony import */ var vue2_editor__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue2_editor__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue2_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue2-editor */ "./node_modules/vue2-editor/dist/vue2-editor.common.js");
+/* harmony import */ var vue2_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue2_editor__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -2888,10 +2896,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    VueEditor: vue2_editor__WEBPACK_IMPORTED_MODULE_0__["VueEditor"]
+    VueEditor: vue2_editor__WEBPACK_IMPORTED_MODULE_1__["VueEditor"]
   },
   name: "sectionInfo",
   data: function data() {
@@ -2903,15 +2916,48 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         position: null,
         content: null,
         name: null,
-        vmodel: null
+        vmodel: null,
+        file_name: null,
+        isEdit: false
       },
       currentInput: {}
     };
   },
   mounted: function mounted() {
     this.currentInput = _objectSpread({}, this.input);
+    this.getSectionInfo();
   },
   methods: {
+    getSectionInfo: function () {
+      var _getSectionInfo = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var data;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return axios.get('/section-content');
+
+              case 2:
+                data = _context.sent;
+                this.inputs = data.data;
+
+              case 4:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function getSectionInfo() {
+        return _getSectionInfo.apply(this, arguments);
+      }
+
+      return getSectionInfo;
+    }(),
     sendForm: function sendForm() {
       var formData = new FormData();
       formData.append('inputs', JSON.stringify(this.inputs));
@@ -2941,6 +2987,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.clearCurrentInput();
     },
     addTextField: function addTextField() {
+      this.input.isEdit = true;
       this.input.type = 'text';
       this.input.position = this.inputs.length;
       this.inputs.push(this.input);
@@ -87251,7 +87298,26 @@ var render = function() {
                         return _c(
                           "div",
                           [
-                            input.type === "text"
+                            input.type === "text" && input.isEdit == false
+                              ? _c(
+                                  "div",
+                                  {
+                                    staticClass: "mt-3",
+                                    domProps: {
+                                      innerHTML: _vm._s(input.content)
+                                    }
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                                            " +
+                                        _vm._s(input.content) +
+                                        "\n                                        "
+                                    )
+                                  ]
+                                )
+                              : _vm._e(),
+                            _vm._v(" "),
+                            input.type === "text" && input.isEdit == true
                               ? _c("vue-editor", {
                                   staticClass: "mt-3",
                                   model: {
@@ -87346,12 +87412,37 @@ var render = function() {
                                                 { staticClass: "col-6" },
                                                 [
                                                   _c("input", {
+                                                    directives: [
+                                                      {
+                                                        name: "model",
+                                                        rawName: "v-model",
+                                                        value: file.name,
+                                                        expression: "file.name"
+                                                      }
+                                                    ],
                                                     staticClass: "form-control",
                                                     attrs: {
                                                       type: "text",
-                                                      "v-model": file.name,
                                                       placeholder:
                                                         "Название файла"
+                                                    },
+                                                    domProps: {
+                                                      value: file.name
+                                                    },
+                                                    on: {
+                                                      input: function($event) {
+                                                        if (
+                                                          $event.target
+                                                            .composing
+                                                        ) {
+                                                          return
+                                                        }
+                                                        _vm.$set(
+                                                          file,
+                                                          "name",
+                                                          $event.target.value
+                                                        )
+                                                      }
                                                     }
                                                   })
                                                 ]

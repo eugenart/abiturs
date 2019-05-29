@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\SectionsContent;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class SectionContentController extends Controller
 {
@@ -20,6 +21,7 @@ class SectionContentController extends Controller
             }
             if ($input->type == 'files') {
                 if ($input->childrenFiles->count() > 0) {
+                    $files = [];
                     foreach ($input->childrenFiles as $file) {
                         $file->isEdit = false;
                         $files[] = $file;
@@ -118,6 +120,22 @@ class SectionContentController extends Controller
             return response()->json(['message' => "OK",], 200);
         }
 
+        return response()->json(['message' => 'Oops'], 404);
+    }
+
+    public function destroy(Request $request, $id)
+    {
+        if ($request->ajax()) {
+            $sectionContent = SectionsContent::findOrFail($id);
+            if ($sectionContent->childrenFiles->count() > 0) {
+                foreach ($sectionContent->childrenFiles as $file) {
+                    Storage::delete('public/public/section-files/' . $file->file_name);
+                    $file->delete();
+                }
+            }
+            $sectionContent->delete();
+            return response()->json(['message' => 'Content was deleted'], 200);
+        }
         return response()->json(['message' => 'Oops'], 404);
     }
 }
