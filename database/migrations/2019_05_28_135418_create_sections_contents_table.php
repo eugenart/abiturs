@@ -16,6 +16,7 @@ class CreateSectionsContentsTable extends Migration
         Schema::create('sections_contents', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name')->nullable();
+            $table->string('file_name')->nullable();
             $table->integer('position');
             $table->longText('content')->nullable();
             $table->string('type');

@@ -10,7 +10,12 @@
                                     <form @submit.prevent="sendForm" enctype="multipart/form-data" id="inputsForm">
                                         <input type="submit" class="btn btn-sm btn-success col-4">
                                         <div v-for="(input,index) in inputs">
-                                            <vue-editor class="mt-3" v-if="input.type === 'text'"
+                                            <div class="mt-3"
+                                                 v-if="input.type === 'text' && input.isEdit == false">
+                                                {{input.content}}
+                                            </div>
+                                            <vue-editor class="mt-3"
+                                                        v-if="input.type === 'text' && input.isEdit == true"
                                                         v-model="input.content">
                                             </vue-editor>
                                             <div v-if="input.type === 'files'" class="card mt-3">
@@ -36,7 +41,7 @@
                                                             <div class="col-6">
                                                                 <input type="text"
                                                                        class="form-control"
-                                                                       :v-model="file.name"
+                                                                       v-model="file.name"
                                                                        placeholder="Название файла">
                                                             </div>
                                                             <div class="col-6">
@@ -81,6 +86,7 @@
         name: "sectionInfo",
         data() {
             return {
+                inputs: [],
                 input: {
                     type: null,
                     id: null,
@@ -88,7 +94,8 @@
                     content: null,
                     name: null,
                     vmodel: null,
-                    file_name: null
+                    file_name: null,
+                    isEdit: false,
                 },
 
                 currentInput: {}
@@ -97,18 +104,16 @@
 
         mounted() {
             this.currentInput = {...this.input}
-            this.$store.dispatch("GET_SECTIONSINFO")
-        },
-
-        computed: {
-
-            inputs() {
-                return this.$store.getters.SECTIONSINFO
-            }
-
+            this.getSectionInfo()
         },
 
         methods: {
+
+            async getSectionInfo() {
+                const data = await axios.get('/section-content')
+
+                this.inputs = data.data
+            },
 
             sendForm() {
                 let formData = new FormData();
@@ -135,19 +140,19 @@
             },
 
             addFileGroup() {
-                this.input.type = 'files'
-                this.input.position = this.inputs.length
-                this.input.vmodel = ''
-                this.inputs.push(this.input)
-                this.$store.dispatch('SAVE_BLOCK', this.input);
+                this.input.type = 'files';
+                this.input.position = this.inputs.length;
+                this.input.vmodel = '';
+                this.inputs.push(this.input);
                 this.clearCurrentInput()
             },
 
 
-            addTextField() {§
-                this.input.type = 'text'
-                this.input.position = this.inputs.length
-                this.inputs.push(this.input)
+            addTextField() {
+                this.input.isEdit = true;
+                this.input.type = 'text';
+                this.input.position = this.inputs.length;
+                this.inputs.push(this.input);
                 this.clearCurrentInput()
             },
 
