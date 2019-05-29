@@ -142,7 +142,6 @@
 
             async getSectionInfo() {
                 const data = await axios.get('/section-content')
-
                 this.inputs = data.data
             },
 
