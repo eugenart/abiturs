@@ -48,6 +48,6 @@ class SectionContentController extends Controller
                 }
             }
         }
-        return $data;
+        return $request;
     }
 }
