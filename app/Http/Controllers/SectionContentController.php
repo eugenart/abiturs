@@ -15,15 +15,18 @@ class SectionContentController extends Controller
 
         foreach ($inputs as $input) {
             if ($input->type == 'text') {
+                $input->isEdit = false;
                 $inputs_send[] = $input;
             }
             if ($input->type == 'files') {
                 if ($input->childrenFiles->count() > 0) {
                     foreach ($input->childrenFiles as $file) {
+                        $file->isEdit = false;
                         $files[] = $file;
                     }
                     $input->content = $files;
                 }
+                $input->isEdit = false;
                 $inputs_send[] = $input;
 
             }
