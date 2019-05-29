@@ -15,20 +15,24 @@ class SectionContentController extends Controller
 
         foreach ($inputs as $input) {
             if ($input->type == 'text') {
+                $input->isEdit = false;
                 $inputs_send[] = $input;
             }
             if ($input->type == 'files') {
                 if ($input->childrenFiles->count() > 0) {
                     $files = [];
                     foreach ($input->childrenFiles as $file) {
+                        $file->isEdit = false;
                         $files[] = $file;
                     }
                     $input->content = $files;
                 }
+                $input->isEdit = false;
                 $inputs_send[] = $input;
 
             }
         }
+        return $inputs_send;
 
         if ($request->ajax()) {
             return response()->json($inputs_send, 200);
@@ -39,44 +43,82 @@ class SectionContentController extends Controller
 
     function store(Request $request)
     {
-        $data = json_decode($request->inputs);
+        if ($request->ajax()) {
+            $data = json_decode($request->inputs);
 
-        foreach ($data as $block) {
-            if ($block->type == 'text') {
-                SectionsContent::create([
-                    'name' => $block->name,
-                    'type' => $block->type,
-                    'position' => $block->position,
-                    'content' => $block->content,
-                ]);
-            }
-            if ($block->type == 'files') {
-                $group = SectionsContent::create([
-                    'name' => $block->name,
-                    'type' => $block->type,
-                    'position' => $block->position,
-                ]);
-                if (count($block->content) > 0) {
-                    foreach ($block->content as $file) {
-                        if ($request->hasFile($file->vmodel)) {
-                            $original = $request[$file->vmodel]->getClientOriginalName();
-                            $fileSave = $request[$file->vmodel]->store('public/section-files');
-                            $fileName = basename($fileSave);
+            foreach ($data as $block) {
+                if ($block->type == 'text') {
+                    if ($block->id) {
+                        SectionsContent::find($block->id)->update([
+                            'name' => $block->name,
+                            'type' => $block->type,
+                            'position' => $block->position,
+                            'content' => $block->content,
+                        ]);
+                    } else {
+                        SectionsContent::create([
+                            'name' => $block->name,
+                            'type' => $block->type,
+                            'position' => $block->position,
+                            'content' => $block->content,
+                        ]);
+                    }
 
-                            SectionsContent::create([
-                                'name' => $file->name,
-                                'file_name' => $fileName,
-                                'type' => $file->type,
-                                'vmodel' => $file->vmodel,
-                                'position' => $file->position,
-                                'parent_id' => $group->id,
-                                'content' => $original,
-                            ]);
+                }
+                if ($block->type == 'files') {
+                    if ($block->id) {
+                        $group = SectionsContent::find($block->id)->update([
+                            'name' => $block->name,
+                            'type' => $block->type,
+                            'position' => $block->position,
+                        ]);
+                    } else {
+                        $group = SectionsContent::create([
+                            'name' => $block->name,
+                            'type' => $block->type,
+                            'position' => $block->position,
+                        ]);
+                    }
+
+                    if (count($block->content) > 0) {
+                        foreach ($block->content as $file) {
+                            if ($request->hasFile($file->vmodel)) {
+                                $original = $request[$file->vmodel]->getClientOriginalName();
+                                $fileSave = $request[$file->vmodel]->store('public/section-files');
+                                $fileName = basename($fileSave);
+
+                                if ($file->id) {
+                                    SectionsContent::find($block->id)->update([
+                                        'name' => $file->name,
+                                        'file_name' => $fileName,
+                                        'type' => $file->type,
+                                        'vmodel' => $file->vmodel,
+                                        'position' => $file->position,
+                                        'parent_id' => $group->id,
+                                        'content' => $original,
+                                    ]);
+                                } else {
+                                    SectionsContent::create([
+                                        'name' => $file->name,
+                                        'file_name' => $fileName,
+                                        'type' => $file->type,
+                                        'vmodel' => $file->vmodel,
+                                        'position' => $file->position,
+                                        'parent_id' => $group->id,
+                                        'content' => $original,
+                                    ]);
+                                }
+
+
+                            }
                         }
                     }
                 }
             }
+
+            return response()->json(['message' => "OK",], 200);
         }
-        return $request;
+
+        return response()->json(['message' => 'Oops'], 404);
     }
 }
