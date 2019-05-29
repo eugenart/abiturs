@@ -81,14 +81,14 @@
         name: "sectionInfo",
         data() {
             return {
-                inputs: [],
                 input: {
                     type: null,
                     id: null,
                     position: null,
                     content: null,
                     name: null,
-                    vmodel: null
+                    vmodel: null,
+                    file_name: null
                 },
 
                 currentInput: {}
@@ -97,6 +97,15 @@
 
         mounted() {
             this.currentInput = {...this.input}
+            this.$store.dispatch("GET_SECTIONSINFO")
+        },
+
+        computed: {
+
+            inputs() {
+                return this.$store.getters.SECTIONSINFO
+            }
+
         },
 
         methods: {
@@ -130,11 +139,12 @@
                 this.input.position = this.inputs.length
                 this.input.vmodel = ''
                 this.inputs.push(this.input)
+                this.$store.dispatch('SAVE_BLOCK', this.input);
                 this.clearCurrentInput()
             },
 
 
-            addTextField() {
+            addTextField() {§
                 this.input.type = 'text'
                 this.input.position = this.inputs.length
                 this.inputs.push(this.input)
