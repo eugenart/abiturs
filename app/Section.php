@@ -19,4 +19,8 @@ class Section extends Model
     public function childrenSections() {
         return $this->hasMany(self::class, 'sectionID');
     }
+
+    public function childrenSectionContent() {
+        return $this->hasMany(SectionsContent::class, 'section_id');
+    }
 }

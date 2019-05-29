@@ -34,7 +34,10 @@ Route::get('/section-info', function () {
     return view('structure.sectionInfo');
 });
 
-Route::post('/section-content', 'SectionContentController@index');
+Route::get('/section-content', 'SectionContentController@index');
+Route::post('/section-content', 'SectionContentController@store');
+Route::post('/section-content/{id}', 'SectionContentController@update');
+Route::delete('/section-content/{id}', 'SectionContentController@delete');
 
 Auth::routes();
 

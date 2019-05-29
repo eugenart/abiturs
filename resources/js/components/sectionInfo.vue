@@ -44,7 +44,7 @@
                                                                              placeholder="Выберите файл"
                                                                              drop-placeholder="Перенесите сюда файл"
                                                                              browse-text='Oбзор'
-                                                                             name="file-group"
+                                                                             :name='file.vmodel'
                                                                 ></b-form-file>
                                                             </div>
                                                         </div>
@@ -87,7 +87,8 @@
                     id: null,
                     position: null,
                     content: null,
-                    name: null
+                    name: null,
+                    vmodel: null
                 },
 
                 currentInput: {}
@@ -103,6 +104,16 @@
             sendForm() {
                 let formData = new FormData();
                 formData.append('inputs', JSON.stringify(this.inputs));
+                console.log(this.inputs)
+                $.each(this.inputs, function (key, value) {
+                    if (value.type === 'files') {
+                        console.log('if')
+                        $.each(value.content, function (k, v) {
+                            console.log(v.vmodel, v.content)
+                            formData.append(v.vmodel, v.content);
+                        })
+                    }
+                })
                 axios.post('/section-content', formData,
                     {
                         headers: {
@@ -117,7 +128,7 @@
             addFileGroup() {
                 this.input.type = 'files'
                 this.input.position = this.inputs.length
-                this.input.vmodel = this.input.type + '-' + this.input.position.toString()
+                this.input.vmodel = ''
                 this.inputs.push(this.input)
                 this.clearCurrentInput()
             },
@@ -133,6 +144,7 @@
             addDocField(i) {
                 !this.inputs[i].content ? this.inputs[i].content = [] : null
                 this.input.type = 'file'
+                this.input.vmodel = (Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)).toString();
                 this.input.position = this.inputs[i].content.length
                 this.inputs[i].content.push(this.input)
                 this.clearCurrentInput()
