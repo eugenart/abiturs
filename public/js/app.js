@@ -2973,9 +2973,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
               case 2:
                 data = _context.sent;
-                this.inputs = data.data;
+                console.log(data.data);
+                this.inputs = data.data.slice();
 
-              case 4:
+              case 5:
               case "end":
                 return _context.stop();
             }
@@ -2989,28 +2990,49 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       return getSectionInfo;
     }(),
-    sendForm: function sendForm() {
-      var formData = new FormData();
-      formData.append('inputs', JSON.stringify(this.inputs));
-      console.log(this.inputs);
-      $.each(this.inputs, function (key, value) {
-        if (value.type === 'files') {
-          console.log('if');
-          $.each(value.content, function (k, v) {
-            console.log(v.vmodel, v.content);
-            formData.append(v.vmodel, v.content);
-          });
-        }
-      });
-      axios.post('/section-content', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      }).then(function (response) {
-        console.log(response.data);
-      });
-      this.getSectionInfo();
-    },
+    sendForm: function () {
+      var _sendForm = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var formData, reload;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                formData = new FormData();
+                formData.append('inputs', JSON.stringify(this.inputs));
+                $.each(this.inputs, function (key, value) {
+                  if (value.type === 'files') {
+                    $.each(value.content, function (k, v) {
+                      formData.append(v.vmodel, v.content);
+                    });
+                  }
+                });
+                reload = this.getSectionInfo();
+                _context2.next = 6;
+                return axios.post('/section-content', formData, {
+                  headers: {
+                    'Content-Type': 'multipart/form-data'
+                  }
+                }).then(function (response) {});
+
+              case 6:
+                this.getSectionInfo();
+
+              case 7:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this);
+      }));
+
+      function sendForm() {
+        return _sendForm.apply(this, arguments);
+      }
+
+      return sendForm;
+    }(),
     addFileGroup: function addFileGroup() {
       this.input.type = 'files';
       this.input.position = this.inputs.length;

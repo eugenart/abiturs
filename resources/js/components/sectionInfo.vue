@@ -141,32 +141,30 @@
         methods: {
 
             async getSectionInfo() {
-                const data = await axios.get('/section-content')
-
-                this.inputs = data.data
+                let data = await axios.get('/section-content')
+                console.log(data.data)
+                this.inputs = data.data.slice()
             },
 
-            sendForm() {
+            async sendForm() {
                 let formData = new FormData();
                 formData.append('inputs', JSON.stringify(this.inputs));
-                console.log(this.inputs)
                 $.each(this.inputs, function (key, value) {
                     if (value.type === 'files') {
-                        console.log('if')
                         $.each(value.content, function (k, v) {
-                            console.log(v.vmodel, v.content)
                             formData.append(v.vmodel, v.content);
                         })
                     }
                 })
-                axios.post('/section-content', formData,
+                let reload = this.getSectionInfo()
+                await axios.post('/section-content', formData,
                     {
                         headers: {
                             'Content-Type': 'multipart/form-data'
                         }
                     })
                     .then(function (response) {
-                        console.log(response.data);
+
                     })
 
                 this.getSectionInfo()

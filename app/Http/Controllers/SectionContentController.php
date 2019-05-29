@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\SectionsContent;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class SectionContentController extends Controller
 {
@@ -32,7 +33,6 @@ class SectionContentController extends Controller
 
             }
         }
-        return $inputs_send;
 
         if ($request->ajax()) {
             return response()->json($inputs_send, 200);
@@ -67,7 +67,8 @@ class SectionContentController extends Controller
                 }
                 if ($block->type == 'files') {
                     if ($block->id) {
-                        $group = SectionsContent::find($block->id)->update([
+                        $group = SectionsContent::find($block->id);
+                        $group->update([
                             'name' => $block->name,
                             'type' => $block->type,
                             'position' => $block->position,
@@ -80,7 +81,7 @@ class SectionContentController extends Controller
                         ]);
                     }
 
-                    if (count($block->content) > 0) {
+                    if ($block->content && count($block->content) > 0) {
                         foreach ($block->content as $file) {
                             if ($request->hasFile($file->vmodel)) {
                                 $original = $request[$file->vmodel]->getClientOriginalName();
@@ -119,6 +120,22 @@ class SectionContentController extends Controller
             return response()->json(['message' => "OK",], 200);
         }
 
+        return response()->json(['message' => 'Oops'], 404);
+    }
+
+    public function destroy(Request $request, $id)
+    {
+        if ($request->ajax()) {
+            $sectionContent = SectionsContent::findOrFail($id);
+            if ($sectionContent->childrenFiles->count() > 0) {
+                foreach ($sectionContent->childrenFiles as $file) {
+                    Storage::delete('public/public/section-files/' . $file->file_name);
+                    $file->delete();
+                }
+            }
+            $sectionContent->delete();
+            return response()->json(['message' => 'Content was deleted'], 200);
+        }
         return response()->json(['message' => 'Oops'], 404);
     }
 }
