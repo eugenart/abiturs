@@ -2901,6 +2901,37 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2918,7 +2949,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         name: null,
         vmodel: null,
         file_name: null,
-        isEdit: false
+        isEdit: true
       },
       currentInput: {}
     };
@@ -2978,6 +3009,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }).then(function (response) {
         console.log(response.data);
       });
+      this.getSectionInfo();
     },
     addFileGroup: function addFileGroup() {
       this.input.type = 'files';
@@ -2987,7 +3019,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.clearCurrentInput();
     },
     addTextField: function addTextField() {
-      this.input.isEdit = true;
       this.input.type = 'text';
       this.input.position = this.inputs.length;
       this.inputs.push(this.input);
@@ -87295,199 +87326,375 @@ var render = function() {
                       }),
                       _vm._v(" "),
                       _vm._l(_vm.inputs, function(input, index) {
-                        return _c(
-                          "div",
-                          [
-                            input.type === "text" && input.isEdit == false
-                              ? _c(
-                                  "div",
-                                  {
-                                    staticClass: "mt-3",
-                                    domProps: {
-                                      innerHTML: _vm._s(input.content)
-                                    }
-                                  },
-                                  [
-                                    _vm._v(
-                                      "\n                                            " +
-                                        _vm._s(input.content) +
-                                        "\n                                        "
-                                    )
-                                  ]
-                                )
-                              : _vm._e(),
-                            _vm._v(" "),
-                            input.type === "text" && input.isEdit == true
-                              ? _c("vue-editor", {
-                                  staticClass: "mt-3",
-                                  model: {
-                                    value: input.content,
-                                    callback: function($$v) {
-                                      _vm.$set(input, "content", $$v)
-                                    },
-                                    expression: "input.content"
-                                  }
-                                })
-                              : _vm._e(),
-                            _vm._v(" "),
-                            input.type === "files"
-                              ? _c("div", { staticClass: "card mt-3" }, [
-                                  _c("div", { staticClass: "card-header" }, [
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass: "row mb-3 mb-0",
-                                        staticStyle: {
-                                          "margin-bottom": "0 !important"
+                        return _c("div", [
+                          _c("hr"),
+                          _vm._v(" "),
+                          input.type === "text"
+                            ? _c("div", { staticClass: "card" }, [
+                                _c("div", { staticClass: "card-header" }, [
+                                  _c("div", { staticClass: "row" }, [
+                                    _c("div", { staticClass: "col-8" }, [
+                                      _c(
+                                        "p",
+                                        {
+                                          directives: [
+                                            {
+                                              name: "show",
+                                              rawName: "v-show",
+                                              value: input.isEdit,
+                                              expression: "input.isEdit"
+                                            }
+                                          ],
+                                          staticClass: "badge m-0 p-0"
+                                        },
+                                        [
+                                          _vm._v(
+                                            "Название\n                                                            блока"
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "p",
+                                        {
+                                          directives: [
+                                            {
+                                              name: "show",
+                                              rawName: "v-show",
+                                              value: !input.isEdit,
+                                              expression: "!input.isEdit"
+                                            }
+                                          ],
+                                          staticClass: "m-0"
+                                        },
+                                        [_c("b", [_vm._v(_vm._s(input.name))])]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: input.name,
+                                            expression: "input.name"
+                                          },
+                                          {
+                                            name: "show",
+                                            rawName: "v-show",
+                                            value: input.isEdit,
+                                            expression: "input.isEdit"
+                                          }
+                                        ],
+                                        staticClass:
+                                          "form-control form-control-sm",
+                                        attrs: { type: "text" },
+                                        domProps: { value: input.name },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.$set(
+                                              input,
+                                              "name",
+                                              $event.target.value
+                                            )
+                                          }
                                         }
-                                      },
-                                      [
-                                        _vm._m(0, true),
-                                        _vm._v(" "),
-                                        _c("div", { staticClass: "col-8" }, [
-                                          _c("input", {
-                                            directives: [
-                                              {
-                                                name: "model",
-                                                rawName: "v-model",
-                                                value: input.name,
-                                                expression: "input.name"
-                                              }
-                                            ],
-                                            staticClass:
-                                              "form-control form-control-sm",
-                                            attrs: { type: "text" },
-                                            domProps: { value: input.name },
+                                      })
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "col-4" }, [
+                                      _c(
+                                        "p",
+                                        {
+                                          staticClass:
+                                            "inline-block text-right m-0"
+                                        },
+                                        [
+                                          _c("i", {
+                                            staticClass: "fas fa-pen",
+                                            staticStyle: { cursor: "pointer" },
                                             on: {
-                                              input: function($event) {
-                                                if ($event.target.composing) {
-                                                  return
-                                                }
-                                                _vm.$set(
-                                                  input,
-                                                  "name",
-                                                  $event.target.value
-                                                )
+                                              click: function($event) {
+                                                input.isEdit = !input.isEdit
                                               }
                                             }
                                           })
-                                        ])
-                                      ]
-                                    )
-                                  ]),
-                                  _vm._v(" "),
+                                        ]
+                                      )
+                                    ])
+                                  ])
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "card-body" },
+                                  [
+                                    _c("div", {
+                                      directives: [
+                                        {
+                                          name: "show",
+                                          rawName: "v-show",
+                                          value: !input.isEdit,
+                                          expression: "!input.isEdit"
+                                        }
+                                      ],
+                                      staticClass: "ql-editor",
+                                      staticStyle: { "min-height": "0px" },
+                                      domProps: {
+                                        innerHTML: _vm._s(input.content)
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("vue-editor", {
+                                      directives: [
+                                        {
+                                          name: "show",
+                                          rawName: "v-show",
+                                          value: input.isEdit,
+                                          expression: "input.isEdit"
+                                        }
+                                      ],
+                                      model: {
+                                        value: input.content,
+                                        callback: function($$v) {
+                                          _vm.$set(input, "content", $$v)
+                                        },
+                                        expression: "input.content"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          input.type === "files"
+                            ? _c("div", { staticClass: "card mt-3" }, [
+                                _c("div", { staticClass: "card-header" }, [
                                   _c(
                                     "div",
-                                    { staticClass: "card-body" },
+                                    {
+                                      staticClass: "row mb-3 mb-0",
+                                      staticStyle: {
+                                        "margin-bottom": "0 !important"
+                                      }
+                                    },
                                     [
-                                      _c("div", { staticClass: "col-4" }, [
-                                        _c(
-                                          "button",
-                                          {
-                                            staticClass:
-                                              "btn btn-sm btn-primary col-12",
-                                            attrs: { type: "button" },
-                                            on: {
-                                              click: function($event) {
-                                                return _vm.addDocField(index)
-                                              }
+                                      _c("div", { staticClass: "col-8" }, [
+                                        _c("input", {
+                                          directives: [
+                                            {
+                                              name: "show",
+                                              rawName: "v-show",
+                                              value: input.isEdit,
+                                              expression: "input.isEdit"
+                                            },
+                                            {
+                                              name: "model",
+                                              rawName: "v-model",
+                                              value: input.name,
+                                              expression: "input.name"
                                             }
+                                          ],
+                                          staticClass:
+                                            "form-control form-control-sm",
+                                          attrs: { type: "text" },
+                                          domProps: { value: input.name },
+                                          on: {
+                                            input: function($event) {
+                                              if ($event.target.composing) {
+                                                return
+                                              }
+                                              _vm.$set(
+                                                input,
+                                                "name",
+                                                $event.target.value
+                                              )
+                                            }
+                                          }
+                                        }),
+                                        _vm._v(" "),
+                                        _c(
+                                          "p",
+                                          {
+                                            directives: [
+                                              {
+                                                name: "show",
+                                                rawName: "v-show",
+                                                value: !input.isEdit,
+                                                expression: "!input.isEdit"
+                                              }
+                                            ],
+                                            staticClass: "m-0"
                                           },
                                           [
-                                            _vm._v(
-                                              "Add file\n                                                    "
+                                            _c("b", [
+                                              _vm._v(_vm._s(input.name))
+                                            ])
+                                          ]
+                                        )
+                                      ])
+                                    ]
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "card-body" },
+                                  [
+                                    _c("div", { staticClass: "col-4" }, [
+                                      _c(
+                                        "button",
+                                        {
+                                          staticClass:
+                                            "btn btn-sm btn-primary col-12",
+                                          attrs: { type: "button" },
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.addDocField(index)
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "Add file\n                                                    "
+                                          )
+                                        ]
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _vm._l(input.content, function(file, i) {
+                                      return _c("div", [
+                                        _c(
+                                          "div",
+                                          {
+                                            directives: [
+                                              {
+                                                name: "show",
+                                                rawName: "v-show",
+                                                value: !file.isEdit,
+                                                expression: "!file.isEdit"
+                                              }
+                                            ],
+                                            staticClass: "row mt-3"
+                                          },
+                                          [
+                                            _c(
+                                              "div",
+                                              { staticClass: "col-6" },
+                                              [
+                                                _c(
+                                                  "span",
+                                                  { staticClass: "badge" },
+                                                  [
+                                                    _vm._v(
+                                                      "Отображаемое название"
+                                                    )
+                                                  ]
+                                                ),
+                                                _vm._v(" "),
+                                                _c("p", [
+                                                  _vm._v(_vm._s(file.name))
+                                                ])
+                                              ]
+                                            )
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "div",
+                                          {
+                                            directives: [
+                                              {
+                                                name: "show",
+                                                rawName: "v-show",
+                                                value: file.isEdit,
+                                                expression: "file.isEdit"
+                                              }
+                                            ],
+                                            staticClass: "row mt-3"
+                                          },
+                                          [
+                                            _c(
+                                              "div",
+                                              { staticClass: "col-6" },
+                                              [
+                                                _c("input", {
+                                                  directives: [
+                                                    {
+                                                      name: "model",
+                                                      rawName: "v-model",
+                                                      value: file.name,
+                                                      expression: "file.name"
+                                                    }
+                                                  ],
+                                                  staticClass: "form-control",
+                                                  attrs: {
+                                                    type: "text",
+                                                    placeholder:
+                                                      "Название файла"
+                                                  },
+                                                  domProps: {
+                                                    value: file.name
+                                                  },
+                                                  on: {
+                                                    input: function($event) {
+                                                      if (
+                                                        $event.target.composing
+                                                      ) {
+                                                        return
+                                                      }
+                                                      _vm.$set(
+                                                        file,
+                                                        "name",
+                                                        $event.target.value
+                                                      )
+                                                    }
+                                                  }
+                                                })
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "div",
+                                              { staticClass: "col-6" },
+                                              [
+                                                _c("b-form-file", {
+                                                  attrs: {
+                                                    placeholder:
+                                                      "Выберите файл",
+                                                    "drop-placeholder":
+                                                      "Перенесите сюда файл",
+                                                    "browse-text": "Oбзор",
+                                                    name: file.vmodel
+                                                  },
+                                                  model: {
+                                                    value: file.content,
+                                                    callback: function($$v) {
+                                                      _vm.$set(
+                                                        file,
+                                                        "content",
+                                                        $$v
+                                                      )
+                                                    },
+                                                    expression: "file.content"
+                                                  }
+                                                })
+                                              ],
+                                              1
                                             )
                                           ]
                                         )
-                                      ]),
-                                      _vm._v(" "),
-                                      _vm._l(input.content, function(file, i) {
-                                        return _c("div", [
-                                          _c(
-                                            "div",
-                                            { staticClass: "row mt-3" },
-                                            [
-                                              _c(
-                                                "div",
-                                                { staticClass: "col-6" },
-                                                [
-                                                  _c("input", {
-                                                    directives: [
-                                                      {
-                                                        name: "model",
-                                                        rawName: "v-model",
-                                                        value: file.name,
-                                                        expression: "file.name"
-                                                      }
-                                                    ],
-                                                    staticClass: "form-control",
-                                                    attrs: {
-                                                      type: "text",
-                                                      placeholder:
-                                                        "Название файла"
-                                                    },
-                                                    domProps: {
-                                                      value: file.name
-                                                    },
-                                                    on: {
-                                                      input: function($event) {
-                                                        if (
-                                                          $event.target
-                                                            .composing
-                                                        ) {
-                                                          return
-                                                        }
-                                                        _vm.$set(
-                                                          file,
-                                                          "name",
-                                                          $event.target.value
-                                                        )
-                                                      }
-                                                    }
-                                                  })
-                                                ]
-                                              ),
-                                              _vm._v(" "),
-                                              _c(
-                                                "div",
-                                                { staticClass: "col-6" },
-                                                [
-                                                  _c("b-form-file", {
-                                                    attrs: {
-                                                      placeholder:
-                                                        "Выберите файл",
-                                                      "drop-placeholder":
-                                                        "Перенесите сюда файл",
-                                                      "browse-text": "Oбзор",
-                                                      name: file.vmodel
-                                                    },
-                                                    model: {
-                                                      value: file.content,
-                                                      callback: function($$v) {
-                                                        _vm.$set(
-                                                          file,
-                                                          "content",
-                                                          $$v
-                                                        )
-                                                      },
-                                                      expression: "file.content"
-                                                    }
-                                                  })
-                                                ],
-                                                1
-                                              )
-                                            ]
-                                          )
-                                        ])
-                                      })
-                                    ],
-                                    2
-                                  )
-                                ])
-                              : _vm._e()
-                          ],
-                          1
-                        )
+                                      ])
+                                    })
+                                  ],
+                                  2
+                                )
+                              ])
+                            : _vm._e()
+                        ])
                       })
                     ],
                     2
@@ -87525,16 +87732,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-4" }, [
-      _c("p", { staticClass: "m-0" }, [_vm._v("Название блока")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

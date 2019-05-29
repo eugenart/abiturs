@@ -68,7 +68,8 @@ class SectionContentController extends Controller
                 }
                 if ($block->type == 'files') {
                     if ($block->id) {
-                        $group = SectionsContent::find($block->id)->update([
+                        $group = SectionsContent::find($block->id);
+                        $group->update([
                             'name' => $block->name,
                             'type' => $block->type,
                             'position' => $block->position,

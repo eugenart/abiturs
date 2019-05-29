@@ -10,23 +10,47 @@
                                     <form @submit.prevent="sendForm" enctype="multipart/form-data" id="inputsForm">
                                         <input type="submit" class="btn btn-sm btn-success col-4">
                                         <div v-for="(input,index) in inputs">
-                                            <div class="mt-3"
-                                                 v-if="input.type === 'text' && input.isEdit == false" v-html=input.content>
-                                                {{input.content}}
+                                            <hr>
+                                            <div class="card" v-if="input.type === 'text'">
+                                                <div class="card-header">
+                                                    <div class="row">
+                                                        <div class="col-8">
+                                                            <p class="badge m-0 p-0" v-show="input.isEdit">Название
+                                                                блока</p>
+                                                            <p class="m-0" v-show="!input.isEdit"><b>{{input.name}}</b>
+                                                            </p>
+                                                            <input type="text"
+                                                                   class="form-control form-control-sm"
+                                                                   v-model="input.name"
+                                                                   v-show="input.isEdit">
+                                                        </div>
+                                                        <div class="col-4">
+                                                            <p class="inline-block text-right m-0">
+                                                                <i class="fas fa-pen" style="cursor:pointer"
+                                                                   @click="input.isEdit = !input.isEdit"></i>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="ql-editor"
+                                                         style="min-height: 0px;"
+                                                         v-show="!input.isEdit"
+                                                         v-html="input.content">
+                                                    </div>
+                                                    <vue-editor v-show="input.isEdit"
+                                                                v-model="input.content">
+                                                    </vue-editor>
+                                                </div>
                                             </div>
-                                            <vue-editor class="mt-3"
-                                                        v-if="input.type === 'text' && input.isEdit == true"
-                                                        v-model="input.content">
-                                            </vue-editor>
                                             <div v-if="input.type === 'files'" class="card mt-3">
                                                 <div class="card-header">
                                                     <div class="row mb-3 mb-0" style="margin-bottom: 0 !important;">
-                                                        <div class="col-4">
-                                                            <p class="m-0">Название блока</p>
-                                                        </div>
-                                                        <div class="col-8"><input type="text"
+                                                        <div class="col-8"><input v-show="input.isEdit" type="text"
                                                                                   class="form-control form-control-sm"
                                                                                   v-model="input.name">
+                                                            <p class="m-0" v-show="!input.isEdit"><b>{{input.name}}</b>
+                                                            </p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -37,12 +61,19 @@
                                                         </button>
                                                     </div>
                                                     <div v-for="(file,i) in input.content">
-                                                        <div class="row mt-3">
+                                                        <div class="row mt-3" v-show="!file.isEdit">
+                                                            <div class="col-6">
+                                                                <span class="badge">Отображаемое название</span>
+                                                                <p>{{file.name}}</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mt-3" v-show="file.isEdit">
                                                             <div class="col-6">
                                                                 <input type="text"
                                                                        class="form-control"
                                                                        v-model="file.name"
-                                                                       placeholder="Название файла">
+                                                                       placeholder="Название файла"
+                                                                >
                                                             </div>
                                                             <div class="col-6">
                                                                 <b-form-file v-model="file.content"
@@ -95,7 +126,7 @@
                     name: null,
                     vmodel: null,
                     file_name: null,
-                    isEdit: false,
+                    isEdit: true,
                 },
 
                 currentInput: {}
@@ -137,6 +168,8 @@
                     .then(function (response) {
                         console.log(response.data);
                     })
+
+                this.getSectionInfo()
             },
 
             addFileGroup() {
@@ -149,7 +182,6 @@
 
 
             addTextField() {
-                this.input.isEdit = true;
                 this.input.type = 'text';
                 this.input.position = this.inputs.length;
                 this.inputs.push(this.input);
