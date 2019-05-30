@@ -36,7 +36,7 @@ Route::get('/section-info', function () {
 
 Route::get('/section-content', 'SectionContentController@index');
 Route::post('/section-content', 'SectionContentController@store');
-Route::delete('/section-content/{id}', 'SectionContentController@delete');
+Route::delete('/section-content/{id}', 'SectionContentController@destroy');
 
 Auth::routes();
 

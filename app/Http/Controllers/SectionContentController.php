@@ -33,7 +33,6 @@ class SectionContentController extends Controller
 
             }
         }
-        return $inputs_send;
 
         if ($request->ajax()) {
             return response()->json($inputs_send, 200);
@@ -82,7 +81,7 @@ class SectionContentController extends Controller
                         ]);
                     }
 
-                    if (count($block->content) > 0) {
+                    if ($block->content && count($block->content) > 0) {
                         foreach ($block->content as $file) {
                             if ($request->hasFile($file->vmodel)) {
                                 $original = $request[$file->vmodel]->getClientOriginalName();
@@ -90,7 +89,9 @@ class SectionContentController extends Controller
                                 $fileName = basename($fileSave);
 
                                 if ($file->id) {
-                                    SectionsContent::find($block->id)->update([
+                                    $blockFile = SectionsContent::find($file->id);
+                                    Storage::delete('public/section-files/' . $blockFile->file_name);
+                                    $blockFile->update([
                                         'name' => $file->name,
                                         'file_name' => $fileName,
                                         'type' => $file->type,
@@ -117,7 +118,6 @@ class SectionContentController extends Controller
                     }
                 }
             }
-
             return response()->json(['message' => "OK",], 200);
         }
 
@@ -130,9 +130,12 @@ class SectionContentController extends Controller
             $sectionContent = SectionsContent::findOrFail($id);
             if ($sectionContent->childrenFiles->count() > 0) {
                 foreach ($sectionContent->childrenFiles as $file) {
-                    Storage::delete('public/public/section-files/' . $file->file_name);
+                    Storage::delete('public/section-files/' . $file->file_name);
                     $file->delete();
                 }
+            }
+            if ($sectionContent->type == 'file') {
+                Storage::delete('public/section-files/' . $sectionContent->file_name);
             }
             $sectionContent->delete();
             return response()->json(['message' => 'Content was deleted'], 200);

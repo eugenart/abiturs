@@ -26,8 +26,16 @@
                                                         </div>
                                                         <div class="col-4">
                                                             <p class="inline-block text-right m-0">
-                                                                <i class="fas fa-pen" style="cursor:pointer"
+                                                                <i v-if="!input.isEdit" class="fas fa-pen"
+                                                                   style="cursor:pointer"
                                                                    @click="input.isEdit = !input.isEdit"></i>
+                                                                <i v-if="input.isEdit" class="fas fa-times"
+                                                                   style="cursor:pointer"
+                                                                   @click="input.isEdit = !input.isEdit"></i>
+                                                                &nbsp;
+                                                                <i style="cursor:pointer"
+                                                                   class="fas fa-trash-alt"
+                                                                   @click="deleteInput(input.id)"></i>
                                                             </p>
                                                         </div>
                                                     </div>
@@ -52,6 +60,21 @@
                                                             <p class="m-0" v-show="!input.isEdit"><b>{{input.name}}</b>
                                                             </p>
                                                         </div>
+                                                        <div class="col-4">
+                                                            <p class="inline-block text-right m-0">
+                                                                <i v-if="!input.isEdit" class="fas fa-pen"
+                                                                   style="cursor:pointer"
+                                                                   @click="input.isEdit = !input.isEdit"></i>
+                                                                <i v-if="input.isEdit" class="fas fa-times"
+                                                                   style="cursor:pointer"
+                                                                   @click="input.isEdit = !input.isEdit"></i>
+                                                                &nbsp;
+                                                                <i style="cursor:pointer"
+                                                                   v-if="input.id"
+                                                                   class="fas fa-trash-alt"
+                                                                   @click="deleteInput(input.id)"></i>
+                                                            </p>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="card-body">
@@ -62,13 +85,29 @@
                                                     </div>
                                                     <div v-for="(file,i) in input.content">
                                                         <div class="row mt-3" v-show="!file.isEdit">
-                                                            <div class="col-6">
+                                                            <div class="col-4">
                                                                 <span class="badge">Отображаемое название</span>
                                                                 <p>{{file.name}}</p>
                                                             </div>
+                                                            <div class="col-4">
+                                                                <span class="badge">Загруженный файл</span>
+                                                                <p>{{file.content}}</p>
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <p class="inline-block text-right m-0">
+                                                                    <i class="fas fa-pen" style="cursor:pointer"
+                                                                       @click="file.isEdit = !file.isEdit"></i>
+                                                                    &nbsp;
+                                                                    <i style="cursor:pointer"
+                                                                       v-if="file.id"
+                                                                       class="fas fa-trash-alt"
+                                                                       @click="deleteInput(file.id)"></i>
+                                                                </p>
+                                                            </div>
                                                         </div>
                                                         <div class="row mt-3" v-show="file.isEdit">
-                                                            <div class="col-6">
+                                                            <div class="col-4">
+                                                                <span class="badge">Отображаемое название</span>
                                                                 <input type="text"
                                                                        class="form-control"
                                                                        v-model="file.name"
@@ -76,12 +115,20 @@
                                                                 >
                                                             </div>
                                                             <div class="col-6">
+                                                                <span
+                                                                    class="badge">Загруженный файл: {{file.content}}</span>
                                                                 <b-form-file v-model="file.content"
                                                                              placeholder="Выберите файл"
                                                                              drop-placeholder="Перенесите сюда файл"
                                                                              browse-text='Oбзор'
                                                                              :name='file.vmodel'
                                                                 ></b-form-file>
+                                                            </div>
+                                                            <div class="col-2">
+                                                                <p v-if="file.id" class="inline-block text-right m-0">
+                                                                    <i class="fas fa-times" style="cursor:pointer"
+                                                                       @click="file.isEdit = !file.isEdit"></i>
+                                                                </p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -140,34 +187,33 @@
 
         methods: {
 
-            async getSectionInfo() {
-                const data = await axios.get('/section-content')
-                this.inputs = data.data
+            deleteInput(id) {
+                axios.delete('/section-content/' + id)
+                this.getSectionInfo()
             },
 
-            sendForm() {
+            async getSectionInfo() {
+                let data = await axios.get('/section-content')
+                console.log(data.data)
+                this.inputs = data.data.slice()
+            },
+
+            async sendForm() {
                 let formData = new FormData();
                 formData.append('inputs', JSON.stringify(this.inputs));
-                console.log(this.inputs)
                 $.each(this.inputs, function (key, value) {
                     if (value.type === 'files') {
-                        console.log('if')
                         $.each(value.content, function (k, v) {
-                            console.log(v.vmodel, v.content)
                             formData.append(v.vmodel, v.content);
                         })
                     }
                 })
-                axios.post('/section-content', formData,
+                await axios.post('/section-content', formData,
                     {
                         headers: {
                             'Content-Type': 'multipart/form-data'
                         }
                     })
-                    .then(function (response) {
-                        console.log(response.data);
-                    })
-
                 this.getSectionInfo()
             },
 
