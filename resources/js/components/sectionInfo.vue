@@ -117,11 +117,11 @@
                                                             <div class="col-4">
                                                                 <p class="inline-block text-right m-0">
                                                                     <i class="fas fa-arrow-up up_down_arrow"
-                                                                       @click="changePosition(file.id, input.id, 'down')"
+                                                                       @click="changePosition(input.id, file.id, 'down')"
                                                                        v-show="file.position !== 0"
                                                                     ></i>
                                                                     <i class="fas fa-arrow-down up_down_arrow"
-                                                                       @click="changePosition(file.id, input.id, 'up')"
+                                                                       @click="changePosition(input.id, file.id, 'up')"
                                                                        v-show="file.position !== input.content.length-1"></i>
 
                                                                     <i class="fas fa-pen" style="cursor:pointer"
@@ -187,10 +187,12 @@
 
 <script>
     import {VueEditor} from "vue2-editor";
+    import sortByPos from "../helpers/sort"
 
     export default {
         components: {
-            VueEditor
+            VueEditor,
+            sortByPos
         },
         name: "sectionInfo",
         data() {
@@ -234,9 +236,15 @@
 
             async getSectionInfo() {
                 let data = await axios.get('/section-content')
-                console.log(data.data)
                 this.inputs = data.data.slice()
-                this.inputs = this.inputs.sort(this.sortByPos)
+                this.inputs = this.inputs.sort(sortByPos)
+
+                $.each(this.inputs, function (k, v) {
+
+                    if (v.type == 'files') {
+                        v.content = v.content.sort(sortByPos)
+                    }
+                })
             },
 
             sortByPos(a, b) {

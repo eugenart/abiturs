@@ -13,10 +13,12 @@ import 'font-awesome/css/font-awesome.min.css'
 
 window.$ = window.jQuery = jQuery;
 
+
 Vue.component('infoblock', require('./components/Infoblock').default);
 Vue.component('paragraph', require('./components/Section').default);
 Vue.component('slider', require('./components/Slider').default);
 Vue.component('sectioninfo', require('./components/sectionInfo').default);
+
 
 Vue.filter("formatDate", function (value) {
     if (value) {
