@@ -18,17 +18,17 @@ class PageController extends Controller
 
     public function route($route) {
         if ($route) {
-            $infoblock = Infoblock::where('url', $route)->get();
-            $section = Section::where('url', $route)->get();
-            if (count($infoblock) > 0) {
-                if ($infoblock[0]->sections->count() > 0) {
-                    return $infoblock[0]->sections->first();
+            $infoblock = Infoblock::where('url', $route)->first();
+            $section = Section::where('url', $route)->first();
+            if ($infoblock) {
+                if ($infoblock->sections->count() > 0) {
+                    return $infoblock->sections->first();
                 }
                 return $infoblock;
             }
 
-            if (count($section) > 0) {
-                return $section[0];
+            if ($section) {
+                return $section;
             }
 
             return 'no';
