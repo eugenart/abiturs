@@ -48,15 +48,32 @@ class SectionContentController extends Controller
             if (isset($request->updown)) {
                 if ($request->updown == 'up') {
                     $section = SectionsContent::find($request->parent_id);
-                    $section2 = SectionsContent::where('position', $section->position + 1)->where('parent_id', null)->first();
-                    $section2->update(['position' => $section->position]);
-                    $section->update(['position' => $section->position + 1]);
+                    if ($request->child_id) {
+                        $file = $section->childrenFiles->find($request->child_id);
+                        $file2 = $section->childrenFiles->where('position', $file->position + 1)->first();
+                        $file2->update(['position' => $file->position]);
+                        $file->update(['position' => $file->position + 1]);
+
+                    } else {
+                        $section2 = SectionsContent::where('position', $section->position + 1)->where('parent_id', null)->first();
+                        $section2->update(['position' => $section->position]);
+                        $section->update(['position' => $section->position + 1]);
+                    }
+
                 }
                 if ($request->updown == 'down') {
                     $section = SectionsContent::find($request->parent_id);
-                    $section2 = SectionsContent::where('position', $section->position - 1)->where('parent_id', null)->first();
-                    $section2->update(['position' => $section->position]);
-                    $section->update(['position' => $section->position - 1]);
+                    if ($request->child_id) {
+                        $file = $section->childrenFiles->find($request->child_id);
+                        $file2 = $section->childrenFiles->where('position', $file->position - 1)->first();
+                        $file2->update(['position' => $file->position]);
+                        $file->update(['position' => $file->position - 1]);
+                    } else {
+                        $section2 = SectionsContent::where('position', $section->position - 1)->where('parent_id', null)->first();
+                        $section2->update(['position' => $section->position]);
+                        $section->update(['position' => $section->position - 1]);
+                    }
+
                 }
                 return response()->json(['message' => "OK_up",], 200);
             }

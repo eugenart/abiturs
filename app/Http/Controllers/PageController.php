@@ -24,14 +24,15 @@ class PageController extends Controller
                 if ($infoblock->sections->count() > 0) {
                     return $infoblock->sections->first();
                 }
-                return $infoblock;
             }
 
             if ($section) {
                 return $section;
             }
 
-            return 'no';
+            $infoblocks = Infoblock::where('activity', true)->where('startPage', true)->get();
+            $slider = Slider::where('activity', true)->get();
+            return view('pages.home', compact('infoblocks', 'slider'));
 
         }
 
