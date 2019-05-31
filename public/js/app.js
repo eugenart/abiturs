@@ -3011,6 +3011,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -87472,6 +87473,7 @@ var render = function() {
                                             click: function($event) {
                                               return _vm.changePosition(
                                                 input.id,
+                                                "",
                                                 "down"
                                               )
                                             }
@@ -87496,6 +87498,7 @@ var render = function() {
                                             click: function($event) {
                                               return _vm.changePosition(
                                                 input.id,
+                                                "",
                                                 "up"
                                               )
                                             }
@@ -87641,6 +87644,7 @@ var render = function() {
                                       ],
                                       staticClass: "ql-editor",
                                       staticStyle: { "min-height": "0px" },
+                                      attrs: { id: "content-section" },
                                       domProps: {
                                         innerHTML: _vm._s(input.content)
                                       }
