@@ -44,6 +44,21 @@ class SectionContentController extends Controller
     function store(Request $request)
     {
         if ($request->ajax()) {
+
+            if(isset($request->updown)) {
+                if($request->updown == 'up') {
+                    $section = SectionsContent::find($request->parent_id)->get();
+                    SectionsContent::where('position', $section->position + 1)->where('parent_id', null)->update(['position' => $section->position]);
+                    $section->update(['position' => $section->position + 1]);
+                }
+                if($request->updown == 'down') {
+                    $section = SectionsContent::find($request->parent_id)->get();
+                    SectionsContent::where('position', $section->position - 1)->where('parent_id', null)->update(['position' => $section->position]);
+                    $section->update(['position' => $section->position - 1]);
+                }
+                return response()->json(['message' => "OK_up",], 200);
+            }
+
             $data = json_decode($request->inputs);
 
             foreach ($data as $block) {
