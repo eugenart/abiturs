@@ -9,13 +9,14 @@
                                 <div id="comps">
                                     <form @submit.prevent="sendForm" enctype="multipart/form-data" id="inputsForm">
                                         <input type="submit" class="btn btn-sm btn-success col-4">
-                                        <div v-for="(input,index) in inputs">
+                                        <div v-for="(input,index) in inputs" :key="input.position">
                                             <hr>
                                             <div class="card" v-if="input.type === 'text'">
                                                 <div class="card-header">
                                                     <div class="row">
                                                         <div class="col-8">
-                                                            <p class="badge m-0 p-0" v-show="input.isEdit">Название
+                                                            <p class="badge m-0 p-0" v-show="input.isEdit">
+                                                                Название
                                                                 блока</p>
                                                             <p class="m-0" v-show="!input.isEdit"><b>{{input.name}}</b>
                                                             </p>
@@ -26,6 +27,13 @@
                                                         </div>
                                                         <div class="col-4">
                                                             <p class="inline-block text-right m-0">
+                                                                <i class="fas fa-arrow-up up_down_arrow"
+                                                                   @click="changePosition(input.id, 'up')"
+                                                                   v-show="input.position !== 0"
+                                                                ></i>
+                                                                <i class="fas fa-arrow-down up_down_arrow"
+                                                                   @click="changePosition(input.id, 'down')"
+                                                                   v-show="input.position !== inputs.length-1"></i>
                                                                 <i v-if="!input.isEdit" class="fas fa-pen"
                                                                    style="cursor:pointer"
                                                                    @click="input.isEdit = !input.isEdit"></i>
@@ -53,8 +61,10 @@
                                             </div>
                                             <div v-if="input.type === 'files'" class="card mt-3">
                                                 <div class="card-header">
-                                                    <div class="row mb-3 mb-0" style="margin-bottom: 0 !important;">
-                                                        <div class="col-8"><input v-show="input.isEdit" type="text"
+                                                    <div class="row mb-3 mb-0"
+                                                         style="margin-bottom: 0 !important;">
+                                                        <div class="col-8"><input v-show="input.isEdit"
+                                                                                  type="text"
                                                                                   class="form-control form-control-sm"
                                                                                   v-model="input.name">
                                                             <p class="m-0" v-show="!input.isEdit"><b>{{input.name}}</b>
@@ -79,7 +89,8 @@
                                                 </div>
                                                 <div class="card-body">
                                                     <div class="col-4">
-                                                        <button type="button" class="btn btn-sm btn-primary col-12"
+                                                        <button type="button"
+                                                                class="btn btn-sm btn-primary col-12"
                                                                 @click="addDocField(index)">Add file
                                                         </button>
                                                     </div>
@@ -125,8 +136,10 @@
                                                                 ></b-form-file>
                                                             </div>
                                                             <div class="col-2">
-                                                                <p v-if="file.id" class="inline-block text-right m-0">
-                                                                    <i class="fas fa-times" style="cursor:pointer"
+                                                                <p v-if="file.id"
+                                                                   class="inline-block text-right m-0">
+                                                                    <i class="fas fa-times"
+                                                                       style="cursor:pointer"
                                                                        @click="file.isEdit = !file.isEdit"></i>
                                                                 </p>
                                                             </div>
@@ -186,6 +199,13 @@
         },
 
         methods: {
+
+            changePosition(id, type) {
+                axios.post('/section-content', {
+                    updown: type,
+                    parent_id: id
+                })
+            },
 
             deleteInput(id) {
                 axios.delete('/section-content/' + id)

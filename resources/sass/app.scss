@@ -6,6 +6,15 @@
 @import '~bootstrap/scss/bootstrap';
 
 
+.up_down_arrow:hover {
+    color: #0000F0;
+    cursor: pointer;
+}
+
+.fa-trash-alt {
+    color: red;
+}
+
 .bd-placeholder-img {
     font-size: 1.125rem;
     text-anchor: middle;

@@ -2979,6 +2979,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -3006,6 +3019,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     this.getSectionInfo();
   },
   methods: {
+    changePosition: function changePosition(id, type) {
+      axios.post('/section-content', {
+        updown: type,
+        parent_id: id
+      });
+    },
     deleteInput: function deleteInput(id) {
       axios.delete('/section-content/' + id);
       this.getSectionInfo();
@@ -87398,7 +87417,7 @@ var render = function() {
                       }),
                       _vm._v(" "),
                       _vm._l(_vm.inputs, function(input, index) {
-                        return _c("div", [
+                        return _c("div", { key: input.position }, [
                           _c("hr"),
                           _vm._v(" "),
                           input.type === "text"
@@ -87421,7 +87440,7 @@ var render = function() {
                                         },
                                         [
                                           _vm._v(
-                                            "Название\n                                                            блока"
+                                            "\n                                                            Название\n                                                            блока"
                                           )
                                         ]
                                       ),
@@ -87484,6 +87503,52 @@ var render = function() {
                                             "inline-block text-right m-0"
                                         },
                                         [
+                                          _c("i", {
+                                            directives: [
+                                              {
+                                                name: "show",
+                                                rawName: "v-show",
+                                                value: input.position !== 0,
+                                                expression:
+                                                  "input.position !== 0"
+                                              }
+                                            ],
+                                            staticClass:
+                                              "fas fa-arrow-up up_down_arrow",
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.changePosition(
+                                                  input.id,
+                                                  "up"
+                                                )
+                                              }
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          _c("i", {
+                                            directives: [
+                                              {
+                                                name: "show",
+                                                rawName: "v-show",
+                                                value:
+                                                  input.position !==
+                                                  _vm.inputs.length - 1,
+                                                expression:
+                                                  "input.position !== inputs.length-1"
+                                              }
+                                            ],
+                                            staticClass:
+                                              "fas fa-arrow-down up_down_arrow",
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.changePosition(
+                                                  input.id,
+                                                  "down"
+                                                )
+                                              }
+                                            }
+                                          }),
+                                          _vm._v(" "),
                                           !input.isEdit
                                             ? _c("i", {
                                                 staticClass: "fas fa-pen",

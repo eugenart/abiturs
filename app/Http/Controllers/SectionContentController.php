@@ -44,6 +44,21 @@ class SectionContentController extends Controller
     function store(Request $request)
     {
         if ($request->ajax()) {
+
+            if(($request->updown)) {
+                if($request->updown == 'up') {
+                    $section = SectionsContent::find($request->parent_id)->get();
+                    SectionsContent::where('position', $section->position + 1)->where('parent_id', null)->update(['position' => $section->position]);
+                    $section->update(['position' => $section->position + 1]);
+                }
+                if($request->updown == 'down') {
+                    $section = SectionsContent::find($request->parent_id)->get();
+                    SectionsContent::where('position', $section->position - 1)->where('parent_id', null)->update(['position' => $section->position]);
+                    $section->update(['position' => $section->position - 1]);
+                }
+                return response()->json(['message' => "OK_up",], 200);
+            }
+
             $data = json_decode($request->inputs);
 
             foreach ($data as $block) {
@@ -89,7 +104,9 @@ class SectionContentController extends Controller
                                 $fileName = basename($fileSave);
 
                                 if ($file->id) {
-                                    SectionsContent::find($block->id)->update([
+                                    $blockFile = SectionsContent::find($file->id);
+                                    Storage::delete('public/section-files/' . $blockFile->file_name);
+                                    $blockFile->update([
                                         'name' => $file->name,
                                         'file_name' => $fileName,
                                         'type' => $file->type,
@@ -116,7 +133,6 @@ class SectionContentController extends Controller
                     }
                 }
             }
-
             return response()->json(['message' => "OK",], 200);
         }
 
@@ -129,12 +145,12 @@ class SectionContentController extends Controller
             $sectionContent = SectionsContent::findOrFail($id);
             if ($sectionContent->childrenFiles->count() > 0) {
                 foreach ($sectionContent->childrenFiles as $file) {
-                    Storage::delete('public/public/section-files/' . $file->file_name);
+                    Storage::delete('public/section-files/' . $file->file_name);
                     $file->delete();
                 }
             }
             if ($sectionContent->type == 'file') {
-                Storage::delete('public/public/section-files/' . $sectionContent->file_name);
+                Storage::delete('public/section-files/' . $sectionContent->file_name);
             }
             $sectionContent->delete();
             return response()->json(['message' => 'Content was deleted'], 200);
