@@ -10798,6 +10798,12 @@ body {
  * Copyright (c) 2013, salesforce.com
  */
 
+#content-section img {
+  max-width: 80% !important;
+  display: block !important;
+  margin: auto !important;
+}
+
 .ql-container {
   box-sizing: border-box;
   font-family: Helvetica, Arial, sans-serif;

@@ -3011,6 +3011,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -87472,6 +87473,7 @@ var render = function() {
                                             click: function($event) {
                                               return _vm.changePosition(
                                                 input.id,
+                                                "",
                                                 "down"
                                               )
                                             }
@@ -87496,6 +87498,7 @@ var render = function() {
                                             click: function($event) {
                                               return _vm.changePosition(
                                                 input.id,
+                                                "",
                                                 "up"
                                               )
                                             }
@@ -87641,6 +87644,7 @@ var render = function() {
                                       ],
                                       staticClass: "ql-editor",
                                       staticStyle: { "min-height": "0px" },
+                                      attrs: { id: "content-section" },
                                       domProps: {
                                         innerHTML: _vm._s(input.content)
                                       }
@@ -106593,8 +106597,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _block__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./block */ "./resources/store/block.js");
 /* harmony import */ var _section__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./section */ "./resources/store/section.js");
 /* harmony import */ var _slider__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./slider */ "./resources/store/slider.js");
-/* harmony import */ var _sectioninfo__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./sectioninfo */ "./resources/store/sectioninfo.js");
-
 
 
 
@@ -106605,8 +106607,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
   modules: {
     block: _block__WEBPACK_IMPORTED_MODULE_2__["default"],
     section: _section__WEBPACK_IMPORTED_MODULE_3__["default"],
-    slider: _slider__WEBPACK_IMPORTED_MODULE_4__["default"],
-    sectioninfo: _sectioninfo__WEBPACK_IMPORTED_MODULE_5__["default"]
+    slider: _slider__WEBPACK_IMPORTED_MODULE_4__["default"]
   }
 }));
 
@@ -106786,125 +106787,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   getters: {
     SECTIONS: function SECTIONS(state) {
       return state.sections;
-    }
-  }
-});
-
-/***/ }),
-
-/***/ "./resources/store/sectioninfo.js":
-/*!****************************************!*\
-  !*** ./resources/store/sectioninfo.js ***!
-  \****************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  state: {
-    sectionsinfo: []
-  },
-  mutations: {
-    ADD_SECTIONSINFO: function ADD_SECTIONSINFO(state, payload) {
-      state.sectioninfo.push(payload);
-    },
-    SET_SECTIONSINFO: function SET_SECTIONSINFO(state, payload) {
-      state.sectioninfo = payload;
-    }
-  },
-  actions: {
-    SAVE_BLOCK: function () {
-      var _SAVE_BLOCK = _asyncToGenerator(
-      /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(context, payload) {
-        var formData, _ref, data;
-
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                formData = new FormData();
-                formData.append('name', payload.name);
-                formData.append('url', payload.url);
-                formData.append('menu', payload.menu);
-                formData.append('menuPriority', payload.menuPriority);
-                formData.append('startPage', payload.startPage);
-                formData.append('startPagePriority', payload.startPagePriority);
-                formData.append('activityFrom', payload.activityFrom);
-                formData.append('activityTo', payload.activityTo);
-                formData.append('activity', payload.activity);
-                formData.append('image', payload.image);
-                _context.next = 13;
-                return axios.post('/infoblock', formData, {
-                  headers: {
-                    'Content-Type': 'multipart/form-data'
-                  }
-                });
-
-              case 13:
-                _ref = _context.sent;
-                data = _ref.data;
-                context.commit('ADD_BLOCK', data.infoblock);
-
-              case 16:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee);
-      }));
-
-      function SAVE_BLOCK(_x, _x2) {
-        return _SAVE_BLOCK.apply(this, arguments);
-      }
-
-      return SAVE_BLOCK;
-    }(),
-    GET_SECTIONSINFO: function () {
-      var _GET_SECTIONSINFO = _asyncToGenerator(
-      /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(context, payload) {
-        var _ref2, data;
-
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                _context2.next = 2;
-                return axios.get('/section-content');
-
-              case 2:
-                _ref2 = _context2.sent;
-                data = _ref2.data;
-                context.commit('SET_SECTIONSINFO', data);
-
-              case 5:
-              case "end":
-                return _context2.stop();
-            }
-          }
-        }, _callee2);
-      }));
-
-      function GET_SECTIONSINFO(_x3, _x4) {
-        return _GET_SECTIONSINFO.apply(this, arguments);
-      }
-
-      return GET_SECTIONSINFO;
-    }()
-  },
-  getters: {
-    SECTIONSINFO: function SECTIONSINFO(state) {
-      return state.sectioninfo;
     }
   }
 });

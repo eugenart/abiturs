@@ -44,7 +44,6 @@ class SectionContentController extends Controller
     function store(Request $request)
     {
         if ($request->ajax()) {
-
             if (isset($request->updown)) {
                 if ($request->updown == 'up') {
                     $section = SectionsContent::find($request->parent_id);
