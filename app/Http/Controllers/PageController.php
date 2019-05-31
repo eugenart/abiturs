@@ -29,7 +29,6 @@ class PageController extends Controller
 
             if ($section) {
                 return view('pages.priem')->with('block', $section);
-                return $section;
             }
 
             $infoblocks = Infoblock::where('activity', true)->where('startPage', true)->get();

@@ -2813,6 +2813,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue2_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue2-editor */ "./node_modules/vue2-editor/dist/vue2-editor.common.js");
 /* harmony import */ var vue2_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue2_editor__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _helpers_sort__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../helpers/sort */ "./resources/js/helpers/sort.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -3011,9 +3012,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    VueEditor: vue2_editor__WEBPACK_IMPORTED_MODULE_1__["VueEditor"]
+    VueEditor: vue2_editor__WEBPACK_IMPORTED_MODULE_1__["VueEditor"],
+    sortByPos: _helpers_sort__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   name: "sectionInfo",
   data: function data() {
@@ -3063,9 +3066,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
               case 2:
                 data = _context.sent;
-                console.log(data.data);
                 this.inputs = data.data.slice();
-                this.inputs = this.inputs.sort(this.sortByPos);
+                this.inputs = this.inputs.sort(_helpers_sort__WEBPACK_IMPORTED_MODULE_2__["default"]);
+                $.each(this.inputs, function (k, v) {
+                  if (v.type == 'files') {
+                    v.content = v.content.sort(_helpers_sort__WEBPACK_IMPORTED_MODULE_2__["default"]);
+                  }
+                });
 
               case 6:
               case "end":
@@ -106330,6 +106337,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_sectionInfo_vue_vue_type_template_id_1ac6ceb8_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/helpers/sort.js":
+/*!**************************************!*\
+  !*** ./resources/js/helpers/sort.js ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function sortByPos(a, b) {
+  return a.position < b.position ? -1 : a.position > b.position ? 1 : 0;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (sortByPos);
 
 /***/ }),
 

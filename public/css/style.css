@@ -104,6 +104,12 @@ marquee {
     color: #2366a5;
 }
 
+.content-page img {
+    display: block;
+    width: 80%;
+    margin: auto;
+}
+
 /*@media screen and (max-width: 991px) {*/
 /*    .navbar-toggler {*/
 /*        display: block;*/

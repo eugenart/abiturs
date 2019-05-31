@@ -17,11 +17,11 @@
                                                         <div class="col-8">
                                                             <p class="m-0">
                                                                 <i class="fas fa-arrow-up up_down_arrow"
-                                                                   @click="changePosition(input.id, 'down')"
+                                                                   @click="changePosition(input.id, '', 'down')"
                                                                    v-show="input.position !== 0"
                                                                 ></i>
                                                                 <i class="fas fa-arrow-down up_down_arrow"
-                                                                   @click="changePosition(input.id, 'up')"
+                                                                   @click="changePosition(input.id, '', 'up')"
                                                                    v-show="input.position !== inputs.length-1"></i>
                                                             </p>
                                                             <p class="badge m-0 p-0" v-show="input.isEdit">
@@ -52,6 +52,7 @@
                                                 </div>
                                                 <div class="card-body">
                                                     <div class="ql-editor"
+                                                         id="content-section"
                                                          style="min-height: 0px;"
                                                          v-show="!input.isEdit"
                                                          v-html="input.content">
@@ -117,7 +118,7 @@
                                                             <div class="col-4">
                                                                 <p class="inline-block text-right m-0">
                                                                     <i class="fas fa-arrow-up up_down_arrow"
-                                                                       @click="changePosition(input.id, file.id,  'down')"
+                                                                       @click="changePosition(input.id, file.id, 'down')"
                                                                        v-show="file.position !== 0"
                                                                     ></i>
                                                                     <i class="fas fa-arrow-down up_down_arrow"
@@ -187,10 +188,12 @@
 
 <script>
     import {VueEditor} from "vue2-editor";
+    import sortByPos from "../helpers/sort"
 
     export default {
         components: {
-            VueEditor
+            VueEditor,
+            sortByPos
         },
         name: "sectionInfo",
         data() {
@@ -234,9 +237,15 @@
 
             async getSectionInfo() {
                 let data = await axios.get('/section-content')
-                console.log(data.data)
                 this.inputs = data.data.slice()
-                this.inputs = this.inputs.sort(this.sortByPos)
+                this.inputs = this.inputs.sort(sortByPos)
+
+                $.each(this.inputs, function (k, v) {
+
+                    if (v.type == 'files') {
+                        v.content = v.content.sort(sortByPos)
+                    }
+                })
             },
 
             sortByPos(a, b) {
@@ -296,5 +305,4 @@
 </script>
 
 <style scoped>
-
 </style>
