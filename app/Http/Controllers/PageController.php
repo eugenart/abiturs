@@ -22,11 +22,13 @@ class PageController extends Controller
             $section = Section::where('url', $route)->first();
             if ($infoblock) {
                 if ($infoblock->sections->count() > 0) {
-                    return $infoblock->sections->first();
+                    $section = $infoblock->sections->first();
+                    return view('pages.priem')->with('block', $section);
                 }
             }
 
             if ($section) {
+                return view('pages.priem')->with('block', $section);
                 return $section;
             }
 

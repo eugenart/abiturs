@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="row">
-                    <div class="col-8">
+                    <div class="col-9">
                         <div class="card">
                             <div class="card-body">
                                 <div id="comps">
@@ -15,6 +15,15 @@
                                                 <div class="card-header">
                                                     <div class="row">
                                                         <div class="col-8">
+                                                            <p class="m-0">
+                                                                <i class="fas fa-arrow-up up_down_arrow"
+                                                                   @click="changePosition(input.id, 'down')"
+                                                                   v-show="input.position !== 0"
+                                                                ></i>
+                                                                <i class="fas fa-arrow-down up_down_arrow"
+                                                                   @click="changePosition(input.id, 'up')"
+                                                                   v-show="input.position !== inputs.length-1"></i>
+                                                            </p>
                                                             <p class="badge m-0 p-0" v-show="input.isEdit">
                                                                 Название
                                                                 блока</p>
@@ -27,13 +36,6 @@
                                                         </div>
                                                         <div class="col-4">
                                                             <p class="inline-block text-right m-0">
-                                                                <i class="fas fa-arrow-up up_down_arrow"
-                                                                   @click="changePosition(input.id, 'down')"
-                                                                   v-show="input.position !== 0"
-                                                                ></i>
-                                                                <i class="fas fa-arrow-down up_down_arrow"
-                                                                   @click="changePosition(input.id, 'up')"
-                                                                   v-show="input.position !== inputs.length-1"></i>
                                                                 <i v-if="!input.isEdit" class="fas fa-pen"
                                                                    style="cursor:pointer"
                                                                    @click="input.isEdit = !input.isEdit"></i>
@@ -63,10 +65,18 @@
                                                 <div class="card-header">
                                                     <div class="row mb-3 mb-0"
                                                          style="margin-bottom: 0 !important;">
-                                                        <div class="col-8"><input v-show="input.isEdit"
-                                                                                  type="text"
-                                                                                  class="form-control form-control-sm"
-                                                                                  v-model="input.name">
+                                                        <div class="col-8">
+                                                            <p><i class="fas fa-arrow-up up_down_arrow"
+                                                                  @click="changePosition(input.id, null, 'down')"
+                                                                  v-show="input.position !== 0"
+                                                            ></i>
+                                                                <i class="fas fa-arrow-down up_down_arrow"
+                                                                   @click="changePosition(input.id, null, 'up')"
+                                                                   v-show="input.position !== inputs.length-1"></i></p>
+                                                            <input v-show="input.isEdit"
+                                                                   type="text"
+                                                                   class="form-control form-control-sm"
+                                                                   v-model="input.name">
                                                             <p class="m-0" v-show="!input.isEdit"><b>{{input.name}}</b>
                                                             </p>
                                                         </div>
@@ -106,6 +116,14 @@
                                                             </div>
                                                             <div class="col-4">
                                                                 <p class="inline-block text-right m-0">
+                                                                    <i class="fas fa-arrow-up up_down_arrow"
+                                                                       @click="changePosition(input.id, file.id,  'down')"
+                                                                       v-show="file.position !== 0"
+                                                                    ></i>
+                                                                    <i class="fas fa-arrow-down up_down_arrow"
+                                                                       @click="changePosition(input.id, file.id, 'up')"
+                                                                       v-show="file.position !== input.content.length-1"></i>
+
                                                                     <i class="fas fa-pen" style="cursor:pointer"
                                                                        @click="file.isEdit = !file.isEdit"></i>
                                                                     &nbsp;
@@ -153,7 +171,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-3">
                         <div class="card">
                             <div class="card-body">
                                 <button class="btn btn-sm btn-primary col-12 mb-2" @click="addTextField">Text</button>
@@ -200,11 +218,13 @@
 
         methods: {
 
-            changePosition(id, type) {
+            changePosition(id, cId, type,) {
                 axios.post('/section-content', {
                     updown: type,
-                    parent_id: id
+                    parent_id: id,
+                    child_id: cId
                 })
+                this.getSectionInfo()
             },
 
             deleteInput(id) {
@@ -216,6 +236,11 @@
                 let data = await axios.get('/section-content')
                 console.log(data.data)
                 this.inputs = data.data.slice()
+                this.inputs = this.inputs.sort(this.sortByPos)
+            },
+
+            sortByPos(a, b) {
+                return ((a.position < b.position) ? -1 : ((a.position > b.position) ? 1 : 0));
             },
 
             async sendForm() {
