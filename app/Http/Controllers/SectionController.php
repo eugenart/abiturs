@@ -72,7 +72,11 @@ class SectionController extends Controller
     public function destroy(Request $request, $id) {
         if ($request->ajax()) {
             $section = Section::findOrFail($id);
-            $section->childrenSections->count() !==0 ? $section->childrenSections->update(['sectionID', '']) : null;
+            if($section->childrenSections->count() !==0) {
+                foreach ($section->childrenSections as $subSection) {
+                    $subSection->delete();
+                }
+            };
             $section->delete();
             return response()->json(['message' => 'Section was deleted'], 200);
         }
