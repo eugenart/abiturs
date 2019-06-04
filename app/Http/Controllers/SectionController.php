@@ -34,7 +34,8 @@ class SectionController extends Controller
                 'activityFrom' => $request->activityFrom,
                 'activityTo' => $request->activityTo,
                 'sectionID' => $request->sectionID,
-                'infoblockID' => $request->infoblockID,
+                'infoblockID' => $request->sectionID? null : $request->infoblockID,
+                'isFolder' => $request->isFolder? 1 : 0,
             ]);
             return response()->json([
                 'message' => "Section was created",
@@ -56,8 +57,6 @@ class SectionController extends Controller
                 'activity' => $request->activity? 1 : 0,
                 'activityFrom' => $request->activityFrom,
                 'activityTo' => $request->activityTo,
-                'sectionID' => $request->sectionID,
-                'infoblockID' => $request->infoblockID,
             ]);
             return response()->json([
                 'message' => "Section was updated"

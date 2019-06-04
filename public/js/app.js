@@ -2379,6 +2379,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Section',
   data: function data() {
@@ -86744,6 +86751,33 @@ var render = function() {
                               _c("div", { staticClass: "col-3" }, [
                                 _c("p", [
                                   _c("span", { staticClass: "float-right" }, [
+                                    sec.isFolder
+                                      ? _c("i", {
+                                          directives: [
+                                            {
+                                              name: "b-tooltip",
+                                              rawName: "v-b-tooltip.hover",
+                                              modifiers: { hover: true }
+                                            }
+                                          ],
+                                          staticClass: "fas fa-file-medical",
+                                          staticStyle: {
+                                            "font-size": "20px",
+                                            cursor: "pointer"
+                                          },
+                                          attrs: { title: "Добавить элемент" },
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.changeParents(
+                                                section.id,
+                                                sec.id,
+                                                false
+                                              )
+                                            }
+                                          }
+                                        })
+                                      : _vm._e(),
+                                    _vm._v(" "),
                                     sec.activity
                                       ? _c("i", {
                                           staticClass: "far fa-eye",
