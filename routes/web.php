@@ -13,7 +13,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', 'PageController@index')->name('pages.index');
+
 
 Route::get('/infoblocks', 'InfoblockController@index')->name('infoblock.index');
 Route::post('/infoblock', 'InfoblockController@store')->name('infoblock.store');
@@ -41,3 +41,6 @@ Route::delete('/section-content/{id}', 'SectionContentController@destroy');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/', 'PageController@index')->name('pages.index');
+Route::get('/{route}', 'PageController@route')->name('pages.route');

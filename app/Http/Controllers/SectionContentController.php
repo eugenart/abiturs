@@ -44,6 +44,7 @@ class SectionContentController extends Controller
     function store(Request $request)
     {
         if ($request->ajax()) {
+
             if (isset($request->updown)) {
                 if ($request->updown == 'up') {
                     $section = SectionsContent::find($request->parent_id);
@@ -120,17 +121,12 @@ class SectionContentController extends Controller
                                 $original = $request[$file->vmodel]->getClientOriginalName();
                                 $fileSave = $request[$file->vmodel]->store('public/section-files');
                                 $fileName = basename($fileSave);
-
                                 if ($file->id) {
                                     $blockFile = SectionsContent::find($file->id);
                                     Storage::delete('public/section-files/' . $blockFile->file_name);
                                     $blockFile->update([
                                         'name' => $file->name,
                                         'file_name' => $fileName,
-                                        'type' => $file->type,
-                                        'vmodel' => $file->vmodel,
-                                        'position' => $file->position,
-                                        'parent_id' => $group->id,
                                         'content' => $original,
                                     ]);
                                 } else {
@@ -146,7 +142,15 @@ class SectionContentController extends Controller
                                 }
 
 
+                            } else {
+                                if ($file->id) {
+                                    $blockFile = SectionsContent::find($file->id);
+                                    $blockFile->update([
+                                        'name' => $file->name,
+                                    ]);
+                                }
                             }
+
                         }
                     }
                 }

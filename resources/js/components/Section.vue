@@ -150,7 +150,7 @@
                                                     <div class="col-9">
                                                         <p>
                                                             <i class="far fa-file-alt"></i>
-                                                            <span>{{sec.name}}</span>
+                                                            <a :href="'/section-content/' + sec.id"><span>{{sec.name}}</span></a>
                                                         </p>
                                                     </div>
                                                     <div class="col-3">

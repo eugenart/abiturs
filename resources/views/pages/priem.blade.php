@@ -1,42 +1,70 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Прием</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="{{ asset('css/priem.css') }}" rel="stylesheet">
-</head>
-<body>
-<div class="container">
-    <div class="row header p-3">
-        <div class="col-6">
-            <img src="/images/logo_mrsu.png" class="mrsu-logo-img" alt="">
-        </div>
-        <div class="col-6 justify-content-end d-flex align-items-center p-0">
-            <img src="storage/images/icon_eng.gif" class="mr-3" width="20" height="13" alt="">
-            <img src="storage/images/eye.png" class="mr-2" width="22" height="13" alt="">
-            <button class="navbar-toggler d-lg-none d-md-block" type="button" data-toggle="collapse"
-                    data-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="fas fa-bars"></i>
-            </button>
+@extends('pages.layout')
+
+@section('page')
+    <div class="row">
+        <div class="col-12">
+            <marquee behavior="" direction="" class="mt-2">
+                &bull; Бегущая строка
+                &bull; Бегущая строка
+                &bull; Бегущая строка
+                &bull; Бегущая строка &bull;
+            </marquee>
         </div>
     </div>
-    <hr class="mrsu-hr mrsu-bg w-100">
-</div>
-</body>
-<script
-    src="https://code.jquery.com/jquery-3.4.1.min.js"
-    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-    crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-</html>
+    <div class="row">
+        <div class="col-12">
+            <a href="/">Главная</a> / <a href="{{ $block->infoblock->url }}">{{ $block->infoblock->name }}</a> / <a href="{{ $block->url }}">{{ $block->name }}</a>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-9">
+            <div class="row">
+                <div class="col-12">
+                    <h6 class="text-center mrsu-uppertext pt-3 text-primary font-weight-bold">
+                        {{ $block->name }}
+                    </h6>
+                    <hr class="mrsu-bg p-0 m-0">
+                </div>
+                <div class="col-12 pt-2 content-page">
+                    @foreach($block->sectionContent->sortBy('position') as $content)
+                        @if ($content->type == 'text')
+                            <div>{!! nl2br($content->content) !!}</div>
+                        @else
+                            <p class="m-0 font-weight-bolder">{{ $content->name }}:</p>
+                            <p>
+                                @foreach($content->childrenFiles->sortBy('position') as $file)
+
+                                    <a href="{{ asset('storage/section-files/' . $file->file_name) }}">{{ $file->name }};</a>&nbsp;
+                                @endforeach
+                            </p>
+                        @endif
+                            <hr>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="mrsu-card pt-3 pb-1">
+                <p class="w-100 mrsu-uppertext title-text text-center p-1">Бакалавриат и специалитет</p>
+                <ul class="list-unstyled pl-3">
+                    {{--                    <li class="mrsu-uppertext"><a href="">Нормативные документы</a></li>--}}
+                    {{--                    <li>--}}
+                    {{--                        <ul class="list-unstyled pl-4">--}}
+                    {{--                            <li><a href="">Документы приема</a></li>--}}
+                    {{--                            <li><a href="">Стастистика приема документов</a></li>--}}
+                    {{--                            <li><a href="">Списки успешно сдавших</a></li>--}}
+                    {{--                            <li><a href="">Приказы о зачислении</a></li>--}}
+                    {{--                        </ul>--}}
+                    {{--                    </li>--}}
+                    @foreach($block->infoblock->sections as $section)
+                        <li class="mrsu-uppertext"><a href="{{ $section->url }}">{{ $section->name }}</a></li>
+                    @endforeach
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+@endsection
+

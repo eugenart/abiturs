@@ -236,7 +236,7 @@
             },
 
             async getSectionInfo() {
-                let data = await axios.get('/section-content')
+                let data = await axios.get('/section-content/')
                 this.inputs = data.data.slice()
                 this.inputs = this.inputs.sort(sortByPos)
 

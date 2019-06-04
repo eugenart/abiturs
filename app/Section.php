@@ -20,7 +20,7 @@ class Section extends Model
         return $this->hasMany(self::class, 'sectionID');
     }
 
-    public function childrenSectionContent() {
+    public function sectionContent() {
         return $this->hasMany(SectionsContent::class, 'section_id');
     }
 }

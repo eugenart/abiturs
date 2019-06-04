@@ -3063,7 +3063,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return axios.get('/section-content');
+                return axios.get('/section-content/');
 
               case 2:
                 data = _context.sent;
@@ -86662,7 +86662,15 @@ var render = function() {
                                 _c("p", [
                                   _c("i", { staticClass: "far fa-file-alt" }),
                                   _vm._v(" "),
-                                  _c("span", [_vm._v(_vm._s(sec.name))])
+                                  _c(
+                                    "a",
+                                    {
+                                      attrs: {
+                                        href: "/section-content/" + sec.id
+                                      }
+                                    },
+                                    [_c("span", [_vm._v(_vm._s(sec.name))])]
+                                  )
                                 ])
                               ]),
                               _vm._v(" "),
