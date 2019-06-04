@@ -42,6 +42,7 @@ export default {
                 activityFrom: payload.activityFrom,
                 activityTo: payload.activityTo,
                 activity: payload.activity,
+                isFolder: payload.isFolder
             });
             context.commit('ADD_SECTION', data.section)
         },
@@ -58,6 +59,7 @@ export default {
                 activityFrom: payload.activityFrom,
                 activityTo: payload.activityTo,
                 activity: payload.activity,
+                isFolder: payload.isFolder
             });
             context.commit('EDIT_SECTION', payload)
         },

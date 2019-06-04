@@ -2372,6 +2372,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Section',
   data: function data() {
@@ -2385,12 +2392,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         activityFrom: null,
         activityTo: null,
         sectionID: null,
-        infoblockID: null
+        infoblockID: null,
+        isFolder: false
       },
       isSectionUpdate: false,
       currentSection: {},
       currentBlockID: null,
-      formStatus: false
+      formStatus: false,
+      isFolder: false
     };
   },
   mounted: function mounted() {
@@ -2413,10 +2422,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.section = section;
       this.updateSection();
     },
-    chageParents: function chageParents(block, section) {
+    changeParents: function changeParents(block, section, folder) {
+      this.isFolder = folder;
       this.isSectionUpdate = false;
       this.clearCurrentSection();
       console.log(block, section);
+      this.section.isFolder = folder;
       this.section.infoblockID = block;
       this.section.sectionID = section;
     },
@@ -86228,38 +86239,53 @@ var render = function() {
                               ]),
                               _vm._v(" "),
                               _c("div", { staticClass: "row" }, [
-                                _c("div", { staticClass: "form-group col-6" }, [
-                                  _c("label", { staticClass: "badge" }, [
-                                    _vm._v("Ссылка на подраздел")
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("input", {
+                                _c(
+                                  "div",
+                                  {
                                     directives: [
                                       {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.section.url,
-                                        expression: "section.url"
+                                        name: "show",
+                                        rawName: "v-show",
+                                        value: !_vm.isFolder,
+                                        expression: "!isFolder"
                                       }
                                     ],
-                                    staticClass: "form-control form-control-sm",
-                                    attrs: { type: "text", required: "" },
-                                    domProps: { value: _vm.section.url },
-                                    on: {
-                                      keyup: _vm.transliterate,
-                                      input: function($event) {
-                                        if ($event.target.composing) {
-                                          return
+                                    staticClass: "form-group col-6"
+                                  },
+                                  [
+                                    _c("label", { staticClass: "badge" }, [
+                                      _vm._v("Ссылка на подраздел")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.section.url,
+                                          expression: "section.url"
                                         }
-                                        _vm.$set(
-                                          _vm.section,
-                                          "url",
-                                          $event.target.value
-                                        )
+                                      ],
+                                      staticClass:
+                                        "form-control form-control-sm",
+                                      attrs: { type: "text", required: "" },
+                                      domProps: { value: _vm.section.url },
+                                      on: {
+                                        keyup: _vm.transliterate,
+                                        input: function($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.$set(
+                                            _vm.section,
+                                            "url",
+                                            $event.target.value
+                                          )
+                                        }
                                       }
-                                    }
-                                  })
-                                ]),
+                                    })
+                                  ]
+                                ),
                                 _vm._v(" "),
                                 _c("p", [
                                   _vm._v(
@@ -86275,6 +86301,10 @@ var render = function() {
                                       _vm._s(_vm.section.sectionID) +
                                       " "
                                   )
+                                ]),
+                                _vm._v(" "),
+                                _c("p", [
+                                  _vm._v(" -- " + _vm._s(_vm.isFolder) + " --")
                                 ])
                               ])
                             ]
@@ -86639,6 +86669,31 @@ var render = function() {
                                     modifiers: { hover: true }
                                   }
                                 ],
+                                staticClass: "fas fa-folder-plus",
+                                staticStyle: {
+                                  "font-size": "20px",
+                                  cursor: "pointer"
+                                },
+                                attrs: { title: "Добавить папку" },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.changeParents(
+                                      section.id,
+                                      null,
+                                      true
+                                    )
+                                  }
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("i", {
+                                directives: [
+                                  {
+                                    name: "b-tooltip",
+                                    rawName: "v-b-tooltip.hover",
+                                    modifiers: { hover: true }
+                                  }
+                                ],
                                 staticClass: "fas fa-file-medical",
                                 staticStyle: {
                                   "font-size": "20px",
@@ -86647,7 +86702,11 @@ var render = function() {
                                 attrs: { title: "Добавить элемент" },
                                 on: {
                                   click: function($event) {
-                                    return _vm.chageParents(section.id, null)
+                                    return _vm.changeParents(
+                                      section.id,
+                                      null,
+                                      false
+                                    )
                                   }
                                 }
                               })
@@ -86664,7 +86723,11 @@ var render = function() {
                             _c("div", { staticClass: "row" }, [
                               _c("div", { staticClass: "col-9" }, [
                                 _c("p", [
-                                  _c("i", { staticClass: "far fa-file-alt" }),
+                                  !sec.isFolder
+                                    ? _c("i", {
+                                        staticClass: "far fa-file-alt"
+                                      })
+                                    : _c("i", { staticClass: "far fa-folder" }),
                                   _vm._v(" "),
                                   _c(
                                     "a",
@@ -106697,7 +106760,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   startPagePriority: payload.startPagePriority,
                   activityFrom: payload.activityFrom,
                   activityTo: payload.activityTo,
-                  activity: payload.activity
+                  activity: payload.activity,
+                  isFolder: payload.isFolder
                 });
 
               case 2:
@@ -106730,7 +106794,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         startPagePriority: payload.startPagePriority,
         activityFrom: payload.activityFrom,
         activityTo: payload.activityTo,
-        activity: payload.activity
+        activity: payload.activity,
+        isFolder: payload.isFolder
       });
       context.commit('EDIT_SECTION', payload);
     },

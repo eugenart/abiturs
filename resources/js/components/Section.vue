@@ -29,7 +29,7 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="form-group col-6">
+                                                <div class="form-group col-6" v-show='!isFolder'>
                                                     <label class="badge">Ссылка на подраздел</label>
                                                     <input v-model="section.url" type="text"
                                                            class="form-control form-control-sm" required
@@ -38,6 +38,7 @@
 
                                                 <p>Блок - {{section.infoblockID}} </p>
                                                 <p> Секция - {{section.sectionID}} </p>
+                                                <p> -- {{isFolder}} --</p>
                                             </div>
                                         </b-tab>
                                         <b-tab title="Отображение и приоритет">
@@ -135,10 +136,15 @@
                                                 </div>
                                                 <div class="col-6 float-right">
                                                     <p class="text-right m-0">
+                                                        <i class="fas fa-folder-plus"
+                                                           style="font-size: 20px; cursor: pointer"
+                                                           v-b-tooltip.hover title="Добавить папку"
+                                                           @click="changeParents(section.id, null, true);"
+                                                        ></i>
                                                         <i style="font-size: 20px; cursor: pointer"
                                                            class="fas fa-file-medical"
                                                            v-b-tooltip.hover title="Добавить элемент"
-                                                           @click="chageParents(section.id, null)">
+                                                           @click="changeParents(section.id, null, false)">
                                                         </i>
                                                     </p>
                                                 </div>
@@ -149,7 +155,8 @@
                                                 <div class="row">
                                                     <div class="col-9">
                                                         <p>
-                                                            <i class="far fa-file-alt"></i>
+                                                            <i v-if="!sec.isFolder" class="far fa-file-alt"></i>
+                                                            <i v-else class="far fa-folder"></i>
                                                             <a :href="'/section-content/' + sec.id"><span>{{sec.name}}</span></a>
                                                         </p>
                                                     </div>
@@ -202,11 +209,13 @@
                     activityTo: null,
                     sectionID: null,
                     infoblockID: null,
+                    isFolder: false
                 },
                 isSectionUpdate: false,
                 currentSection: {},
                 currentBlockID: null,
-                formStatus: false
+                formStatus: false,
+                isFolder: false,
             }
         },
 
@@ -238,10 +247,12 @@
                 this.updateSection()
             },
 
-            chageParents(block, section) {
+            changeParents(block, section, folder) {
+                this.isFolder = folder
                 this.isSectionUpdate = false;
                 this.clearCurrentSection();
                 console.log(block, section)
+                this.section.isFolder = folder;
                 this.section.infoblockID = block;
                 this.section.sectionID = section;
             },
