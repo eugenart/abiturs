@@ -2378,6 +2378,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Section',
   data: function data() {
@@ -86722,7 +86723,11 @@ var render = function() {
                             _c("div", { staticClass: "row" }, [
                               _c("div", { staticClass: "col-9" }, [
                                 _c("p", [
-                                  _c("i", { staticClass: "far fa-file-alt" }),
+                                  !sec.isFolder
+                                    ? _c("i", {
+                                        staticClass: "far fa-file-alt"
+                                      })
+                                    : _c("i", { staticClass: "far fa-folder" }),
                                   _vm._v(" "),
                                   _c(
                                     "a",
