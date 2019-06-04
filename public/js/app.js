@@ -2386,6 +2386,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Section',
   data: function data() {
@@ -86736,15 +86738,17 @@ var render = function() {
                                       })
                                     : _c("i", { staticClass: "far fa-folder" }),
                                   _vm._v(" "),
-                                  _c(
-                                    "a",
-                                    {
-                                      attrs: {
-                                        href: "/section-content/" + sec.id
-                                      }
-                                    },
-                                    [_c("span", [_vm._v(_vm._s(sec.name))])]
-                                  )
+                                  !sec.isFolder
+                                    ? _c(
+                                        "a",
+                                        {
+                                          attrs: {
+                                            href: "/section-content/" + sec.id
+                                          }
+                                        },
+                                        [_c("span", [_vm._v(_vm._s(sec.name))])]
+                                      )
+                                    : _c("span", [_vm._v(_vm._s(sec.name))])
                                 ])
                               ]),
                               _vm._v(" "),

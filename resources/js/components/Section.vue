@@ -157,7 +157,9 @@
                                                         <p>
                                                             <i v-if="!sec.isFolder" class="far fa-file-alt"></i>
                                                             <i v-else class="far fa-folder"></i>
-                                                            <a :href="'/section-content/' + sec.id"><span>{{sec.name}}</span></a>
+                                                            <a v-if="!sec.isFolder"
+                                                               :href="'/section-content/' + sec.id"><span>{{sec.name}}</span></a>
+                                                            <span v-else>{{sec.name}}</span>
                                                         </p>
                                                     </div>
                                                     <div class="col-3">
