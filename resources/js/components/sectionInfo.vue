@@ -195,6 +195,7 @@
             VueEditor,
             sortByPos
         },
+        props: ['sectionId'],
         name: "sectionInfo",
         data() {
             return {
@@ -202,6 +203,7 @@
                 input: {
                     type: null,
                     id: null,
+                    section_id: null,
                     position: null,
                     content: null,
                     name: null,
@@ -236,7 +238,7 @@
             },
 
             async getSectionInfo() {
-                let data = await axios.get('/section-content')
+                let data = await axios.get('/section-content/' + this.sectionId)
                 this.inputs = data.data.slice()
                 this.inputs = this.inputs.sort(sortByPos)
 
@@ -272,6 +274,7 @@
             },
 
             addFileGroup() {
+                this.input.section_id = this.sectionId;
                 this.input.type = 'files';
                 this.input.position = this.inputs.length;
                 this.input.vmodel = '';
@@ -281,6 +284,7 @@
 
 
             addTextField() {
+                this.input.section_id = this.sectionId;
                 this.input.type = 'text';
                 this.input.position = this.inputs.length;
                 this.inputs.push(this.input);

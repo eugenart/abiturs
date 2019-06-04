@@ -3019,6 +3019,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     VueEditor: vue2_editor__WEBPACK_IMPORTED_MODULE_1__["VueEditor"],
     sortByPos: _helpers_sort__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
+  props: ['sectionId'],
   name: "sectionInfo",
   data: function data() {
     return {
@@ -3026,6 +3027,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       input: {
         type: null,
         id: null,
+        section_id: null,
         position: null,
         content: null,
         name: null,
@@ -3063,7 +3065,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return axios.get('/section-content');
+                return axios.get('/section-content/' + this.sectionId);
 
               case 2:
                 data = _context.sent;
@@ -3135,6 +3137,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return sendForm;
     }(),
     addFileGroup: function addFileGroup() {
+      this.input.section_id = this.sectionId;
       this.input.type = 'files';
       this.input.position = this.inputs.length;
       this.input.vmodel = '';
@@ -3142,6 +3145,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.clearCurrentInput();
     },
     addTextField: function addTextField() {
+      this.input.section_id = this.sectionId;
       this.input.type = 'text';
       this.input.position = this.inputs.length;
       this.inputs.push(this.input);
@@ -86662,7 +86666,15 @@ var render = function() {
                                 _c("p", [
                                   _c("i", { staticClass: "far fa-file-alt" }),
                                   _vm._v(" "),
-                                  _c("span", [_vm._v(_vm._s(sec.name))])
+                                  _c(
+                                    "a",
+                                    {
+                                      attrs: {
+                                        href: "/section-content/" + sec.id
+                                      }
+                                    },
+                                    [_c("span", [_vm._v(_vm._s(sec.name))])]
+                                  )
                                 ])
                               ]),
                               _vm._v(" "),

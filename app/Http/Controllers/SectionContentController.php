@@ -8,37 +8,40 @@ use Illuminate\Support\Facades\Storage;
 
 class SectionContentController extends Controller
 {
-    function index(Request $request)
+    function index(Request $request, $id)
     {
-        $inputs = SectionsContent::all();
 
-        $inputs_send = [];
-
-        foreach ($inputs as $input) {
-            if ($input->type == 'text') {
-                $input->isEdit = false;
-                $inputs_send[] = $input;
-            }
-            if ($input->type == 'files') {
-                if ($input->childrenFiles->count() > 0) {
-                    $files = [];
-                    foreach ($input->childrenFiles as $file) {
-                        $file->isEdit = false;
-                        $files[] = $file;
-                    }
-                    $input->content = $files;
-                }
-                $input->isEdit = false;
-                $inputs_send[] = $input;
-
-            }
-        }
 
         if ($request->ajax()) {
+
+            $inputs = SectionsContent::where('section_id', $id)->get();
+
+            $inputs_send = [];
+
+            foreach ($inputs as $input) {
+                if ($input->type == 'text') {
+                    $input->isEdit = false;
+                    $inputs_send[] = $input;
+                }
+                if ($input->type == 'files') {
+                    if ($input->childrenFiles->count() > 0) {
+                        $files = [];
+                        foreach ($input->childrenFiles as $file) {
+                            $file->isEdit = false;
+                            $files[] = $file;
+                        }
+                        $input->content = $files;
+                    }
+                    $input->isEdit = false;
+                    $inputs_send[] = $input;
+
+                }
+            }
+
             return response()->json($inputs_send, 200);
         }
 
-        return view('structure.sectionInfo');
+        return view('structure.sectionInfo')->with('id', $id);
     }
 
     function store(Request $request)
@@ -91,6 +94,7 @@ class SectionContentController extends Controller
                         ]);
                     } else {
                         SectionsContent::create([
+                            'section_id' => $block->section_id,
                             'name' => $block->name,
                             'type' => $block->type,
                             'position' => $block->position,
@@ -109,6 +113,7 @@ class SectionContentController extends Controller
                         ]);
                     } else {
                         $group = SectionsContent::create([
+                            'section_id' => $block->section_id,
                             'name' => $block->name,
                             'type' => $block->type,
                             'position' => $block->position,
