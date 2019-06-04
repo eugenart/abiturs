@@ -2372,6 +2372,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Section',
   data: function data() {
@@ -2385,12 +2391,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         activityFrom: null,
         activityTo: null,
         sectionID: null,
-        infoblockID: null
+        infoblockID: null,
+        isFolder: false
       },
       isSectionUpdate: false,
       currentSection: {},
       currentBlockID: null,
-      formStatus: false
+      formStatus: false,
+      isFolder: false
     };
   },
   mounted: function mounted() {
@@ -2413,10 +2421,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.section = section;
       this.updateSection();
     },
-    chageParents: function chageParents(block, section) {
+    changeParents: function changeParents(block, section, folder) {
+      this.isFolder = folder;
       this.isSectionUpdate = false;
       this.clearCurrentSection();
       console.log(block, section);
+      this.section.isFolder = folder;
       this.section.infoblockID = block;
       this.section.sectionID = section;
     },
@@ -3019,6 +3029,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     VueEditor: vue2_editor__WEBPACK_IMPORTED_MODULE_1__["VueEditor"],
     sortByPos: _helpers_sort__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
+  props: ['sectionId'],
   name: "sectionInfo",
   data: function data() {
     return {
@@ -3026,6 +3037,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       input: {
         type: null,
         id: null,
+        section_id: null,
         position: null,
         content: null,
         name: null,
@@ -3063,7 +3075,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return axios.get('/section-content/');
+                return axios.get('/section-content/' + this.sectionId);
 
               case 2:
                 data = _context.sent;
@@ -3135,6 +3147,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return sendForm;
     }(),
     addFileGroup: function addFileGroup() {
+      this.input.section_id = this.sectionId;
       this.input.type = 'files';
       this.input.position = this.inputs.length;
       this.input.vmodel = '';
@@ -3142,6 +3155,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.clearCurrentInput();
     },
     addTextField: function addTextField() {
+      this.input.section_id = this.sectionId;
       this.input.type = 'text';
       this.input.position = this.inputs.length;
       this.inputs.push(this.input);
@@ -86224,38 +86238,53 @@ var render = function() {
                               ]),
                               _vm._v(" "),
                               _c("div", { staticClass: "row" }, [
-                                _c("div", { staticClass: "form-group col-6" }, [
-                                  _c("label", { staticClass: "badge" }, [
-                                    _vm._v("Ссылка на подраздел")
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("input", {
+                                _c(
+                                  "div",
+                                  {
                                     directives: [
                                       {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.section.url,
-                                        expression: "section.url"
+                                        name: "show",
+                                        rawName: "v-show",
+                                        value: !_vm.isFolder,
+                                        expression: "!isFolder"
                                       }
                                     ],
-                                    staticClass: "form-control form-control-sm",
-                                    attrs: { type: "text", required: "" },
-                                    domProps: { value: _vm.section.url },
-                                    on: {
-                                      keyup: _vm.transliterate,
-                                      input: function($event) {
-                                        if ($event.target.composing) {
-                                          return
+                                    staticClass: "form-group col-6"
+                                  },
+                                  [
+                                    _c("label", { staticClass: "badge" }, [
+                                      _vm._v("Ссылка на подраздел")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.section.url,
+                                          expression: "section.url"
                                         }
-                                        _vm.$set(
-                                          _vm.section,
-                                          "url",
-                                          $event.target.value
-                                        )
+                                      ],
+                                      staticClass:
+                                        "form-control form-control-sm",
+                                      attrs: { type: "text", required: "" },
+                                      domProps: { value: _vm.section.url },
+                                      on: {
+                                        keyup: _vm.transliterate,
+                                        input: function($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.$set(
+                                            _vm.section,
+                                            "url",
+                                            $event.target.value
+                                          )
+                                        }
                                       }
-                                    }
-                                  })
-                                ]),
+                                    })
+                                  ]
+                                ),
                                 _vm._v(" "),
                                 _c("p", [
                                   _vm._v(
@@ -86271,6 +86300,10 @@ var render = function() {
                                       _vm._s(_vm.section.sectionID) +
                                       " "
                                   )
+                                ]),
+                                _vm._v(" "),
+                                _c("p", [
+                                  _vm._v(" -- " + _vm._s(_vm.isFolder) + " --")
                                 ])
                               ])
                             ]
@@ -86635,6 +86668,31 @@ var render = function() {
                                     modifiers: { hover: true }
                                   }
                                 ],
+                                staticClass: "fas fa-folder-plus",
+                                staticStyle: {
+                                  "font-size": "20px",
+                                  cursor: "pointer"
+                                },
+                                attrs: { title: "Добавить папку" },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.changeParents(
+                                      section.id,
+                                      null,
+                                      true
+                                    )
+                                  }
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("i", {
+                                directives: [
+                                  {
+                                    name: "b-tooltip",
+                                    rawName: "v-b-tooltip.hover",
+                                    modifiers: { hover: true }
+                                  }
+                                ],
                                 staticClass: "fas fa-file-medical",
                                 staticStyle: {
                                   "font-size": "20px",
@@ -86643,7 +86701,11 @@ var render = function() {
                                 attrs: { title: "Добавить элемент" },
                                 on: {
                                   click: function($event) {
-                                    return _vm.chageParents(section.id, null)
+                                    return _vm.changeParents(
+                                      section.id,
+                                      null,
+                                      false
+                                    )
                                   }
                                 }
                               })
@@ -106693,7 +106755,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   startPagePriority: payload.startPagePriority,
                   activityFrom: payload.activityFrom,
                   activityTo: payload.activityTo,
-                  activity: payload.activity
+                  activity: payload.activity,
+                  isFolder: payload.isFolder
                 });
 
               case 2:
@@ -106726,7 +106789,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         startPagePriority: payload.startPagePriority,
         activityFrom: payload.activityFrom,
         activityTo: payload.activityTo,
-        activity: payload.activity
+        activity: payload.activity,
+        isFolder: payload.isFolder
       });
       context.commit('EDIT_SECTION', payload);
     },

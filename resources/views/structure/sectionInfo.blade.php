@@ -1,4 +1,4 @@
 @extends('layouts.app')
 @section('content')
-    <sectioninfo></sectioninfo>
+    <sectioninfo :section-id="{{ $id }}"></sectioninfo>
 @endsection

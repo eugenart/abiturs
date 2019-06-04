@@ -34,7 +34,7 @@ Route::get('/section-info', function () {
     return view('structure.sectionInfo');
 });
 
-Route::get('/section-content', 'SectionContentController@index');
+Route::get('/section-content/{id}', 'SectionContentController@index');
 Route::post('/section-content', 'SectionContentController@store');
 Route::delete('/section-content/{id}', 'SectionContentController@destroy');
 
