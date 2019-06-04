@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Section extends Model
 {
-    protected $fillable = ['name', 'url', 'description', 'startPage', 'startPagePriority', 'activity', 'activityFrom', 'activityTo', 'infoblockID', 'sectionID'];
+    protected $fillable = ['name', 'url', 'description', 'startPage', 'startPagePriority', 'activity', 'activityFrom', 'activityTo', 'infoblockID', 'sectionID', 'isFolder'];
 
     public function infoblock() {
         return $this->belongsTo(Infoblock::class, 'infoblockID');

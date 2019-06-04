@@ -13,6 +13,9 @@ class SectionController extends Controller
 
         foreach ($infoblocks as $infoblock) {
             $infoblock->sectionsList = $infoblock->sections;
+            foreach ($infoblock->sectionsList->where('isFolder', true) as $folder) {
+                $folder->folder = $folder->childrenSections;
+            }
         }
 
         if ($request->ajax()) {

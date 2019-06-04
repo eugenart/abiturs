@@ -157,12 +157,21 @@
                                                         <p>
                                                             <i v-if="!sec.isFolder" class="far fa-file-alt"></i>
                                                             <i v-else class="far fa-folder"></i>
-                                                            <a :href="'/section-content/' + sec.id"><span>{{sec.name}}</span></a>
+                                                            <a v-if="!sec.isFolder"
+                                                               :href="'/section-content/' + sec.id"><span>{{sec.name}}</span></a>
+                                                            <span v-else>{{sec.name}}</span>
                                                         </p>
                                                     </div>
                                                     <div class="col-3">
                                                         <p>
                                                     <span class="float-right">
+                                                        <i
+                                                            v-if="sec.isFolder"
+                                                            style="font-size: 20px; cursor: pointer"
+                                                            class="fas fa-file-medical"
+                                                            v-b-tooltip.hover title="Добавить элемент"
+                                                            @click="changeParents(section.id, sec.id, false)">
+                                                        </i>
                                                         <i class="far fa-eye" style="cursor: pointer"
                                                            v-if="sec.activity"
                                                            @click="changeActivity(sec)"></i>

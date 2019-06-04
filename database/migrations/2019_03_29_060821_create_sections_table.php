@@ -16,7 +16,7 @@ class CreateSectionsTable extends Migration
         Schema::create('sections', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('url');
+            $table->string('url')->nullable();
             $table->longText('description')->nullable();
             $table->boolean('startPage')->default(true);
             $table->integer('startPagePriority')->default(500);
