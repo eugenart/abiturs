@@ -18,10 +18,11 @@ export default {
 
         REMOVE_SECTION(state, payload) {
             console.log(payload)
+            console.log(state.sections)
             let needSection = state.sections.find(item => item.id === payload.iId)
             //needSection.sectionsList.splice()
             needSection.sectionsList = $.grep(needSection.sectionsList, function (item) {
-                return item.id != payload.id
+                return item.id !== payload.id
             })
         },
 

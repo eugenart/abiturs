@@ -152,30 +152,23 @@
                                         </div>
                                         <div class="card-body">
                                             <div v-for="sec in section.sectionsList">
-                                                <div class="row">
-                                                    <div class="col-9">
-                                                        <p>
-                                                            <i v-if="!sec.isFolder" class="far fa-file-alt"></i>
-                                                            <i v-else class="far fa-folder"></i>
-                                                            <a v-if="!sec.isFolder"
-                                                               :href="'/section-content/' + sec.id"><span>{{sec.name}}</span></a>
-                                                            <span v-else>{{sec.name}}</span>
-                                                        </p>
-                                                    </div>
-                                                    <div class="col-3">
-                                                        <p>
+                                                <div v-if="!sec.isFolder">
+                                                    <div class="row">
+                                                        <div class="col-9">
+                                                            <p>
+                                                                <i class="far fa-file-alt"></i>
+                                                                <a
+                                                                    :href="'/section-content/' + sec.id"><span>{{sec.name}}</span></a>
+                                                            </p>
+                                                        </div>
+                                                        <div class="col-3">
+                                                            <p>
                                                     <span class="float-right">
-                                                        <i
-                                                            v-if="sec.isFolder"
-                                                            style="font-size: 20px; cursor: pointer"
-                                                            class="fas fa-file-medical"
-                                                            v-b-tooltip.hover title="Добавить элемент"
-                                                            @click="changeParents(section.id, sec.id, false)">
-                                                        </i>
-                                                        <i class="far fa-eye" style="cursor: pointer"
-                                                           v-if="sec.activity"
+                                                        <i class="far fa-eye" v-if="sec.activity"
+                                                           style="cursor: pointer"
                                                            @click="changeActivity(sec)"></i>
-                                                        <i class="far fa-eye-slash" style="cursor: pointer"
+                                                        <i class="far fa-eye-slash"
+                                                           style="cursor: pointer"
                                                            v-else
                                                            @click="changeActivity(sec)"></i>
                                                         &nbsp;
@@ -185,7 +178,74 @@
                                                         <i class="fas fa-trash-alt" style="cursor: pointer; color:red;"
                                                            @click="removeSection(sec.id, sec.infoblockID, sec.sectionID)"></i>
                                                     </span>
-                                                        </p>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div v-else>
+                                                    <div class="row">
+                                                        <div class="col-9">
+                                                            <p>
+                                                                <i class="far fa-folder"></i>
+                                                                <span>{{sec.name}}</span>
+                                                            </p>
+                                                        </div>
+                                                        <div class="col-3">
+                                                            <p>
+                                                    <span class="float-right">
+                                                        <i
+                                                            style="font-size: 20px; cursor: pointer"
+                                                            class="fas fa-file-medical"
+                                                            v-b-tooltip.hover title="Добавить элемент"
+                                                            @click="changeParents(section.id, sec.id, false)">
+                                                                                                                </i>
+                                                        <i class="far fa-eye" v-if="sec.activity"
+                                                           style="cursor: pointer"
+                                                           @click="changeActivity(sec)"></i>
+                                                        <i class="far fa-eye-slash"
+                                                           style="cursor: pointer"
+                                                           v-else
+                                                           @click="changeActivity(sec)"></i>
+                                                        &nbsp;
+                                                        <i class="fas fa-pen" style="cursor: pointer"
+                                                           @click="changeSection(sec)"></i>
+                                                         &nbsp;
+                                                        <i class="fas fa-trash-alt" style="cursor: pointer; color:red;"
+                                                           @click="removeSection(sec.id, sec.infoblockID, sec.sectionID)"></i>
+                                                    </span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="" v-for="f in sec.folder">
+                                                        <div class="row">
+                                                            <div class="col-9">
+                                                                <p>
+                                                                    <i class="far fa-file-alt"></i>
+                                                                    <a
+                                                                        :href="'/section-content/' + f.id"><span>{{f.name}}</span></a>
+                                                                </p>
+                                                            </div>
+                                                            <div class="col-3">
+                                                                <p>
+                                                                    <span class="float-right">
+                                                                        <i class="far fa-eye" v-if="f.activity"
+                                                                           style="cursor: pointer"
+                                                                           @click="changeActivity(f)"></i>
+                                                                        <i class="far fa-eye-slash"
+                                                                           style="cursor: pointer"
+                                                                           v-else
+                                                                           @click="changeActivity(f)"></i>
+                                                                        &nbsp;
+                                                                        <i class="fas fa-pen" style="cursor: pointer"
+                                                                           @click="changeSection(f)"></i>
+                                                                         &nbsp;
+                                                                        <i class="fas fa-trash-alt"
+                                                                           style="cursor: pointer; color:red;"
+                                                                           @click="removeSection(f.id, sec.infoblockID, f.sectionID)"></i>
+                                                                    </span>
+                                                                </p>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <hr>

@@ -13,7 +13,8 @@
     </div>
     <div class="row">
         <div class="col-12">
-            <a href="/">Главная</a> / <a href="{{ $block->infoblock->url }}">{{ $block->infoblock->name }}</a> / <a href="{{ $block->url }}">{{ $block->name }}</a>
+            <a href="/">Главная</a> / <a href="{{ $block->infoblock->url }}">{{ $block->infoblock->name }}</a> / <a
+                    href="{{ $block->url }}">{{ $block->name }}</a>
         </div>
     </div>
     <div class="row mt-2">
@@ -34,11 +35,12 @@
                             <p>
                                 @foreach($content->childrenFiles->sortBy('position') as $file)
 
-                                    <a href="{{ asset('storage/section-files/' . $file->file_name) }}">{{ $file->name }};</a>&nbsp;
+                                    <a href="{{ asset('storage/section-files/' . $file->file_name) }}">{{ $file->name }}
+                                        ;</a>&nbsp;
                                 @endforeach
                             </p>
                         @endif
-                            <hr>
+                        <hr>
                     @endforeach
                 </div>
             </div>
@@ -47,16 +49,15 @@
             <div class="mrsu-card pt-3 pb-1">
                 <p class="w-100 mrsu-uppertext title-text text-center p-1">Бакалавриат и специалитет</p>
                 <ul class="list-unstyled pl-3">
-                    {{--                    <li class="mrsu-uppertext"><a href="">Нормативные документы</a></li>--}}
-                    {{--                    <li>--}}
-                    {{--                        <ul class="list-unstyled pl-4">--}}
-                    {{--                            <li><a href="">Документы приема</a></li>--}}
-                    {{--                            <li><a href="">Стастистика приема документов</a></li>--}}
-                    {{--                            <li><a href="">Списки успешно сдавших</a></li>--}}
-                    {{--                            <li><a href="">Приказы о зачислении</a></li>--}}
-                    {{--                        </ul>--}}
-                    {{--                    </li>--}}
                     @foreach($block->infoblock->sections as $section)
+                        @if ($section->isFolder && $section->childrenSections->count() > 0)
+                            <li class="mrsu-uppertext"><a href="{{ $section->url }}">{{ $section->name }}</a></li>
+                            <ul class="list-unstyled pl-4">
+                                @foreach($section->childrenSections as $subSection)
+                                    <li><a href="{{ $subSection->url }}">{{ $subSection->name }}</a></li>
+                                @endforeach
+                            </ul>
+                        @endif
                         <li class="mrsu-uppertext"><a href="{{ $section->url }}">{{ $section->name }}</a></li>
                     @endforeach
 

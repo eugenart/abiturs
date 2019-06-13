@@ -2388,6 +2388,66 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Section',
   data: function data() {
@@ -86729,113 +86789,333 @@ var render = function() {
                         { staticClass: "card-body" },
                         _vm._l(section.sectionsList, function(sec) {
                           return _c("div", [
-                            _c("div", { staticClass: "row" }, [
-                              _c("div", { staticClass: "col-9" }, [
-                                _c("p", [
-                                  !sec.isFolder
-                                    ? _c("i", {
-                                        staticClass: "far fa-file-alt"
-                                      })
-                                    : _c("i", { staticClass: "far fa-folder" }),
-                                  _vm._v(" "),
-                                  !sec.isFolder
-                                    ? _c(
-                                        "a",
-                                        {
-                                          attrs: {
-                                            href: "/section-content/" + sec.id
-                                          }
-                                        },
-                                        [_c("span", [_vm._v(_vm._s(sec.name))])]
-                                      )
-                                    : _c("span", [_vm._v(_vm._s(sec.name))])
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "col-3" }, [
-                                _c("p", [
-                                  _c("span", { staticClass: "float-right" }, [
-                                    sec.isFolder
-                                      ? _c("i", {
-                                          directives: [
-                                            {
-                                              name: "b-tooltip",
-                                              rawName: "v-b-tooltip.hover",
-                                              modifiers: { hover: true }
-                                            }
-                                          ],
-                                          staticClass: "fas fa-file-medical",
-                                          staticStyle: {
-                                            "font-size": "20px",
-                                            cursor: "pointer"
-                                          },
-                                          attrs: { title: "Добавить элемент" },
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.changeParents(
-                                                section.id,
-                                                sec.id,
-                                                false
-                                              )
-                                            }
-                                          }
-                                        })
-                                      : _vm._e(),
-                                    _vm._v(" "),
-                                    sec.activity
-                                      ? _c("i", {
-                                          staticClass: "far fa-eye",
-                                          staticStyle: { cursor: "pointer" },
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.changeActivity(sec)
-                                            }
-                                          }
-                                        })
-                                      : _c("i", {
-                                          staticClass: "far fa-eye-slash",
-                                          staticStyle: { cursor: "pointer" },
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.changeActivity(sec)
-                                            }
-                                          }
+                            !sec.isFolder
+                              ? _c("div", [
+                                  _c("div", { staticClass: "row" }, [
+                                    _c("div", { staticClass: "col-9" }, [
+                                      _c("p", [
+                                        _c("i", {
+                                          staticClass: "far fa-file-alt"
                                         }),
-                                    _vm._v(
-                                      "\n                                                     \n                                                    "
-                                    ),
-                                    _c("i", {
-                                      staticClass: "fas fa-pen",
-                                      staticStyle: { cursor: "pointer" },
-                                      on: {
-                                        click: function($event) {
-                                          return _vm.changeSection(sec)
-                                        }
-                                      }
-                                    }),
-                                    _vm._v(
-                                      "\n                                                      \n                                                    "
-                                    ),
-                                    _c("i", {
-                                      staticClass: "fas fa-trash-alt",
-                                      staticStyle: {
-                                        cursor: "pointer",
-                                        color: "red"
-                                      },
-                                      on: {
-                                        click: function($event) {
-                                          return _vm.removeSection(
-                                            sec.id,
-                                            sec.infoblockID,
-                                            sec.sectionID
-                                          )
-                                        }
-                                      }
-                                    })
+                                        _vm._v(" "),
+                                        _c(
+                                          "a",
+                                          {
+                                            attrs: {
+                                              href: "/section-content/" + sec.id
+                                            }
+                                          },
+                                          [
+                                            _c("span", [
+                                              _vm._v(_vm._s(sec.name))
+                                            ])
+                                          ]
+                                        )
+                                      ])
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "col-3" }, [
+                                      _c("p", [
+                                        _c(
+                                          "span",
+                                          { staticClass: "float-right" },
+                                          [
+                                            sec.activity
+                                              ? _c("i", {
+                                                  staticClass: "far fa-eye",
+                                                  staticStyle: {
+                                                    cursor: "pointer"
+                                                  },
+                                                  on: {
+                                                    click: function($event) {
+                                                      return _vm.changeActivity(
+                                                        sec
+                                                      )
+                                                    }
+                                                  }
+                                                })
+                                              : _c("i", {
+                                                  staticClass:
+                                                    "far fa-eye-slash",
+                                                  staticStyle: {
+                                                    cursor: "pointer"
+                                                  },
+                                                  on: {
+                                                    click: function($event) {
+                                                      return _vm.changeActivity(
+                                                        sec
+                                                      )
+                                                    }
+                                                  }
+                                                }),
+                                            _vm._v(
+                                              "\n                                                     \n                                                    "
+                                            ),
+                                            _c("i", {
+                                              staticClass: "fas fa-pen",
+                                              staticStyle: {
+                                                cursor: "pointer"
+                                              },
+                                              on: {
+                                                click: function($event) {
+                                                  return _vm.changeSection(sec)
+                                                }
+                                              }
+                                            }),
+                                            _vm._v(
+                                              "\n                                                      \n                                                    "
+                                            ),
+                                            _c("i", {
+                                              staticClass: "fas fa-trash-alt",
+                                              staticStyle: {
+                                                cursor: "pointer",
+                                                color: "red"
+                                              },
+                                              on: {
+                                                click: function($event) {
+                                                  return _vm.removeSection(
+                                                    sec.id,
+                                                    sec.infoblockID,
+                                                    sec.sectionID
+                                                  )
+                                                }
+                                              }
+                                            })
+                                          ]
+                                        )
+                                      ])
+                                    ])
                                   ])
                                 ])
-                              ])
-                            ]),
+                              : _c(
+                                  "div",
+                                  [
+                                    _c("div", { staticClass: "row" }, [
+                                      _c("div", { staticClass: "col-9" }, [
+                                        _c("p", [
+                                          _c("i", {
+                                            staticClass: "far fa-folder"
+                                          }),
+                                          _vm._v(" "),
+                                          _c("span", [_vm._v(_vm._s(sec.name))])
+                                        ])
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("div", { staticClass: "col-3" }, [
+                                        _c("p", [
+                                          _c(
+                                            "span",
+                                            { staticClass: "float-right" },
+                                            [
+                                              _c("i", {
+                                                directives: [
+                                                  {
+                                                    name: "b-tooltip",
+                                                    rawName:
+                                                      "v-b-tooltip.hover",
+                                                    modifiers: { hover: true }
+                                                  }
+                                                ],
+                                                staticClass:
+                                                  "fas fa-file-medical",
+                                                staticStyle: {
+                                                  "font-size": "20px",
+                                                  cursor: "pointer"
+                                                },
+                                                attrs: {
+                                                  title: "Добавить элемент"
+                                                },
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.changeParents(
+                                                      section.id,
+                                                      sec.id,
+                                                      false
+                                                    )
+                                                  }
+                                                }
+                                              }),
+                                              _vm._v(" "),
+                                              sec.activity
+                                                ? _c("i", {
+                                                    staticClass: "far fa-eye",
+                                                    staticStyle: {
+                                                      cursor: "pointer"
+                                                    },
+                                                    on: {
+                                                      click: function($event) {
+                                                        return _vm.changeActivity(
+                                                          sec
+                                                        )
+                                                      }
+                                                    }
+                                                  })
+                                                : _c("i", {
+                                                    staticClass:
+                                                      "far fa-eye-slash",
+                                                    staticStyle: {
+                                                      cursor: "pointer"
+                                                    },
+                                                    on: {
+                                                      click: function($event) {
+                                                        return _vm.changeActivity(
+                                                          sec
+                                                        )
+                                                      }
+                                                    }
+                                                  }),
+                                              _vm._v(
+                                                "\n                                                     \n                                                    "
+                                              ),
+                                              _c("i", {
+                                                staticClass: "fas fa-pen",
+                                                staticStyle: {
+                                                  cursor: "pointer"
+                                                },
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.changeSection(
+                                                      sec
+                                                    )
+                                                  }
+                                                }
+                                              }),
+                                              _vm._v(
+                                                "\n                                                      \n                                                    "
+                                              ),
+                                              _c("i", {
+                                                staticClass: "fas fa-trash-alt",
+                                                staticStyle: {
+                                                  cursor: "pointer",
+                                                  color: "red"
+                                                },
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.removeSection(
+                                                      sec.id,
+                                                      sec.infoblockID,
+                                                      sec.sectionID
+                                                    )
+                                                  }
+                                                }
+                                              })
+                                            ]
+                                          )
+                                        ])
+                                      ])
+                                    ]),
+                                    _vm._v(" "),
+                                    _vm._l(sec.folder, function(f) {
+                                      return _c("div", {}, [
+                                        _c("div", { staticClass: "row" }, [
+                                          _c("div", { staticClass: "col-9" }, [
+                                            _c("p", [
+                                              _c("i", {
+                                                staticClass: "far fa-file-alt"
+                                              }),
+                                              _vm._v(" "),
+                                              _c(
+                                                "a",
+                                                {
+                                                  attrs: {
+                                                    href:
+                                                      "/section-content/" + f.id
+                                                  }
+                                                },
+                                                [
+                                                  _c("span", [
+                                                    _vm._v(_vm._s(f.name))
+                                                  ])
+                                                ]
+                                              )
+                                            ])
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("div", { staticClass: "col-3" }, [
+                                            _c("p", [
+                                              _c(
+                                                "span",
+                                                { staticClass: "float-right" },
+                                                [
+                                                  f.activity
+                                                    ? _c("i", {
+                                                        staticClass:
+                                                          "far fa-eye",
+                                                        staticStyle: {
+                                                          cursor: "pointer"
+                                                        },
+                                                        on: {
+                                                          click: function(
+                                                            $event
+                                                          ) {
+                                                            return _vm.changeActivity(
+                                                              f
+                                                            )
+                                                          }
+                                                        }
+                                                      })
+                                                    : _c("i", {
+                                                        staticClass:
+                                                          "far fa-eye-slash",
+                                                        staticStyle: {
+                                                          cursor: "pointer"
+                                                        },
+                                                        on: {
+                                                          click: function(
+                                                            $event
+                                                          ) {
+                                                            return _vm.changeActivity(
+                                                              f
+                                                            )
+                                                          }
+                                                        }
+                                                      }),
+                                                  _vm._v(
+                                                    "\n                                                                     \n                                                                    "
+                                                  ),
+                                                  _c("i", {
+                                                    staticClass: "fas fa-pen",
+                                                    staticStyle: {
+                                                      cursor: "pointer"
+                                                    },
+                                                    on: {
+                                                      click: function($event) {
+                                                        return _vm.changeSection(
+                                                          f
+                                                        )
+                                                      }
+                                                    }
+                                                  }),
+                                                  _vm._v(
+                                                    "\n                                                                      \n                                                                    "
+                                                  ),
+                                                  _c("i", {
+                                                    staticClass:
+                                                      "fas fa-trash-alt",
+                                                    staticStyle: {
+                                                      cursor: "pointer",
+                                                      color: "red"
+                                                    },
+                                                    on: {
+                                                      click: function($event) {
+                                                        return _vm.removeSection(
+                                                          f.id,
+                                                          sec.infoblockID,
+                                                          f.sectionID
+                                                        )
+                                                      }
+                                                    }
+                                                  })
+                                                ]
+                                              )
+                                            ])
+                                          ])
+                                        ])
+                                      ])
+                                    })
+                                  ],
+                                  2
+                                ),
                             _vm._v(" "),
                             _c("hr")
                           ])
@@ -106764,12 +107044,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     REMOVE_SECTION: function REMOVE_SECTION(state, payload) {
       console.log(payload);
+      console.log(state.sections);
       var needSection = state.sections.find(function (item) {
         return item.id === payload.iId;
       }); //needSection.sectionsList.splice()
 
       needSection.sectionsList = $.grep(needSection.sectionsList, function (item) {
-        return item.id != payload.id;
+        return item.id !== payload.id;
       });
     },
     SET_SECTIONS: function SET_SECTIONS(state, payload) {
