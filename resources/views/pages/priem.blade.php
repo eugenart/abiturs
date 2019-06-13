@@ -49,16 +49,17 @@
             <div class="mrsu-card pt-3 pb-1">
                 <p class="w-100 mrsu-uppertext title-text text-center p-1">Бакалавриат и специалитет</p>
                 <ul class="list-unstyled pl-3">
-                    @foreach($block->infoblock->sections as $section)
-                        @if ($section->isFolder && $section->childrenSections->count() > 0)
-                            <li class="mrsu-uppertext"><a href="{{ $section->url }}">{{ $section->name }}</a></li>
+                    @foreach($block->infoblock->sections->where('activity', true) as $section)
+                        @if ($section->isFolder && $section->childrenSections->where('activity', true)->count() > 0)
+                            <li class="mrsu-uppertext">{{ $section->name }}</li>
                             <ul class="list-unstyled pl-4">
-                                @foreach($section->childrenSections as $subSection)
+                                @foreach($section->childrenSections->where('activity', true) as $subSection)
                                     <li><a href="{{ $subSection->url }}">{{ $subSection->name }}</a></li>
                                 @endforeach
                             </ul>
+                        @elseif(!$section->isFolder && !$section->parentSection)
+                            <li class="mrsu-uppertext"><a href="{{ $section->url }}">{{ $section->name }}</a></li>
                         @endif
-                        <li class="mrsu-uppertext"><a href="{{ $section->url }}">{{ $section->name }}</a></li>
                     @endforeach
 
                 </ul>

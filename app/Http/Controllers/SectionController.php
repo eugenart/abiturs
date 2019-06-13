@@ -37,7 +37,7 @@ class SectionController extends Controller
                 'activityFrom' => $request->activityFrom,
                 'activityTo' => $request->activityTo,
                 'sectionID' => $request->sectionID,
-                'infoblockID' => $request->sectionID? null : $request->infoblockID,
+                'infoblockID' => $request->infoblockID,
                 'isFolder' => $request->isFolder? 1 : 0,
             ]);
             return response()->json([
