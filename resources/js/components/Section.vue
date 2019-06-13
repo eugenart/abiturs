@@ -320,7 +320,6 @@
                 this.isFolder = folder
                 this.isSectionUpdate = false;
                 this.clearCurrentSection();
-                console.log(block, section)
                 this.section.isFolder = folder;
                 this.section.infoblockID = block;
                 this.section.sectionID = section;

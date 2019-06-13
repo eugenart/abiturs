@@ -2495,7 +2495,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.isFolder = folder;
       this.isSectionUpdate = false;
       this.clearCurrentSection();
-      console.log(block, section);
       this.section.isFolder = folder;
       this.section.infoblockID = block;
       this.section.sectionID = section;
@@ -107029,12 +107028,26 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   mutations: {
     ADD_SECTION: function ADD_SECTION(state, payload) {
-      console.log(state.sections, payload);
-      var needSection = state.sections.find(function (item) {
-        return item.id === payload.infoblockID;
-      });
-      needSection.sectionsList.push(payload);
-      console.log(needSection); //state.sections.push(payload)
+      console.log(payload);
+      var needSection = null;
+
+      if (payload.infoblockID) {
+        needSection = state.sections.find(function (item) {
+          return item.id === payload.infoblockID;
+        });
+        needSection.sectionsList.push(payload);
+      } else {
+        $.each(state.sections, function (key, value) {
+          if (!needSection) {
+            needSection = value.sectionsList.find(function (item) {
+              return item.id === payload.sectionID;
+            });
+            console.log(needSection);
+            needSection.folder.push(payload);
+          }
+        });
+      } //state.sections.push(payload)
+
     },
     EDIT_SECTION: function EDIT_SECTION(state, payload) {
       var index = state.sections.findIndex(function (el) {
@@ -107043,15 +107056,28 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       Vue.set(state.sections, index, payload);
     },
     REMOVE_SECTION: function REMOVE_SECTION(state, payload) {
+      var needSection = null;
       console.log(payload);
-      console.log(state.sections);
-      var needSection = state.sections.find(function (item) {
-        return item.id === payload.iId;
-      }); //needSection.sectionsList.splice()
 
-      needSection.sectionsList = $.grep(needSection.sectionsList, function (item) {
-        return item.id !== payload.id;
-      });
+      if (!payload.sId) {
+        needSection = state.sections.find(function (item) {
+          return item.id === payload.iId;
+        });
+        needSection.sectionsList = $.grep(needSection.sectionsList, function (item) {
+          return item.id !== payload.id;
+        });
+      } else {
+        $.each(state.sections, function (key, value) {
+          if (!needSection) {
+            needSection = value.sectionsList.find(function (item) {
+              return item.id === payload.sId;
+            });
+            needSection.folder = $.grep(needSection.folder, function (item) {
+              return item.id !== payload.id;
+            });
+          }
+        });
+      }
     },
     SET_SECTIONS: function SET_SECTIONS(state, payload) {
       state.sections = payload;
@@ -107130,10 +107156,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return axios.delete('/section/' + payload.id);
 
               case 2:
-                console.log(payload);
                 context.commit('REMOVE_SECTION', payload);
 
-              case 4:
+              case 3:
               case "end":
                 return _context2.stop();
             }
