@@ -17,20 +17,18 @@ class CourseController extends Controller
             return response()->json($courses, 200);
         }
 
-//        return view('structure.section', compact('infoblocks'));
-        return;
+        return view('structure.faculties', compact('courses'));
     }
 
     function store(Request $request) {
-        $courses = Course::all();
-        foreach ($courses as $course) {
-            $course->courses = $course->children;
-        }
-
         if ($request->ajax()) {
-            return response()->json($courses, 200);
+            $course = Course::create([
+                'name' => $request->name,
+                'parent_id' => $request->parent_id,
+            ]);
+            return response()->json($course, 200);
         }
-        return;
+        return response()->json(['message' => 'Oops'], 404);
     }
 
     public function destroy(Request $request, $id) {
