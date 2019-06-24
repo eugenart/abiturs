@@ -58,12 +58,12 @@
                                     <div class="col-2 d-flex align-items-center justify-content-center">
                                         <b-button v-if="!f.isEdit" squared variant="warning"
                                                   class="col-12"
-                                                  @click="f.isEdit = true">
+                                                  @click="editFaculty(f)">
                                             <i class="fas fa-pen"></i>
                                         </b-button>
                                         <b-button v-else squared variant="warning"
                                                   class="col-12"
-                                                  @click="changeFaculty; f.isEdit = false">
+                                                  @click="changeFaculty(f);">
                                             <i class="fas fa-check"></i>
                                         </b-button>
                                     </div>
@@ -132,19 +132,16 @@
                                                                     </b-form-input>
                                                                 </div>
                                                                 <div class="col-2">
-
                                                                     <i v-if="c.isEdit" style="cursor:pointer;"
                                                                        class="fas fa-check"
-                                                                       @click="editCourse(c); c.isEdit = false"></i>
+                                                                       @click="changeCourse(c)"></i>
 
                                                                     <i v-if="!c.isEdit" style="cursor:pointer;"
                                                                        class="fas fa-pen"
-                                                                       @click="c.isEdit = true"></i>
-
-                                                                    &nbsp;
+                                                                       @click="editCourse(c)"></i>
                                                                     <i style="cursor:pointer; color:red;"
                                                                        class="fas fa-trash"
-                                                                       @click="deleteCourse(f.courses, i)"></i>
+                                                                       @click="deleteCourse(c.id)"></i>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -201,9 +198,16 @@
         computed: {},
         methods: {
 
-            changeFaculty() {
-                this.faculty.isEdit = false;
+            changeFaculty(f) {
+                axios.post('/course/' + f.id, {
+                    name: f.name
+                });
+                this.fetchFaculty()
                 this.clearCurrentFaculty()
+            },
+
+            editFaculty(f) {
+                f.isEdit = !f.isEdit
             },
 
             addFaculty() {
@@ -213,6 +217,20 @@
                 });
                 this.clearCurrentFaculty();
                 this.fetchFaculty()
+            },
+
+            changeCourse(c) {
+                axios.post('/course/' + c.id, {
+                    name: c.name
+                });
+                console.log(c)
+                this.clearCurrentCourse();
+                this.fetchFaculty()
+            },
+
+            editCourse(c) {
+                console.log('asdasdasdas')
+                c.isEdit = !c.isEdit
             },
 
             deleteFaculty(id) {
@@ -229,7 +247,7 @@
                 this.clearCurrentCourse()
             },
 
-            deleteCourse() {
+            deleteCourse(id) {
                 axios.delete('/course/' + id)
                 this.fetchFaculty()
             },

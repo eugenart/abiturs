@@ -14,6 +14,10 @@ class CourseController extends Controller
         foreach ($courses as $course) {
             if ($course->parent_id == null) {
                 $course->courses = $course->children;
+                foreach ($course->courses as $child) {
+                    $child->isEdit = false;
+                }
+                $course->isEdit = false;
                 $data[] = $course;
             }
         }
