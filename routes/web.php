@@ -34,6 +34,11 @@ Route::post('/course', 'CourseController@store')->name('course.store');
 Route::post('/course/{id}', 'CourseController@update')->name('course.update');
 Route::delete('/course/{id}', 'CourseController@destroy')->name('course.destroy');
 
+Route::get('/subject', 'SubjectController@index')->name('subject.index');
+Route::post('/subject', 'SubjectController@store')->name('subject.store');
+Route::post('/subject/{id}', 'SubjectController@update')->name('subject.update');
+Route::delete('/subject/{id}', 'SubjectController@destroy')->name('subject.destroy');
+
 Route::get('/ege', function () {
     return view('structure.egeSelect');
 });
