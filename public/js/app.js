@@ -3078,9 +3078,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "faculties",
   data: function data() {
@@ -3114,9 +3111,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   computed: {},
   methods: {
-    changeFaculty: function changeFaculty() {
-      this.faculty.isEdit = false;
+    changeFaculty: function changeFaculty(f) {
+      axios.post('/course/' + f.id, {
+        name: f.name
+      });
+      this.fetchFaculty();
       this.clearCurrentFaculty();
+    },
+    editFaculty: function editFaculty(f) {
+      f.isEdit = !f.isEdit;
     },
     addFaculty: function addFaculty() {
       axios.post('/course', {
@@ -3125,6 +3128,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       });
       this.clearCurrentFaculty();
       this.fetchFaculty();
+    },
+    changeCourse: function changeCourse(c) {
+      axios.post('/course/' + c.id, {
+        name: c.name
+      });
+      console.log(c);
+      this.clearCurrentCourse();
+      this.fetchFaculty();
+    },
+    editCourse: function editCourse(c) {
+      console.log('asdasdasdas');
+      c.isEdit = !c.isEdit;
     },
     deleteFaculty: function deleteFaculty(id) {
       axios.delete('/course/' + id);
@@ -3138,7 +3153,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.fetchFaculty();
       this.clearCurrentCourse();
     },
-    deleteCourse: function deleteCourse() {
+    deleteCourse: function deleteCourse(id) {
       axios.delete('/course/' + id);
       this.fetchFaculty();
     },
@@ -88334,7 +88349,7 @@ var render = function() {
                                   attrs: { squared: "", variant: "warning" },
                                   on: {
                                     click: function($event) {
-                                      f.isEdit = true
+                                      return _vm.editFaculty(f)
                                     }
                                   }
                                 },
@@ -88347,8 +88362,7 @@ var render = function() {
                                   attrs: { squared: "", variant: "warning" },
                                   on: {
                                     click: function($event) {
-                                      _vm.changeFaculty
-                                      f.isEdit = false
+                                      return _vm.changeFaculty(f)
                                     }
                                   }
                                 },
@@ -88525,8 +88539,7 @@ var render = function() {
                                                 },
                                                 on: {
                                                   click: function($event) {
-                                                    _vm.editCourse(c)
-                                                    c.isEdit = false
+                                                    return _vm.changeCourse(c)
                                                   }
                                                 }
                                               })
@@ -88540,14 +88553,12 @@ var render = function() {
                                                 },
                                                 on: {
                                                   click: function($event) {
-                                                    c.isEdit = true
+                                                    return _vm.editCourse(c)
                                                   }
                                                 }
                                               })
                                             : _vm._e(),
-                                          _vm._v(
-                                            "\n\n                                                                 \n                                                                "
-                                          ),
+                                          _vm._v(" "),
                                           _c("i", {
                                             staticClass: "fas fa-trash",
                                             staticStyle: {
@@ -88556,10 +88567,7 @@ var render = function() {
                                             },
                                             on: {
                                               click: function($event) {
-                                                return _vm.deleteCourse(
-                                                  f.courses,
-                                                  i
-                                                )
+                                                return _vm.deleteCourse(c.id)
                                               }
                                             }
                                           })

@@ -10,12 +10,20 @@ class CourseController extends Controller
     public function index(Request $request)
     {
         $courses = Course::all();
+        $data = [];
         foreach ($courses as $course) {
-            $course->courses = $course->children;
+            if ($course->parent_id == null) {
+                $course->courses = $course->children;
+                foreach ($course->courses as $child) {
+                    $child->isEdit = false;
+                }
+                $course->isEdit = false;
+                $data[] = $course;
+            }
         }
 
         if ($request->ajax()) {
-            return response()->json($courses, 200);
+            return response()->json($data, 200);
         }
 
         return view('structure.faculties', compact('courses'));
@@ -27,6 +35,18 @@ class CourseController extends Controller
             $course = Course::create([
                 'name' => $request->name,
                 'parent_id' => $request->parent_id,
+            ]);
+            return response()->json($course, 200);
+        }
+        return response()->json(['message' => 'Oops'], 404);
+    }
+
+    public function update(Request $request, $id)
+    {
+        if ($request->ajax()) {
+            $course = Course::find($id);
+            $course->update([
+                'name' => $request->name,
             ]);
             return response()->json($course, 200);
         }
