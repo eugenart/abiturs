@@ -16,6 +16,7 @@ class CourseController extends Controller
                 $course->courses = $course->children;
                 foreach ($course->courses as $child) {
                     $child->isEdit = false;
+                    $child->studyForm = [];
                 }
                 $course->isEdit = false;
                 $data[] = $course;

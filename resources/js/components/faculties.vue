@@ -263,7 +263,6 @@
             fetchFaculty() {
                 let data = axios.get('/course')
                     .then(response => (this.faculties = response.data))
-
             }
         }
     }
