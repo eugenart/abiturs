@@ -35,6 +35,7 @@ class CourseController extends Controller
             $course = Course::create([
                 'name' => $request->name,
                 'parent_id' => $request->parent_id,
+                'studyForm' => $request->studyForm,
             ]);
             return response()->json($course, 200);
         }
@@ -47,6 +48,7 @@ class CourseController extends Controller
             $course = Course::find($id);
             $course->update([
                 'name' => $request->name,
+                'studyForm' => $request->studyForm,
             ]);
             return response()->json($course, 200);
         }

@@ -17,6 +17,7 @@ class CreateCoursesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->bigInteger('parent_id')->nullable();
+            $table->string('studyForm')->nullable();
             $table->timestamps();
         });
     }
