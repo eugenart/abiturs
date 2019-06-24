@@ -39,54 +39,51 @@
                 <div class="row">
                     <div class="col-6">
                         <div class="list-group" id="list-tab" role="tablist">
-                            <div v-for="(f,i) in faculties" :key="i" class="row mb-3">
-                                <div class="col-10">
-                                    <a class="list-group-item list-group-item-action d-block" id="list-home-list"
-                                       data-toggle="list" :href="'#list-course'+i" role="tab"
-                                       aria-controls="home">
-                                        <div class="row">
-                                            <div class="col-8">
-                                                <p v-if="!f.isEdit">{{f.name}}</p>
-                                                <b-form-input
-                                                    v-if="f.isEdit"
-                                                    type="text"
-                                                    required
-                                                    class="h-100"
-                                                    v-model="f.name"
-                                                    :placeholder="'Введите название'">
-                                                </b-form-input>
-                                            </div>
-                                            <div class="col-2 d-flex align-items-center justify-content-center">
-                                                <b-button v-if="!f.isEdit" squared variant="warning"
-                                                          class="col-12"
-                                                          @click="f.isEdit = true">
-                                                    <i class="fas fa-pen"></i>
-                                                </b-button>
-                                                <b-button v-else squared variant="warning"
-                                                          class="col-12"
-                                                          @click="changeFaculty; f.isEdit = false">
-                                                    <i class="fas fa-check"></i>
-                                                </b-button>
-                                            </div>
-                                            <div class="col-2 d-flex align-items-center justify-content-center ">
-                                                <b-button squared variant="danger" class="col-12"
-                                                          @click="deleteFaculty(i)">
-                                                    <i class="fas fa-trash"></i>
-                                                </b-button>
-                                            </div>
-                                        </div>
-                                    </a>
+                            <a v-for="(f,i) in faculties" :key="i"
+                               class="mb-3 list-group-item list-group-item-action d-block" :id="'list-course-list'+i"
+                               data-toggle="list" :href="'#list-course'+i" role="tab"
+                               :aria-controls="'course'+i">
+                                <div class="row">
+                                    <div class="col-8">
+                                        <p v-if="!f.isEdit">{{f.name}}</p>
+                                        <b-form-input
+                                            v-if="f.isEdit"
+                                            type="text"
+                                            required
+                                            class="h-100"
+                                            v-model="f.name"
+                                            :placeholder="'Введите название'">
+                                        </b-form-input>
+                                    </div>
+                                    <div class="col-2 d-flex align-items-center justify-content-center">
+                                        <b-button v-if="!f.isEdit" squared variant="warning"
+                                                  class="col-12"
+                                                  @click="f.isEdit = true">
+                                            <i class="fas fa-pen"></i>
+                                        </b-button>
+                                        <b-button v-else squared variant="warning"
+                                                  class="col-12"
+                                                  @click="changeFaculty; f.isEdit = false">
+                                            <i class="fas fa-check"></i>
+                                        </b-button>
+                                    </div>
+                                    <div class="col-2 d-flex align-items-center justify-content-center ">
+                                        <b-button squared variant="danger" class="col-12"
+                                                  @click="deleteFaculty(i)">
+                                            <i class="fas fa-trash"></i>
+                                        </b-button>
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="tab-content" id="nav-tabContent">
-                            <div class="tab-pane fade show"
+                            <div class="tab-pane fade"
                                  v-for="(f,i) in faculties" :key="i"
                                  :id="'list-course' + i"
                                  role="tabpanel"
-                                 aria-labelledby="list-home-list">
+                                 :aria-labelledby="'list-course-list' + i">
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="card">

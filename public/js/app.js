@@ -2895,6 +2895,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "egeSelect"
 });
@@ -2914,9 +2915,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
-//
-//
 //
 //
 //
@@ -88257,125 +88255,116 @@ var render = function() {
                 attrs: { id: "list-tab", role: "tablist" }
               },
               _vm._l(_vm.faculties, function(f, i) {
-                return _c("div", { key: i, staticClass: "row mb-3" }, [
-                  _c("div", { staticClass: "col-10" }, [
-                    _c(
-                      "a",
-                      {
-                        staticClass:
-                          "list-group-item list-group-item-action d-block",
-                        attrs: {
-                          id: "list-home-list",
-                          "data-toggle": "list",
-                          href: "#list-course" + i,
-                          role: "tab",
-                          "aria-controls": "home"
-                        }
-                      },
-                      [
-                        _c("div", { staticClass: "row" }, [
-                          _c(
-                            "div",
-                            { staticClass: "col-8" },
-                            [
-                              !f.isEdit
-                                ? _c("p", [_vm._v(_vm._s(f.name))])
-                                : _vm._e(),
-                              _vm._v(" "),
-                              f.isEdit
-                                ? _c("b-form-input", {
-                                    staticClass: "h-100",
-                                    attrs: {
-                                      type: "text",
-                                      required: "",
-                                      placeholder: "Введите название"
-                                    },
-                                    model: {
-                                      value: f.name,
-                                      callback: function($$v) {
-                                        _vm.$set(f, "name", $$v)
-                                      },
-                                      expression: "f.name"
-                                    }
-                                  })
-                                : _vm._e()
-                            ],
-                            1
-                          ),
+                return _c(
+                  "a",
+                  {
+                    key: i,
+                    staticClass:
+                      "mb-3 list-group-item list-group-item-action d-block",
+                    attrs: {
+                      id: "list-course-list" + i,
+                      "data-toggle": "list",
+                      href: "#list-course" + i,
+                      role: "tab",
+                      "aria-controls": "course" + i
+                    }
+                  },
+                  [
+                    _c("div", { staticClass: "row" }, [
+                      _c(
+                        "div",
+                        { staticClass: "col-8" },
+                        [
+                          !f.isEdit
+                            ? _c("p", [_vm._v(_vm._s(f.name))])
+                            : _vm._e(),
                           _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              staticClass:
-                                "col-2 d-flex align-items-center justify-content-center"
-                            },
-                            [
-                              !f.isEdit
-                                ? _c(
-                                    "b-button",
-                                    {
-                                      staticClass: "col-12",
-                                      attrs: {
-                                        squared: "",
-                                        variant: "warning"
-                                      },
-                                      on: {
-                                        click: function($event) {
-                                          f.isEdit = true
-                                        }
-                                      }
-                                    },
-                                    [_c("i", { staticClass: "fas fa-pen" })]
-                                  )
-                                : _c(
-                                    "b-button",
-                                    {
-                                      staticClass: "col-12",
-                                      attrs: {
-                                        squared: "",
-                                        variant: "warning"
-                                      },
-                                      on: {
-                                        click: function($event) {
-                                          _vm.changeFaculty
-                                          f.isEdit = false
-                                        }
-                                      }
-                                    },
-                                    [_c("i", { staticClass: "fas fa-check" })]
-                                  )
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              staticClass:
-                                "col-2 d-flex align-items-center justify-content-center "
-                            },
-                            [
-                              _c(
+                          f.isEdit
+                            ? _c("b-form-input", {
+                                staticClass: "h-100",
+                                attrs: {
+                                  type: "text",
+                                  required: "",
+                                  placeholder: "Введите название"
+                                },
+                                model: {
+                                  value: f.name,
+                                  callback: function($$v) {
+                                    _vm.$set(f, "name", $$v)
+                                  },
+                                  expression: "f.name"
+                                }
+                              })
+                            : _vm._e()
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "col-2 d-flex align-items-center justify-content-center"
+                        },
+                        [
+                          !f.isEdit
+                            ? _c(
                                 "b-button",
                                 {
                                   staticClass: "col-12",
-                                  attrs: { squared: "", variant: "danger" },
+                                  attrs: { squared: "", variant: "warning" },
                                   on: {
                                     click: function($event) {
-                                      return _vm.deleteFaculty(i)
+                                      f.isEdit = true
                                     }
                                   }
                                 },
-                                [_c("i", { staticClass: "fas fa-trash" })]
+                                [_c("i", { staticClass: "fas fa-pen" })]
                               )
-                            ],
-                            1
+                            : _c(
+                                "b-button",
+                                {
+                                  staticClass: "col-12",
+                                  attrs: { squared: "", variant: "warning" },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.changeFaculty
+                                      f.isEdit = false
+                                    }
+                                  }
+                                },
+                                [_c("i", { staticClass: "fas fa-check" })]
+                              )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "col-2 d-flex align-items-center justify-content-center "
+                        },
+                        [
+                          _c(
+                            "b-button",
+                            {
+                              staticClass: "col-12",
+                              attrs: { squared: "", variant: "danger" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.deleteFaculty(i)
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fas fa-trash" })]
                           )
-                        ])
-                      ]
-                    )
-                  ])
-                ])
+                        ],
+                        1
+                      )
+                    ])
+                  ]
+                )
               }),
               0
             )
@@ -88390,11 +88379,11 @@ var render = function() {
                   "div",
                   {
                     key: i,
-                    staticClass: "tab-pane fade show",
+                    staticClass: "tab-pane fade",
                     attrs: {
                       id: "list-course" + i,
                       role: "tabpanel",
-                      "aria-labelledby": "list-home-list"
+                      "aria-labelledby": "list-course-list" + i
                     }
                   },
                   [
