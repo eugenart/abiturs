@@ -3109,7 +3109,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
     };
   },
-  mounted: function mounted() {},
+  mounted: function mounted() {
+    this.fetchFaculty();
+  },
   computed: {},
   methods: {
     changeFaculty: function changeFaculty() {
@@ -3117,24 +3119,41 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.clearCurrentFaculty();
     },
     addFaculty: function addFaculty() {
-      this.faculties.push(this.faculty);
+      axios.post('/course', {
+        name: this.faculty.name,
+        parent_id: null
+      });
       this.clearCurrentFaculty();
+      this.fetchFaculty();
     },
-    deleteFaculty: function deleteFaculty(i) {
-      this.faculties.splice(i, 1);
+    deleteFaculty: function deleteFaculty(id) {
+      axios.delete('/course/' + id);
+      this.fetchFaculty();
     },
-    addCourse: function addCourse(courses) {
-      courses.push(this.course);
+    addCourse: function addCourse(id) {
+      axios.post('/course', {
+        name: this.course.name,
+        parent_id: id
+      });
+      this.fetchFaculty();
       this.clearCurrentCourse();
     },
-    deleteCourse: function deleteCourse(courses, i) {
-      courses.splice(i, 1);
+    deleteCourse: function deleteCourse() {
+      axios.delete('/course/' + id);
+      this.fetchFaculty();
     },
     clearCurrentCourse: function clearCurrentCourse() {
       this.course = _objectSpread({}, this.currentCourse);
     },
     clearCurrentFaculty: function clearCurrentFaculty() {
       this.faculty = _objectSpread({}, this.currentFaculty);
+    },
+    fetchFaculty: function fetchFaculty() {
+      var _this = this;
+
+      var data = axios.get('/course').then(function (response) {
+        return _this.faculties = response.data;
+      });
     }
   }
 });
@@ -88353,7 +88372,7 @@ var render = function() {
                               attrs: { squared: "", variant: "danger" },
                               on: {
                                 click: function($event) {
-                                  return _vm.deleteFaculty(i)
+                                  return _vm.deleteFaculty(f.id)
                                 }
                               }
                             },
@@ -88441,9 +88460,7 @@ var render = function() {
                                                 },
                                                 on: {
                                                   click: function($event) {
-                                                    return _vm.addCourse(
-                                                      f.courses
-                                                    )
+                                                    return _vm.addCourse(f.id)
                                                   }
                                                 }
                                               },

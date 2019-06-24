@@ -14,7 +14,6 @@
 use Illuminate\Support\Facades\Route;
 
 
-
 Route::get('/infoblocks', 'InfoblockController@index')->name('infoblock.index');
 Route::post('/infoblock', 'InfoblockController@store')->name('infoblock.store');
 Route::post('/infoblock/{id}', 'InfoblockController@update')->name('infoblock.update');
@@ -29,6 +28,11 @@ Route::get('/slider', 'SliderController@index')->name('slider.index');
 Route::post('/slider', 'SliderController@store')->name('slider.store');
 Route::post('/slider/{id}', 'SliderController@update')->name('slider.update');
 Route::delete('/slider/{id}', 'SliderController@destroy')->name('slider.destroy');
+
+Route::get('/course', 'CourseController@index')->name('course.index');
+Route::post('/course', 'CourseController@store')->name('course.store');
+Route::post('/course/{id}', 'CourseController@update')->name('course.update');
+Route::delete('/course/{id}', 'CourseController@destroy')->name('course.destroy');
 
 Route::get('/ege', function () {
     return view('structure.egeSelect');
