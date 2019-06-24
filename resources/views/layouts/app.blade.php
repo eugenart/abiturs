@@ -100,23 +100,29 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link {{ Request::is('ege*') ? 'active' : null }}" href="/ege">
+                                <span data-feather="users"></span>
+                                ЕГЭ
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link {{ Request::is('slider*') ? 'active' : null }}" href="/slider">
                                 <span data-feather="users"></span>
                                 Слайдер
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="users"></span>
-                                Документы
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="bar-chart-2"></span>
-                                Мультимедиа
-                            </a>
-                        </li>
+{{--                        <li class="nav-item">--}}
+{{--                            <a class="nav-link" href="#">--}}
+{{--                                <span data-feather="users"></span>--}}
+{{--                                Документы--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a class="nav-link" href="#">--}}
+{{--                                <span data-feather="bar-chart-2"></span>--}}
+{{--                                Мультимедиа--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
                     </ul>
                 </div>
             </nav>
