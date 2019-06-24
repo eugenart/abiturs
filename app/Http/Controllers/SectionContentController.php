@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 
 class SectionContentController extends Controller
 {
-    function index(Request $request, $id)
+    public function index(Request $request, $id)
     {
 
 
@@ -44,7 +44,7 @@ class SectionContentController extends Controller
         return view('structure.sectionInfo')->with('id', $id);
     }
 
-    function store(Request $request)
+    public function store(Request $request)
     {
         if ($request->ajax()) {
 

@@ -7,20 +7,26 @@ use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
-    function index(Request $request) {
+    public function index(Request $request)
+    {
         $courses = Course::all();
+        $data = [];
         foreach ($courses as $course) {
-            $course->courses = $course->children;
+            if ($course->parent_id == null) {
+                $course->courses = $course->children;
+                $data[] = $course;
+            }
         }
 
         if ($request->ajax()) {
-            return response()->json($courses, 200);
+            return response()->json($data, 200);
         }
 
         return view('structure.faculties', compact('courses'));
     }
 
-    function store(Request $request) {
+    public function store(Request $request)
+    {
         if ($request->ajax()) {
             $course = Course::create([
                 'name' => $request->name,
@@ -31,7 +37,20 @@ class CourseController extends Controller
         return response()->json(['message' => 'Oops'], 404);
     }
 
-    public function destroy(Request $request, $id) {
+    public function update(Request $request, $id)
+    {
+        if ($request->ajax()) {
+            $course = Course::find($id);
+            $course->update([
+                'name' => $request->name,
+            ]);
+            return response()->json($course, 200);
+        }
+        return response()->json(['message' => 'Oops'], 404);
+    }
+
+    public function destroy(Request $request, $id)
+    {
         if ($request->ajax()) {
             $course = Course::findOrFail($id);
             $course->delete();

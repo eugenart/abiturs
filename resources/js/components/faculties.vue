@@ -69,7 +69,7 @@
                                     </div>
                                     <div class="col-2 d-flex align-items-center justify-content-center ">
                                         <b-button squared variant="danger" class="col-12"
-                                                  @click="deleteFaculty(i)">
+                                                  @click="deleteFaculty(f.id)">
                                             <i class="fas fa-trash"></i>
                                         </b-button>
                                     </div>
@@ -107,7 +107,7 @@
                                                                     <div class="col-6">
                                                                         <b-button class="m-auto d-block"
                                                                                   variant="outline-success"
-                                                                                  @click="addCourse(f.courses)"><i
+                                                                                  @click="addCourse(f.id)"><i
                                                                             class="fas fa-plus"></i>
                                                                         </b-button>
                                                                     </div>
@@ -196,6 +196,7 @@
             }
         },
         mounted() {
+            this.fetchFaculty()
         },
         computed: {},
         methods: {
@@ -206,21 +207,31 @@
             },
 
             addFaculty() {
-                this.faculties.push(this.faculty)
-                this.clearCurrentFaculty()
+                axios.post('/course', {
+                    name: this.faculty.name,
+                    parent_id: null
+                });
+                this.clearCurrentFaculty();
+                this.fetchFaculty()
             },
 
-            deleteFaculty(i) {
-                this.faculties.splice(i, 1)
+            deleteFaculty(id) {
+                axios.delete('/course/' + id)
+                this.fetchFaculty()
             },
 
-            addCourse(courses) {
-                courses.push(this.course)
+            addCourse(id) {
+                axios.post('/course', {
+                    name: this.course.name,
+                    parent_id: id
+                });
+                this.fetchFaculty()
                 this.clearCurrentCourse()
             },
 
-            deleteCourse(courses, i) {
-                courses.splice(i, 1)
+            deleteCourse() {
+                axios.delete('/course/' + id)
+                this.fetchFaculty()
             },
 
             clearCurrentCourse() {
@@ -229,6 +240,12 @@
 
             clearCurrentFaculty() {
                 this.faculty = {...this.currentFaculty}
+            },
+
+            fetchFaculty() {
+                let data = axios.get('/course')
+                    .then(response => (this.faculties = response.data))
+
             }
         }
     }
