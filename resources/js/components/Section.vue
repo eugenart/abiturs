@@ -141,6 +141,7 @@
                                                            v-b-tooltip.hover title="Добавить папку"
                                                            @click="changeParents(section.id, null, true);"
                                                         ></i>
+                                                        &nbsp;
                                                         <i style="font-size: 20px; cursor: pointer"
                                                            class="fas fa-file-medical"
                                                            v-b-tooltip.hover title="Добавить элемент"
@@ -199,6 +200,7 @@
                                                             v-b-tooltip.hover title="Добавить элемент"
                                                             @click="changeParents(section.id, sec.id, false)">
                                                                                                                 </i>
+
                                                         <i class="far fa-eye" v-if="sec.activity"
                                                            style="cursor: pointer"
                                                            @click="changeActivity(sec)"></i>
@@ -218,7 +220,7 @@
                                                     </div>
                                                     <div class="" v-for="f in sec.folder">
                                                         <div class="row">
-                                                            <div class="col-9">
+                                                            <div class="col-8 offset-1">
                                                                 <p>
                                                                     <i class="far fa-file-alt"></i>
                                                                     <a

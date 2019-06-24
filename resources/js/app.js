@@ -17,7 +17,9 @@ window.$ = window.jQuery = jQuery;
 Vue.component('infoblock', require('./components/Infoblock').default);
 Vue.component('paragraph', require('./components/Section').default);
 Vue.component('slider', require('./components/Slider').default);
+Vue.component('faculties', require('./components/faculties').default);
 Vue.component('sectioninfo', require('./components/sectionInfo').default);
+Vue.component('egeSelect', require('./components/egeSelect').default);
 
 
 Vue.filter("formatDate", function (value) {

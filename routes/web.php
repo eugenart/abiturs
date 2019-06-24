@@ -30,8 +30,12 @@ Route::post('/slider', 'SliderController@store')->name('slider.store');
 Route::post('/slider/{id}', 'SliderController@update')->name('slider.update');
 Route::delete('/slider/{id}', 'SliderController@destroy')->name('slider.destroy');
 
-Route::get('/section-info', function () {
-    return view('structure.sectionInfo');
+Route::get('/ege', function () {
+    return view('structure.egeSelect');
+});
+
+Route::get('/faculties', function () {
+    return view('structure.faculties');
 });
 
 Route::get('/section-content/{id}', 'SectionContentController@index');
@@ -44,3 +48,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/', 'PageController@index')->name('pages.index');
 Route::get('/{route}', 'PageController@route')->name('pages.route');
+
+
