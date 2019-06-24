@@ -16,7 +16,6 @@ class CourseController extends Controller
                 $course->courses = $course->children;
                 foreach ($course->courses as $child) {
                     $child->isEdit = false;
-                    $child->studyForm = [];
                 }
                 $course->isEdit = false;
                 $data[] = $course;
@@ -36,6 +35,7 @@ class CourseController extends Controller
             $course = Course::create([
                 'name' => $request->name,
                 'parent_id' => $request->parent_id,
+                'studyForm' => $request->studyForm,
             ]);
             return response()->json($course, 200);
         }
@@ -48,6 +48,7 @@ class CourseController extends Controller
             $course = Course::find($id);
             $course->update([
                 'name' => $request->name,
+                'studyForm' => $request->studyForm,
             ]);
             return response()->json($course, 200);
         }
