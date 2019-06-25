@@ -3091,6 +3091,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "egeSelect",
   data: function data() {
@@ -3135,6 +3136,9 @@ __webpack_require__.r(__webpack_exports__);
       this.chosenFaculty = f;
       this.chosenCourse = c;
       this.chosenSubject = c.subjects;
+      $('body,html').animate({
+        scrollTop: 0
+      }, 400);
     },
     saveExams: function saveExams() {
       axios.post('/subject', {
@@ -88989,6 +88993,7 @@ var render = function() {
                                 _vm._v(_vm._s(c.name) + " "),
                                 _c("i", {
                                   staticClass: "fa fa-pencil",
+                                  staticStyle: { cursor: "pointer" },
                                   on: {
                                     click: function($event) {
                                       return _vm.editExams(c, f)

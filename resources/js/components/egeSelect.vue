@@ -78,6 +78,7 @@
                     <tbody v-for="c in f.courses" v-if="f.courses">
                     <tr style="border-top: 2px solid black;">
                         <td :rowspan="c.subjects.length ? c.subjects.length : 1">{{c.name}} <i class="fa fa-pencil"
+                                                                                               style="cursor:pointer;"
                                                                                                @click="editExams(c,f)"></i>
                         </td>
                         <td :rowspan="c.subjects.length ? c.subjects.length : 1"><p class="mb-0"
@@ -148,6 +149,9 @@
                 this.chosenFaculty = f;
                 this.chosenCourse = c;
                 this.chosenSubject = c.subjects
+                $('body,html').animate({
+                    scrollTop: 0
+                }, 400);
             },
 
             saveExams() {
