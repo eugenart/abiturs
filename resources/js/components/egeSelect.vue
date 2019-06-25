@@ -15,9 +15,9 @@
                             </div>
                             <div class="col-6">
                                 <label class="badge">Направление подготовки</label>
-                                <select v-if="chosenFaculty" v-model="chosenCourse.name" type="text"
+                                <select v-if="chosenFaculty" v-model="chosenCourse" type="text"
                                         class="form-control form-control-sm">
-                                    <option v-for="(c,i) in chosenFaculty.courses" :value="c.name">
+                                    <option v-for="(c,i) in chosenFaculty.courses" :value="c">
                                         {{c.name}}
                                     </option>
                                 </select>
@@ -43,20 +43,49 @@
                                     <tbody>
                                     <tr v-for="s in chosenSubject">
                                         <td>{{s.name}}</td>
-                                        <td><input type="text"></td>
+                                        <td><input type="text" v-model="s.minScore"></td>
                                     </tr>
                                     </tbody>
                                 </table>
                             </div>
                             <div class="col-12">
-                                <button class="btn btn-sm btn-success">Сохранить</button>
+                                <button class="btn btn-sm btn-success" @click="saveExams()">Сохранить</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        chosenCourse: {{chosenCourse.id}}
+        <br>
+        exams: {{chosenSubject}}
         <hr>
+        <div class="row">
+            <div class="col-12" v-for="f in faculties">
+                <h4>{{f.name}}</h4>
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Направление подготовки</th>
+                        <th>Формы обучения</th>
+                        <th>Проходной балл 2018</th>
+                        <th>Вступительные испытания
+                            в порядке приоритетности для ранжирования
+                        </th>
+                        <th>Минимальный балл</th>
+                    </tr>
+                    </thead>
+                    <tbody v-for="c in f.courses">
+                    <tr style="border-top: 2px solid black;">
+                        <td rowspan="3">{{c.name}}</td>
+                        <td rowspan="3"><p class="mb-0" v-for="sf in c.studyForm">
+                            {{sf}}</p></td>
+                        <td rowspan="3">{{c.score}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
         <div class="row">
             <div class="col-12">
                 <h4>Аграрный институт</h4>
@@ -138,7 +167,7 @@
                 chosenFaculty: null,
                 chosenCourse: {
                     name: null,
-                    studyForm: []
+                    id: null
                 },
                 exams: [],
                 forms: [
@@ -159,6 +188,15 @@
 
         methods: {
 
+            saveExams() {
+                axios.post('/subject', {
+                    chosenCourse: this.chosenCourse.id,
+                    exams: this.chosenSubject
+                });
+                this.fetchFaculty()
+                this.fetchForms()
+            },
+
             setSubject() {
                 console.log(this.chosenSubject)
             },
@@ -168,7 +206,7 @@
                     .then(response => (this.faculties = response.data))
             },
             fetchForms() {
-                let data = axios.get('/subject')
+                let data = axios.get('/subject-list')
                     .then(response => (this.subjects = response.data))
             },
             chooseFaculty(f) {
