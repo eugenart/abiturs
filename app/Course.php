@@ -17,4 +17,8 @@ class Course extends Model
     public function children() {
         return $this->hasMany(self::class, 'parent_id');
     }
+
+    public function subjects() {
+        return $this->hasMany(Subject::class, 'course_id');
+    }
 }
