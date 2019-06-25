@@ -24,12 +24,6 @@
                             </div>
                             <div class="col-6">
                                 <label class="badge">Направление подготовки</label>
-                                <b-form-group>
-                                    <b-form-checkbox-group
-                                        v-model="chosenCourse.studyForm"
-                                        :options="forms"
-                                    ></b-form-checkbox-group>
-                                </b-form-group>
                                 <multiselect class="col-12" v-if="chosenCourse.name" multiple v-model="chosenSubject"
                                              track-by="name" label="name" placeholder="Выберите предметы"
                                              :options="subjects"

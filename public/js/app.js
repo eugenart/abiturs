@@ -3021,12 +3021,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "egeSelect",
   data: function data() {
@@ -3303,6 +3297,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "faculties",
   data: function data() {
@@ -3323,13 +3318,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       },
       forms: [{
         text: "Очная",
-        value: '1'
+        value: 'Очная'
       }, {
         text: "Очно-заочная",
-        value: '2'
+        value: 'Очно-заочная'
       }, {
         text: "Заочная",
-        value: '3'
+        value: 'Заочная'
       }],
       currentFaculty: {
         name: null,
@@ -88538,23 +88533,6 @@ var render = function() {
                     _vm._v("Направление подготовки")
                   ]),
                   _vm._v(" "),
-                  _c(
-                    "b-form-group",
-                    [
-                      _c("b-form-checkbox-group", {
-                        attrs: { options: _vm.forms },
-                        model: {
-                          value: _vm.chosenCourse.studyForm,
-                          callback: function($$v) {
-                            _vm.$set(_vm.chosenCourse, "studyForm", $$v)
-                          },
-                          expression: "chosenCourse.studyForm"
-                        }
-                      })
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
                   _vm.chosenCourse.name
                     ? _c("multiselect", {
                         staticClass: "col-12",
@@ -89201,11 +89179,20 @@ var render = function() {
                                           "div",
                                           { staticClass: "col-2" },
                                           [
-                                            !c.isEdit
-                                              ? _c("p", [
-                                                  _vm._v(_vm._s(c.studyForm))
-                                                ])
-                                              : _vm._e(),
+                                            _vm._l(c.studyForm, function(sf) {
+                                              return !c.isEdit
+                                                ? _c(
+                                                    "p",
+                                                    { staticClass: "mb-0" },
+                                                    [
+                                                      _vm._v(
+                                                        "\n                                                                    " +
+                                                          _vm._s(sf)
+                                                      )
+                                                    ]
+                                                  )
+                                                : _vm._e()
+                                            }),
                                             _vm._v(" "),
                                             c.isEdit
                                               ? _c(
@@ -89239,7 +89226,7 @@ var render = function() {
                                                 )
                                               : _vm._e()
                                           ],
-                                          1
+                                          2
                                         ),
                                         _vm._v(" "),
                                         _c(

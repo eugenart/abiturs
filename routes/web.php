@@ -43,10 +43,6 @@ Route::get('/ege', function () {
     return view('structure.egeSelect');
 });
 
-Route::get('/faculties', function () {
-    return view('structure.faculties');
-});
-
 Route::get('/section-content/{id}', 'SectionContentController@index');
 Route::post('/section-content', 'SectionContentController@store');
 Route::delete('/section-content/{id}', 'SectionContentController@destroy');

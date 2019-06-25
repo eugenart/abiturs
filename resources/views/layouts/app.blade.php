@@ -100,6 +100,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link {{ Request::is('course*') ? 'active' : null }}" href="/course">
+                                <span data-feather="shopping-cart"></span>
+                                Направления подготовки
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link {{ Request::is('ege*') ? 'active' : null }}" href="/ege">
                                 <span data-feather="users"></span>
                                 ЕГЭ
