@@ -2932,6 +2932,101 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "egeSelect",
   data: function data() {
@@ -2952,18 +3047,31 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         text: "Заочная",
         value: '3'
-      }]
+      }],
+      subjects: [],
+      chosenSubject: []
     };
   },
   mounted: function mounted() {
     this.fetchFaculty();
+    this.fetchForms();
   },
   methods: {
+    setSubject: function setSubject() {
+      console.log(this.chosenSubject);
+    },
     fetchFaculty: function fetchFaculty() {
       var _this = this;
 
       var data = axios.get('/course').then(function (response) {
         return _this.faculties = response.data;
+      });
+    },
+    fetchForms: function fetchForms() {
+      var _this2 = this;
+
+      var data = axios.get('/subject').then(function (response) {
+        return _this2.subjects = response.data;
       });
     },
     chooseFaculty: function chooseFaculty(f) {
@@ -3150,6 +3258,51 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "faculties",
   data: function data() {
@@ -3164,8 +3317,20 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       course: {
         name: null,
         id: null,
-        isEdit: false
+        isEdit: false,
+        score: null,
+        studyForm: []
       },
+      forms: [{
+        text: "Очная",
+        value: '1'
+      }, {
+        text: "Очно-заочная",
+        value: '2'
+      }, {
+        text: "Заочная",
+        value: '3'
+      }],
       currentFaculty: {
         name: null,
         id: null,
@@ -3203,7 +3368,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     changeCourse: function changeCourse(c) {
       axios.post('/course/' + c.id, {
-        name: c.name
+        name: c.name,
+        studyForm: c.studyForm,
+        score: c.score
       });
       console.log(c);
       this.clearCurrentCourse();
@@ -3220,7 +3387,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     addCourse: function addCourse(id) {
       axios.post('/course', {
         name: this.course.name,
-        parent_id: id
+        parent_id: id,
+        studyForm: this.course.studyForm,
+        score: this.course.score
       });
       this.fetchFaculty();
       this.clearCurrentCourse();
@@ -88257,146 +88426,339 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-6" }, [
-        _c("label", { staticClass: "badge" }, [_vm._v("Факультет / институт")]),
-        _vm._v(" "),
-        _c(
-          "select",
-          {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.chosenFaculty,
-                expression: "chosenFaculty"
-              }
-            ],
-            staticClass: "form-control form-control-sm",
-            attrs: { type: "text" },
-            on: {
-              change: function($event) {
-                var $$selectedVal = Array.prototype.filter
-                  .call($event.target.options, function(o) {
-                    return o.selected
-                  })
-                  .map(function(o) {
-                    var val = "_value" in o ? o._value : o.value
-                    return val
-                  })
-                _vm.chosenFaculty = $event.target.multiple
-                  ? $$selectedVal
-                  : $$selectedVal[0]
-              }
-            }
-          },
-          _vm._l(_vm.faculties, function(f, i) {
-            return _c("option", { domProps: { value: f } }, [
-              _vm._v(
-                "\n                    " + _vm._s(f.name) + "\n                "
-              )
-            ])
-          }),
-          0
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-6" }, [
-        _c("label", { staticClass: "badge" }, [
-          _vm._v("Направление подготовки")
-        ]),
-        _vm._v(" "),
-        _vm.chosenFaculty
-          ? _c(
-              "select",
-              {
-                directives: [
+      _c("div", { staticClass: "col-12" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-body" }, [
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-6" }, [
+                _c("label", { staticClass: "badge" }, [
+                  _vm._v("Факультет / институт")
+                ]),
+                _vm._v(" "),
+                _c(
+                  "select",
                   {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.chosenCourse,
-                    expression: "chosenCourse"
-                  }
-                ],
-                staticClass: "form-control form-control-sm",
-                attrs: { type: "text" },
-                on: {
-                  change: function($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function(o) {
-                        return o.selected
-                      })
-                      .map(function(o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.chosenCourse = $event.target.multiple
-                      ? $$selectedVal
-                      : $$selectedVal[0]
-                  }
-                }
-              },
-              _vm._l(_vm.chosenFaculty.courses, function(c, i) {
-                return _c("option", { domProps: { value: c } }, [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(c.name) +
-                      "\n                "
-                  )
-                ])
-              }),
-              0
-            )
-          : _vm._e()
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "col-6" },
-        [
-          _c("label", { staticClass: "badge" }, [
-            _vm._v("Направление подготовки")
-          ]),
-          _vm._v(" "),
-          _c(
-            "b-form-group",
-            [
-              _c("b-form-checkbox-group", {
-                attrs: { options: _vm.forms },
-                model: {
-                  value: _vm.chosenCourse.studyForm,
-                  callback: function($$v) {
-                    _vm.$set(_vm.chosenCourse, "studyForm", $$v)
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.chosenFaculty,
+                        expression: "chosenFaculty"
+                      }
+                    ],
+                    staticClass: "form-control form-control-sm",
+                    attrs: { type: "text" },
+                    on: {
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.chosenFaculty = $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      }
+                    }
                   },
-                  expression: "chosenCourse.studyForm"
-                }
-              })
-            ],
-            1
-          )
-        ],
-        1
-      )
+                  _vm._l(_vm.faculties, function(f, i) {
+                    return _c("option", { domProps: { value: f } }, [
+                      _vm._v(
+                        "\n                                    " +
+                          _vm._s(f.name) +
+                          "\n                                "
+                      )
+                    ])
+                  }),
+                  0
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-6" }, [
+                _c("label", { staticClass: "badge" }, [
+                  _vm._v("Направление подготовки")
+                ]),
+                _vm._v(" "),
+                _vm.chosenFaculty
+                  ? _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.chosenCourse.name,
+                            expression: "chosenCourse.name"
+                          }
+                        ],
+                        staticClass: "form-control form-control-sm",
+                        attrs: { type: "text" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.chosenCourse,
+                              "name",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          }
+                        }
+                      },
+                      _vm._l(_vm.chosenFaculty.courses, function(c, i) {
+                        return _c("option", { domProps: { value: c.name } }, [
+                          _vm._v(
+                            "\n                                    " +
+                              _vm._s(c.name) +
+                              "\n                                "
+                          )
+                        ])
+                      }),
+                      0
+                    )
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "col-6" },
+                [
+                  _c("label", { staticClass: "badge" }, [
+                    _vm._v("Направление подготовки")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "b-form-group",
+                    [
+                      _c("b-form-checkbox-group", {
+                        attrs: { options: _vm.forms },
+                        model: {
+                          value: _vm.chosenCourse.studyForm,
+                          callback: function($$v) {
+                            _vm.$set(_vm.chosenCourse, "studyForm", $$v)
+                          },
+                          expression: "chosenCourse.studyForm"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _vm.chosenCourse.name
+                    ? _c("multiselect", {
+                        staticClass: "col-12",
+                        attrs: {
+                          multiple: "",
+                          "track-by": "name",
+                          label: "name",
+                          placeholder: "Выберите предметы",
+                          options: _vm.subjects,
+                          searchable: true,
+                          "allow-empty": true
+                        },
+                        on: { select: _vm.setSubject },
+                        model: {
+                          value: _vm.chosenSubject,
+                          callback: function($$v) {
+                            _vm.chosenSubject = $$v
+                          },
+                          expression: "chosenSubject"
+                        }
+                      })
+                    : _vm._e()
+                ],
+                1
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "row mt-3" }, [
+              _c("div", { staticClass: "col-12" }, [
+                _vm.chosenSubject
+                  ? _c(
+                      "table",
+                      { staticClass: "table table-sm table-bordered" },
+                      [
+                        _vm._m(0),
+                        _vm._v(" "),
+                        _c(
+                          "tbody",
+                          _vm._l(_vm.chosenSubject, function(s) {
+                            return _c("tr", [
+                              _c("td", [_vm._v(_vm._s(s.name))]),
+                              _vm._v(" "),
+                              _vm._m(1, true)
+                            ])
+                          }),
+                          0
+                        )
+                      ]
+                    )
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _vm._m(2)
+            ])
+          ])
+        ])
+      ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "row mt-3" }, [
-      _c(
-        "div",
-        { staticClass: "col-12" },
-        [
-          _vm.chosenCourse
-            ? _c("b-button", { attrs: { pill: "", variant: "light" } }, [
-                _vm._v(
-                  'Добавить экзамен к "' + _vm._s(_vm.chosenCourse.name) + '"'
-                )
-              ])
-            : _vm._e()
-        ],
-        1
-      )
-    ])
+    _c("hr"),
+    _vm._v(" "),
+    _vm._m(3)
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Название")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Минимальный балл")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("input", { attrs: { type: "text" } })])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-12" }, [
+      _c("button", { staticClass: "btn btn-sm btn-success" }, [
+        _vm._v("Сохранить")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-12" }, [
+        _c("h4", [_vm._v("Аграрный институт")]),
+        _vm._v(" "),
+        _c("table", { staticClass: "table table-bordered" }, [
+          _c("thead", [
+            _c("tr", [
+              _c("th", [_vm._v("Направление подготовки")]),
+              _vm._v(" "),
+              _c("th", [_vm._v("Формы обучения")]),
+              _vm._v(" "),
+              _c("th", [_vm._v("Проходной балл 2018")]),
+              _vm._v(" "),
+              _c("th", [
+                _vm._v(
+                  "Вступительные испытания\n                        в порядке приоритетности для ранжирования\n                    "
+                )
+              ]),
+              _vm._v(" "),
+              _c("th", [_vm._v("Минимальный балл")])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("tbody", [
+            _c("tr", { staticStyle: { "border-top": "2px solid black" } }, [
+              _c("td", { attrs: { rowspan: "3" } }, [_vm._v("Агрономия")]),
+              _vm._v(" "),
+              _c("td", { attrs: { rowspan: "3" } }, [_vm._v("Очная, заочная")]),
+              _vm._v(" "),
+              _c("td", { attrs: { rowspan: "3" } }, [_vm._v("250")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("Математика")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("60")])
+            ]),
+            _vm._v(" "),
+            _c("tr", [
+              _c("td", [_vm._v("Русский")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("30")])
+            ]),
+            _vm._v(" "),
+            _c("tr", [
+              _c("td", [_vm._v("Китайский")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("01")])
+            ]),
+            _vm._v(" "),
+            _c("tr", { staticStyle: { "border-top": "2px solid black" } }, [
+              _c("td", { attrs: { rowspan: "4" } }, [_vm._v("Ветеринария")]),
+              _vm._v(" "),
+              _c("td", { attrs: { rowspan: "4" } }, [_vm._v("Очная")]),
+              _vm._v(" "),
+              _c("td", { attrs: { rowspan: "4" } }, [_vm._v("150")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("Математика")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("60")])
+            ]),
+            _vm._v(" "),
+            _c("tr", [
+              _c("td", [_vm._v("Русский")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("30")])
+            ]),
+            _vm._v(" "),
+            _c("tr", [
+              _c("td", [_vm._v("Китайский")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("01")])
+            ]),
+            _vm._v(" "),
+            _c("tr", [
+              _c("td", [_vm._v("Биология")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("25")])
+            ]),
+            _vm._v(" "),
+            _c("tr", { staticStyle: { "border-top": "2px solid black" } }, [
+              _c("td", { attrs: { rowspan: "3" } }, [_vm._v("Агрономия")]),
+              _vm._v(" "),
+              _c("td", { attrs: { rowspan: "3" } }, [_vm._v("Очная, заочная")]),
+              _vm._v(" "),
+              _c("td", { attrs: { rowspan: "3" } }, [_vm._v("250")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("Математика")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("60")])
+            ]),
+            _vm._v(" "),
+            _c("tr", [
+              _c("td", [_vm._v("Русский")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("30")])
+            ]),
+            _vm._v(" "),
+            _c("tr", [
+              _c("td", [_vm._v("Китайский")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("01")])
+            ])
+          ])
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -88660,8 +89022,12 @@ var render = function() {
                               _c("div", { staticClass: "row" }, [
                                 _c(
                                   "div",
-                                  { staticClass: "col-10" },
+                                  { staticClass: "col-6" },
                                   [
+                                    _c("span", { staticClass: "badge" }, [
+                                      _vm._v("Название направления")
+                                    ]),
+                                    _vm._v(" "),
                                     _c(
                                       "b-form-group",
                                       [
@@ -88670,7 +89036,7 @@ var render = function() {
                                           attrs: {
                                             type: "text",
                                             required: "",
-                                            placeholder: "Введите название"
+                                            placeholder: ""
                                           },
                                           model: {
                                             value: _vm.course.name,
@@ -88687,6 +89053,69 @@ var render = function() {
                                   1
                                 ),
                                 _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "col-2" },
+                                  [
+                                    _c("span", { staticClass: "badge" }, [
+                                      _vm._v("Формы обучения")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "b-form-group",
+                                      [
+                                        _c("b-form-checkbox-group", {
+                                          staticClass: "w-100",
+                                          attrs: {
+                                            options: _vm.forms,
+                                            stacked: ""
+                                          },
+                                          model: {
+                                            value: _vm.course.studyForm,
+                                            callback: function($$v) {
+                                              _vm.$set(
+                                                _vm.course,
+                                                "studyForm",
+                                                $$v
+                                              )
+                                            },
+                                            expression: "course.studyForm"
+                                          }
+                                        })
+                                      ],
+                                      1
+                                    )
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "col-2" },
+                                  [
+                                    _c("span", { staticClass: "badge" }, [
+                                      _vm._v("Проходной балл")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("b-form-input", {
+                                      staticClass: "mb-2",
+                                      attrs: {
+                                        type: "text",
+                                        required: "",
+                                        placeholder: ""
+                                      },
+                                      model: {
+                                        value: _vm.course.score,
+                                        callback: function($$v) {
+                                          _vm.$set(_vm.course, "score", $$v)
+                                        },
+                                        expression: "course.score"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
                                 _c("div", { staticClass: "col-2" }, [
                                   _c("div", { staticClass: "row" }, [
                                     _c("div", { staticClass: "col-12" }, [
@@ -88695,6 +89124,12 @@ var render = function() {
                                           "div",
                                           { staticClass: "col-6" },
                                           [
+                                            _c(
+                                              "span",
+                                              { staticClass: "badge" },
+                                              [_vm._v(" ")]
+                                            ),
+                                            _vm._v(" "),
                                             _c(
                                               "b-button",
                                               {
@@ -88710,7 +89145,7 @@ var render = function() {
                                               },
                                               [
                                                 _c("i", {
-                                                  staticClass: "fas fa-plus"
+                                                  staticClass: "fas fa-check"
                                                 })
                                               ]
                                             )
@@ -88723,6 +89158,8 @@ var render = function() {
                                 ])
                               ]),
                               _vm._v(" "),
+                              _c("hr", {}),
+                              _vm._v(" "),
                               _vm._l(f.courses, function(c, i) {
                                 return _c("div", [
                                   _c("div", { staticClass: "row" }, [
@@ -88730,7 +89167,7 @@ var render = function() {
                                       _c("div", { staticClass: "row" }, [
                                         _c(
                                           "div",
-                                          { staticClass: "col-10" },
+                                          { staticClass: "col-6" },
                                           [
                                             !c.isEdit
                                               ? _c("p", [
@@ -88753,6 +89190,83 @@ var render = function() {
                                                       _vm.$set(c, "name", $$v)
                                                     },
                                                     expression: "c.name"
+                                                  }
+                                                })
+                                              : _vm._e()
+                                          ],
+                                          1
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "div",
+                                          { staticClass: "col-2" },
+                                          [
+                                            !c.isEdit
+                                              ? _c("p", [
+                                                  _vm._v(_vm._s(c.studyForm))
+                                                ])
+                                              : _vm._e(),
+                                            _vm._v(" "),
+                                            c.isEdit
+                                              ? _c(
+                                                  "b-form-group",
+                                                  [
+                                                    _c(
+                                                      "b-form-checkbox-group",
+                                                      {
+                                                        attrs: {
+                                                          options: _vm.forms,
+                                                          stacked: ""
+                                                        },
+                                                        model: {
+                                                          value: c.studyForm,
+                                                          callback: function(
+                                                            $$v
+                                                          ) {
+                                                            _vm.$set(
+                                                              c,
+                                                              "studyForm",
+                                                              $$v
+                                                            )
+                                                          },
+                                                          expression:
+                                                            "c.studyForm"
+                                                        }
+                                                      }
+                                                    )
+                                                  ],
+                                                  1
+                                                )
+                                              : _vm._e()
+                                          ],
+                                          1
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "div",
+                                          { staticClass: "col-2" },
+                                          [
+                                            !c.isEdit
+                                              ? _c("p", [
+                                                  _vm._v(_vm._s(c.score))
+                                                ])
+                                              : _vm._e(),
+                                            _vm._v(" "),
+                                            c.isEdit
+                                              ? _c("b-form-input", {
+                                                  staticClass: "mb-2",
+                                                  attrs: {
+                                                    type: "text",
+                                                    required: "",
+                                                    placeholder:
+                                                      "Проходной балл"
+                                                  },
+                                                  model: {
+                                                    value: c.score,
+                                                    callback: function($$v) {
+                                                      _vm.$set(c, "score", $$v)
+                                                    },
+                                                    expression: "c.score"
                                                   }
                                                 })
                                               : _vm._e()
