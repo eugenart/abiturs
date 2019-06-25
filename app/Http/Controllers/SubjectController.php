@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Subject;
+use App\SubjectList;
 use Illuminate\Http\Request;
 
 class SubjectController extends Controller
@@ -10,6 +11,16 @@ class SubjectController extends Controller
     public function index(Request $request)
     {
         $subjects = Subject::all();
+        if ($request->ajax()) {
+            return response()->json($subjects, 200);
+        }
+
+        return view('structure.faculties', compact('courses'));
+    }
+
+    public function subjectList(Request $request)
+    {
+        $subjects = SubjectList::all();
         if ($request->ajax()) {
             return response()->json($subjects, 200);
         }
