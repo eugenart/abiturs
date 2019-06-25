@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Course extends Model
 {
-    protected $fillable = ['name', 'parent_id', 'studyForm'];
+    protected $fillable = ['name', 'parent_id', 'studyForm', 'score'];
+
+    protected $casts = ['studyForm' => 'array'];
 
     public function parent() {
         return $this->belongsTo(self::class, 'parent_id');

@@ -89,26 +89,49 @@
                                         <div class="card">
                                             <div class="card-body">
                                                 <div class="row">
-                                                    <div class="col-10">
+                                                    <div class="col-6">
+                                                        <span class="badge">Название направления</span>
                                                         <b-form-group>
                                                             <b-form-input
                                                                 type="text"
                                                                 required
                                                                 class="mb-2"
                                                                 v-model="course.name"
-                                                                :placeholder="'Введите название'">
+                                                                placeholder="">
                                                             </b-form-input>
                                                         </b-form-group>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <span class="badge">Формы обучения</span>
+                                                        <b-form-group>
+                                                            <b-form-checkbox-group
+                                                                class="w-100"
+                                                                v-model="course.studyForm"
+                                                                :options="forms"
+                                                                stacked
+                                                            ></b-form-checkbox-group>
+                                                        </b-form-group>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <span class="badge">Проходной балл</span>
+                                                        <b-form-input
+                                                            type="text"
+                                                            required
+                                                            class="mb-2"
+                                                            v-model="course.score"
+                                                            placeholder="">
+                                                        </b-form-input>
                                                     </div>
                                                     <div class="col-2">
                                                         <div class="row">
                                                             <div class="col-12">
                                                                 <div class="row">
                                                                     <div class="col-6">
+                                                                        <span class="badge">&nbsp;</span>
                                                                         <b-button class="m-auto d-block"
                                                                                   variant="outline-success"
                                                                                   @click="addCourse(f.id)"><i
-                                                                            class="fas fa-plus"></i>
+                                                                            class="fas fa-check"></i>
                                                                         </b-button>
                                                                     </div>
                                                                 </div>
@@ -116,11 +139,12 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <hr class="">
                                                 <div v-for="(c,i) in f.courses">
                                                     <div class="row">
                                                         <div class="col-12">
                                                             <div class="row">
-                                                                <div class="col-10">
+                                                                <div class="col-6">
                                                                     <p v-if="!c.isEdit">{{c.name}}</p>
                                                                     <b-form-input
                                                                         v-if="c.isEdit"
@@ -129,6 +153,27 @@
                                                                         class="mb-2"
                                                                         v-model="c.name"
                                                                         :placeholder="'Введите название'">
+                                                                    </b-form-input>
+                                                                </div>
+                                                                <div class="col-2">
+                                                                    <p v-if="!c.isEdit">{{c.studyForm}}</p>
+                                                                    <b-form-group v-if="c.isEdit">
+                                                                        <b-form-checkbox-group
+                                                                            v-model="c.studyForm"
+                                                                            :options="forms"
+                                                                            stacked
+                                                                        ></b-form-checkbox-group>
+                                                                    </b-form-group>
+                                                                </div>
+                                                                <div class="col-2">
+                                                                    <p v-if="!c.isEdit">{{c.score}}</p>
+                                                                    <b-form-input
+                                                                        v-if="c.isEdit"
+                                                                        type="text"
+                                                                        required
+                                                                        class="mb-2"
+                                                                        v-model="c.score"
+                                                                        :placeholder="'Проходной балл'">
                                                                     </b-form-input>
                                                                 </div>
                                                                 <div class="col-2">
@@ -176,8 +221,17 @@
                 course: {
                     name: null,
                     id: null,
-                    isEdit: false
+                    isEdit: false,
+                    score: null,
+                    studyForm: []
+
                 },
+
+                forms: [
+                    {text: "Очная", value: '1'},
+                    {text: "Очно-заочная", value: '2'},
+                    {text: "Заочная", value: '3'}
+                ],
 
                 currentFaculty: {
                     name: null,
@@ -221,7 +275,9 @@
 
             changeCourse(c) {
                 axios.post('/course/' + c.id, {
-                    name: c.name
+                    name: c.name,
+                    studyForm: c.studyForm,
+                    score: c.score,
                 });
                 console.log(c)
                 this.clearCurrentCourse();
@@ -241,7 +297,9 @@
             addCourse(id) {
                 axios.post('/course', {
                     name: this.course.name,
-                    parent_id: id
+                    parent_id: id,
+                    studyForm: this.course.studyForm,
+                    score: this.course.score,
                 });
                 this.fetchFaculty()
                 this.clearCurrentCourse()
@@ -263,7 +321,6 @@
             fetchFaculty() {
                 let data = axios.get('/course')
                     .then(response => (this.faculties = response.data))
-
             }
         }
     }

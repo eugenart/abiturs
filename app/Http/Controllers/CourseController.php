@@ -36,6 +36,7 @@ class CourseController extends Controller
                 'name' => $request->name,
                 'parent_id' => $request->parent_id,
                 'studyForm' => $request->studyForm,
+                'score' => $request->score,
             ]);
             return response()->json($course, 200);
         }
@@ -49,6 +50,7 @@ class CourseController extends Controller
             $course->update([
                 'name' => $request->name,
                 'studyForm' => $request->studyForm,
+                'score' => $request->score,
             ]);
             return response()->json($course, 200);
         }
