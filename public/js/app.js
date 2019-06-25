@@ -3147,6 +3147,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "egeSelect",
   data: function data() {
@@ -88964,6 +88966,10 @@ var render = function() {
     _vm._v("\n    chosenCourse: " + _vm._s(_vm.chosenCourse.id) + "\n    "),
     _c("br"),
     _vm._v("\n    exams: " + _vm._s(_vm.chosenSubject) + "\n    "),
+    _c("br"),
+    _vm._v("\n    faculties: "),
+    _c("pre", [_vm._v(_vm._s(_vm.faculties))]),
+    _vm._v(" "),
     _c("hr"),
     _vm._v(" "),
     _c(

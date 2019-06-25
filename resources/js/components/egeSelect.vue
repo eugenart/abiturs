@@ -59,6 +59,8 @@
         chosenCourse: {{chosenCourse.id}}
         <br>
         exams: {{chosenSubject}}
+        <br>
+        faculties: <pre>{{ faculties }}</pre>
         <hr>
         <div class="row">
             <div class="col-12" v-for="f in faculties">

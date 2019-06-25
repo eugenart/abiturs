@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Course;
 use App\Subject;
 use App\SubjectList;
 use Illuminate\Http\Request;
@@ -31,10 +32,14 @@ class SubjectController extends Controller
     public function store(Request $request)
     {
         if ($request->ajax()) {
-            $subject = Subject::create([
-                'name' => $request->name,
-            ]);
-            return response()->json($subject, 200);
+            foreach ($request->exams as $exam) {
+                $subject = Subject::create([
+                    'course_id' => $request->chosenCourse,
+                    'subject_id' => $exam['id'],
+                    'score' => $exam['minScore'],
+                ]);
+            }
+            return response()->json(['message' => 'OK'], 200);
         }
         return response()->json(['message' => 'Oops'], 404);
     }
