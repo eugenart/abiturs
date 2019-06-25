@@ -36,7 +36,7 @@ class SubjectController extends Controller
                 $subject = Subject::create([
                     'course_id' => $request->chosenCourse,
                     'subject_id' => $exam['id'],
-                    'score' => $exam['minScore'],
+                    'score' => $exam['score'],
                 ]);
             }
             return response()->json(['message' => 'OK'], 200);

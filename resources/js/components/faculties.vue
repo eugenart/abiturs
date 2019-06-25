@@ -156,7 +156,8 @@
                                                                     </b-form-input>
                                                                 </div>
                                                                 <div class="col-2">
-                                                                    <p class="mb-0" v-if="!c.isEdit" v-for="sf in c.studyForm">
+                                                                    <p class="mb-0" v-if="!c.isEdit"
+                                                                       v-for="sf in c.studyForm">
                                                                         {{sf}}</p>
                                                                     <b-form-group v-if="c.isEdit">
                                                                         <b-form-checkbox-group
@@ -242,7 +243,9 @@
                 currentCourse: {
                     name: null,
                     id: null,
-                    isEdit: false
+                    isEdit: false,
+                    score: null,
+                    studyForm: []
                 }
 
             }

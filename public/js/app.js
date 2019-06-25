@@ -3087,68 +3087,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "egeSelect",
   data: function data() {
@@ -3179,11 +3117,17 @@ __webpack_require__.r(__webpack_exports__);
     this.fetchForms();
   },
   methods: {
+    editExams: function editExams(c, f) {
+      this.chosenFaculty = f;
+      this.chosenCourse = c;
+      this.chosenSubject = c.subjects;
+    },
     saveExams: function saveExams() {
       axios.post('/subject', {
         chosenCourse: this.chosenCourse.id,
         exams: this.chosenSubject
       });
+      this.clearAfterSave();
       this.fetchFaculty();
       this.fetchForms();
     },
@@ -3206,6 +3150,14 @@ __webpack_require__.r(__webpack_exports__);
     },
     chooseFaculty: function chooseFaculty(f) {
       this.chosenFaculty = f;
+    },
+    clearAfterSave: function clearAfterSave() {
+      this.chosenFaculty = null;
+      this.chosenCourse = {
+        name: null,
+        id: null
+      };
+      this.chosenSubject = [];
     }
   }
 });
@@ -3225,6 +3177,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
 //
 //
 //
@@ -3470,7 +3423,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       currentCourse: {
         name: null,
         id: null,
-        isEdit: false
+        isEdit: false,
+        score: null,
+        studyForm: []
       }
     };
   },
@@ -88915,22 +88870,18 @@ var render = function() {
                                     {
                                       name: "model",
                                       rawName: "v-model",
-                                      value: s.minScore,
-                                      expression: "s.minScore"
+                                      value: s.score,
+                                      expression: "s.score"
                                     }
                                   ],
                                   attrs: { type: "text" },
-                                  domProps: { value: s.minScore },
+                                  domProps: { value: s.score },
                                   on: {
                                     input: function($event) {
                                       if ($event.target.composing) {
                                         return
                                       }
-                                      _vm.$set(
-                                        s,
-                                        "minScore",
-                                        $event.target.value
-                                      )
+                                      _vm.$set(s, "score", $event.target.value)
                                     }
                                   }
                                 })
@@ -88963,12 +88914,6 @@ var render = function() {
         ])
       ])
     ]),
-    _vm._v("\n    chosenCourse: " + _vm._s(_vm.chosenCourse.id) + "\n    "),
-    _c("br"),
-    _vm._v("\n    exams: " + _vm._s(_vm.chosenSubject) + "\n    "),
-    _c("br"),
-    _vm._v("\n    faculties: "),
-    _c("pre", [_vm._v(_vm._s(_vm.faculties))]),
     _vm._v(" "),
     _c("hr"),
     _vm._v(" "),
@@ -88986,32 +88931,76 @@ var render = function() {
               _vm._m(1, true),
               _vm._v(" "),
               _vm._l(f.courses, function(c) {
-                return _c("tbody", [
-                  _c(
-                    "tr",
-                    { staticStyle: { "border-top": "2px solid black" } },
-                    [
-                      _c("td", { attrs: { rowspan: "3" } }, [
-                        _vm._v(_vm._s(c.name))
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "td",
-                        { attrs: { rowspan: "3" } },
-                        _vm._l(c.studyForm, function(sf) {
-                          return _c("p", { staticClass: "mb-0" }, [
-                            _vm._v("\n                        " + _vm._s(sf))
-                          ])
-                        }),
-                        0
-                      ),
-                      _vm._v(" "),
-                      _c("td", { attrs: { rowspan: "3" } }, [
-                        _vm._v(_vm._s(c.score))
-                      ])
-                    ]
-                  )
-                ])
+                return f.courses
+                  ? _c(
+                      "tbody",
+                      [
+                        _c(
+                          "tr",
+                          { staticStyle: { "border-top": "2px solid black" } },
+                          [
+                            _c(
+                              "td",
+                              { attrs: { rowspan: c.subjects.length } },
+                              [
+                                _vm._v(_vm._s(c.name) + " "),
+                                _c("i", {
+                                  staticClass: "fa fa-pencil",
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.editExams(c, f)
+                                    }
+                                  }
+                                })
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "td",
+                              { attrs: { rowspan: c.subjects.length } },
+                              _vm._l(c.studyForm, function(sf) {
+                                return _c("p", { staticClass: "mb-0" }, [
+                                  _vm._v(
+                                    "\n                        " + _vm._s(sf)
+                                  )
+                                ])
+                              }),
+                              0
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "td",
+                              { attrs: { rowspan: c.subjects.length } },
+                              [_vm._v(_vm._s(c.score))]
+                            ),
+                            _vm._v(" "),
+                            c.subjects[0]
+                              ? _c("td", [_vm._v(_vm._s(c.subjects[0].name))])
+                              : _c("td", [_vm._v("-")]),
+                            _vm._v(" "),
+                            c.subjects[0]
+                              ? _c("td", [_vm._v(_vm._s(c.subjects[0].score))])
+                              : _c("td", [_vm._v("-")])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _vm._l(c.subjects, function(e, i) {
+                          return i > 0
+                            ? _c("tr", [
+                                e.name
+                                  ? _c("td", [_vm._v(_vm._s(e.name))])
+                                  : _c("td", [_vm._v("-")]),
+                                _vm._v(" "),
+                                e.score
+                                  ? _c("td", [_vm._v(_vm._s(e.score))])
+                                  : _c("td", [_vm._v("-")])
+                              ])
+                            : _vm._e()
+                        })
+                      ],
+                      2
+                    )
+                  : _vm._e()
               })
             ],
             2
@@ -89019,9 +89008,7 @@ var render = function() {
         ])
       }),
       0
-    ),
-    _vm._v(" "),
-    _vm._m(2)
+    )
   ])
 }
 var staticRenderFns = [
@@ -89042,7 +89029,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("thead", [
-      _c("tr", [
+      _c("tr", { staticClass: "text-center" }, [
         _c("th", [_vm._v("Направление подготовки")]),
         _vm._v(" "),
         _c("th", [_vm._v("Формы обучения")]),
@@ -89055,117 +89042,9 @@ var staticRenderFns = [
           )
         ]),
         _vm._v(" "),
-        _c("th", [_vm._v("Минимальный балл")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-12" }, [
-        _c("h4", [_vm._v("Аграрный институт")]),
+        _c("th", [_vm._v("Минимальный балл")]),
         _vm._v(" "),
-        _c("table", { staticClass: "table table-bordered" }, [
-          _c("thead", [
-            _c("tr", [
-              _c("th", [_vm._v("Направление подготовки")]),
-              _vm._v(" "),
-              _c("th", [_vm._v("Формы обучения")]),
-              _vm._v(" "),
-              _c("th", [_vm._v("Проходной балл 2018")]),
-              _vm._v(" "),
-              _c("th", [
-                _vm._v(
-                  "Вступительные испытания\n                        в порядке приоритетности для ранжирования\n                    "
-                )
-              ]),
-              _vm._v(" "),
-              _c("th", [_vm._v("Минимальный балл")])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tbody", [
-            _c("tr", { staticStyle: { "border-top": "2px solid black" } }, [
-              _c("td", { attrs: { rowspan: "3" } }, [_vm._v("Агрономия")]),
-              _vm._v(" "),
-              _c("td", { attrs: { rowspan: "3" } }, [_vm._v("Очная, заочная")]),
-              _vm._v(" "),
-              _c("td", { attrs: { rowspan: "3" } }, [_vm._v("250")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("Математика")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("60")])
-            ]),
-            _vm._v(" "),
-            _c("tr", [
-              _c("td", [_vm._v("Русский")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("30")])
-            ]),
-            _vm._v(" "),
-            _c("tr", [
-              _c("td", [_vm._v("Китайский")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("01")])
-            ]),
-            _vm._v(" "),
-            _c("tr", { staticStyle: { "border-top": "2px solid black" } }, [
-              _c("td", { attrs: { rowspan: "4" } }, [_vm._v("Ветеринария")]),
-              _vm._v(" "),
-              _c("td", { attrs: { rowspan: "4" } }, [_vm._v("Очная")]),
-              _vm._v(" "),
-              _c("td", { attrs: { rowspan: "4" } }, [_vm._v("150")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("Математика")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("60")])
-            ]),
-            _vm._v(" "),
-            _c("tr", [
-              _c("td", [_vm._v("Русский")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("30")])
-            ]),
-            _vm._v(" "),
-            _c("tr", [
-              _c("td", [_vm._v("Китайский")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("01")])
-            ]),
-            _vm._v(" "),
-            _c("tr", [
-              _c("td", [_vm._v("Биология")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("25")])
-            ]),
-            _vm._v(" "),
-            _c("tr", { staticStyle: { "border-top": "2px solid black" } }, [
-              _c("td", { attrs: { rowspan: "3" } }, [_vm._v("Агрономия")]),
-              _vm._v(" "),
-              _c("td", { attrs: { rowspan: "3" } }, [_vm._v("Очная, заочная")]),
-              _vm._v(" "),
-              _c("td", { attrs: { rowspan: "3" } }, [_vm._v("250")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("Математика")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("60")])
-            ]),
-            _vm._v(" "),
-            _c("tr", [
-              _c("td", [_vm._v("Русский")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("30")])
-            ]),
-            _vm._v(" "),
-            _c("tr", [
-              _c("td", [_vm._v("Китайский")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("01")])
-            ])
-          ])
-        ])
+        _c("th", { staticClass: "text-center" })
       ])
     ])
   }

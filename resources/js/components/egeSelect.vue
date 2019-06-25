@@ -43,7 +43,7 @@
                                     <tbody>
                                     <tr v-for="s in chosenSubject">
                                         <td>{{s.name}}</td>
-                                        <td><input type="text" v-model="s.minScore"></td>
+                                        <td><input type="text" v-model="s.score"></td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -56,18 +56,13 @@
                 </div>
             </div>
         </div>
-        chosenCourse: {{chosenCourse.id}}
-        <br>
-        exams: {{chosenSubject}}
-        <br>
-        faculties: <pre>{{ faculties }}</pre>
         <hr>
         <div class="row">
             <div class="col-12" v-for="f in faculties">
                 <h4>{{f.name}}</h4>
                 <table class="table table-bordered">
                     <thead>
-                    <tr>
+                    <tr class="text-center">
                         <th>Направление подготовки</th>
                         <th>Формы обучения</th>
                         <th>Проходной балл 2018</th>
@@ -75,83 +70,26 @@
                             в порядке приоритетности для ранжирования
                         </th>
                         <th>Минимальный балл</th>
+                        <th class="text-center"></th>
                     </tr>
                     </thead>
-                    <tbody v-for="c in f.courses">
+                    <tbody v-for="c in f.courses" v-if="f.courses">
                     <tr style="border-top: 2px solid black;">
-                        <td rowspan="3">{{c.name}}</td>
-                        <td rowspan="3"><p class="mb-0" v-for="sf in c.studyForm">
+                        <td :rowspan="c.subjects.length">{{c.name}} <i class="fa fa-pencil"
+                                                                       @click="editExams(c,f)"></i></td>
+                        <td :rowspan="c.subjects.length"><p class="mb-0" v-for="sf in c.studyForm">
                             {{sf}}</p></td>
-                        <td rowspan="3">{{c.score}}</td>
+                        <td :rowspan="c.subjects.length">{{c.score}}</td>
+                        <td v-if="c.subjects[0]">{{c.subjects[0].name}}</td>
+                        <td v-else>-</td>
+                        <td v-if="c.subjects[0]">{{c.subjects[0].score}}</td>
+                        <td v-else>-</td>
                     </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <h4>Аграрный институт</h4>
-                <table class="table table-bordered">
-                    <thead>
-                    <tr>
-                        <th>Направление подготовки</th>
-                        <th>Формы обучения</th>
-                        <th>Проходной балл 2018</th>
-                        <th>Вступительные испытания
-                            в порядке приоритетности для ранжирования
-                        </th>
-                        <th>Минимальный балл</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr style="border-top: 2px solid black;">
-                        <td rowspan="3">Агрономия</td>
-                        <td rowspan="3">Очная, заочная</td>
-                        <td rowspan="3">250</td>
-                        <td>Математика</td>
-                        <td>60</td>
-                    </tr>
-                    <tr>
-                        <td>Русский</td>
-                        <td>30</td>
-                    </tr>
-                    <tr>
-                        <td>Китайский</td>
-                        <td>01</td>
-                    </tr>
-                    <tr style="border-top: 2px solid black;">
-                        <td rowspan="4">Ветеринария</td>
-                        <td rowspan="4">Очная</td>
-                        <td rowspan="4">150</td>
-                        <td>Математика</td>
-                        <td>60</td>
-                    </tr>
-                    <tr>
-                        <td>Русский</td>
-                        <td>30</td>
-                    </tr>
-                    <tr>
-                        <td>Китайский</td>
-                        <td>01</td>
-                    </tr>
-                    <tr>
-                        <td>Биология</td>
-                        <td>25</td>
-                    </tr>
-                    <tr style="border-top: 2px solid black;">
-                        <td rowspan="3">Агрономия</td>
-                        <td rowspan="3">Очная, заочная</td>
-                        <td rowspan="3">250</td>
-                        <td>Математика</td>
-                        <td>60</td>
-                    </tr>
-                    <tr>
-                        <td>Русский</td>
-                        <td>30</td>
-                    </tr>
-                    <tr>
-                        <td>Китайский</td>
-                        <td>01</td>
+                    <tr v-for="(e,i) in c.subjects" v-if="i>0">
+                        <td v-if="e.name">{{e.name}}</td>
+                        <td v-else>-</td>
+                        <td v-if="e.score">{{e.score}}</td>
+                        <td v-else>-</td>
                     </tr>
                     </tbody>
                 </table>
@@ -190,11 +128,19 @@
 
         methods: {
 
+            editExams(c, f) {
+                this.chosenFaculty = f;
+                this.chosenCourse = c;
+                this.chosenSubject = c.subjects
+
+            },
+
             saveExams() {
                 axios.post('/subject', {
                     chosenCourse: this.chosenCourse.id,
                     exams: this.chosenSubject
                 });
+                this.clearAfterSave()
                 this.fetchFaculty()
                 this.fetchForms()
             },
@@ -213,6 +159,15 @@
             },
             chooseFaculty(f) {
                 this.chosenFaculty = f
+            },
+
+            clearAfterSave() {
+                this.chosenFaculty = null;
+                this.chosenCourse = {
+                    name: null,
+                    id: null
+                };
+                this.chosenSubject = []
             }
 
         }
