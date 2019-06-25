@@ -156,7 +156,9 @@
                                                                     </b-form-input>
                                                                 </div>
                                                                 <div class="col-2">
-                                                                    <p v-if="!c.isEdit">{{c.studyForm}}</p>
+                                                                    <p class="mb-0" v-if="!c.isEdit"
+                                                                       v-for="sf in c.studyForm">
+                                                                        {{sf}}</p>
                                                                     <b-form-group v-if="c.isEdit">
                                                                         <b-form-checkbox-group
                                                                             v-model="c.studyForm"
@@ -228,9 +230,9 @@
                 },
 
                 forms: [
-                    {text: "Очная", value: '1'},
-                    {text: "Очно-заочная", value: '2'},
-                    {text: "Заочная", value: '3'}
+                    {text: "Очная", value: 'Очная'},
+                    {text: "Очно-заочная", value: 'Очно-заочная'},
+                    {text: "Заочная", value: 'Заочная'}
                 ],
 
                 currentFaculty: {
@@ -241,7 +243,9 @@
                 currentCourse: {
                     name: null,
                     id: null,
-                    isEdit: false
+                    isEdit: false,
+                    score: null,
+                    studyForm: []
                 }
 
             }

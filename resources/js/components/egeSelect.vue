@@ -15,21 +15,15 @@
                             </div>
                             <div class="col-6">
                                 <label class="badge">Направление подготовки</label>
-                                <select v-if="chosenFaculty" v-model="chosenCourse.name" type="text"
+                                <select v-if="chosenFaculty" v-model="chosenCourse" type="text"
                                         class="form-control form-control-sm">
-                                    <option v-for="(c,i) in chosenFaculty.courses" :value="c.name">
+                                    <option v-for="(c,i) in chosenFaculty.courses" :value="c">
                                         {{c.name}}
                                     </option>
                                 </select>
                             </div>
                             <div class="col-6">
                                 <label class="badge">Направление подготовки</label>
-                                <b-form-group>
-                                    <b-form-checkbox-group
-                                        v-model="chosenCourse.studyForm"
-                                        :options="forms"
-                                    ></b-form-checkbox-group>
-                                </b-form-group>
                                 <multiselect class="col-12" v-if="chosenCourse.name" multiple v-model="chosenSubject"
                                              track-by="name" label="name" placeholder="Выберите предметы"
                                              :options="subjects"
@@ -49,13 +43,13 @@
                                     <tbody>
                                     <tr v-for="s in chosenSubject">
                                         <td>{{s.name}}</td>
-                                        <td><input type="text"></td>
+                                        <td><input type="text" v-model="s.score"></td>
                                     </tr>
                                     </tbody>
                                 </table>
                             </div>
                             <div class="col-12">
-                                <button class="btn btn-sm btn-success">Сохранить</button>
+                                <button class="btn btn-sm btn-success" @click="saveExams()">Сохранить</button>
                             </div>
                         </div>
                     </div>
@@ -64,11 +58,11 @@
         </div>
         <hr>
         <div class="row">
-            <div class="col-12">
-                <h4>Аграрный институт</h4>
+            <div class="col-12" v-for="f in faculties">
+                <h4>{{f.name}}</h4>
                 <table class="table table-bordered">
                     <thead>
-                    <tr>
+                    <tr class="text-center">
                         <th>Направление подготовки</th>
                         <th>Формы обучения</th>
                         <th>Проходной балл 2018</th>
@@ -76,57 +70,26 @@
                             в порядке приоритетности для ранжирования
                         </th>
                         <th>Минимальный балл</th>
+                        <th class="text-center"></th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody v-for="c in f.courses" v-if="f.courses">
                     <tr style="border-top: 2px solid black;">
-                        <td rowspan="3">Агрономия</td>
-                        <td rowspan="3">Очная, заочная</td>
-                        <td rowspan="3">250</td>
-                        <td>Математика</td>
-                        <td>60</td>
+                        <td :rowspan="c.subjects.length">{{c.name}} <i class="fa fa-pencil"
+                                                                       @click="editExams(c,f)"></i></td>
+                        <td :rowspan="c.subjects.length"><p class="mb-0" v-for="sf in c.studyForm">
+                            {{sf}}</p></td>
+                        <td :rowspan="c.subjects.length">{{c.score}}</td>
+                        <td v-if="c.subjects[0]">{{c.subjects[0].name}}</td>
+                        <td v-else>-</td>
+                        <td v-if="c.subjects[0]">{{c.subjects[0].score}}</td>
+                        <td v-else>-</td>
                     </tr>
-                    <tr>
-                        <td>Русский</td>
-                        <td>30</td>
-                    </tr>
-                    <tr>
-                        <td>Китайский</td>
-                        <td>01</td>
-                    </tr>
-                    <tr style="border-top: 2px solid black;">
-                        <td rowspan="4">Ветеринария</td>
-                        <td rowspan="4">Очная</td>
-                        <td rowspan="4">150</td>
-                        <td>Математика</td>
-                        <td>60</td>
-                    </tr>
-                    <tr>
-                        <td>Русский</td>
-                        <td>30</td>
-                    </tr>
-                    <tr>
-                        <td>Китайский</td>
-                        <td>01</td>
-                    </tr>
-                    <tr>
-                        <td>Биология</td>
-                        <td>25</td>
-                    </tr>
-                    <tr style="border-top: 2px solid black;">
-                        <td rowspan="3">Агрономия</td>
-                        <td rowspan="3">Очная, заочная</td>
-                        <td rowspan="3">250</td>
-                        <td>Математика</td>
-                        <td>60</td>
-                    </tr>
-                    <tr>
-                        <td>Русский</td>
-                        <td>30</td>
-                    </tr>
-                    <tr>
-                        <td>Китайский</td>
-                        <td>01</td>
+                    <tr v-for="(e,i) in c.subjects" v-if="i>0">
+                        <td v-if="e.name">{{e.name}}</td>
+                        <td v-else>-</td>
+                        <td v-if="e.score">{{e.score}}</td>
+                        <td v-else>-</td>
                     </tr>
                     </tbody>
                 </table>
@@ -144,7 +107,7 @@
                 chosenFaculty: null,
                 chosenCourse: {
                     name: null,
-                    studyForm: []
+                    id: null
                 },
                 exams: [],
                 forms: [
@@ -165,6 +128,23 @@
 
         methods: {
 
+            editExams(c, f) {
+                this.chosenFaculty = f;
+                this.chosenCourse = c;
+                this.chosenSubject = c.subjects
+
+            },
+
+            saveExams() {
+                axios.post('/subject', {
+                    chosenCourse: this.chosenCourse.id,
+                    exams: this.chosenSubject
+                });
+                this.clearAfterSave()
+                this.fetchFaculty()
+                this.fetchForms()
+            },
+
             setSubject() {
                 console.log(this.chosenSubject)
             },
@@ -174,11 +154,20 @@
                     .then(response => (this.faculties = response.data))
             },
             fetchForms() {
-                let data = axios.get('/subject')
+                let data = axios.get('/subject-list')
                     .then(response => (this.subjects = response.data))
             },
             chooseFaculty(f) {
                 this.chosenFaculty = f
+            },
+
+            clearAfterSave() {
+                this.chosenFaculty = null;
+                this.chosenCourse = {
+                    name: null,
+                    id: null
+                };
+                this.chosenSubject = []
             }
 
         }

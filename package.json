@@ -26,7 +26,6 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
-        "bootstrap-select": "^1.13.10",
         "bootstrap-vue": "^2.0.0-rc.20",
         "bs-custom-file-input": "^1.3.2",
         "vue-multiselect": "^2.1.6",
