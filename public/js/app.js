@@ -3087,6 +3087,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "egeSelect",
   data: function data() {
@@ -3117,6 +3121,16 @@ __webpack_require__.r(__webpack_exports__);
     this.fetchForms();
   },
   methods: {
+    setNewCourse: function setNewCourse() {
+      this.chosenSubject = this.chosenCourse.subjects;
+    },
+    setNewFaculty: function setNewFaculty() {
+      this.chosenCourse = {
+        name: null,
+        id: null
+      };
+      this.chosenSubject = [];
+    },
     editExams: function editExams(c, f) {
       this.chosenFaculty = f;
       this.chosenCourse = c;
@@ -88737,19 +88751,24 @@ var render = function() {
                     staticClass: "form-control form-control-sm",
                     attrs: { type: "text" },
                     on: {
-                      change: function($event) {
-                        var $$selectedVal = Array.prototype.filter
-                          .call($event.target.options, function(o) {
-                            return o.selected
-                          })
-                          .map(function(o) {
-                            var val = "_value" in o ? o._value : o.value
-                            return val
-                          })
-                        _vm.chosenFaculty = $event.target.multiple
-                          ? $$selectedVal
-                          : $$selectedVal[0]
-                      }
+                      change: [
+                        function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.chosenFaculty = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        },
+                        function($event) {
+                          return _vm.setNewFaculty()
+                        }
+                      ]
                     }
                   },
                   _vm._l(_vm.faculties, function(f, i) {
@@ -88785,19 +88804,24 @@ var render = function() {
                         staticClass: "form-control form-control-sm",
                         attrs: { type: "text" },
                         on: {
-                          change: function($event) {
-                            var $$selectedVal = Array.prototype.filter
-                              .call($event.target.options, function(o) {
-                                return o.selected
-                              })
-                              .map(function(o) {
-                                var val = "_value" in o ? o._value : o.value
-                                return val
-                              })
-                            _vm.chosenCourse = $event.target.multiple
-                              ? $$selectedVal
-                              : $$selectedVal[0]
-                          }
+                          change: [
+                            function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.chosenCourse = $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            },
+                            function($event) {
+                              return _vm.setNewCourse()
+                            }
+                          ]
                         }
                       },
                       _vm._l(_vm.chosenFaculty.courses, function(c, i) {
@@ -88907,6 +88931,19 @@ var render = function() {
                     }
                   },
                   [_vm._v("Сохранить")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-sm btn-warning",
+                    on: {
+                      click: function($event) {
+                        return _vm.clearAfterSave()
+                      }
+                    }
+                  },
+                  [_vm._v("Очистить форму")]
                 )
               ])
             ])
@@ -88941,7 +88978,13 @@ var render = function() {
                           [
                             _c(
                               "td",
-                              { attrs: { rowspan: c.subjects.length } },
+                              {
+                                attrs: {
+                                  rowspan: c.subjects.length
+                                    ? c.subjects.length
+                                    : 1
+                                }
+                              },
                               [
                                 _vm._v(_vm._s(c.name) + " "),
                                 _c("i", {
@@ -88957,7 +89000,13 @@ var render = function() {
                             _vm._v(" "),
                             _c(
                               "td",
-                              { attrs: { rowspan: c.subjects.length } },
+                              {
+                                attrs: {
+                                  rowspan: c.subjects.length
+                                    ? c.subjects.length
+                                    : 1
+                                }
+                              },
                               _vm._l(c.studyForm, function(sf) {
                                 return _c("p", { staticClass: "mb-0" }, [
                                   _vm._v(
@@ -88970,7 +89019,13 @@ var render = function() {
                             _vm._v(" "),
                             _c(
                               "td",
-                              { attrs: { rowspan: c.subjects.length } },
+                              {
+                                attrs: {
+                                  rowspan: c.subjects.length
+                                    ? c.subjects.length
+                                    : 1
+                                }
+                              },
                               [_vm._v(_vm._s(c.score))]
                             ),
                             _vm._v(" "),
@@ -89042,9 +89097,7 @@ var staticRenderFns = [
           )
         ]),
         _vm._v(" "),
-        _c("th", [_vm._v("Минимальный балл")]),
-        _vm._v(" "),
-        _c("th", { staticClass: "text-center" })
+        _c("th", [_vm._v("Минимальный балл")])
       ])
     ])
   }
