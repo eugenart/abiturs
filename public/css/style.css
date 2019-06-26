@@ -103,6 +103,33 @@ body {
     background-color: rgba(0, 128, 0, 0.3);
 }
 
+.bac-mag {
+    height: 50px;
+}
+
+.bac-mag .nav-link {
+    color: rgba(35, 102, 165, 0.7) !important;
+}
+
+.bac-mag .nav-link:hover {
+    color: #2366a5 !important;
+}
+
+.bac-mag .form-inline button {
+    background-color: rgba(35, 102, 165, 0.7);
+    color: white;
+}
+
+.bac-mag .form-inline button:hover {
+    background-color: rgba(35, 102, 165, 1);
+}
+
+.bac-mag .form-inline input {
+    border: 1px solid #2366a5;
+    width: 300px;
+}
+
+
 .mrsu-hr {
     height: 5px;
     width: 95%;

@@ -26,7 +26,7 @@
                             </div>
                             <div class="col-6">
                                 <label class="badge">Направление подготовки</label>
-                                <multiselect class="col-12" v-if="chosenCourse.name" multiple v-model="chosenSubject"
+                                <multiselect class="w-100" v-if="chosenCourse.name" multiple v-model="chosenSubject"
                                              track-by="name" label="name" placeholder="Выберите предметы"
                                              :options="subjects"
                                              :searchable="true" :allow-empty="true" @select="setSubject">

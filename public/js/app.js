@@ -88852,7 +88852,7 @@ var render = function() {
                   _vm._v(" "),
                   _vm.chosenCourse.name
                     ? _c("multiselect", {
-                        staticClass: "col-12",
+                        staticClass: "w-100",
                         attrs: {
                           multiple: "",
                           "track-by": "name",
