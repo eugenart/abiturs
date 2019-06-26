@@ -35,22 +35,23 @@ Route::post('/course/{id}', 'CourseController@update')->name('course.update');
 Route::delete('/course/{id}', 'CourseController@destroy')->name('course.destroy');
 
 Route::get('/subject', 'SubjectController@index')->name('subject.index');
-Route::get('/subject-list', 'SubjectController@subjectList')->name('subject.list');
 Route::post('/subject', 'SubjectController@store')->name('subject.store');
 Route::post('/subject/{id}', 'SubjectController@update')->name('subject.update');
 Route::delete('/subject/{id}', 'SubjectController@destroy')->name('subject.destroy');
+
+Route::get('/subject-list', 'SubjectController@subjectList')->name('subject.list');
+Route::post('/subject-list', 'SubjectController@addToSubjectList')->name('subject.addToList');
+Route::delete('/subject-list/{id}', 'SubjectController@deleteFromSubjectList')->name('subject.deleteFromList');
 
 Route::get('/ege', function () {
     return view('structure.egeSelect');
 });
 
-Route::get('/selection', function () {
-    return view('pages.selection');
-});
-
 Route::get('/stat', function () {
     return view('pages.stat');
 });
+
+Route::get('/selection', 'SelectionController@index')->name('selection.index');
 
 
 Route::get('/section-content/{id}', 'SectionContentController@index');

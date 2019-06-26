@@ -106,6 +106,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link {{ Request::is('subject-list*') ? 'active' : null }}" href="/subject-list">
+                                <span data-feather="shopping-cart"></span>
+                                Вступительные испытания
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link {{ Request::is('ege*') ? 'active' : null }}" href="/ege">
                                 <span data-feather="users"></span>
                                 ЕГЭ

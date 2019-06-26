@@ -10,117 +10,72 @@
             </div>
         </div>
         <div class="row mt-5 text-uppercase">
-            <div class="col-2">
-                <div class="inputGroup" id="inputGroup1">
-                    <input id="option1" name="option1" type="checkbox" onclick="addToChosenExams('Русский язык')"/>
-                    <label for="option1">Русский язык</label>
+            @foreach($subjects as $subject)
+                <div class="col-2">
+                    <div class="inputGroup">
+                        <input id="option{{ $loop->index }}" type="checkbox" onclick="addToChosenExams('{{ $subject->name }}')"/>
+                        <label for="option{{ $loop->index }}">{{ $subject->name }}</label>
+                    </div>
                 </div>
-            </div>
-            <div class="col-2">
-                <div class="inputGroup">
-                    <input id="option2" name="option2" type="checkbox"/>
-                    <label for="option2">Математика</label>
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="inputGroup">
-                    <input id="option3" name="option3" type="checkbox"/>
-                    <label for="option3">Физика</label>
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="inputGroup">
-                    <input id="option4" name="option4" type="checkbox"/>
-                    <label for="option4">Биология</label>
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="inputGroup">
-                    <input id="option5" name="option5" type="checkbox"/>
-                    <label for="option5">Обществознание</label>
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="inputGroup">
-                    <input id="option6" name="option6" type="checkbox"/>
-                    <label for="option6">История</label>
-                </div>
-            </div>
+            @endforeach
         </div>
         <div class="row mt-5">
-            <div class="col-12 mb-5">
-                <h3>ИФХ</h3>
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>Направление подготовки</th>
-                        <th>Форма обучения</th>
-                        <th>Проходной балл предыдущего года</th>
-                        <th>Вступительные испытания в порядке приоритетности для ранжирования</th>
-                        <th>Минимальные баллы</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td rowspan="3">Прикладная математика и информатика</td>
-                        <td rowspan="3">Очная, заочная</td>
-                        <td rowspan="3">246</td>
-                        <td>
-                            Математика
-                        </td>
-                        <td>
-                            23
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Физика</td>
-                        <td>34</td>
-                    </tr>
-                    <tr>
-                        <td>Русский язык</td>
-                        <td>34</td>
-                    </tr>
-                    </tbody>
-                </table>
-                <hr>
-            </div>
-            <div class="col-12 mb-5">
-                <h3>ИФХ</h3>
-                <table class="table">
-                    <tbody>
-                    <thead>
-                    <tr>
-                        <th>Направление подготовки</th>
-                        <th>Форма обучения</th>
-                        <th>Проходной балл предыдущего года</th>
-                        <th>Вступительные испытания в порядке приоритетности для ранжирования</th>
-                        <th>Минимальные баллы</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td rowspan="3">Прикладная математика и информатика</td>
-                        <td rowspan="3">Очная, заочная</td>
-                        <td rowspan="3">246</td>
-                        <td>
-                            Математика
-                        </td>
-                        <td>
-                            23
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Физика</td>
-                        <td>34</td>
-                    </tr>
-                    <tr>
-                        <td>Русский язык</td>
-                        <td>34</td>
-                    </tr>
-                    </tbody>
-                </table>
-                <hr>
-            </div>
+
+
+                @foreach($courses as $course)
+                <div class="col-12 mb-5 search-div" data-exams="{{ implode(', ', $course->exams) }}">
+                    <h3 class="text-uppercase mt-5">{{ $course->name }}</h3>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Направление подготовки</th>
+                            <th>Форма обучения</th>
+                            <th>Проходной балл предыдущего года</th>
+                            <th>Вступительные испытания в порядке приоритетности для ранжирования</th>
+                            <th>Минимальные баллы</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($course->children as $child)
+                            @if ( $child->subjects->count() == 1 )
+                            <tr class="nps-tr search-tr" data-exams="{{ implode(', ', $child->exams) }}">
+                                <td>{{ $child->name }}</td>
+                                <td>{{ implode(', ', $child->studyForm) }}</td>
+                                <td>{{ $child->score }}</td>
+                                <td>
+                                    {{ $child->subjects->first()->subjectsList->name }}
+                                </td>
+                                <td>
+                                    {{ $child->subjects->first()->score }}
+                                </td>
+                            </tr>
+                            @elseif($child->subjects->count() > 1)
+                                <tr class="nps-tr search-tr" data-exams="{{ implode(', ', $child->exams) }}">
+                                    <td rowspan={{ $child->subjects->count() }}>{{ $child->name }}</td>
+                                    <td rowspan={{ $child->subjects->count() }}>{{ implode(', ', $child->studyForm) }}</td>
+                                    <td rowspan={{ $child->subjects->count() }}>{{ $child->score }}</td>
+                                    <td>
+                                        {{ $child->subjects->first()->subjectsList->name }}
+                                    </td>
+                                    <td>
+                                        {{ $child->subjects->first()->score }}
+                                    </td>
+                                </tr>
+                                @foreach($child->subjects as $subject)
+                                    @if ($loop->first) @continue @endif
+                                    <tr class="search-tr" data-exams="{{ implode(', ', $child->exams) }}">
+                                        <td>{{ $subject->subjectsList->name }}</td>
+                                        <td>{{ $subject->score }}</td>
+                                    </tr>
+                                @endforeach
+                            @endif
+                        @endforeach
+                        </tbody>
+                    </table>
+                    <hr>
+                </div>
+                @endforeach
+
         </div>
     </div>
 @endsection
@@ -139,7 +94,63 @@
             } else {
                 chosenExams.push(exam)
             }
-            console.log(chosenExams)
+            search();
+        }
+
+        function search() {
+            let searchDivs = $('.search-div');
+            $.each(searchDivs, function (index, searchDiv) {
+                let showDiv = false;
+                $.each($(searchDiv).find('.search-tr'), function (i, item) {
+                    let exams = $(item).data("exams").split(', ');
+                    if (exams.length <= chosenExams.length) {
+                        if (include(exams, chosenExams)) {
+                            $(item).show();
+                            showDiv = true;
+                        } else {
+                            $(item).hide()
+                        }
+                    } else {
+                        $(item).hide()
+                    }
+                });
+
+                showDiv ? $(searchDiv).show() : $(searchDiv).hide();
+            });
+
+
+
+
+            // let searchTr = $('.search-tr');
+            // $.each(searchTr, function (index, item) {
+            //     let exams = $(item).data("exams").split(', ');
+            //     if (exams.length <= chosenExams.length) {
+            //         if (include(exams, chosenExams)) {
+            //             $(item).closest('.search-div').show()
+            //             $(item).show()
+            //         } else {
+            //             $(item).hide()
+            //         }
+            //         // $.each($(item).find('.search-tr'), function (k,v) {
+            //         //     let trExams = $(v).data("exams").split(', ');
+            //         //     if (trExams.length <= chosenExams.length) {
+            //         //         include(trExams, chosenExams, trExams.length) ? $(v).show() : $(v).hide()
+            //         //     } else {
+            //         //         $(v).hide()
+            //         //     }
+            //         // })
+            //     } else {
+            //         $(item).hide()
+            //     }
+            // })
+        }
+
+        function include(array1, array2) {
+            let count = 0;
+            $.each(array1, function (k, v) {
+                $.inArray(v, array2) !== -1 ? count +=1 : null;
+            });
+            return (count === array1.length);
         }
     </script>
 @endsection
