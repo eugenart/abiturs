@@ -32,17 +32,24 @@ class SubjectController extends Controller
     public function store(Request $request)
     {
         if ($request->ajax()) {
+            $subject_list = [];
             foreach ($request->exams as $exam) {
                 if (isset($exam['subject_id'])) {
+                    $subject_list[] = $exam['id'];
                     Subject::find($exam['id'])->update(['score' => $exam['score']]);
                 } else {
-                    Subject::create([
+                    $newSubject = Subject::create([
                         'course_id' => $request->chosenCourse,
                         'subject_id' => $exam['id'],
                         'score' => $exam['score'],
                     ]);
+                    $subject_list[] = $newSubject->id;
                 }
-
+            }
+            $course = Course::find($request->chosenCourse);
+            $subjects = $course->subjects->whereNotIn('id', $subject_list);
+            foreach ($subjects as $subject) {
+                $subject->delete();
             }
             return response()->json(['message' => 'OK'], 200);
         }

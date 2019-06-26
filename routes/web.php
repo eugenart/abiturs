@@ -44,6 +44,10 @@ Route::get('/ege', function () {
     return view('structure.egeSelect');
 });
 
+Route::get('/selection', function () {
+    return view('pages.selection');
+});
+
 
 Route::get('/section-content/{id}', 'SectionContentController@index');
 Route::post('/section-content', 'SectionContentController@store');
