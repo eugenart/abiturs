@@ -16,7 +16,7 @@ class SubjectController extends Controller
             return response()->json($subjects, 200);
         }
 
-        return view('structure.faculties', compact('courses'));
+        return view('structure.faculties', compact('subjects'));
     }
 
     public function subjectList(Request $request)
@@ -26,7 +26,31 @@ class SubjectController extends Controller
             return response()->json($subjects, 200);
         }
 
-        return view('structure.faculties', compact('courses'));
+        return view('structure.subject', compact('subjects'));
+    }
+
+    public function addToSubjectList(Request $request)
+    {
+        if ($request->ajax()) {
+            $subjects = SubjectList::create([
+                'name' => $request->name,
+                'internal' => $request->internal
+            ]);
+            return response()->json($subjects, 200);
+        }
+
+        return response()->json(['message' => 'Oops'], 404);
+    }
+
+    public function deleteFromSubjectList(Request $request, $id)
+    {
+        $subjects = SubjectList::find($id);
+        if ($request->ajax()) {
+            $subjects->delete();
+            return response()->json(['message' => 'Subject was deleted'], 200);
+        }
+
+        return response()->json(['message' => 'Oops'], 404);
     }
 
     public function store(Request $request)

@@ -26,6 +26,7 @@ Vue.component('slider', require('./components/Slider').default);
 Vue.component('faculties', require('./components/faculties').default);
 Vue.component('sectioninfo', require('./components/sectionInfo').default);
 Vue.component('egeSelect', require('./components/egeSelect').default);
+Vue.component('subject', require('./components/Subject').default);
 
 
 Vue.filter("formatDate", function (value) {

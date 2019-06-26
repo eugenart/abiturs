@@ -7,7 +7,8 @@
                         <div class="row">
                             <div class="col-6">
                                 <label class="badge">Факультет / институт</label>
-                                <select type="text" class="form-control form-control-sm" v-model="chosenFaculty">
+                                <select type="text" class="form-control form-control-sm" v-model="chosenFaculty"
+                                        @change="setNewFaculty()">
                                     <option v-for="(f,i) in faculties" :value="f">
                                         {{f.name}}
                                     </option>
@@ -16,7 +17,8 @@
                             <div class="col-6">
                                 <label class="badge">Направление подготовки</label>
                                 <select v-if="chosenFaculty" v-model="chosenCourse" type="text"
-                                        class="form-control form-control-sm">
+                                        class="form-control form-control-sm"
+                                        @change="setNewCourse()">
                                     <option v-for="(c,i) in chosenFaculty.courses" :value="c">
                                         {{c.name}}
                                     </option>
@@ -24,7 +26,7 @@
                             </div>
                             <div class="col-6">
                                 <label class="badge">Направление подготовки</label>
-                                <multiselect class="col-12" v-if="chosenCourse.name" multiple v-model="chosenSubject"
+                                <multiselect class="w-100" v-if="chosenCourse.name" multiple v-model="chosenSubject"
                                              track-by="name" label="name" placeholder="Выберите предметы"
                                              :options="subjects"
                                              :searchable="true" :allow-empty="true" @select="setSubject">
@@ -50,6 +52,7 @@
                             </div>
                             <div class="col-12">
                                 <button class="btn btn-sm btn-success" @click="saveExams()">Сохранить</button>
+                                <button class="btn btn-sm btn-warning" @click="clearAfterSave()">Очистить форму</button>
                             </div>
                         </div>
                     </div>
@@ -70,16 +73,18 @@
                             в порядке приоритетности для ранжирования
                         </th>
                         <th>Минимальный балл</th>
-                        <th class="text-center"></th>
                     </tr>
                     </thead>
                     <tbody v-for="c in f.courses" v-if="f.courses">
                     <tr style="border-top: 2px solid black;">
-                        <td :rowspan="c.subjects.length">{{c.name}} <i class="fa fa-pencil"
-                                                                       @click="editExams(c,f)"></i></td>
-                        <td :rowspan="c.subjects.length"><p class="mb-0" v-for="sf in c.studyForm">
+                        <td :rowspan="c.subjects.length ? c.subjects.length : 1">{{c.name}} <i class="fa fa-pencil"
+                                                                                               style="cursor:pointer;"
+                                                                                               @click="editExams(c,f)"></i>
+                        </td>
+                        <td :rowspan="c.subjects.length ? c.subjects.length : 1"><p class="mb-0"
+                                                                                    v-for="sf in c.studyForm">
                             {{sf}}</p></td>
-                        <td :rowspan="c.subjects.length">{{c.score}}</td>
+                        <td :rowspan="c.subjects.length ? c.subjects.length : 1">{{c.score}}</td>
                         <td v-if="c.subjects[0]">{{c.subjects[0].name}}</td>
                         <td v-else>-</td>
                         <td v-if="c.subjects[0]">{{c.subjects[0].score}}</td>
@@ -128,11 +133,25 @@
 
         methods: {
 
+            setNewCourse() {
+                this.chosenSubject = this.chosenCourse.subjects
+            },
+
+            setNewFaculty() {
+                this.chosenCourse = {
+                    name: null,
+                    id: null
+                };
+                this.chosenSubject = []
+            },
+
             editExams(c, f) {
                 this.chosenFaculty = f;
                 this.chosenCourse = c;
                 this.chosenSubject = c.subjects
-
+                $('body,html').animate({
+                    scrollTop: 0
+                }, 400);
             },
 
             saveExams() {

@@ -16,6 +16,7 @@ class CreateSubjectListsTable extends Migration
         Schema::create('subject_lists', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->boolean('internal')->default(false);
             $table->timestamps();
         });
     }
