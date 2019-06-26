@@ -48,6 +48,10 @@ Route::get('/selection', function () {
     return view('pages.selection');
 });
 
+Route::get('/stat', function () {
+    return view('pages.stat');
+});
+
 
 Route::get('/section-content/{id}', 'SectionContentController@index');
 Route::post('/section-content', 'SectionContentController@store');

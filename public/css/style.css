@@ -94,9 +94,24 @@ body {
     color: #2366a5;
 }
 
+.base-exams-table thead tr td {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.base-exams-table .exam-rights {
+    background-color: rgba(0, 128, 0, 0.3);
+}
+
 .mrsu-hr {
     height: 5px;
     width: 95%;
+}
+
+.examInfo {
+    background-color: rgba(255, 0, 0, 0.2);
+    width: max-content;
+    border-radius: 10px;
 }
 
 marquee {
