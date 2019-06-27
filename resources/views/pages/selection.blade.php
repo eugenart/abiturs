@@ -11,7 +11,7 @@
         </div>
         <div class="row mt-5 text-uppercase">
             @foreach($subjects as $subject)
-                <div class="col-2">
+                <div class="col-3">
                     <div class="inputGroup">
                         <input id="option{{ $loop->index }}" type="checkbox" onclick="addToChosenExams('{{ $subject->name }}')"/>
                         <label for="option{{ $loop->index }}">{{ $subject->name }}</label>

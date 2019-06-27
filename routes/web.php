@@ -51,6 +51,8 @@ Route::get('/stat', function () {
     return view('pages.stat');
 });
 
+Route::get('/admin', 'InfoblockController@index')->name('infoblock.index');
+
 Route::get('/selection', 'SelectionController@index')->name('selection.index');
 
 
