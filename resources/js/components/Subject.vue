@@ -9,18 +9,18 @@
                         </div>
                         <div class="card-body">
                             <b-form-group
-                                    label="Название вступительного испытания:">
+                                label="Название вступительного испытания:">
                                 <b-form-input
-                                        type="text"
-                                        required
-                                        v-model="subject.name"
-                                        placeholder="Введите название">
+                                    type="text"
+                                    required
+                                    v-model="subject.name"
+                                    placeholder="Введите название">
                                 </b-form-input>
                             </b-form-group>
-                                <b-form-checkbox
-                                        v-model="subject.internal">
-                                    Внутренний экзамен
-                                </b-form-checkbox>
+                            <b-form-checkbox
+                                v-model="subject.internal">
+                                Внутренний экзамен
+                            </b-form-checkbox>
                         </div>
                         <div class="card-footer">
                             <div class="row">
@@ -41,22 +41,29 @@
         <div class="row mt-3">
             <div class="col-12">
                 <div class="row">
-                    <table class="table table-sm">
-                        <thead>
-                        <tr>
-                            <th>Название вступительного испытания</th>
-                            <th>Внутренний экзамен</th>
-                            <th>Действия</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr v-for="sbj in subjects">
-                            <td>{{ sbj.name }}</td>
-                            <td>{{ sbj.internal ? "Да" : "Нет" }}</td>
-                            <td><i class="fa fa-trash" style="color: red" @click="deleteSubject(sbj.id)"></i></td>
-                        </tr>
-                        </tbody>
-                    </table>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <table class="table table-sm">
+                                    <thead>
+                                    <tr>
+                                        <th>Название вступительного испытания</th>
+                                        <th>Внутренний экзамен</th>
+                                        <th>Действия</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr v-for="sbj in subjects">
+                                        <td>{{ sbj.name }}</td>
+                                        <td>{{ sbj.internal ? "Да" : "Нет" }}</td>
+                                        <td><i class="fa fa-trash" style="color: red"
+                                               @click="deleteSubject(sbj.id)"></i></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
