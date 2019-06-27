@@ -1,0 +1,128 @@
+body {
+    font-family: "PT Sans";
+}
+
+.mrsu-bg {
+    background-color: #2366a5;
+}
+
+.mrsu-uppertext {
+    text-transform: uppercase;
+}
+
+.mrsu-logo-img {
+    width: 342px;
+    height: 54px;
+}
+
+.main-nav {
+    background-color: #2366a5 !important;
+}
+
+.main-nav button span {
+    color: white;
+}
+
+.main-nav ul li a {
+    color: white;
+    font-size: 13px;
+}
+
+.main-nav ul li:hover {
+    background-color: #2689cd;
+}
+
+.mrsu-card {
+    background-color: #eaeaea;
+}
+
+.mrsu-card > ul {
+    color: #2366a5;
+    font-size: 12px;
+}
+
+.mrsu-card a {
+    color: #2366a5;
+}
+
+.mrsu-card > ul > li {
+    margin-bottom: 5px;
+}
+
+.mrsu-card > ul > li > ul li {
+    font-style: italic;
+    margin-bottom: 5px;
+}
+
+.title-text {
+    font-size: 13px;
+    color: #2366a5;
+    background-color: white;
+}
+
+.carousel-item {
+    height: 400px;
+}
+
+.infoblock-card .card-body {
+    background-color: #2366a5;
+    color: white;
+    padding: 5px;
+    font-size: 13px;
+}
+
+/*.navbar-toggler {*/
+/*    display: none;*/
+/*}*/
+
+.infoblock-card img {
+    width: 100%;
+    height: 212px;
+}
+
+.infoblock-card .card-footer ul li a {
+    font-style: italic;
+    color: #2366a5;
+    font-size: 13px;
+}
+
+.infoblock-card .card-footer ul {
+    list-style-type: none;
+}
+
+.infoblock-card .card-footer ul li:before {
+    content: "—";
+    position: relative;
+    left: -5px;
+    color: #2366a5;
+}
+
+.mrsu-hr {
+    height: 5px;
+}
+
+marquee {
+    border-bottom: 1px solid #2366a5;
+    border-top: 1px solid #2366a5;
+    color: #2366a5;
+}
+
+
+/*@media screen and (max-width: 991px) {*/
+/*    .navbar-toggler {*/
+/*        display: block;*/
+/*    }*/
+/*}*/
+
+@media screen and (max-width: 700px) {
+    .carousel-item {
+        height: 250px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .mrsu-logo-img {
+        width: 228px;
+        height: 36px;
+    }
+}
