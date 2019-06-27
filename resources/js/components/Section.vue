@@ -27,18 +27,12 @@
                                                     <input v-model="section.name" @keyup="transliterate" type="text"
                                                            class="form-control form-control-sm" required>
                                                 </div>
-                                            </div>
-                                            <div class="row">
                                                 <div class="form-group col-6" v-show='!isFolder'>
                                                     <label class="badge">Ссылка на подраздел</label>
                                                     <input v-model="section.url" type="text"
                                                            class="form-control form-control-sm" required
                                                            @keyup="transliterate">
                                                 </div>
-
-                                                <p>Блок - {{section.infoblockID}} </p>
-                                                <p> Секция - {{section.sectionID}} </p>
-                                                <p> -- {{isFolder}} --</p>
                                             </div>
                                         </b-tab>
                                         <b-tab title="Отображение и приоритет">
@@ -292,9 +286,10 @@
 
 
         mounted() {
-            this.currentSection = {...this.section}
-            this.$store.dispatch('GET_SECTIONS')
-            this.$store.dispatch('GET_BLOCKS')
+            this.currentSection = {...this.section};
+            this.$store.dispatch('GET_SECTIONS');
+            this.$store.dispatch('GET_BLOCKS');
+            $('#infoblockForm').hide()
         },
 
         computed: {
@@ -319,6 +314,7 @@
             },
 
             changeParents(block, section, folder) {
+                $('#infoblockForm').show()
                 this.isFolder = folder
                 this.isSectionUpdate = false;
                 this.clearCurrentSection();

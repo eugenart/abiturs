@@ -47,6 +47,10 @@ Route::get('/ege', function () {
     return view('structure.egeSelect');
 });
 
+Route::get('/stat', function () {
+    return view('pages.stat');
+});
+
 Route::get('/selection', 'SelectionController@index')->name('selection.index');
 
 

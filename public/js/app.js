@@ -2541,12 +2541,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Section',
   data: function data() {
@@ -2574,6 +2568,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     this.currentSection = _objectSpread({}, this.section);
     this.$store.dispatch('GET_SECTIONS');
     this.$store.dispatch('GET_BLOCKS');
+    $('#infoblockForm').hide();
   },
   computed: {
     blocks: function blocks() {
@@ -2591,6 +2586,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.updateSection();
     },
     changeParents: function changeParents(block, section, folder) {
+      $('#infoblockForm').show();
       this.isFolder = folder;
       this.isSectionUpdate = false;
       this.clearCurrentSection();
@@ -3056,6 +3052,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "subject",
   data: function data() {
@@ -3112,6 +3115,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3320,6 +3330,29 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -87339,10 +87372,8 @@ var render = function() {
                                       }
                                     }
                                   })
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "row" }, [
+                                ]),
+                                _vm._v(" "),
                                 _c(
                                   "div",
                                   {
@@ -87389,27 +87420,7 @@ var render = function() {
                                       }
                                     })
                                   ]
-                                ),
-                                _vm._v(" "),
-                                _c("p", [
-                                  _vm._v(
-                                    "Блок - " +
-                                      _vm._s(_vm.section.infoblockID) +
-                                      " "
-                                  )
-                                ]),
-                                _vm._v(" "),
-                                _c("p", [
-                                  _vm._v(
-                                    " Секция - " +
-                                      _vm._s(_vm.section.sectionID) +
-                                      " "
-                                  )
-                                ]),
-                                _vm._v(" "),
-                                _c("p", [
-                                  _vm._v(" -- " + _vm._s(_vm.isFolder) + " --")
-                                ])
+                                )
                               ])
                             ]
                           ),
@@ -88920,7 +88931,7 @@ var render = function() {
                       },
                       [
                         _vm._v(
-                          "\n                                Внутренний экзамен\n                            "
+                          "\n                            Внутренний экзамен\n                        "
                         )
                       ]
                     )
@@ -88968,32 +88979,38 @@ var render = function() {
     _c("div", { staticClass: "row mt-3" }, [
       _c("div", { staticClass: "col-12" }, [
         _c("div", { staticClass: "row" }, [
-          _c("table", { staticClass: "table table-sm" }, [
-            _vm._m(0),
-            _vm._v(" "),
-            _c(
-              "tbody",
-              _vm._l(_vm.subjects, function(sbj) {
-                return _c("tr", [
-                  _c("td", [_vm._v(_vm._s(sbj.name))]),
+          _c("div", { staticClass: "col-12" }, [
+            _c("div", { staticClass: "card" }, [
+              _c("div", { staticClass: "card-body" }, [
+                _c("table", { staticClass: "table table-sm" }, [
+                  _vm._m(0),
                   _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(sbj.internal ? "Да" : "Нет"))]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _c("i", {
-                      staticClass: "fa fa-trash",
-                      staticStyle: { color: "red" },
-                      on: {
-                        click: function($event) {
-                          return _vm.deleteSubject(sbj.id)
-                        }
-                      }
-                    })
-                  ])
+                  _c(
+                    "tbody",
+                    _vm._l(_vm.subjects, function(sbj) {
+                      return _c("tr", [
+                        _c("td", [_vm._v(_vm._s(sbj.name))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(sbj.internal ? "Да" : "Нет"))]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c("i", {
+                            staticClass: "fa fa-trash",
+                            staticStyle: { color: "red" },
+                            on: {
+                              click: function($event) {
+                                return _vm.deleteSubject(sbj.id)
+                              }
+                            }
+                          })
+                        ])
+                      ])
+                    }),
+                    0
+                  )
                 ])
-              }),
-              0
-            )
+              ])
+            ])
           ])
         ])
       ])
@@ -89263,115 +89280,128 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("hr"),
+    _c("br"),
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "row" },
+      { staticClass: "row mb-3" },
       _vm._l(_vm.faculties, function(f) {
         return _c("div", { staticClass: "col-12" }, [
-          _c("h4", [_vm._v(_vm._s(f.name))]),
-          _vm._v(" "),
-          _c(
-            "table",
-            { staticClass: "table table-bordered" },
-            [
-              _vm._m(1, true),
-              _vm._v(" "),
-              _vm._l(f.courses, function(c) {
-                return f.courses
-                  ? _c(
-                      "tbody",
-                      [
-                        _c(
-                          "tr",
-                          { staticStyle: { "border-top": "2px solid black" } },
+          _c("div", { staticClass: "card" }, [
+            _c("div", { staticClass: "card-header" }, [
+              _c("h4", [_vm._v(_vm._s(f.name))])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body" }, [
+              _c(
+                "table",
+                { staticClass: "table table-bordered" },
+                [
+                  _vm._m(1, true),
+                  _vm._v(" "),
+                  _vm._l(f.courses, function(c) {
+                    return f.courses
+                      ? _c(
+                          "tbody",
                           [
                             _c(
-                              "td",
+                              "tr",
                               {
-                                attrs: {
-                                  rowspan: c.subjects.length
-                                    ? c.subjects.length
-                                    : 1
-                                }
+                                staticStyle: { "border-top": "2px solid black" }
                               },
                               [
-                                _vm._v(_vm._s(c.name) + " "),
-                                _c("i", {
-                                  staticClass: "fa fa-pencil",
-                                  staticStyle: { cursor: "pointer" },
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.editExams(c, f)
+                                _c(
+                                  "td",
+                                  {
+                                    attrs: {
+                                      rowspan: c.subjects.length
+                                        ? c.subjects.length
+                                        : 1
                                     }
-                                  }
-                                })
+                                  },
+                                  [
+                                    _vm._v(_vm._s(c.name) + " "),
+                                    _c("i", {
+                                      staticClass: "fa fa-pencil",
+                                      staticStyle: { cursor: "pointer" },
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.editExams(c, f)
+                                        }
+                                      }
+                                    })
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    attrs: {
+                                      rowspan: c.subjects.length
+                                        ? c.subjects.length
+                                        : 1
+                                    }
+                                  },
+                                  _vm._l(c.studyForm, function(sf) {
+                                    return _c("p", { staticClass: "mb-0" }, [
+                                      _vm._v(
+                                        "\n                                " +
+                                          _vm._s(sf)
+                                      )
+                                    ])
+                                  }),
+                                  0
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    attrs: {
+                                      rowspan: c.subjects.length
+                                        ? c.subjects.length
+                                        : 1
+                                    }
+                                  },
+                                  [_vm._v(_vm._s(c.score))]
+                                ),
+                                _vm._v(" "),
+                                c.subjects[0]
+                                  ? _c("td", [
+                                      _vm._v(_vm._s(c.subjects[0].name))
+                                    ])
+                                  : _c("td", [_vm._v("-")]),
+                                _vm._v(" "),
+                                c.subjects[0]
+                                  ? _c("td", [
+                                      _vm._v(_vm._s(c.subjects[0].score))
+                                    ])
+                                  : _c("td", [_vm._v("-")])
                               ]
                             ),
                             _vm._v(" "),
-                            _c(
-                              "td",
-                              {
-                                attrs: {
-                                  rowspan: c.subjects.length
-                                    ? c.subjects.length
-                                    : 1
-                                }
-                              },
-                              _vm._l(c.studyForm, function(sf) {
-                                return _c("p", { staticClass: "mb-0" }, [
-                                  _vm._v(
-                                    "\n                        " + _vm._s(sf)
-                                  )
-                                ])
-                              }),
-                              0
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "td",
-                              {
-                                attrs: {
-                                  rowspan: c.subjects.length
-                                    ? c.subjects.length
-                                    : 1
-                                }
-                              },
-                              [_vm._v(_vm._s(c.score))]
-                            ),
-                            _vm._v(" "),
-                            c.subjects[0]
-                              ? _c("td", [_vm._v(_vm._s(c.subjects[0].name))])
-                              : _c("td", [_vm._v("-")]),
-                            _vm._v(" "),
-                            c.subjects[0]
-                              ? _c("td", [_vm._v(_vm._s(c.subjects[0].score))])
-                              : _c("td", [_vm._v("-")])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _vm._l(c.subjects, function(e, i) {
-                          return i > 0
-                            ? _c("tr", [
-                                e.name
-                                  ? _c("td", [_vm._v(_vm._s(e.name))])
-                                  : _c("td", [_vm._v("-")]),
-                                _vm._v(" "),
-                                e.score
-                                  ? _c("td", [_vm._v(_vm._s(e.score))])
-                                  : _c("td", [_vm._v("-")])
-                              ])
-                            : _vm._e()
-                        })
-                      ],
-                      2
-                    )
-                  : _vm._e()
-              })
-            ],
-            2
-          )
+                            _vm._l(c.subjects, function(e, i) {
+                              return i > 0
+                                ? _c("tr", [
+                                    e.name
+                                      ? _c("td", [_vm._v(_vm._s(e.name))])
+                                      : _c("td", [_vm._v("-")]),
+                                    _vm._v(" "),
+                                    e.score
+                                      ? _c("td", [_vm._v(_vm._s(e.score))])
+                                      : _c("td", [_vm._v("-")])
+                                  ])
+                                : _vm._e()
+                            })
+                          ],
+                          2
+                        )
+                      : _vm._e()
+                  })
+                ],
+                2
+              )
+            ])
+          ])
         ])
       }),
       0
@@ -89405,7 +89435,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [
           _vm._v(
-            "Вступительные испытания\n                        в порядке приоритетности для ранжирования\n                    "
+            "Вступительные испытания\n                                в порядке приоритетности для ранжирования\n                            "
           )
         ]),
         _vm._v(" "),
@@ -89528,476 +89558,561 @@ var render = function() {
     _c("div", { staticClass: "row mt-3" }, [
       _c("div", { staticClass: "col-12" }, [
         _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-6" }, [
-            _c(
-              "div",
-              {
-                staticClass: "list-group",
-                attrs: { id: "list-tab", role: "tablist" }
-              },
-              _vm._l(_vm.faculties, function(f, i) {
-                return _c(
-                  "a",
-                  {
-                    key: i,
-                    staticClass:
-                      "mb-3 list-group-item list-group-item-action d-block",
-                    attrs: {
-                      id: "list-course-list" + i,
-                      "data-toggle": "list",
-                      href: "#list-course" + i,
-                      role: "tab",
-                      "aria-controls": "course" + i
-                    }
-                  },
-                  [
-                    _c("div", { staticClass: "row" }, [
-                      _c(
-                        "div",
-                        { staticClass: "col-8" },
-                        [
-                          !f.isEdit
-                            ? _c("p", [_vm._v(_vm._s(f.name))])
-                            : _vm._e(),
-                          _vm._v(" "),
-                          f.isEdit
-                            ? _c("b-form-input", {
-                                staticClass: "h-100",
-                                attrs: {
-                                  type: "text",
-                                  required: "",
-                                  placeholder: "Введите название"
-                                },
-                                model: {
-                                  value: f.name,
-                                  callback: function($$v) {
-                                    _vm.$set(f, "name", $$v)
-                                  },
-                                  expression: "f.name"
-                                }
-                              })
-                            : _vm._e()
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "col-2 d-flex align-items-center justify-content-center"
-                        },
-                        [
-                          !f.isEdit
-                            ? _c(
-                                "b-button",
-                                {
-                                  staticClass: "col-12",
-                                  attrs: { squared: "", variant: "warning" },
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.editFaculty(f)
-                                    }
-                                  }
-                                },
-                                [_c("i", { staticClass: "fas fa-pen" })]
-                              )
-                            : _c(
-                                "b-button",
-                                {
-                                  staticClass: "col-12",
-                                  attrs: { squared: "", variant: "warning" },
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.changeFaculty(f)
-                                    }
-                                  }
-                                },
-                                [_c("i", { staticClass: "fas fa-check" })]
-                              )
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "col-2 d-flex align-items-center justify-content-center "
-                        },
-                        [
-                          _c(
-                            "b-button",
-                            {
-                              staticClass: "col-12",
-                              attrs: { squared: "", variant: "danger" },
-                              on: {
-                                click: function($event) {
-                                  return _vm.deleteFaculty(f.id)
-                                }
-                              }
-                            },
-                            [_c("i", { staticClass: "fas fa-trash" })]
-                          )
-                        ],
-                        1
-                      )
-                    ])
-                  ]
-                )
-              }),
-              0
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-6" }, [
-            _c(
-              "div",
-              { staticClass: "tab-content", attrs: { id: "nav-tabContent" } },
-              _vm._l(_vm.faculties, function(f, i) {
-                return _c(
-                  "div",
-                  {
-                    key: i,
-                    staticClass: "tab-pane fade",
-                    attrs: {
-                      id: "list-course" + i,
-                      role: "tabpanel",
-                      "aria-labelledby": "list-course-list" + i
-                    }
-                  },
-                  [
-                    _c("div", { staticClass: "row" }, [
-                      _c("div", { staticClass: "col-12" }, [
-                        _c("div", { staticClass: "card" }, [
-                          _c(
-                            "div",
-                            { staticClass: "card-body" },
-                            [
-                              _c("div", { staticClass: "row" }, [
-                                _c(
-                                  "div",
-                                  { staticClass: "col-6" },
-                                  [
-                                    _c("span", { staticClass: "badge" }, [
-                                      _vm._v("Название направления")
-                                    ]),
-                                    _vm._v(" "),
-                                    _c(
-                                      "b-form-group",
-                                      [
-                                        _c("b-form-input", {
-                                          staticClass: "mb-2",
-                                          attrs: {
-                                            type: "text",
-                                            required: "",
-                                            placeholder: ""
-                                          },
-                                          model: {
-                                            value: _vm.course.name,
-                                            callback: function($$v) {
-                                              _vm.$set(_vm.course, "name", $$v)
-                                            },
-                                            expression: "course.name"
-                                          }
-                                        })
-                                      ],
-                                      1
-                                    )
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  { staticClass: "col-2" },
-                                  [
-                                    _c("span", { staticClass: "badge" }, [
-                                      _vm._v("Формы обучения")
-                                    ]),
-                                    _vm._v(" "),
-                                    _c(
-                                      "b-form-group",
-                                      [
-                                        _c("b-form-checkbox-group", {
-                                          staticClass: "w-100",
-                                          attrs: {
-                                            options: _vm.forms,
-                                            stacked: ""
-                                          },
-                                          model: {
-                                            value: _vm.course.studyForm,
-                                            callback: function($$v) {
-                                              _vm.$set(
-                                                _vm.course,
-                                                "studyForm",
-                                                $$v
-                                              )
-                                            },
-                                            expression: "course.studyForm"
-                                          }
-                                        })
-                                      ],
-                                      1
-                                    )
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  { staticClass: "col-2" },
-                                  [
-                                    _c("span", { staticClass: "badge" }, [
-                                      _vm._v("Проходной балл")
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("b-form-input", {
-                                      staticClass: "mb-2",
-                                      attrs: {
-                                        type: "text",
-                                        required: "",
-                                        placeholder: ""
-                                      },
-                                      model: {
-                                        value: _vm.course.score,
-                                        callback: function($$v) {
-                                          _vm.$set(_vm.course, "score", $$v)
+          _c("div", { staticClass: "col-12" }, [
+            _c("div", { staticClass: "card" }, [
+              _c("div", { staticClass: "card-body" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-6" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "list-group",
+                        attrs: { id: "list-tab", role: "tablist" }
+                      },
+                      _vm._l(_vm.faculties, function(f, i) {
+                        return _c(
+                          "a",
+                          {
+                            key: i,
+                            staticClass:
+                              "mb-3 list-group-item list-group-item-action d-block",
+                            attrs: {
+                              id: "list-course-list" + i,
+                              "data-toggle": "list",
+                              href: "#list-course" + i,
+                              role: "tab",
+                              "aria-controls": "course" + i
+                            }
+                          },
+                          [
+                            _c("div", { staticClass: "row" }, [
+                              _c(
+                                "div",
+                                { staticClass: "col-8" },
+                                [
+                                  !f.isEdit
+                                    ? _c("p", [_vm._v(_vm._s(f.name))])
+                                    : _vm._e(),
+                                  _vm._v(" "),
+                                  f.isEdit
+                                    ? _c("b-form-input", {
+                                        staticClass: "h-100",
+                                        attrs: {
+                                          type: "text",
+                                          required: "",
+                                          placeholder: "Введите название"
                                         },
-                                        expression: "course.score"
+                                        model: {
+                                          value: f.name,
+                                          callback: function($$v) {
+                                            _vm.$set(f, "name", $$v)
+                                          },
+                                          expression: "f.name"
+                                        }
+                                      })
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "col-2 d-flex align-items-center justify-content-center"
+                                },
+                                [
+                                  !f.isEdit
+                                    ? _c(
+                                        "b-button",
+                                        {
+                                          staticClass: "col-12",
+                                          attrs: {
+                                            squared: "",
+                                            variant: "warning"
+                                          },
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.editFaculty(f)
+                                            }
+                                          }
+                                        },
+                                        [_c("i", { staticClass: "fas fa-pen" })]
+                                      )
+                                    : _c(
+                                        "b-button",
+                                        {
+                                          staticClass: "col-12",
+                                          attrs: {
+                                            squared: "",
+                                            variant: "warning"
+                                          },
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.changeFaculty(f)
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _c("i", {
+                                            staticClass: "fas fa-check"
+                                          })
+                                        ]
+                                      )
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "col-2 d-flex align-items-center justify-content-center "
+                                },
+                                [
+                                  _c(
+                                    "b-button",
+                                    {
+                                      staticClass: "col-12",
+                                      attrs: { squared: "", variant: "danger" },
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.deleteFaculty(f.id)
+                                        }
                                       }
-                                    })
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "col-2" }, [
-                                  _c("div", { staticClass: "row" }, [
-                                    _c("div", { staticClass: "col-12" }, [
-                                      _c("div", { staticClass: "row" }, [
-                                        _c(
-                                          "div",
-                                          { staticClass: "col-6" },
-                                          [
-                                            _c(
-                                              "span",
-                                              { staticClass: "badge" },
-                                              [_vm._v(" ")]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "b-button",
-                                              {
-                                                staticClass: "m-auto d-block",
+                                    },
+                                    [_c("i", { staticClass: "fas fa-trash" })]
+                                  )
+                                ],
+                                1
+                              )
+                            ])
+                          ]
+                        )
+                      }),
+                      0
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-6" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "tab-content",
+                        attrs: { id: "nav-tabContent" }
+                      },
+                      _vm._l(_vm.faculties, function(f, i) {
+                        return _c(
+                          "div",
+                          {
+                            key: i,
+                            staticClass: "tab-pane fade",
+                            attrs: {
+                              id: "list-course" + i,
+                              role: "tabpanel",
+                              "aria-labelledby": "list-course-list" + i
+                            }
+                          },
+                          [
+                            _c("div", { staticClass: "row" }, [
+                              _c("div", { staticClass: "col-12" }, [
+                                _c("div", { staticClass: "card mb-3" }, [
+                                  _c("div", { staticClass: "card-body" }, [
+                                    _c("div", { staticClass: "row" }, [
+                                      _c(
+                                        "div",
+                                        { staticClass: "col-6" },
+                                        [
+                                          _c("span", { staticClass: "badge" }, [
+                                            _vm._v("Название направления")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c(
+                                            "b-form-group",
+                                            [
+                                              _c("b-form-input", {
+                                                staticClass: "mb-2",
                                                 attrs: {
-                                                  variant: "outline-success"
+                                                  type: "text",
+                                                  required: "",
+                                                  placeholder: ""
                                                 },
-                                                on: {
-                                                  click: function($event) {
-                                                    return _vm.addCourse(f.id)
-                                                  }
-                                                }
-                                              },
-                                              [
-                                                _c("i", {
-                                                  staticClass: "fas fa-check"
-                                                })
-                                              ]
-                                            )
-                                          ],
-                                          1
-                                        )
-                                      ])
-                                    ])
-                                  ])
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _c("hr", {}),
-                              _vm._v(" "),
-                              _vm._l(f.courses, function(c, i) {
-                                return _c("div", [
-                                  _c("div", { staticClass: "row" }, [
-                                    _c("div", { staticClass: "col-12" }, [
-                                      _c("div", { staticClass: "row" }, [
-                                        _c(
-                                          "div",
-                                          { staticClass: "col-6" },
-                                          [
-                                            !c.isEdit
-                                              ? _c("p", [
-                                                  _vm._v(_vm._s(c.name))
-                                                ])
-                                              : _vm._e(),
-                                            _vm._v(" "),
-                                            c.isEdit
-                                              ? _c("b-form-input", {
-                                                  staticClass: "mb-2",
-                                                  attrs: {
-                                                    type: "text",
-                                                    required: "",
-                                                    placeholder:
-                                                      "Введите название"
+                                                model: {
+                                                  value: _vm.course.name,
+                                                  callback: function($$v) {
+                                                    _vm.$set(
+                                                      _vm.course,
+                                                      "name",
+                                                      $$v
+                                                    )
                                                   },
-                                                  model: {
-                                                    value: c.name,
-                                                    callback: function($$v) {
-                                                      _vm.$set(c, "name", $$v)
+                                                  expression: "course.name"
+                                                }
+                                              })
+                                            ],
+                                            1
+                                          )
+                                        ],
+                                        1
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "div",
+                                        { staticClass: "col-4" },
+                                        [
+                                          _c("span", { staticClass: "badge" }, [
+                                            _vm._v("Проходной балл")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("b-form-input", {
+                                            staticClass: "mb-2",
+                                            attrs: {
+                                              type: "text",
+                                              required: "",
+                                              placeholder: ""
+                                            },
+                                            model: {
+                                              value: _vm.course.score,
+                                              callback: function($$v) {
+                                                _vm.$set(
+                                                  _vm.course,
+                                                  "score",
+                                                  $$v
+                                                )
+                                              },
+                                              expression: "course.score"
+                                            }
+                                          })
+                                        ],
+                                        1
+                                      ),
+                                      _vm._v(" "),
+                                      _c("div", { staticClass: "col-2" }, [
+                                        _c("div", { staticClass: "row" }, [
+                                          _c("div", { staticClass: "col-12" }, [
+                                            _c("div", { staticClass: "row" }, [
+                                              _c(
+                                                "div",
+                                                { staticClass: "col-6" },
+                                                [
+                                                  _c(
+                                                    "span",
+                                                    { staticClass: "badge" },
+                                                    [_vm._v(" ")]
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "b-button",
+                                                    {
+                                                      staticClass:
+                                                        "m-auto d-block",
+                                                      attrs: {
+                                                        variant:
+                                                          "outline-success"
+                                                      },
+                                                      on: {
+                                                        click: function(
+                                                          $event
+                                                        ) {
+                                                          return _vm.addCourse(
+                                                            f.id
+                                                          )
+                                                        }
+                                                      }
                                                     },
-                                                    expression: "c.name"
-                                                  }
-                                                })
-                                              : _vm._e()
-                                          ],
-                                          1
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "div",
-                                          { staticClass: "col-2" },
-                                          [
-                                            _vm._l(c.studyForm, function(sf) {
-                                              return !c.isEdit
-                                                ? _c(
-                                                    "p",
-                                                    { staticClass: "mb-0" },
                                                     [
-                                                      _vm._v(
-                                                        "\n                                                                    " +
-                                                          _vm._s(sf)
-                                                      )
+                                                      _c("i", {
+                                                        staticClass:
+                                                          "fas fa-check"
+                                                      })
                                                     ]
                                                   )
-                                                : _vm._e()
-                                            }),
-                                            _vm._v(" "),
-                                            c.isEdit
-                                              ? _c(
-                                                  "b-form-group",
-                                                  [
-                                                    _c(
-                                                      "b-form-checkbox-group",
-                                                      {
+                                                ],
+                                                1
+                                              )
+                                            ])
+                                          ])
+                                        ])
+                                      ])
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "row" }, [
+                                      _c(
+                                        "div",
+                                        { staticClass: "col-12" },
+                                        [
+                                          _c("span", { staticClass: "badge" }, [
+                                            _vm._v("Формы обучения")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c(
+                                            "b-form-group",
+                                            [
+                                              _c("b-form-checkbox-group", {
+                                                staticClass: "w-100",
+                                                attrs: { options: _vm.forms },
+                                                model: {
+                                                  value: _vm.course.studyForm,
+                                                  callback: function($$v) {
+                                                    _vm.$set(
+                                                      _vm.course,
+                                                      "studyForm",
+                                                      $$v
+                                                    )
+                                                  },
+                                                  expression: "course.studyForm"
+                                                }
+                                              })
+                                            ],
+                                            1
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ])
+                                  ])
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "card" }, [
+                                  _c(
+                                    "div",
+                                    { staticClass: "card-body" },
+                                    _vm._l(f.courses, function(c, i) {
+                                      return _c("div", [
+                                        _c("div", { staticClass: "row" }, [
+                                          _c("div", { staticClass: "col-12" }, [
+                                            _c("div", { staticClass: "row" }, [
+                                              _c(
+                                                "div",
+                                                { staticClass: "col-6" },
+                                                [
+                                                  !c.isEdit
+                                                    ? _c("p", [
+                                                        _vm._v(_vm._s(c.name))
+                                                      ])
+                                                    : _vm._e(),
+                                                  _vm._v(" "),
+                                                  c.isEdit
+                                                    ? _c("b-form-input", {
+                                                        staticClass: "mb-2",
                                                         attrs: {
-                                                          options: _vm.forms,
-                                                          stacked: ""
+                                                          type: "text",
+                                                          required: "",
+                                                          placeholder:
+                                                            "Введите название"
                                                         },
                                                         model: {
-                                                          value: c.studyForm,
+                                                          value: c.name,
                                                           callback: function(
                                                             $$v
                                                           ) {
                                                             _vm.$set(
                                                               c,
-                                                              "studyForm",
+                                                              "name",
                                                               $$v
                                                             )
                                                           },
-                                                          expression:
-                                                            "c.studyForm"
+                                                          expression: "c.name"
                                                         }
+                                                      })
+                                                    : _vm._e()
+                                                ],
+                                                1
+                                              ),
+                                              _vm._v(" "),
+                                              !c.isEdit
+                                                ? _c(
+                                                    "div",
+                                                    { staticClass: "col-2" },
+                                                    _vm._l(
+                                                      c.studyForm,
+                                                      function(sf) {
+                                                        return _c(
+                                                          "p",
+                                                          {
+                                                            staticClass: "mb-0"
+                                                          },
+                                                          [
+                                                            _vm._v(
+                                                              "\n                                                                                    " +
+                                                                _vm._s(sf)
+                                                            )
+                                                          ]
+                                                        )
                                                       }
-                                                    )
-                                                  ],
-                                                  1
-                                                )
-                                              : _vm._e()
-                                          ],
-                                          2
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "div",
-                                          { staticClass: "col-2" },
-                                          [
-                                            !c.isEdit
-                                              ? _c("p", [
-                                                  _vm._v(_vm._s(c.score))
-                                                ])
-                                              : _vm._e(),
-                                            _vm._v(" "),
-                                            c.isEdit
-                                              ? _c("b-form-input", {
-                                                  staticClass: "mb-2",
-                                                  attrs: {
-                                                    type: "text",
-                                                    required: "",
-                                                    placeholder:
-                                                      "Проходной балл"
-                                                  },
-                                                  model: {
-                                                    value: c.score,
-                                                    callback: function($$v) {
-                                                      _vm.$set(c, "score", $$v)
+                                                    ),
+                                                    0
+                                                  )
+                                                : _vm._e(),
+                                              _vm._v(" "),
+                                              !c.isEdit
+                                                ? _c(
+                                                    "div",
+                                                    { staticClass: "col-2" },
+                                                    [
+                                                      _c("p", [
+                                                        _vm._v(_vm._s(c.score))
+                                                      ])
+                                                    ]
+                                                  )
+                                                : _vm._e(),
+                                              _vm._v(" "),
+                                              c.isEdit
+                                                ? _c(
+                                                    "div",
+                                                    { staticClass: "col-4" },
+                                                    [
+                                                      c.isEdit
+                                                        ? _c("b-form-input", {
+                                                            staticClass: "mb-2",
+                                                            attrs: {
+                                                              type: "text",
+                                                              required: "",
+                                                              placeholder:
+                                                                "Проходной балл"
+                                                            },
+                                                            model: {
+                                                              value: c.score,
+                                                              callback: function(
+                                                                $$v
+                                                              ) {
+                                                                _vm.$set(
+                                                                  c,
+                                                                  "score",
+                                                                  $$v
+                                                                )
+                                                              },
+                                                              expression:
+                                                                "c.score"
+                                                            }
+                                                          })
+                                                        : _vm._e()
+                                                    ],
+                                                    1
+                                                  )
+                                                : _vm._e(),
+                                              _vm._v(" "),
+                                              _c(
+                                                "div",
+                                                { staticClass: "col-2" },
+                                                [
+                                                  c.isEdit
+                                                    ? _c("i", {
+                                                        staticClass:
+                                                          "fas fa-check",
+                                                        staticStyle: {
+                                                          cursor: "pointer"
+                                                        },
+                                                        on: {
+                                                          click: function(
+                                                            $event
+                                                          ) {
+                                                            return _vm.changeCourse(
+                                                              c
+                                                            )
+                                                          }
+                                                        }
+                                                      })
+                                                    : _vm._e(),
+                                                  _vm._v(" "),
+                                                  !c.isEdit
+                                                    ? _c("i", {
+                                                        staticClass:
+                                                          "fas fa-pen",
+                                                        staticStyle: {
+                                                          cursor: "pointer"
+                                                        },
+                                                        on: {
+                                                          click: function(
+                                                            $event
+                                                          ) {
+                                                            return _vm.editCourse(
+                                                              c
+                                                            )
+                                                          }
+                                                        }
+                                                      })
+                                                    : _vm._e(),
+                                                  _vm._v(" "),
+                                                  _c("i", {
+                                                    staticClass: "fas fa-trash",
+                                                    staticStyle: {
+                                                      cursor: "pointer",
+                                                      color: "red"
                                                     },
-                                                    expression: "c.score"
-                                                  }
-                                                })
-                                              : _vm._e()
-                                          ],
-                                          1
-                                        ),
+                                                    on: {
+                                                      click: function($event) {
+                                                        return _vm.deleteCourse(
+                                                          c.id
+                                                        )
+                                                      }
+                                                    }
+                                                  })
+                                                ]
+                                              )
+                                            ]),
+                                            _vm._v(" "),
+                                            _c("div", { staticClass: "row" }, [
+                                              _c(
+                                                "div",
+                                                { staticClass: "col-12" },
+                                                [
+                                                  c.isEdit
+                                                    ? _c(
+                                                        "b-form-group",
+                                                        [
+                                                          _c(
+                                                            "b-form-checkbox-group",
+                                                            {
+                                                              attrs: {
+                                                                options:
+                                                                  _vm.forms
+                                                              },
+                                                              model: {
+                                                                value:
+                                                                  c.studyForm,
+                                                                callback: function(
+                                                                  $$v
+                                                                ) {
+                                                                  _vm.$set(
+                                                                    c,
+                                                                    "studyForm",
+                                                                    $$v
+                                                                  )
+                                                                },
+                                                                expression:
+                                                                  "c.studyForm"
+                                                              }
+                                                            }
+                                                          )
+                                                        ],
+                                                        1
+                                                      )
+                                                    : _vm._e()
+                                                ],
+                                                1
+                                              )
+                                            ])
+                                          ])
+                                        ]),
                                         _vm._v(" "),
-                                        _c("div", { staticClass: "col-2" }, [
-                                          c.isEdit
-                                            ? _c("i", {
-                                                staticClass: "fas fa-check",
-                                                staticStyle: {
-                                                  cursor: "pointer"
-                                                },
-                                                on: {
-                                                  click: function($event) {
-                                                    return _vm.changeCourse(c)
-                                                  }
-                                                }
-                                              })
-                                            : _vm._e(),
-                                          _vm._v(" "),
-                                          !c.isEdit
-                                            ? _c("i", {
-                                                staticClass: "fas fa-pen",
-                                                staticStyle: {
-                                                  cursor: "pointer"
-                                                },
-                                                on: {
-                                                  click: function($event) {
-                                                    return _vm.editCourse(c)
-                                                  }
-                                                }
-                                              })
-                                            : _vm._e(),
-                                          _vm._v(" "),
-                                          _c("i", {
-                                            staticClass: "fas fa-trash",
-                                            staticStyle: {
-                                              cursor: "pointer",
-                                              color: "red"
-                                            },
-                                            on: {
-                                              click: function($event) {
-                                                return _vm.deleteCourse(c.id)
-                                              }
-                                            }
-                                          })
-                                        ])
+                                        _c("hr")
                                       ])
-                                    ])
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("hr")
+                                    }),
+                                    0
+                                  )
                                 ])
-                              })
-                            ],
-                            2
-                          )
-                        ])
-                      ])
-                    ])
-                  ]
-                )
-              }),
-              0
-            )
+                              ])
+                            ])
+                          ]
+                        )
+                      }),
+                      0
+                    )
+                  ])
+                ])
+              ])
+            ])
           ])
         ])
       ])

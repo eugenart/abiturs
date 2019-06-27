@@ -11100,6 +11100,11 @@ a.text-dark:focus {
   }
 }
 
+main {
+  background-color: #f0f3f5;
+  margin-top: 0 !important;
+}
+
 .up_down_arrow:hover {
   color: #0000F0;
   cursor: pointer;
