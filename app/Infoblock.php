@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Infoblock extends Model
 {
-    protected $fillable = ['name', 'url', 'menu', 'menuPriority', 'startPage', 'startPagePriority', 'activity', 'activityFrom', 'activityTo', 'image'];
+    protected $fillable = ['name', 'url', 'menu', 'menuPriority', 'startPage', 'startPagePriority', 'activity', 'activityFrom', 'activityTo', 'image', 'news'];
+
+    protected $casts = ['news' => 'array'];
 
     public function sections() {
         return $this->hasMany(Section::class, 'infoblockID');

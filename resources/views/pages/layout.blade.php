@@ -35,7 +35,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav d-flex justify-content-between w-100 mrsu-uppertext">
                 <li class="nav-item active">
-                    <a class="nav-link" href="https://mrsu.ru" target="_blank">Университет <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/">Главная <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="/stat">Статистика приема <span class="sr-only">(current)</span></a>
@@ -58,6 +58,21 @@
 
 @show
 <hr class="mrsu-hr mrsu-bg m-auto">
+
+<div class="container mt-3">
+    <div class="row">
+        @foreach($pages->sortByDesc('menuPriority') as $page)
+        <div class="col-2">
+            <p class="mb-0">{{ $page->name }}</p>
+            <ul class="m-0 list-unstyled pl-3">
+                @foreach($page->sections as $section)
+                    <li><a href="{{ $section->url }}">{{ $section->name }}</a></li>
+                @endforeach
+            </ul>
+        </div>
+        @endforeach
+    </div>
+</div>
 
 </body>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

@@ -1,10 +1,16 @@
 <template>
     <div>
         <div class="row">
+
             <div class="col-12">
-                <div class="row">
+                <div class="row mt-4">
                     <div class="col-9">
                         <div class="card">
+                            <div class="card-header">
+                                <p class="mb-0">
+                                    <a :href="rootUrl" target="_blank">Перейти на страницу подраздела</a>
+                                </p>
+                            </div>
                             <div class="card-body">
                                 <div id="comps">
                                     <form @submit.prevent="sendForm" enctype="multipart/form-data" id="inputsForm">
@@ -195,10 +201,11 @@
             VueEditor,
             sortByPos
         },
-        props: ['sectionId'],
+        props: ['sectionId', 'sectionLink'],
         name: "sectionInfo",
         data() {
             return {
+                rootUrl: window.location.origin + '/' + this.sectionLink,
                 inputs: [],
                 input: {
                     type: null,
@@ -224,7 +231,7 @@
         methods: {
 
             changePosition(id, cId, type,) {
-                axios.post('/section-content', {
+                axios.post('/admin/section-content', {
                     updown: type,
                     parent_id: id,
                     child_id: cId
@@ -233,12 +240,12 @@
             },
 
             deleteInput(id) {
-                axios.delete('/section-content/' + id)
+                axios.delete('/admin/section-content/' + id)
                 this.getSectionInfo()
             },
 
             async getSectionInfo() {
-                let data = await axios.get('/section-content/' + this.sectionId)
+                let data = await axios.get('/admin/section-content/' + this.sectionId)
                 this.inputs = data.data.slice()
                 this.inputs = this.inputs.sort(sortByPos)
 
@@ -264,7 +271,7 @@
                         })
                     }
                 })
-                await axios.post('/section-content', formData,
+                await axios.post('/admin/section-content', formData,
                     {
                         headers: {
                             'Content-Type': 'multipart/form-data'

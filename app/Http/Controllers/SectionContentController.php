@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Section;
 use App\SectionsContent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -11,6 +12,13 @@ class SectionContentController extends Controller
     public function index(Request $request, $id)
     {
 
+
+        $section = Section::find($id);
+        if ($section) {
+            $link = $section->url;
+        } else {
+            $link = "";
+        }
 
         if ($request->ajax()) {
 
@@ -41,7 +49,7 @@ class SectionContentController extends Controller
             return response()->json($inputs_send, 200);
         }
 
-        return view('structure.sectionInfo')->with('id', $id);
+        return view('structure.sectionInfo')->with('id', $id)->with('link', $link);
     }
 
     public function store(Request $request)

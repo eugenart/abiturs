@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="row">
+        <div class="row mt-4">
             <div class="col-12">
                 <b-form @submit.prevent="addSubject()">
                     <div class="card">
@@ -38,7 +38,7 @@
                 </b-form>
             </div>
         </div>
-        <div class="row mt-3">
+        <div class="row mt-4">
             <div class="col-12">
                 <div class="row">
                     <div class="col-12">
@@ -93,7 +93,7 @@
         methods: {
 
             addSubject() {
-                axios.post('/subject-list', {
+                axios.post('/admin/subject-list', {
                     name: this.subject.name,
                     internal: this.subject.internal
                 });
@@ -102,7 +102,7 @@
             },
 
             deleteSubject(id) {
-                axios.delete('/subject-list/' + id);
+                axios.delete('/admin/subject-list/' + id);
                 this.fetchSubjects()
             },
 
@@ -111,7 +111,7 @@
             },
 
             fetchSubjects() {
-                let data = axios.get('/subject-list')
+                let data = axios.get('/admin/subject-list')
                     .then(response => (this.subjects = response.data))
             }
         }
