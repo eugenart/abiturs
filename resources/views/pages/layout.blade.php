@@ -35,7 +35,13 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav d-flex justify-content-between w-100 mrsu-uppertext">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Университет <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/">Главная <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/stat">Статистика приема <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/selection">Подбор направления <span class="sr-only">(current)</span></a>
                 </li>
                 @foreach($pages->sortByDesc('menuPriority') as $page)
                     <li class="nav-item active">

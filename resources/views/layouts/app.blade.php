@@ -86,38 +86,38 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ Request::is('infoblock*') ? 'active' : null }}"
+                            <a class="nav-link {{ Request::is('admin/infoblock*') ? 'active' : null }}"
                                href="{{route('infoblock.index')}}">
                                 <span data-feather="file"></span>
                                 Разделы сайта
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ Request::is('section*') ? 'active' : null }}" href="/sections">
+                            <a class="nav-link {{ Request::is('admin/section*') ? 'active' : null }}" href="{{route('section.index')}}">
                                 <span data-feather="shopping-cart"></span>
                                 Подразделы сайта
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ Request::is('course*') ? 'active' : null }}" href="/course">
+                            <a class="nav-link {{ Request::is('admin/course*') ? 'active' : null }}" href="{{route('course.index')}}">
                                 <span data-feather="shopping-cart"></span>
                                 Направления подготовки
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ Request::is('subject-list*') ? 'active' : null }}" href="/subject-list">
+                            <a class="nav-link {{ Request::is('admin/subject-list*') ? 'active' : null }}" href="{{route('subject.list')}}">
                                 <span data-feather="shopping-cart"></span>
                                 Вступительные испытания
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ Request::is('ege*') ? 'active' : null }}" href="/ege">
+                            <a class="nav-link {{ Request::is('admin/subject') ? 'active' : null }}" href="{{route('subject.index')}}">
                                 <span data-feather="users"></span>
-                                ЕГЭ
+                                Минимальный балл вступительных испытания
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ Request::is('slider*') ? 'active' : null }}" href="/slider">
+                            <a class="nav-link {{ Request::is('admin/slider*') ? 'active' : null }}" href="{{route('slider.index')}}">
                                 <span data-feather="users"></span>
                                 Слайдер
                             </a>

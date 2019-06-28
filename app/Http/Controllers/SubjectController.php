@@ -26,7 +26,7 @@ class SubjectController extends Controller
             return response()->json($subjects, 200);
         }
 
-        return view('structure.subject', compact('subjects'));
+        return view('structure.egeSelect', compact('subjects'));
     }
 
     public function addToSubjectList(Request $request)

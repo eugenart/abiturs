@@ -153,7 +153,7 @@
                                                             <p>
                                                                 <i class="far fa-file-alt"></i>
                                                                 <a
-                                                                    :href="'/section-content/' + sec.id"><span>{{sec.name}}</span></a>
+                                                                    :href="'/admin/section-content/' + sec.id"><span>{{sec.name}}</span></a>
                                                             </p>
                                                         </div>
                                                         <div class="col-3">
@@ -218,7 +218,7 @@
                                                                 <p>
                                                                     <i class="far fa-file-alt"></i>
                                                                     <a
-                                                                        :href="'/section-content/' + f.id"><span>{{f.name}}</span></a>
+                                                                        :href="'/admin/section-content/' + f.id"><span>{{f.name}}</span></a>
                                                                 </p>
                                                             </div>
                                                             <div class="col-3">

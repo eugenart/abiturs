@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="row">
+        <div class="row mt-4">
             <div class="col-12">
                 <form @submit.prevent="!isSlideUpdate? addSlide() : updateSlide()" class="col-12 p-0"
                       enctype="multipart/form-data" id="slideForm">
@@ -115,7 +115,7 @@
                 </form>
             </div>
         </div>
-        <div class="row mt-3">
+        <div class="row mt-4">
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
