@@ -32,7 +32,7 @@ export default {
             formData.append('activity', payload.activity);
             formData.append('image', payload.image);
             formData.append('priority', payload.priority);
-            let {data} = await axios.post('/slider', formData, {
+            let {data} = await axios.post('/admin/slider', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -51,7 +51,7 @@ export default {
             formData.append('activity', payload.activity);
             formData.append('image', payload.image);
             formData.append('priority', payload.priority);
-            let {data} = await axios.post('/slider/' + payload.id, formData, {
+            let {data} = await axios.post('/admin/slider/' + payload.id, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -62,13 +62,13 @@ export default {
 
         DELETE_SLIDE:
             async (context, payload, index) => {
-                await axios.delete('/slider/' + payload);
+                await axios.delete('/admin/slider/' + payload);
                 context.commit('REMOVE_SLIDE', payload)
             },
 
         GET_SLIDES:
             async (context, payload) => {
-                let {data} = await axios.get('/slider');
+                let {data} = await axios.get('/admin/slider');
                 context.commit('SET_SLIDES', data)
             }
     },

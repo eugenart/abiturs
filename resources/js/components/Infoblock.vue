@@ -141,7 +141,7 @@
                 </form>
             </div>
         </div>
-        <div class="row mt-3">
+        <div class="row mt-4">
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
@@ -193,7 +193,7 @@
                                         </div>
                                         <div>
                                             <label class="badge m-0">Ссылка</label>
-                                            <p class="ml-2 mb-1">{{block.url}}</p>
+                                            <p class="ml-2 mb-1"><a :href="rootUrl + '/'+block.url" target="_blank">{{block.url}}</a></p>
                                         </div>
                                         <div>
                                             <label class="badge m-0">В меню (приоритет)</label>
@@ -242,6 +242,7 @@
         name: 'Infoblock',
         data() {
             return {
+                rootUrl: window.location.origin,
                 infoblock: {
                     name: null,
                     url: null,

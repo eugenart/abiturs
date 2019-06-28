@@ -36,7 +36,7 @@ export default {
             formData.append('activityTo', payload.activityTo);
             formData.append('activity', payload.activity);
             formData.append('image', payload.image);
-            let {data} = await axios.post('/infoblock', formData, {
+            let {data} = await axios.post('/admin/infoblock', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -59,7 +59,7 @@ export default {
             formData.append('activity', payload.activity);
             formData.append('image', payload.image);
             console.log(typeof payload.menu)
-            let {data} = await axios.post('/infoblock/' + payload.id, formData, {
+            let {data} = await axios.post('/admin/infoblock/' + payload.id, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -70,13 +70,13 @@ export default {
 
         DELETE_BLOCK:
             async (context, payload, index) => {
-                await axios.delete('/infoblock/' + payload);
+                await axios.delete('/admin/infoblock/' + payload);
                 context.commit('REMOVE_BLOCK', payload)
             },
 
         GET_BLOCKS:
             async (context, payload) => {
-                let {data} = await axios.get('/infoblocks');
+                let {data} = await axios.get('/admin/infoblocks');
                 context.commit('SET_BLOCKS', data)
             }
     },

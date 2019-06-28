@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="row">
+        <div class="row mt-4">
             <div class="col-12">
                 <b-form @submit.prevent="addFaculty()">
                     <div class="card">
@@ -34,7 +34,7 @@
                 </b-form>
             </div>
         </div>
-        <div class="row mt-3">
+        <div class="row mt-4">
             <div class="col-12">
                 <div class="row">
                     <div class="col-12">
@@ -280,7 +280,7 @@
         methods: {
 
             changeFaculty(f) {
-                axios.post('/course/' + f.id, {
+                axios.post('/admin/course/' + f.id, {
                     name: f.name
                 });
                 this.fetchFaculty()
@@ -292,7 +292,7 @@
             },
 
             addFaculty() {
-                axios.post('/course', {
+                axios.post('/admin/course', {
                     name: this.faculty.name,
                     parent_id: null
                 });
@@ -301,28 +301,26 @@
             },
 
             changeCourse(c) {
-                axios.post('/course/' + c.id, {
+                axios.post('/admin/course/' + c.id, {
                     name: c.name,
                     studyForm: c.studyForm,
                     score: c.score,
                 });
-                console.log(c)
                 this.clearCurrentCourse();
                 this.fetchFaculty()
             },
 
             editCourse(c) {
-                console.log('asdasdasdas')
                 c.isEdit = !c.isEdit
             },
 
             deleteFaculty(id) {
-                axios.delete('/course/' + id)
+                axios.delete('/admin/course/' + id)
                 this.fetchFaculty()
             },
 
             addCourse(id) {
-                axios.post('/course', {
+                axios.post('/admin/course', {
                     name: this.course.name,
                     parent_id: id,
                     studyForm: this.course.studyForm,
@@ -333,7 +331,7 @@
             },
 
             deleteCourse(id) {
-                axios.delete('/course/' + id)
+                axios.delete('/admin/course/' + id)
                 this.fetchFaculty()
             },
 
@@ -346,7 +344,7 @@
             },
 
             fetchFaculty() {
-                let data = axios.get('/course')
+                let data = axios.get('/admin/course')
                     .then(response => (this.faculties = response.data))
             }
         }

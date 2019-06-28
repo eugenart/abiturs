@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="row">
+        <div class="row mt-4">
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
@@ -15,7 +15,7 @@
                                 </select>
                             </div>
                             <div class="col-6">
-                                <label class="badge">Направление подготовки</label>
+                                <label v-if="chosenFaculty" class="badge">Направление подготовки</label>
                                 <select v-if="chosenFaculty" v-model="chosenCourse" type="text"
                                         class="form-control form-control-sm"
                                         @change="setNewCourse()">
@@ -25,8 +25,8 @@
                                 </select>
                             </div>
                             <div class="col-6">
-                                <label class="badge">Направление подготовки</label>
-                                <multiselect class="w-100" v-if="chosenCourse.name" multiple v-model="chosenSubject"
+                                <label v-if="chosenCourse && chosenCourse.name" class="badge">Вступительные испытания</label>
+                                <multiselect class="w-100" v-if="chosenCourse && chosenCourse.name" multiple v-model="chosenSubject"
                                              track-by="name" label="name" placeholder="Выберите предметы"
                                              :options="subjects"
                                              :searchable="true" :allow-empty="true" @select="setSubject">
@@ -60,8 +60,8 @@
             </div>
         </div>
         <br>
-        <div class="row mb-3">
-            <div class="col-12" v-for="f in faculties">
+        <div class="row mb-4" v-for="f in faculties">
+            <div class="col-12">
                 <div class="card">
                     <div class="card-header">
                         <h4>{{f.name}}</h4>
@@ -141,13 +141,14 @@
         methods: {
 
             setNewCourse() {
-                this.chosenSubject = this.chosenCourse.subjects
+                this.chosenCourse ? this.chosenSubject = this.chosenCourse.subjects : null
             },
 
             setNewFaculty() {
                 this.chosenCourse = {
                     name: null,
-                    id: null
+                    id: null,
+                    subjects: []
                 };
                 this.chosenSubject = []
             },
@@ -162,7 +163,7 @@
             },
 
             saveExams() {
-                axios.post('/subject', {
+                axios.post('/admin/subject', {
                     chosenCourse: this.chosenCourse.id,
                     exams: this.chosenSubject
                 });
@@ -176,11 +177,11 @@
             },
 
             fetchFaculty() {
-                let data = axios.get('/course')
+                let data = axios.get('/admin/course')
                     .then(response => (this.faculties = response.data))
             },
             fetchForms() {
-                let data = axios.get('/subject-list')
+                let data = axios.get('/admin/subject-list')
                     .then(response => (this.subjects = response.data))
             },
             chooseFaculty(f) {

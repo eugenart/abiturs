@@ -54,7 +54,7 @@ export default {
     },
     actions: {
         SAVE_SECTION: async (context, payload) => {
-            let {data} = await axios.post('/section', {
+            let {data} = await axios.post('/admin/section', {
                 name: payload.name,
                 url: payload.url,
                 description: payload.description,
@@ -71,7 +71,7 @@ export default {
         },
 
         UPDATE_SECTION: (context, payload) => {
-            axios.post('/section/' + payload.id, {
+            axios.post('/admin/section/' + payload.id, {
                 name: payload.name,
                 url: payload.url,
                 description: payload.description,
@@ -89,13 +89,13 @@ export default {
 
         DELETE_SECTION:
             async (context, payload) => {
-                await axios.delete('/section/' + payload.id);
+                await axios.delete('/admin/section/' + payload.id);
                 context.commit('REMOVE_SECTION', payload)
             },
 
         GET_SECTIONS:
             async (context, payload) => {
-                let {data} = await axios.get('/sections');
+                let {data} = await axios.get('/admin/sections');
                 context.commit('SET_SECTIONS', data)
             }
     },
