@@ -15,7 +15,7 @@ export default {
         REMOVE_BLOCK(state, id) {
             //state.blocks.splice(index, 1)
             state.blocks = $.grep(state.blocks, function (item) {
-                return item.id != id
+                return item.id !== id
             })
         },
 
@@ -35,6 +35,7 @@ export default {
             formData.append('activityFrom', payload.activityFrom);
             formData.append('activityTo', payload.activityTo);
             formData.append('activity', payload.activity);
+            formData.append('news', payload.news);
             formData.append('image', payload.image);
             let {data} = await axios.post('/admin/infoblock', formData, {
                 headers: {
@@ -58,6 +59,7 @@ export default {
             formData.append('activityTo', payload.activityTo ? payload.activityTo : '');
             formData.append('activity', payload.activity);
             formData.append('image', payload.image);
+            formData.append('news', payload.news);
             console.log(typeof payload.menu)
             let {data} = await axios.post('/admin/infoblock/' + payload.id, formData, {
                 headers: {

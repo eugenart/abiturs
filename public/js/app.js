@@ -2115,10 +2115,41 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Infoblock',
   data: function data() {
     return {
+      rootUrl: window.location.origin,
       infoblock: {
         name: null,
         url: null,
@@ -2129,13 +2160,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         activity: true,
         activityFrom: '',
         activityTo: '',
-        image: null
+        image: null,
+        news: []
       },
       isBlockUpdate: false,
       currentInfoblock: {},
       errorImage: '',
       previewUrl: '../../storage/preview/default.jpg',
-      formStatus: false
+      formStatus: false,
+      news: null
     };
   },
   mounted: function mounted() {
@@ -2149,6 +2182,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   },
   methods: {
+    addNews: function addNews() {
+      this.infoblock.news.push(this.news);
+      this.news = null;
+    },
+    removeNews: function removeNews(i) {
+      this.infoblock.news.splice(i, 1);
+    },
     changeActivity: function changeActivity(block) {
       console.log('lol');
       block.activity = !block.activity;
@@ -3080,7 +3120,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   computed: {},
   methods: {
     addSubject: function addSubject() {
-      axios.post('/subject-list', {
+      axios.post('/admin/subject-list', {
         name: this.subject.name,
         internal: this.subject.internal
       });
@@ -3088,7 +3128,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.fetchSubjects();
     },
     deleteSubject: function deleteSubject(id) {
-      axios["delete"]('/subject-list/' + id);
+      axios["delete"]('/admin/subject-list/' + id);
       this.fetchSubjects();
     },
     clearCurrentSubject: function clearCurrentSubject() {
@@ -3097,7 +3137,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     fetchSubjects: function fetchSubjects() {
       var _this = this;
 
-      var data = axios.get('/subject-list').then(function (response) {
+      var data = axios.get('/admin/subject-list').then(function (response) {
         return _this.subjects = response.data;
       });
     }
@@ -3115,7 +3155,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
 //
 //
 //
@@ -3262,12 +3301,12 @@ __webpack_require__.r(__webpack_exports__);
       this.chosenCourse ? this.chosenSubject = this.chosenCourse.subjects : null;
     },
     setNewFaculty: function setNewFaculty() {
-      this.chosenSubject = [];
       this.chosenCourse = {
         name: null,
         id: null,
         subjects: []
       };
+      this.chosenSubject = [];
     },
     editExams: function editExams(c, f) {
       this.chosenFaculty = f;
@@ -3278,7 +3317,7 @@ __webpack_require__.r(__webpack_exports__);
       }, 400);
     },
     saveExams: function saveExams() {
-      axios.post('/subject', {
+      axios.post('/admin/subject', {
         chosenCourse: this.chosenCourse.id,
         exams: this.chosenSubject
       });
@@ -3292,14 +3331,14 @@ __webpack_require__.r(__webpack_exports__);
     fetchFaculty: function fetchFaculty() {
       var _this = this;
 
-      var data = axios.get('/course').then(function (response) {
+      var data = axios.get('/admin/course').then(function (response) {
         return _this.faculties = response.data;
       });
     },
     fetchForms: function fetchForms() {
       var _this2 = this;
 
-      var data = axios.get('/subject-list').then(function (response) {
+      var data = axios.get('/admin/subject-list').then(function (response) {
         return _this2.subjects = response.data;
       });
     },
@@ -3613,7 +3652,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   computed: {},
   methods: {
     changeFaculty: function changeFaculty(f) {
-      axios.post('/course/' + f.id, {
+      axios.post('/admin/course/' + f.id, {
         name: f.name
       });
       this.fetchFaculty();
@@ -3623,7 +3662,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       f.isEdit = !f.isEdit;
     },
     addFaculty: function addFaculty() {
-      axios.post('/course', {
+      axios.post('/admin/course', {
         name: this.faculty.name,
         parent_id: null
       });
@@ -3631,25 +3670,23 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.fetchFaculty();
     },
     changeCourse: function changeCourse(c) {
-      axios.post('/course/' + c.id, {
+      axios.post('/admin/course/' + c.id, {
         name: c.name,
         studyForm: c.studyForm,
         score: c.score
       });
-      console.log(c);
       this.clearCurrentCourse();
       this.fetchFaculty();
     },
     editCourse: function editCourse(c) {
-      console.log('asdasdasdas');
       c.isEdit = !c.isEdit;
     },
     deleteFaculty: function deleteFaculty(id) {
-      axios["delete"]('/course/' + id);
+      axios["delete"]('/admin/course/' + id);
       this.fetchFaculty();
     },
     addCourse: function addCourse(id) {
-      axios.post('/course', {
+      axios.post('/admin/course', {
         name: this.course.name,
         parent_id: id,
         studyForm: this.course.studyForm,
@@ -3659,7 +3696,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.clearCurrentCourse();
     },
     deleteCourse: function deleteCourse(id) {
-      axios["delete"]('/course/' + id);
+      axios["delete"]('/admin/course/' + id);
       this.fetchFaculty();
     },
     clearCurrentCourse: function clearCurrentCourse() {
@@ -3671,7 +3708,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     fetchFaculty: function fetchFaculty() {
       var _this = this;
 
-      var data = axios.get('/course').then(function (response) {
+      var data = axios.get('/admin/course').then(function (response) {
         return _this.faculties = response.data;
       });
     }
@@ -3892,6 +3929,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3899,10 +3942,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     VueEditor: vue2_editor__WEBPACK_IMPORTED_MODULE_1__["VueEditor"],
     sortByPos: _helpers_sort__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
-  props: ['sectionId'],
+  props: ['sectionId', 'sectionLink'],
   name: "sectionInfo",
   data: function data() {
     return {
+      rootUrl: window.location.origin + '/' + this.sectionLink,
       inputs: [],
       input: {
         type: null,
@@ -3924,7 +3968,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   methods: {
     changePosition: function changePosition(id, cId, type) {
-      axios.post('/section-content', {
+      axios.post('/admin/section-content', {
         updown: type,
         parent_id: id,
         child_id: cId
@@ -3932,7 +3976,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.getSectionInfo();
     },
     deleteInput: function deleteInput(id) {
-      axios["delete"]('/section-content/' + id);
+      axios["delete"]('/admin/section-content/' + id);
       this.getSectionInfo();
     },
     getSectionInfo: function () {
@@ -3945,7 +3989,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return axios.get('/section-content/' + this.sectionId);
+                return axios.get('/admin/section-content/' + this.sectionId);
 
               case 2:
                 data = _context.sent;
@@ -3993,7 +4037,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                   }
                 });
                 _context2.next = 5;
-                return axios.post('/section-content', formData, {
+                return axios.post('/admin/section-content', formData, {
                   headers: {
                     'Content-Type': 'multipart/form-data'
                   }
@@ -86967,6 +87011,79 @@ var render = function() {
                                 ])
                               ])
                             ])
+                          ]),
+                          _vm._v(" "),
+                          _c("b-tab", { attrs: { title: "Новости" } }, [
+                            _c("div", { staticClass: "row" }, [
+                              _c("div", { staticClass: "col-10" }, [
+                                _c("form", { attrs: { novalidate: "" } }, [
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.news,
+                                        expression: "news"
+                                      }
+                                    ],
+                                    staticClass: "form-control form-control-sm",
+                                    attrs: {
+                                      type: "text",
+                                      placeholder: "Новость"
+                                    },
+                                    domProps: { value: _vm.news },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.news = $event.target.value
+                                      }
+                                    }
+                                  })
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "col-2" }, [
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass: "btn btn-success btn-sm",
+                                    attrs: { type: "button" },
+                                    on: { click: _vm.addNews }
+                                  },
+                                  [_c("i", { staticClass: "fa fa-plus" })]
+                                )
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "row mt-4" }, [
+                              _c(
+                                "div",
+                                { staticClass: "col-12" },
+                                _vm._l(_vm.infoblock.news, function(n, i) {
+                                  return _c("p", [
+                                    _c("i", {
+                                      staticClass: "fa fa-times",
+                                      staticStyle: {
+                                        cursor: "pointer",
+                                        color: "red"
+                                      },
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.removeNews(i)
+                                        }
+                                      }
+                                    }),
+                                    _vm._v(
+                                      "\n                                                    " +
+                                        _vm._s(n)
+                                    )
+                                  ])
+                                }),
+                                0
+                              )
+                            ])
                           ])
                         ],
                         1
@@ -87046,7 +87163,7 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "row mt-3" }, [
+    _c("div", { staticClass: "row mt-4" }, [
       _c("div", { staticClass: "col-12" }, [
         _c("div", { staticClass: "card" }, [
           _vm._m(1),
@@ -87142,7 +87259,16 @@ var render = function() {
                         ]),
                         _vm._v(" "),
                         _c("p", { staticClass: "ml-2 mb-1" }, [
-                          _vm._v(_vm._s(block.url))
+                          _c(
+                            "a",
+                            {
+                              attrs: {
+                                href: _vm.rootUrl + "/" + block.url,
+                                target: "_blank"
+                              }
+                            },
+                            [_vm._v(_vm._s(block.url))]
+                          )
                         ])
                       ]),
                       _vm._v(" "),
@@ -87217,7 +87343,27 @@ var render = function() {
                             "\n                                            )\n                                        "
                           )
                         ])
-                      ])
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        [
+                          _c("label", { staticClass: "badge m-0" }, [
+                            _vm._v("Новости")
+                          ]),
+                          _vm._v(" "),
+                          _vm._l(block.news, function(n) {
+                            return _c("p", { staticClass: "mb-1" }, [
+                              _vm._v(
+                                "\n                                            " +
+                                  _vm._s(n) +
+                                  "\n                                        "
+                              )
+                            ])
+                          })
+                        ],
+                        2
+                      )
                     ])
                   ])
                 ])
@@ -87852,7 +87998,9 @@ var render = function() {
                                           "a",
                                           {
                                             attrs: {
-                                              href: "/section-content/" + sec.id
+                                              href:
+                                                "/admin/section-content/" +
+                                                sec.id
                                             }
                                           },
                                           [
@@ -88072,7 +88220,7 @@ var render = function() {
                                                   {
                                                     attrs: {
                                                       href:
-                                                        "/section-content/" +
+                                                        "/admin/section-content/" +
                                                         f.id
                                                     }
                                                   },
@@ -88250,7 +88398,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "row mt-4" }, [
       _c("div", { staticClass: "col-12" }, [
         _c(
           "form",
@@ -88642,7 +88790,7 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "row mt-3" }, [
+    _c("div", { staticClass: "row mt-4" }, [
       _c("div", { staticClass: "col-12" }, [
         _c("div", { staticClass: "card" }, [
           _vm._m(1),
@@ -88869,7 +89017,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "row mt-4" }, [
       _c(
         "div",
         { staticClass: "col-12" },
@@ -88978,7 +89126,7 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "row mt-3" }, [
+    _c("div", { staticClass: "row mt-4" }, [
       _c("div", { staticClass: "col-12" }, [
         _c("div", { staticClass: "row" }, [
           _c("div", { staticClass: "col-12" }, [
@@ -89056,359 +89204,370 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-12" }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-body" }, [
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-6" }, [
-                _c("label", { staticClass: "badge" }, [
-                  _vm._v("Факультет / институт")
+  return _c(
+    "div",
+    [
+      _c("div", { staticClass: "row mt-4" }, [
+        _c("div", { staticClass: "col-12" }, [
+          _c("div", { staticClass: "card" }, [
+            _c("div", { staticClass: "card-body" }, [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-6" }, [
+                  _c("label", { staticClass: "badge" }, [
+                    _vm._v("Факультет / институт")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.chosenFaculty,
+                          expression: "chosenFaculty"
+                        }
+                      ],
+                      staticClass: "form-control form-control-sm",
+                      attrs: { type: "text" },
+                      on: {
+                        change: [
+                          function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.chosenFaculty = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          },
+                          function($event) {
+                            return _vm.setNewFaculty()
+                          }
+                        ]
+                      }
+                    },
+                    _vm._l(_vm.faculties, function(f, i) {
+                      return _c("option", { domProps: { value: f } }, [
+                        _vm._v(
+                          "\n                                    " +
+                            _vm._s(f.name) +
+                            "\n                                "
+                        )
+                      ])
+                    }),
+                    0
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-6" }, [
+                  _vm.chosenFaculty
+                    ? _c("label", { staticClass: "badge" }, [
+                        _vm._v("Направление подготовки")
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.chosenFaculty
+                    ? _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.chosenCourse,
+                              expression: "chosenCourse"
+                            }
+                          ],
+                          staticClass: "form-control form-control-sm",
+                          attrs: { type: "text" },
+                          on: {
+                            change: [
+                              function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.chosenCourse = $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              },
+                              function($event) {
+                                return _vm.setNewCourse()
+                              }
+                            ]
+                          }
+                        },
+                        _vm._l(_vm.chosenFaculty.courses, function(c, i) {
+                          return _c("option", { domProps: { value: c } }, [
+                            _vm._v(
+                              "\n                                    " +
+                                _vm._s(c.name) +
+                                "\n                                "
+                            )
+                          ])
+                        }),
+                        0
+                      )
+                    : _vm._e()
                 ]),
                 _vm._v(" "),
                 _c(
-                  "select",
-                  {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.chosenFaculty,
-                        expression: "chosenFaculty"
-                      }
-                    ],
-                    staticClass: "form-control form-control-sm",
-                    attrs: { type: "text" },
-                    on: {
-                      change: [
-                        function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.chosenFaculty = $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
-                        },
-                        function($event) {
-                          return _vm.setNewFaculty()
-                        }
-                      ]
-                    }
-                  },
-                  _vm._l(_vm.faculties, function(f, i) {
-                    return _c("option", { domProps: { value: f } }, [
-                      _vm._v(
-                        "\n                                    " +
-                          _vm._s(f.name) +
-                          "\n                                "
-                      )
-                    ])
-                  }),
-                  0
+                  "div",
+                  { staticClass: "col-6" },
+                  [
+                    _vm.chosenCourse && _vm.chosenCourse.name
+                      ? _c("label", { staticClass: "badge" }, [
+                          _vm._v("Вступительные испытания")
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.chosenCourse && _vm.chosenCourse.name
+                      ? _c("multiselect", {
+                          staticClass: "w-100",
+                          attrs: {
+                            multiple: "",
+                            "track-by": "name",
+                            label: "name",
+                            placeholder: "Выберите предметы",
+                            options: _vm.subjects,
+                            searchable: true,
+                            "allow-empty": true
+                          },
+                          on: { select: _vm.setSubject },
+                          model: {
+                            value: _vm.chosenSubject,
+                            callback: function($$v) {
+                              _vm.chosenSubject = $$v
+                            },
+                            expression: "chosenSubject"
+                          }
+                        })
+                      : _vm._e()
+                  ],
+                  1
                 )
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "col-6" }, [
-                _c("label", { staticClass: "badge" }, [
-                  _vm._v("Направление подготовки")
+              _c("div", { staticClass: "row mt-3" }, [
+                _c("div", { staticClass: "col-12" }, [
+                  _vm.chosenSubject
+                    ? _c(
+                        "table",
+                        { staticClass: "table table-sm table-bordered" },
+                        [
+                          _vm._m(0),
+                          _vm._v(" "),
+                          _c(
+                            "tbody",
+                            _vm._l(_vm.chosenSubject, function(s) {
+                              return _c("tr", [
+                                _c("td", [_vm._v(_vm._s(s.name))]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: s.score,
+                                        expression: "s.score"
+                                      }
+                                    ],
+                                    attrs: { type: "text" },
+                                    domProps: { value: s.score },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.$set(
+                                          s,
+                                          "score",
+                                          $event.target.value
+                                        )
+                                      }
+                                    }
+                                  })
+                                ])
+                              ])
+                            }),
+                            0
+                          )
+                        ]
+                      )
+                    : _vm._e()
                 ]),
                 _vm._v(" "),
-                _vm.chosenFaculty
-                  ? _c(
-                      "select",
-                      {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.chosenCourse,
-                            expression: "chosenCourse"
-                          }
-                        ],
-                        staticClass: "form-control form-control-sm",
-                        attrs: { type: "text" },
-                        on: {
-                          change: [
-                            function($event) {
-                              var $$selectedVal = Array.prototype.filter
-                                .call($event.target.options, function(o) {
-                                  return o.selected
-                                })
-                                .map(function(o) {
-                                  var val = "_value" in o ? o._value : o.value
-                                  return val
-                                })
-                              _vm.chosenCourse = $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            },
-                            function($event) {
-                              return _vm.setNewCourse()
-                            }
-                          ]
+                _c("div", { staticClass: "col-12" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-sm btn-success",
+                      on: {
+                        click: function($event) {
+                          return _vm.saveExams()
                         }
-                      },
-                      _vm._l(_vm.chosenFaculty.courses, function(c, i) {
-                        return _c("option", { domProps: { value: c } }, [
-                          _vm._v(
-                            "\n                                    " +
-                              _vm._s(c.name) +
-                              "\n                                "
-                          )
-                        ])
-                      }),
-                      0
-                    )
-                  : _vm._e()
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "col-6" },
-                [
-                  _c("label", { staticClass: "badge" }, [
-                    _vm._v("Направление подготовки")
-                  ]),
+                      }
+                    },
+                    [_vm._v("Сохранить")]
+                  ),
                   _vm._v(" "),
-                  _vm.chosenCourse && _vm.chosenCourse.name
-                    ? _c("multiselect", {
-                        staticClass: "w-100",
-                        attrs: {
-                          multiple: "",
-                          "track-by": "name",
-                          label: "name",
-                          placeholder: "Выберите предметы",
-                          options: _vm.subjects,
-                          searchable: true,
-                          "allow-empty": true
-                        },
-                        on: { select: _vm.setSubject },
-                        model: {
-                          value: _vm.chosenSubject,
-                          callback: function($$v) {
-                            _vm.chosenSubject = $$v
-                          },
-                          expression: "chosenSubject"
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-sm btn-warning",
+                      on: {
+                        click: function($event) {
+                          return _vm.clearAfterSave()
                         }
-                      })
-                    : _vm._e()
-                ],
-                1
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "row mt-3" }, [
-              _c("div", { staticClass: "col-12" }, [
-                _vm.chosenSubject
-                  ? _c(
-                      "table",
-                      { staticClass: "table table-sm table-bordered" },
-                      [
-                        _vm._m(0),
-                        _vm._v(" "),
-                        _c(
-                          "tbody",
-                          _vm._l(_vm.chosenSubject, function(s) {
-                            return _c("tr", [
-                              _c("td", [_vm._v(_vm._s(s.name))]),
-                              _vm._v(" "),
-                              _c("td", [
-                                _c("input", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: s.score,
-                                      expression: "s.score"
-                                    }
-                                  ],
-                                  attrs: { type: "text" },
-                                  domProps: { value: s.score },
-                                  on: {
-                                    input: function($event) {
-                                      if ($event.target.composing) {
-                                        return
-                                      }
-                                      _vm.$set(s, "score", $event.target.value)
-                                    }
-                                  }
-                                })
-                              ])
-                            ])
-                          }),
-                          0
-                        )
-                      ]
-                    )
-                  : _vm._e()
+                      }
+                    },
+                    [_vm._v("Очистить форму")]
+                  )
+                ])
+              ])
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _vm._l(_vm.faculties, function(f) {
+        return _c("div", { staticClass: "row mb-4" }, [
+          _c("div", { staticClass: "col-12" }, [
+            _c("div", { staticClass: "card" }, [
+              _c("div", { staticClass: "card-header" }, [
+                _c("h4", [_vm._v(_vm._s(f.name))])
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "col-12" }, [
+              _c("div", { staticClass: "card-body" }, [
                 _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-sm btn-success",
-                    on: {
-                      click: function($event) {
-                        return _vm.saveExams()
-                      }
-                    }
-                  },
-                  [_vm._v("Сохранить")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-sm btn-warning",
-                    on: {
-                      click: function($event) {
-                        return _vm.clearAfterSave()
-                      }
-                    }
-                  },
-                  [_vm._v("Очистить форму")]
+                  "table",
+                  { staticClass: "table table-bordered" },
+                  [
+                    _vm._m(1, true),
+                    _vm._v(" "),
+                    _vm._l(f.courses, function(c) {
+                      return f.courses
+                        ? _c(
+                            "tbody",
+                            [
+                              _c(
+                                "tr",
+                                {
+                                  staticStyle: {
+                                    "border-top": "2px solid black"
+                                  }
+                                },
+                                [
+                                  _c(
+                                    "td",
+                                    {
+                                      attrs: {
+                                        rowspan: c.subjects.length
+                                          ? c.subjects.length
+                                          : 1
+                                      }
+                                    },
+                                    [
+                                      _vm._v(_vm._s(c.name) + " "),
+                                      _c("i", {
+                                        staticClass: "fa fa-pencil",
+                                        staticStyle: { cursor: "pointer" },
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.editExams(c, f)
+                                          }
+                                        }
+                                      })
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "td",
+                                    {
+                                      attrs: {
+                                        rowspan: c.subjects.length
+                                          ? c.subjects.length
+                                          : 1
+                                      }
+                                    },
+                                    _vm._l(c.studyForm, function(sf) {
+                                      return _c("p", { staticClass: "mb-0" }, [
+                                        _vm._v(
+                                          "\n                                " +
+                                            _vm._s(sf)
+                                        )
+                                      ])
+                                    }),
+                                    0
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "td",
+                                    {
+                                      attrs: {
+                                        rowspan: c.subjects.length
+                                          ? c.subjects.length
+                                          : 1
+                                      }
+                                    },
+                                    [_vm._v(_vm._s(c.score))]
+                                  ),
+                                  _vm._v(" "),
+                                  c.subjects[0]
+                                    ? _c("td", [
+                                        _vm._v(_vm._s(c.subjects[0].name))
+                                      ])
+                                    : _c("td", [_vm._v("-")]),
+                                  _vm._v(" "),
+                                  c.subjects[0]
+                                    ? _c("td", [
+                                        _vm._v(_vm._s(c.subjects[0].score))
+                                      ])
+                                    : _c("td", [_vm._v("-")])
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _vm._l(c.subjects, function(e, i) {
+                                return i > 0
+                                  ? _c("tr", [
+                                      e.name
+                                        ? _c("td", [_vm._v(_vm._s(e.name))])
+                                        : _c("td", [_vm._v("-")]),
+                                      _vm._v(" "),
+                                      e.score
+                                        ? _c("td", [_vm._v(_vm._s(e.score))])
+                                        : _c("td", [_vm._v("-")])
+                                    ])
+                                  : _vm._e()
+                              })
+                            ],
+                            2
+                          )
+                        : _vm._e()
+                    })
+                  ],
+                  2
                 )
               ])
             ])
           ])
         ])
-      ])
-    ]),
-    _vm._v(" "),
-    _c("br"),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "row mb-3" },
-      _vm._l(_vm.faculties, function(f) {
-        return _c("div", { staticClass: "col-12" }, [
-          _c("div", { staticClass: "card" }, [
-            _c("div", { staticClass: "card-header" }, [
-              _c("h4", [_vm._v(_vm._s(f.name))])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _c(
-                "table",
-                { staticClass: "table table-bordered" },
-                [
-                  _vm._m(1, true),
-                  _vm._v(" "),
-                  _vm._l(f.courses, function(c) {
-                    return f.courses
-                      ? _c(
-                          "tbody",
-                          [
-                            _c(
-                              "tr",
-                              {
-                                staticStyle: { "border-top": "2px solid black" }
-                              },
-                              [
-                                _c(
-                                  "td",
-                                  {
-                                    attrs: {
-                                      rowspan: c.subjects.length
-                                        ? c.subjects.length
-                                        : 1
-                                    }
-                                  },
-                                  [
-                                    _vm._v(_vm._s(c.name) + " "),
-                                    _c("i", {
-                                      staticClass: "fa fa-pencil",
-                                      staticStyle: { cursor: "pointer" },
-                                      on: {
-                                        click: function($event) {
-                                          return _vm.editExams(c, f)
-                                        }
-                                      }
-                                    })
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "td",
-                                  {
-                                    attrs: {
-                                      rowspan: c.subjects.length
-                                        ? c.subjects.length
-                                        : 1
-                                    }
-                                  },
-                                  _vm._l(c.studyForm, function(sf) {
-                                    return _c("p", { staticClass: "mb-0" }, [
-                                      _vm._v(
-                                        "\n                                " +
-                                          _vm._s(sf)
-                                      )
-                                    ])
-                                  }),
-                                  0
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "td",
-                                  {
-                                    attrs: {
-                                      rowspan: c.subjects.length
-                                        ? c.subjects.length
-                                        : 1
-                                    }
-                                  },
-                                  [_vm._v(_vm._s(c.score))]
-                                ),
-                                _vm._v(" "),
-                                c.subjects[0]
-                                  ? _c("td", [
-                                      _vm._v(_vm._s(c.subjects[0].name))
-                                    ])
-                                  : _c("td", [_vm._v("-")]),
-                                _vm._v(" "),
-                                c.subjects[0]
-                                  ? _c("td", [
-                                      _vm._v(_vm._s(c.subjects[0].score))
-                                    ])
-                                  : _c("td", [_vm._v("-")])
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _vm._l(c.subjects, function(e, i) {
-                              return i > 0
-                                ? _c("tr", [
-                                    e.name
-                                      ? _c("td", [_vm._v(_vm._s(e.name))])
-                                      : _c("td", [_vm._v("-")]),
-                                    _vm._v(" "),
-                                    e.score
-                                      ? _c("td", [_vm._v(_vm._s(e.score))])
-                                      : _c("td", [_vm._v("-")])
-                                  ])
-                                : _vm._e()
-                            })
-                          ],
-                          2
-                        )
-                      : _vm._e()
-                  })
-                ],
-                2
-              )
-            ])
-          ])
-        ])
-      }),
-      0
-    )
-  ])
+      })
+    ],
+    2
+  )
 }
 var staticRenderFns = [
   function() {
@@ -89468,7 +89627,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "row mt-4" }, [
       _c(
         "div",
         { staticClass: "col-12" },
@@ -89557,7 +89716,7 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "row mt-3" }, [
+    _c("div", { staticClass: "row mt-4" }, [
       _c("div", { staticClass: "col-12" }, [
         _c("div", { staticClass: "row" }, [
           _c("div", { staticClass: "col-12" }, [
@@ -90146,9 +90305,17 @@ var render = function() {
   return _c("div", [
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-12" }, [
-        _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "row mt-4" }, [
           _c("div", { staticClass: "col-9" }, [
             _c("div", { staticClass: "card" }, [
+              _c("div", { staticClass: "card-header" }, [
+                _c("p", { staticClass: "mb-0" }, [
+                  _c("a", { attrs: { href: _vm.rootUrl, target: "_blank" } }, [
+                    _vm._v("Перейти на страницу подраздела")
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
               _c("div", { staticClass: "card-body" }, [
                 _c("div", { attrs: { id: "comps" } }, [
                   _c(
@@ -109408,7 +109575,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     REMOVE_BLOCK: function REMOVE_BLOCK(state, id) {
       //state.blocks.splice(index, 1)
       state.blocks = $.grep(state.blocks, function (item) {
-        return item.id != id;
+        return item.id !== id;
       });
     },
     SET_BLOCKS: function SET_BLOCKS(state, payload) {
@@ -109436,20 +109603,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 formData.append('activityFrom', payload.activityFrom);
                 formData.append('activityTo', payload.activityTo);
                 formData.append('activity', payload.activity);
+                formData.append('news', payload.news);
                 formData.append('image', payload.image);
-                _context.next = 13;
-                return axios.post('/infoblock', formData, {
+                _context.next = 14;
+                return axios.post('/admin/infoblock', formData, {
                   headers: {
                     'Content-Type': 'multipart/form-data'
                   }
                 });
 
-              case 13:
+              case 14:
                 _ref = _context.sent;
                 data = _ref.data;
                 context.commit('ADD_BLOCK', data.infoblock);
 
-              case 16:
+              case 17:
               case "end":
                 return _context.stop();
             }
@@ -109484,21 +109652,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 formData.append('activityTo', payload.activityTo ? payload.activityTo : '');
                 formData.append('activity', payload.activity);
                 formData.append('image', payload.image);
+                formData.append('news', payload.news);
                 console.log(_typeof(payload.menu));
-                _context2.next = 14;
-                return axios.post('/infoblock/' + payload.id, formData, {
+                _context2.next = 15;
+                return axios.post('/admin/infoblock/' + payload.id, formData, {
                   headers: {
                     'Content-Type': 'multipart/form-data'
                   }
                 });
 
-              case 14:
+              case 15:
                 _ref2 = _context2.sent;
                 data = _ref2.data;
                 console.log(data.infoblock);
                 context.commit('EDIT_BLOCK', data.infoblock);
 
-              case 18:
+              case 19:
               case "end":
                 return _context2.stop();
             }
@@ -109521,7 +109690,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context3.prev = _context3.next) {
               case 0:
                 _context3.next = 2;
-                return axios["delete"]('/infoblock/' + payload);
+                return axios["delete"]('/admin/infoblock/' + payload);
 
               case 2:
                 context.commit('REMOVE_BLOCK', payload);
@@ -109551,7 +109720,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context4.prev = _context4.next) {
               case 0:
                 _context4.next = 2;
-                return axios.get('/infoblocks');
+                return axios.get('/admin/infoblocks');
 
               case 2:
                 _ref3 = _context4.sent;
@@ -109703,7 +109872,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return axios.post('/section', {
+                return axios.post('/admin/section', {
                   name: payload.name,
                   url: payload.url,
                   description: payload.description,
@@ -109737,7 +109906,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return SAVE_SECTION;
     }(),
     UPDATE_SECTION: function UPDATE_SECTION(context, payload) {
-      axios.post('/section/' + payload.id, {
+      axios.post('/admin/section/' + payload.id, {
         name: payload.name,
         url: payload.url,
         description: payload.description,
@@ -109761,7 +109930,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.next = 2;
-                return axios["delete"]('/section/' + payload.id);
+                return axios["delete"]('/admin/section/' + payload.id);
 
               case 2:
                 context.commit('REMOVE_SECTION', payload);
@@ -109791,7 +109960,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context3.prev = _context3.next) {
               case 0:
                 _context3.next = 2;
-                return axios.get('/sections');
+                return axios.get('/admin/sections');
 
               case 2:
                 _ref2 = _context3.sent;
@@ -109882,7 +110051,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 formData.append('image', payload.image);
                 formData.append('priority', payload.priority);
                 _context.next = 10;
-                return axios.post('/slider', formData, {
+                return axios.post('/admin/slider', formData, {
                   headers: {
                     'Content-Type': 'multipart/form-data'
                   }
@@ -109926,7 +110095,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 formData.append('image', payload.image);
                 formData.append('priority', payload.priority);
                 _context2.next = 10;
-                return axios.post('/slider/' + payload.id, formData, {
+                return axios.post('/admin/slider/' + payload.id, formData, {
                   headers: {
                     'Content-Type': 'multipart/form-data'
                   }
@@ -109961,7 +110130,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context3.prev = _context3.next) {
               case 0:
                 _context3.next = 2;
-                return axios["delete"]('/slider/' + payload);
+                return axios["delete"]('/admin/slider/' + payload);
 
               case 2:
                 context.commit('REMOVE_SLIDE', payload);
@@ -109991,7 +110160,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context4.prev = _context4.next) {
               case 0:
                 _context4.next = 2;
-                return axios.get('/slider');
+                return axios.get('/admin/slider');
 
               case 2:
                 _ref3 = _context4.sent;
