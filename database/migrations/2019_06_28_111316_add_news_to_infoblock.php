@@ -14,7 +14,7 @@ class AddNewsToInfoblock extends Migration
     public function up()
     {
         Schema::table('infoblocks', function (Blueprint $table) {
-            $table->string('news')->nullable();
+            $table->text('news')->nullable();
         });
     }
 
