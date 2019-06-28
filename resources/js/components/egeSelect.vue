@@ -25,8 +25,8 @@
                                 </select>
                             </div>
                             <div class="col-6">
-                                <label v-if="chosenCourse.name" class="badge">Вступительные испытания</label>
-                                <multiselect class="w-100" v-if="chosenCourse.name" multiple v-model="chosenSubject"
+                                <label v-if="chosenCourse && chosenCourse.name" class="badge">Вступительные испытания</label>
+                                <multiselect class="w-100" v-if="chosenCourse && chosenCourse.name" multiple v-model="chosenSubject"
                                              track-by="name" label="name" placeholder="Выберите предметы"
                                              :options="subjects"
                                              :searchable="true" :allow-empty="true" @select="setSubject">
@@ -141,13 +141,14 @@
         methods: {
 
             setNewCourse() {
-                this.chosenSubject = this.chosenCourse.subjects
+                this.chosenCourse ? this.chosenSubject = this.chosenCourse.subjects : null
             },
 
             setNewFaculty() {
                 this.chosenCourse = {
                     name: null,
-                    id: null
+                    id: null,
+                    subjects: []
                 };
                 this.chosenSubject = []
             },

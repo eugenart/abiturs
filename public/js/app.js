@@ -3259,12 +3259,13 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     setNewCourse: function setNewCourse() {
-      this.chosenSubject = this.chosenCourse.subjects;
+      this.chosenCourse ? this.chosenSubject = this.chosenCourse.subjects : null;
     },
     setNewFaculty: function setNewFaculty() {
       this.chosenCourse = {
         name: null,
-        id: null
+        id: null,
+        subjects: []
       };
       this.chosenSubject = [];
     },
@@ -89191,13 +89192,13 @@ var render = function() {
                   "div",
                   { staticClass: "col-6" },
                   [
-                    _vm.chosenCourse.name
+                    _vm.chosenCourse && _vm.chosenCourse.name
                       ? _c("label", { staticClass: "badge" }, [
                           _vm._v("Вступительные испытания")
                         ])
                       : _vm._e(),
                     _vm._v(" "),
-                    _vm.chosenCourse.name
+                    _vm.chosenCourse && _vm.chosenCourse.name
                       ? _c("multiselect", {
                           staticClass: "w-100",
                           attrs: {
