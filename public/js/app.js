@@ -2190,7 +2190,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.infoblock.news.splice(i, 1);
     },
     changeActivity: function changeActivity(block) {
-      console.log('lol');
       block.activity = !block.activity;
       this.infoblock = block;
       this.updateInfoblock();
@@ -86509,7 +86508,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "row mt-4" }, [
       _c("div", { staticClass: "col-12" }, [
         _c(
           "form",
@@ -109552,8 +109551,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
@@ -109603,7 +109600,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 formData.append('activityFrom', payload.activityFrom);
                 formData.append('activityTo', payload.activityTo);
                 formData.append('activity', payload.activity);
-                formData.append('news', payload.news);
+                $.each(payload.news, function (k, v) {
+                  formData.append('news[]', v);
+                });
                 formData.append('image', payload.image);
                 _context.next = 14;
                 return axios.post('/admin/infoblock', formData, {
@@ -109652,22 +109651,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 formData.append('activityTo', payload.activityTo ? payload.activityTo : '');
                 formData.append('activity', payload.activity);
                 formData.append('image', payload.image);
-                formData.append('news', payload.news);
-                console.log(_typeof(payload.menu));
-                _context2.next = 15;
+                $.each(payload.news, function (k, v) {
+                  formData.append('news[]', v);
+                });
+                _context2.next = 14;
                 return axios.post('/admin/infoblock/' + payload.id, formData, {
                   headers: {
                     'Content-Type': 'multipart/form-data'
                   }
                 });
 
-              case 15:
+              case 14:
                 _ref2 = _context2.sent;
                 data = _ref2.data;
                 console.log(data.infoblock);
                 context.commit('EDIT_BLOCK', data.infoblock);
 
-              case 19:
+              case 18:
               case "end":
                 return _context2.stop();
             }

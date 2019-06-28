@@ -35,8 +35,10 @@ export default {
             formData.append('activityFrom', payload.activityFrom);
             formData.append('activityTo', payload.activityTo);
             formData.append('activity', payload.activity);
-            formData.append('news', payload.news);
-            formData.append('image', payload.image);
+            $.each(payload.news, function (k, v) {
+                formData.append('news[]', v);
+            })
+            formData.append('image', payload.image)
             let {data} = await axios.post('/admin/infoblock', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
@@ -59,8 +61,9 @@ export default {
             formData.append('activityTo', payload.activityTo ? payload.activityTo : '');
             formData.append('activity', payload.activity);
             formData.append('image', payload.image);
-            formData.append('news', payload.news);
-            console.log(typeof payload.menu)
+            $.each(payload.news, function (k, v) {
+                formData.append('news[]', v);
+            })
             let {data} = await axios.post('/admin/infoblock/' + payload.id, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'

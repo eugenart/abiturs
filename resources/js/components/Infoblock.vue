@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="row">
+        <div class="row mt-4">
             <div class="col-12">
                 <form @submit.prevent="!isBlockUpdate? addInfoblock() : updateInfoblock()" class="col-12 p-0"
                       enctype="multipart/form-data" id="infoblockForm">
@@ -322,7 +322,6 @@
             },
 
             changeActivity(block) {
-                console.log('lol')
                 block.activity = !block.activity
                 this.infoblock = block
                 this.updateInfoblock()
