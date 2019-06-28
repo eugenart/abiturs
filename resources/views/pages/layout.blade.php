@@ -59,11 +59,11 @@
 @show
 <hr class="mrsu-hr mrsu-bg m-auto">
 
-<div class="container mt-2">
+<div class="container mt-3">
     <div class="row">
         @foreach($pages->sortByDesc('menuPriority') as $page)
         <div class="col-2">
-            <p class="font-weight-bold mb-0">{{ $page->name }}</p>
+            <p class="mb-0">{{ $page->name }}</p>
             <ul class="m-0 list-unstyled pl-3">
                 @foreach($page->sections as $section)
                     <li><a href="{{ $section->url }}">{{ $section->name }}</a></li>

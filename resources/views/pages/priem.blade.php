@@ -5,14 +5,16 @@
         <div class="row">
             <div class="col-12">
                 <marquee behavior="" direction="" class="mt-2">
+                    @foreach(collect($block->infoblock->news) as $item)
                     &bull; Бегущая строка
                     &bull; Бегущая строка
                     &bull; Бегущая строка
                     &bull; Бегущая строка &bull;
+                    @endforeach
                 </marquee>
             </div>
         </div>
-        <div class="row">
+        <div class="row mt-4">
             <div class="col-12">
                 <a href="/">Главная</a> / <a href="{{ $block->infoblock->url }}">{{ $block->infoblock->name }}</a> / <a
                         href="{{ $block->url }}">{{ $block->name }}</a>
