@@ -41,7 +41,7 @@ class InfoblockController extends Controller
                 'activityFrom' => $request->activityFrom,
                 'activityTo' => $request->activityTo,
                 'image' => $fileName ? $fileName : null,
-                'news' => $request->news
+                'news' => $request->news ? $request->news : array()
             ]);
             return response()->json([
                 'message' => "Infoblock was created",
@@ -74,7 +74,7 @@ class InfoblockController extends Controller
                 'activityFrom' => $request->activityFrom,
                 'activityTo' => $request->activityTo,
                 'image' => $fileName ? $fileName : null,
-                'news' => $request->news
+                'news' => $request->news ? $request->news : array()
             ]);
             return response()->json([
                 'message' => "Infoblock was updated",
