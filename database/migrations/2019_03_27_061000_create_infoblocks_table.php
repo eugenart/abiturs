@@ -17,7 +17,6 @@ class CreateInfoblocksTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('url');
-            $table->string('news')->nullable();
             $table->boolean('menu')->default(true);
             $table->boolean('startPage')->default(true);
             $table->integer('menuPriority')->default(500);

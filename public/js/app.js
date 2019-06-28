@@ -108910,7 +108910,10 @@ Vue.filter("formatDate", function (value) {
 });
 var app = new Vue({
   store: _store_index__WEBPACK_IMPORTED_MODULE_0__["default"],
-  el: '#app'
+  el: '#app',
+  data: {
+    rootUrl: window.location.hostname
+  }
 });
 
 /***/ }),

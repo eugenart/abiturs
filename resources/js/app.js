@@ -38,5 +38,8 @@ Vue.filter("formatDate", function (value) {
 
 const app = new Vue({
     store,
-    el: '#app'
+    el: '#app',
+    data: {
+        rootUrl: window.location.hostname
+    }
 });
