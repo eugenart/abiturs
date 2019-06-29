@@ -79,25 +79,25 @@
             <nav class="col-md-2 d-none d-md-block sidebar">
                 <div class="sidebar-sticky">
                     <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="home"></span>
-                                Настройки сайта <span class="sr-only">(current)</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ Request::is('admin/infoblock*') ? 'active' : null }}"
-                               href="{{route('infoblock.index')}}">
-                                <span data-feather="file"></span>
-                                Разделы сайта
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ Request::is('admin/section*') ? 'active' : null }}" href="{{route('section.index')}}">
-                                <span data-feather="shopping-cart"></span>
-                                Подразделы сайта
-                            </a>
-                        </li>
+{{--                        <li class="nav-item">--}}
+{{--                            <a class="nav-link" href="#">--}}
+{{--                                <span data-feather="home"></span>--}}
+{{--                                Настройки сайта <span class="sr-only">(current)</span>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a class="nav-link {{ Request::is('admin/infoblock*') ? 'active' : null }}"--}}
+{{--                               href="{{route('infoblock.index')}}">--}}
+{{--                                <span data-feather="file"></span>--}}
+{{--                                Разделы сайта--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a class="nav-link {{ Request::is('admin/section*') ? 'active' : null }}" href="{{route('section.index')}}">--}}
+{{--                                <span data-feather="shopping-cart"></span>--}}
+{{--                                Подразделы сайта--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
                         <li class="nav-item">
                             <a class="nav-link {{ Request::is('admin/course*') ? 'active' : null }}" href="{{route('course.index')}}">
                                 <span data-feather="shopping-cart"></span>
@@ -105,23 +105,23 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ Request::is('admin/subject-list*') ? 'active' : null }}" href="{{route('subject.list')}}">
+                            <a class="nav-link {{ Request::is('admin/subject') ? 'active' : null }}" href="{{route('subject.index')}}">
                                 <span data-feather="shopping-cart"></span>
                                 Вступительные испытания
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ Request::is('admin/subject') ? 'active' : null }}" href="{{route('subject.index')}}">
+                            <a class="nav-link {{ Request::is('admin/subject-list*') ? 'active' : null }}" href="{{route('subject.list')}}">
                                 <span data-feather="users"></span>
                                 Минимальный балл вступительных испытания
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ Request::is('admin/slider*') ? 'active' : null }}" href="{{route('slider.index')}}">
-                                <span data-feather="users"></span>
-                                Слайдер
-                            </a>
-                        </li>
+{{--                        <li class="nav-item">--}}
+{{--                            <a class="nav-link {{ Request::is('admin/slider*') ? 'active' : null }}" href="{{route('slider.index')}}">--}}
+{{--                                <span data-feather="users"></span>--}}
+{{--                                Слайдер--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
 {{--                        <li class="nav-item">--}}
 {{--                            <a class="nav-link" href="#">--}}
 {{--                                <span data-feather="users"></span>--}}

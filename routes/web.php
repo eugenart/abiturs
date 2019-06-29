@@ -14,22 +14,30 @@
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->group(function () {
-    Route::redirect('/', '/admin/infoblocks');
+//    Route::redirect('/', '/admin/infoblocks');
 
-    Route::get('/infoblocks', 'InfoblockController@index')->name('infoblock.index');
-    Route::post('/infoblock', 'InfoblockController@store')->name('infoblock.store');
-    Route::post('/infoblock/{id}', 'InfoblockController@update')->name('infoblock.update');
-    Route::delete('/infoblock/{id}', 'InfoblockController@destroy')->name('infoblock.destroy');
 
-    Route::get('/sections', 'SectionController@index')->name('section.index');
-    Route::post('/section', 'SectionController@store')->name('section.store');
-    Route::post('/section/{id}', 'SectionController@update')->name('section.update');
-    Route::delete('/section/{id}', 'SectionController@destroy')->name('section.destroy');
+//    Route::get('/infoblocks', 'InfoblockController@index')->name('infoblock.index');
+//    Route::post('/infoblock', 'InfoblockController@store')->name('infoblock.store');
+//    Route::post('/infoblock/{id}', 'InfoblockController@update')->name('infoblock.update');
+//    Route::delete('/infoblock/{id}', 'InfoblockController@destroy')->name('infoblock.destroy');
+//
+//    Route::get('/sections', 'SectionController@index')->name('section.index');
+//    Route::post('/section', 'SectionController@store')->name('section.store');
+//    Route::post('/section/{id}', 'SectionController@update')->name('section.update');
+//    Route::delete('/section/{id}', 'SectionController@destroy')->name('section.destroy');
+//
+//    Route::get('/section-content/{id}', 'SectionContentController@index');
+//    Route::post('/section-content', 'SectionContentController@store');
+//    Route::delete('/section-content/{id}', 'SectionContentController@destroy');
 
-    Route::get('/slider', 'SliderController@index')->name('slider.index');
-    Route::post('/slider', 'SliderController@store')->name('slider.store');
-    Route::post('/slider/{id}', 'SliderController@update')->name('slider.update');
-    Route::delete('/slider/{id}', 'SliderController@destroy')->name('slider.destroy');
+//    Route::get('/slider', 'SliderController@index')->name('slider.index');
+//    Route::post('/slider', 'SliderController@store')->name('slider.store');
+//    Route::post('/slider/{id}', 'SliderController@update')->name('slider.update');
+//    Route::delete('/slider/{id}', 'SliderController@destroy')->name('slider.destroy');
+
+    Route::redirect('/', '/admin/subject');
+
 
     Route::get('/course', 'CourseController@index')->name('course.index');
     Route::post('/course', 'CourseController@store')->name('course.store');
@@ -45,30 +53,24 @@ Route::prefix('admin')->group(function () {
     Route::post('/subject-list', 'SubjectController@addToSubjectList')->name('subject.addToList');
     Route::delete('/subject-list/{id}', 'SubjectController@deleteFromSubjectList')->name('subject.deleteFromList');
 
-    Route::get('/section-content/{id}', 'SectionContentController@index');
-    Route::post('/section-content', 'SectionContentController@store');
-    Route::delete('/section-content/{id}', 'SectionContentController@destroy');
+
 });
 
+//Route::get('/stat', function () {
+//    return view('pages.stat');
+//});
+//
+//Route::get('/selection', 'SelectionController@index')->name('selection.index');
+//
+//Auth::routes();
+//
+//Route::get('/home', 'HomeController@index')->name('home');
+//
+//Route::get('/', 'PageController@index')->name('pages.index');
+//Route::get('/{route}', 'PageController@route')->name('pages.route');
 
 
 
-Route::get('/stat', function () {
-    return view('pages.stat');
-});
-
-
-
-Route::get('/selection', 'SelectionController@index')->name('selection.index');
-
-
-
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/', 'PageController@index')->name('pages.index');
-Route::get('/{route}', 'PageController@route')->name('pages.route');
+Route::get('/', 'SelectionController@index')->name('selection.index');
 
 
