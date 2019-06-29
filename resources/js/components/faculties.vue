@@ -95,7 +95,7 @@
                                                         <div class="card mb-3">
                                                             <div class="card-body">
                                                                 <div class="row">
-                                                                    <div class="col-6">
+                                                                    <div class="col-10">
                                                                         <span class="badge">Название направления</span>
                                                                         <b-form-group>
                                                                             <b-form-input
@@ -107,16 +107,16 @@
                                                                             </b-form-input>
                                                                         </b-form-group>
                                                                     </div>
-                                                                    <div class="col-4">
-                                                                        <span class="badge">Проходной балл</span>
-                                                                        <b-form-input
-                                                                            type="text"
-                                                                            required
-                                                                            class="mb-2"
-                                                                            v-model="course.score"
-                                                                            placeholder="">
-                                                                        </b-form-input>
-                                                                    </div>
+<!--                                                                    <div class="col-4">-->
+<!--                                                                        <span class="badge">Проходной балл</span>-->
+<!--                                                                        <b-form-input-->
+<!--                                                                            type="text"-->
+<!--                                                                            required-->
+<!--                                                                            class="mb-2"-->
+<!--                                                                            v-model="course.score"-->
+<!--                                                                            placeholder="">-->
+<!--                                                                        </b-form-input>-->
+<!--                                                                    </div>-->
                                                                     <div class="col-2">
                                                                         <div class="row">
                                                                             <div class="col-12">
@@ -136,18 +136,18 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="row">
-                                                                    <div class="col-12">
-                                                                        <span class="badge">Формы обучения</span>
-                                                                        <b-form-group>
-                                                                            <b-form-checkbox-group
-                                                                                class="w-100"
-                                                                                v-model="course.studyForm"
-                                                                                :options="forms"
-                                                                            ></b-form-checkbox-group>
-                                                                        </b-form-group>
-                                                                    </div>
-                                                                </div>
+<!--                                                                <div class="row">-->
+<!--                                                                    <div class="col-12">-->
+<!--                                                                        <span class="badge">Формы обучения</span>-->
+<!--                                                                        <b-form-group>-->
+<!--                                                                            <b-form-checkbox-group-->
+<!--                                                                                class="w-100"-->
+<!--                                                                                v-model="course.studyForm"-->
+<!--                                                                                :options="forms"-->
+<!--                                                                            ></b-form-checkbox-group>-->
+<!--                                                                        </b-form-group>-->
+<!--                                                                    </div>-->
+<!--                                                                </div>-->
                                                             </div>
                                                         </div>
                                                         <div class="card">
@@ -156,7 +156,7 @@
                                                                     <div class="row">
                                                                         <div class="col-12">
                                                                             <div class="row">
-                                                                                <div class="col-6">
+                                                                                <div class="col-10">
                                                                                     <p v-if="!c.isEdit">{{c.name}}</p>
                                                                                     <b-form-input
                                                                                         v-if="c.isEdit"
@@ -167,24 +167,24 @@
                                                                                         :placeholder="'Введите название'">
                                                                                     </b-form-input>
                                                                                 </div>
-                                                                                <div class="col-2" v-if="!c.isEdit">
-                                                                                    <p class="mb-0"
-                                                                                       v-for="sf in c.studyForm">
-                                                                                        {{sf}}</p>
-                                                                                </div>
-                                                                                <div class="col-2" v-if="!c.isEdit">
-                                                                                    <p>{{c.score}}</p>
-                                                                                </div>
-                                                                                <div class="col-4" v-if="c.isEdit">
-                                                                                    <b-form-input
-                                                                                        v-if="c.isEdit"
-                                                                                        type="text"
-                                                                                        required
-                                                                                        class="mb-2"
-                                                                                        v-model="c.score"
-                                                                                        :placeholder="'Проходной балл'">
-                                                                                    </b-form-input>
-                                                                                </div>
+<!--                                                                                <div class="col-2" v-if="!c.isEdit">-->
+<!--                                                                                    <p class="mb-0"-->
+<!--                                                                                       v-for="sf in c.studyForm">-->
+<!--                                                                                        {{sf}}</p>-->
+<!--                                                                                </div>-->
+<!--                                                                                <div class="col-2" v-if="!c.isEdit">-->
+<!--                                                                                    <p>{{c.score}}</p>-->
+<!--                                                                                </div>-->
+<!--                                                                                <div class="col-4" v-if="c.isEdit">-->
+<!--                                                                                    <b-form-input-->
+<!--                                                                                        v-if="c.isEdit"-->
+<!--                                                                                        type="text"-->
+<!--                                                                                        required-->
+<!--                                                                                        class="mb-2"-->
+<!--                                                                                        v-model="c.score"-->
+<!--                                                                                        :placeholder="'Проходной балл'">-->
+<!--                                                                                    </b-form-input>-->
+<!--                                                                                </div>-->
                                                                                 <div class="col-2">
                                                                                     <i v-if="c.isEdit"
                                                                                        style="cursor:pointer;"
@@ -200,16 +200,16 @@
                                                                                        @click="deleteCourse(c.id)"></i>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="row">
-                                                                                <div class="col-12">
-                                                                                    <b-form-group v-if="c.isEdit">
-                                                                                        <b-form-checkbox-group
-                                                                                            v-model="c.studyForm"
-                                                                                            :options="forms"
-                                                                                        ></b-form-checkbox-group>
-                                                                                    </b-form-group>
-                                                                                </div>
-                                                                            </div>
+<!--                                                                            <div class="row">-->
+<!--                                                                                <div class="col-12">-->
+<!--                                                                                    <b-form-group v-if="c.isEdit">-->
+<!--                                                                                        <b-form-checkbox-group-->
+<!--                                                                                            v-model="c.studyForm"-->
+<!--                                                                                            :options="forms"-->
+<!--                                                                                        ></b-form-checkbox-group>-->
+<!--                                                                                    </b-form-group>-->
+<!--                                                                                </div>-->
+<!--                                                                            </div>-->
                                                                         </div>
                                                                     </div>
                                                                     <hr>

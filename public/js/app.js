@@ -89565,7 +89565,7 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "\n                                    Добавить\n                                "
+                              "\n                                        Добавить\n                                    "
                             )
                           ]
                         )
@@ -89750,7 +89750,7 @@ var render = function() {
                                     _c("div", { staticClass: "row" }, [
                                       _c(
                                         "div",
-                                        { staticClass: "col-6" },
+                                        { staticClass: "col-10" },
                                         [
                                           _c("span", { staticClass: "badge" }, [
                                             _vm._v("Название направления")
@@ -89781,37 +89781,6 @@ var render = function() {
                                             ],
                                             1
                                           )
-                                        ],
-                                        1
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        { staticClass: "col-4" },
-                                        [
-                                          _c("span", { staticClass: "badge" }, [
-                                            _vm._v("Проходной балл")
-                                          ]),
-                                          _vm._v(" "),
-                                          _c("b-form-input", {
-                                            staticClass: "mb-2",
-                                            attrs: {
-                                              type: "text",
-                                              required: "",
-                                              placeholder: ""
-                                            },
-                                            model: {
-                                              value: _vm.course.score,
-                                              callback: function($$v) {
-                                                _vm.$set(
-                                                  _vm.course,
-                                                  "score",
-                                                  $$v
-                                                )
-                                              },
-                                              expression: "course.score"
-                                            }
-                                          })
                                         ],
                                         1
                                       ),
@@ -89863,41 +89832,6 @@ var render = function() {
                                           ])
                                         ])
                                       ])
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "row" }, [
-                                      _c(
-                                        "div",
-                                        { staticClass: "col-12" },
-                                        [
-                                          _c("span", { staticClass: "badge" }, [
-                                            _vm._v("Формы обучения")
-                                          ]),
-                                          _vm._v(" "),
-                                          _c(
-                                            "b-form-group",
-                                            [
-                                              _c("b-form-checkbox-group", {
-                                                staticClass: "w-100",
-                                                attrs: { options: _vm.forms },
-                                                model: {
-                                                  value: _vm.course.studyForm,
-                                                  callback: function($$v) {
-                                                    _vm.$set(
-                                                      _vm.course,
-                                                      "studyForm",
-                                                      $$v
-                                                    )
-                                                  },
-                                                  expression: "course.studyForm"
-                                                }
-                                              })
-                                            ],
-                                            1
-                                          )
-                                        ],
-                                        1
-                                      )
                                     ])
                                   ])
                                 ]),
@@ -89913,7 +89847,7 @@ var render = function() {
                                             _c("div", { staticClass: "row" }, [
                                               _c(
                                                 "div",
-                                                { staticClass: "col-6" },
+                                                { staticClass: "col-10" },
                                                 [
                                                   !c.isEdit
                                                     ? _c("p", [
@@ -89948,78 +89882,6 @@ var render = function() {
                                                 ],
                                                 1
                                               ),
-                                              _vm._v(" "),
-                                              !c.isEdit
-                                                ? _c(
-                                                    "div",
-                                                    { staticClass: "col-2" },
-                                                    _vm._l(
-                                                      c.studyForm,
-                                                      function(sf) {
-                                                        return _c(
-                                                          "p",
-                                                          {
-                                                            staticClass: "mb-0"
-                                                          },
-                                                          [
-                                                            _vm._v(
-                                                              "\n                                                                                    " +
-                                                                _vm._s(sf)
-                                                            )
-                                                          ]
-                                                        )
-                                                      }
-                                                    ),
-                                                    0
-                                                  )
-                                                : _vm._e(),
-                                              _vm._v(" "),
-                                              !c.isEdit
-                                                ? _c(
-                                                    "div",
-                                                    { staticClass: "col-2" },
-                                                    [
-                                                      _c("p", [
-                                                        _vm._v(_vm._s(c.score))
-                                                      ])
-                                                    ]
-                                                  )
-                                                : _vm._e(),
-                                              _vm._v(" "),
-                                              c.isEdit
-                                                ? _c(
-                                                    "div",
-                                                    { staticClass: "col-4" },
-                                                    [
-                                                      c.isEdit
-                                                        ? _c("b-form-input", {
-                                                            staticClass: "mb-2",
-                                                            attrs: {
-                                                              type: "text",
-                                                              required: "",
-                                                              placeholder:
-                                                                "Проходной балл"
-                                                            },
-                                                            model: {
-                                                              value: c.score,
-                                                              callback: function(
-                                                                $$v
-                                                              ) {
-                                                                _vm.$set(
-                                                                  c,
-                                                                  "score",
-                                                                  $$v
-                                                                )
-                                                              },
-                                                              expression:
-                                                                "c.score"
-                                                            }
-                                                          })
-                                                        : _vm._e()
-                                                    ],
-                                                    1
-                                                  )
-                                                : _vm._e(),
                                               _vm._v(" "),
                                               _c(
                                                 "div",
@@ -90078,48 +89940,6 @@ var render = function() {
                                                     }
                                                   })
                                                 ]
-                                              )
-                                            ]),
-                                            _vm._v(" "),
-                                            _c("div", { staticClass: "row" }, [
-                                              _c(
-                                                "div",
-                                                { staticClass: "col-12" },
-                                                [
-                                                  c.isEdit
-                                                    ? _c(
-                                                        "b-form-group",
-                                                        [
-                                                          _c(
-                                                            "b-form-checkbox-group",
-                                                            {
-                                                              attrs: {
-                                                                options:
-                                                                  _vm.forms
-                                                              },
-                                                              model: {
-                                                                value:
-                                                                  c.studyForm,
-                                                                callback: function(
-                                                                  $$v
-                                                                ) {
-                                                                  _vm.$set(
-                                                                    c,
-                                                                    "studyForm",
-                                                                    $$v
-                                                                  )
-                                                                },
-                                                                expression:
-                                                                  "c.studyForm"
-                                                              }
-                                                            }
-                                                          )
-                                                        ],
-                                                        1
-                                                      )
-                                                    : _vm._e()
-                                                ],
-                                                1
                                               )
                                             ])
                                           ])

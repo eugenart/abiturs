@@ -16,7 +16,7 @@ class SubjectController extends Controller
             return response()->json($subjects, 200);
         }
 
-        return view('structure.faculties', compact('subjects'));
+        return view('structure.subject', compact('subjects'));
     }
 
     public function subjectList(Request $request)
