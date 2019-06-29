@@ -417,7 +417,7 @@
                     score: null,
                     intramural: {},
                     partTime: {},
-                    correspondence: {}
+                    correspondence: {},
 
                 },
 
@@ -492,9 +492,9 @@
                 axios.post('/admin/course', {
                     name: this.course.name,
                     parent_id: id,
-                    intramural: this.intramural,
-                    partTime: this.partTime,
-                    correspondence: this.correspondence
+                    intramural: this.course.intramural,
+                    partTime: this.course.partTime,
+                    correspondence: this.course.correspondence
                 });
                 this.fetchFaculty()
                 this.clearCurrentCourse()
