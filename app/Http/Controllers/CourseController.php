@@ -26,8 +26,26 @@ class CourseController extends Controller
 //                    $child->subject_list = $subjects_list;
                     $child->subjects;
                     $child->intramural = $child->studyForms->where('name', 'Очная')->first();
+                    if ($child->intramural == null) {
+                        $child->intramural['name'] = null;
+                        $child->intramural['budget'] = null;
+                        $child->intramural['price'] = null;
+                        $child->intramural['year'] = null;
+                    }
                     $child->partTime = $child->studyForms->where('name', 'Очно-заочная')->first();
+                    if ($child->partTime == null) {
+                        $child->partTime['name'] = null;
+                        $child->partTime['budget'] = null;
+                        $child->partTime['price'] = null;
+                        $child->partTime['year'] = null;
+                    }
                     $child->correspondence = $child->studyForms->where('name', 'Заочная')->first();
+                    if ($child->correspondence == null) {
+                        $child->correspondence['name'] = null;
+                        $child->correspondence['budget'] = null;
+                        $child->correspondence['price'] = null;
+                        $child->correspondence['year'] = null;
+                    }
                 }
                 $course->isEdit = false;
                 $data[] = $course;
