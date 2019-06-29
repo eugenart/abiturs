@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="row">
+        <div class="row mt-4">
             <div class="col-12">
                 <form @submit.prevent="!isBlockUpdate? addInfoblock() : updateInfoblock()" class="col-12 p-0"
                       enctype="multipart/form-data" id="infoblockForm">
@@ -112,6 +112,29 @@
                                                 </div>
                                             </div>
                                         </b-tab>
+                                        <b-tab title="Новости">
+                                            <div class="row">
+                                                <div class="col-10">
+                                                    <form novalidate>
+                                                        <input type="text" class="form-control form-control-sm"
+                                                               placeholder="Новость" v-model="news">
+                                                    </form>
+                                                </div>
+                                                <div class="col-2">
+                                                    <button type="button" class="btn btn-success btn-sm"
+                                                            @click="addNews"><i
+                                                        class="fa fa-plus"></i></button>
+                                                </div>
+                                            </div>
+                                            <div class="row mt-4">
+                                                <div class="col-12">
+                                                    <p v-for="(n,i) in infoblock.news"><i class="fa fa-times"
+                                                                                          style="cursor: pointer; color:red;"
+                                                                                          @click="removeNews(i)"></i>
+                                                        {{n}}</p>
+                                                </div>
+                                            </div>
+                                        </b-tab>
                                     </b-tabs>
                                 </div>
                             </div>
@@ -193,7 +216,8 @@
                                         </div>
                                         <div>
                                             <label class="badge m-0">Ссылка</label>
-                                            <p class="ml-2 mb-1"><a :href="rootUrl + '/'+block.url" target="_blank">{{block.url}}</a></p>
+                                            <p class="ml-2 mb-1"><a :href="rootUrl + '/'+block.url" target="_blank">{{block.url}}</a>
+                                            </p>
                                         </div>
                                         <div>
                                             <label class="badge m-0">В меню (приоритет)</label>
@@ -226,6 +250,12 @@
                                                 )
                                             </p>
                                         </div>
+                                        <div>
+                                            <label class="badge m-0">Новости</label>
+                                            <p class="mb-1" v-for="n in block.news">
+                                                {{n}}
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -253,13 +283,15 @@
                     activity: true,
                     activityFrom: '',
                     activityTo: '',
-                    image: null
+                    image: null,
+                    news: []
                 },
                 isBlockUpdate: false,
                 currentInfoblock: {},
                 errorImage: '',
                 previewUrl: '../../storage/preview/default.jpg',
-                formStatus: false
+                formStatus: false,
+                news: null
             }
         },
 
@@ -280,8 +312,16 @@
 
         methods: {
 
+            addNews() {
+                this.infoblock.news.push(this.news)
+                this.news = null
+            },
+
+            removeNews(i) {
+                this.infoblock.news.splice(i, 1)
+            },
+
             changeActivity(block) {
-                console.log('lol')
                 block.activity = !block.activity
                 this.infoblock = block
                 this.updateInfoblock()

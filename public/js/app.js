@@ -2115,6 +2115,36 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Infoblock',
   data: function data() {
@@ -2130,13 +2160,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         activity: true,
         activityFrom: '',
         activityTo: '',
-        image: null
+        image: null,
+        news: []
       },
       isBlockUpdate: false,
       currentInfoblock: {},
       errorImage: '',
       previewUrl: '../../storage/preview/default.jpg',
-      formStatus: false
+      formStatus: false,
+      news: null
     };
   },
   mounted: function mounted() {
@@ -2150,8 +2182,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   },
   methods: {
+    addNews: function addNews() {
+      this.infoblock.news.push(this.news);
+      this.news = null;
+    },
+    removeNews: function removeNews(i) {
+      this.infoblock.news.splice(i, 1);
+    },
     changeActivity: function changeActivity(block) {
-      console.log('lol');
       block.activity = !block.activity;
       this.infoblock = block;
       this.updateInfoblock();
@@ -3565,6 +3603,173 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "faculties",
   data: function data() {
@@ -3581,7 +3786,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         id: null,
         isEdit: false,
         score: null,
-        studyForm: []
+        intramural: {},
+        partTime: {},
+        correspondence: {}
       },
       forms: [{
         text: "Очная",
@@ -3633,8 +3840,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     changeCourse: function changeCourse(c) {
       axios.post('/admin/course/' + c.id, {
         name: c.name,
-        studyForm: c.studyForm,
-        score: c.score
+        intramural: c.intramural,
+        partTime: c.partTime,
+        correspondence: c.correspondence
       });
       this.clearCurrentCourse();
       this.fetchFaculty();
@@ -3650,8 +3858,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       axios.post('/admin/course', {
         name: this.course.name,
         parent_id: id,
-        studyForm: this.course.studyForm,
-        score: this.course.score
+        intramural: this.course.intramural,
+        partTime: this.course.partTime,
+        correspondence: this.course.correspondence
       });
       this.fetchFaculty();
       this.clearCurrentCourse();
@@ -86470,7 +86679,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "row mt-4" }, [
       _c("div", { staticClass: "col-12" }, [
         _c(
           "form",
@@ -86972,6 +87181,79 @@ var render = function() {
                                 ])
                               ])
                             ])
+                          ]),
+                          _vm._v(" "),
+                          _c("b-tab", { attrs: { title: "Новости" } }, [
+                            _c("div", { staticClass: "row" }, [
+                              _c("div", { staticClass: "col-10" }, [
+                                _c("form", { attrs: { novalidate: "" } }, [
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.news,
+                                        expression: "news"
+                                      }
+                                    ],
+                                    staticClass: "form-control form-control-sm",
+                                    attrs: {
+                                      type: "text",
+                                      placeholder: "Новость"
+                                    },
+                                    domProps: { value: _vm.news },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.news = $event.target.value
+                                      }
+                                    }
+                                  })
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "col-2" }, [
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass: "btn btn-success btn-sm",
+                                    attrs: { type: "button" },
+                                    on: { click: _vm.addNews }
+                                  },
+                                  [_c("i", { staticClass: "fa fa-plus" })]
+                                )
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "row mt-4" }, [
+                              _c(
+                                "div",
+                                { staticClass: "col-12" },
+                                _vm._l(_vm.infoblock.news, function(n, i) {
+                                  return _c("p", [
+                                    _c("i", {
+                                      staticClass: "fa fa-times",
+                                      staticStyle: {
+                                        cursor: "pointer",
+                                        color: "red"
+                                      },
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.removeNews(i)
+                                        }
+                                      }
+                                    }),
+                                    _vm._v(
+                                      "\n                                                    " +
+                                        _vm._s(n)
+                                    )
+                                  ])
+                                }),
+                                0
+                              )
+                            ])
                           ])
                         ],
                         1
@@ -87231,7 +87513,27 @@ var render = function() {
                             "\n                                            )\n                                        "
                           )
                         ])
-                      ])
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        [
+                          _c("label", { staticClass: "badge m-0" }, [
+                            _vm._v("Новости")
+                          ]),
+                          _vm._v(" "),
+                          _vm._l(block.news, function(n) {
+                            return _c("p", { staticClass: "mb-1" }, [
+                              _vm._v(
+                                "\n                                            " +
+                                  _vm._s(n) +
+                                  "\n                                        "
+                              )
+                            ])
+                          })
+                        ],
+                        2
+                      )
                     ])
                   ])
                 ])
@@ -89565,7 +89867,7 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "\n                                        Добавить\n                                    "
+                              "\n                                    Добавить\n                                "
                             )
                           ]
                         )
@@ -89584,101 +89886,186 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "row mt-4" }, [
+    _c("div", { staticClass: "row mt-4 mb-4" }, [
       _c("div", { staticClass: "col-12" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-12" }, [
-            _c("div", { staticClass: "card" }, [
-              _c("div", { staticClass: "card-body" }, [
-                _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "col-6" }, [
+        _c(
+          "div",
+          { attrs: { role: "tablist" } },
+          _vm._l(_vm.faculties, function(f, i) {
+            return _c(
+              "b-card",
+              { key: i, staticClass: "mb-1", attrs: { "no-body": "" } },
+              [
+                _c(
+                  "b-card-header",
+                  {
+                    staticClass: "p-1",
+                    attrs: { "header-tag": "header", role: "tab" }
+                  },
+                  [
                     _c(
-                      "div",
+                      "b-button",
                       {
-                        staticClass: "list-group",
-                        attrs: { id: "list-tab", role: "tablist" }
-                      },
-                      _vm._l(_vm.faculties, function(f, i) {
-                        return _c(
-                          "a",
+                        directives: [
                           {
-                            key: i,
-                            staticClass:
-                              "mb-3 list-group-item list-group-item-action d-block",
-                            attrs: {
-                              id: "list-course-list" + i,
-                              "data-toggle": "list",
-                              href: "#list-course" + i,
-                              role: "tab",
-                              "aria-controls": "course" + i
-                            }
-                          },
-                          [
-                            _c("div", { staticClass: "row" }, [
-                              _c(
-                                "div",
-                                { staticClass: "col-8" },
-                                [
-                                  !f.isEdit
-                                    ? _c("p", [_vm._v(_vm._s(f.name))])
-                                    : _vm._e(),
+                            name: "b-toggle",
+                            rawName: "v-b-toggle",
+                            value: "accordion-" + i,
+                            expression: "'accordion-'+i"
+                          }
+                        ],
+                        attrs: { block: "", href: "#", variant: "info" }
+                      },
+                      [_vm._v(_vm._s(f.name) + "\n                        ")]
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "b-collapse",
+                  {
+                    attrs: {
+                      id: "accordion-" + i,
+                      accordion: "my-accordion",
+                      role: "tabpanel"
+                    }
+                  },
+                  [
+                    _c(
+                      "b-card-body",
+                      [
+                        _c("b-card-text", [
+                          !f.isEdit
+                            ? _c("div", { staticClass: "row text-center" }, [
+                                _c("p", { staticClass: "w-100 text-center" }, [
+                                  _c("span", { staticClass: "mr-2" }, [
+                                    _c("b", [_vm._v(_vm._s(f.name))])
+                                  ]),
                                   _vm._v(" "),
-                                  f.isEdit
-                                    ? _c("b-form-input", {
-                                        staticClass: "h-100",
-                                        attrs: {
-                                          type: "text",
-                                          required: "",
-                                          placeholder: "Введите название"
-                                        },
-                                        model: {
-                                          value: f.name,
-                                          callback: function($$v) {
-                                            _vm.$set(f, "name", $$v)
-                                          },
-                                          expression: "f.name"
+                                  !f.isEdit
+                                    ? _c("i", {
+                                        staticClass:
+                                          "fa fa-pencil cursor-pointer",
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.editFaculty(f)
+                                          }
                                         }
                                       })
-                                    : _vm._e()
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass:
-                                    "col-2 d-flex align-items-center justify-content-center"
-                                },
-                                [
-                                  !f.isEdit
-                                    ? _c(
-                                        "b-button",
-                                        {
-                                          staticClass: "col-12",
-                                          attrs: {
-                                            squared: "",
-                                            variant: "warning"
-                                          },
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.editFaculty(f)
-                                            }
-                                          }
+                                    : _vm._e(),
+                                  _vm._v(" "),
+                                  _c("i", {
+                                    staticClass:
+                                      "fas fa-trash text-red cursor-pointer",
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.deleteFaculty(f.id)
+                                      }
+                                    }
+                                  })
+                                ])
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          f.isEdit
+                            ? _c("div", { staticClass: "row" }, [
+                                _c(
+                                  "div",
+                                  { staticClass: "col-10" },
+                                  [
+                                    _c("b-form-input", {
+                                      staticClass: "form-control",
+                                      attrs: {
+                                        type: "text",
+                                        required: "",
+                                        placeholder: "Введите название"
+                                      },
+                                      model: {
+                                        value: f.name,
+                                        callback: function($$v) {
+                                          _vm.$set(f, "name", $$v)
                                         },
-                                        [_c("i", { staticClass: "fas fa-pen" })]
-                                      )
-                                    : _c(
+                                        expression: "f.name"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "col-2 text-center d-flex justify-content-center align-items-center"
+                                  },
+                                  [
+                                    _c("i", {
+                                      staticClass: "fas fa-check",
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.changeFaculty(f)
+                                        }
+                                      }
+                                    })
+                                  ]
+                                )
+                              ])
+                            : _vm._e()
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "card" }, [
+                          _c("div", { staticClass: "card-body" }, [
+                            _c("div", { staticClass: "row" }, [
+                              _c("div", { staticClass: "col-12" }, [
+                                _c("div", { staticClass: "row" }, [
+                                  _c("div", { staticClass: "col-10 mb-4" }, [
+                                    _c("span", { staticClass: "badge" }, [
+                                      _vm._v("Название направления")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.course.name,
+                                          expression: "course.name"
+                                        }
+                                      ],
+                                      staticClass: "form-control",
+                                      attrs: { type: "text" },
+                                      domProps: { value: _vm.course.name },
+                                      on: {
+                                        input: function($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.$set(
+                                            _vm.course,
+                                            "name",
+                                            $event.target.value
+                                          )
+                                        }
+                                      }
+                                    })
+                                  ]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "col-2 d-flex align-items-bottom"
+                                    },
+                                    [
+                                      _c(
                                         "b-button",
                                         {
-                                          staticClass: "col-12",
-                                          attrs: {
-                                            squared: "",
-                                            variant: "warning"
-                                          },
+                                          staticClass: "m-auto d-block",
+                                          attrs: { variant: "outline-success" },
                                           on: {
                                             click: function($event) {
-                                              return _vm.changeFaculty(f)
+                                              return _vm.addCourse(f.id)
                                             }
                                           }
                                         },
@@ -89688,282 +90075,499 @@ var render = function() {
                                           })
                                         ]
                                       )
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass:
-                                    "col-2 d-flex align-items-center justify-content-center "
-                                },
-                                [
-                                  _c(
-                                    "b-button",
-                                    {
-                                      staticClass: "col-12",
-                                      attrs: { squared: "", variant: "danger" },
-                                      on: {
-                                        click: function($event) {
-                                          return _vm.deleteFaculty(f.id)
-                                        }
-                                      }
-                                    },
-                                    [_c("i", { staticClass: "fas fa-trash" })]
+                                    ],
+                                    1
                                   )
-                                ],
-                                1
-                              )
-                            ])
-                          ]
-                        )
-                      }),
-                      0
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-6" }, [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "tab-content",
-                        attrs: { id: "nav-tabContent" }
-                      },
-                      _vm._l(_vm.faculties, function(f, i) {
-                        return _c(
-                          "div",
-                          {
-                            key: i,
-                            staticClass: "tab-pane fade",
-                            attrs: {
-                              id: "list-course" + i,
-                              role: "tabpanel",
-                              "aria-labelledby": "list-course-list" + i
-                            }
-                          },
-                          [
-                            _c("div", { staticClass: "row" }, [
-                              _c("div", { staticClass: "col-12" }, [
-                                _c("div", { staticClass: "card mb-3" }, [
-                                  _c("div", { staticClass: "card-body" }, [
-                                    _c("div", { staticClass: "row" }, [
-                                      _c(
-                                        "div",
-                                        { staticClass: "col-10" },
-                                        [
-                                          _c("span", { staticClass: "badge" }, [
-                                            _vm._v("Название направления")
-                                          ]),
-                                          _vm._v(" "),
-                                          _c(
-                                            "b-form-group",
-                                            [
-                                              _c("b-form-input", {
-                                                staticClass: "mb-2",
-                                                attrs: {
-                                                  type: "text",
-                                                  required: "",
-                                                  placeholder: ""
-                                                },
-                                                model: {
-                                                  value: _vm.course.name,
-                                                  callback: function($$v) {
-                                                    _vm.$set(
-                                                      _vm.course,
-                                                      "name",
-                                                      $$v
-                                                    )
-                                                  },
-                                                  expression: "course.name"
-                                                }
-                                              })
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "col-12 mb-4" }, [
+                                  _c("div", { staticClass: "row" }, [
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "col-3 d-flex align-items-center"
+                                      },
+                                      [
+                                        _c(
+                                          "b-form-checkbox",
+                                          {
+                                            attrs: { value: "Очная" },
+                                            model: {
+                                              value: _vm.course.intramural.name,
+                                              callback: function($$v) {
+                                                _vm.$set(
+                                                  _vm.course.intramural,
+                                                  "name",
+                                                  $$v
+                                                )
+                                              },
+                                              expression:
+                                                "course.intramural.name"
+                                            }
+                                          },
+                                          [
+                                            _vm._v(
+                                              "Очная\n                                                        "
+                                            )
+                                          ]
+                                        )
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "col-3" }, [
+                                      _vm.course.intramural.name
+                                        ? _c("input", {
+                                            directives: [
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value:
+                                                  _vm.course.intramural.budget,
+                                                expression:
+                                                  "course.intramural.budget"
+                                              }
                                             ],
-                                            1
-                                          )
-                                        ],
-                                        1
-                                      ),
-                                      _vm._v(" "),
-                                      _c("div", { staticClass: "col-2" }, [
-                                        _c("div", { staticClass: "row" }, [
-                                          _c("div", { staticClass: "col-12" }, [
-                                            _c("div", { staticClass: "row" }, [
-                                              _c(
-                                                "div",
-                                                { staticClass: "col-6" },
-                                                [
-                                                  _c(
-                                                    "span",
-                                                    { staticClass: "badge" },
-                                                    [_vm._v(" ")]
-                                                  ),
-                                                  _vm._v(" "),
-                                                  _c(
-                                                    "b-button",
-                                                    {
-                                                      staticClass:
-                                                        "m-auto d-block",
-                                                      attrs: {
-                                                        variant:
-                                                          "outline-success"
-                                                      },
-                                                      on: {
-                                                        click: function(
-                                                          $event
-                                                        ) {
-                                                          return _vm.addCourse(
-                                                            f.id
-                                                          )
-                                                        }
-                                                      }
-                                                    },
-                                                    [
-                                                      _c("i", {
-                                                        staticClass:
-                                                          "fas fa-check"
-                                                      })
-                                                    ]
-                                                  )
-                                                ],
-                                                1
-                                              )
-                                            ])
-                                          ])
-                                        ])
-                                      ])
+                                            staticClass: "form-control",
+                                            attrs: {
+                                              type: "text",
+                                              placeholder:
+                                                "Кол-во бюджетных мест"
+                                            },
+                                            domProps: {
+                                              value:
+                                                _vm.course.intramural.budget
+                                            },
+                                            on: {
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.$set(
+                                                  _vm.course.intramural,
+                                                  "budget",
+                                                  $event.target.value
+                                                )
+                                              }
+                                            }
+                                          })
+                                        : _vm._e()
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "col-3" }, [
+                                      _vm.course.intramural.name
+                                        ? _c("input", {
+                                            directives: [
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value:
+                                                  _vm.course.intramural.year,
+                                                expression:
+                                                  "course.intramural.year"
+                                              }
+                                            ],
+                                            staticClass: "form-control",
+                                            attrs: {
+                                              type: "text",
+                                              placeholder: "Кол-во лет обучения"
+                                            },
+                                            domProps: {
+                                              value: _vm.course.intramural.year
+                                            },
+                                            on: {
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.$set(
+                                                  _vm.course.intramural,
+                                                  "year",
+                                                  $event.target.value
+                                                )
+                                              }
+                                            }
+                                          })
+                                        : _vm._e()
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "col-3" }, [
+                                      _vm.course.intramural.name
+                                        ? _c("input", {
+                                            directives: [
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value:
+                                                  _vm.course.intramural.price,
+                                                expression:
+                                                  "course.intramural.price"
+                                              }
+                                            ],
+                                            staticClass: "form-control",
+                                            attrs: {
+                                              type: "text",
+                                              placeholder: "Цена обучения"
+                                            },
+                                            domProps: {
+                                              value: _vm.course.intramural.price
+                                            },
+                                            on: {
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.$set(
+                                                  _vm.course.intramural,
+                                                  "price",
+                                                  $event.target.value
+                                                )
+                                              }
+                                            }
+                                          })
+                                        : _vm._e()
                                     ])
                                   ])
                                 ]),
                                 _vm._v(" "),
-                                _c("div", { staticClass: "card" }, [
-                                  _c(
-                                    "div",
-                                    { staticClass: "card-body" },
-                                    _vm._l(f.courses, function(c, i) {
-                                      return _c("div", [
-                                        _c("div", { staticClass: "row" }, [
-                                          _c("div", { staticClass: "col-12" }, [
-                                            _c("div", { staticClass: "row" }, [
-                                              _c(
-                                                "div",
-                                                { staticClass: "col-10" },
-                                                [
-                                                  !c.isEdit
-                                                    ? _c("p", [
-                                                        _vm._v(_vm._s(c.name))
-                                                      ])
-                                                    : _vm._e(),
-                                                  _vm._v(" "),
-                                                  c.isEdit
-                                                    ? _c("b-form-input", {
-                                                        staticClass: "mb-2",
-                                                        attrs: {
-                                                          type: "text",
-                                                          required: "",
-                                                          placeholder:
-                                                            "Введите название"
-                                                        },
-                                                        model: {
-                                                          value: c.name,
-                                                          callback: function(
-                                                            $$v
-                                                          ) {
-                                                            _vm.$set(
-                                                              c,
-                                                              "name",
-                                                              $$v
-                                                            )
-                                                          },
-                                                          expression: "c.name"
-                                                        }
-                                                      })
-                                                    : _vm._e()
-                                                ],
-                                                1
-                                              ),
-                                              _vm._v(" "),
-                                              _c(
-                                                "div",
-                                                { staticClass: "col-2" },
-                                                [
-                                                  c.isEdit
-                                                    ? _c("i", {
-                                                        staticClass:
-                                                          "fas fa-check",
-                                                        staticStyle: {
-                                                          cursor: "pointer"
-                                                        },
-                                                        on: {
-                                                          click: function(
-                                                            $event
-                                                          ) {
-                                                            return _vm.changeCourse(
-                                                              c
-                                                            )
-                                                          }
-                                                        }
-                                                      })
-                                                    : _vm._e(),
-                                                  _vm._v(" "),
-                                                  !c.isEdit
-                                                    ? _c("i", {
-                                                        staticClass:
-                                                          "fas fa-pen",
-                                                        staticStyle: {
-                                                          cursor: "pointer"
-                                                        },
-                                                        on: {
-                                                          click: function(
-                                                            $event
-                                                          ) {
-                                                            return _vm.editCourse(
-                                                              c
-                                                            )
-                                                          }
-                                                        }
-                                                      })
-                                                    : _vm._e(),
-                                                  _vm._v(" "),
-                                                  _c("i", {
-                                                    staticClass: "fas fa-trash",
-                                                    staticStyle: {
-                                                      cursor: "pointer",
-                                                      color: "red"
-                                                    },
-                                                    on: {
-                                                      click: function($event) {
-                                                        return _vm.deleteCourse(
-                                                          c.id
-                                                        )
-                                                      }
-                                                    }
-                                                  })
-                                                ]
-                                              )
-                                            ])
-                                          ])
-                                        ]),
-                                        _vm._v(" "),
-                                        _c("hr")
-                                      ])
-                                    }),
-                                    0
-                                  )
+                                _c("div", { staticClass: "col-12 mb-4" }, [
+                                  _c("div", { staticClass: "row" }, [
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "col-3 d-flex align-items-center"
+                                      },
+                                      [
+                                        _c(
+                                          "b-form-checkbox",
+                                          {
+                                            attrs: { value: "Очно-заочная" },
+                                            model: {
+                                              value: _vm.course.partTime.name,
+                                              callback: function($$v) {
+                                                _vm.$set(
+                                                  _vm.course.partTime,
+                                                  "name",
+                                                  $$v
+                                                )
+                                              },
+                                              expression: "course.partTime.name"
+                                            }
+                                          },
+                                          [
+                                            _vm._v(
+                                              "Очно-заочная\n                                                        "
+                                            )
+                                          ]
+                                        )
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "col-3" }, [
+                                      _vm.course.partTime.name
+                                        ? _c("input", {
+                                            directives: [
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value:
+                                                  _vm.course.partTime.budget,
+                                                expression:
+                                                  "course.partTime.budget"
+                                              }
+                                            ],
+                                            staticClass: "form-control",
+                                            attrs: {
+                                              type: "text",
+                                              placeholder:
+                                                "Кол-во бюджетных мест"
+                                            },
+                                            domProps: {
+                                              value: _vm.course.partTime.budget
+                                            },
+                                            on: {
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.$set(
+                                                  _vm.course.partTime,
+                                                  "budget",
+                                                  $event.target.value
+                                                )
+                                              }
+                                            }
+                                          })
+                                        : _vm._e()
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "col-3" }, [
+                                      _vm.course.partTime.name
+                                        ? _c("input", {
+                                            directives: [
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value: _vm.course.partTime.year,
+                                                expression:
+                                                  "course.partTime.year"
+                                              }
+                                            ],
+                                            staticClass: "form-control",
+                                            attrs: {
+                                              type: "text",
+                                              placeholder: "Кол-во лет обучения"
+                                            },
+                                            domProps: {
+                                              value: _vm.course.partTime.year
+                                            },
+                                            on: {
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.$set(
+                                                  _vm.course.partTime,
+                                                  "year",
+                                                  $event.target.value
+                                                )
+                                              }
+                                            }
+                                          })
+                                        : _vm._e()
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "col-3" }, [
+                                      _vm.course.partTime.name
+                                        ? _c("input", {
+                                            directives: [
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value:
+                                                  _vm.course.partTime.price,
+                                                expression:
+                                                  "course.partTime.price"
+                                              }
+                                            ],
+                                            staticClass: "form-control",
+                                            attrs: {
+                                              type: "text",
+                                              placeholder: "Цена обучения"
+                                            },
+                                            domProps: {
+                                              value: _vm.course.partTime.price
+                                            },
+                                            on: {
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.$set(
+                                                  _vm.course.partTime,
+                                                  "price",
+                                                  $event.target.value
+                                                )
+                                              }
+                                            }
+                                          })
+                                        : _vm._e()
+                                    ])
+                                  ])
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "col-12" }, [
+                                  _c("div", { staticClass: "row" }, [
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "col-3 d-flex align-items-center"
+                                      },
+                                      [
+                                        _c(
+                                          "b-form-checkbox",
+                                          {
+                                            attrs: { value: "Заочная" },
+                                            model: {
+                                              value:
+                                                _vm.course.correspondence.name,
+                                              callback: function($$v) {
+                                                _vm.$set(
+                                                  _vm.course.correspondence,
+                                                  "name",
+                                                  $$v
+                                                )
+                                              },
+                                              expression:
+                                                "course.correspondence.name"
+                                            }
+                                          },
+                                          [
+                                            _vm._v(
+                                              "Заочная\n                                                        "
+                                            )
+                                          ]
+                                        )
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "col-3" }, [
+                                      _vm.course.correspondence.name
+                                        ? _c("input", {
+                                            directives: [
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value:
+                                                  _vm.course.correspondence
+                                                    .budget,
+                                                expression:
+                                                  "course.correspondence.budget"
+                                              }
+                                            ],
+                                            staticClass: "form-control",
+                                            attrs: {
+                                              type: "text",
+                                              placeholder:
+                                                "Кол-во бюджетных мест"
+                                            },
+                                            domProps: {
+                                              value:
+                                                _vm.course.correspondence.budget
+                                            },
+                                            on: {
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.$set(
+                                                  _vm.course.correspondence,
+                                                  "budget",
+                                                  $event.target.value
+                                                )
+                                              }
+                                            }
+                                          })
+                                        : _vm._e()
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "col-3" }, [
+                                      _vm.course.correspondence.name
+                                        ? _c("input", {
+                                            directives: [
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value:
+                                                  _vm.course.correspondence
+                                                    .year,
+                                                expression:
+                                                  "course.correspondence.year"
+                                              }
+                                            ],
+                                            staticClass: "form-control",
+                                            attrs: {
+                                              type: "text",
+                                              placeholder: "Кол-во лет обучения"
+                                            },
+                                            domProps: {
+                                              value:
+                                                _vm.course.correspondence.year
+                                            },
+                                            on: {
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.$set(
+                                                  _vm.course.correspondence,
+                                                  "year",
+                                                  $event.target.value
+                                                )
+                                              }
+                                            }
+                                          })
+                                        : _vm._e()
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "col-3" }, [
+                                      _vm.course.correspondence.name
+                                        ? _c("input", {
+                                            directives: [
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value:
+                                                  _vm.course.correspondence
+                                                    .price,
+                                                expression:
+                                                  "course.correspondence.price"
+                                              }
+                                            ],
+                                            staticClass: "form-control",
+                                            attrs: {
+                                              type: "text",
+                                              placeholder: "Цена обучения"
+                                            },
+                                            domProps: {
+                                              value:
+                                                _vm.course.correspondence.price
+                                            },
+                                            on: {
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.$set(
+                                                  _vm.course.correspondence,
+                                                  "price",
+                                                  $event.target.value
+                                                )
+                                              }
+                                            }
+                                          })
+                                        : _vm._e()
+                                    ])
+                                  ])
                                 ])
                               ])
                             ])
-                          ]
-                        )
-                      }),
-                      0
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "card mt-4" }, [
+                          _c(
+                            "div",
+                            { staticClass: "card-body" },
+                            _vm._l(f.courses, function(c, k) {
+                              return _c("b-card-text", { key: k }, [
+                                _vm._v(
+                                  "\n                                        " +
+                                    _vm._s(c.name) +
+                                    "\n                                    "
+                                )
+                              ])
+                            }),
+                            1
+                          )
+                        ])
+                      ],
+                      1
                     )
-                  ])
-                ])
-              ])
-            ])
-          ])
-        ])
+                  ],
+                  1
+                )
+              ],
+              1
+            )
+          }),
+          1
+        )
       ])
     ])
   ])
@@ -109243,8 +109847,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
@@ -109266,7 +109868,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     REMOVE_BLOCK: function REMOVE_BLOCK(state, id) {
       //state.blocks.splice(index, 1)
       state.blocks = $.grep(state.blocks, function (item) {
-        return item.id != id;
+        return item.id !== id;
       });
     },
     SET_BLOCKS: function SET_BLOCKS(state, payload) {
@@ -109294,20 +109896,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 formData.append('activityFrom', payload.activityFrom);
                 formData.append('activityTo', payload.activityTo);
                 formData.append('activity', payload.activity);
+                $.each(payload.news, function (k, v) {
+                  formData.append('news[]', v);
+                });
                 formData.append('image', payload.image);
-                _context.next = 13;
+                _context.next = 14;
                 return axios.post('/admin/infoblock', formData, {
                   headers: {
                     'Content-Type': 'multipart/form-data'
                   }
                 });
 
-              case 13:
+              case 14:
                 _ref = _context.sent;
                 data = _ref.data;
                 context.commit('ADD_BLOCK', data.infoblock);
 
-              case 16:
+              case 17:
               case "end":
                 return _context.stop();
             }
@@ -109342,7 +109947,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 formData.append('activityTo', payload.activityTo ? payload.activityTo : '');
                 formData.append('activity', payload.activity);
                 formData.append('image', payload.image);
-                console.log(_typeof(payload.menu));
+                $.each(payload.news, function (k, v) {
+                  formData.append('news[]', v);
+                });
                 _context2.next = 14;
                 return axios.post('/admin/infoblock/' + payload.id, formData, {
                   headers: {

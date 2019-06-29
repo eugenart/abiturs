@@ -33,74 +33,181 @@
 
 <div class="container-fluid p-5">
     <div class="row mt-5">
-        <div class="col-12">
+        <div class="col-8 m-auto">
             <h1 class="text-center">Подбор образовательных программ</h1>
-            <h5 class="text-center">Подберите направление подготовки по предметам ЕГЭ
+            <h5 class="text-center">Подберите направление подготовки по предметам ЕГЭ или из списка направлений
+                подготовки и специальностей факультета или института
             </h5>
         </div>
     </div>
-    <div class="row mt-5 text-uppercase">
-        @foreach($subjects as $subject)
-            <div class="col-3">
-                <div class="inputGroup">
-                    <input id="option{{ $loop->index }}" type="checkbox" onclick="addToChosenExams('{{ $subject->name }}')"/>
-                    <label for="option{{ $loop->index }}">{{ $subject->name }}</label>
+    <div class="row mt-5">
+        <div class="col-12">
+            <ul class="nav nav-pills mb-3 d-flex justify-content-center" id="pills-tab" role="tablist">
+                <li class="nav-item swith-priem">
+                    <a class="nav-link border-priem active text-uppercase btn btn-lg" id="pills-home-tab"
+                       data-toggle="pill" href="#pills-home" role="tab"
+                       aria-controls="pills-home" aria-selected="true">ПОДБОР ПО ПРЕДМЕТАМ ЕГЭ</a>
+                </li>
+                <li class="nav-item swith-priem">
+                    <a class="nav-link border-priem text-uppercase btn btn-lg" id="pills-profile-tab" data-toggle="pill"
+                       href="#pills-profile" role="tab"
+                       aria-controls="pills-profile" aria-selected="false">ПО ФАКУЛЬТЕТАМ И ИНСТИТУТАМ</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-12">
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                    <div class="row mt-5">
+                        <div class="col-9">
+                            <div class="row">
+                                @foreach($courses as $course)
+                                    <div class="col-12 mb-5 search-div"
+                                         data-exams="{{ implode(', ', $course->exams) }}">
+                                        <h3 class="text-uppercase mb-3 mt-5 course-name">{{ $course->name }}</h3>
+                                        <table class="table">
+                                            <thead>
+                                            <tr>
+                                                <th>Направление подготовки</th>
+                                                <th>Вступительные испытания в порядке приоритетности для ранжирования
+                                                </th>
+                                                <th>Минимальные баллы</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach($course->children as $child)
+                                                @if ( $child->subjects->count() == 1 )
+                                                    <tr class="nps-tr search-tr"
+                                                        data-exams="{{ implode(', ', $child->exams) }}">
+                                                        <td>{{ $child->name }}</td>
+                                                        <td>
+                                                            {{ $child->subjects->first()->subjectsList->name }}
+                                                        </td>
+                                                        <td>
+                                                            {{ $child->subjects->first()->score }}
+                                                        </td>
+                                                    </tr>
+                                                @elseif($child->subjects->count() > 1)
+                                                    <tr class="nps-tr search-tr"
+                                                        data-exams="{{ implode(', ', $child->exams) }}">
+                                                        <td rowspan={{ $child->subjects->count() }}>{{ $child->name }}</td>
+                                                        <td>
+                                                            {{ $child->subjects->first()->subjectsList->name }}
+                                                        </td>
+                                                        <td>
+                                                            {{ $child->subjects->first()->score }}
+                                                        </td>
+                                                    </tr>
+                                                    @foreach($child->subjects as $subject)
+                                                        @if ($loop->first) @continue @endif
+                                                        <tr class="search-tr"
+                                                            data-exams="{{ implode(', ', $child->exams) }}">
+                                                            <td>{{ $subject->subjectsList->name }}</td>
+                                                            <td>{{ $subject->score }}</td>
+                                                        </tr>
+                                                    @endforeach
+                                                @endif
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+                                        <hr>
+                                    </div>
+                                @endforeach
+                            </div>
+
+                        </div>
+                        <div class="col-3">
+                            <h4 class="mb-3">Вступительные испытания</h4>
+                            @foreach($subjects as $subject)
+                                <div class="row text-uppercase">
+                                    <div class="col-12">
+                                        <div class="form-group form-check">
+                                            <input type="checkbox" class="form-check-input" id="option{{ $loop->index }}" onclick="addToChosenExams('{{ $subject->name }}')">
+                                            <label class="form-check-label ml-2 underline-label" for="option{{ $loop->index }}">{{ $subject->name }}</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                    <div class="row mt-5">
+                        <div class="col-9">
+                            <div class="row">
+                                @foreach($courses as $course)
+                                    <div class="col-12 mb-5 search-div-by-faculties"
+                                         data-faculty="{{ $course->name }}">
+                                        <h3 class="text-uppercase mb-3 mt-5 course-name">{{ $course->name }}</h3>
+                                        <table class="table">
+                                            <thead>
+                                            <tr>
+                                                <th>Направление подготовки</th>
+                                                <th>Вступительные испытания в порядке приоритетности для ранжирования
+                                                </th>
+                                                <th>Минимальные баллы</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach($course->children as $child)
+                                                @if ( $child->subjects->count() == 1 )
+                                                    <tr class="nps-tr search-tr-by-faculties"
+                                                        data-exams="{{ implode(', ', $child->exams) }}">
+                                                        <td>{{ $child->name }}</td>
+                                                        <td>
+                                                            {{ $child->subjects->first()->subjectsList->name }}
+                                                        </td>
+                                                        <td>
+                                                            {{ $child->subjects->first()->score }}
+                                                        </td>
+                                                    </tr>
+                                                @elseif($child->subjects->count() > 1)
+                                                    <tr class="nps-tr search-tr-by-faculties"
+                                                        data-exams="{{ implode(', ', $child->exams) }}">
+                                                        <td rowspan={{ $child->subjects->count() }}>{{ $child->name }}</td>
+                                                        <td>
+                                                            {{ $child->subjects->first()->subjectsList->name }}
+                                                        </td>
+                                                        <td>
+                                                            {{ $child->subjects->first()->score }}
+                                                        </td>
+                                                    </tr>
+                                                    @foreach($child->subjects as $subject)
+                                                        @if ($loop->first) @continue @endif
+                                                        <tr class="search-tr-by-faculties"
+                                                            data-exams="{{ implode(', ', $child->exams) }}">
+                                                            <td>{{ $subject->subjectsList->name }}</td>
+                                                            <td>{{ $subject->score }}</td>
+                                                        </tr>
+                                                    @endforeach
+                                                @endif
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+                                        <hr>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <h4 class="mb-3">Вступительные испытания</h4>
+                            @foreach($courses->where('parent_id', null) as $course)
+                                <div class="row text-uppercase">
+                                    <div class="col-12">
+                                        <div class="form-group form-check">
+                                            <input type="checkbox" class="form-check-input" id="optionFaculties{{ $loop->index }}" onclick="addToChosenFaculties('{{ $course->name }}')">
+                                            <label class="form-check-label ml-2 underline-label" for="optionFaculties{{ $loop->index }}">{{ $course->name }}</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
                 </div>
             </div>
-        @endforeach
+        </div>
     </div>
-    <div class="row mt-5">
 
-
-        @foreach($courses as $course)
-            <div class="col-12 mb-5 search-div" data-exams="{{ implode(', ', $course->exams) }}">
-                <h3 class="text-uppercase mt-5">{{ $course->name }}</h3>
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>Направление подготовки</th>
-                        <th>Вступительные испытания в порядке приоритетности для ранжирования</th>
-                        <th>Минимальные баллы</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($course->children as $child)
-                        @if ( $child->subjects->count() == 1 )
-                            <tr class="nps-tr search-tr" data-exams="{{ implode(', ', $child->exams) }}">
-                                <td>{{ $child->name }}</td>
-                                <td>
-                                    {{ $child->subjects->first()->subjectsList->name }}
-                                </td>
-                                <td>
-                                    {{ $child->subjects->first()->score }}
-                                </td>
-                            </tr>
-                        @elseif($child->subjects->count() > 1)
-                            <tr class="nps-tr search-tr" data-exams="{{ implode(', ', $child->exams) }}">
-                                <td rowspan={{ $child->subjects->count() }}>{{ $child->name }}</td>
-                                <td>
-                                    {{ $child->subjects->first()->subjectsList->name }}
-                                </td>
-                                <td>
-                                    {{ $child->subjects->first()->score }}
-                                </td>
-                            </tr>
-                            @foreach($child->subjects as $subject)
-                                @if ($loop->first) @continue @endif
-                                <tr class="search-tr" data-exams="{{ implode(', ', $child->exams) }}">
-                                    <td>{{ $subject->subjectsList->name }}</td>
-                                    <td>{{ $subject->score }}</td>
-                                </tr>
-                            @endforeach
-                        @endif
-                    @endforeach
-                    </tbody>
-                </table>
-                <hr>
-            </div>
-        @endforeach
-
-    </div>
 </div>
 
 <hr class="mrsu-hr mrsu-bg m-auto">
@@ -124,18 +231,11 @@
 
 <script>
     var chosenExams = [];
-
-    $(document).ready(function () {
-        console.log(chosenExams)
-    });
+    var chosenFaculties = [];
 
     function addToChosenExams(exam) {
         let idx = chosenExams.indexOf(exam);
-        if (idx !== -1) {
-            chosenExams.splice(idx, 1)
-        } else {
-            chosenExams.push(exam)
-        }
+        idx !== -1 ? chosenExams.splice(idx, 1) : chosenExams.push(exam);
         search();
     }
 
@@ -159,40 +259,32 @@
 
             showDiv ? $(searchDiv).show() : $(searchDiv).hide();
         });
-
-
-
-
-        // let searchTr = $('.search-tr');
-        // $.each(searchTr, function (index, item) {
-        //     let exams = $(item).data("exams").split(', ');
-        //     if (exams.length <= chosenExams.length) {
-        //         if (include(exams, chosenExams)) {
-        //             $(item).closest('.search-div').show()
-        //             $(item).show()
-        //         } else {
-        //             $(item).hide()
-        //         }
-        //         // $.each($(item).find('.search-tr'), function (k,v) {
-        //         //     let trExams = $(v).data("exams").split(', ');
-        //         //     if (trExams.length <= chosenExams.length) {
-        //         //         include(trExams, chosenExams, trExams.length) ? $(v).show() : $(v).hide()
-        //         //     } else {
-        //         //         $(v).hide()
-        //         //     }
-        //         // })
-        //     } else {
-        //         $(item).hide()
-        //     }
-        // })
     }
 
     function include(array1, array2) {
         let count = 0;
         $.each(array1, function (k, v) {
-            $.inArray(v, array2) !== -1 ? count +=1 : null;
+            $.inArray(v, array2) !== -1 ? count += 1 : null;
         });
         return (count === array1.length);
     }
+
+    function addToChosenFaculties(faculty) {
+        let idx = chosenFaculties.indexOf(faculty);
+        idx !== -1 ? chosenFaculties.splice(idx, 1) : chosenFaculties.push(faculty)
+        searchByFac();
+    }
+
+    function searchByFac() {
+        let searchDivs = $('.search-div-by-faculties');
+        $.each(searchDivs, function (index, searchDiv) {
+            if (chosenFaculties.length > 0) {
+                $.inArray($(searchDiv).data('faculty'), chosenFaculties) !== -1 ? $(searchDiv).show() : $(searchDiv).hide();
+            } else {
+                $(searchDiv).show()
+            }
+        });
+    }
+
 </script>
 </html>
