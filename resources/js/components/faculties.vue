@@ -289,7 +289,7 @@
                                                     <div class="row">
                                                         <div
                                                             class="col-3 d-flex align-items-center">
-                                                            <b-form-checkbox v-model="course.intramural.name"
+                                                            <b-form-checkbox @change="clearCourse(course.intramural)" v-model="course.intramural.name"
                                                                              value="Очная">Очная
                                                             </b-form-checkbox>
                                                         </div>
@@ -320,7 +320,7 @@
                                                     <div class="row">
                                                         <div
                                                             class="col-3 d-flex align-items-center">
-                                                            <b-form-checkbox v-model="course.partTime.name"
+                                                            <b-form-checkbox @change="clearCourse(course.partTime)" v-model="course.partTime.name"
                                                                              value="Очно-заочная">Очно-заочная
                                                             </b-form-checkbox>
                                                         </div>
@@ -351,7 +351,7 @@
                                                     <div class="row">
                                                         <div
                                                             class="col-3 d-flex align-items-center">
-                                                            <b-form-checkbox v-model="course.correspondence.name"
+                                                            <b-form-checkbox @change="clearCourse(course.correspondence)" v-model="course.correspondence.name"
                                                                              value="Заочная">Заочная
                                                             </b-form-checkbox>
                                                         </div>
@@ -382,10 +382,125 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card mt-4">
+                                <div class="card mt-4" v-for="(c,k) in f.courses" :key="k">
                                     <div class="card-body">
-                                        <b-card-text v-for="(c,k) in f.courses" :key="k">
-                                            {{c.name}}
+                                        <b-card-text>
+                                            <div class="row">
+                                                <div class="col-10">
+                                                    <b v-if="!c.isEdit">{{c.name}}</b>
+                                                    <input v-if="c.isEdit" class="form-control" type="text" v-model="c.name">
+                                                </div>
+                                                <div class="col-2">
+                                                    <i v-if="c.isEdit"
+                                                       style="cursor:pointer;"
+                                                       class="fas fa-check"
+                                                       @click="changeCourse(c)"></i>
+
+                                                    <i v-if="!c.isEdit"
+                                                       style="cursor:pointer;"
+                                                       class="fas fa-pen"
+                                                       @click="editCourse(c)"></i>
+                                                    <i style="cursor:pointer; color:red;"
+                                                       class="fas fa-trash"
+                                                       @click="deleteCourse(c.id)"></i>
+                                                </div>
+                                            </div>
+                                            <div class="row mt-3" v-if="c.intramural">
+                                                <div class="col-3 d-flex align-items-center">
+                                                    <span v-if="!c.isEdit">{{c.intramural.name}}</span>
+                                                    <b-form-checkbox @change="clearCourse(c.intramural)" v-model="c.intramural.name"
+                                                                     value="Очная" v-if="c.isEdit">Очная
+                                                    </b-form-checkbox>
+                                                </div>
+                                                <div class="col-3">
+                                                    <span v-if="!c.isEdit">{{c.intramural.budget}}</span>
+                                                    <input type="text"
+                                                           v-model="c.intramural.budget"
+                                                           class="form-control"
+                                                           placeholder="Кол-во бюджетных мест"
+                                                           v-if="c.intramural.name && c.isEdit">
+                                                </div>
+                                                <div class="col-3">
+                                                    <span v-if="!c.isEdit">{{c.intramural.year}}</span>
+                                                    <input type="text"
+                                                           v-model="c.intramural.year"
+                                                           class="form-control"
+                                                           placeholder="Кол-во лет обучения"
+                                                           v-if="c.intramural.name && c.isEdit">
+                                                </div>
+                                                <div class="col-3">
+                                                    <span v-if="!c.isEdit">{{c.intramural.price}}</span>
+                                                    <input type="text"
+                                                           v-model="c.intramural.price"
+                                                           class="form-control"
+                                                           placeholder="Цена обучения"
+                                                           v-if="c.intramural.name && c.isEdit">
+                                                </div>
+                                            </div>
+                                            <div class="row mt-3">
+                                                <div class="col-3 d-flex align-items-center">
+                                                    <span v-if="!c.isEdit">{{c.partTime.name}}</span>
+                                                    <b-form-checkbox @change="clearCourse(c.partTime)" v-model="c.partTime.name"
+                                                                     value="Очно-заочная" v-if="c.isEdit">Очно-заочная
+                                                    </b-form-checkbox>
+                                                </div>
+                                                <div class="col-3">
+                                                    <span v-if="!c.isEdit">{{c.partTime.budget}}</span>
+                                                    <input type="text"
+                                                           v-model="c.partTime.budget"
+                                                           class="form-control"
+                                                           placeholder="Кол-во бюджетных мест"
+                                                           v-if="c.partTime.name && c.isEdit">
+                                                </div>
+                                                <div class="col-3 d-flex align-items-center">
+                                                    <span v-if="!c.isEdit">{{c.partTime.year}}</span>
+                                                    <input type="text"
+                                                           v-model="c.partTime.year"
+                                                           class="form-control"
+                                                           placeholder="Кол-во лет обучения"
+                                                           v-if="c.partTime.name && c.isEdit">
+                                                </div>
+                                                <div class="col-3">
+                                                    <span v-if="!c.isEdit">{{c.partTime.price}}</span>
+                                                    <input type="text"
+                                                           v-model="c.partTime.price"
+                                                           class="form-control"
+                                                           placeholder="Цена обучения"
+                                                           v-if="c.partTime.name && c.isEdit">
+                                                </div>
+                                            </div>
+                                            <div class="row mt-4">
+                                                <div class="col-3">
+                                                    <span v-if="!c.isEdit">{{c.correspondence.name}}</span>
+                                                    <b-form-checkbox @change="clearCourse(c.correspondence)" v-model="c.correspondence.name"
+                                                                     value="Заочная" v-if="c.isEdit">Заочная
+                                                    </b-form-checkbox>
+                                                </div>
+                                                <div class="col-3">
+                                                    <span v-if="!c.isEdit">{{c.correspondence.budget}}</span>
+                                                    <input type="text"
+                                                           v-model="c.correspondence.budget"
+                                                           class="form-control"
+                                                           placeholder="Кол-во бюджетных мест"
+                                                           v-if="c.correspondence.name && c.isEdit">
+                                                </div>
+                                                <div class="col-3">
+                                                    <span v-if="!c.isEdit">{{c.correspondence.year}}</span>
+                                                    <input type="text"
+                                                           v-model="c.correspondence.year"
+                                                           class="form-control"
+                                                           placeholder="Кол-во лет обучения"
+                                                           v-if="c.correspondence.name && c.isEdit">
+                                                </div>
+                                                <div class="col-3">
+                                                    <span v-if="!c.isEdit">{{c.correspondence.price}}</span>
+                                                    <input type="text"
+                                                           v-model="c.correspondence.price"
+                                                           class="form-control"
+                                                           placeholder="Цена обучения"
+                                                           v-if="c.correspondence.name && c.isEdit">
+                                                </div>
+                                            </div>
                                         </b-card-text>
                                     </div>
                                 </div>
@@ -437,7 +552,9 @@
                     id: null,
                     isEdit: false,
                     score: null,
-                    studyForm: []
+                    intramural: {},
+                    partTime: {},
+                    correspondence: {},
                 }
             }
         },
@@ -446,6 +563,12 @@
         },
         computed: {},
         methods: {
+
+            clearCourse(c) {
+                c.year = null
+                c.budget = null
+                c.price = null
+            },
 
             changeFaculty(f) {
                 axios.post('/admin/course/' + f.id, {

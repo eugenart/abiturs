@@ -3770,6 +3770,121 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "faculties",
   data: function data() {
@@ -3810,7 +3925,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         id: null,
         isEdit: false,
         score: null,
-        studyForm: []
+        intramural: {},
+        partTime: {},
+        correspondence: {}
       }
     };
   },
@@ -3819,6 +3936,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   computed: {},
   methods: {
+    clearCourse: function clearCourse(c) {
+      c.year = null;
+      c.budget = null;
+      c.price = null;
+    },
     changeFaculty: function changeFaculty(f) {
       axios.post('/admin/course/' + f.id, {
         name: f.name
@@ -90093,6 +90215,13 @@ var render = function() {
                                           "b-form-checkbox",
                                           {
                                             attrs: { value: "Очная" },
+                                            on: {
+                                              change: function($event) {
+                                                return _vm.clearCourse(
+                                                  _vm.course.intramural
+                                                )
+                                              }
+                                            },
                                             model: {
                                               value: _vm.course.intramural.name,
                                               callback: function($$v) {
@@ -90244,6 +90373,13 @@ var render = function() {
                                           "b-form-checkbox",
                                           {
                                             attrs: { value: "Очно-заочная" },
+                                            on: {
+                                              change: function($event) {
+                                                return _vm.clearCourse(
+                                                  _vm.course.partTime
+                                                )
+                                              }
+                                            },
                                             model: {
                                               value: _vm.course.partTime.name,
                                               callback: function($$v) {
@@ -90392,6 +90528,13 @@ var render = function() {
                                           "b-form-checkbox",
                                           {
                                             attrs: { value: "Заочная" },
+                                            on: {
+                                              change: function($event) {
+                                                return _vm.clearCourse(
+                                                  _vm.course.correspondence
+                                                )
+                                              }
+                                            },
                                             model: {
                                               value:
                                                 _vm.course.correspondence.name,
@@ -90540,24 +90683,679 @@ var render = function() {
                           ])
                         ]),
                         _vm._v(" "),
-                        _c("div", { staticClass: "card mt-4" }, [
-                          _c(
+                        _vm._l(f.courses, function(c, k) {
+                          return _c(
                             "div",
-                            { staticClass: "card-body" },
-                            _vm._l(f.courses, function(c, k) {
-                              return _c("b-card-text", { key: k }, [
-                                _vm._v(
-                                  "\n                                        " +
-                                    _vm._s(c.name) +
-                                    "\n                                    "
-                                )
-                              ])
-                            }),
-                            1
+                            { key: k, staticClass: "card mt-4" },
+                            [
+                              _c(
+                                "div",
+                                { staticClass: "card-body" },
+                                [
+                                  _c("b-card-text", [
+                                    _c("div", { staticClass: "row" }, [
+                                      _c("div", { staticClass: "col-10" }, [
+                                        !c.isEdit
+                                          ? _c("b", [_vm._v(_vm._s(c.name))])
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        c.isEdit
+                                          ? _c("input", {
+                                              directives: [
+                                                {
+                                                  name: "model",
+                                                  rawName: "v-model",
+                                                  value: c.name,
+                                                  expression: "c.name"
+                                                }
+                                              ],
+                                              staticClass: "form-control",
+                                              attrs: { type: "text" },
+                                              domProps: { value: c.name },
+                                              on: {
+                                                input: function($event) {
+                                                  if ($event.target.composing) {
+                                                    return
+                                                  }
+                                                  _vm.$set(
+                                                    c,
+                                                    "name",
+                                                    $event.target.value
+                                                  )
+                                                }
+                                              }
+                                            })
+                                          : _vm._e()
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("div", { staticClass: "col-2" }, [
+                                        c.isEdit
+                                          ? _c("i", {
+                                              staticClass: "fas fa-check",
+                                              staticStyle: {
+                                                cursor: "pointer"
+                                              },
+                                              on: {
+                                                click: function($event) {
+                                                  return _vm.changeCourse(c)
+                                                }
+                                              }
+                                            })
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        !c.isEdit
+                                          ? _c("i", {
+                                              staticClass: "fas fa-pen",
+                                              staticStyle: {
+                                                cursor: "pointer"
+                                              },
+                                              on: {
+                                                click: function($event) {
+                                                  return _vm.editCourse(c)
+                                                }
+                                              }
+                                            })
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        _c("i", {
+                                          staticClass: "fas fa-trash",
+                                          staticStyle: {
+                                            cursor: "pointer",
+                                            color: "red"
+                                          },
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.deleteCourse(c.id)
+                                            }
+                                          }
+                                        })
+                                      ])
+                                    ]),
+                                    _vm._v(" "),
+                                    c.intramural
+                                      ? _c("div", { staticClass: "row mt-3" }, [
+                                          _c(
+                                            "div",
+                                            {
+                                              staticClass:
+                                                "col-3 d-flex align-items-center"
+                                            },
+                                            [
+                                              !c.isEdit
+                                                ? _c("span", [
+                                                    _vm._v(
+                                                      _vm._s(c.intramural.name)
+                                                    )
+                                                  ])
+                                                : _vm._e(),
+                                              _vm._v(" "),
+                                              c.isEdit
+                                                ? _c(
+                                                    "b-form-checkbox",
+                                                    {
+                                                      attrs: { value: "Очная" },
+                                                      on: {
+                                                        change: function(
+                                                          $event
+                                                        ) {
+                                                          return _vm.clearCourse(
+                                                            c.intramural
+                                                          )
+                                                        }
+                                                      },
+                                                      model: {
+                                                        value:
+                                                          c.intramural.name,
+                                                        callback: function(
+                                                          $$v
+                                                        ) {
+                                                          _vm.$set(
+                                                            c.intramural,
+                                                            "name",
+                                                            $$v
+                                                          )
+                                                        },
+                                                        expression:
+                                                          "c.intramural.name"
+                                                      }
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        "Очная\n                                                "
+                                                      )
+                                                    ]
+                                                  )
+                                                : _vm._e()
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c("div", { staticClass: "col-3" }, [
+                                            !c.isEdit
+                                              ? _c("span", [
+                                                  _vm._v(
+                                                    _vm._s(c.intramural.budget)
+                                                  )
+                                                ])
+                                              : _vm._e(),
+                                            _vm._v(" "),
+                                            c.intramural.name && c.isEdit
+                                              ? _c("input", {
+                                                  directives: [
+                                                    {
+                                                      name: "model",
+                                                      rawName: "v-model",
+                                                      value:
+                                                        c.intramural.budget,
+                                                      expression:
+                                                        "c.intramural.budget"
+                                                    }
+                                                  ],
+                                                  staticClass: "form-control",
+                                                  attrs: {
+                                                    type: "text",
+                                                    placeholder:
+                                                      "Кол-во бюджетных мест"
+                                                  },
+                                                  domProps: {
+                                                    value: c.intramural.budget
+                                                  },
+                                                  on: {
+                                                    input: function($event) {
+                                                      if (
+                                                        $event.target.composing
+                                                      ) {
+                                                        return
+                                                      }
+                                                      _vm.$set(
+                                                        c.intramural,
+                                                        "budget",
+                                                        $event.target.value
+                                                      )
+                                                    }
+                                                  }
+                                                })
+                                              : _vm._e()
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("div", { staticClass: "col-3" }, [
+                                            !c.isEdit
+                                              ? _c("span", [
+                                                  _vm._v(
+                                                    _vm._s(c.intramural.year)
+                                                  )
+                                                ])
+                                              : _vm._e(),
+                                            _vm._v(" "),
+                                            c.intramural.name && c.isEdit
+                                              ? _c("input", {
+                                                  directives: [
+                                                    {
+                                                      name: "model",
+                                                      rawName: "v-model",
+                                                      value: c.intramural.year,
+                                                      expression:
+                                                        "c.intramural.year"
+                                                    }
+                                                  ],
+                                                  staticClass: "form-control",
+                                                  attrs: {
+                                                    type: "text",
+                                                    placeholder:
+                                                      "Кол-во лет обучения"
+                                                  },
+                                                  domProps: {
+                                                    value: c.intramural.year
+                                                  },
+                                                  on: {
+                                                    input: function($event) {
+                                                      if (
+                                                        $event.target.composing
+                                                      ) {
+                                                        return
+                                                      }
+                                                      _vm.$set(
+                                                        c.intramural,
+                                                        "year",
+                                                        $event.target.value
+                                                      )
+                                                    }
+                                                  }
+                                                })
+                                              : _vm._e()
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("div", { staticClass: "col-3" }, [
+                                            !c.isEdit
+                                              ? _c("span", [
+                                                  _vm._v(
+                                                    _vm._s(c.intramural.price)
+                                                  )
+                                                ])
+                                              : _vm._e(),
+                                            _vm._v(" "),
+                                            c.intramural.name && c.isEdit
+                                              ? _c("input", {
+                                                  directives: [
+                                                    {
+                                                      name: "model",
+                                                      rawName: "v-model",
+                                                      value: c.intramural.price,
+                                                      expression:
+                                                        "c.intramural.price"
+                                                    }
+                                                  ],
+                                                  staticClass: "form-control",
+                                                  attrs: {
+                                                    type: "text",
+                                                    placeholder: "Цена обучения"
+                                                  },
+                                                  domProps: {
+                                                    value: c.intramural.price
+                                                  },
+                                                  on: {
+                                                    input: function($event) {
+                                                      if (
+                                                        $event.target.composing
+                                                      ) {
+                                                        return
+                                                      }
+                                                      _vm.$set(
+                                                        c.intramural,
+                                                        "price",
+                                                        $event.target.value
+                                                      )
+                                                    }
+                                                  }
+                                                })
+                                              : _vm._e()
+                                          ])
+                                        ])
+                                      : _vm._e(),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "row mt-3" }, [
+                                      _c(
+                                        "div",
+                                        {
+                                          staticClass:
+                                            "col-3 d-flex align-items-center"
+                                        },
+                                        [
+                                          !c.isEdit
+                                            ? _c("span", [
+                                                _vm._v(_vm._s(c.partTime.name))
+                                              ])
+                                            : _vm._e(),
+                                          _vm._v(" "),
+                                          c.isEdit
+                                            ? _c(
+                                                "b-form-checkbox",
+                                                {
+                                                  attrs: {
+                                                    value: "Очно-заочная"
+                                                  },
+                                                  on: {
+                                                    change: function($event) {
+                                                      return _vm.clearCourse(
+                                                        c.partTime
+                                                      )
+                                                    }
+                                                  },
+                                                  model: {
+                                                    value: c.partTime.name,
+                                                    callback: function($$v) {
+                                                      _vm.$set(
+                                                        c.partTime,
+                                                        "name",
+                                                        $$v
+                                                      )
+                                                    },
+                                                    expression:
+                                                      "c.partTime.name"
+                                                  }
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "Очно-заочная\n                                                "
+                                                  )
+                                                ]
+                                              )
+                                            : _vm._e()
+                                        ],
+                                        1
+                                      ),
+                                      _vm._v(" "),
+                                      _c("div", { staticClass: "col-3" }, [
+                                        !c.isEdit
+                                          ? _c("span", [
+                                              _vm._v(_vm._s(c.partTime.budget))
+                                            ])
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        c.partTime.name && c.isEdit
+                                          ? _c("input", {
+                                              directives: [
+                                                {
+                                                  name: "model",
+                                                  rawName: "v-model",
+                                                  value: c.partTime.budget,
+                                                  expression:
+                                                    "c.partTime.budget"
+                                                }
+                                              ],
+                                              staticClass: "form-control",
+                                              attrs: {
+                                                type: "text",
+                                                placeholder:
+                                                  "Кол-во бюджетных мест"
+                                              },
+                                              domProps: {
+                                                value: c.partTime.budget
+                                              },
+                                              on: {
+                                                input: function($event) {
+                                                  if ($event.target.composing) {
+                                                    return
+                                                  }
+                                                  _vm.$set(
+                                                    c.partTime,
+                                                    "budget",
+                                                    $event.target.value
+                                                  )
+                                                }
+                                              }
+                                            })
+                                          : _vm._e()
+                                      ]),
+                                      _vm._v(" "),
+                                      _c(
+                                        "div",
+                                        {
+                                          staticClass:
+                                            "col-3 d-flex align-items-center"
+                                        },
+                                        [
+                                          !c.isEdit
+                                            ? _c("span", [
+                                                _vm._v(_vm._s(c.partTime.year))
+                                              ])
+                                            : _vm._e(),
+                                          _vm._v(" "),
+                                          c.partTime.name && c.isEdit
+                                            ? _c("input", {
+                                                directives: [
+                                                  {
+                                                    name: "model",
+                                                    rawName: "v-model",
+                                                    value: c.partTime.year,
+                                                    expression:
+                                                      "c.partTime.year"
+                                                  }
+                                                ],
+                                                staticClass: "form-control",
+                                                attrs: {
+                                                  type: "text",
+                                                  placeholder:
+                                                    "Кол-во лет обучения"
+                                                },
+                                                domProps: {
+                                                  value: c.partTime.year
+                                                },
+                                                on: {
+                                                  input: function($event) {
+                                                    if (
+                                                      $event.target.composing
+                                                    ) {
+                                                      return
+                                                    }
+                                                    _vm.$set(
+                                                      c.partTime,
+                                                      "year",
+                                                      $event.target.value
+                                                    )
+                                                  }
+                                                }
+                                              })
+                                            : _vm._e()
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("div", { staticClass: "col-3" }, [
+                                        !c.isEdit
+                                          ? _c("span", [
+                                              _vm._v(_vm._s(c.partTime.price))
+                                            ])
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        c.partTime.name && c.isEdit
+                                          ? _c("input", {
+                                              directives: [
+                                                {
+                                                  name: "model",
+                                                  rawName: "v-model",
+                                                  value: c.partTime.price,
+                                                  expression: "c.partTime.price"
+                                                }
+                                              ],
+                                              staticClass: "form-control",
+                                              attrs: {
+                                                type: "text",
+                                                placeholder: "Цена обучения"
+                                              },
+                                              domProps: {
+                                                value: c.partTime.price
+                                              },
+                                              on: {
+                                                input: function($event) {
+                                                  if ($event.target.composing) {
+                                                    return
+                                                  }
+                                                  _vm.$set(
+                                                    c.partTime,
+                                                    "price",
+                                                    $event.target.value
+                                                  )
+                                                }
+                                              }
+                                            })
+                                          : _vm._e()
+                                      ])
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "row mt-4" }, [
+                                      _c(
+                                        "div",
+                                        { staticClass: "col-3" },
+                                        [
+                                          !c.isEdit
+                                            ? _c("span", [
+                                                _vm._v(
+                                                  _vm._s(c.correspondence.name)
+                                                )
+                                              ])
+                                            : _vm._e(),
+                                          _vm._v(" "),
+                                          c.isEdit
+                                            ? _c(
+                                                "b-form-checkbox",
+                                                {
+                                                  attrs: { value: "Заочная" },
+                                                  on: {
+                                                    change: function($event) {
+                                                      return _vm.clearCourse(
+                                                        c.correspondence
+                                                      )
+                                                    }
+                                                  },
+                                                  model: {
+                                                    value:
+                                                      c.correspondence.name,
+                                                    callback: function($$v) {
+                                                      _vm.$set(
+                                                        c.correspondence,
+                                                        "name",
+                                                        $$v
+                                                      )
+                                                    },
+                                                    expression:
+                                                      "c.correspondence.name"
+                                                  }
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "Заочная\n                                                "
+                                                  )
+                                                ]
+                                              )
+                                            : _vm._e()
+                                        ],
+                                        1
+                                      ),
+                                      _vm._v(" "),
+                                      _c("div", { staticClass: "col-3" }, [
+                                        !c.isEdit
+                                          ? _c("span", [
+                                              _vm._v(
+                                                _vm._s(c.correspondence.budget)
+                                              )
+                                            ])
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        c.correspondence.name && c.isEdit
+                                          ? _c("input", {
+                                              directives: [
+                                                {
+                                                  name: "model",
+                                                  rawName: "v-model",
+                                                  value:
+                                                    c.correspondence.budget,
+                                                  expression:
+                                                    "c.correspondence.budget"
+                                                }
+                                              ],
+                                              staticClass: "form-control",
+                                              attrs: {
+                                                type: "text",
+                                                placeholder:
+                                                  "Кол-во бюджетных мест"
+                                              },
+                                              domProps: {
+                                                value: c.correspondence.budget
+                                              },
+                                              on: {
+                                                input: function($event) {
+                                                  if ($event.target.composing) {
+                                                    return
+                                                  }
+                                                  _vm.$set(
+                                                    c.correspondence,
+                                                    "budget",
+                                                    $event.target.value
+                                                  )
+                                                }
+                                              }
+                                            })
+                                          : _vm._e()
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("div", { staticClass: "col-3" }, [
+                                        !c.isEdit
+                                          ? _c("span", [
+                                              _vm._v(
+                                                _vm._s(c.correspondence.year)
+                                              )
+                                            ])
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        c.correspondence.name && c.isEdit
+                                          ? _c("input", {
+                                              directives: [
+                                                {
+                                                  name: "model",
+                                                  rawName: "v-model",
+                                                  value: c.correspondence.year,
+                                                  expression:
+                                                    "c.correspondence.year"
+                                                }
+                                              ],
+                                              staticClass: "form-control",
+                                              attrs: {
+                                                type: "text",
+                                                placeholder:
+                                                  "Кол-во лет обучения"
+                                              },
+                                              domProps: {
+                                                value: c.correspondence.year
+                                              },
+                                              on: {
+                                                input: function($event) {
+                                                  if ($event.target.composing) {
+                                                    return
+                                                  }
+                                                  _vm.$set(
+                                                    c.correspondence,
+                                                    "year",
+                                                    $event.target.value
+                                                  )
+                                                }
+                                              }
+                                            })
+                                          : _vm._e()
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("div", { staticClass: "col-3" }, [
+                                        !c.isEdit
+                                          ? _c("span", [
+                                              _vm._v(
+                                                _vm._s(c.correspondence.price)
+                                              )
+                                            ])
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        c.correspondence.name && c.isEdit
+                                          ? _c("input", {
+                                              directives: [
+                                                {
+                                                  name: "model",
+                                                  rawName: "v-model",
+                                                  value: c.correspondence.price,
+                                                  expression:
+                                                    "c.correspondence.price"
+                                                }
+                                              ],
+                                              staticClass: "form-control",
+                                              attrs: {
+                                                type: "text",
+                                                placeholder: "Цена обучения"
+                                              },
+                                              domProps: {
+                                                value: c.correspondence.price
+                                              },
+                                              on: {
+                                                input: function($event) {
+                                                  if ($event.target.composing) {
+                                                    return
+                                                  }
+                                                  _vm.$set(
+                                                    c.correspondence,
+                                                    "price",
+                                                    $event.target.value
+                                                  )
+                                                }
+                                              }
+                                            })
+                                          : _vm._e()
+                                      ])
+                                    ])
+                                  ])
+                                ],
+                                1
+                              )
+                            ]
                           )
-                        ])
+                        })
                       ],
-                      1
+                      2
                     )
                   ],
                   1

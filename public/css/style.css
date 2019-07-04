@@ -247,6 +247,29 @@ marquee {
     display: none;
 }
 
+.border-priem {
+    border: 1px solid rgba(85, 98, 235, 1);
+}
+
+.swith-priem a {
+    color: rgba(85, 98, 235, 1);
+    border-radius: 0 !important;
+}
+
+.swith-priem a.active {
+    background-color: rgba(85, 98, 235, 1) !important;
+}
+
+.course-name:first-child {
+    margin-top: 0 !important;
+}
+
+.underline-label {
+    text-decoration: underline;
+}
+
+
+
 /*@media screen and (max-width: 991px) {*/
 /*    .navbar-toggler {*/
 /*        display: block;*/
