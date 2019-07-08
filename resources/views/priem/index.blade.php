@@ -116,7 +116,7 @@
                                                     <tr class="nps-tr search-tr"
                                                         data-exams="{{ implode(', ', $child->exams) }}">
                                                         <td>
-                                                            <button type="button" class="btn btn-link"
+                                                            <button type="button" class="btn btn-link text-left"
                                                                     data-toggle="modal"
                                                                     data-target="#exampleModalScrollable"
                                                                     data-content="{{ $child }}">
@@ -134,7 +134,7 @@
                                                     <tr class="nps-tr search-tr"
                                                         data-exams="{{ implode(', ', $child->exams) }}">
                                                         <td rowspan={{ $child->subjects->count() }}>
-                                                            <button type="button" class="btn btn-link"
+                                                            <button type="button" class="btn btn-link text-left"
                                                                     data-toggle="modal"
                                                                     data-target="#exampleModalScrollable">
                                                                 {{ $child->name }}
@@ -206,7 +206,7 @@
                                                     <tr class="nps-tr search-tr-by-faculties"
                                                         data-exams="{{ implode(', ', $child->exams) }}">
                                                         <td>
-                                                            <button type="button" class="btn btn-link"
+                                                            <button type="button" class="btn btn-link text-left"
                                                                     data-toggle="modal"
                                                                     data-target="#exampleModalScrollable"
                                                                     data-content="{{ $child }}">
@@ -224,7 +224,7 @@
                                                     <tr class="nps-tr search-tr-by-faculties"
                                                         data-exams="{{ implode(', ', $child->exams) }}">
                                                         <td rowspan={{ $child->subjects->count() }}>
-                                                            <button type="button" class="btn btn-link"
+                                                            <button type="button" class="btn btn-link text-left"
                                                                     data-toggle="modal"
                                                                     data-target="#exampleModalScrollable"
                                                                     data-content="{{ $child }}">
@@ -406,7 +406,7 @@
                 "                                    <span>бюджетных мест</span>\n" +
                 "                                </td>\n" +
                 "                                <td>\n" +
-                "                                    <strong>" + $.number( recipient.intramural.price, 0, '', ' ' ) + "</strong>\n" +
+                "                                    <strong>" + $.number(recipient.intramural.price, 0, '', ' ') + "</strong>\n" +
                 "                                    <br>\n" +
                 "                                    <span>рублей в год</span>\n" +
                 "                                </td>\n" +
@@ -429,7 +429,7 @@
                 "                                    <span>бюджетных мест</span>\n" +
                 "                                </td>\n" +
                 "                                <td>\n" +
-                "                                    <strong>" + $.number( recipient.partTime.price, 0, '', ' ' ) + "</strong>\n" +
+                "                                    <strong>" + $.number(recipient.partTime.price, 0, '', ' ') + "</strong>\n" +
                 "                                    <br>\n" +
                 "                                    <span>рублей в год</span>\n" +
                 "                                </td>\n" +
@@ -452,7 +452,7 @@
                 "                                    <span>бюджетных мест</span>\n" +
                 "                                </td>\n" +
                 "                                <td>\n" +
-                "                                    <strong>" + $.number( recipient.correspondence.price, 0, '', ' ' ) + "</strong>\n" +
+                "                                    <strong>" + $.number(recipient.correspondence.price, 0, '', ' ') + "</strong>\n" +
                 "                                    <br>\n" +
                 "                                    <span>рублей в год</span>\n" +
                 "                                </td>\n" +
