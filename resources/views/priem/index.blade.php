@@ -28,8 +28,8 @@
             </div>
             <div class="modal-header">
                 <div class="row w-100 text-center pt-3 pb-3">
-                    <div class="col-12" id="facultyName"><h4>Институт механики и энергетики</h4></div>
-                    <div class="col-12" id="directionName"><h2><b>Направление подготовки</b></h2></div>
+                    <div class="col-12"><h4 id="facultyName">Институт механики и энергетики</h4></div>
+                    <div class="col-12"><h2><b id="directionName">Направление подготовки</b></h2></div>
                 </div>
             </div>
             <div class="modal-body text-center">
@@ -363,7 +363,18 @@
         var recipient = button.data('content') // Extract info from data-* attributes
         // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
         // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-
+        let years = {
+            0: 'лет',
+            1: 'год',
+            2: 'года',
+            3: 'года',
+            4: 'года',
+            5: 'лет',
+            6: 'лет',
+            7: 'лет',
+            8: 'лет',
+            9: 'лет',
+        };
         console.log(recipient);
         var modal = $(this)
         modal.find('#facultyName').empty().text(recipient.facultyName)
@@ -377,13 +388,15 @@
             }
             console.log(v)
         });
-        modal.find('#directionName').empty().text(names)
+        modal.find('#examsNames').empty().text(names)
         if (recipient.intramural) {
+            let number = recipient.intramural.year.toString().slice(-1)
+            let year = years[number]
             let templateRecipient = "<tr id=\"intramural\">\n" +
                 "                                <td>\n" +
                 "                                    <strong>" + recipient.intramural.name + "</strong>\n" +
                 "                                    <br>\n" +
-                "                                    <span>" + recipient.intramural.year + " года обучения</span>\n" +
+                "                                    <span>" + recipient.intramural.year + " " + year + " обучения</span>\n" +
                 "                                </td>\n" +
                 "                                <td>\n" +
                 "                                    <strong>" + recipient.intramural.budget + "</strong>\n" +
@@ -400,11 +413,13 @@
         }
 
         if (recipient.partTime) {
+            let number = recipient.intramural.year.toString().slice(-1)
+            let year = years[number]
             let templatePartTime = "<tr id=\"partTime\">\n" +
                 "                                <td>\n" +
                 "                                    <strong>" + recipient.partTime.name + "</strong>\n" +
                 "                                    <br>\n" +
-                "                                    <span>" + recipient.partTime.year + " года обучения</span>\n" +
+                "                                    <span>" + recipient.partTime.year + " " + year + " обучения</span>\n" +
                 "                                </td>\n" +
                 "                                <td>\n" +
                 "                                    <strong>" + recipient.partTime.budget + "</strong>\n" +
@@ -421,11 +436,13 @@
         }
 
         if (recipient.correspondence) {
+            let number = recipient.intramural.year.toString().slice(-1)
+            let year = years[number]
             let templateCorrespondece = "<tr id=\"templateCorrespondece\">\n" +
                 "                                <td>\n" +
                 "                                    <strong>" + recipient.correspondence.name + "</strong>\n" +
                 "                                    <br>\n" +
-                "                                    <span>" + recipient.correspondence.year + " года обучения</span>\n" +
+                "                                    <span>" + recipient.correspondence.year + " " + year + " обучения</span>\n" +
                 "                                </td>\n" +
                 "                                <td>\n" +
                 "                                    <strong>" + recipient.correspondence.budget + "</strong>\n" +
