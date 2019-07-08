@@ -299,6 +299,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
+<script src="js/jquery-number.min.js"></script>
 
 <script>
     var chosenExams = [];
@@ -405,7 +406,7 @@
                 "                                    <span>бюджетных мест</span>\n" +
                 "                                </td>\n" +
                 "                                <td>\n" +
-                "                                    <strong>" + recipient.intramural.price + "</strong>\n" +
+                "                                    <strong>" + $.number( recipient.intramural.price, 0, '', ' ' ) + "</strong>\n" +
                 "                                    <br>\n" +
                 "                                    <span>рублей в год</span>\n" +
                 "                                </td>\n" +
@@ -428,7 +429,7 @@
                 "                                    <span>бюджетных мест</span>\n" +
                 "                                </td>\n" +
                 "                                <td>\n" +
-                "                                    <strong>" + recipient.partTime.price + "</strong>\n" +
+                "                                    <strong>" + $.number( recipient.partTime.price, 0, '', ' ' ) + "</strong>\n" +
                 "                                    <br>\n" +
                 "                                    <span>рублей в год</span>\n" +
                 "                                </td>\n" +
@@ -451,7 +452,7 @@
                 "                                    <span>бюджетных мест</span>\n" +
                 "                                </td>\n" +
                 "                                <td>\n" +
-                "                                    <strong>" + recipient.correspondence.price + "</strong>\n" +
+                "                                    <strong>" + $.number( recipient.correspondence.price, 0, '', ' ' ) + "</strong>\n" +
                 "                                    <br>\n" +
                 "                                    <span>рублей в год</span>\n" +
                 "                                </td>\n" +
