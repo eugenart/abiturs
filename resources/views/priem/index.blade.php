@@ -388,6 +388,7 @@
             }
             console.log(v)
         });
+        modal.find('table').empty()
         modal.find('#examsNames').empty().text(names)
         if (recipient.intramural) {
             let number = recipient.intramural.year.toString().slice(-1)
@@ -409,11 +410,11 @@
                 "                                    <span>рублей в год</span>\n" +
                 "                                </td>\n" +
                 "                            </tr>";
-            modal.find('table').empty().append(templateRecipient)
+            modal.find('table').append(templateRecipient)
         }
 
         if (recipient.partTime) {
-            let number = recipient.intramural.year.toString().slice(-1)
+            let number = recipient.partTime.year.toString().slice(-1)
             let year = years[number]
             let templatePartTime = "<tr id=\"partTime\">\n" +
                 "                                <td>\n" +
@@ -432,11 +433,11 @@
                 "                                    <span>рублей в год</span>\n" +
                 "                                </td>\n" +
                 "                            </tr>";
-            modal.find('table').empty().append(templatePartTime)
+            modal.find('table').append(templatePartTime)
         }
 
         if (recipient.correspondence) {
-            let number = recipient.intramural.year.toString().slice(-1)
+            let number = recipient.correspondence.year.toString().slice(-1)
             let year = years[number]
             let templateCorrespondece = "<tr id=\"templateCorrespondece\">\n" +
                 "                                <td>\n" +
@@ -455,7 +456,7 @@
                 "                                    <span>рублей в год</span>\n" +
                 "                                </td>\n" +
                 "                            </tr>";
-            modal.find('table').empty().append(templateCorrespondece)
+            modal.find('table').append(templateCorrespondece)
         }
 
         //template.format(recipient.intramural.name, recipient.intramural.year, recipient.intramural.budget, recipient.intramural.price)
