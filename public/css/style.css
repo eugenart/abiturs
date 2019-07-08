@@ -153,6 +153,62 @@ marquee {
     margin: auto;
 }
 
+#exampleModalScrollable .modal-content {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+#exampleModalScrollable .modal-body {
+    background-color: #0c5b95;
+    color: white;
+}
+
+.copy-right a {
+    color: #000;
+    text-decoration: underline;
+}
+
+#exampleModalScrollable .close-btn {
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    color: white;
+    right: 0px;
+    top: 20px;
+    width: 57px;
+    height: 57px;
+    z-index: 10000000;
+}
+
+#exampleModalScrollable table {
+    color: white;
+}
+
+#exampleModalScrollable table td {
+    border: 0;
+    padding: 23px 22px 17px;
+    width: 33.3333%;
+}
+
+#exampleModalScrollable table td strong {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    line-height: 1.08;
+}
+
+#exampleModalScrollable table td span {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.31;
+}
+
+.topline {
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.32);
+    border-top: 95px solid #007ed0;
+    height: 50px;
+}
+
 .inputGroup {
     background-color: rgba(85, 98, 235, 0.51);
     display: block;
@@ -235,7 +291,7 @@ marquee {
 }
 
 .nps-tr {
-    border-top: 2px solid rgba(0,0,0,.5);
+    border-top: 2px solid rgba(0, 0, 0, .5);
 }
 
 .nps-tr td {
@@ -267,7 +323,6 @@ marquee {
 .underline-label {
     text-decoration: underline;
 }
-
 
 
 /*@media screen and (max-width: 991px) {*/

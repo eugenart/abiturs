@@ -61,7 +61,7 @@ class CourseController extends Controller
                 'parent_id' => $request->parent_id,
                 'score' => $request->score,
             ]);
-            if ($request->intramural) {
+            if (isset($request->intramural['name'])) {
                 StudyForms::create([
                     'name' => $request->intramural['name'],
                     'budget' => (isset($request->intramural['budget']) ? $request->intramural['budget'] : '-'),
@@ -70,7 +70,7 @@ class CourseController extends Controller
                     'course_id' => $course->id,
                 ]);
             }
-            if ($request->partTime) {
+            if (isset($request->partTime['name'])) {
                 StudyForms::create([
                     'name' => $request->partTime['name'],
                     'budget' => (isset($request->partTime['budget']) ? $request->partTime['budget'] : '-'),
@@ -79,7 +79,7 @@ class CourseController extends Controller
                     'course_id' => $course->id,
                 ]);
             }
-            if ($request->correspondence) {
+            if (isset($request->correspondence['name'])) {
                 StudyForms::create([
                     'name' => $request->correspondence['name'],
                     'budget' => (isset($request->correspondence['budget']) ? $request->correspondence['budget'] : '-'),
@@ -104,7 +104,7 @@ class CourseController extends Controller
             $course->intramural = $course->studyForms->where('name', 'Очная')->first();
             $course->partTime = $course->studyForms->where('name', 'Очно-заочная')->first();
             $course->correspondence = $course->studyForms->where('name', 'Заочная')->first();
-            if ($request->intramural) {
+            if (isset($request->intramural['name'])) {
                 if ($course->intramural) {
                     $course->intramural->update([
                         'name' => $request->intramural['name'],
@@ -127,7 +127,7 @@ class CourseController extends Controller
                 $course->intramural->delete();
             }
 
-            if ($request->partTime) {
+            if (isset($request->partTime['name'])) {
                 if ($course->partTime) {
                     $course->partTime->update([
                         'name' => $request->partTime['name'],
@@ -150,7 +150,7 @@ class CourseController extends Controller
                 $course->partTime->delete();
             }
 
-            if ($request->correspondence) {
+            if (isset($request->correspondence['name'])) {
                 if ($course->correspondence) {
                     $course->correspondence->update([
                         'name' => $request->correspondence['name'],

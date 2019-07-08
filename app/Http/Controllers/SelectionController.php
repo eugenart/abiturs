@@ -20,6 +20,9 @@ class SelectionController extends Controller
                         $exams[] = $subject->subjectsList->name;
                     }
                 $child->exams = $exams;
+                $child->intramural = $child->studyForms->where('name', 'Очная')->first();
+                $child->partTime = $child->studyForms->where('name', 'Очно-заочная')->first();
+                $child->correspondence = $child->studyForms->where('name', 'Заочная')->first();
                 $allExams = array_unique(array_merge($allExams, $exams));
             }
             $course->exams = $allExams;

@@ -5,8 +5,8 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
           integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
@@ -15,35 +15,66 @@
 <body>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+<div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
     <div class="modal-dialog modal-xl modal-dialog-scrollable modal-dialog-centered" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <div class="row w-100 text-center">
-                    <div class="col-12">Институт механики и энергетики</div>
-                    <div class="col-12"><h2>Направление подготовки</h2></div>
+            <button type="button" class="close-btn" data-dismiss="modal" aria-label="Close">
+                <i class="fa fa-times fa-2x"></i>
+            </button>
+            <div class="row w-100 m-0 p-0">
+                <div class="topline col-12">
                 </div>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+            </div>
+            <div class="modal-header">
+                <div class="row w-100 text-center pt-3 pb-3">
+                    <div class="col-12"><h4>Институт механики и энергетики</h4></div>
+                    <div class="col-12"><h2><b>Направление подготовки</b></h2></div>
+                </div>
             </div>
             <div class="modal-body text-center">
                 <div class="row">
                     <div class="col-12">Вступительные испытания</div>
                     <div class="col-12">биология, математика, русский язык</div>
-                    <hr class="w-50">
+                    <hr class="w-50 bg-white">
                     <div class="col-12 mt-3">
                         <table class="table table-sm w-100 ">
+                            <tbody>
                             <tr>
-                                <td class="border-0">Очная</td>
-                                <td class="border-0">99</td>
-                                <td class="border-0">137 000</td>
+                                <td>
+                                    <strong>Очная</strong>
+                                    <br>
+                                    <span>4 года обучения</span>
+                                </td>
+                                <td>
+                                    <strong>99</strong>
+                                    <br>
+                                    <span>бюджетных мест</span>
+                                </td>
+                                <td>
+                                    <strong>137 000</strong>
+                                    <br>
+                                    <span>рублей в год</span>
+                                </td>
                             </tr>
                             <tr>
-                                <td class="border-0">4 года обучения</td>
-                                <td class="border-0">бюджетных мест</td>
-                                <td class="border-0">рублей в год</td>
+                                <td>
+                                    <strong>Очно-заочная</strong>
+                                    <br>
+                                    <span>2 года обучения</span>
+                                </td>
+                                <td>
+                                    <strong>45</strong>
+                                    <br>
+                                    <span>бюджетных мест</span>
+                                </td>
+                                <td>
+                                    <strong>56 000</strong>
+                                    <br>
+                                    <span>рублей в год</span>
+                                </td>
                             </tr>
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -118,9 +149,14 @@
                                                 @if ( $child->subjects->count() == 1 )
                                                     <tr class="nps-tr search-tr"
                                                         data-exams="{{ implode(', ', $child->exams) }}">
-                                                        <td><button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModalScrollable" data-content="{{ $child }}">
+                                                        <td>
+                                                            <button type="button" class="btn btn-link"
+                                                                    data-toggle="modal"
+                                                                    data-target="#exampleModalScrollable"
+                                                                    data-content="{{ $child }}">
                                                                 {{ $child->name }}
-                                                            </button></td>
+                                                            </button>
+                                                        </td>
                                                         <td>
                                                             {{ $child->subjects->first()->subjectsList->name }}
                                                         </td>
@@ -131,9 +167,13 @@
                                                 @elseif($child->subjects->count() > 1)
                                                     <tr class="nps-tr search-tr"
                                                         data-exams="{{ implode(', ', $child->exams) }}">
-                                                        <td rowspan={{ $child->subjects->count() }}><button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModalScrollable">
+                                                        <td rowspan={{ $child->subjects->count() }}>
+                                                            <button type="button" class="btn btn-link"
+                                                                    data-toggle="modal"
+                                                                    data-target="#exampleModalScrollable">
                                                                 {{ $child->name }}
-                                                            </button></td>
+                                                            </button>
+                                                        </td>
                                                         <td>
                                                             {{ $child->subjects->first()->subjectsList->name }}
                                                         </td>
@@ -165,8 +205,11 @@
                                 <div class="row text-uppercase">
                                     <div class="col-12">
                                         <div class="form-group form-check">
-                                            <input type="checkbox" class="form-check-input" id="option{{ $loop->index }}" onclick="addToChosenExams('{{ $subject->name }}')">
-                                            <label class="form-check-label ml-2 underline-label" for="option{{ $loop->index }}">{{ $subject->name }}</label>
+                                            <input type="checkbox" class="form-check-input"
+                                                   id="option{{ $loop->index }}"
+                                                   onclick="addToChosenExams('{{ $subject->name }}')">
+                                            <label class="form-check-label ml-2 underline-label"
+                                                   for="option{{ $loop->index }}">{{ $subject->name }}</label>
                                         </div>
                                     </div>
                                 </div>
@@ -196,9 +239,13 @@
                                                 @if ( $child->subjects->count() == 1 )
                                                     <tr class="nps-tr search-tr-by-faculties"
                                                         data-exams="{{ implode(', ', $child->exams) }}">
-                                                        <td><button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModalScrollable">
+                                                        <td>
+                                                            <button type="button" class="btn btn-link"
+                                                                    data-toggle="modal"
+                                                                    data-target="#exampleModalScrollable">
                                                                 {{ $child->name }}
-                                                            </button></td>
+                                                            </button>
+                                                        </td>
                                                         <td>
                                                             {{ $child->subjects->first()->subjectsList->name }}
                                                         </td>
@@ -209,9 +256,14 @@
                                                 @elseif($child->subjects->count() > 1)
                                                     <tr class="nps-tr search-tr-by-faculties"
                                                         data-exams="{{ implode(', ', $child->exams) }}">
-                                                        <td rowspan={{ $child->subjects->count() }}><button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModalScrollable" data-content="{{ $child }}">
+                                                        <td rowspan={{ $child->subjects->count() }}>
+                                                            <button type="button" class="btn btn-link"
+                                                                    data-toggle="modal"
+                                                                    data-target="#exampleModalScrollable"
+                                                                    data-content="{{ $child }}">
                                                                 {{ $child->name }}
-                                                            </button></td>
+                                                            </button>
+                                                        </td>
                                                         <td>
                                                             {{ $child->subjects->first()->subjectsList->name }}
                                                         </td>
@@ -242,8 +294,11 @@
                                 <div class="row text-uppercase">
                                     <div class="col-12">
                                         <div class="form-group form-check">
-                                            <input type="checkbox" class="form-check-input" id="optionFaculties{{ $loop->index }}" onclick="addToChosenFaculties('{{ $course->name }}')">
-                                            <label class="form-check-label ml-2 underline-label" for="optionFaculties{{ $loop->index }}">{{ $course->name }}</label>
+                                            <input type="checkbox" class="form-check-input"
+                                                   id="optionFaculties{{ $loop->index }}"
+                                                   onclick="addToChosenFaculties('{{ $course->name }}')">
+                                            <label class="form-check-label ml-2 underline-label"
+                                                   for="optionFaculties{{ $loop->index }}">{{ $course->name }}</label>
                                         </div>
                                     </div>
                                 </div>
@@ -258,22 +313,23 @@
 </div>
 
 <hr class="mrsu-hr mrsu-bg m-auto">
-
+<div class="container">
+    <div class="row">
+        <div class="text-right col-12">
+            <span class="copy-right">&copy; 2019 <b>Made by <a href="https://ci.mrsu.ru" target="_blank">CI</a></b></span>
+        </div>
+    </div>
+</div>
 </body>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+<script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
 
 <script>
