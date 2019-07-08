@@ -28,52 +28,18 @@
             </div>
             <div class="modal-header">
                 <div class="row w-100 text-center pt-3 pb-3">
-                    <div class="col-12"><h4>Институт механики и энергетики</h4></div>
-                    <div class="col-12"><h2><b>Направление подготовки</b></h2></div>
+                    <div class="col-12"><h4 id="facultyName">Институт механики и энергетики</h4></div>
+                    <div class="col-12"><h2><b id="directionName">Направление подготовки</b></h2></div>
                 </div>
             </div>
             <div class="modal-body text-center">
                 <div class="row">
                     <div class="col-12">Вступительные испытания</div>
-                    <div class="col-12">биология, математика, русский язык</div>
+                    <div class="col-12" id="examsNames">биология, математика, русский язык</div>
                     <hr class="w-50 bg-white">
                     <div class="col-12 mt-3">
                         <table class="table table-sm w-100 ">
                             <tbody>
-                            <tr>
-                                <td>
-                                    <strong>Очная</strong>
-                                    <br>
-                                    <span>4 года обучения</span>
-                                </td>
-                                <td>
-                                    <strong>99</strong>
-                                    <br>
-                                    <span>бюджетных мест</span>
-                                </td>
-                                <td>
-                                    <strong>137 000</strong>
-                                    <br>
-                                    <span>рублей в год</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <strong>Очно-заочная</strong>
-                                    <br>
-                                    <span>2 года обучения</span>
-                                </td>
-                                <td>
-                                    <strong>45</strong>
-                                    <br>
-                                    <span>бюджетных мест</span>
-                                </td>
-                                <td>
-                                    <strong>56 000</strong>
-                                    <br>
-                                    <span>рублей в год</span>
-                                </td>
-                            </tr>
                             </tbody>
                         </table>
                     </div>
@@ -242,7 +208,8 @@
                                                         <td>
                                                             <button type="button" class="btn btn-link"
                                                                     data-toggle="modal"
-                                                                    data-target="#exampleModalScrollable">
+                                                                    data-target="#exampleModalScrollable"
+                                                                    data-content="{{ $child }}">
                                                                 {{ $child->name }}
                                                             </button>
                                                         </td>
@@ -316,7 +283,8 @@
 <div class="container">
     <div class="row">
         <div class="text-right col-12">
-            <span class="copy-right">&copy; 2019 <b>Made by <a href="https://ci.mrsu.ru" target="_blank">CI</a></b></span>
+            <span class="copy-right">&copy; 2019 <b>Made by <a href="https://ci.mrsu.ru"
+                                                               target="_blank">CI</a></b></span>
         </div>
     </div>
 </div>
@@ -331,6 +299,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
+<script src="js/jquery-number.min.js"></script>
 
 <script>
     var chosenExams = [];
@@ -395,10 +364,103 @@
         var recipient = button.data('content') // Extract info from data-* attributes
         // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
         // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-
+        let years = {
+            0: 'лет',
+            1: 'год',
+            2: 'года',
+            3: 'года',
+            4: 'года',
+            5: 'лет',
+            6: 'лет',
+            7: 'лет',
+            8: 'лет',
+            9: 'лет',
+        };
         console.log(recipient);
-        // var modal = $(this)
-        // modal.find('.modal-title').text('New message to ' + recipient)
+        var modal = $(this)
+        modal.find('#facultyName').empty().text(recipient.facultyName)
+        modal.find('#directionName').empty().text(recipient.name)
+        let names = ''
+        $.each(recipient.exams, function (k, v) {
+            if (k === recipient.exams.length - 1) {
+                names += v
+            } else {
+                names += v + ', '
+            }
+            console.log(v)
+        });
+        modal.find('table').empty()
+        modal.find('#examsNames').empty().text(names)
+        if (recipient.intramural) {
+            let number = recipient.intramural.year.toString().slice(-1)
+            let year = years[number]
+            let templateRecipient = "<tr id=\"intramural\">\n" +
+                "                                <td>\n" +
+                "                                    <strong>" + recipient.intramural.name + "</strong>\n" +
+                "                                    <br>\n" +
+                "                                    <span>" + recipient.intramural.year + " " + year + " обучения</span>\n" +
+                "                                </td>\n" +
+                "                                <td>\n" +
+                "                                    <strong>" + recipient.intramural.budget + "</strong>\n" +
+                "                                    <br>\n" +
+                "                                    <span>бюджетных мест</span>\n" +
+                "                                </td>\n" +
+                "                                <td>\n" +
+                "                                    <strong>" + $.number( recipient.intramural.price, 0, '', ' ' ) + "</strong>\n" +
+                "                                    <br>\n" +
+                "                                    <span>рублей в год</span>\n" +
+                "                                </td>\n" +
+                "                            </tr>";
+            modal.find('table').append(templateRecipient)
+        }
+
+        if (recipient.partTime) {
+            let number = recipient.partTime.year.toString().slice(-1)
+            let year = years[number]
+            let templatePartTime = "<tr id=\"partTime\">\n" +
+                "                                <td>\n" +
+                "                                    <strong>" + recipient.partTime.name + "</strong>\n" +
+                "                                    <br>\n" +
+                "                                    <span>" + recipient.partTime.year + " " + year + " обучения</span>\n" +
+                "                                </td>\n" +
+                "                                <td>\n" +
+                "                                    <strong>" + recipient.partTime.budget + "</strong>\n" +
+                "                                    <br>\n" +
+                "                                    <span>бюджетных мест</span>\n" +
+                "                                </td>\n" +
+                "                                <td>\n" +
+                "                                    <strong>" + $.number( recipient.partTime.price, 0, '', ' ' ) + "</strong>\n" +
+                "                                    <br>\n" +
+                "                                    <span>рублей в год</span>\n" +
+                "                                </td>\n" +
+                "                            </tr>";
+            modal.find('table').append(templatePartTime)
+        }
+
+        if (recipient.correspondence) {
+            let number = recipient.correspondence.year.toString().slice(-1)
+            let year = years[number]
+            let templateCorrespondece = "<tr id=\"templateCorrespondece\">\n" +
+                "                                <td>\n" +
+                "                                    <strong>" + recipient.correspondence.name + "</strong>\n" +
+                "                                    <br>\n" +
+                "                                    <span>" + recipient.correspondence.year + " " + year + " обучения</span>\n" +
+                "                                </td>\n" +
+                "                                <td>\n" +
+                "                                    <strong>" + recipient.correspondence.budget + "</strong>\n" +
+                "                                    <br>\n" +
+                "                                    <span>бюджетных мест</span>\n" +
+                "                                </td>\n" +
+                "                                <td>\n" +
+                "                                    <strong>" + $.number( recipient.correspondence.price, 0, '', ' ' ) + "</strong>\n" +
+                "                                    <br>\n" +
+                "                                    <span>рублей в год</span>\n" +
+                "                                </td>\n" +
+                "                            </tr>";
+            modal.find('table').append(templateCorrespondece)
+        }
+
+        //template.format(recipient.intramural.name, recipient.intramural.year, recipient.intramural.budget, recipient.intramural.price)
         // modal.find('.modal-body input').val(recipient)
     })
 

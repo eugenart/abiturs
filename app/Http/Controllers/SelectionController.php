@@ -19,6 +19,7 @@ class SelectionController extends Controller
                     if (!$subject->subjectsList->internal) {
                         $exams[] = $subject->subjectsList->name;
                     }
+                $child->facultyName = $course->name;
                 $child->exams = $exams;
                 $child->intramural = $child->studyForms->where('name', 'Очная')->first();
                 $child->partTime = $child->studyForms->where('name', 'Очно-заочная')->first();
