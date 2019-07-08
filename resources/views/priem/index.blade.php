@@ -13,6 +13,45 @@
     <title>Document</title>
 </head>
 <body>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="row w-100 text-center">
+                    <div class="col-12">Институт механики и энергетики</div>
+                    <div class="col-12"><h2>Направление подготовки</h2></div>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <div class="row">
+                    <div class="col-12">Вступительные испытания</div>
+                    <div class="col-12">биология, математика, русский язык</div>
+                    <hr class="w-50">
+                    <div class="col-12 mt-3">
+                        <table class="table table-sm w-100 ">
+                            <tr>
+                                <td class="border-0">Очная</td>
+                                <td class="border-0">99</td>
+                                <td class="border-0">137 000</td>
+                            </tr>
+                            <tr>
+                                <td class="border-0">4 года обучения</td>
+                                <td class="border-0">бюджетных мест</td>
+                                <td class="border-0">рублей в год</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="container">
     <div class="row header p-3">
         <div class="col-6">
@@ -79,7 +118,9 @@
                                                 @if ( $child->subjects->count() == 1 )
                                                     <tr class="nps-tr search-tr"
                                                         data-exams="{{ implode(', ', $child->exams) }}">
-                                                        <td>{{ $child->name }}</td>
+                                                        <td><button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModalScrollable" data-content="{{ $child }}">
+                                                                {{ $child->name }}
+                                                            </button></td>
                                                         <td>
                                                             {{ $child->subjects->first()->subjectsList->name }}
                                                         </td>
@@ -90,7 +131,9 @@
                                                 @elseif($child->subjects->count() > 1)
                                                     <tr class="nps-tr search-tr"
                                                         data-exams="{{ implode(', ', $child->exams) }}">
-                                                        <td rowspan={{ $child->subjects->count() }}>{{ $child->name }}</td>
+                                                        <td rowspan={{ $child->subjects->count() }}><button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModalScrollable">
+                                                                {{ $child->name }}
+                                                            </button></td>
                                                         <td>
                                                             {{ $child->subjects->first()->subjectsList->name }}
                                                         </td>
@@ -153,7 +196,9 @@
                                                 @if ( $child->subjects->count() == 1 )
                                                     <tr class="nps-tr search-tr-by-faculties"
                                                         data-exams="{{ implode(', ', $child->exams) }}">
-                                                        <td>{{ $child->name }}</td>
+                                                        <td><button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModalScrollable">
+                                                                {{ $child->name }}
+                                                            </button></td>
                                                         <td>
                                                             {{ $child->subjects->first()->subjectsList->name }}
                                                         </td>
@@ -164,7 +209,9 @@
                                                 @elseif($child->subjects->count() > 1)
                                                     <tr class="nps-tr search-tr-by-faculties"
                                                         data-exams="{{ implode(', ', $child->exams) }}">
-                                                        <td rowspan={{ $child->subjects->count() }}>{{ $child->name }}</td>
+                                                        <td rowspan={{ $child->subjects->count() }}><button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModalScrollable" data-content="{{ $child }}">
+                                                                {{ $child->name }}
+                                                            </button></td>
                                                         <td>
                                                             {{ $child->subjects->first()->subjectsList->name }}
                                                         </td>
@@ -285,6 +332,19 @@
             }
         });
     }
+
+
+    $('#exampleModalScrollable').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var recipient = button.data('content') // Extract info from data-* attributes
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+
+        console.log(recipient);
+        // var modal = $(this)
+        // modal.find('.modal-title').text('New message to ' + recipient)
+        // modal.find('.modal-body input').val(recipient)
+    })
 
 </script>
 </html>

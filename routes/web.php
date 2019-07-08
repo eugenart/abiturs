@@ -13,7 +13,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->middleware('auth')->group(function () {
 //    Route::redirect('/', '/admin/infoblocks');
 
 
@@ -62,7 +62,7 @@ Route::prefix('admin')->group(function () {
 //
 //Route::get('/selection', 'SelectionController@index')->name('selection.index');
 //
-//Auth::routes();
+Auth::routes();
 //
 //Route::get('/home', 'HomeController@index')->name('home');
 //
