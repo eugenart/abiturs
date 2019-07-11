@@ -136,7 +136,8 @@
                                                         <td rowspan={{ $child->subjects->count() }}>
                                                             <button type="button" class="btn btn-link"
                                                                     data-toggle="modal"
-                                                                    data-target="#exampleModalScrollable">
+                                                                    data-target="#exampleModalScrollable"
+                                                                    data-content="{{ $child }}">
                                                                 {{ $child->name }}
                                                             </button>
                                                         </td>
