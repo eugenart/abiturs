@@ -342,4 +342,38 @@ marquee {
         width: 228px;
         height: 36px;
     }
+
+    .container-fluid {
+        padding: 1.5rem !important;
+    }
+
+    .course-name {
+        font-size: 1.25rem;
+    }
+
+    .search-div-by-faculties, .search-div {
+        padding: 0;
+    }
+
+    .search-div-by-faculties table, .search-div-by-faculties button,
+    .search-div table, .search-div button{
+        font-size: .75rem !important;
+    }
+
+    .check-faculties, .check-subjects {
+        font-size: .75rem;
+    }
+
+    .swith-priem a {
+        font-size: .75rem;
+        padding: .5rem .7rem !important;
+    }
+
+    .h1-mrsu {
+        font-size: 2rem;
+    }
+
+    .h5-mrsu {
+        font-size: 1rem;
+    }
 }

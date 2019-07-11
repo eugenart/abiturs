@@ -69,15 +69,15 @@
 
 <div class="container-fluid p-5">
     <div class="row mt-5">
-        <div class="col-8 m-auto">
-            <h1 class="text-center">Подбор образовательных программ</h1>
-            <h5 class="text-center">Подберите направление подготовки по предметам ЕГЭ или из списка направлений
+        <div class="col-12 col-sm-8 m-auto">
+            <h1 class="text-center h1-mrsu">Подбор образовательных программ</h1>
+            <h5 class="text-center h5-mrsu">Подберите направление подготовки по предметам ЕГЭ или из списка направлений
                 подготовки и специальностей факультета или института
             </h5>
         </div>
     </div>
     <div class="row mt-5">
-        <div class="col-12">
+        <div class="col-12 p-0">
             <ul class="nav nav-pills mb-3 d-flex justify-content-center" id="pills-tab" role="tablist">
                 <li class="nav-item swith-priem">
                     <a class="nav-link border-priem active text-uppercase btn btn-lg" id="pills-home-tab"
@@ -94,8 +94,8 @@
         <div class="col-12">
             <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                    <div class="row mt-5">
-                        <div class="col-9">
+                    <div class="row mt-5 d-flex flex-column-reverse flex-sm-row">
+                        <div class="col-12 col-sm-9">
                             <div class="row">
                                 @foreach($courses as $course)
                                     <div class="col-12 mb-5 search-div"
@@ -116,7 +116,7 @@
                                                     <tr class="nps-tr search-tr"
                                                         data-exams="{{ implode(', ', $child->exams) }}">
                                                         <td>
-                                                            <button type="button" class="btn btn-link text-left"
+                                                            <button type="button" class="btn btn-link"
                                                                     data-toggle="modal"
                                                                     data-target="#exampleModalScrollable"
                                                                     data-content="{{ $child }}">
@@ -134,7 +134,7 @@
                                                     <tr class="nps-tr search-tr"
                                                         data-exams="{{ implode(', ', $child->exams) }}">
                                                         <td rowspan={{ $child->subjects->count() }}>
-                                                            <button type="button" class="btn btn-link text-left"
+                                                            <button type="button" class="btn btn-link"
                                                                     data-toggle="modal"
                                                                     data-target="#exampleModalScrollable">
                                                                 {{ $child->name }}
@@ -163,14 +163,13 @@
                                     </div>
                                 @endforeach
                             </div>
-
                         </div>
-                        <div class="col-3">
+                        <div class="col-12 col-sm-3">
                             <h4 class="mb-3">Вступительные испытания</h4>
+                            <div class="row text-uppercase mb-5">
                             @foreach($subjects as $subject)
-                                <div class="row text-uppercase">
-                                    <div class="col-12">
-                                        <div class="form-group form-check">
+                                    <div class="col-6 col-sm-12">
+                                        <div class="form-group form-check check-subjects">
                                             <input type="checkbox" class="form-check-input"
                                                    id="option{{ $loop->index }}"
                                                    onclick="addToChosenExams('{{ $subject->name }}')">
@@ -178,17 +177,18 @@
                                                    for="option{{ $loop->index }}">{{ $subject->name }}</label>
                                         </div>
                                     </div>
-                                </div>
+
                             @endforeach
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                    <div class="row mt-5">
-                        <div class="col-9">
+                    <div class="row mt-5 d-flex flex-column-reverse flex-sm-row">
+                        <div class="col-12 col-sm-9">
                             <div class="row">
                                 @foreach($courses as $course)
-                                    <div class="col-12 mb-5 search-div-by-faculties"
+                                    <div class="col-12 mb-5 search-div-by-faculties table-responsive"
                                          data-faculty="{{ $course->name }}">
                                         <h3 class="text-uppercase mb-3 mt-5 course-name">{{ $course->name }}</h3>
                                         <table class="table">
@@ -206,7 +206,7 @@
                                                     <tr class="nps-tr search-tr-by-faculties"
                                                         data-exams="{{ implode(', ', $child->exams) }}">
                                                         <td>
-                                                            <button type="button" class="btn btn-link text-left"
+                                                            <button type="button" class="btn btn-link"
                                                                     data-toggle="modal"
                                                                     data-target="#exampleModalScrollable"
                                                                     data-content="{{ $child }}">
@@ -224,7 +224,7 @@
                                                     <tr class="nps-tr search-tr-by-faculties"
                                                         data-exams="{{ implode(', ', $child->exams) }}">
                                                         <td rowspan={{ $child->subjects->count() }}>
-                                                            <button type="button" class="btn btn-link text-left"
+                                                            <button type="button" class="btn btn-link"
                                                                     data-toggle="modal"
                                                                     data-target="#exampleModalScrollable"
                                                                     data-content="{{ $child }}">
@@ -255,12 +255,13 @@
                                 @endforeach
                             </div>
                         </div>
-                        <div class="col-3">
-                            <h4 class="mb-3">Вступительные испытания</h4>
+                        <div class="col-12 col-sm-3">
+                            <h4 class="mb-3">Факультеты и институты</h4>
+                            <div class="row text-uppercase mb-5">
                             @foreach($courses->where('parent_id', null) as $course)
-                                <div class="row text-uppercase">
+
                                     <div class="col-12">
-                                        <div class="form-group form-check">
+                                        <div class="form-group form-check check-faculties">
                                             <input type="checkbox" class="form-check-input"
                                                    id="optionFaculties{{ $loop->index }}"
                                                    onclick="addToChosenFaculties('{{ $course->name }}')">
@@ -268,8 +269,9 @@
                                                    for="optionFaculties{{ $loop->index }}">{{ $course->name }}</label>
                                         </div>
                                     </div>
-                                </div>
+
                             @endforeach
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -406,7 +408,7 @@
                 "                                    <span>бюджетных мест</span>\n" +
                 "                                </td>\n" +
                 "                                <td>\n" +
-                "                                    <strong>" + $.number(recipient.intramural.price, 0, '', ' ') + "</strong>\n" +
+                "                                    <strong>" + $.number( recipient.intramural.price, 0, '', ' ' ) + "</strong>\n" +
                 "                                    <br>\n" +
                 "                                    <span>рублей в год</span>\n" +
                 "                                </td>\n" +
@@ -429,7 +431,7 @@
                 "                                    <span>бюджетных мест</span>\n" +
                 "                                </td>\n" +
                 "                                <td>\n" +
-                "                                    <strong>" + $.number(recipient.partTime.price, 0, '', ' ') + "</strong>\n" +
+                "                                    <strong>" + $.number( recipient.partTime.price, 0, '', ' ' ) + "</strong>\n" +
                 "                                    <br>\n" +
                 "                                    <span>рублей в год</span>\n" +
                 "                                </td>\n" +
@@ -452,7 +454,7 @@
                 "                                    <span>бюджетных мест</span>\n" +
                 "                                </td>\n" +
                 "                                <td>\n" +
-                "                                    <strong>" + $.number(recipient.correspondence.price, 0, '', ' ') + "</strong>\n" +
+                "                                    <strong>" + $.number( recipient.correspondence.price, 0, '', ' ' ) + "</strong>\n" +
                 "                                    <br>\n" +
                 "                                    <span>рублей в год</span>\n" +
                 "                                </td>\n" +
