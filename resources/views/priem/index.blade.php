@@ -28,7 +28,7 @@
             </div>
             <div class="modal-header">
                 <div class="row w-100 text-center pt-3 pb-3">
-                    <div class="col-12"><h4 id="facultyName">Институт механики и энергетики</h4></div>
+                    <div class="col-12"><h4 class="text-uppercase" id="facultyName">Институт механики и энергетики</h4></div>
                     <div class="col-12"><h2><b id="directionName">Направление подготовки</b></h2></div>
                 </div>
             </div>
@@ -379,7 +379,6 @@
             8: 'лет',
             9: 'лет',
         };
-        console.log(recipient);
         var modal = $(this)
         modal.find('#facultyName').empty().text(recipient.facultyName)
         modal.find('#directionName').empty().text(recipient.name)
@@ -390,7 +389,6 @@
             } else {
                 names += v + ', '
             }
-            console.log(v)
         });
         modal.find('table').empty()
         modal.find('#examsNames').empty().text(names)
