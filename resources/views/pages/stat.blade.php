@@ -44,8 +44,12 @@
             <div class="col-2"><select class="w-100 form-control form-control-sm">
                     <option value="-1">Форма обучения</option>
                     <option value="1">1</option>
-                </select></div>
-            <div class="col-2">
+                </select>
+            </div>
+            <div class="col-1">
+                <button class="w-100 btn btn-success btn-sm" id="submitInfo">Поиск</button>
+            </div>
+            <div class="col-1">
                 <button class="w-100 btn btn-warning btn-sm" id="clearSelects">Сбросить</button>
             </div>
         </div>
@@ -84,7 +88,8 @@
                             <p class="m-0">4) Балл за индивидуальные достижения</p>
                         </td>
                         <td rowspan="2">Тип экзамена</td>
-                        <td rowspan="2">Статус</td>
+                        <td rowspan="2">Статус проверки</td>
+                        <td rowspan="2">Нуждаемость в общежитии</td>
                     </tr>
                     <tr>
                         <td>1</td>
@@ -95,7 +100,7 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td class="exam-rights" colspan="11">
+                        <td class="exam-rights" colspan="14">
                             <b>Квота (особое право)</b>. Количество мест: <b>4</b>
                         </td>
                     </tr>
@@ -111,6 +116,7 @@
                         <td>0</td>
                         <td>ЕГЭ</td>
                         <td>Заявление принято</td>
+                        <td>Да</td>
                     </tr>
                     <tr class="text-center">
                         <td class="text-center">2</td>
@@ -121,9 +127,10 @@
                         <td>81</td>
                         <td>80</td>
                         <td>78</td>
-                        <td>0</td>
+                        <td>30</td>
                         <td>ЕГЭ</td>
-                        <td>Оригинал на другом направлении</td>
+                        <td>Заявление принято</td>
+                        <td>Нет</td>
                     </tr>
                     </tbody>
                 </table>

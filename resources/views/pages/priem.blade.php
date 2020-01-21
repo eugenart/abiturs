@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-12">
                 <marquee behavior="" direction="" class="mt-2">
-                    @foreach(collect($block->infoblock->news) as $item)
+                    @foreach($block->infoblock->news as $item)
                         {{$loop->first ? "• " : null}}
                         {{$item}} &bull;
                     @endforeach
@@ -31,9 +31,10 @@
                     <div class="col-12 pt-2 content-page">
                         @foreach($block->sectionContent->sortBy('position') as $content)
                             @if ($content->type == 'text')
+                                <p class="m-0 font-weight-bolder"> <b>{{ $content->name }}</b>:</p>
                                 <div>{!! nl2br($content->content) !!}</div>
                             @else
-                                <p class="m-0 font-weight-bolder">{{ $content->name }}:</p>
+                                <p class="m-0 font-weight-bolder mrsu-uppertext"><b>{{ $content->name }}</b> :</p>
                                 <p>
                                     @foreach($content->childrenFiles->sortBy('position') as $file)
 
@@ -54,16 +55,15 @@
                         @foreach($block->infoblock->sections->where('activity', true) as $section)
                             @if ($section->isFolder && $section->childrenSections->where('activity', true)->count() > 0)
                                 <li class="mrsu-uppertext">{{ $section->name }}</li>
-                                <ul class="list-unstyled pl-4">
-                                    @foreach($section->childrenSections->where('activity', true) as $subSection)
-                                        <li><a href="{{ $subSection->url }}">{{ $subSection->name }}</a></li>
-                                    @endforeach
-                                </ul>
+{{--                                <ul class="list-unstyled pl-4">--}}
+{{--                                    @foreach($section->childrenSections->where('activity', true) as $subSection)--}}
+{{--                                        <li><a href="{{ $subSection->url }}">{{ $subSection->name }}</a></li>--}}
+{{--                                    @endforeach--}}
+{{--                                </ul>--}}
                             @elseif(!$section->isFolder && !$section->parentSection)
                                 <li class="mrsu-uppertext"><a href="{{ $section->url }}">{{ $section->name }}</a></li>
                             @endif
                         @endforeach
-
                     </ul>
                 </div>
             </div>

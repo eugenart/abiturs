@@ -20,7 +20,12 @@
                         @foreach($slider->sortByDesc('startPagePriority') as $slide)
                             @if ($loop->index == 0)
                                 <div class="carousel-item active">
-                                    <img class="d-block w-100" src="storage/slider/{{ $slide->image }}">
+                                    @if ($slide->url != null)
+                                        <a href="{{ $slide->url }}" target="_blank"><img class="d-block w-100"
+                                                                                         src="storage/slider/{{ $slide->image }}"></a>
+                                    @else
+                                        <img class="d-block w-100" src="storage/slider/{{ $slide->image }}">
+                                    @endif
                                 </div>
                             @else
                                 <div class="carousel-item">
@@ -52,13 +57,6 @@
                                 <p class="text-center m-0 pt-2 mrsu-uppertext">{{ $infoblock->name }}</p>
                             </div>
                         </a>
-                        <div class="card-footer">
-                            <ul class="mrsu-uppertext m-0">
-                                @foreach($infoblock->sections as $section)
-                                    <li><a href="{{ $section->url }}">{{ $section->name }}</a></li>
-                                @endforeach
-                            </ul>
-                        </div>
                     </div>
                 </div>
             @endforeach

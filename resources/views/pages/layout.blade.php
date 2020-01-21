@@ -59,20 +59,20 @@
 @show
 <hr class="mrsu-hr mrsu-bg m-auto">
 
-<div class="container mt-3">
-    <div class="row">
-        @foreach($pages->sortByDesc('menuPriority') as $page)
-        <div class="col-2">
-            <p class="mb-0">{{ $page->name }}</p>
-            <ul class="m-0 list-unstyled pl-3">
-                @foreach($page->sections as $section)
-                    <li><a href="{{ $section->url }}">{{ $section->name }}</a></li>
-                @endforeach
-            </ul>
-        </div>
-        @endforeach
-    </div>
-</div>
+{{--<div class="container mt-3">--}}
+{{--    <div class="row">--}}
+{{--        @foreach($pages->sortByDesc('menuPriority') as $page)--}}
+{{--        <div class="col-2">--}}
+{{--            <p class="mb-0">{{ $page->name }}</p>--}}
+{{--            <ul class="m-0 list-unstyled pl-3">--}}
+{{--                @foreach($page->sections as $section)--}}
+{{--                    <li><a href="{{ $section->url }}">{{ $section->name }}</a></li>--}}
+{{--                @endforeach--}}
+{{--            </ul>--}}
+{{--        </div>--}}
+{{--        @endforeach--}}
+{{--    </div>--}}
+{{--</div>--}}
 
 </body>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
