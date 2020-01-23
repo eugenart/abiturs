@@ -24,11 +24,11 @@ class Speciality extends Model
         return $this->hasMany(Specialization::class, 'id_speciality');
     }
 
-    public static function allWithSpez()
-    {
-        return DB::table('specialities')
-            ->join('specializations', 'specialities.id', '=', 'specializations.id_speciality')
-            ->select('specialities.*', 'specializations.name as sp_name')
-            ->get();
-    }
+//    public static function allWithSpez()
+//    {
+//        return DB::table('specialities')
+//            ->join('specializations', 'specialities.id', '=', 'specializations.id_speciality')
+//            ->select('specialities.*', 'specializations.name as sp_name')
+//            ->get();
+//    }
 }
