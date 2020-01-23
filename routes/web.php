@@ -38,7 +38,8 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
 //    Route::redirect('/', '/admin/subject');
 
-    Route::get('/subjects', 'SubjectsController@index')->name('subjects.index');
+    Route::get('/subjects', 'SubjectController@index')->name('subjects.index');
+    Route::get('/speciality', 'SpecialityController@index')->name('speciality.index');
 
 
 //    Route::get('/course', 'CourseController@index')->name('course.index');

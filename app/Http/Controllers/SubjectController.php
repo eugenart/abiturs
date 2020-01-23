@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Subject;
 use Illuminate\Http\Request;
 
-class SubjectsController extends Controller
+class SubjectController extends Controller
 {
-    public function index(Request $request){
+
+    public function index(Request $request)
+    {
         $subjects = Subject::all();
         if ($request->ajax()) {
             return response()->json($subjects, 200);

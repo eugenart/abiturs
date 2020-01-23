@@ -99,13 +99,13 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ Request::is('admin/course*') ? 'active' : null }}" href="{{route('section.index')}}">
+                            <a class="nav-link {{ Request::is('admin/course*') ? 'active' : null }}" href="{{route('speciality.index')}}">
                                 <span data-feather="shopping-cart"></span>
                                 Направления подготовки
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ Request::is('admin/subject') ? 'active' : null }}" href="{{route('section.index')}}">
+                            <a class="nav-link {{ Request::is('admin/subject') ? 'active' : null }}" href="{{route('subjects.index')}}">
                                 <span data-feather="shopping-cart"></span>
                                 Вступительные испытания
                             </a>

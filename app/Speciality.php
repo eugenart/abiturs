@@ -15,4 +15,6 @@ class Speciality extends Model
     {
         return $this->hasOne(TrainingArea::class, 'id_speciality');
     }
+
+
 }
