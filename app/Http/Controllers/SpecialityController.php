@@ -12,11 +12,14 @@ class SpecialityController extends Controller
     {
         $specialities = Speciality::all();
 
+        foreach ($specialities as $speciality) {
+            $speciality->sp = $speciality->specialization()->get();
+        }
 
         if ($request->ajax()) {
             return response()->json($specialities, 200);
         }
 
-        return view('structure.section',  compact('specialities'));
+        return view('structure.speciality',  compact('specialities'));
     }
 }
