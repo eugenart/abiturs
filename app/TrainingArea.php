@@ -10,7 +10,7 @@ class TrainingArea extends Model
 
 
     public function speciality() {
-        return $this->belongsTo(Subject::class, 'id_speciality');
+        return $this->belongsTo(Speciality::class, 'id_speciality');
     }
 
     public function minScores() {

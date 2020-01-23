@@ -12,7 +12,7 @@ class ParserController extends Controller
     public function index(Request $request)
     {
         // $subjs = Subject::all();
-        return view('pages.parser'/*, compact('sheet')*/);
+        return view('structure.parse'/*, compact('sheet')*/);
     }
 
     public function parseFromXls(Request $request)
@@ -66,7 +66,7 @@ class ParserController extends Controller
             ));
         }
 
-        return view('pages.parser');
+        return json_encode('Специальности и специализации успешно выгружены!');
     }
 
 

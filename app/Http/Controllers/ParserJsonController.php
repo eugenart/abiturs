@@ -179,35 +179,18 @@ class ParserJsonController extends Controller
         FacultyArea::insert($areas_faculties);
         TrainingAreasSubject::insert($areas_subjects);
 
-        //$chunks = array_chunk($areas, 3000);
-
-//        foreach ($chunks as $chunk) {
-//            TrainingArea::insert($chunk);
-//        }
-
-
-       // $chunks = array_chunk($areas_faculties, 3000);
-
-//        foreach ($chunks as $chunk) {
-//            FacultyArea::insert($chunk);
-//        }
-
-        //$chunks = array_chunk($areas_subjects, 3000);
-
-//        foreach ($chunks as $chunk) {
-//            TrainingAreasSubject::insert($chunk);
-//        }
+        return json_encode('Выгрузка данных о ценах на обучение успешно завершена!');
     }
 
     public function parseFromJson(Request $request)
     {
-        set_time_limit(600);
+        set_time_limit(1200);
 
-//        $this->parseStudents();
-//        $this->parseStat();
-//        $this->parseScore();
-        $this->parseAreas();
+        $this->parseStudents();
+        $this->parseStat();
+        $this->parseScore();
+        //$this->parseAreas();
 
-        return view('pages.parser');
+        return json_encode('Информация об абитуриентах успешно выгружена!');
     }
 }

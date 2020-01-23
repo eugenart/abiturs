@@ -13,7 +13,7 @@
                                 </thead>
                                 <tbody>
                                         <tr v-for="spec in orderedSpecialities">
-                                            <td>{{spec.name}}</td>
+                                            <td><b>{{spec.code}}</b> {{spec.name}}</td>
                                             <td>
                                                 <ul>
                                                     <li v-for="s in spec.sp">

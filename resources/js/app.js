@@ -25,6 +25,9 @@ Vue.component('sectioninfo', require('./components/sectionInfo').default);
 Vue.component('egeSelect', require('./components/egeSelect').default);
 Vue.component('subject', require('./components/Subject').default);
 Vue.component('speciality', require('./components/speciality').default);
+Vue.component('minScore', require('./components/minScore').default);
+Vue.component('price', require('./components/price').default);
+Vue.component('parse', require('./components/parse').default);
 
 
 Vue.filter("formatDate", function (value) {
