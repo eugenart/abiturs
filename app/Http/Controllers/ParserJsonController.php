@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Faculty;
+use App\FacultyArea;
 use App\Score;
 use App\Speciality;
 use App\Specialization;
 use App\Statistic;
 use App\Student;
 use App\Subject;
+use App\TrainingArea;
+use App\TrainingAreasSubject;
 use Illuminate\Http\Request;
 use RecursiveArrayIterator;
 use RecursiveIteratorIterator;
@@ -119,13 +122,91 @@ class ParserJsonController extends Controller
     }
 
 
+    public function parseAreas()
+    {
+        $filejson = file_get_contents(storage_path('app/public/files/test2.json'));
+        $json_arr = json_decode($filejson, true);
+        $json_data = $json_arr['data'];
+
+        TrainingArea::truncate();
+        TrainingAreasSubject::truncate();
+        FacultyArea::truncate();
+
+        $areas = array();
+        $areas_subjects = array();
+        $areas_faculties = array();
+        $count_areas = 0;
+
+        foreach ($json_data as $k => $facultyItem) {
+            $id_faculty = Faculty::where('facultyId', '=', $facultyItem['facultyId'])->first();
+
+            foreach ($facultyItem['trainingAreas'] as $areaItem) {
+
+                $id_speciality = Speciality::where('specialityId', '=', $areaItem['trainingAreasId'])->first();
+
+                $area = array(
+                    'id_speciality' => intval($id_speciality->id),
+                    'trainingForm' => $areaItem['trainingForm'],
+                    'freeSeatsNumber' => intval($areaItem['freeSeatsNumber']),
+                    'years' => intval($areaItem['years']),
+                    'price' => intval($areaItem['price'])
+                );
+
+                $areas[] = $area;
+                $count_areas++;
+
+                $faculty = array(
+                    'id_faculty' => intval($id_faculty->id),
+                    'id_area' => $count_areas,
+                );
+                $areas_faculties[] = $faculty;
+
+                foreach ($areaItem['subjects'] as $subjectItem) {
+                    $id_subject = Subject::where('subjectId', '=', $subjectItem['subjectId'])->first();
+
+                    $subject = array(
+                        'id_area' => $count_areas,
+                        'id_subject' => intval($id_subject->id),
+                        'minScore' => $subjectItem['minScore']
+                    );
+                    $areas_subjects[] = $subject;
+                }
+            }
+        }
+
+
+        TrainingArea::insert($areas);
+        FacultyArea::insert($areas_faculties);
+        TrainingAreasSubject::insert($areas_subjects);
+
+        //$chunks = array_chunk($areas, 3000);
+
+//        foreach ($chunks as $chunk) {
+//            TrainingArea::insert($chunk);
+//        }
+
+
+       // $chunks = array_chunk($areas_faculties, 3000);
+
+//        foreach ($chunks as $chunk) {
+//            FacultyArea::insert($chunk);
+//        }
+
+        //$chunks = array_chunk($areas_subjects, 3000);
+
+//        foreach ($chunks as $chunk) {
+//            TrainingAreasSubject::insert($chunk);
+//        }
+    }
+
     public function parseFromJson(Request $request)
     {
         set_time_limit(600);
 
-        $this->parseStudents();
-        $this->parseStat();
-        $this->parseScore();
+//        $this->parseStudents();
+//        $this->parseStat();
+//        $this->parseScore();
+        $this->parseAreas();
 
         return view('pages.parser');
     }

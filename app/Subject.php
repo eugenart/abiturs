@@ -11,4 +11,8 @@ class Subject extends Model
     public function scores() {
         return $this->hasMany(Score::class, 'id_subject');
     }
+
+    public function areas() {
+        return $this->hasMany(Score::class, 'id_subject');
+    }
 }

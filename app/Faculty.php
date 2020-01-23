@@ -12,4 +12,8 @@ class Faculty extends Model
         return $this->hasMany(Statistic::class, 'id_faculty');
     }
 
+    public function areas() {
+        return $this->hasMany(FacultyArea::class, 'id_faculty');
+    }
+
 }
