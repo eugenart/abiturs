@@ -11,4 +11,8 @@ class Speciality extends Model
     public function statistics() {
         return $this->hasMany(Statistic::class, 'id_speciality');
     }
+    public function area()
+    {
+        return $this->hasOne(TrainingArea::class, 'id_speciality');
+    }
 }

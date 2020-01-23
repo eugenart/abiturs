@@ -12,7 +12,7 @@
 */
 
 use Illuminate\Support\Facades\Route;
-
+Auth::routes();
 Route::prefix('admin')->middleware('auth')->group(function () {
 //    Route::redirect('/', '/admin/infoblocks');
 
@@ -36,7 +36,9 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::post('/slider/{id}', 'SliderController@update')->name('slider.update');
     Route::delete('/slider/{id}', 'SliderController@destroy')->name('slider.destroy');
 
-    Route::redirect('/', '/admin/subject');
+//    Route::redirect('/', '/admin/subject');
+
+    Route::get('/subjects', 'SubjectsController@index')->name('subjects.index');
 
 
 //    Route::get('/course', 'CourseController@index')->name('course.index');
@@ -67,7 +69,7 @@ Route::get('/stat', function () {
 //
 //Route::get('/selection', 'SelectionController@index')->name('selection.index');
 //
-Auth::routes();
+
 //
 //Route::get('/home', 'HomeController@index')->name('home');
 //

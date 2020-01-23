@@ -99,19 +99,19 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ Request::is('admin/course*') ? 'active' : null }}" href="{{route('course.index')}}">
+                            <a class="nav-link {{ Request::is('admin/course*') ? 'active' : null }}" href="{{route('section.index')}}">
                                 <span data-feather="shopping-cart"></span>
                                 Направления подготовки
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ Request::is('admin/subject') ? 'active' : null }}" href="{{route('subject.index')}}">
+                            <a class="nav-link {{ Request::is('admin/subject') ? 'active' : null }}" href="{{route('section.index')}}">
                                 <span data-feather="shopping-cart"></span>
                                 Вступительные испытания
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ Request::is('admin/subject-list*') ? 'active' : null }}" href="{{route('subject.list')}}">
+                            <a class="nav-link {{ Request::is('admin/subject-list*') ? 'active' : null }}" href="{{route('section.index')}}">
                                 <span data-feather="users"></span>
                                 Минимальный балл вступительных испытания
                             </a>
