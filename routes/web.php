@@ -39,26 +39,31 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::redirect('/', '/admin/subject');
 
 
-    Route::get('/course', 'CourseController@index')->name('course.index');
-    Route::post('/course', 'CourseController@store')->name('course.store');
-    Route::post('/course/{id}', 'CourseController@update')->name('course.update');
-    Route::delete('/course/{id}', 'CourseController@destroy')->name('course.destroy');
-
-    Route::get('/subject', 'SubjectController@index')->name('subject.index');
-    Route::post('/subject', 'SubjectController@store')->name('subject.store');
-    Route::post('/subject/{id}', 'SubjectController@update')->name('subject.update');
-    Route::delete('/subject/{id}', 'SubjectController@destroy')->name('subject.destroy');
-
-    Route::get('/subject-list', 'SubjectController@subjectList')->name('subject.list');
-    Route::post('/subject-list', 'SubjectController@addToSubjectList')->name('subject.addToList');
-    Route::delete('/subject-list/{id}', 'SubjectController@deleteFromSubjectList')->name('subject.deleteFromList');
+//    Route::get('/course', 'CourseController@index')->name('course.index');
+//    Route::post('/course', 'CourseController@store')->name('course.store');
+//    Route::post('/course/{id}', 'CourseController@update')->name('course.update');
+//    Route::delete('/course/{id}', 'CourseController@destroy')->name('course.destroy');
+//
+//    Route::get('/subject', 'SubjectController@index')->name('subject.index');
+//    Route::post('/subject', 'SubjectController@store')->name('subject.store');
+//    Route::post('/subject/{id}', 'SubjectController@update')->name('subject.update');
+//    Route::delete('/subject/{id}', 'SubjectController@destroy')->name('subject.destroy');
+//
+//    Route::get('/subject-list', 'SubjectController@subjectList')->name('subject.list');
+//    Route::post('/subject-list', 'SubjectController@addToSubjectList')->name('subject.addToList');
+//    Route::delete('/subject-list/{id}', 'SubjectController@deleteFromSubjectList')->name('subject.deleteFromList');
 
 
 });
+
+Route::get('/parser', 'ParserController@parseFromXls');
+
+Route::get('/parserjson', 'ParserJsonController@parseFromJson');
 
 Route::get('/stat', function () {
     return view('pages.stat');
 });
+
 //
 //Route::get('/selection', 'SelectionController@index')->name('selection.index');
 //
