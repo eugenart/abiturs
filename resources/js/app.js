@@ -6,18 +6,15 @@ import jQuery from 'jquery';
 import BootstrapVue from 'bootstrap-vue'
 import Multiselect from 'vue-multiselect'
 import 'vue-multiselect/dist/vue-multiselect.min.css'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+import 'font-awesome/css/font-awesome.min.css'
 // register globally
 Vue.component('multiselect', Multiselect)
 
 window.$ = window.jQuery = jQuery;
 
 Vue.use(BootstrapVue);
-
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
-import 'font-awesome/css/font-awesome.min.css'
-
-
 
 
 Vue.component('infoblock', require('./components/Infoblock').default);
