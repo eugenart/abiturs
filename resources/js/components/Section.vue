@@ -1,5 +1,6 @@
 <template>
     <div>
+        {{sections}}
         <div class="row">
             <div class="col-12">
                 <form @submit.prevent="!isSectionUpdate? addSection() : updateSection()" class="col-12 p-0"
@@ -116,44 +117,53 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <p class="m-0">Подразделы</p>
+                        <div class="row">
+                            <div class="col-6">
+                                <p class="m-0">Подразделы</p>
+                            </div>
+<!--                            <div class="col-6">-->
+<!--                                <button class="float-right btn btn-sm btn-info" onclick="$('#infoblockForm').show()">-->
+<!--                                    Добавить-->
+<!--                                </button>-->
+<!--                            </div>-->
+                        </div>
                     </div>
                     <div class="card-body">
                         <div class="col-12">
                             <div class="row">
-                                <div class="col-6" v-for="section in sections">
+                                <div class="col-6" v-for="block in blocks">
                                     <div class="card">
                                         <div class="card-header">
                                             <div class="row">
                                                 <div class="col-6">
-                                                    {{section.name}}
+                                                    {{block.name}}
                                                 </div>
                                                 <div class="col-6 float-right">
                                                     <p class="text-right m-0">
-                                                        <i class="fas fa-folder-plus"
-                                                           style="font-size: 20px; cursor: pointer"
-                                                           v-b-tooltip.hover title="Добавить папку"
-                                                           @click="changeParents(section.id, null, true);"
-                                                        ></i>
+<!--                                                        <i class="fas fa-folder-plus"-->
+<!--                                                           style="font-size: 20px; cursor: pointer"-->
+<!--                                                           v-b-tooltip.hover title="Добавить папку"-->
+<!--                                                           @click="changeParents(block.id, null, true);"-->
+<!--                                                        ></i>-->
                                                         &nbsp;
                                                         <i style="font-size: 20px; cursor: pointer"
                                                            class="fas fa-file-medical"
                                                            v-b-tooltip.hover title="Добавить элемент"
-                                                           @click="changeParents(section.id, null, false)">
+                                                           @click="changeParents(block.id, null, false)">
                                                         </i>
                                                     </p>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="card-body">
-                                            <div v-for="sec in section.sectionsList">
+                                            <div v-for="sec in sections" v-if="sec.infoblockID === block.id">
                                                 <div v-if="!sec.isFolder">
                                                     <div class="row">
                                                         <div class="col-9">
                                                             <p>
                                                                 <i class="far fa-file-alt"></i>
                                                                 <a
-                                                                    :href="'/admin/section-content/' + sec.id"><span>{{sec.name}}</span></a>
+                                                                    :href="'/admin/section-content/' + sec.id"><span>{{sec.name}} {{sec.id}}</span></a>
                                                             </p>
                                                         </div>
                                                         <div class="col-3">
@@ -161,17 +171,17 @@
                                                     <span class="float-right">
                                                         <i class="far fa-eye" v-if="sec.activity"
                                                            style="cursor: pointer"
-                                                           @click="changeActivity(sec)"></i>
+                                                           @click="changeActivity(sec)"/>
                                                         <i class="far fa-eye-slash"
                                                            style="cursor: pointer"
                                                            v-else
-                                                           @click="changeActivity(sec)"></i>
+                                                           @click="changeActivity(sec)"/>
                                                         &nbsp;
                                                         <i class="fas fa-pen" style="cursor: pointer"
-                                                           @click="changeSection(sec)"></i>
+                                                           @click="changeSection(sec)"/>
                                                          &nbsp;
                                                         <i class="fas fa-trash-alt" style="cursor: pointer; color:red;"
-                                                           @click="removeSection(sec.id, sec.infoblockID, sec.sectionID)"></i>
+                                                           @click="removeSection(sec.id, sec.infoblockID, sec.sectionID)"/>
                                                     </span>
                                                             </p>
                                                         </div>

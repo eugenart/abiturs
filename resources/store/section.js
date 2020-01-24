@@ -24,7 +24,8 @@ export default {
         },
 
         EDIT_SECTION(state, payload) {
-            let index = state.sections.findIndex(el => el.id === payload.id)
+            let index = state.sections.findIndex(el => el.id === payload.id);
+            console.log(payload);
             Vue.set(state.sections, index, payload)
         },
 
@@ -50,6 +51,7 @@ export default {
 
         SET_SECTIONS: (state, payload) => {
             state.sections = payload;
+            console.log(payload)
         }
     },
     actions: {
