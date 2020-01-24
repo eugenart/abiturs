@@ -92,19 +92,19 @@
                             <div class="row">
                                 <div class="col-6">
                                     <button v-show="!isSectionUpdate" class="btn col-12 btn-primary"
-                                            type="submit">
+                                            type="submit" onclick="$('#infoblockForm').hide()">
                                         Создать
                                     </button>
                                     <button v-show="isSectionUpdate" class="btn col-12 btn-success"
-                                            type="submit">
+                                            type="submit" onclick="$('#infoblockForm').hide()">
                                         Сохранить изменения
                                     </button>
                                 </div>
                                 <div class="col-6">
-                                    <button class="btn btn-light col-12" type="button" @click="clearCurrentSection">
-                                        Очистить
-                                        форму
-                                    </button>
+<!--                                    <button class="btn btn-light col-12" type="button" @click="clearCurrentSection">-->
+<!--                                        Очистить-->
+<!--                                        форму-->
+<!--                                    </button>-->
                                 </div>
                             </div>
                         </div>
@@ -152,7 +152,7 @@
                                                             <p>
                                                                 <i class="far fa-file-alt"></i>
                                                                 <a
-                                                                    :href="'/admin/section-content/' + sec.id"><span>{{sec.name}} {{sec.id}}</span></a>
+                                                                    :href="'/admin/section-content/' + sec.id"><span>{{sec.name}}</span></a>
                                                             </p>
                                                         </div>
                                                         <div class="col-3">
@@ -390,7 +390,7 @@
                     "ю": "yu",
                     ' ': '-'
                 };
-                let letters = /^[A-Za-z]+$/;
+                let letters = /^[A-Za-z0-9]+$/;
                 this.section.url = this.section.name.split('').map(function (char) {
                     return a[char] || char.match(letters);
                 }).join("");

@@ -2269,7 +2269,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         "ю": "yu",
         ' ': '-'
       };
-      var letters = /^[A-Za-z]+$/;
+      var letters = /^[A-Za-z0-9]+$/;
       this.infoblock.url = this.infoblock.name.split('').map(function (_char) {
         return a[_char] || _char.match(letters);
       }).join("");
@@ -2700,7 +2700,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         "ю": "yu",
         ' ': '-'
       };
-      var letters = /^[A-Za-z]+$/;
+      var letters = /^[A-Za-z0-9]+$/;
       this.section.url = this.section.name.split('').map(function (_char) {
         return a[_char] || _char.match(letters);
       }).join("");
@@ -88376,7 +88376,7 @@ var render = function() {
                                     _vm._v(" "),
                                     _c("label", [
                                       _vm._v(
-                                        "Отображать на главной\n                                                        странице"
+                                        "Отображать на главной\n                                                            странице"
                                       )
                                     ])
                                   ])
@@ -88583,11 +88583,14 @@ var render = function() {
                           }
                         ],
                         staticClass: "btn col-12 btn-primary",
-                        attrs: { type: "submit" }
+                        attrs: {
+                          type: "submit",
+                          onclick: "$('#infoblockForm').hide()"
+                        }
                       },
                       [
                         _vm._v(
-                          "\n                                    Создать\n                                "
+                          "\n                                        Создать\n                                    "
                         )
                       ]
                     ),
@@ -88604,31 +88607,20 @@ var render = function() {
                           }
                         ],
                         staticClass: "btn col-12 btn-success",
-                        attrs: { type: "submit" }
+                        attrs: {
+                          type: "submit",
+                          onclick: "$('#infoblockForm').hide()"
+                        }
                       },
                       [
                         _vm._v(
-                          "\n                                    Сохранить изменения\n                                "
+                          "\n                                        Сохранить изменения\n                                    "
                         )
                       ]
                     )
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "col-6" }, [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-light col-12",
-                        attrs: { type: "button" },
-                        on: { click: _vm.clearCurrentSection }
-                      },
-                      [
-                        _vm._v(
-                          "\n                                    Очистить\n                                    форму\n                                "
-                        )
-                      ]
-                    )
-                  ])
+                  _c("div", { staticClass: "col-6" })
                 ])
               ])
             ])
@@ -88654,9 +88646,9 @@ var render = function() {
                         _c("div", { staticClass: "row" }, [
                           _c("div", { staticClass: "col-6" }, [
                             _vm._v(
-                              "\n                                                " +
+                              "\n                                                    " +
                                 _vm._s(block.name) +
-                                "\n                                            "
+                                "\n                                                "
                             )
                           ]),
                           _vm._v(" "),
@@ -88717,11 +88709,7 @@ var render = function() {
                                               },
                                               [
                                                 _c("span", [
-                                                  _vm._v(
-                                                    _vm._s(sec.name) +
-                                                      " " +
-                                                      _vm._s(sec.id)
-                                                  )
+                                                  _vm._v(_vm._s(sec.name))
                                                 ])
                                               ]
                                             )
@@ -88767,7 +88755,7 @@ var render = function() {
                                                       }
                                                     }),
                                                 _vm._v(
-                                                  "\n                                                     \n                                                    "
+                                                  "\n                                                         \n                                                        "
                                                 ),
                                                 _c("i", {
                                                   staticClass: "fas fa-pen",
@@ -88783,7 +88771,7 @@ var render = function() {
                                                   }
                                                 }),
                                                 _vm._v(
-                                                  "\n                                                      \n                                                    "
+                                                  "\n                                                          \n                                                        "
                                                 ),
                                                 _c("i", {
                                                   staticClass:
@@ -88895,7 +88883,7 @@ var render = function() {
                                                         }
                                                       }),
                                                   _vm._v(
-                                                    "\n                                                     \n                                                    "
+                                                    "\n                                                         \n                                                        "
                                                   ),
                                                   _c("i", {
                                                     staticClass: "fas fa-pen",
@@ -88911,7 +88899,7 @@ var render = function() {
                                                     }
                                                   }),
                                                   _vm._v(
-                                                    "\n                                                      \n                                                    "
+                                                    "\n                                                          \n                                                        "
                                                   ),
                                                   _c("i", {
                                                     staticClass:
@@ -89018,7 +89006,7 @@ var render = function() {
                                                               }
                                                             }),
                                                         _vm._v(
-                                                          "\n                                                                     \n                                                                    "
+                                                          "\n                                                                         \n                                                                        "
                                                         ),
                                                         _c("i", {
                                                           staticClass:
@@ -89037,7 +89025,7 @@ var render = function() {
                                                           }
                                                         }),
                                                         _vm._v(
-                                                          "\n                                                                      \n                                                                    "
+                                                          "\n                                                                          \n                                                                        "
                                                         ),
                                                         _c("i", {
                                                           staticClass:
@@ -112420,8 +112408,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Applications/MAMP/htdocs/abiturs/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/abiturs/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\OSPanel\domains\abiturs\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\OSPanel\domains\abiturs\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

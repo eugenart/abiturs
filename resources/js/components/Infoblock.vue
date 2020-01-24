@@ -403,7 +403,7 @@
                     "ю": "yu",
                     ' ': '-'
                 };
-                let letters = /^[A-Za-z]+$/;
+                let letters = /^[A-Za-z0-9]+$/;
                 this.infoblock.url = this.infoblock.name.split('').map(function (char) {
                     return a[char] || char.match(letters);
                 }).join("");
