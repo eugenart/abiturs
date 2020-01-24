@@ -1,6 +1,5 @@
 <template>
     <div>
-        {{sections}}
         <div class="row">
             <div class="col-12">
                 <form @submit.prevent="!isSectionUpdate? addSection() : updateSection()" class="col-12 p-0"
@@ -121,11 +120,6 @@
                             <div class="col-6">
                                 <p class="m-0">Подразделы</p>
                             </div>
-<!--                            <div class="col-6">-->
-<!--                                <button class="float-right btn btn-sm btn-info" onclick="$('#infoblockForm').show()">-->
-<!--                                    Добавить-->
-<!--                                </button>-->
-<!--                            </div>-->
                         </div>
                     </div>
                     <div class="card-body">
@@ -140,12 +134,7 @@
                                                 </div>
                                                 <div class="col-6 float-right">
                                                     <p class="text-right m-0">
-<!--                                                        <i class="fas fa-folder-plus"-->
-<!--                                                           style="font-size: 20px; cursor: pointer"-->
-<!--                                                           v-b-tooltip.hover title="Добавить папку"-->
-<!--                                                           @click="changeParents(block.id, null, true);"-->
-<!--                                                        ></i>-->
-                                                        &nbsp;
+
                                                         <i style="font-size: 20px; cursor: pointer"
                                                            class="fas fa-file-medical"
                                                            v-b-tooltip.hover title="Добавить элемент"
@@ -414,15 +403,16 @@
             },
 
             changeSection(section) {
+                console.log('hi')
                 this.section = section;
                 this.isSectionUpdate = true
+                $('#infoblockForm').show()
             },
 
             updateSection() {
                 this.$store.dispatch('UPDATE_SECTION', this.section);
                 this.isSectionUpdate = false
                 this.clearCurrentSection()
-
             },
 
             removeSection(id, iId, sId) {

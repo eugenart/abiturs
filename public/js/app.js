@@ -2579,17 +2579,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Section',
   data: function data() {
@@ -2722,8 +2711,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.clearCurrentSection();
     },
     changeSection: function changeSection(section) {
+      console.log('hi');
       this.section = section;
       this.isSectionUpdate = true;
+      $('#infoblockForm').show();
     },
     updateSection: function updateSection() {
       this.$store.dispatch('UPDATE_SECTION', this.section);
@@ -88203,7 +88194,6 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm._v("\n        " + _vm._s(_vm.sections) + "\n        "),
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-12" }, [
         _c(
@@ -88386,7 +88376,7 @@ var render = function() {
                                     _vm._v(" "),
                                     _c("label", [
                                       _vm._v(
-                                        "Отображать на главной\n                                                            странице"
+                                        "Отображать на главной\n                                                        странице"
                                       )
                                     ])
                                   ])
@@ -88597,7 +88587,7 @@ var render = function() {
                       },
                       [
                         _vm._v(
-                          "\n                                        Создать\n                                    "
+                          "\n                                    Создать\n                                "
                         )
                       ]
                     ),
@@ -88618,7 +88608,7 @@ var render = function() {
                       },
                       [
                         _vm._v(
-                          "\n                                        Сохранить изменения\n                                    "
+                          "\n                                    Сохранить изменения\n                                "
                         )
                       ]
                     )
@@ -88634,7 +88624,7 @@ var render = function() {
                       },
                       [
                         _vm._v(
-                          "\n                                        Очистить\n                                        форму\n                                    "
+                          "\n                                    Очистить\n                                    форму\n                                "
                         )
                       ]
                     )
@@ -88664,17 +88654,14 @@ var render = function() {
                         _c("div", { staticClass: "row" }, [
                           _c("div", { staticClass: "col-6" }, [
                             _vm._v(
-                              "\n                                                    " +
+                              "\n                                                " +
                                 _vm._s(block.name) +
-                                "\n                                                "
+                                "\n                                            "
                             )
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "col-6 float-right" }, [
                             _c("p", { staticClass: "text-right m-0" }, [
-                              _vm._v(
-                                "\n                                                         \n                                                        "
-                              ),
                               _c("i", {
                                 directives: [
                                   {
@@ -88780,7 +88767,7 @@ var render = function() {
                                                       }
                                                     }),
                                                 _vm._v(
-                                                  "\n                                                         \n                                                        "
+                                                  "\n                                                     \n                                                    "
                                                 ),
                                                 _c("i", {
                                                   staticClass: "fas fa-pen",
@@ -88796,7 +88783,7 @@ var render = function() {
                                                   }
                                                 }),
                                                 _vm._v(
-                                                  "\n                                                          \n                                                        "
+                                                  "\n                                                      \n                                                    "
                                                 ),
                                                 _c("i", {
                                                   staticClass:
@@ -88908,7 +88895,7 @@ var render = function() {
                                                         }
                                                       }),
                                                   _vm._v(
-                                                    "\n                                                         \n                                                        "
+                                                    "\n                                                     \n                                                    "
                                                   ),
                                                   _c("i", {
                                                     staticClass: "fas fa-pen",
@@ -88924,7 +88911,7 @@ var render = function() {
                                                     }
                                                   }),
                                                   _vm._v(
-                                                    "\n                                                          \n                                                        "
+                                                    "\n                                                      \n                                                    "
                                                   ),
                                                   _c("i", {
                                                     staticClass:
@@ -89031,7 +89018,7 @@ var render = function() {
                                                               }
                                                             }),
                                                         _vm._v(
-                                                          "\n                                                                         \n                                                                        "
+                                                          "\n                                                                     \n                                                                    "
                                                         ),
                                                         _c("i", {
                                                           staticClass:
@@ -89050,7 +89037,7 @@ var render = function() {
                                                           }
                                                         }),
                                                         _vm._v(
-                                                          "\n                                                                          \n                                                                        "
+                                                          "\n                                                                      \n                                                                    "
                                                         ),
                                                         _c("i", {
                                                           staticClass:
@@ -112047,10 +112034,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var needSection = null;
 
       if (payload.infoblockID) {
-        needSection = state.sections.find(function (item) {
-          return item.id === payload.infoblockID;
-        });
-        needSection.sectionsList.push(payload);
+        //needSection = state.sections.find(item => item.id === payload.infoblockID)
+        state.sections.push(payload);
       } else {
         $.each(state.sections, function (key, value) {
           if (!needSection) {
@@ -112072,28 +112057,25 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       Vue.set(state.sections, index, payload);
     },
     REMOVE_SECTION: function REMOVE_SECTION(state, payload) {
-      var needSection = null;
-      console.log(payload);
+      var needSections = null;
+      console.log(payload, 'delete', state.sections);
 
       if (!payload.sId) {
-        needSection = state.sections.find(function (item) {
-          return item.id === payload.iId;
-        });
-        needSection.sectionsList = $.grep(needSection.sectionsList, function (item) {
+        needSections = $.grep(state.sections, function (item) {
           return item.id !== payload.id;
         });
-      } else {
-        $.each(state.sections, function (key, value) {
-          if (!needSection) {
-            needSection = value.sectionsList.find(function (item) {
-              return item.id === payload.sId;
-            });
-            needSection.folder = $.grep(needSection.folder, function (item) {
-              return item.id !== payload.id;
-            });
-          }
-        });
-      }
+        state.sections = needSections;
+      } // else {
+      //     $.each(state.sections, function (key, value) {
+      //         if (!needSection) {
+      //             needSection = value.sectionsList.find(item => item.id === payload.sId)
+      //             needSection.folder = $.grep(needSection.folder, function (item) {
+      //                 return item.id !== payload.id
+      //             })
+      //         }
+      //     })
+      // }
+
     },
     SET_SECTIONS: function SET_SECTIONS(state, payload) {
       state.sections = payload;

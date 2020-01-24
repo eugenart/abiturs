@@ -5,11 +5,10 @@ export default {
     mutations: {
         ADD_SECTION(state, payload) {
             console.log(payload)
-
             let needSection = null
             if (payload.infoblockID) {
-                needSection = state.sections.find(item => item.id === payload.infoblockID)
-                needSection.sectionsList.push(payload)
+                //needSection = state.sections.find(item => item.id === payload.infoblockID)
+                state.sections.push(payload)
             } else {
                 $.each(state.sections, function (key, value) {
                     if (!needSection) {
@@ -30,23 +29,24 @@ export default {
         },
 
         REMOVE_SECTION(state, payload) {
-            let needSection = null
-            console.log(payload)
+            let needSections = null
+            console.log(payload, 'delete', state.sections)
             if (!payload.sId) {
-                needSection = state.sections.find(item => item.id === payload.iId)
-                needSection.sectionsList = $.grep(needSection.sectionsList, function (item) {
+                needSections = $.grep(state.sections, function (item) {
                     return item.id !== payload.id
-                })
-            } else {
-                $.each(state.sections, function (key, value) {
-                    if (!needSection) {
-                        needSection = value.sectionsList.find(item => item.id === payload.sId)
-                        needSection.folder = $.grep(needSection.folder, function (item) {
-                            return item.id !== payload.id
-                        })
-                    }
-                })
+                });
+                state.sections = needSections
             }
+            // else {
+            //     $.each(state.sections, function (key, value) {
+            //         if (!needSection) {
+            //             needSection = value.sectionsList.find(item => item.id === payload.sId)
+            //             needSection.folder = $.grep(needSection.folder, function (item) {
+            //                 return item.id !== payload.id
+            //             })
+            //         }
+            //     })
+            // }
         },
 
         SET_SECTIONS: (state, payload) => {
