@@ -44,7 +44,7 @@
 
             fetchSubjects() {
                 let data = axios.get('/admin/subjects')
-                    .then(response => (this.subjects = response.data, console.log(response.data)))
+                    .then(response => (this.subjects = response.data))
             }
         }
     }

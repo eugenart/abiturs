@@ -23,7 +23,7 @@
 </head>
 <body>
 <div id="app">
-    <nav class="navbar navbar-expand-md flex-md-nowrap p-0 fixed-top bg-transparent">
+    <nav class="navbar navbar-expand-md flex-md-nowrap p-2 fixed-top bg-white">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false"

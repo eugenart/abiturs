@@ -306,7 +306,6 @@
         methods: {
 
             changeActivity(section) {
-                console.log('lol')
                 section.activity = !section.activity
                 this.section = section
                 this.updateSection()
@@ -403,7 +402,6 @@
             },
 
             changeSection(section) {
-                console.log('hi')
                 this.section = section;
                 this.isSectionUpdate = true
                 $('#infoblockForm').show()

@@ -53,7 +53,7 @@
         methods: {
             fetchSpecialities() {
                 let data = axios.get('/admin/speciality')
-                    .then(response => (this.specialities = response.data, console.log(this.specialities)))
+                    .then(response => (this.specialities = response.data))
             }
         }
     }

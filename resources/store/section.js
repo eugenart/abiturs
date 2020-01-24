@@ -4,7 +4,6 @@ export default {
     },
     mutations: {
         ADD_SECTION(state, payload) {
-            console.log(payload)
             let needSection = null
             if (payload.infoblockID) {
                 //needSection = state.sections.find(item => item.id === payload.infoblockID)
@@ -13,7 +12,6 @@ export default {
                 $.each(state.sections, function (key, value) {
                     if (!needSection) {
                         needSection = value.sectionsList.find(item => item.id === payload.sectionID)
-                        console.log(needSection)
                         needSection.folder.push(payload)
                     }
                 })
@@ -24,13 +22,11 @@ export default {
 
         EDIT_SECTION(state, payload) {
             let index = state.sections.findIndex(el => el.id === payload.id);
-            console.log(payload);
             Vue.set(state.sections, index, payload)
         },
 
         REMOVE_SECTION(state, payload) {
             let needSections = null
-            console.log(payload, 'delete', state.sections)
             if (!payload.sId) {
                 needSections = $.grep(state.sections, function (item) {
                     return item.id !== payload.id
@@ -51,7 +47,6 @@ export default {
 
         SET_SECTIONS: (state, payload) => {
             state.sections = payload;
-            console.log(payload)
         }
     },
     actions: {

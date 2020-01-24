@@ -55,7 +55,7 @@
 
             fetchScores() {
                 let data = axios.get('/admin/minscore')
-                    .then(response => (this.prices = response.data, console.log(response.data)))
+                    .then(response => (this.prices = response.data))
             }
         }
     }

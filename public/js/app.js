@@ -2618,7 +2618,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   methods: {
     changeActivity: function changeActivity(section) {
-      console.log('lol');
       section.activity = !section.activity;
       this.section = section;
       this.updateSection();
@@ -2711,7 +2710,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.clearCurrentSection();
     },
     changeSection: function changeSection(section) {
-      console.log('hi');
       this.section = section;
       this.isSectionUpdate = true;
       $('#infoblockForm').show();
@@ -3069,7 +3067,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var data = axios.get('/admin/subjects').then(function (response) {
-        return _this.subjects = response.data, console.log(response.data);
+        return _this.subjects = response.data;
       });
     }
   }
@@ -4249,7 +4247,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var data = axios.get('/admin/minscore').then(function (response) {
-        return _this.prices = response.data, console.log(response.data);
+        return _this.prices = response.data;
       });
     }
   }
@@ -4694,7 +4692,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var data = axios.get('/admin/speciality').then(function (response) {
-        return _this.specialities = response.data, console.log(_this.specialities);
+        return _this.specialities = response.data;
       });
     }
   }
@@ -111877,10 +111875,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 14:
                 _ref2 = _context2.sent;
                 data = _ref2.data;
-                console.log(data.infoblock);
                 context.commit('EDIT_BLOCK', data.infoblock);
 
-              case 18:
+              case 17:
               case "end":
                 return _context2.stop();
             }
@@ -112018,7 +112015,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   mutations: {
     ADD_SECTION: function ADD_SECTION(state, payload) {
-      console.log(payload);
       var needSection = null;
 
       if (payload.infoblockID) {
@@ -112030,7 +112026,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             needSection = value.sectionsList.find(function (item) {
               return item.id === payload.sectionID;
             });
-            console.log(needSection);
             needSection.folder.push(payload);
           }
         });
@@ -112041,12 +112036,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var index = state.sections.findIndex(function (el) {
         return el.id === payload.id;
       });
-      console.log(payload);
       Vue.set(state.sections, index, payload);
     },
     REMOVE_SECTION: function REMOVE_SECTION(state, payload) {
       var needSections = null;
-      console.log(payload, 'delete', state.sections);
 
       if (!payload.sId) {
         needSections = $.grep(state.sections, function (item) {
@@ -112067,7 +112060,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     SET_SECTIONS: function SET_SECTIONS(state, payload) {
       state.sections = payload;
-      console.log(payload);
     }
   },
   actions: {
@@ -112314,10 +112306,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 10:
                 _ref2 = _context2.sent;
                 data = _ref2.data;
-                console.log(data.slider);
                 context.commit('EDIT_SLIDE', data.slider);
 
-              case 14:
+              case 13:
               case "end":
                 return _context2.stop();
             }
@@ -112408,8 +112399,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\OSPanel\domains\abiturs\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\OSPanel\domains\abiturs\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Applications/MAMP/htdocs/abiturs/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/abiturs/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
