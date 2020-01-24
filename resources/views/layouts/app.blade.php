@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
@@ -86,7 +86,7 @@
 {{--                            </a>--}}
 {{--                        </li>--}}
                         <li class="nav-item">
-                            <a class="nav-link {{ Request::is('admin/infoblock*') ? 'active' : null }}"
+                            <a class="nav-link  {{ Request::is('admin/infoblock*') ? 'active' : null }}"
                                href="{{route('infoblock.index')}}">
                                 <span data-feather="file"></span>
                                 Разделы сайта
@@ -99,21 +99,33 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ Request::is('admin/course*') ? 'active' : null }}" href="{{route('speciality.index')}}">
+                            <a class="nav-link {{ Request::is('admin/speciality') ? 'active' : null }}" href="{{route('speciality.index')}}">
                                 <span data-feather="shopping-cart"></span>
                                 Направления подготовки
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ Request::is('admin/subject') ? 'active' : null }}" href="{{route('subjects.index')}}">
+                            <a class="nav-link {{ Request::is('admin/subjects') ? 'active' : null }}" href="{{route('subjects.index')}}">
                                 <span data-feather="shopping-cart"></span>
                                 Вступительные испытания
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ Request::is('admin/subject-list*') ? 'active' : null }}" href="{{route('section.index')}}">
+                            <a class="nav-link {{ Request::is('admin/minscore') ? 'active' : null }}" href="{{route('minscore.index')}}">
                                 <span data-feather="users"></span>
-                                Минимальный балл вступительных испытания
+                                Минимальные баллы вступительных испытаний
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ Request::is('admin/price') ? 'active' : null }}" href="{{route('price.index')}}">
+                                <span data-feather="users"></span>
+                                Свободные места и стоимость обучения
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ Request::is('admin/parse') ? 'active' : null }}" href="{{route('parse.index')}}">
+                                <span data-feather="users"></span>
+                                Выгрузка данных
                             </a>
                         </li>
                         <li class="nav-item">
@@ -122,18 +134,6 @@
                                 Слайдер
                             </a>
                         </li>
-{{--                        <li class="nav-item">--}}
-{{--                            <a class="nav-link" href="#">--}}
-{{--                                <span data-feather="users"></span>--}}
-{{--                                Документы--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
-{{--                        <li class="nav-item">--}}
-{{--                            <a class="nav-link" href="#">--}}
-{{--                                <span data-feather="bar-chart-2"></span>--}}
-{{--                                Мультимедиа--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
                     </ul>
                 </div>
             </nav>

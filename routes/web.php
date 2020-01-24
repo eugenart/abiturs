@@ -14,7 +14,7 @@
 use Illuminate\Support\Facades\Route;
 Auth::routes();
 Route::prefix('admin')->middleware('auth')->group(function () {
-//    Route::redirect('/', '/admin/infoblocks');
+    Route::redirect('/', '/admin/infoblocks');
 
 
     Route::get('/infoblocks', 'InfoblockController@index')->name('infoblock.index');
@@ -47,22 +47,6 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/parse-students', 'ParserJsonController@parseFromJson')->name('parse.parseFromJson');
     Route::get('/parse-areas', 'ParserJsonController@parseAreas')->name('parse.parseAreas');
 
-
-//    Route::get('/course', 'CourseController@index')->name('course.index');
-//    Route::post('/course', 'CourseController@store')->name('course.store');
-//    Route::post('/course/{id}', 'CourseController@update')->name('course.update');
-//    Route::delete('/course/{id}', 'CourseController@destroy')->name('course.destroy');
-//
-//    Route::get('/subject', 'SubjectController@index')->name('subject.index');
-//    Route::post('/subject', 'SubjectController@store')->name('subject.store');
-//    Route::post('/subject/{id}', 'SubjectController@update')->name('subject.update');
-//    Route::delete('/subject/{id}', 'SubjectController@destroy')->name('subject.destroy');
-//
-//    Route::get('/subject-list', 'SubjectController@subjectList')->name('subject.list');
-//    Route::post('/subject-list', 'SubjectController@addToSubjectList')->name('subject.addToList');
-//    Route::delete('/subject-list/{id}', 'SubjectController@deleteFromSubjectList')->name('subject.deleteFromList');
-
-
 });
 
 //Route::get('/parser', 'ParserController@parseFromXls');
@@ -82,8 +66,10 @@ Route::get('/stat', function () {
 //
 //Route::get('/', 'PageController@index')->name('pages.index');
 Route::get('/{route}', 'PageController@route')->name('pages.route');
-Route::get('/', 'SelectionController@index')->name('selection.index');
-
+//Route::get('/', 'SelectionController@index')->name('selection.index');
+Route::get('/', function () {
+    return view('pages.stat');
+});
 
 
 Auth::routes();
