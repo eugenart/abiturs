@@ -2166,7 +2166,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       isBlockUpdate: false,
       currentInfoblock: {},
       errorImage: '',
-      previewUrl: '../../storage/preview/default.jpg',
+      previewUrl: '../../../storage/preview/default.jpg',
       formStatus: false,
       news: null
     };

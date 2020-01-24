@@ -35,7 +35,7 @@
                                                                  drop-placeholder="Перенесите сюда изображение"
                                                                  browse-text='Oбзор'
                                                                  @change="getPreview"
-                                                    ></b-form-file>
+                                                    />
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -123,7 +123,7 @@
                                                 <div class="col-2">
                                                     <button type="button" class="btn btn-success btn-sm"
                                                             @click="addNews"><i
-                                                        class="fa fa-plus"></i></button>
+                                                        class="fa fa-plus"/></button>
                                                 </div>
                                             </div>
                                             <div class="row mt-4">
@@ -193,16 +193,16 @@
                                                     <span class="float-right">
                                                         <i class="far fa-eye" style="cursor: pointer"
                                                            v-if="block.activity"
-                                                           @click="changeActivity(block)"></i>
+                                                           @click="changeActivity(block)"/>
                                                         <i class="far fa-eye-slash" style="cursor: pointer"
                                                            v-else
-                                                           @click="changeActivity(block)"></i>
+                                                           @click="changeActivity(block)"/>
                                                         &nbsp;
                                                         <i class="fas fa-pen" style="cursor: pointer"
-                                                           @click="changeInfoblock(block)"></i>
+                                                           @click="changeInfoblock(block)"/>
                                                          &nbsp;
                                                         <i class="fas fa-trash-alt" style="cursor: pointer; color:red;"
-                                                           @click="removeInfoblock(block.id,index)"></i>
+                                                           @click="removeInfoblock(block.id,index)"/>
                                                     </span>
                                                 </p>
                                             </div>
@@ -289,7 +289,7 @@
                 isBlockUpdate: false,
                 currentInfoblock: {},
                 errorImage: '',
-                previewUrl: '../../storage/preview/default.jpg',
+                previewUrl: '../../../storage/preview/default.jpg',
                 formStatus: false,
                 news: null
             }
@@ -297,8 +297,8 @@
 
 
         mounted() {
-            this.currentInfoblock = {...this.infoblock}
-            this.$store.dispatch('GET_BLOCKS')
+            this.currentInfoblock = {...this.infoblock};
+            this.$store.dispatch('GET_BLOCKS');
             $('#infoblockForm').hide()
         },
 

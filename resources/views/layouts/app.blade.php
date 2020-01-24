@@ -78,7 +78,7 @@
         <div class="row">
             <nav class="col-md-2 d-none d-md-block sidebar">
                 <div class="sidebar-sticky">
-                    <ul class="nav flex-column mt-3">
+                    <ul class="nav flex-column mt-5">
                         <li class="nav-item">
                             <a class="nav-link  {{ Request::is('admin/infoblock*') ? 'active' : null }}"
                                href="{{route('infoblock.index')}}">
