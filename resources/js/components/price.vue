@@ -18,14 +18,14 @@
                                         </thead>
                                         <tbody v-for="tarea in fc.tArea">
                                         <tr class="bordered">
-                                            <td>
+                                            <td width="50%">
                                                 {{tarea.area.sp_name.code}}
                                                 {{tarea.area.sp_name.name}}
                                             </td>
-                                            <td>{{tarea.area.trainingForm}}</td>
-                                            <td>{{tarea.area.freeSeatsNumber}}</td>
-                                            <td>{{tarea.area.years}}</td>
-                                            <td>{{Math.ceil(tarea.area.price / tarea.area.years)}} руб.</td>
+                                            <td width="10%">{{tarea.area.trainingForm}}</td>
+                                            <td width="15%">{{tarea.area.freeSeatsNumber}}</td>
+                                            <td width="15%">{{tarea.area.years}}</td>
+                                            <td width="10%">{{Math.ceil(tarea.area.price / tarea.area.years)}} руб.</td>
                                         </tr>
                                         </tbody>
                                     </table>

@@ -10,10 +10,10 @@
                                     <h3>{{fc.name}}</h3>
                                     <table class="table table-sm table-bordered">
                                         <thead>
-                                            <th>Специальности</th>
-                                            <th>Форма обучения</th>
-                                            <th>Предметы</th>
-                                            <th>Оценки</th>
+                                            <th width="40%">Специальности</th>
+                                            <th width="10%">Форма обучения</th>
+                                            <th width="40%">Предметы</th>
+                                            <th width="10%">Оценки</th>
                                         </thead>
                                         <tbody v-for="tarea in fc.tArea">
                                             <tr class="bordered">

@@ -30,6 +30,7 @@ class SelectionController extends Controller
         }
         $subjects = SubjectList::where('internal', false)->get();
 //        return view('pages.selection')->with('courses', $courses)->with('subjects', $subjects);
-        return view('priem.index')->with('courses', $courses)->with('subjects', $subjects);
+ //       return view('priem.index')->with('courses', $courses)->with('subjects', $subjects);
+        return view('pages.stat');
     }
 }
