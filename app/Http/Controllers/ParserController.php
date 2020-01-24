@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Faculty;
 use App\Speciality;
 use App\Specialization;
+use App\Subject;
 use Illuminate\Http\Request;
 use PHPExcel_IOFactory;
 
@@ -67,6 +69,49 @@ class ParserController extends Controller
         }
 
         return json_encode('Специальности и специализации успешно выгружены!');
+    }
+
+    public function parseFromXlsSub(Request $request)
+    {
+        require_once 'Classes/PHPExcel.php';
+
+        //Удаляем записи из таблиц
+        Subject::truncate();
+        // Парсим Специализации
+        $xlsSpz = PHPExcel_IOFactory::load(storage_path('app/public/files/Дисциплины.xls'));
+        // Первый лист
+        $xlsSpz->setActiveSheetIndex(0);
+        $sheetSpz = $xlsSpz->getActiveSheet();
+        $sheetSpz = $sheetSpz->toArray();
+
+        for($i=3; $i<count($sheetSpz); $i++){
+
+            //Добавляем записи Специализаций
+            Subject::insert(array(
+                'subjectId'  => $sheetSpz[$i][0],
+                'name'   => $sheetSpz[$i][1]
+            ));
+        }
+
+        //Удаляем записи из таблиц
+        Faculty::truncate();
+        // Парсим Специализации
+        $xlsSpz = PHPExcel_IOFactory::load(storage_path('app/public/files/Факультеты.xls'));
+        // Первый лист
+        $xlsSpz->setActiveSheetIndex(0);
+        $sheetSpz = $xlsSpz->getActiveSheet();
+        $sheetSpz = $sheetSpz->toArray();
+
+        for($i=1; $i<count($sheetSpz); $i++){
+
+            //Добавляем записи Специализаций
+            Faculty::insert(array(
+                'facultyId'  => $sheetSpz[$i][0],
+                'name'   => $sheetSpz[$i][1]
+            ));
+        }
+
+        return json_encode('Факультеты и дисциплины успешно выгружены!');
     }
 
 
