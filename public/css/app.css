@@ -11156,7 +11156,7 @@ body {
   top: 0;
   bottom: 0;
   left: 0;
-  z-index: 100;
+  z-index: 10000 !important;
   /* Behind the navbar */
   padding: 48px 0 0;
   /* Height of navbar */
@@ -11179,6 +11179,7 @@ body {
   padding-top: 0.5rem;
   overflow-x: hidden;
   overflow-y: auto;
+    z-index: 10000;
   /* Scrollable contents if viewport is shorter than content. */
 }
 

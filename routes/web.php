@@ -85,3 +85,7 @@ Route::get('/{route}', 'PageController@route')->name('pages.route');
 Route::get('/', 'SelectionController@index')->name('selection.index');
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

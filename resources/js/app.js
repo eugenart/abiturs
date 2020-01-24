@@ -29,18 +29,12 @@ Vue.component('minScore', require('./components/minScore').default);
 Vue.component('price', require('./components/price').default);
 Vue.component('parse', require('./components/parse').default);
 
-
-Vue.filter("formatDate", function (value) {
-    if (value) {
-        let dateSplit = value.split('-')
-        return dateSplit[2] + '.' + dateSplit[1] + '.' + dateSplit[0]
-    }
-})
+/**
+ * Next, we will create a fresh Vue application instance and attach it to
+ * the page. Then, you may begin adding components to this application
+ * or customize the JavaScript scaffolding to fit your unique needs.
+ */
 
 const app = new Vue({
-    store,
     el: '#app',
-    data: {
-        rootUrl: window.location.hostname
-    }
 });

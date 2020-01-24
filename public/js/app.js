@@ -53451,7 +53451,7 @@ return jQuery;
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
  * @license
  * Lodash <https://lodash.com/>
- * Copyright JS Foundation and other contributors <https://js.foundation/>
+ * Copyright OpenJS Foundation and other contributors <https://openjsf.org/>
  * Released under MIT license <https://lodash.com/license>
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
  * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -53462,7 +53462,7 @@ return jQuery;
   var undefined;
 
   /** Used as the semantic version number. */
-  var VERSION = '4.17.11';
+  var VERSION = '4.17.15';
 
   /** Used as the size to enable large array optimizations. */
   var LARGE_ARRAY_SIZE = 200;
@@ -56121,16 +56121,10 @@ return jQuery;
         value.forEach(function(subValue) {
           result.add(baseClone(subValue, bitmask, customizer, subValue, value, stack));
         });
-
-        return result;
-      }
-
-      if (isMap(value)) {
+      } else if (isMap(value)) {
         value.forEach(function(subValue, key) {
           result.set(key, baseClone(subValue, bitmask, customizer, key, value, stack));
         });
-
-        return result;
       }
 
       var keysFunc = isFull
@@ -57054,8 +57048,8 @@ return jQuery;
         return;
       }
       baseFor(source, function(srcValue, key) {
+        stack || (stack = new Stack);
         if (isObject(srcValue)) {
-          stack || (stack = new Stack);
           baseMergeDeep(object, source, key, srcIndex, baseMerge, customizer, stack);
         }
         else {
@@ -58872,7 +58866,7 @@ return jQuery;
       return function(number, precision) {
         number = toNumber(number);
         precision = precision == null ? 0 : nativeMin(toInteger(precision), 292);
-        if (precision) {
+        if (precision && nativeIsFinite(number)) {
           // Shift with exponential notation to avoid floating-point issues.
           // See [MDN](https://mdn.io/round#Examples) for more details.
           var pair = (toString(number) + 'e').split('e'),
@@ -60055,7 +60049,7 @@ return jQuery;
     }
 
     /**
-     * Gets the value at `key`, unless `key` is "__proto__".
+     * Gets the value at `key`, unless `key` is "__proto__" or "constructor".
      *
      * @private
      * @param {Object} object The object to query.
@@ -60063,6 +60057,10 @@ return jQuery;
      * @returns {*} Returns the property value.
      */
     function safeGet(object, key) {
+      if (key === 'constructor' && typeof object[key] === 'function') {
+        return;
+      }
+
       if (key == '__proto__') {
         return;
       }
@@ -63863,6 +63861,7 @@ return jQuery;
           }
           if (maxing) {
             // Handle invocations in a tight loop.
+            clearTimeout(timerId);
             timerId = setTimeout(timerExpired, wait);
             return invokeFunc(lastCallTime);
           }
@@ -68249,9 +68248,12 @@ return jQuery;
       , 'g');
 
       // Use a sourceURL for easier debugging.
+      // The sourceURL gets injected into the source that's eval-ed, so be careful
+      // with lookup (in case of e.g. prototype pollution), and strip newlines if any.
+      // A newline wouldn't be a valid sourceURL anyway, and it'd enable code injection.
       var sourceURL = '//# sourceURL=' +
-        ('sourceURL' in options
-          ? options.sourceURL
+        (hasOwnProperty.call(options, 'sourceURL')
+          ? (options.sourceURL + '').replace(/[\r\n]/g, ' ')
           : ('lodash.templateSources[' + (++templateCounter) + ']')
         ) + '\n';
 
@@ -68284,7 +68286,9 @@ return jQuery;
 
       // If `variable` is not specified wrap a with-statement around the generated
       // code to add the data object to the top of the scope chain.
-      var variable = options.variable;
+      // Like with sourceURL, we take care to not check the option's prototype,
+      // as this configuration is a code injection vector.
+      var variable = hasOwnProperty.call(options, 'variable') && options.variable;
       if (!variable) {
         source = 'with (obj) {\n' + source + '\n}\n';
       }
@@ -70489,10 +70493,11 @@ return jQuery;
     baseForOwn(LazyWrapper.prototype, function(func, methodName) {
       var lodashFunc = lodash[methodName];
       if (lodashFunc) {
-        var key = (lodashFunc.name + ''),
-            names = realNames[key] || (realNames[key] = []);
-
-        names.push({ 'name': methodName, 'func': lodashFunc });
+        var key = lodashFunc.name + '';
+        if (!hasOwnProperty.call(realNames, key)) {
+          realNames[key] = [];
+        }
+        realNames[key].push({ 'name': methodName, 'func': lodashFunc });
       }
     });
 
@@ -73978,7 +73983,7 @@ process.umask = function() { return 0; };
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(Buffer) {/*!
- * Quill Editor v1.3.6
+ * Quill Editor v1.3.7
  * https://quilljs.com/
  * Copyright (c) 2014, Jason Chen
  * Copyright (c) 2013, salesforce.com
@@ -74413,7 +74418,19 @@ Delta.prototype.slice = function (start, end) {
 Delta.prototype.compose = function (other) {
   var thisIter = op.iterator(this.ops);
   var otherIter = op.iterator(other.ops);
-  var delta = new Delta();
+  var ops = [];
+  var firstOther = otherIter.peek();
+  if (firstOther != null && typeof firstOther.retain === 'number' && firstOther.attributes == null) {
+    var firstLeft = firstOther.retain;
+    while (thisIter.peekType() === 'insert' && thisIter.peekLength() <= firstLeft) {
+      firstLeft -= thisIter.peekLength();
+      ops.push(thisIter.next());
+    }
+    if (firstOther.retain - firstLeft > 0) {
+      otherIter.next(firstOther.retain - firstLeft);
+    }
+  }
+  var delta = new Delta(ops);
   while (thisIter.hasNext() || otherIter.hasNext()) {
     if (otherIter.peekType() === 'insert') {
       delta.push(otherIter.next());
@@ -74434,6 +74451,13 @@ Delta.prototype.compose = function (other) {
         var attributes = op.attributes.compose(thisOp.attributes, otherOp.attributes, typeof thisOp.retain === 'number');
         if (attributes) newOp.attributes = attributes;
         delta.push(newOp);
+
+        // Optimization if rest of other is just retain
+        if (!otherIter.hasNext() && equal(delta.ops[delta.ops.length - 1], newOp)) {
+          var rest = new Delta(thisIter.rest());
+          return delta.concat(rest).chop();
+        }
+
       // Other op should be delete, we could be an insert or retain
       // Insert + delete cancels out
       } else if (typeof otherOp['delete'] === 'number' && typeof thisOp.retain === 'number') {
@@ -74591,6 +74615,8 @@ module.exports = Delta;
 
 var hasOwn = Object.prototype.hasOwnProperty;
 var toStr = Object.prototype.toString;
+var defineProperty = Object.defineProperty;
+var gOPD = Object.getOwnPropertyDescriptor;
 
 var isArray = function isArray(arr) {
 	if (typeof Array.isArray === 'function') {
@@ -74620,6 +74646,35 @@ var isPlainObject = function isPlainObject(obj) {
 	return typeof key === 'undefined' || hasOwn.call(obj, key);
 };
 
+// If name is '__proto__', and Object.defineProperty is available, define __proto__ as an own property on target
+var setProperty = function setProperty(target, options) {
+	if (defineProperty && options.name === '__proto__') {
+		defineProperty(target, options.name, {
+			enumerable: true,
+			configurable: true,
+			value: options.newValue,
+			writable: true
+		});
+	} else {
+		target[options.name] = options.newValue;
+	}
+};
+
+// Return undefined instead of __proto__ if '__proto__' is not an own property
+var getProperty = function getProperty(obj, name) {
+	if (name === '__proto__') {
+		if (!hasOwn.call(obj, name)) {
+			return void 0;
+		} else if (gOPD) {
+			// In early versions of node, obj['__proto__'] is buggy when obj has
+			// __proto__ as an own property. Object.getOwnPropertyDescriptor() works.
+			return gOPD(obj, name).value;
+		}
+	}
+
+	return obj[name];
+};
+
 module.exports = function extend() {
 	var options, name, src, copy, copyIsArray, clone;
 	var target = arguments[0];
@@ -74644,8 +74699,8 @@ module.exports = function extend() {
 		if (options != null) {
 			// Extend the base object
 			for (name in options) {
-				src = target[name];
-				copy = options[name];
+				src = getProperty(target, name);
+				copy = getProperty(options, name);
 
 				// Prevent never-ending loop
 				if (target !== copy) {
@@ -74659,11 +74714,11 @@ module.exports = function extend() {
 						}
 
 						// Never move original objects, clone them
-						target[name] = extend(deep, clone, copy);
+						setProperty(target, { name: name, newValue: extend(deep, clone, copy) });
 
 					// Don't bring in undefined values
 					} else if (typeof copy !== 'undefined') {
-						target[name] = copy;
+						setProperty(target, { name: name, newValue: copy });
 					}
 				}
 			}
@@ -75507,7 +75562,7 @@ Quill.DEFAULTS = {
 Quill.events = _emitter4.default.events;
 Quill.sources = _emitter4.default.sources;
 // eslint-disable-next-line no-undef
-Quill.version =  false ? undefined : "1.3.6";
+Quill.version =  false ? undefined : "1.3.7";
 
 Quill.imports = {
   'delta': _quillDelta2.default,
@@ -77656,8 +77711,8 @@ var LeafBlot = /** @class */ (function (_super) {
         return [this.parent.domNode, offset];
     };
     LeafBlot.prototype.value = function () {
-        return _a = {}, _a[this.statics.blotName] = this.statics.value(this.domNode) || true, _a;
         var _a;
+        return _a = {}, _a[this.statics.blotName] = this.statics.value(this.domNode) || true, _a;
     };
     LeafBlot.scope = Registry.Scope.INLINE_BLOT;
     return LeafBlot;
@@ -77806,6 +77861,22 @@ Iterator.prototype.peekType = function () {
   return 'retain';
 };
 
+Iterator.prototype.rest = function () {
+  if (!this.hasNext()) {
+    return [];
+  } else if (this.offset === 0) {
+    return this.ops.slice(this.index);
+  } else {
+    var offset = this.offset;
+    var index = this.index;
+    var next = this.next();
+    var rest = this.ops.slice(this.index);
+    this.offset = offset;
+    this.index = index;
+    return [next].concat(rest);
+  }
+};
+
 
 module.exports = lib;
 
@@ -77920,7 +77991,13 @@ function clone(parent, circular, depth, prototype, includeNonEnumerable) {
     } else if (clone.__isDate(parent)) {
       child = new Date(parent.getTime());
     } else if (useBuffer && Buffer.isBuffer(parent)) {
-      child = new Buffer(parent.length);
+      if (Buffer.allocUnsafe) {
+        // Node.js >= 4.5.0
+        child = Buffer.allocUnsafe(parent.length);
+      } else {
+        // Older Node.js versions
+        child = new Buffer(parent.length);
+      }
       parent.copy(child);
       return child;
     } else if (_instanceof(parent, Error)) {
@@ -79265,6 +79342,7 @@ var Link = function (_Inline) {
       var node = _get(Link.__proto__ || Object.getPrototypeOf(Link), 'create', this).call(this, value);
       value = this.sanitize(value);
       node.setAttribute('href', value);
+      node.setAttribute('rel', 'noopener noreferrer');
       node.setAttribute('target', '_blank');
       return node;
     }
@@ -83928,7 +84006,7 @@ var SnowTooltip = function (_BaseTooltip) {
   return SnowTooltip;
 }(_base.BaseTooltip);
 
-SnowTooltip.TEMPLATE = ['<a class="ql-preview" target="_blank" href="about:blank"></a>', '<input type="text" data-formula="e=mc^2" data-link="https://quilljs.com" data-video="Embed URL">', '<a class="ql-action"></a>', '<a class="ql-remove"></a>'].join('');
+SnowTooltip.TEMPLATE = ['<a class="ql-preview" rel="noopener noreferrer" target="_blank" href="about:blank"></a>', '<input type="text" data-formula="e=mc^2" data-link="https://quilljs.com" data-video="Embed URL">', '<a class="ql-action"></a>', '<a class="ql-remove"></a>'].join('');
 
 exports.default = SnowTheme;
 
@@ -110676,18 +110754,14 @@ Vue.component('speciality', __webpack_require__(/*! ./components/speciality */ "
 Vue.component('minScore', __webpack_require__(/*! ./components/minScore */ "./resources/js/components/minScore.vue")["default"]);
 Vue.component('price', __webpack_require__(/*! ./components/price */ "./resources/js/components/price.vue")["default"]);
 Vue.component('parse', __webpack_require__(/*! ./components/parse */ "./resources/js/components/parse.vue")["default"]);
-Vue.filter("formatDate", function (value) {
-  if (value) {
-    var dateSplit = value.split('-');
-    return dateSplit[2] + '.' + dateSplit[1] + '.' + dateSplit[0];
-  }
-});
+/**
+ * Next, we will create a fresh Vue application instance and attach it to
+ * the page. Then, you may begin adding components to this application
+ * or customize the JavaScript scaffolding to fit your unique needs.
+ */
+
 var app = new Vue({
-  store: _store_index__WEBPACK_IMPORTED_MODULE_0__["default"],
-  el: '#app',
-  data: {
-    rootUrl: window.location.hostname
-  }
+  el: '#app'
 });
 
 /***/ }),
@@ -110722,24 +110796,11 @@ try {
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /**
- * Next we will register the CSRF Token as a common header with Axios so that
- * all outgoing HTTP requests automatically have it attached. This is just
- * a simple convenience so we don't have to attach every token manually.
- */
-
-var token = document.head.querySelector('meta[name="csrf-token"]');
-
-if (token) {
-  window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
-} else {
-  console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
-}
-/**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
  * allows your team to easily build robust real-time web applications.
  */
-// import Echo from 'laravel-echo'
+// import Echo from 'laravel-echo';
 // window.Pusher = require('pusher-js');
 // window.Echo = new Echo({
 //     broadcaster: 'pusher',

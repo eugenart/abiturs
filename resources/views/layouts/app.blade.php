@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
@@ -23,7 +23,7 @@
 </head>
 <body>
 <div id="app">
-    <nav class="navbar navbar-expand-md flex-md-nowrap p-0 shadow navbar-laravel fixed-top">
+    <nav class="navbar navbar-expand-md flex-md-nowrap p-0 fixed-top bg-transparent">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -137,7 +137,7 @@
                     </ul>
                 </div>
             </nav>
-            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 pt-1">
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 mt-5 px-4 pt-1">
                 @yield('content')
             </main>
         </div>
