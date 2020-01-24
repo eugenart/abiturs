@@ -36,5 +36,9 @@ Vue.component('parse', require('./components/parse').default);
  */
 
 const app = new Vue({
+    store,
     el: '#app',
+    data: {
+        rootUrl: window.location.hostname
+    }
 });

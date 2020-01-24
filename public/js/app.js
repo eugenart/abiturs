@@ -4104,6 +4104,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "parse",
   data: function data() {
@@ -4111,9 +4132,11 @@ __webpack_require__.r(__webpack_exports__);
       parseSpecialitiesStatus: null,
       parseStudentsStatus: null,
       parseAreasStatus: null,
+      parseSubStatus: null,
       loadingparseSpecialitiesStatus: false,
       loadingparseStudentsStatus: false,
-      loadingparseAreasStatus: false
+      loadingparseAreasStatus: false,
+      loadingparseSubStatus: false
     };
   },
   computed: {},
@@ -4143,6 +4166,15 @@ __webpack_require__.r(__webpack_exports__);
       var data = axios.get('/admin/parse-areas').then(function (response) {
         _this3.loadingparseAreasStatus = false;
         _this3.parseAreasStatus = response.data;
+      });
+    },
+    parseSub: function parseSub() {
+      var _this4 = this;
+
+      this.loadingparseSubStatus = true;
+      var data = axios.get('/admin/parse-sub').then(function (response) {
+        _this4.loadingparseSubStatus = false;
+        _this4.parseSubStatus = response.data;
       });
     }
   }
@@ -91924,6 +91956,45 @@ var render = function() {
                       ])
                     ])
                   ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "card mt-4" }, [
+                  _c("div", { staticClass: "card-header" }, [
+                    _vm._v("Выгрузка данных о факультетах и предметах")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "card-body" }, [
+                    _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "col-4" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-sm btn-success w-100",
+                            on: { click: this.parseSub }
+                          },
+                          [
+                            _vm._v(
+                              "Начать выгрузку\n                                            "
+                            )
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-8 text-center" }, [
+                        _vm.loadingparseSubStatus
+                          ? _c("div", { staticClass: "lds-ring" }, [
+                              _c("div"),
+                              _vm._v(" "),
+                              _c("div"),
+                              _vm._v(" "),
+                              _c("div"),
+                              _vm._v(" "),
+                              _c("div")
+                            ])
+                          : _c("p", [_vm._v(_vm._s(_vm.parseSubStatus))])
+                      ])
+                    ])
+                  ])
                 ])
               ])
             ])
@@ -110761,7 +110832,11 @@ Vue.component('parse', __webpack_require__(/*! ./components/parse */ "./resource
  */
 
 var app = new Vue({
-  el: '#app'
+  store: _store_index__WEBPACK_IMPORTED_MODULE_0__["default"],
+  el: '#app',
+  data: {
+    rootUrl: window.location.hostname
+  }
 });
 
 /***/ }),

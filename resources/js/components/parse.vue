@@ -69,6 +69,27 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="card mt-4">
+                                    <div class="card-header">Выгрузка данных о факультетах и предметах</div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <button class="btn btn-sm btn-success w-100"
+                                                        @click="this.parseSub">Начать выгрузку
+                                                </button>
+                                            </div>
+                                            <div class="col-8 text-center">
+                                                <div v-if="loadingparseSubStatus" class="lds-ring">
+                                                    <div></div>
+                                                    <div></div>
+                                                    <div></div>
+                                                    <div></div>
+                                                </div>
+                                                <p v-else>{{parseSubStatus}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -86,9 +107,11 @@
                 parseSpecialitiesStatus: null,
                 parseStudentsStatus: null,
                 parseAreasStatus: null,
+                parseSubStatus: null,
                 loadingparseSpecialitiesStatus: false,
                 loadingparseStudentsStatus: false,
                 loadingparseAreasStatus: false,
+                loadingparseSubStatus: false,
             }
         },
         computed: {},
@@ -115,6 +138,14 @@
                     .then(response => {
                         this.loadingparseAreasStatus = false;
                         this.parseAreasStatus = response.data
+                    })
+            },
+            parseSub: function () {
+                this.loadingparseSubStatus = true;
+                let data = axios.get('/admin/parse-sub')
+                    .then(response => {
+                        this.loadingparseSubStatus = false;
+                        this.parseSubStatus = response.data
                     })
             }
         },

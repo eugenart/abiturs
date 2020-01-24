@@ -78,13 +78,7 @@
         <div class="row">
             <nav class="col-md-2 d-none d-md-block sidebar">
                 <div class="sidebar-sticky">
-                    <ul class="nav flex-column">
-{{--                        <li class="nav-item">--}}
-{{--                            <a class="nav-link" href="#">--}}
-{{--                                <span data-feather="home"></span>--}}
-{{--                                Настройки сайта <span class="sr-only">(current)</span>--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
+                    <ul class="nav flex-column mt-3">
                         <li class="nav-item">
                             <a class="nav-link  {{ Request::is('admin/infoblock*') ? 'active' : null }}"
                                href="{{route('infoblock.index')}}">
