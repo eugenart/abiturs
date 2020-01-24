@@ -91,11 +91,18 @@ class InfoblockController extends Controller
             $infoblock = Infoblock::findOrFail($id);
             if ($infoblock->sections->count() !== 0) {
                 foreach ($infoblock->sections as $section) {
+                    if ($section->sectionContent->count() !== 0) {
+                        foreach ($section->sectionContent as $subSection) {
+                            if ($subSection->type == 'files') {
+                                foreach ($subSection->childrenFiles as $file) {
+                                    Storage::delete('public/section-files/' . $file->file_name);
+                                    $file->delete();
+                                }
+                            }
+                            $subSection->delete();
+                        }
+                    };
                     $section->delete();
-                    foreach ($section->sectionContent as $item) {
-                        Storage::delete('public/section-files/' . $item->file_name);
-                        $item->delete();
-                    }
                 }
             }
             ($infoblock->image != 'default.jpg') ? Storage::delete('public/preview/' . $infoblock->image) : null;
