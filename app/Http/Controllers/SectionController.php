@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Infoblock;
 use App\Section;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class SectionController extends Controller
 {
@@ -79,10 +80,16 @@ class SectionController extends Controller
             $section = Section::findOrFail($id);
             if ($section->childrenSections->count() !== 0) {
                 foreach ($section->childrenSections as $subSection) {
+                    foreach ($subSection->childrenFiles as $file) {
+                        Storage::delete('public/section-files/' . $file->file_name);
+                        $file->delete();
+                    }
                     $subSection->delete();
                 }
             };
+
             $section->delete();
+
             return response()->json(['message' => 'Section was deleted'], 200);
         }
         return response()->json(['message' => 'Oops'], 404);

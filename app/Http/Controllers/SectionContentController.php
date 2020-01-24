@@ -132,18 +132,20 @@ class SectionContentController extends Controller
                         foreach ($block->content as $file) {
                             if ($request->hasFile($file->vmodel)) {
                                 $original = $request[$file->vmodel]->getClientOriginalName();
+                                $extension = $request[$file->vmodel]->getClientOriginalExtension();
                                 $fileSave = $request[$file->vmodel]->store('public/section-files');
                                 $fileName = basename($fileSave);
                                 if ($file->id) {
-                                    $blockFile = SectionsContent::find($file->id);
-                                    Storage::delete('public/section-files/' . $blockFile->file_name);
-                                    $blockFile->update([
+                                    $blockFile = SectionsContent::find($file->id); //находим файл в базе
+                                    Storage::delete('public/section-files/' . $blockFile->file_name); //удаялем
+                                    $blockFile->update([  //обеовляем
                                         'name' => $file->name,
                                         'file_name' => $fileName,
                                         'content' => $original,
+                                        'ext_file' => strval($extension)
                                     ]);
                                 } else {
-                                    SectionsContent::create([
+                                    SectionsContent::create([//или создаем если не находим
                                         'name' => $file->name,
                                         'file_name' => $fileName,
                                         'type' => $file->type,
@@ -151,6 +153,7 @@ class SectionContentController extends Controller
                                         'position' => $file->position,
                                         'parent_id' => $group->id,
                                         'content' => $original,
+                                        'ext_file' => strval($extension)
                                     ]);
                                 }
 
@@ -184,10 +187,9 @@ class SectionContentController extends Controller
                     $file->delete();
                 }
             }
-            if ($sectionContent->type == 'file') {
-                Storage::delete('public/section-files/' . $sectionContent->file_name);
-            }
+
             $sectionContent->delete();
+
             return response()->json(['message' => 'Content was deleted'], 200);
         }
         return response()->json(['message' => 'Oops'], 404);

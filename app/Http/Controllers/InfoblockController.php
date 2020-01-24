@@ -92,6 +92,10 @@ class InfoblockController extends Controller
             if ($infoblock->sections->count() !== 0) {
                 foreach ($infoblock->sections as $section) {
                     $section->delete();
+                    foreach ($section->sectionContent as $item) {
+                        Storage::delete('public/section-files/' . $item->file_name);
+                        $item->delete();
+                    }
                 }
             }
             ($infoblock->image != 'default.jpg') ? Storage::delete('public/preview/' . $infoblock->image) : null;
