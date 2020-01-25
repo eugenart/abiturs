@@ -181,6 +181,7 @@ class SectionContentController extends Controller
     {
         if ($request->ajax()) {
             $sectionContent = SectionsContent::findOrFail($id);
+
             if ($sectionContent->childrenFiles->count() > 0) {
                 foreach ($sectionContent->childrenFiles as $file) {
                     Storage::delete('public/section-files/' . $file->file_name);

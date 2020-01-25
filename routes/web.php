@@ -51,9 +51,12 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 //Route::get('/parser', 'ParserController@parseFromXls');
 Route::get('/contact', 'ContactController@index')->name('contact.index');
 Route::get('/select', 'SelectionController@index')->name('selection.index');
-Route::get('/', function () {
-    return view('pages.stat');
-});
+
+Route::get('/stat', 'StatisticController@index')->name('stat.index');
+Route::post('/stat', 'StatisticController@search')->name('stat.searchfio');
+
+Route::get('/', 'StatisticController@index')->name('stat.index');
+
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/{route}', 'PageController@route')->name('pages.route');

@@ -18,24 +18,36 @@
                             </li>
                         </ul>
                     </div>
-                    <form class="form-inline">
+                    <form class="form-inline" action="{{ route('stat.searchfio') }}" method="post">
+                        @csrf
                         <input class="form-control mr-sm-2 form-control-sm" type="search" placeholder="Поиск по ФИО"
-                               aria-label="Search">
+                               aria-label="Search" name="fio">
                         <button class="btn my-2 my-sm-0 btn-sm" type="submit">Поиск</button>
                     </form>
                 </div>
             </nav>
         </div>
     </div>
+
+    @php
+        print_r('hell');
+
+    @endphp
     <div class="container-fluid p-5">
         <div class="row">
+
             <div class="col-3"><select class="w-100 form-control form-control-sm">
                     <option value="-1">Факультет / Институт</option>
-                    <option value="1">1</option>
+
+                    {{--                    @foreach($faculties as $faculty)--}}
+                    {{--                        <option value="{{$faculty->id}}">{{$faculty->name}}</option>--}}
+                    {{--                    @endforeach--}}
                 </select></div>
             <div class="col-3"><select class="w-100 form-control form-control-sm">
                     <option value="-1">Специальность</option>
-                    <option value="1">1</option>
+                    {{--                    @foreach($specialities as $spec)--}}
+                    {{--                        <option value="{{$spec->id}}">{{$spec->name}}</option>--}}
+                    {{--                    @endforeach--}}
                 </select></div>
             <div class="col-2"><select class="w-100 form-control form-control-sm">
                     <option value="-1">Внебюджет</option>
@@ -80,14 +92,16 @@
                         <td rowspan="2">Фамилия, имя, отчество</td>
                         <td rowspan="2">Оригинал</td>
                         <td rowspan="2">Согласие</td>
-                        <td rowspan="2">Общий балл</td>
+
                         <td colspan="4">
                             <p class="m-0">1) Химия</p>
                             <p class="m-0">2) Математика (профильная)</p>
                             <p class="m-0">3) Русский язык</p>
                             <p class="m-0">4) Балл за индивидуальные достижения</p>
                         </td>
-                        <td rowspan="2">Тип экзамена</td>
+                        <td rowspan="2">Сумма баллов<br/> за ЕГЭ/ВИ</td>
+                        <td rowspan="2">Сумма<br/> конкурсных<br/> баллов</td>
+                        {{--                        <td rowspan="2">Тип экзамена</td>--}}
                         <td rowspan="2">Статус проверки</td>
                         <td rowspan="2">Нуждаемость в общежитии</td>
                     </tr>
@@ -104,34 +118,39 @@
                             <b>Квота (особое право)</b>. Количество мест: <b>4</b>
                         </td>
                     </tr>
-                    <tr class="text-center">
-                        <td class="text-center">1</td>
-                        <td>Арташкин Евгений Павлович</td>
-                        <td><i class="fa fa-check-circle" style="color: rgba(0,128,0,0.51)"></i></td>
-                        <td><i class="fa fa-times-circle" style="color: rgba(128,0,0,0.51)"></i></td>
-                        <td>240</td>
-                        <td>80</td>
-                        <td>80</td>
-                        <td>80</td>
-                        <td>0</td>
-                        <td>ЕГЭ</td>
-                        <td>Заявление принято</td>
-                        <td>Да</td>
-                    </tr>
-                    <tr class="text-center">
-                        <td class="text-center">2</td>
-                        <td>Кулягина Таисия Ивановна</td>
-                        <td><i class="fa fa-check-circle" style="color: rgba(0,128,0,0.51)"></i></td>
-                        <td><i class="fa fa-check-circle" style="color: rgba(0,128,0,0.51)"></i></td>
-                        <td>239</td>
-                        <td>81</td>
-                        <td>80</td>
-                        <td>78</td>
-                        <td>30</td>
-                        <td>ЕГЭ</td>
-                        <td>Заявление принято</td>
-                        <td>Нет</td>
-                    </tr>
+                    @if(isset($statistics))
+                    @foreach($statistics as $k => $stat)
+                        <tr class="text-center">
+                            <td class="text-center">{{$k + 1}}</td>
+                            <td>{{$stat->student->fio}}</td>
+                            @if($stat->original)
+                                <td><i class="fa fa-check-circle" style="color: rgba(0,128,0,0.51)"></i></td>
+                            @else
+                                <td><i class="fa fa-times-circle" style="color: rgba(128,0,0,0.51)"></i></td>
+                            @endif
+                            @if($stat->accept)
+                                <td><i class="fa fa-check-circle" style="color: rgba(0,128,0,0.51)"></i></td>
+                            @else
+                                <td><i class="fa fa-times-circle" style="color: rgba(128,0,0,0.51)"></i></td>
+                            @endif
+
+                            <td>80</td>
+                            <td>80</td>
+                            <td>80</td>
+
+                            <td>{{$stat->indAchievement}}</td>
+                            <td>{{$stat->summ}}</td>
+                            <td>{{$stat->summContest}}</td>
+                            {{--                            <td>ЕГЭ</td>--}}
+                            <td>{{$stat->notice1}}</td>
+                            @if($stat->needHostel)
+                                <td>Да</td>
+                            @else
+                                <td>Нет</td>
+                            @endif
+                        </tr>
+                    @endforeach
+                        @endif
                     </tbody>
                 </table>
             </div>

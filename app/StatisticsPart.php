@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Statistic extends Model
+class StatisticsPart extends Model
 {
     protected $fillable = ['id_student', 'id_faculty', 'id_speciality', 'id_specialization',
         'id_preparationLevel', 'id_admissionBasis', 'id_studyForm', 'id_category', 'accept', 'original',
@@ -43,8 +43,4 @@ class Statistic extends Model
         return $this->belongsTo(Category::class, 'id_category');
     }
 
-
-//    public static function searchByFio(){
-//        $
-//    }
 }

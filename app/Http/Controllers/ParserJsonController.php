@@ -2,13 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\AdmissionBasis;
+use App\Category;
 use App\Faculty;
 use App\FacultyArea;
+use App\PreparationLevel;
 use App\Score;
 use App\Speciality;
 use App\Specialization;
 use App\Statistic;
+use App\StatisticsExtra;
+use App\StatisticsIntra;
+use App\StatisticsPart;
 use App\Student;
+use App\StudyForm;
 use App\Subject;
 use App\TrainingArea;
 use App\TrainingAreasSubject;
@@ -49,14 +56,63 @@ class ParserJsonController extends Controller
         $json_data = $json_arr['data'];
 
         Statistic::truncate();
+        StudyForm::truncate();
+        AdmissionBasis::truncate();
+        PreparationLevel::truncate();
+        Category::truncate();
         $studentsStat = array();
+        $studyForms = array();
+        $prepLevels = array();
+        $admissionBases = array();
+        $categories = array();
 
         foreach ($json_data as $k => $st) {
+
+            $stdForm = array(
+                'name' => $st['studyForm']
+            );
+            $studyForms[] = $stdForm;
+
+            $prepLevel = array(
+                'name' => $st['preparationLevel']
+            );
+            $prepLevels[] = $prepLevel;
+
+            $admissionBasis = array(
+                'name' => $st['admissionBasis']
+            );
+            $admissionBases[] = $admissionBasis;
+
+            $category = array(
+                'name' => $st['category']
+            );
+            $categories[] = $category;
+
+        }
+
+        $studyForms = array_unique($studyForms, SORT_REGULAR);
+        StudyForm::insert($studyForms);
+        $prepLevels = array_unique($prepLevels, SORT_REGULAR);
+        PreparationLevel::insert($prepLevels);
+        $admissionBases = array_unique($admissionBases, SORT_REGULAR);
+        AdmissionBasis::insert($admissionBases);
+        $categories = array_unique($categories, SORT_REGULAR);
+        Category::insert($categories);
+
+        StatisticsIntra::truncate();
+        StatisticsPart::truncate();
+        StatisticsExtra::truncate();
+
+        foreach ($json_data as $k => $st) {
+
             $idStudent = Student::where('studentId', '=', $st['studentId'])->first();
             $idFaculty = Faculty::where('facultyId', '=', $st['facultyId'])->first();
             $idSpecialization = Specialization::where('specializationId', '=', $st['specialization'])->first();
             $idSpeciality = Speciality::where('specialityId', '=', $st['speciality'])->first();
-
+            $idStudyForm = StudyForm::where('name', '=', $st['studyForm'])->first();
+            $idPreparationLevel = PreparationLevel::where('name', '=', $st['preparationLevel'])->first();
+            $idAdmissionBasis = AdmissionBasis::where('name', '=', $st['admissionBasis'])->first();
+            $idCategory = Category::where('name', '=', $st['category'])->first();
 
             // print_r($idFaculty);
             $stat = array(
@@ -64,10 +120,10 @@ class ParserJsonController extends Controller
                 'id_faculty' => intval($idFaculty->id),
                 'id_speciality' => intval($idSpeciality->id),
                 'id_specialization' => $idSpecialization ? intval($idSpecialization->id) : null,
-                'preparationLevel' => $st['preparationLevel'],
-                'admissionBasis' => $st['admissionBasis'],
-                'studyForm' => $st['studyForm'],
-                'category' => $st['category'],
+                'id_preparationLevel' => intval($idPreparationLevel->id),
+                'id_admissionBasis' => intval($idAdmissionBasis->id),
+                'id_studyForm' => intval($idStudyForm->id),
+                'id_category' => intval($idCategory->id),
                 'accept' => $st['accept'],
                 'original' => $st['original'],
                 'summ' => $st['summ'],
@@ -77,15 +133,39 @@ class ParserJsonController extends Controller
                 'notice1' => $st['notice1'],
                 'notice2' => $st['notice2']
             );
-
             $studentsStat[] = $stat;
         }
 
-        $chunks = array_chunk($studentsStat, 3000);
+        $studentsStatIntras = array();
+        $studentsStatParts = array();
+        $studentsStatExtras = array();
 
-        foreach ($chunks as $chunk) {
-            Statistic::insert($chunk);
+        foreach ($studentsStat as $value) {
+            if ($value['id_studyForm'] === StudyForm::where('name', '=', 'Очная')->first()->id) {
+                $studentsStatIntras[] = $value;
+            } elseif ($value['id_studyForm'] === StudyForm::where('name', '=', 'Очно-заочная')->first()->id) {
+                $studentsStatParts[] = $value;
+            } else {
+                $studentsStatExtras[] = $value;
+            }
         }
+
+        $chunks = array_chunk($studentsStatIntras, 3000);
+        foreach ($chunks as $chunk) {
+            StatisticsIntra::insert($chunk);
+        }
+
+        $chunks = array_chunk($studentsStatParts, 3000);
+        foreach ($chunks as $chunk) {
+            StatisticsPart::insert($chunk);
+        }
+
+        $chunks = array_chunk($studentsStatExtras, 3000);
+        foreach ($chunks as $chunk) {
+            StatisticsExtra::insert($chunk);
+        }
+
+
     }
 
 
@@ -186,9 +266,9 @@ class ParserJsonController extends Controller
     {
         set_time_limit(1200);
 
-        $this->parseStudents();
+        //$this->parseStudents();
         $this->parseStat();
-        $this->parseScore();
+        // $this->parseScore();
         //$this->parseAreas();
 
         return json_encode('Информация об абитуриентах успешно выгружена!');

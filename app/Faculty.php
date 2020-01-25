@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Faculty extends Model
 {
@@ -16,4 +17,11 @@ class Faculty extends Model
         return $this->hasMany(FacultyArea::class, 'id_faculty');
     }
 
+    public static function facultyJoinStat() {
+       $query =  DB::table('faculties')
+            //->join('statistics', 'statistics.id_faculty', '=', 'faculties.id')
+            ->select('faculties.name')
+            ->distinct()
+            ->get();
+    }
 }

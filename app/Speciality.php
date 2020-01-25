@@ -31,4 +31,13 @@ class Speciality extends Model
 //            ->select('specialities.*', 'specializations.name as sp_name')
 //            ->get();
 //    }
+
+    public static function specJoinStat()
+    {
+        $query = DB::table('specialities')
+            ->join('statistics', 'specialities.id', '=', 'statistics.id_speciality')
+            ->select('specialities.*')
+            ->get();
+
+    }
 }
