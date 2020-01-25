@@ -85,74 +85,82 @@
         </div>
         <div class="row mt-4">
             <div class="col-12">
-                <table class="table table-bordered table-sm base-exams-table">
-                    <thead>
-                    <tr style="vertical-align: center">
-                        <td rowspan="2">№</td>
-                        <td rowspan="2">Фамилия, имя, отчество</td>
-                        <td rowspan="2">Оригинал</td>
-                        <td rowspan="2">Согласие</td>
 
-                        <td colspan="4">
-                            <p class="m-0">1) Химия</p>
-                            <p class="m-0">2) Математика (профильная)</p>
-                            <p class="m-0">3) Русский язык</p>
-                            <p class="m-0">4) Балл за индивидуальные достижения</p>
-                        </td>
-                        <td rowspan="2">Сумма баллов<br/> за ЕГЭ/ВИ</td>
-                        <td rowspan="2">Сумма<br/> конкурсных<br/> баллов</td>
-                        {{--                        <td rowspan="2">Тип экзамена</td>--}}
-                        <td rowspan="2">Статус проверки</td>
-                        <td rowspan="2">Нуждаемость в общежитии</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td class="exam-rights" colspan="14">
-                            <b>Квота (особое право)</b>. Количество мест: <b>4</b>
-                        </td>
-                    </tr>
-                    @if(isset($statistics))
-                    @foreach($statistics as $k => $stat)
-                        <tr class="text-center">
-                            <td class="text-center">{{$k + 1}}</td>
-                            <td>{{$stat->student->fio}}</td>
-                            @if($stat->original)
-                                <td><i class="fa fa-check-circle" style="color: rgba(0,128,0,0.51)"></i></td>
-                            @else
-                                <td><i class="fa fa-times-circle" style="color: rgba(128,0,0,0.51)"></i></td>
-                            @endif
-                            @if($stat->accept)
-                                <td><i class="fa fa-check-circle" style="color: rgba(0,128,0,0.51)"></i></td>
-                            @else
-                                <td><i class="fa fa-times-circle" style="color: rgba(128,0,0,0.51)"></i></td>
-                            @endif
+                @if(isset($studyForms))
+                    @foreach($studyForms as $studyForm)
+                        <h4><b>{{$studyForm->name}}</b></h4>
+                        @foreach($studyForm->stat as $stat)
 
-                            <td>80</td>
-                            <td>80</td>
-                            <td>80</td>
-
-                            <td>{{$stat->indAchievement}}</td>
-                            <td>{{$stat->summ}}</td>
-                            <td>{{$stat->summContest}}</td>
-                            {{--                            <td>ЕГЭ</td>--}}
-                            <td>{{$stat->notice1}}</td>
-                            @if($stat->needHostel)
-                                <td>Да</td>
-                            @else
-                                <td>Нет</td>
-                            @endif
-                        </tr>
+                        @endforeach
                     @endforeach
-                        @endif
-                    </tbody>
-                </table>
+                @endif
+                {{--                <table class="table table-bordered table-sm base-exams-table">--}}
+                {{--                    <thead>--}}
+                {{--                    <tr style="vertical-align: center">--}}
+                {{--                        <td rowspan="2">№</td>--}}
+                {{--                        <td rowspan="2">Фамилия, имя, отчество</td>--}}
+                {{--                        <td rowspan="2">Оригинал</td>--}}
+                {{--                        <td rowspan="2">Согласие</td>--}}
+
+                {{--                        <td colspan="4">--}}
+                {{--                            <p class="m-0">1) Химия</p>--}}
+                {{--                            <p class="m-0">2) Математика (профильная)</p>--}}
+                {{--                            <p class="m-0">3) Русский язык</p>--}}
+                {{--                            <p class="m-0">4) Балл за индивидуальные достижения</p>--}}
+                {{--                        </td>--}}
+                {{--                        <td rowspan="2">Сумма баллов<br/> за ЕГЭ/ВИ</td>--}}
+                {{--                        <td rowspan="2">Сумма<br/> конкурсных<br/> баллов</td>--}}
+                {{--                        --}}{{--                        <td rowspan="2">Тип экзамена</td>--}}
+                {{--                        <td rowspan="2">Статус проверки</td>--}}
+                {{--                        <td rowspan="2">Нуждаемость в общежитии</td>--}}
+                {{--                    </tr>--}}
+                {{--                    <tr>--}}
+                {{--                        <td>1</td>--}}
+                {{--                        <td>2</td>--}}
+                {{--                        <td>3</td>--}}
+                {{--                        <td>4</td>--}}
+                {{--                    </tr>--}}
+                {{--                    </thead>--}}
+                {{--                    <tbody>--}}
+                {{--                    <tr>--}}
+                {{--                        <td class="exam-rights" colspan="14">--}}
+                {{--                            <b>Квота (особое право)</b>. Количество мест: <b>4</b>--}}
+                {{--                        </td>--}}
+                {{--                    </tr>--}}
+
+                {{--                    @foreach($statistics as $k => $stat)--}}
+                {{--                        <tr class="text-center">--}}
+                {{--                            <td class="text-center">{{$k + 1}}</td>--}}
+                {{--                            <td>{{$stat->student->fio}}</td>--}}
+                {{--                            @if($stat->original)--}}
+                {{--                                <td><i class="fa fa-check-circle" style="color: rgba(0,128,0,0.51)"></i></td>--}}
+                {{--                            @else--}}
+                {{--                                <td><i class="fa fa-times-circle" style="color: rgba(128,0,0,0.51)"></i></td>--}}
+                {{--                            @endif--}}
+                {{--                            @if($stat->accept)--}}
+                {{--                                <td><i class="fa fa-check-circle" style="color: rgba(0,128,0,0.51)"></i></td>--}}
+                {{--                            @else--}}
+                {{--                                <td><i class="fa fa-times-circle" style="color: rgba(128,0,0,0.51)"></i></td>--}}
+                {{--                            @endif--}}
+
+                {{--                            <td>80</td>--}}
+                {{--                            <td>80</td>--}}
+                {{--                            <td>80</td>--}}
+
+                {{--                            <td>{{$stat->indAchievement}}</td>--}}
+                {{--                            <td>{{$stat->summ}}</td>--}}
+                {{--                            <td>{{$stat->summContest}}</td>--}}
+                {{--                            --}}{{--                            <td>ЕГЭ</td>--}}
+                {{--                            <td>{{$stat->notice1}}</td>--}}
+                {{--                            @if($stat->needHostel)--}}
+                {{--                                <td>Да</td>--}}
+                {{--                            @else--}}
+                {{--                                <td>Нет</td>--}}
+                {{--                            @endif--}}
+                {{--                        </tr>--}}
+                {{--                    @endforeach--}}
+                {{--                    </tbody>--}}
+                {{--                </table>--}}
             </div>
         </div>
     </div>

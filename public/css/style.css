@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Sans&display=swap');
+
 body {
-    font-family: "PT Sans";
+    font-family: 'PT Sans', sans-serif;
 }
 
 .mrsu-bg {

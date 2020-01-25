@@ -136,34 +136,39 @@ class ParserJsonController extends Controller
             $studentsStat[] = $stat;
         }
 
-        $studentsStatIntras = array();
-        $studentsStatParts = array();
-        $studentsStatExtras = array();
-
-        foreach ($studentsStat as $value) {
-            if ($value['id_studyForm'] === StudyForm::where('name', '=', 'Очная')->first()->id) {
-                $studentsStatIntras[] = $value;
-            } elseif ($value['id_studyForm'] === StudyForm::where('name', '=', 'Очно-заочная')->first()->id) {
-                $studentsStatParts[] = $value;
-            } else {
-                $studentsStatExtras[] = $value;
-            }
-        }
-
-        $chunks = array_chunk($studentsStatIntras, 3000);
+        $chunks = array_chunk($studentsStat, 3000);
         foreach ($chunks as $chunk) {
-            StatisticsIntra::insert($chunk);
+            Statistic::insert($chunk);
         }
 
-        $chunks = array_chunk($studentsStatParts, 3000);
-        foreach ($chunks as $chunk) {
-            StatisticsPart::insert($chunk);
-        }
-
-        $chunks = array_chunk($studentsStatExtras, 3000);
-        foreach ($chunks as $chunk) {
-            StatisticsExtra::insert($chunk);
-        }
+//        $studentsStatIntras = array();
+//        $studentsStatParts = array();
+//        $studentsStatExtras = array();
+//
+//        foreach ($studentsStat as $value) {
+//            if ($value['id_studyForm'] === StudyForm::where('name', '=', 'Очная')->first()->id) {
+//                $studentsStatIntras[] = $value;
+//            } elseif ($value['id_studyForm'] === StudyForm::where('name', '=', 'Очно-заочная')->first()->id) {
+//                $studentsStatParts[] = $value;
+//            } else {
+//                $studentsStatExtras[] = $value;
+//            }
+//        }
+//
+//        $chunks = array_chunk($studentsStatIntras, 3000);
+//        foreach ($chunks as $chunk) {
+//            StatisticsIntra::insert($chunk);
+//        }
+//
+//        $chunks = array_chunk($studentsStatParts, 3000);
+//        foreach ($chunks as $chunk) {
+//            StatisticsPart::insert($chunk);
+//        }
+//
+//        $chunks = array_chunk($studentsStatExtras, 3000);
+//        foreach ($chunks as $chunk) {
+//            StatisticsExtra::insert($chunk);
+//        }
 
 
     }
@@ -266,10 +271,10 @@ class ParserJsonController extends Controller
     {
         set_time_limit(1200);
 
-        //$this->parseStudents();
+        $this->parseStudents();
         $this->parseStat();
-        // $this->parseScore();
-        //$this->parseAreas();
+        $this->parseScore();
+        $this->parseAreas();
 
         return json_encode('Информация об абитуриентах успешно выгружена!');
     }
