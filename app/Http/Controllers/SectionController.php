@@ -12,15 +12,6 @@ class SectionController extends Controller
     public function index(Request $request)
     {
         $sections = Section::all();
-//        $infoblocks = Infoblock::all();
-//
-//        foreach ($infoblocks as $infoblock) {
-//            $infoblock->sectionsList = $infoblock->sections->where('sectionID', null);
-//            foreach ($infoblock->sectionsList->where('isFolder', true) as $folder) {
-//                $folder->folder = $folder->childrenSections;
-//            }
-//        }
-
         if ($request->ajax()) {
             return response()->json($sections, 200);
         }

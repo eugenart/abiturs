@@ -16,7 +16,6 @@ Auth::routes();
 Route::prefix('admin')->middleware('auth')->group(function () {
     Route::redirect('/', '/admin/infoblocks');
 
-
     Route::get('/infoblocks', 'InfoblockController@index')->name('infoblock.index');
     Route::post('/infoblock', 'InfoblockController@store')->name('infoblock.store');
     Route::post('/infoblock/{id}', 'InfoblockController@update')->name('infoblock.update');
@@ -36,8 +35,6 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::post('/slider/{id}', 'SliderController@update')->name('slider.update');
     Route::delete('/slider/{id}', 'SliderController@destroy')->name('slider.destroy');
 
-//    Route::redirect('/', '/admin/subject');
-
     Route::get('/subjects', 'SubjectController@index')->name('subjects.index');
     Route::get('/speciality', 'SpecialityController@index')->name('speciality.index');
     Route::get('/minscore', 'TrainingAreaController@index')->name('minscore.index');
@@ -53,7 +50,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
 //Route::get('/parser', 'ParserController@parseFromXls');
 Route::get('/contact', 'ContactController@index')->name('contact.index');
-//Route::get('/', 'SelectionController@index')->name('selection.index');
+Route::get('/select', 'SelectionController@index')->name('selection.index');
 Route::get('/', function () {
     return view('pages.stat');
 });
