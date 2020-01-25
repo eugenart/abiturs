@@ -29,10 +29,6 @@
         </div>
     </div>
 
-    @php
-        print_r('hell');
-
-    @endphp
     <div class="container-fluid p-5">
         <div class="row">
 
@@ -88,9 +84,26 @@
 
                 @if(isset($studyForms))
                     @foreach($studyForms as $studyForm)
-                        <h4><b>{{$studyForm->name}}</b></h4>
-                        @foreach($studyForm->stat as $stat)
-
+                        <h1><b>{{$studyForm->name}}</b></h1>
+                        @foreach($studyForm->stat as $category)
+                            <h2>{{ $category->name }}</h2>
+                            @foreach($category->admissionBases as $admissionBasis)
+                                <h3>{{ $admissionBasis->name }}</h3>
+                                @foreach($admissionBasis->preparationLevels as $preparationLevel)
+                                    <h4>{{$preparationLevel->name}}</h4>
+                                    @foreach($preparationLevel->faculties as $faculty)
+                                        <h5>{{$faculty->name}}</h5>
+                                        @foreach($faculty->specialities as $speciality)
+                                            <h6>{{$speciality->name}}</h6>
+                                           <ul>
+                                               @foreach($speciality->abiturs as $abitur)
+                                                    <li>{{$abitur->student->fio}}</li>
+                                               @endforeach
+                                           </ul>
+                                        @endforeach
+                                    @endforeach
+                                @endforeach
+                            @endforeach
                         @endforeach
                     @endforeach
                 @endif

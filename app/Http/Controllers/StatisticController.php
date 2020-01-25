@@ -20,51 +20,60 @@ class StatisticController extends Controller
 {
     public function index(Request $request)
     {
-        $categories = Category::all();
+
         $studyForms = StudyForm::all();
-        $admissionBases = AdmissionBasis::all();
-        $preparationLevels = PreparationLevel::all();
-        $faculties = Faculty::all();
-        $allInfo = array();
 
         foreach ($studyForms as $studyForm) {
-            $tempForms = array();
+            $categories = Category::all();
             foreach ($categories as $category) {
-                $tempstats = array();
+                $admissionBases = AdmissionBasis::all();
                 foreach ($admissionBases as $admissionBasis) {
-                    $temppreps = array();
+                    $preparationLevels = PreparationLevel::all();
                     foreach ($preparationLevels as $preparationLevel) {
-                        $tempfacs = array();
+                        $faculties = Faculty::all();
                         foreach ($faculties as $faculty) {
-                            $tempspec = array();
-                            $specialities = DB::table('statistics')
+                            $specialities_id = DB::table('statistics')
                                 ->where('id_faculty', '=', $faculty->id)
                                 ->select('statistics.id_speciality')
                                 ->distinct()
                                 ->get();
+                            $id_spec_arr = array();
+                            foreach ($specialities_id as $item) {
+                                $id_spec_arr[] = $item->id_speciality;
+                            }
+                            $specialities = Speciality::whereIn('id', $id_spec_arr)->get();
+
                             foreach ($specialities as $speciality) {
                                 $temp = Statistic::where('id_studyForm', '=', $studyForm->id)
                                     ->where('id_preparationLevel', '=', $preparationLevel->id)
                                     ->where('id_admissionBasis', '=', $admissionBasis->id)
                                     ->where('id_category', '=', $category->id)
                                     ->where('id_faculty', '=', $faculty->id)
-                                    ->where('id_speciality', '=', $speciality->id_speciality)
+                                    ->where('id_speciality', '=', $speciality->id)
                                     ->get();
-                                $temp->count() ? $tempspec[] = $temp : null;
+                                // $temp->count() ? $tempspec[] = $temp : null;
+                                $speciality->abiturs = $temp;
                             }
-                            count($tempspec) ? $tempfacs[] = $tempspec : null;
+                            //count($tempspec) ? $tempfacs[] = $tempspec : null;
+                            $faculty->specialities = $specialities;
                         }
-                        count($tempfacs) ? $temppreps[] = $tempfacs : null;
+                        //count($tempfacs) ? $temppreps[] = $tempfacs : null;
+                        $preparationLevel->faculties = $faculties;
                     }
-                    count($temppreps) ? $tempstats[] = $temppreps : null;
+                    //count($temppreps) ? $tempstats[] = $temppreps : null;
+                    $admissionBasis->preparationLevels = $preparationLevels;
                 }
-                $tempForms[] = $tempstats;
+                // $tempForms[] = $tempstats;
+                $category->admissionBases = $admissionBases;
             }
-            $studyForm->stat = $tempForms;
+            // $studyForm->stat = $tempForms;
+            $studyForm->stat = $categories;
         }
 
-        return json_encode($studyForms, JSON_UNESCAPED_UNICODE);
-        //return view('pages.stat', compact('studyForms'));
+        // return $studyForms;
+
+        // return json_encode($studyForms, JSON_UNESCAPED_UNICODE);
+        return view('pages.stat', compact('studyForms'));
 //        return view('pages.stat', [ 'statistics' => $statistics
         //  'faculties' => Faculty::facultyJoinStat()//,
         // 'specialities' => Speciality::specJoinStat()
