@@ -6,7 +6,7 @@
 
     <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog"
          aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-        <div class="modal-dialog modal-xl modal-dialog-scrollable modal-dialog-centered" role="document">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered" role="document">
             <div class="modal-content">
                 <button type="button" class="close-btn" data-dismiss="modal" aria-label="Close">
                     <i class="fa fa-times fa-2x"></i>
@@ -87,9 +87,9 @@
                                                 <thead>
                                                 <tr>
                                                     <th width="40%">Направление подготовки</th>
-                                                    <th width="10%">Форма обучения</th>
+                                                    {{--                                                    <th width="10%">Форма обучения</th>--}}
                                                     {{--                            <th>Проходной балл предыдущего года</th>--}}
-                                                    <th width="40%">Вступительные испытания в порядке приоритетности для
+                                                    <th width="50%">Вступительные испытания в порядке приоритетности для
                                                         ранжирования
                                                     </th>
                                                     <th width="10%">Минимальные баллы</th>
@@ -100,9 +100,15 @@
                                                     <tr class="nps-tr search-tr"
                                                         data-exams="{{ implode(',', $item->subjects) }}">
                                                         <td rowspan="{{count($item->area->scores)}}">
-                                                            <b>{{$item->area->sp_name->name}}</b>
+                                                            <button type="button" class="btn btn-link"
+                                                                    data-toggle="modal"
+                                                                    data-target="#exampleModalScrollable"
+                                                                    data-content="{{$item->area}}">
+                                                                <b>{{$item->area->sp_name->name}}</b>
+                                                            </button>
+
                                                         </td>
-                                                        <td rowspan="{{count($item->area->scores)}}">{{$item->area->trainingForm}}</td>
+                                                        {{--                                                        <td rowspan="{{count($item->area->scores)}}">{{$item->area->trainingForm}}</td>--}}
                                                     </tr>
                                                     @foreach($item->area->scores as $score)
                                                         @if (!strpos($score->subject->name, 'достижение'))
@@ -134,7 +140,6 @@
                                                    for="option{{ $loop->index }}">{{ $subject->name }}</label>
                                         </div>
                                     </div>
-
                                 @endforeach
                             </div>
                         </div>
@@ -149,12 +154,12 @@
                                         <div class="col-12 mb-5 search-div-by-faculties"
                                              data-faculty="{{ $faculty->name }}"
                                              data-exams="{{ implode(',', $faculty->subjects) }}">
-                                            <h3><a href="" target="_blank">{{$faculty->name}}</a></h3>
+                                            <h3><a href="" style="color: #2366a5" target="_blank">{{$faculty->name}}</a></h3>
                                             <table class="table table-sm table-scores">
                                                 <thead>
                                                 <tr>
                                                     <th width="40%">Направление подготовки</th>
-                                                    <th width="10%">Форма обучения</th>
+                                                    {{--                                                    <th width="10%">Форма обучения</th>--}}
                                                     {{--                            <th>Проходной балл предыдущего года</th>--}}
                                                     <th width="40%">Вступительные испытания в порядке приоритетности для
                                                         ранжирования
@@ -167,9 +172,14 @@
                                                     <tr class="nps-tr search-tr-by-faculties"
                                                         data-exams="{{ implode(',', $item->subjects) }}">
                                                         <td rowspan="{{count($item->area->scores)}}">
-                                                            <b>{{$item->area->sp_name->name}}</b>
+                                                            <button type="button" class="btn btn-link"
+                                                                    data-toggle="modal"
+                                                                    data-target="#exampleModalScrollable"
+                                                                    data-content="{{$item->area}}">
+                                                                <b>{{$item->area->sp_name->name}}</b>
+                                                            </button>
                                                         </td>
-                                                        <td rowspan="{{count($item->area->scores)}}">{{$item->area->trainingForm}}</td>
+                                                        {{--                                                        <td rowspan="{{count($item->area->scores)}}">{{$item->area->trainingForm}}</td>--}}
                                                     </tr>
                                                     @foreach($item->area->scores as $score)
                                                         @if (!strpos($score->subject->name, 'достижение'))
@@ -289,11 +299,12 @@
                 9: 'лет',
             };
             var modal = $(this)
-            modal.find('#facultyName').empty().text(recipient.facultyName)
-            modal.find('#directionName').empty().text(recipient.name)
+            console.log(recipient)
+            modal.find('#facultyName').empty().text(recipient.faculty)
+            modal.find('#directionName').empty().text(recipient.sp_name.name)
             let names = ''
-            $.each(recipient.exams, function (k, v) {
-                if (k === recipient.exams.length - 1) {
+            $.each(recipient.subjects, function (k, v) {
+                if (k === recipient.subjects.length - 1) {
                     names += v
                 } else {
                     names += v + ', '
@@ -301,28 +312,27 @@
             });
             modal.find('table').empty()
             modal.find('#examsNames').empty().text(names)
-            if (recipient.intramural) {
-                let number = recipient.intramural.year.toString().slice(-1)
-                let year = years[number]
-                let templateRecipient = "<tr id=\"intramural\">\n" +
-                    "                                <td>\n" +
-                    "                                    <strong>" + recipient.intramural.name + "</strong>\n" +
-                    "                                    <br>\n" +
-                    "                                    <span>" + recipient.intramural.year + " " + year + " обучения</span>\n" +
-                    "                                </td>\n" +
-                    "                                <td>\n" +
-                    "                                    <strong>" + recipient.intramural.budget + "</strong>\n" +
-                    "                                    <br>\n" +
-                    "                                    <span>бюджетных мест</span>\n" +
-                    "                                </td>\n" +
-                    "                                <td>\n" +
-                    "                                    <strong>" + $.number(recipient.intramural.price, 0, '', ' ') + "</strong>\n" +
-                    "                                    <br>\n" +
-                    "                                    <span>рублей в год</span>\n" +
-                    "                                </td>\n" +
-                    "                            </tr>";
-                modal.find('table').append(templateRecipient)
-            }
+            let number = recipient.years.toString().slice(-1)
+            let year = years[number];
+            let templateRecipient = "<tr id=\"intramural\">\n" +
+                "                                <td>\n" +
+                "                                    <strong>" + recipient.trainingForm + "</strong>\n" +
+                "                                    <br>\n" +
+                "                                    <span>" + recipient.years + " " + year + " обучения</span>\n" +
+                "                                </td>\n" +
+                "                                <td>\n" +
+                "                                    <strong>" + recipient.freeSeatsNumber + "</strong>\n" +
+                "                                    <br>\n" +
+                "                                    <span>бюджетных мест</span>\n" +
+                "                                </td>\n" +
+                "                                <td>\n" +
+                "                                    <strong>" + (recipient.price / recipient.years).toFixed(2) + "</strong>\n" +
+                "                                    <br>\n" +
+                "                                    <span>рублей в год</span>\n" +
+                "                                </td>\n" +
+                "                            </tr>";
+            modal.find('table').append(templateRecipient)
+
 
             if (recipient.partTime) {
                 let number = recipient.partTime.year.toString().slice(-1)

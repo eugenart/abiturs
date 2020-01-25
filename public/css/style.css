@@ -309,16 +309,16 @@ marquee {
 }
 
 .border-priem {
-    border: 1px solid rgba(85, 98, 235, 1);
+    border: 1px solid #2366a5 !important;
 }
 
 .swith-priem a {
-    color: rgba(85, 98, 235, 1);
+    color: #2366a5;
     border-radius: 0 !important;
 }
 
 .swith-priem a.active {
-    background-color: rgba(85, 98, 235, 1) !important;
+    background-color: #2366a5 !important;
 }
 
 .course-name:first-child {
@@ -381,16 +381,24 @@ marquee {
 }
 
 .table-scores td, .table-scores th {
-    border: 1px solid rgba(85, 98, 235, 0.51) !important;
+    border: 1px solid #2366a5 !important;
+}
+
+.table-scores th {
+    color: white;
 }
 
 .table-scores thead tr th{
-    background-color: rgba(85, 98, 235, 0.51) !important;
+    background-color: #2366a5 !important;
     text-transform: uppercase;
     font-weight: normal;
     padding: 8px;
     text-align: center;
     vertical-align: center;
+}
+
+.table-scores tr td button {
+    color: #2366a5 !important;
 }
 
 /*@media screen and (max-width: 991px) {*/
