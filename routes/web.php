@@ -52,28 +52,11 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 });
 
 //Route::get('/parser', 'ParserController@parseFromXls');
-
-Route::get('/parserjson', 'ParserJsonController@parseFromJson');
-
-Route::get('/stat', function () {
-    return view('pages.stat');
-});
-
-//
-//Route::get('/selection', 'SelectionController@index')->name('selection.index');
-//
-
-//
-//Route::get('/home', 'HomeController@index')->name('home');
-//
-//Route::get('/', 'PageController@index')->name('pages.index');
-Route::get('/{route}', 'PageController@route')->name('pages.route');
+Route::get('/contact', 'ContactController@index')->name('contact.index');
 //Route::get('/', 'SelectionController@index')->name('selection.index');
 Route::get('/', function () {
     return view('pages.stat');
 });
-
-
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/{route}', 'PageController@route')->name('pages.route');

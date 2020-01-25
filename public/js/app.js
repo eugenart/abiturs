@@ -92599,7 +92599,7 @@ var render = function() {
                                         },
                                         [
                                           _vm._v(
-                                            "Add file\n                                                    "
+                                            "Добавить файл\n                                                    "
                                           )
                                         ]
                                       )
@@ -92927,7 +92927,7 @@ var render = function() {
                     staticClass: "btn btn-sm btn-primary col-12 mb-2",
                     on: { click: _vm.addTextField }
                   },
-                  [_vm._v("Text")]
+                  [_vm._v("Текстовое поле")]
                 ),
                 _vm._v(" "),
                 _c(
@@ -92936,7 +92936,7 @@ var render = function() {
                     staticClass: "btn btn-sm btn-primary col-12",
                     on: { click: _vm.addFileGroup }
                   },
-                  [_vm._v("Files")]
+                  [_vm._v("Поле с файлами")]
                 )
               ])
             ])
@@ -112399,8 +112399,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\OSPanel\domains\abiturs\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\OSPanel\domains\abiturs\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Applications/MAMP/htdocs/abiturs/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/abiturs/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
