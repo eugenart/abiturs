@@ -82,7 +82,7 @@
                                     @if(count($faculty->tArea))
                                         <div class="col-12 mb-5 search-div"
                                              data-exams="{{ implode(',', $faculty->subjects) }}">
-                                            <h3><a href="" target="_blank">{{$faculty->name}}</a></h3>
+                                            <h3><a href="" target="_blank" class="main-color">{{$faculty->name}}</a></h3>
                                             <table class="table table-sm table-scores">
                                                 <thead>
                                                 <tr>
