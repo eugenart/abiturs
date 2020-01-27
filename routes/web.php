@@ -47,7 +47,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/parse-sub', 'ParserController@parseFromXlsSub')->name('parse.parseFromXlsSub');
 
 });
-
+Auth::routes();
 //Route::get('/parser', 'ParserController@parseFromXls');
 Route::get('/contact', 'ContactController@index')->name('contact.index');
 Route::get('/select', 'SelectionController@index')->name('selection.index');
@@ -57,6 +57,6 @@ Route::post('/stat', 'StatisticController@search')->name('stat.searchfio');
 
 Route::get('/', 'StatisticController@index')->name('stat.index');
 
-Auth::routes();
+
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/{route}', 'PageController@route')->name('pages.route');

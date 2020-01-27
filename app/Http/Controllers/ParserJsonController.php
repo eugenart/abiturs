@@ -99,9 +99,10 @@ class ParserJsonController extends Controller
         $categories = array_unique($categories, SORT_REGULAR);
         Category::insert($categories);
 
-        StatisticsIntra::truncate();
-        StatisticsPart::truncate();
-        StatisticsExtra::truncate();
+//        StatisticsIntra::truncate();
+//        StatisticsPart::truncate();
+//        StatisticsExtra::truncate();
+        Statistic::truncate();
 
         foreach ($json_data as $k => $st) {
 
@@ -131,7 +132,8 @@ class ParserJsonController extends Controller
                 'summContest' => $st['summContest'],
                 'needHostel' => $st['needHostel'],
                 'notice1' => $st['notice1'],
-                'notice2' => $st['notice2']
+                'notice2' => $st['notice2'],
+                'is_chosen' => false
             );
             $studentsStat[] = $stat;
         }
@@ -228,10 +230,11 @@ class ParserJsonController extends Controller
             foreach ($facultyItem['trainingAreas'] as $areaItem) {
 
                 $id_speciality = Speciality::where('specialityId', '=', $areaItem['trainingAreasId'])->first();
+                $id_studyForm = StudyForm::where('name', '=', $areaItem['trainingForm'])->first();
 
                 $area = array(
                     'id_speciality' => intval($id_speciality->id),
-                    'trainingForm' => $areaItem['trainingForm'],
+                    'id_studyForm' => intval($id_studyForm->id),
                     'freeSeatsNumber' => intval($areaItem['freeSeatsNumber']),
                     'years' => intval($areaItem['years']),
                     'price' => intval($areaItem['price'])

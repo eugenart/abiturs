@@ -63,48 +63,206 @@
         </div>
         <div class="row mt-4">
             <div class="col-12">
-                <div class="examInfo p-3">
-                    <div class="row">
-                        <div class="col-8">
-                            <p><u>Количество бюджетных мест</u>: <b>35</b></p>
-                            <p><u>Конкурс</u>: <b>0.2</b> человек/место</p>
-                            <p class="m-0"><u>Время последнего обновления</u>: <b>2019-06-26 10:01:01</b></p>
-                        </div>
-                        <div class="col-4">
-                            <a href="http://qrcoder.ru" target="_blank"><img
-                                    src="http://qrcoder.ru/code/?https%3A%2F%2Fvk.com%2Feug_art&4&0" width="132"
-                                    height="132" border="0" title="QR код"></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row mt-4">
-            <div class="col-12">
-
                 @if(isset($studyForms))
                     @foreach($studyForms as $studyForm)
-                        <h1><b>{{$studyForm->name}}</b></h1>
-                        @foreach($studyForm->stat as $category)
-                            <h2>{{ $category->name }}</h2>
-                            @foreach($category->admissionBases as $admissionBasis)
-                                <h3>{{ $admissionBasis->name }}</h3>
-                                @foreach($admissionBasis->preparationLevels as $preparationLevel)
-                                    <h4>{{$preparationLevel->name}}</h4>
-                                    @foreach($preparationLevel->faculties as $faculty)
-                                        <h5>{{$faculty->name}}</h5>
-                                        @foreach($faculty->specialities as $speciality)
-                                            <h6>{{$speciality->name}}</h6>
-                                           <ul>
-                                               @foreach($speciality->abiturs as $abitur)
-                                                    <li>{{$abitur->student->fio}}</li>
-                                               @endforeach
-                                           </ul>
-                                        @endforeach
+                        @if(isset($studyForm->stat ))
+                            @foreach($studyForm->stat as $category)
+                                @if(isset($category->admissionBases))
+                                    @foreach($category->admissionBases as $admissionBasis)
+                                        @if(isset($admissionBasis->preparationLevels))
+                                            @foreach($admissionBasis->preparationLevels as $preparationLevel)
+                                                @if(isset($preparationLevel->faculties))
+                                                    @foreach($preparationLevel->faculties as $faculty)
+                                                        @if(isset($faculty->specialities))
+                                                            @foreach($faculty->specialities as $speciality)
+                                                                <div class="row mt-4">
+                                                                    <div class="exam-info-outer">
+                                                                        <div class="col-12">
+                                                                            <div class="examInfo p-3">
+                                                                                <div class="row">
+                                                                                    <div class="col-12">
+                                                                                        <table>
+                                                                                            <tbody>
+                                                                                            <tr>
+                                                                                                <td>Форма обучения</td>
+                                                                                                <td>
+                                                                                                    <b class="mrsu-uppertext">{{$studyForm->name}}</b>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td>Категория приема
+                                                                                                </td>
+                                                                                                <td>
+                                                                                                    <b class="mrsu-uppertext">{{ $category->name }}</b>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td>Основание для
+                                                                                                    поступления
+                                                                                                </td>
+                                                                                                <td>
+                                                                                                    <b class="mrsu-uppertext">{{ $admissionBasis->name }}</b>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td>Уровень подготовки
+                                                                                                </td>
+                                                                                                <td>
+                                                                                                    <b class="mrsu-uppertext">{{$preparationLevel->name}}</b>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            </tbody>
+                                                                                        </table>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-12">
+                                                                            <div class="examInfo-bottom">
+                                                                                <div class="row">
+                                                                                    <div class="col-12">
+                                                                                        <p class="m-0 text-uppercase font-weight-bold">{{$faculty->name}}</p>
+                                                                                        <p class="m-0 font-weight-bold">{{$speciality->name}}</p>
+                                                                                        <p class="m-0">Кол-во бюджетных
+                                                                                            мест: <span
+                                                                                                class="font-weight-bold">{{$speciality->freeSeatsNumber}}</span>
+                                                                                        </p>
+                                                                                        <p class="m-0">
+                                                                                            Конкурс: <span
+                                                                                                class="font-weight-bold">{{$speciality->originalsCount}}</span>
+                                                                                            чел.
+                                                                                            / место
+                                                                                        </p>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                @if(isset($speciality->abiturs))
+                                                                    <table
+                                                                        class="table table-bordered table-sm base-exams-table">
+                                                                        <thead>
+                                                                        <tr style="vertical-align: center">
+                                                                            <td rowspan="2" class="text-center">№</td>
+                                                                            <td rowspan="2" class="text-center">Фамилия,
+                                                                                имя, отчество
+                                                                            </td>
+                                                                            <td rowspan="2" class="text-center">
+                                                                                Оригинал
+                                                                            </td>
+                                                                            <td rowspan="2" class="text-center">
+                                                                                Согласие
+                                                                            </td>
+
+                                                                            <td colspan="{{count($speciality->abiturs->first()->score) + 1}}">
+                                                                                @foreach($speciality->abiturs->first()->score as $i => $sc)
+                                                                                    @if($i < count($speciality->abiturs->first()->score) -1)
+                                                                                        <p class="m-0"> {{$i + 1}}
+                                                                                            ) {{$sc->subject->name}}</p>
+                                                                                    @else
+                                                                                        <p class="m-0"> {{$i + 1}}
+                                                                                            ) {{$sc->subject->name}}</p>
+                                                                                        <p class="m-0">{{$i + 2}}) Балл
+                                                                                            за
+                                                                                            индивидуальные
+                                                                                            достижения</p>
+                                                                                    @endif
+                                                                                @endforeach
+                                                                            </td>
+                                                                            <td class="text-center" rowspan="2">Сумма
+                                                                                баллов<br/> за
+                                                                                ЕГЭ/ВИ
+                                                                            </td>
+                                                                            <td class="text-center" rowspan="2">
+                                                                                Сумма<br/>
+                                                                                конкурсных<br/> баллов
+                                                                            </td>
+                                                                            <td class="text-center" rowspan="2">Тип
+                                                                                экзамена
+                                                                            </td>
+                                                                            <td class="text-center" rowspan="2">Статус
+                                                                                проверки
+                                                                            </td>
+                                                                            <td class="text-center" rowspan="2">
+                                                                                Нуждаемость <br> в
+                                                                                общежитии
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr class="text-center">
+                                                                            @foreach($speciality->abiturs->first()->score as $i => $sc)
+                                                                                @if($i < count($speciality->abiturs->first()->score) -1)
+                                                                                    <td>{{$i + 1}}</td>
+                                                                                @else
+                                                                                    <td>{{$i + 1}}</td>
+                                                                                    <td>{{$i + 2}}</td>
+                                                                                @endif
+                                                                            @endforeach
+                                                                        </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                        @foreach($speciality->abiturs as $k => $abitur)
+                                                                            @if($abitur->is_chosen)
+                                                                                <tr class="text-center chosen-student">
+                                                                            @else
+                                                                                <tr class="text-center">
+                                                                                    @endif
+                                                                                    <td class="text-center">{{$k + 1}}</td>
+                                                                                    <td class="text-left">{{$abitur->student->fio}}</td>
+                                                                                    @if($abitur->original)
+                                                                                        <td>
+                                                                                            <i class="fa fa-check-circle"
+                                                                                               style="color: rgba(0,128,0,0.51)"></i>
+                                                                                        </td>
+                                                                                    @else
+                                                                                        <td>
+                                                                                            <i class="fa fa-times-circle"
+                                                                                               style="color: rgba(128,0,0,0.51)"></i>
+                                                                                        </td>
+                                                                                    @endif
+                                                                                    @if($abitur->accept)
+                                                                                        <td>
+                                                                                            <i class="fa fa-check-circle"
+                                                                                               style="color: rgba(0,128,0,0.51)"></i>
+                                                                                        </td>
+                                                                                    @else
+                                                                                        <td>
+                                                                                            <i class="fa fa-times-circle"
+                                                                                               style="color: rgba(128,0,0,0.51)"></i>
+                                                                                        </td>
+                                                                                    @endif
+                                                                                    @foreach($abitur->score as $ab_sc)
+                                                                                        <td>{{$ab_sc->score}}</td>
+                                                                                    @endforeach
+
+                                                                                    <td>{{$abitur->indAchievement}}</td>
+                                                                                    <td>{{$abitur->summ}}</td>
+                                                                                    <td>{{$abitur->summContest}}</td>
+                                                                                    <td>ЕГЭ</td>
+                                                                                    <td>{{$abitur->notice1}}</td>
+                                                                                    @if($abitur->needHostel)
+                                                                                        <td>Да</td>
+                                                                                    @else
+                                                                                        <td>Нет</td>
+                                                                                    @endif
+                                                                                </tr>
+                                                                                @endforeach
+
+                                                                        </tbody>
+                                                                    </table>
+
+                                                                @endif
+                                                                {{--                                                                </ul>--}}
+                                                            @endforeach
+                                                        @endif
+                                                    @endforeach
+                                                @endif
+                                            @endforeach
+                                        @endif
                                     @endforeach
-                                @endforeach
+                                @endif
                             @endforeach
-                        @endforeach
+                        @endif
                     @endforeach
                 @endif
                 {{--                <table class="table table-bordered table-sm base-exams-table">--}}
