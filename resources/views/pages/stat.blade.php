@@ -121,11 +121,40 @@
                                                                             <div class="examInfo-bottom">
                                                                                 <div class="row">
                                                                                     <div class="col-12">
+{{--                                                                                        <table>--}}
+{{--                                                                                            <tbody>--}}
+{{--                                                                                            <tr>--}}
+{{--                                                                                                <td></td>--}}
+{{--                                                                                                <td>--}}
+{{--                                                                                                    <b class="mrsu-uppertext">{{$faculty->name}}</b>--}}
+{{--                                                                                                </td>--}}
+{{--                                                                                            </tr>--}}
+{{--                                                                                            <tr>--}}
+{{--                                                                                                <td></td>--}}
+{{--                                                                                                <td>--}}
+{{--                                                                                                    <b class="mrsu-uppertext">{{$speciality->name}}</b>--}}
+{{--                                                                                                </td>--}}
+{{--                                                                                            </tr>--}}
+{{--                                                                                            <tr>--}}
+{{--                                                                                                <td>Кол-во бюджетных мест: <span class="font-weight-bold">{{$speciality->freeSeatsNumber}}</span>--}}
+{{--                                                                                                </td>--}}
+{{--                                                                                                <td>--}}
+{{--                                                                                                </td>--}}
+{{--                                                                                            </tr>--}}
+{{--                                                                                            <tr>--}}
+{{--                                                                                                <td>Конкурс: <span class="font-weight-bold">{{$speciality->originalsCount}}</span>  чел./ место--}}
+{{--                                                                                                </td>--}}
+{{--                                                                                                <td>--}}
+{{--                                                                                                </td>--}}
+{{--                                                                                            </tr>--}}
+{{--                                                                                            </tbody>--}}
+{{--                                                                                        </table>--}}
                                                                                         <p class="m-0 text-uppercase font-weight-bold">{{$faculty->name}}</p>
                                                                                         <p class="m-0 font-weight-bold">{{$speciality->name}}</p>
                                                                                         <p class="m-0">Кол-во бюджетных
-                                                                                            мест: <span
-                                                                                                class="font-weight-bold">{{$speciality->freeSeatsNumber}}</span>
+                                                                                            мест:
+                                                                                            <span
+                                                                                            class="font-weight-bold">{{$speciality->freeSeatsNumber}}</span>
                                                                                         </p>
                                                                                         <p class="m-0">
                                                                                             Конкурс: <span

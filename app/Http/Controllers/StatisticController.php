@@ -22,71 +22,71 @@ class StatisticController extends Controller
     public function index(Request $request)
     {
 
-        $studyForms = StudyForm::all();
-
-        foreach ($studyForms as $k5 => $studyForm) {
-            $categories = Category::all();
-            foreach ($categories as $k4 => $category) {
-                $admissionBases = AdmissionBasis::all();
-                foreach ($admissionBases as $k3 => $admissionBasis) {
-                    $preparationLevels = PreparationLevel::all();
-                    foreach ($preparationLevels as $k2 => $preparationLevel) {
-                        $faculties = Faculty::all();
-                        foreach ($faculties as $k1 => $faculty) {
-                            $specialities_id = DB::table('statistics')
-                                ->where('id_faculty', '=', $faculty->id)
-                                ->select('statistics.id_speciality')
-                                ->distinct()
-                                ->get();
-                            $id_spec_arr = array();
-                            foreach ($specialities_id as $item) {
-                                $id_spec_arr[] = $item->id_speciality;
-                            }
-                            $specialities = Speciality::whereIn('id', $id_spec_arr)->get();
-
-                            foreach ($specialities as $k0 => $speciality) {
-                                $temp = Statistic::where('id_studyForm', '=', $studyForm->id)
-                                    ->where('id_preparationLevel', '=', $preparationLevel->id)
-                                    ->where('id_admissionBasis', '=', $admissionBasis->id)
-                                    ->where('id_category', '=', $category->id)
-                                    ->where('id_faculty', '=', $faculty->id)
-                                    ->where('id_speciality', '=', $speciality->id)
-                                    ->get();
-                                $temp->count() ? $speciality->abiturs = $temp : null;
-                                if (empty($speciality->abiturs)) {
-                                    unset($specialities[$k0]);
-                                }
-                            }
-                            $specialities->count() ? $faculty->specialities = $specialities : null; //В любом случае не пустые
-                            if (empty($faculty->specialities)) {
-                                unset($faculties[$k1]);
-                            }
-                        }
-                        $faculties->count() ? $preparationLevel->faculties = $faculties : null;
-                        if (empty($preparationLevel->faculties)) {
-                            unset($preparationLevels[$k2]);
-                        }
-                    }
-                    $preparationLevels->count() ? $admissionBasis->preparationLevels = $preparationLevels : null;
-                    if (empty($admissionBasis->preparationLevels)) {
-                        unset($admissionBases[$k3]);
-                    }
-                }
-                $admissionBases->count() ? $category->admissionBases = $admissionBases : null;
-                if (empty($category->admissionBases)) {
-                    unset($categories[$k4]);
-                }
-            }
-            $categories->count() ? $studyForm->stat = $categories : null;
-            if (empty($studyForm->stat)) {
-                unset($studyForms[$k5]);
-            }
-        }
-
-        // return $studyForms;
-        // return json_encode($studyForms, JSON_UNESCAPED_UNICODE);
-
-        return view('pages.stat', compact('studyForms'));
+//        $studyForms = StudyForm::all();
+//
+//        foreach ($studyForms as $k5 => $studyForm) {
+//            $categories = Category::all();
+//            foreach ($categories as $k4 => $category) {
+//                $admissionBases = AdmissionBasis::all();
+//                foreach ($admissionBases as $k3 => $admissionBasis) {
+//                    $preparationLevels = PreparationLevel::all();
+//                    foreach ($preparationLevels as $k2 => $preparationLevel) {
+//                        $faculties = Faculty::all();
+//                        foreach ($faculties as $k1 => $faculty) {
+//                            $specialities_id = DB::table('statistics')
+//                                ->where('id_faculty', '=', $faculty->id)
+//                                ->select('statistics.id_speciality')
+//                                ->distinct()
+//                                ->get();
+//                            $id_spec_arr = array();
+//                            foreach ($specialities_id as $item) {
+//                                $id_spec_arr[] = $item->id_speciality;
+//                            }
+//                            $specialities = Speciality::whereIn('id', $id_spec_arr)->get();
+//
+//                            foreach ($specialities as $k0 => $speciality) {
+//                                $temp = Statistic::where('id_studyForm', '=', $studyForm->id)
+//                                    ->where('id_preparationLevel', '=', $preparationLevel->id)
+//                                    ->where('id_admissionBasis', '=', $admissionBasis->id)
+//                                    ->where('id_category', '=', $category->id)
+//                                    ->where('id_faculty', '=', $faculty->id)
+//                                    ->where('id_speciality', '=', $speciality->id)
+//                                    ->get();
+//                                $temp->count() ? $speciality->abiturs = $temp : null;
+//                                if (empty($speciality->abiturs)) {
+//                                    unset($specialities[$k0]);
+//                                }
+//                            }
+//                            $specialities->count() ? $faculty->specialities = $specialities : null; //В любом случае не пустые
+//                            if (empty($faculty->specialities)) {
+//                                unset($faculties[$k1]);
+//                            }
+//                        }
+//                        $faculties->count() ? $preparationLevel->faculties = $faculties : null;
+//                        if (empty($preparationLevel->faculties)) {
+//                            unset($preparationLevels[$k2]);
+//                        }
+//                    }
+//                    $preparationLevels->count() ? $admissionBasis->preparationLevels = $preparationLevels : null;
+//                    if (empty($admissionBasis->preparationLevels)) {
+//                        unset($admissionBases[$k3]);
+//                    }
+//                }
+//                $admissionBases->count() ? $category->admissionBases = $admissionBases : null;
+//                if (empty($category->admissionBases)) {
+//                    unset($categories[$k4]);
+//                }
+//            }
+//            $categories->count() ? $studyForm->stat = $categories : null;
+//            if (empty($studyForm->stat)) {
+//                unset($studyForms[$k5]);
+//            }
+//        }
+//
+//        // return $studyForms;
+//        // return json_encode($studyForms, JSON_UNESCAPED_UNICODE);
+//
+        return view('pages.stat');
 
     }
 
@@ -211,6 +211,39 @@ class StatisticController extends Controller
 
         //return $studyForms;
         return view('pages.stat', compact('studyForms'));
+    }
+
+    public function fetchFaculties(Request $request)
+    {
+        $faculties = Faculty::all();
+        foreach ($faculties as $faculty) {
+            $id_specialities = Statistic::where('id_faculty', '=', $faculty->id)
+                ->select('id_speciality')
+                ->get();
+
+            $id_spec_arr = array();
+            foreach ($id_specialities as $item) {
+                $id_spec_arr[] = $item->id_speciality;
+            }
+            $specialities = Speciality::whereIn('id', $id_spec_arr)->get();
+
+            foreach ($specialities as $speciality) {
+                $id_studyForms = TrainingArea::where('id_speciality', '=', $speciality->id)
+                    ->select('id_studyForm')
+                    ->get();
+
+                $id_studyForms_arr = array();
+                foreach ($id_studyForms as $item) {
+                    $id_studyForms_arr[] = $item->id_studyForm;
+                }
+                $studyForms = StudyForm::whereIn('id', $id_studyForms_arr)->get();
+
+                $studyForms->count() ? $speciality->studyForms = $studyForms : null;
+            }
+            $faculty->speciality = $specialities;
+        }
+        return $faculties;
+        return view('pages.stat');
     }
 
 }

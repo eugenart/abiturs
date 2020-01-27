@@ -55,6 +55,9 @@ Route::get('/select', 'SelectionController@index')->name('selection.index');
 Route::get('/stat', 'StatisticController@index')->name('stat.index');
 Route::post('/stat', 'StatisticController@search')->name('stat.searchfio');
 
+Route::get('/statfaculties', 'StatisticController@fetchFaculties')->name('stat.fetchFaculties');
+
+
 Route::get('/', 'StatisticController@index')->name('stat.index');
 
 
