@@ -37,7 +37,7 @@
             @csrf
             <div class="row">
                 <select class="selectpicker form-control-sm col-3" multiple
-                        title="Факультет / Институт" name="faculties[]" id="faculties">
+                        title="Факультет / Институт" name="faculties[]" id="allfaculties">
                 </select>
 
                 <select class="selectpicker form-control-sm col-3" data-live-search="true" multiple
@@ -281,7 +281,7 @@
 
         function fillFaculties(faculties) {
             $.each(faculties, (k, faculty) => {
-                $('#faculties').append('<option value="' + faculty.id + '">' + faculty.name + '</option>')
+                $('#allfaculties').append('<option value="' + faculty.id + '">' + faculty.name + '</option>')
                 refreshInputs();
             })
         }
@@ -309,32 +309,29 @@
         }
 
         function refreshInputs() {
-            $('#faculties, #specialities, #studyforms').selectpicker('refresh');
+            $('#allfaculties, #specialities, #studyforms').selectpicker('refresh');
         }
 
         function makeFacultiesChecked(faculties, facultiesIds) {
             $.each(faculties, (k, faculty) => {
                 if (facultiesIds.length > 0) {
-                    $('#faculties').selectpicker('val', facultiesIds);
+                    $('#allfaculties').selectpicker('val', facultiesIds);
                 }
             })
         }
 
-        $('#faculties').change(() => {
-            let facultiesIds = $('#faculties').val();
-         //   console.log($('#faculties').val());
+        $('#allfaculties').change(() => {
+            let facultiesIds = $('#allfaculties').val();
             $('#specialities').find('option').remove().find('optgroup').end();
             fillSpecialitiesWithCheck(faculties, facultiesIds.map(Number))
-            if ($('#faculties').val().length > 0 || $('#specialities').val().length > 0) {
+            if ($('#allfaculties').val().length > 0 || $('#specialities').val().length > 0) {
                 $('#submitInfo').attr('disabled', false)
             } else {
                 $('#submitInfo').attr('disabled', true)
             }
-            console.log($('#faculties').val())
         })
 
         $('#specialities').change(() => {
-            //console.log($('#specialities').val())
             let facultiesIds = []
             let specialitiesIds = []
             $.each($('#specialities').val(), (k, v) => {
@@ -342,9 +339,8 @@
                 specialitiesIds.push(v.split(';')[1])
             })
             makeFacultiesChecked(faculties, facultiesIds.map(Number));
-            //console.log($.unique(specialitiesIds.map(Number)))
             refreshInputs()
-            if ($('#faculties').val().length > 0 || $('#specialities').val().length > 0) {
+            if ($('#allfaculties').val().length > 0 || $('#specialities').val().length > 0) {
                 $('#submitInfo').attr('disabled', false)
             } else {
                 $('#submitInfo').attr('disabled', true)
@@ -352,7 +348,7 @@
         })
 
         $('#clearSelects').click(() => {
-            $('#faculties, #specialities').selectpicker('deselectAll');
+            $('#allfaculties, #specialities').selectpicker('deselectAll');
         })
     </script>
 @endsection
