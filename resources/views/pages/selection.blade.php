@@ -128,7 +128,7 @@
                             </div>
                         </div>
                         <div class="col-12 col-sm-3">
-                            <h4 class="mb-3">Вступительные испытания</h4>
+                            <h4 class="mb-3">Мои ступительные испытания</h4>
                             <div class="row text-uppercase mb-5">
                                 @foreach($subjects as $subject)
                                     <div class="col-6 col-sm-12">

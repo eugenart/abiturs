@@ -20,7 +20,6 @@ class StatisticController extends Controller
 {
     public function index(Request $request)
     {
-
         $studyForms = StudyForm::all();
 
         foreach ($studyForms as $studyForm) {
@@ -51,61 +50,30 @@ class StatisticController extends Controller
                                     ->where('id_faculty', '=', $faculty->id)
                                     ->where('id_speciality', '=', $speciality->id)
                                     ->get();
-                                // $temp->count() ? $tempspec[] = $temp : null;
                                 $speciality->abiturs = $temp;
                             }
-                            //count($tempspec) ? $tempfacs[] = $tempspec : null;
                             $faculty->specialities = $specialities;
                         }
-                        //count($tempfacs) ? $temppreps[] = $tempfacs : null;
                         $preparationLevel->faculties = $faculties;
                     }
-                    //count($temppreps) ? $tempstats[] = $temppreps : null;
                     $admissionBasis->preparationLevels = $preparationLevels;
                 }
-                // $tempForms[] = $tempstats;
                 $category->admissionBases = $admissionBases;
             }
-            // $studyForm->stat = $tempForms;
             $studyForm->stat = $categories;
         }
-
-        // return $studyForms;
-
-        // return json_encode($studyForms, JSON_UNESCAPED_UNICODE);
         return view('pages.stat', compact('studyForms'));
-//        return view('pages.stat', [ 'statistics' => $statistics
-        //  'faculties' => Faculty::facultyJoinStat()//,
-        // 'specialities' => Speciality::specJoinStat()
-        // ]);
     }
 
     public function search(Request $request)
     {
-        //dd($request->all());
-//        $fio = $request->fio;
-//        $students = Student::where('fio', 'LIKE', '%' . $fio . '%')->get(); //студенты все по имени
-//        $id_stud_arr = array();
-//
-//
-//        foreach ($students as $student) {
-//            $id_stud_arr[] = $student->id;
-//        }
-//
-//        //выбрать статистику по этим студентам
-//        $stat = Statistic::whereIn('id_student', $id_stud_arr)->get();
-//        //return $stat;
-//        return view('pages.stat', ['statistics' => $stat]);
-
         $fio = $request->fio;
         $students = Student::where('fio', 'LIKE', '%' . $fio . '%')->get(); //студенты все по имени
         $id_stud_arr = array();
 
-
         foreach ($students as $student) {
             $id_stud_arr[] = $student->id;
         }
-
 
         $studyForms = StudyForm::all();
 
@@ -138,25 +106,18 @@ class StatisticController extends Controller
                                     ->where('id_speciality', '=', $speciality->id)
                                     ->whereIn('id_student', $id_stud_arr)
                                     ->get();
-                                // $temp->count() ? $tempspec[] = $temp : null;
                                 $speciality->abiturs = $temp;
                             }
-                            //count($tempspec) ? $tempfacs[] = $tempspec : null;
                             $faculty->specialities = $specialities;
                         }
-                        //count($tempfacs) ? $temppreps[] = $tempfacs : null;
                         $preparationLevel->faculties = $faculties;
                     }
-                    //count($temppreps) ? $tempstats[] = $temppreps : null;
                     $admissionBasis->preparationLevels = $preparationLevels;
                 }
-                // $tempForms[] = $tempstats;
                 $category->admissionBases = $admissionBases;
             }
-            // $studyForm->stat = $tempForms;
             $studyForm->stat = $categories;
         }
         return view('pages.stat',compact('studyForms'));
     }
-
 }
