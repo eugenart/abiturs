@@ -30,7 +30,13 @@ class StatisticController extends Controller
     public function search(Request $request)
     {
 
-        return $request;
+        if (isset($request->faculties))
+        {
+            return $request;
+        }
+        else {
+            return 'fio';
+        }
 //
 //        $fio = $request->fio;
 //        //студенты все по имени

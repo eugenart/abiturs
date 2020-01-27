@@ -273,6 +273,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.9/js/i18n/defaults-ru_RU.min.js"></script>
     <script>
         $(document).ready(() => {
+            $('#submitInfo').attr('disabled', true)
             faculties = {!! json_encode($faculties) !!};
             fillFaculties(faculties);
             fillSpecialitiesWithCheck(faculties)
@@ -324,6 +325,12 @@
          //   console.log($('#faculties').val());
             $('#specialities').find('option').remove().find('optgroup').end();
             fillSpecialitiesWithCheck(faculties, facultiesIds.map(Number))
+            if ($('#faculties').val().length > 0 || $('#specialities').val().length > 0) {
+                $('#submitInfo').attr('disabled', false)
+            } else {
+                $('#submitInfo').attr('disabled', true)
+            }
+            console.log($('#faculties').val())
         })
 
         $('#specialities').change(() => {
@@ -337,6 +344,11 @@
             makeFacultiesChecked(faculties, facultiesIds.map(Number));
             //console.log($.unique(specialitiesIds.map(Number)))
             refreshInputs()
+            if ($('#faculties').val().length > 0 || $('#specialities').val().length > 0) {
+                $('#submitInfo').attr('disabled', false)
+            } else {
+                $('#submitInfo').attr('disabled', true)
+            }
         })
 
         $('#clearSelects').click(() => {
