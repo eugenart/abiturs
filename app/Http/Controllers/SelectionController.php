@@ -17,7 +17,7 @@ class SelectionController extends Controller
             }
         }
 
-        $faculties = Faculty::all();
+        $faculties = Faculty::orderBy('name')->get();
 
         foreach ($faculties as $faculty) {
             $faculty->tArea = $faculty->areas()->get();
