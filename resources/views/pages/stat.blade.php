@@ -1,5 +1,8 @@
 @extends('pages.layout')
-
+@section('style')
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
+@endsection
 @section('page')
     <div class="row bac-mag">
         <div class="col-12">
@@ -30,37 +33,32 @@
     </div>
 
     <div class="container-fluid p-5">
-        <div class="row">
-
-            <div class="col-3"><select class="w-100 form-control form-control-sm">
-                    <option value="-1">Факультет / Институт</option>
-
-                    {{--                    @foreach($faculties as $faculty)--}}
-                    {{--                        <option value="{{$faculty->id}}">{{$faculty->name}}</option>--}}
-                    {{--                    @endforeach--}}
-                </select></div>
-            <div class="col-3"><select class="w-100 form-control form-control-sm">
-                    <option value="-1">Специальность</option>
-                    {{--                    @foreach($specialities as $spec)--}}
-                    {{--                        <option value="{{$spec->id}}">{{$spec->name}}</option>--}}
-                    {{--                    @endforeach--}}
-                </select></div>
-            <div class="col-2"><select class="w-100 form-control form-control-sm">
-                    <option value="-1">Внебюджет</option>
-                    <option value="1">1</option>
-                </select></div>
-            <div class="col-2"><select class="w-100 form-control form-control-sm">
-                    <option value="-1">Форма обучения</option>
-                    <option value="1">1</option>
+        <form action="{{ route('stat.searchfio') }}" id="sendFormWithFacultets" method="POST">
+            @csrf
+            <div class="row">
+                <select class="selectpicker form-control-sm col-3" multiple
+                        title="Факультет / Институт" name="faculties[]" id="faculties">
                 </select>
+
+                <select class="selectpicker form-control-sm col-3" data-live-search="true" multiple
+                        title="Специальность"
+                        name="specialities[]" id="specialities">
+                </select>
+
+                <select class="selectpicker form-control-sm col-2" multiple title="Форма обучения" name="studyforms[]"
+                        id="studyforms">
+                    @foreach ($studyFormsForInputs as $form)
+                        <option value="{{$form->id}}">{{$form->name}}</option>
+                    @endforeach
+                </select>
+                <div class="col-2">
+                    <button class="w-100 btn btn-success btn-sm" id="submitInfo" type="submit">Поиск</button>
+                </div>
+                <div class="col-1">
+                    <button class="w-100 btn btn-warning btn-sm" type="button" id="clearSelects">Сбросить</button>
+                </div>
             </div>
-            <div class="col-1">
-                <button class="w-100 btn btn-success btn-sm" id="submitInfo">Поиск</button>
-            </div>
-            <div class="col-1">
-                <button class="w-100 btn btn-warning btn-sm" id="clearSelects">Сбросить</button>
-            </div>
-        </div>
+        </form>
         <div class="row mt-4">
             <div class="col-12">
                 @if(isset($studyForms))
@@ -121,40 +119,11 @@
                                                                             <div class="examInfo-bottom">
                                                                                 <div class="row">
                                                                                     <div class="col-12">
-{{--                                                                                        <table>--}}
-{{--                                                                                            <tbody>--}}
-{{--                                                                                            <tr>--}}
-{{--                                                                                                <td></td>--}}
-{{--                                                                                                <td>--}}
-{{--                                                                                                    <b class="mrsu-uppertext">{{$faculty->name}}</b>--}}
-{{--                                                                                                </td>--}}
-{{--                                                                                            </tr>--}}
-{{--                                                                                            <tr>--}}
-{{--                                                                                                <td></td>--}}
-{{--                                                                                                <td>--}}
-{{--                                                                                                    <b class="mrsu-uppertext">{{$speciality->name}}</b>--}}
-{{--                                                                                                </td>--}}
-{{--                                                                                            </tr>--}}
-{{--                                                                                            <tr>--}}
-{{--                                                                                                <td>Кол-во бюджетных мест: <span class="font-weight-bold">{{$speciality->freeSeatsNumber}}</span>--}}
-{{--                                                                                                </td>--}}
-{{--                                                                                                <td>--}}
-{{--                                                                                                </td>--}}
-{{--                                                                                            </tr>--}}
-{{--                                                                                            <tr>--}}
-{{--                                                                                                <td>Конкурс: <span class="font-weight-bold">{{$speciality->originalsCount}}</span>  чел./ место--}}
-{{--                                                                                                </td>--}}
-{{--                                                                                                <td>--}}
-{{--                                                                                                </td>--}}
-{{--                                                                                            </tr>--}}
-{{--                                                                                            </tbody>--}}
-{{--                                                                                        </table>--}}
                                                                                         <p class="m-0 text-uppercase font-weight-bold">{{$faculty->name}}</p>
                                                                                         <p class="m-0 font-weight-bold">{{$speciality->name}}</p>
                                                                                         <p class="m-0">Кол-во бюджетных
-                                                                                            мест:
-                                                                                            <span
-                                                                                            class="font-weight-bold">{{$speciality->freeSeatsNumber}}</span>
+                                                                                            мест: <span
+                                                                                                class="font-weight-bold">{{$speciality->freeSeatsNumber}}</span>
                                                                                         </p>
                                                                                         <p class="m-0">
                                                                                             Конкурс: <span
@@ -294,82 +263,84 @@
                         @endif
                     @endforeach
                 @endif
-                {{--                <table class="table table-bordered table-sm base-exams-table">--}}
-                {{--                    <thead>--}}
-                {{--                    <tr style="vertical-align: center">--}}
-                {{--                        <td rowspan="2">№</td>--}}
-                {{--                        <td rowspan="2">Фамилия, имя, отчество</td>--}}
-                {{--                        <td rowspan="2">Оригинал</td>--}}
-                {{--                        <td rowspan="2">Согласие</td>--}}
-
-                {{--                        <td colspan="4">--}}
-                {{--                            <p class="m-0">1) Химия</p>--}}
-                {{--                            <p class="m-0">2) Математика (профильная)</p>--}}
-                {{--                            <p class="m-0">3) Русский язык</p>--}}
-                {{--                            <p class="m-0">4) Балл за индивидуальные достижения</p>--}}
-                {{--                        </td>--}}
-                {{--                        <td rowspan="2">Сумма баллов<br/> за ЕГЭ/ВИ</td>--}}
-                {{--                        <td rowspan="2">Сумма<br/> конкурсных<br/> баллов</td>--}}
-                {{--                        --}}{{--                        <td rowspan="2">Тип экзамена</td>--}}
-                {{--                        <td rowspan="2">Статус проверки</td>--}}
-                {{--                        <td rowspan="2">Нуждаемость в общежитии</td>--}}
-                {{--                    </tr>--}}
-                {{--                    <tr>--}}
-                {{--                        <td>1</td>--}}
-                {{--                        <td>2</td>--}}
-                {{--                        <td>3</td>--}}
-                {{--                        <td>4</td>--}}
-                {{--                    </tr>--}}
-                {{--                    </thead>--}}
-                {{--                    <tbody>--}}
-                {{--                    <tr>--}}
-                {{--                        <td class="exam-rights" colspan="14">--}}
-                {{--                            <b>Квота (особое право)</b>. Количество мест: <b>4</b>--}}
-                {{--                        </td>--}}
-                {{--                    </tr>--}}
-
-                {{--                    @foreach($statistics as $k => $stat)--}}
-                {{--                        <tr class="text-center">--}}
-                {{--                            <td class="text-center">{{$k + 1}}</td>--}}
-                {{--                            <td>{{$stat->student->fio}}</td>--}}
-                {{--                            @if($stat->original)--}}
-                {{--                                <td><i class="fa fa-check-circle" style="color: rgba(0,128,0,0.51)"></i></td>--}}
-                {{--                            @else--}}
-                {{--                                <td><i class="fa fa-times-circle" style="color: rgba(128,0,0,0.51)"></i></td>--}}
-                {{--                            @endif--}}
-                {{--                            @if($stat->accept)--}}
-                {{--                                <td><i class="fa fa-check-circle" style="color: rgba(0,128,0,0.51)"></i></td>--}}
-                {{--                            @else--}}
-                {{--                                <td><i class="fa fa-times-circle" style="color: rgba(128,0,0,0.51)"></i></td>--}}
-                {{--                            @endif--}}
-
-                {{--                            <td>80</td>--}}
-                {{--                            <td>80</td>--}}
-                {{--                            <td>80</td>--}}
-
-                {{--                            <td>{{$stat->indAchievement}}</td>--}}
-                {{--                            <td>{{$stat->summ}}</td>--}}
-                {{--                            <td>{{$stat->summContest}}</td>--}}
-                {{--                            --}}{{--                            <td>ЕГЭ</td>--}}
-                {{--                            <td>{{$stat->notice1}}</td>--}}
-                {{--                            @if($stat->needHostel)--}}
-                {{--                                <td>Да</td>--}}
-                {{--                            @else--}}
-                {{--                                <td>Нет</td>--}}
-                {{--                            @endif--}}
-                {{--                        </tr>--}}
-                {{--                    @endforeach--}}
-                {{--                    </tbody>--}}
-                {{--                </table>--}}
             </div>
         </div>
     </div>
 @endsection
 
 @section('js')
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.9/js/i18n/defaults-ru_RU.min.js"></script>
     <script>
-        $('#clearSelects').click(function () {
-            $('select').val('-1');
+        $(document).ready(() => {
+            faculties = {!! json_encode($faculties) !!};
+            fillFaculties(faculties);
+            fillSpecialitiesWithCheck(faculties)
+        })
+
+        function fillFaculties(faculties) {
+            $.each(faculties, (k, faculty) => {
+                $('#faculties').append('<option value="' + faculty.id + '">' + faculty.name + '</option>')
+                refreshInputs();
+            })
+        }
+
+        function fillSpecialities(faculty) {
+            $('#specialities').append('<optgroup label="' + faculty.name + '">')
+            $.each(faculty.speciality, (key, spec) => {
+                $('#specialities optgroup:last').append('<option value="' + faculty.id + ';' + spec.id + '">' + spec.code + ' ' + spec.name + '</option>')
+            })
+            $('#specialities').append('</optgroup>')
+
+        }
+
+        function fillSpecialitiesWithCheck(faculties, facultiesIds = []) {
+            $.each(faculties, (k, faculty) => {
+                if (facultiesIds.length > 0) {
+                    if ($.inArray(k + 1, facultiesIds) !== -1) {
+                        fillSpecialities(faculty)
+                    }
+                } else {
+                    fillSpecialities(faculty)
+                }
+            })
+            refreshInputs();
+        }
+
+        function refreshInputs() {
+            $('#faculties, #specialities, #studyforms').selectpicker('refresh');
+        }
+
+        function makeFacultiesChecked(faculties, facultiesIds) {
+            $.each(faculties, (k, faculty) => {
+                if (facultiesIds.length > 0) {
+                    $('#faculties').selectpicker('val', facultiesIds);
+                }
+            })
+        }
+
+        $('#faculties').change(() => {
+            let facultiesIds = $('#faculties').val();
+         //   console.log($('#faculties').val());
+            $('#specialities').find('option').remove().find('optgroup').end();
+            fillSpecialitiesWithCheck(faculties, facultiesIds.map(Number))
+        })
+
+        $('#specialities').change(() => {
+            //console.log($('#specialities').val())
+            let facultiesIds = []
+            let specialitiesIds = []
+            $.each($('#specialities').val(), (k, v) => {
+                facultiesIds.push(v.split(';')[0])
+                specialitiesIds.push(v.split(';')[1])
+            })
+            makeFacultiesChecked(faculties, facultiesIds.map(Number));
+            //console.log($.unique(specialitiesIds.map(Number)))
+            refreshInputs()
+        })
+
+        $('#clearSelects').click(() => {
+            $('#faculties, #specialities').selectpicker('deselectAll');
         })
     </script>
 @endsection

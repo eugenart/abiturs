@@ -15,7 +15,6 @@ class EditTrainingForm extends Migration
     {
         Schema::table('training_areas', function (Blueprint $table) {
             $table->dropColumn('trainingForm');
-            $table->dropColumn('studyForm');
             $table->bigInteger('id_studyForm');
         });
     }
