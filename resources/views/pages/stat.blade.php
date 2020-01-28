@@ -32,8 +32,8 @@
                 <div class="container">
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{route('stat.index')}}"><b><i class="fas fa-university"></i>
+                            <li class="nav-item active">
+                                <a class="nav-link font-weight-bold" href="{{route('stat.index')}}"><b><i class="fas fa-university"></i>
                                         Бакалавриат и специалитет</b></a>
                             </li>
                             <li class="nav-item">
@@ -102,63 +102,65 @@
                                                         @if(isset($faculty->specialities))
                                                             @foreach($faculty->specialities as $speciality)
                                                                 <div class="row mt-4">
-                                                                    <div class="exam-info-outer">
-                                                                        <div class="col-6 float-left p-0">
-                                                                            <div class="examInfo p-3">
-                                                                                <div class="row">
-                                                                                    <div class="col-12">
-                                                                                        <table>
-                                                                                            <tbody>
-                                                                                            <tr>
-                                                                                                <td>Форма обучения</td>
-                                                                                                <td>
-                                                                                                    <b class="mrsu-uppertext">{{$studyForm->name}}</b>
-                                                                                                </td>
-                                                                                            </tr>
-                                                                                            <tr>
-                                                                                                <td>Категория приема
-                                                                                                </td>
-                                                                                                <td>
-                                                                                                    <b class="mrsu-uppertext">{{ $category->name }}</b>
-                                                                                                </td>
-                                                                                            </tr>
-                                                                                            <tr>
-                                                                                                <td>Основание для
-                                                                                                    поступления
-                                                                                                </td>
-                                                                                                <td>
-                                                                                                    <b class="mrsu-uppertext">{{ $admissionBasis->name }}</b>
-                                                                                                </td>
-                                                                                            </tr>
-                                                                                            <tr>
-                                                                                                <td>Уровень подготовки
-                                                                                                </td>
-                                                                                                <td>
-                                                                                                    <b class="mrsu-uppertext">{{$preparationLevel->name}}</b>
-                                                                                                </td>
-                                                                                            </tr>
-                                                                                            </tbody>
-                                                                                        </table>
+                                                                    <div class="col-12">
+                                                                        <div class="exam-info-outer">
+                                                                            <div class="col-6 float-left p-0">
+                                                                                <div class="examInfo p-3">
+                                                                                    <div class="row">
+                                                                                        <div class="col-12">
+                                                                                            <table>
+                                                                                                <tbody>
+                                                                                                <tr>
+                                                                                                    <td>Форма обучения</td>
+                                                                                                    <td>
+                                                                                                        <b class="mrsu-uppertext">{{$studyForm->name}}</b>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td>Категория приема
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <b class="mrsu-uppertext">{{ $category->name }}</b>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td>Основание для
+                                                                                                        поступления
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <b class="mrsu-uppertext">{{ $admissionBasis->name }}</b>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td>Уровень подготовки
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <b class="mrsu-uppertext">{{$preparationLevel->name}}</b>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                </tbody>
+                                                                                            </table>
+                                                                                        </div>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-                                                                        </div>
-                                                                        <div class="col-6 float-left p-0 d-flex align-items-stretch">
-                                                                            <div class="examInfo-bottom pl-4">
-                                                                                <div class="row d-flex align-items-center justify-content-center h-100">
-                                                                                    <div class="col-12">
-                                                                                        <p class="m-0 text-uppercase font-weight-bold">{{$faculty->name}}</p>
-                                                                                        <p class="m-0 font-weight-bold">{{$speciality->name}}</p>
-                                                                                        <p class="m-0">Кол-во бюджетных
-                                                                                            мест: <span
-                                                                                                class="font-weight-bold">{{$speciality->freeSeatsNumber}}</span>
-                                                                                        </p>
-                                                                                        <p class="m-0">
-                                                                                            Конкурс: <span
-                                                                                                class="font-weight-bold">{{$speciality->originalsCount}}</span>
-                                                                                            чел.
-                                                                                            / место
-                                                                                        </p>
+                                                                            <div class="col-6 float-left p-0 d-flex align-items-stretch">
+                                                                                <div class="examInfo-bottom pl-4">
+                                                                                    <div class="row d-flex align-items-center justify-content-center h-100">
+                                                                                        <div class="col-12">
+                                                                                            <p class="m-0 text-uppercase font-weight-bold">{{$faculty->name}}</p>
+                                                                                            <p class="m-0 font-weight-bold">{{$speciality->name}}</p>
+                                                                                            <p class="m-0">Кол-во бюджетных
+                                                                                                мест: <span
+                                                                                                    class="font-weight-bold">{{$speciality->freeSeatsNumber}}</span>
+                                                                                            </p>
+                                                                                            <p class="m-0">
+                                                                                                Конкурс: <span
+                                                                                                    class="font-weight-bold">{{$speciality->originalsCount}}</span>
+                                                                                                чел.
+                                                                                                / место
+                                                                                            </p>
+                                                                                        </div>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -267,9 +269,9 @@
                                                                                     <td>ЕГЭ</td>
                                                                                     <td>{{$abitur->notice1}}</td>
                                                                                     @if($abitur->needHostel)
-                                                                                        <td>Да</td>
+                                                                                        <td style="background-color: rgba(0,255,0,0.1)">Да</td>
                                                                                     @else
-                                                                                        <td>Нет</td>
+                                                                                        <td style="background-color: rgba(255,0,0,0.1)">Нет</td>
                                                                                     @endif
                                                                                 </tr>
                                                                                 @endforeach
@@ -290,6 +292,9 @@
                             @endforeach
                         @endif
                     @endforeach
+
+                @else
+                    <h4 class="text-center m-4">Введите <b>ФИО</b> или выберите <b>факультет/институт</b> для получения информации о статистике приема.</h4>
                 @endif
             </div>
         </div>

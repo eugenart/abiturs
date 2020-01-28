@@ -82,7 +82,8 @@
                                     @if(count($faculty->tArea))
                                         <div class="col-12 mb-5 search-div"
                                              data-exams="{{ implode(',', $faculty->subjects) }}">
-                                            <h3><a href="" target="_blank" class="main-color">{{$faculty->name}}</a></h3>
+                                            <h3><a href="" target="_blank" class="main-color">{{$faculty->name}}</a>
+                                            </h3>
                                             <table class="table table-sm table-scores">
                                                 <thead>
                                                 <tr>
@@ -154,7 +155,8 @@
                                         <div class="col-12 mb-5 search-div-by-faculties"
                                              data-faculty="{{ $faculty->name }}"
                                              data-exams="{{ implode(',', $faculty->subjects) }}">
-                                            <h3><a href="" style="color: #2366a5" target="_blank">{{$faculty->name}}</a></h3>
+                                            <h3><a href="" style="color: #2366a5" target="_blank">{{$faculty->name}}</a>
+                                            </h3>
                                             <table class="table table-sm table-scores">
                                                 <thead>
                                                 <tr>
@@ -280,6 +282,10 @@
             });
         }
 
+        function changeNum(n) {
+            return (n + "").split("").reverse().join("").replace(/(\d{3})/g, "$1 ").split("").reverse().join("").replace(/^ /, "");
+        }
+
 
         $('#exampleModalScrollable').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget) // Button that triggered the modal
@@ -326,9 +332,9 @@
                 "                                    <span>бюджетных мест</span>\n" +
                 "                                </td>\n" +
                 "                                <td>\n" +
-                "                                    <strong>" + (recipient.price / recipient.years).toFixed(0) + "</strong>\n" +
+                "                                    <strong>" + changeNum((recipient.price / recipient.years).toFixed(0)) + "</strong>\n" + "<span style='font-size: 20px;'>₽</span>" +
                 "                                    <br>\n" +
-                "                                    <span>рублей в год</span>\n" +
+                "                                    <span>в год</span>\n" +
                 "                                </td>\n" +
                 "                            </tr>";
             modal.find('table').append(templateRecipient)
