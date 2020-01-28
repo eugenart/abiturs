@@ -14,7 +14,7 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fas fa-university"></i> Бакалавриат и специалитет</a>
+                                <a class="nav-link" href="{{route('stat.index')}}"><b><i class="fas fa-university"></i> Бакалавриат и специалитет</b></a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#"><i class="fas fa-graduation-cap"></i> Магистратура</a>

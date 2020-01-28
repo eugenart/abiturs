@@ -9,7 +9,7 @@
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
           integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
     @section('style')
     @show
     <title>Приемная кампания 2020</title>
@@ -18,11 +18,11 @@
 <div class="container">
     <div class="row header p-3">
         <div class="col-6">
-            <img src="storage/images/logo_mrsu.png" class="mrsu-logo-img" alt="">
+            <a href="/"><img src="{{asset('storage/images/logo_mrsu.png')}}" class="mrsu-logo-img" alt=""></a>
         </div>
         <div class="col-6 justify-content-end d-flex align-items-center p-0">
-            <img src="storage/images/icon_eng.gif" class="mr-3" width="20" height="13" alt="">
-            <img src="storage/images/eye.png" class="mr-2" width="22" height="13" alt="">
+            <img src="{{asset('storage/images/icon_eng.gif')}}" class="mr-3" width="20" height="13" alt="">
+            <img src="{{asset('storage/images/eye.png')}}" class="mr-2" width="22" height="13" alt="">
             <button class="navbar-toggler d-lg-none d-md-block" type="button" data-toggle="collapse"
                     data-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,14 +36,13 @@
 
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav d-flex justify-content-between w-100 mrsu-uppertext">
+
                 <li class="nav-item active">
-                    <a class="nav-link" href="/">Главная <span class="sr-only">(current)</span></a>
+                    <a class="nav-link"  href="{{route('stat.index')}}">Статистика приема <span
+                            class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="/stat">Статистика приема <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/selection">Подбор направления <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/select">Подбор направления <span class="sr-only">(current)</span></a>
                 </li>
                 @foreach($pages->sortByDesc('menuPriority') as $page)
                     <li class="nav-item active">

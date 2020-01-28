@@ -48,18 +48,11 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
 });
 Auth::routes();
-//Route::get('/parser', 'ParserController@parseFromXls');
+
 Route::get('/contact', 'ContactController@index')->name('contact.index');
 Route::get('/select', 'SelectionController@index')->name('selection.index');
-
-Route::get('/stat', 'StatisticController@index')->name('stat.index');
-//Route::post('/stat', 'StatisticController@search')->name('stat.searchfio');
-
-//Route::get('/statfaculties', 'StatisticController@fetchFaculties')->name('stat.fetchFaculties');
+Route::get('/statistic/bachelor', 'StatisticController@index')->name('stat.index');
 
 
-//Route::get('/', 'StatisticController@index')->name('stat.index');
-
-
-Route::get('/', 'HomeController@index')->name('home');
 Route::get('/{route}', 'PageController@route')->name('pages.route');
+Route::get('/', 'PageController@index')->name('pages.home');
