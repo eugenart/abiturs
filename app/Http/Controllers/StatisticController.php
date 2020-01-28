@@ -18,6 +18,7 @@ class StatisticController extends Controller
 {
     public function index(Request $request)
     {
+
         //return $request;
         $search_fio = null;
         $search_faculties = [];
@@ -44,7 +45,8 @@ class StatisticController extends Controller
         $faculties = $this->fetchFaculties();
         $studyFormsForInputs = StudyForm::all();
         if (isset($studyForms)) {
-            return view('pages.stat', ['studyForms' => $studyForms, 'faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs]);
+            $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+            return view('pages.stat', ['studyForms' => $studyForms, 'faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs, 'actual_link' => $actual_link]);
 
         } else {
             return view('pages.stat', compact('faculties'), compact('studyFormsForInputs'));
@@ -53,6 +55,7 @@ class StatisticController extends Controller
 
 
     }
+
 
     public function search($search_fio, $search_faculties, $search_specialities, $search_studyForms)
     {
@@ -90,7 +93,7 @@ class StatisticController extends Controller
                                 if (!empty($search_specialities_arr)) {
                                     $specialities_id = DB::table('statistics')
                                         ->where('id_faculty', '=', $faculty->id)
-                                       ->whereIn('id_speciality', $search_specialities_arr)
+                                        ->whereIn('id_speciality', $search_specialities_arr)
                                         ->select('statistics.id_speciality')
                                         ->distinct()
                                         ->get();

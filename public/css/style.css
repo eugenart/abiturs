@@ -148,6 +148,9 @@ body {
 
 .exam-info-outer {
     width: max-content;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: stretch;
 }
 
 .examInfo {
@@ -155,17 +158,17 @@ body {
     color: #2366a5;
     font-size: 18px;
     border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
     width:inherit;
 }
 
 .examInfo-bottom {
-    margin-bottom: 20px;
+    width: 100%;
     padding: 16px;
     color: white;
     background-color: #2366a5;
     font-size: 18px;
-    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
 }
 

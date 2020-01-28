@@ -4,6 +4,25 @@
           href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
 @endsection
 @section('page')
+    @if(isset($studyForms))
+        <div class="modal fade" id="QRCode" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <img class="d-block m-auto"
+                            src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl={{$actual_link}}&choe=UTF-8"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
+
     <div class="row bac-mag">
         <div class="col-12">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -14,7 +33,8 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('stat.index')}}"><b><i class="fas fa-university"></i> Бакалавриат и специалитет</b></a>
+                                <a class="nav-link" href="{{route('stat.index')}}"><b><i class="fas fa-university"></i>
+                                        Бакалавриат и специалитет</b></a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#"><i class="fas fa-graduation-cap"></i> Магистратура</a>
@@ -30,7 +50,17 @@
             </nav>
         </div>
     </div>
-
+    @if(isset($studyForms))
+        <div class="container">
+            <div class="row m-4">
+                <div class="col-12 d-flex justify-content-between align-items-center">
+                    <h6 class="m-0 p-0"><a href="" class="underline-label" data-toggle="modal" data-target="#QRCode">Получить
+                            QR-код запроса</a></h6>
+                    <span class="m-0 p-0">Дата последнего обновления инфорации: <b>20.02.2020 18:30</b></span>
+                </div>
+            </div>
+        </div>
+    @endif
     <div class="container-fluid p-5">
         <form action="{{ route('stat.index') }}" id="sendFormWithFacultets" method="get">
             <div class="row">
@@ -73,7 +103,7 @@
                                                             @foreach($faculty->specialities as $speciality)
                                                                 <div class="row mt-4">
                                                                     <div class="exam-info-outer">
-                                                                        <div class="col-12">
+                                                                        <div class="col-6 float-left p-0">
                                                                             <div class="examInfo p-3">
                                                                                 <div class="row">
                                                                                     <div class="col-12">
@@ -113,9 +143,9 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="col-12">
+                                                                        <div class="col-6 float-left p-0 d-flex align-items-stretch">
                                                                             <div class="examInfo-bottom pl-4">
-                                                                                <div class="row">
+                                                                                <div class="row d-flex align-items-center justify-content-center h-100">
                                                                                     <div class="col-12">
                                                                                         <p class="m-0 text-uppercase font-weight-bold">{{$faculty->name}}</p>
                                                                                         <p class="m-0 font-weight-bold">{{$speciality->name}}</p>
