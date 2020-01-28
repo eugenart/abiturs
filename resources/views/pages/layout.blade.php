@@ -38,18 +38,20 @@
             <ul class="navbar-nav d-flex justify-content-between w-100 mrsu-uppertext">
 
                 <li class="nav-item active">
-                    <a class="nav-link"  href="{{route('stat.index')}}">Статистика приема <span
+                    <a class="nav-link" href="{{route('stat.index')}}">Статистика приема <span
                             class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="/select">Подбор направления <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{{route('selection.index')}}">Подбор направления <span class="sr-only">(current)</span></a>
                 </li>
                 @foreach($pages->sortByDesc('menuPriority') as $page)
                     <li class="nav-item active">
                         <a class="nav-link" href="{{ $page->url }}">{{ $page->name }}</a>
                     </li>
                 @endforeach
-
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{route('contact.index')}}">Подбор направления <span class="sr-only">(current)</span></a>
+                </li>
             </ul>
         </div>
     </div>

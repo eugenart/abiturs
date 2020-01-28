@@ -11,7 +11,8 @@
                     <input name="fio" type="text" placeholder="ФИО *" required>
                     <input name="email" type="email" placeholder="Email *" required>
                     <input id="phone" name="phone" type="tel" placeholder="Номер телефона *" required>
-                    <textarea name="question" id="question" cols="60" rows="5" placeholder="Текст вопроса *" required></textarea>
+                    <textarea name="question" id="question" cols="60" rows="5" placeholder="Текст вопроса *"
+                              required></textarea>
                     <button type="submit">ОТПРАВИТЬ</button>
                 </form>
             </div>
@@ -20,7 +21,7 @@
                 <br>
                 <span>Вопрос успешно отправлен! <br> Мы свяжемся с Вами в ближайшее время.</span>
                 <br>
-                <a href="">Вернуться на главную</a>
+                <a href="/">Вернуться на главную</a>
             </div>
         </div>
     </div>
@@ -31,6 +32,12 @@
     <script>
         $(document).ready(() => {
             $("#phone").mask("+7(999) 999-9999");
+            $('.form-sent').hide();
+        })
+
+        $('button').click(() => {
+            $('.contact-us-div').hide();
+            $('.form-sent').show();
         })
     </script>
 @endsection
