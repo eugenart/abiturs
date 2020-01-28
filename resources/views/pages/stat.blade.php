@@ -116,7 +116,7 @@
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-12">
-                                                                            <div class="examInfo-bottom">
+                                                                            <div class="examInfo-bottom pl-4">
                                                                                 <div class="row">
                                                                                     <div class="col-12">
                                                                                         <p class="m-0 text-uppercase font-weight-bold">{{$faculty->name}}</p>
