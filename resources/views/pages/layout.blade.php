@@ -50,7 +50,7 @@
                     </li>
                 @endforeach
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{route('contact.index')}}">Подбор направления <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{{route('contact.index')}}">Обратная связь <span class="sr-only">(current)</span></a>
                 </li>
             </ul>
         </div>
