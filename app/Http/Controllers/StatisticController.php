@@ -21,6 +21,7 @@ class StatisticController extends Controller
 {
     public function index(Request $request)
     {
+        return $request;
         $faculties = $this->fetchFaculties();
         $studyFormsForInputs = StudyForm::all();
         return view('pages.stat', compact('faculties'), compact('studyFormsForInputs'));
@@ -29,6 +30,8 @@ class StatisticController extends Controller
 
     public function search(Request $request)
     {
+
+       // return $request;
 
         $fio = $request->fio;
         //студенты все по имени

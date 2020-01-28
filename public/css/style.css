@@ -394,21 +394,55 @@ marquee {
     height: 100vh !important;
 }
 
+.contact-us-div h5 {
+    color: #b4b4b4;
+}
+
 .contact-us {
     margin: auto;
     padding: 50px 20px;
     width: fit-content;
 }
 
-.contact-us input, .contact-us textarea, .contact-us button {
+.input-mistake {
+    background-color: rgba(255, 0, 0, 0.05);
+}
+
+.form-sent {
+    font-size: 26px;
+}
+
+.form-sent a {
+    font-size: 20px;
+    color: #1b4b72;
+    text-decoration: underline;
+}
+
+.form-sent i{
+    font-size: 30px;
+    color: #54E0C7;
+    padding: 10px;
+    border: 5px solid #54E0C7;
+    border-radius: 50%;
+}
+
+
+.contact-us input, .contact-us textarea  {
     margin: 10px;
     width: 90%;
     border: 1px solid #1b4b72;
-    padding: 5px;
+    padding: 10px;
     color: #1b4b72;
+    font-size: 16px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
 }
 
-.contact-us button:hover {
+.contact-us button {
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+    margin: 10px;
+    width: 90%;
+    border: 1px solid #1b4b72;
+    padding: 10px;
     cursor: pointer;
     background-color: #1b4b72;
     color: white;
