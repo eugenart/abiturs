@@ -316,7 +316,7 @@
             let year = years[number];
             let templateRecipient = "<tr id=\"intramural\">\n" +
                 "                                <td>\n" +
-                "                                    <strong>" + recipient.trainingForm + "</strong>\n" +
+                "                                    <strong>" + recipient.studyForm.name + "</strong>\n" +
                 "                                    <br>\n" +
                 "                                    <span>" + recipient.years + " " + year + " обучения</span>\n" +
                 "                                </td>\n" +
@@ -326,7 +326,7 @@
                 "                                    <span>бюджетных мест</span>\n" +
                 "                                </td>\n" +
                 "                                <td>\n" +
-                "                                    <strong>" + (recipient.price / recipient.years).toFixed(2) + "</strong>\n" +
+                "                                    <strong>" + (recipient.price / recipient.years).toFixed(0) + "</strong>\n" +
                 "                                    <br>\n" +
                 "                                    <span>рублей в год</span>\n" +
                 "                                </td>\n" +

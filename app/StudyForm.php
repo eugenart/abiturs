@@ -8,7 +8,13 @@ class StudyForm extends Model
 {
     protected $fillable = ['name'];
 
-    public function statistics() {
+    public function statistics()
+    {
         return $this->hasMany(Statistic::class, 'id_studyForm');
+    }
+
+    public function area()
+    {
+        return $this->hasMany(TrainingArea::class, 'id_studyForm');
     }
 }

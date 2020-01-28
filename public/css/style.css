@@ -156,17 +156,23 @@ body {
     font-size: 18px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    width:inherit;
 }
 
 .examInfo-bottom {
     margin-bottom: 20px;
-    padding: 10px;
+    padding: 16px;
     color: white;
     background-color: #2366a5;
     font-size: 18px;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
+
+.examInfo-bottom .spec{
+    border-bottom: 1px solid rgba(255, 255, 255, 0.51);
+}
+
 
 .examInfo tbody tr td {
     padding-left: 6px;
@@ -180,6 +186,9 @@ body {
     border: none;
 }
 
+.examInfo-bottom tbody tr td {
+    padding-left: 6px;
+}
 marquee {
     border-bottom: 1px solid #2366a5;
     border-top: 1px solid #2366a5;

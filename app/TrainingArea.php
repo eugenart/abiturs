@@ -22,4 +22,8 @@ class TrainingArea extends Model
         return $this->hasOne(FacultyArea::class, 'id_area');
     }
 
+    public function studyForm() {
+        return $this->belongsTo(StudyForm::class, 'id_studyForm');
+    }
+
 }

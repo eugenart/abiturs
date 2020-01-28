@@ -26,6 +26,7 @@ class SelectionController extends Controller
         foreach ($faculties as $faculty) {
             foreach ($faculty->tArea as $item) {
                 $item->area = $item->area()->first();
+                $item->area->studyForm = $item->area->studyForm()->first();
                 $item->area->sp_name = $item->area->speciality()->first();
                 $item->area->scores = $item->area->minScores()->get();
                 foreach ($item->area->scores as $value) {

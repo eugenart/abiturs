@@ -21,8 +21,7 @@
                             </li>
                         </ul>
                     </div>
-                    <form class="form-inline" action="{{ route('stat.searchfio') }}" method="post">
-                        @csrf
+                    <form class="form-inline" action="{{ route('stat.index') }}" method="get">
                         <input class="form-control mr-sm-2 form-control-sm" type="search" placeholder="Поиск по ФИО"
                                aria-label="Search" name="fio">
                         <button class="btn my-2 my-sm-0 btn-sm" type="submit">Поиск</button>
@@ -33,8 +32,7 @@
     </div>
 
     <div class="container-fluid p-5">
-        <form action="{{ route('stat.searchfio') }}" id="sendFormWithFacultets" method="POST">
-            @csrf
+        <form action="{{ route('stat.index') }}" id="sendFormWithFacultets" method="get">
             <div class="row">
                 <select class="selectpicker form-control-sm col-3" multiple
                         title="Факультет / Институт" name="faculties[]" id="allfaculties">
