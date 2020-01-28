@@ -51,11 +51,11 @@
                         <option value="{{$form->id}}">{{$form->name}}</option>
                     @endforeach
                 </select>
-                <div class="col-2">
+                <div class="col-2 d-flex justify-content-center align-items-center">
                     <button class="w-100 btn btn-success btn-sm" id="submitInfo" type="submit">Поиск</button>
                 </div>
-                <div class="col-1">
-                    <button class="w-100 btn btn-warning btn-sm" type="button" id="clearSelects">Сбросить</button>
+                <div class="col-2 d-flex justify-content-center align-items-center">
+                    <button class="w-100 btn btn-warning btn-sm" type="button" id="clearSelects">Отменить выбор</button>
                 </div>
             </div>
         </form>
