@@ -1,5 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Sans:400,700&display=swap');
 body {
-    font-family: "PT Sans";
+    font-family: 'PT Sans', sans-serif;
 }
 
 .mrsu-bg {
@@ -13,6 +14,10 @@ body {
 .mrsu-logo-img {
     width: 342px;
     height: 54px;
+}
+
+.chosen-student {
+    background-color: rgba(0, 128, 0, 0.1);
 }
 
 .main-nav {
@@ -34,7 +39,7 @@ body {
 }
 
 .mrsu-card {
-    background-color: #eaeaea;
+    background-color: #f9f9f9;
 }
 
 .mrsu-card > ul {
@@ -66,6 +71,11 @@ body {
     color: white;
     padding: 5px;
     font-size: 13px;
+}
+
+.list-sections li {
+    padding: 5px 10px;
+    background-color: #2366a5;
 }
 
 /*.navbar-toggler {*/
@@ -135,12 +145,52 @@ body {
     width: 95%;
 }
 
-.examInfo {
-    background-color: rgba(255, 0, 0, 0.2);
+.exam-info-outer {
     width: max-content;
-    border-radius: 10px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: stretch;
 }
 
+.examInfo {
+    background-color: rgba(35, 102, 165, 0.1);
+    color: #2366a5;
+    font-size: 18px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    width:inherit;
+}
+
+.examInfo-bottom {
+    width: 100%;
+    padding: 16px;
+    color: white;
+    background-color: #2366a5;
+    font-size: 18px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.examInfo-bottom .spec{
+    border-bottom: 1px solid rgba(255, 255, 255, 0.51);
+}
+
+
+.examInfo tbody tr td {
+    padding-left: 6px;
+}
+
+.examInfo tbody tr {
+    border-bottom: 1px solid rgba(35, 102, 165, 0.33);
+}
+
+.examInfo tbody tr:last-child {
+    border: none;
+}
+
+.examInfo-bottom tbody tr td {
+    padding-left: 6px;
+}
 marquee {
     border-bottom: 1px solid #2366a5;
     border-top: 1px solid #2366a5;
@@ -304,16 +354,16 @@ marquee {
 }
 
 .border-priem {
-    border: 1px solid rgba(85, 98, 235, 1);
+    border: 1px solid #2366a5 !important;
 }
 
 .swith-priem a {
-    color: rgba(85, 98, 235, 1);
+    color: #2366a5;
     border-radius: 0 !important;
 }
 
 .swith-priem a.active {
-    background-color: rgba(85, 98, 235, 1) !important;
+    background-color: #2366a5 !important;
 }
 
 .course-name:first-child {
@@ -324,6 +374,115 @@ marquee {
     text-decoration: underline;
 }
 
+.files-list {
+    list-style: none;
+    padding: 0;
+    display: block;
+}
+
+.files-list li {
+    border-bottom: 1px solid lightgray;
+    min-width: 300px;
+    width: fit-content;
+    margin: 10px;
+    margin-left: 0;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.files-list li img {
+    width: 60px;
+    margin-right: 20px;
+}
+
+.file-link-div a {
+    color: #1b4b72;
+}
+
+
+.vh {
+    height: 100vh !important;
+}
+
+.contact-us-div h5 {
+    color: #b4b4b4;
+}
+
+.contact-us {
+    margin: auto;
+    padding: 50px 20px;
+    width: fit-content;
+}
+
+.input-mistake {
+    background-color: rgba(255, 0, 0, 0.05);
+}
+
+.form-sent {
+    font-size: 26px;
+}
+
+.form-sent a {
+    font-size: 20px;
+    color: #1b4b72;
+    text-decoration: underline;
+}
+
+.form-sent i{
+    font-size: 30px;
+    color: #54E0C7;
+    padding: 10px;
+    border: 5px solid #54E0C7;
+    border-radius: 50%;
+}
+
+
+.contact-us input, .contact-us textarea  {
+    margin: 10px;
+    width: 90%;
+    border: 1px solid #1b4b72;
+    padding: 10px;
+    color: #1b4b72;
+    font-size: 16px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+}
+
+.contact-us button {
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+    margin: 10px;
+    width: 90%;
+    border: 1px solid #1b4b72;
+    padding: 10px;
+    cursor: pointer;
+    background-color: #1b4b72;
+    color: white;
+}
+
+.table-scores td, .table-scores th {
+    border: 1px solid #2366a5 !important;
+}
+
+.table-scores th {
+    color: white;
+}
+
+.table-scores thead tr th{
+    background-color: #2366a5 !important;
+    text-transform: uppercase;
+    font-weight: normal;
+    padding: 8px;
+    text-align: center;
+    vertical-align: center;
+}
+
+.table-scores tr td button {
+    color: #2366a5 !important;
+}
+
+.main-color {
+    color: #2366a5 !important
+}
 
 /*@media screen and (max-width: 991px) {*/
 /*    .navbar-toggler {*/

@@ -1,6 +1,28 @@
 @extends('pages.layout')
-
+@section('style')
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
+@endsection
 @section('page')
+    @if(isset($studyForms))
+        <div class="modal fade" id="QRCode" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <img class="d-block m-auto"
+                            src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl={{$actual_link}}&choe=UTF-8"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
+
     <div class="row bac-mag">
         <div class="col-12">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -10,139 +32,356 @@
                 <div class="container">
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fas fa-university"></i> Бакалавриат и специалитет</a>
+                            <li class="nav-item active">
+                                <a class="nav-link font-weight-bold" href="{{route('stat.index')}}"><b><i class="fas fa-university"></i>
+                                        Бакалавриат и специалитет</b></a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#"><i class="fas fa-graduation-cap"></i> Магистратура</a>
                             </li>
                         </ul>
                     </div>
-                    <form class="form-inline">
+                    <form class="form-inline" action="{{ route('stat.index') }}" method="get">
                         <input class="form-control mr-sm-2 form-control-sm" type="search" placeholder="Поиск по ФИО"
-                               aria-label="Search">
+                               aria-label="Search" name="fio">
                         <button class="btn my-2 my-sm-0 btn-sm" type="submit">Поиск</button>
                     </form>
                 </div>
             </nav>
         </div>
     </div>
-    <div class="container-fluid p-5">
-        <div class="row">
-            <div class="col-3"><select class="w-100 form-control form-control-sm">
-                    <option value="-1">Факультет / Институт</option>
-                    <option value="1">1</option>
-                </select></div>
-            <div class="col-3"><select class="w-100 form-control form-control-sm">
-                    <option value="-1">Специальность</option>
-                    <option value="1">1</option>
-                </select></div>
-            <div class="col-2"><select class="w-100 form-control form-control-sm">
-                    <option value="-1">Внебюджет</option>
-                    <option value="1">1</option>
-                </select></div>
-            <div class="col-2"><select class="w-100 form-control form-control-sm">
-                    <option value="-1">Форма обучения</option>
-                    <option value="1">1</option>
-                </select>
-            </div>
-            <div class="col-1">
-                <button class="w-100 btn btn-success btn-sm" id="submitInfo">Поиск</button>
-            </div>
-            <div class="col-1">
-                <button class="w-100 btn btn-warning btn-sm" id="clearSelects">Сбросить</button>
-            </div>
-        </div>
-        <div class="row mt-4">
-            <div class="col-12">
-                <div class="examInfo p-3">
-                    <div class="row">
-                        <div class="col-8">
-                            <p><u>Количество бюджетных мест</u>: <b>35</b></p>
-                            <p><u>Конкурс</u>: <b>0.2</b> человек/место</p>
-                            <p class="m-0"><u>Время последнего обновления</u>: <b>2019-06-26 10:01:01</b></p>
-                        </div>
-                        <div class="col-4">
-                            <a href="http://qrcoder.ru" target="_blank"><img
-                                    src="http://qrcoder.ru/code/?https%3A%2F%2Fvk.com%2Feug_art&4&0" width="132"
-                                    height="132" border="0" title="QR код"></a>
-                        </div>
-                    </div>
+    @if(isset($studyForms))
+        <div class="container">
+            <div class="row m-4">
+                <div class="col-12 d-flex justify-content-between align-items-center">
+                    <h6 class="m-0 p-0"><a href="" class="underline-label" data-toggle="modal" data-target="#QRCode">Получить
+                            QR-код запроса</a></h6>
+                    <span class="m-0 p-0">Дата последнего обновления инфорации: <b>20.02.2020 18:30</b></span>
                 </div>
             </div>
         </div>
+    @endif
+    <div class="container-fluid p-5">
+        <form action="{{ route('stat.index') }}" id="sendFormWithFacultets" method="get">
+            <div class="row">
+                <select class="selectpicker form-control-sm col-3" multiple
+                        title="Факультет / Институт" name="faculties[]" id="allfaculties">
+                </select>
+
+                <select class="selectpicker form-control-sm col-3" data-live-search="true" multiple
+                        title="Специальность"
+                        name="specialities[]" id="specialities">
+                </select>
+
+                <select class="selectpicker form-control-sm col-2" multiple title="Форма обучения" name="studyforms[]"
+                        id="studyforms">
+                    @foreach ($studyFormsForInputs as $form)
+                        <option value="{{$form->id}}">{{$form->name}}</option>
+                    @endforeach
+                </select>
+                <div class="col-2 d-flex justify-content-center align-items-center">
+                    <button class="w-100 btn btn-success btn-sm" id="submitInfo" type="submit">Поиск</button>
+                </div>
+                <div class="col-2 d-flex justify-content-center align-items-center">
+                    <button class="w-100 btn btn-warning btn-sm" type="button" id="clearSelects">Отменить выбор</button>
+                </div>
+            </div>
+        </form>
         <div class="row mt-4">
             <div class="col-12">
-                <table class="table table-bordered table-sm base-exams-table">
-                    <thead>
-                    <tr style="vertical-align: center">
-                        <td rowspan="2">№</td>
-                        <td rowspan="2">Фамилия, имя, отчество</td>
-                        <td rowspan="2">Оригинал</td>
-                        <td rowspan="2">Согласие</td>
-                        <td rowspan="2">Общий балл</td>
-                        <td colspan="4">
-                            <p class="m-0">1) Химия</p>
-                            <p class="m-0">2) Математика (профильная)</p>
-                            <p class="m-0">3) Русский язык</p>
-                            <p class="m-0">4) Балл за индивидуальные достижения</p>
-                        </td>
-                        <td rowspan="2">Тип экзамена</td>
-                        <td rowspan="2">Статус проверки</td>
-                        <td rowspan="2">Нуждаемость в общежитии</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td class="exam-rights" colspan="14">
-                            <b>Квота (особое право)</b>. Количество мест: <b>4</b>
-                        </td>
-                    </tr>
-                    <tr class="text-center">
-                        <td class="text-center">1</td>
-                        <td>Арташкин Евгений Павлович</td>
-                        <td><i class="fa fa-check-circle" style="color: rgba(0,128,0,0.51)"></i></td>
-                        <td><i class="fa fa-times-circle" style="color: rgba(128,0,0,0.51)"></i></td>
-                        <td>240</td>
-                        <td>80</td>
-                        <td>80</td>
-                        <td>80</td>
-                        <td>0</td>
-                        <td>ЕГЭ</td>
-                        <td>Заявление принято</td>
-                        <td>Да</td>
-                    </tr>
-                    <tr class="text-center">
-                        <td class="text-center">2</td>
-                        <td>Кулягина Таисия Ивановна</td>
-                        <td><i class="fa fa-check-circle" style="color: rgba(0,128,0,0.51)"></i></td>
-                        <td><i class="fa fa-check-circle" style="color: rgba(0,128,0,0.51)"></i></td>
-                        <td>239</td>
-                        <td>81</td>
-                        <td>80</td>
-                        <td>78</td>
-                        <td>30</td>
-                        <td>ЕГЭ</td>
-                        <td>Заявление принято</td>
-                        <td>Нет</td>
-                    </tr>
-                    </tbody>
-                </table>
+                @if(isset($studyForms))
+                    @foreach($studyForms as $studyForm)
+                        @if(isset($studyForm->stat ))
+                            @foreach($studyForm->stat as $category)
+                                @if(isset($category->admissionBases))
+                                    @foreach($category->admissionBases as $admissionBasis)
+                                        @if(isset($admissionBasis->preparationLevels))
+                                            @foreach($admissionBasis->preparationLevels as $preparationLevel)
+                                                @if(isset($preparationLevel->faculties))
+                                                    @foreach($preparationLevel->faculties as $faculty)
+                                                        @if(isset($faculty->specialities))
+                                                            @foreach($faculty->specialities as $speciality)
+                                                                <div class="row mt-4">
+                                                                    <div class="col-12">
+                                                                        <div class="exam-info-outer">
+                                                                            <div class="col-6 float-left p-0">
+                                                                                <div class="examInfo p-3">
+                                                                                    <div class="row">
+                                                                                        <div class="col-12">
+                                                                                            <table>
+                                                                                                <tbody>
+                                                                                                <tr>
+                                                                                                    <td>Форма обучения</td>
+                                                                                                    <td>
+                                                                                                        <b class="mrsu-uppertext">{{$studyForm->name}}</b>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td>Категория приема
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <b class="mrsu-uppertext">{{ $category->name }}</b>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td>Основание для
+                                                                                                        поступления
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <b class="mrsu-uppertext">{{ $admissionBasis->name }}</b>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td>Уровень подготовки
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <b class="mrsu-uppertext">{{$preparationLevel->name}}</b>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                </tbody>
+                                                                                            </table>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-6 float-left p-0 d-flex align-items-stretch">
+                                                                                <div class="examInfo-bottom pl-4">
+                                                                                    <div class="row d-flex align-items-center justify-content-center h-100">
+                                                                                        <div class="col-12">
+                                                                                            <p class="m-0 text-uppercase font-weight-bold">{{$faculty->name}}</p>
+                                                                                            <p class="m-0 font-weight-bold">{{$speciality->name}}</p>
+                                                                                            <p class="m-0">Кол-во бюджетных
+                                                                                                мест: <span
+                                                                                                    class="font-weight-bold">{{$speciality->freeSeatsNumber}}</span>
+                                                                                            </p>
+                                                                                            <p class="m-0">
+                                                                                                Конкурс: <span
+                                                                                                    class="font-weight-bold">{{$speciality->originalsCount}}</span>
+                                                                                                чел.
+                                                                                                / место
+                                                                                            </p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                @if(isset($speciality->abiturs))
+                                                                    <table
+                                                                        class="table table-bordered table-sm base-exams-table">
+                                                                        <thead>
+                                                                        <tr style="vertical-align: center">
+                                                                            <td rowspan="2" class="text-center">№</td>
+                                                                            <td rowspan="2" class="text-center">Фамилия,
+                                                                                имя, отчество
+                                                                            </td>
+                                                                            <td rowspan="2" class="text-center">
+                                                                                Оригинал
+                                                                            </td>
+                                                                            <td rowspan="2" class="text-center">
+                                                                                Согласие
+                                                                            </td>
+
+                                                                            <td colspan="{{count($speciality->abiturs->first()->score) + 1}}">
+                                                                                @foreach($speciality->abiturs->first()->score as $i => $sc)
+                                                                                    @if($i < count($speciality->abiturs->first()->score) -1)
+                                                                                        <p class="m-0"> {{$i + 1}}
+                                                                                            ) {{$sc->subject->name}}</p>
+                                                                                    @else
+                                                                                        <p class="m-0"> {{$i + 1}}
+                                                                                            ) {{$sc->subject->name}}</p>
+                                                                                        <p class="m-0">{{$i + 2}} ) Балл
+                                                                                            за
+                                                                                            индивидуальные
+                                                                                            достижения</p>
+                                                                                    @endif
+                                                                                @endforeach
+                                                                            </td>
+                                                                            <td class="text-center" rowspan="2">Сумма
+                                                                                баллов<br/> за
+                                                                                ЕГЭ/ВИ
+                                                                            </td>
+                                                                            <td class="text-center" rowspan="2">
+                                                                                Сумма<br/>
+                                                                                конкурсных<br/> баллов
+                                                                            </td>
+                                                                            <td class="text-center" rowspan="2">Тип
+                                                                                экзамена
+                                                                            </td>
+                                                                            <td class="text-center" rowspan="2">Статус
+                                                                                проверки
+                                                                            </td>
+                                                                            <td class="text-center" rowspan="2">
+                                                                                Нуждаемость <br> в
+                                                                                общежитии
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr class="text-center">
+                                                                            @foreach($speciality->abiturs->first()->score as $i => $sc)
+                                                                                @if($i < count($speciality->abiturs->first()->score) -1)
+                                                                                    <td>{{$i + 1}}</td>
+                                                                                @else
+                                                                                    <td>{{$i + 1}}</td>
+                                                                                    <td>{{$i + 2}}</td>
+                                                                                @endif
+                                                                            @endforeach
+                                                                        </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                        @foreach($speciality->abiturs as $k => $abitur)
+                                                                            @if($abitur->is_chosen)
+                                                                                <tr class="text-center chosen-student">
+                                                                            @else
+                                                                                <tr class="text-center">
+                                                                                    @endif
+                                                                                    <td class="text-center">{{$k + 1}}</td>
+                                                                                    <td class="text-left">{{$abitur->student->fio}}</td>
+                                                                                    @if($abitur->original)
+                                                                                        <td>
+                                                                                            <i class="fa fa-check-circle"
+                                                                                               style="color: rgba(0,128,0,0.51)"></i>
+                                                                                        </td>
+                                                                                    @else
+                                                                                        <td>
+                                                                                            <i class="fa fa-times-circle"
+                                                                                               style="color: rgba(128,0,0,0.51)"></i>
+                                                                                        </td>
+                                                                                    @endif
+                                                                                    @if($abitur->accept)
+                                                                                        <td>
+                                                                                            <i class="fa fa-check-circle"
+                                                                                               style="color: rgba(0,128,0,0.51)"></i>
+                                                                                        </td>
+                                                                                    @else
+                                                                                        <td>
+                                                                                            <i class="fa fa-times-circle"
+                                                                                               style="color: rgba(128,0,0,0.51)"></i>
+                                                                                        </td>
+                                                                                    @endif
+                                                                                    @foreach($abitur->score as $ab_sc)
+                                                                                        <td>{{$ab_sc->score}}</td>
+                                                                                    @endforeach
+
+                                                                                    <td>{{$abitur->indAchievement}}</td>
+                                                                                    <td>{{$abitur->summ}}</td>
+                                                                                    <td>{{$abitur->summContest}}</td>
+                                                                                    <td>ЕГЭ</td>
+                                                                                    <td>{{$abitur->notice1}}</td>
+                                                                                    @if($abitur->needHostel)
+                                                                                        <td style="background-color: rgba(0,255,0,0.1)">Да</td>
+                                                                                    @else
+                                                                                        <td style="background-color: rgba(255,0,0,0.1)">Нет</td>
+                                                                                    @endif
+                                                                                </tr>
+                                                                                @endforeach
+
+                                                                        </tbody>
+                                                                    </table>
+
+                                                                @endif
+                                                                {{--                                                                </ul>--}}
+                                                            @endforeach
+                                                        @endif
+                                                    @endforeach
+                                                @endif
+                                            @endforeach
+                                        @endif
+                                    @endforeach
+                                @endif
+                            @endforeach
+                        @endif
+                    @endforeach
+
+                @else
+                    <h4 class="text-center m-4">Введите <b>ФИО</b> или выберите <b>факультет/институт</b> для получения информации о статистике приема.</h4>
+                @endif
             </div>
         </div>
     </div>
 @endsection
 
 @section('js')
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.9/js/i18n/defaults-ru_RU.min.js"></script>
     <script>
-        $('#clearSelects').click(function () {
-            $('select').val('-1');
+        $(document).ready(() => {
+            $('#submitInfo').attr('disabled', true)
+            faculties = {!! json_encode($faculties) !!};
+            fillFaculties(faculties);
+            fillSpecialitiesWithCheck(faculties)
+        })
+
+        function fillFaculties(faculties) {
+            $.each(faculties, (k, faculty) => {
+                $('#allfaculties').append('<option value="' + faculty.id + '">' + faculty.name + '</option>')
+                refreshInputs();
+            })
+        }
+
+        function fillSpecialities(faculty) {
+            $('#specialities').append('<optgroup label="' + faculty.name + '">')
+            $.each(faculty.speciality, (key, spec) => {
+                $('#specialities optgroup:last').append('<option value="' + faculty.id + ';' + spec.id + '">' + spec.code + ' ' + spec.name + '</option>')
+            })
+            $('#specialities').append('</optgroup>')
+
+        }
+
+        function fillSpecialitiesWithCheck(faculties, facultiesIds = []) {
+            $.each(faculties, (k, faculty) => {
+                if (facultiesIds.length > 0) {
+                    if ($.inArray(k + 1, facultiesIds) !== -1) {
+                        fillSpecialities(faculty)
+                    }
+                } else {
+                    fillSpecialities(faculty)
+                }
+            })
+            refreshInputs();
+        }
+
+        function refreshInputs() {
+            $('#allfaculties, #specialities, #studyforms').selectpicker('refresh');
+        }
+
+        function makeFacultiesChecked(faculties, facultiesIds) {
+            $.each(faculties, (k, faculty) => {
+                if (facultiesIds.length > 0) {
+                    $('#allfaculties').selectpicker('val', facultiesIds);
+                }
+            })
+        }
+
+        $('#allfaculties').change(() => {
+            let facultiesIds = $('#allfaculties').val();
+            $('#specialities').find('option').remove().find('optgroup').end();
+            fillSpecialitiesWithCheck(faculties, facultiesIds.map(Number))
+            if ($('#allfaculties').val().length > 0 || $('#specialities').val().length > 0) {
+                $('#submitInfo').attr('disabled', false)
+            } else {
+                $('#submitInfo').attr('disabled', true)
+            }
+        })
+
+        $('#specialities').change(() => {
+            let facultiesIds = []
+            let specialitiesIds = []
+            $.each($('#specialities').val(), (k, v) => {
+                facultiesIds.push(v.split(';')[0])
+                specialitiesIds.push(v.split(';')[1])
+            })
+            makeFacultiesChecked(faculties, facultiesIds.map(Number));
+            refreshInputs()
+            if ($('#allfaculties').val().length > 0 || $('#specialities').val().length > 0) {
+                $('#submitInfo').attr('disabled', false)
+            } else {
+                $('#submitInfo').attr('disabled', true)
+            }
+        })
+
+        $('#clearSelects').click(() => {
+            $('#allfaculties, #specialities').selectpicker('deselectAll');
         })
     </script>
 @endsection

@@ -6,13 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Subject extends Model
 {
-    protected $fillable = ['score', 'course_id', 'subject_id'];
+    protected $fillable = ['subjectId', 'name'];
 
-    public function course() {
-        return $this->belongsTo(Course::class, 'course_id');
+    public function scores() {
+        return $this->hasMany(Score::class, 'id_subject');
     }
 
-    public function subjectsList() {
-        return $this->belongsTo(SubjectList::class, 'subject_id');
+    public function areas() {
+        return $this->hasMany(Score::class, 'id_subject');
     }
 }

@@ -1,6 +1,7 @@
 {
     "private": true,
     "scripts": {
+        "build": "cross-env NODE_ENV=production babel src --out-dir dist --source-maps inline",
         "dev": "npm run development",
         "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
         "watch": "npm run development -- --watch",
@@ -12,17 +13,17 @@
     "devDependencies": {
         "@fortawesome/fontawesome-free": "^5.8.2",
         "axios": "^0.19.0",
-        "bootstrap": "^4.3.1",
-        "cross-env": "^5.1",
+        "bootstrap": "^4.0.0",
+        "cross-env": "^5.2.1",
         "font-awesome": "^4.7.0",
-        "jquery": "^3.4.1",
+        "jquery": "^3.2",
         "laravel-mix": "^4.0.16",
-        "lodash": "^4.17.5",
-        "popper.js": "^1.14.7",
+        "lodash": "^4.17.15",
+        "popper.js": "^1.12",
         "resolve-url-loader": "^2.3.1",
-        "sass": "^1.15.2",
-        "sass-loader": "^7.1.0",
-        "vue": "^2.6.10",
+        "sass": "^1.20.1",
+        "sass-loader": "7.*",
+        "vue": "^2.5.17",
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {

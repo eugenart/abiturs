@@ -5,40 +5,35 @@ namespace App\Http\Controllers;
 use App\Infoblock;
 use App\Section;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class SectionController extends Controller
 {
-    public function index(Request $request) {
-        $infoblocks = Infoblock::all();
-
-        foreach ($infoblocks as $infoblock) {
-            $infoblock->sectionsList = $infoblock->sections->where('sectionID', null);
-            foreach ($infoblock->sectionsList->where('isFolder', true) as $folder) {
-                $folder->folder = $folder->childrenSections;
-            }
-        }
-
+    public function index(Request $request)
+    {
+        $sections = Section::all();
         if ($request->ajax()) {
-            return response()->json($infoblocks, 200);
+            return response()->json($sections, 200);
         }
 
-        return view('structure.section', compact('infoblocks'));
+        return view('structure.section', compact('sections'));
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         if ($request->ajax()) {
             $section = Section::create([
                 'name' => $request->name,
                 'url' => $request->url,
                 'description' => $request->description,
-                'startPage' => $request->startPage? 1 : 0,
+                'startPage' => $request->startPage ? 1 : 0,
                 'startPagePriority' => $request->startPagePriority,
-                'activity' => $request->activity? 1 : 0,
+                'activity' => $request->activity ? 1 : 0,
                 'activityFrom' => $request->activityFrom,
                 'activityTo' => $request->activityTo,
                 'sectionID' => $request->sectionID,
                 'infoblockID' => $request->infoblockID,
-                'isFolder' => $request->isFolder? 1 : 0,
+                'isFolder' => $request->isFolder ? 1 : 0,
             ]);
             return response()->json([
                 'message' => "Section was created",
@@ -49,15 +44,16 @@ class SectionController extends Controller
         return response()->json(['message' => 'Oops'], 404);
     }
 
-    public function update(Request $request, $id) {
+    public function update(Request $request, $id)
+    {
         if ($request->ajax()) {
             Section::findOrFail($id)->update([
                 'name' => $request->name,
                 'url' => $request->url,
                 'description' => $request->description,
-                'startPage' => $request->startPage? 1 : 0,
+                'startPage' => $request->startPage ? 1 : 0,
                 'startPagePriority' => $request->startPagePriority,
-                'activity' => $request->activity? 1 : 0,
+                'activity' => $request->activity ? 1 : 0,
                 'activityFrom' => $request->activityFrom,
                 'activityTo' => $request->activityTo,
             ]);
@@ -69,14 +65,22 @@ class SectionController extends Controller
         return response()->json(['message' => 'Oops'], 404);
     }
 
-    public function destroy(Request $request, $id) {
+    public function destroy(Request $request, $id)
+    {
         if ($request->ajax()) {
             $section = Section::findOrFail($id);
-            if($section->childrenSections->count() !==0) {
-                foreach ($section->childrenSections as $subSection) {
+            if ($section->sectionContent->count() !== 0) {
+                foreach ($section->sectionContent as $subSection) {
+                    if ($subSection->type == 'files') {
+                        foreach ($subSection->childrenFiles as $file) {
+                            Storage::delete('public/section-files/' . $file->file_name);
+                            $file->delete();
+                        }
+                    }
                     $subSection->delete();
                 }
             };
+
             $section->delete();
             return response()->json(['message' => 'Section was deleted'], 200);
         }

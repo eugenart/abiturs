@@ -12,10 +12,9 @@
 */
 
 use Illuminate\Support\Facades\Route;
-
+Auth::routes();
 Route::prefix('admin')->middleware('auth')->group(function () {
-//    Route::redirect('/', '/admin/infoblocks');
-
+    Route::redirect('/', '/admin/infoblocks');
 
     Route::get('/infoblocks', 'InfoblockController@index')->name('infoblock.index');
     Route::post('/infoblock', 'InfoblockController@store')->name('infoblock.store');
@@ -36,38 +35,24 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::post('/slider/{id}', 'SliderController@update')->name('slider.update');
     Route::delete('/slider/{id}', 'SliderController@destroy')->name('slider.destroy');
 
-    Route::redirect('/', '/admin/subject');
+    Route::get('/subjects', 'SubjectController@index')->name('subjects.index');
+    Route::get('/speciality', 'SpecialityController@index')->name('speciality.index');
+    Route::get('/minscore', 'TrainingAreaController@index')->name('minscore.index');
+    Route::get('/price', 'TrainingAreaController@price')->name('price.index');
 
-
-    Route::get('/course', 'CourseController@index')->name('course.index');
-    Route::post('/course', 'CourseController@store')->name('course.store');
-    Route::post('/course/{id}', 'CourseController@update')->name('course.update');
-    Route::delete('/course/{id}', 'CourseController@destroy')->name('course.destroy');
-
-    Route::get('/subject', 'SubjectController@index')->name('subject.index');
-    Route::post('/subject', 'SubjectController@store')->name('subject.store');
-    Route::post('/subject/{id}', 'SubjectController@update')->name('subject.update');
-    Route::delete('/subject/{id}', 'SubjectController@destroy')->name('subject.destroy');
-
-    Route::get('/subject-list', 'SubjectController@subjectList')->name('subject.list');
-    Route::post('/subject-list', 'SubjectController@addToSubjectList')->name('subject.addToList');
-    Route::delete('/subject-list/{id}', 'SubjectController@deleteFromSubjectList')->name('subject.deleteFromList');
-
+    Route::get('/parse', 'ParserController@index')->name('parse.index');
+    Route::get('/parse-specialities', 'ParserController@parseFromXls')->name('parse.parseFromXls');
+    Route::get('/parse-students', 'ParserJsonController@parseFromJson')->name('parse.parseFromJson');
+    Route::get('/parse-areas', 'ParserJsonController@parseAreas')->name('parse.parseAreas');
+    Route::get('/parse-sub', 'ParserController@parseFromXlsSub')->name('parse.parseFromXlsSub');
 
 });
-
-Route::get('/stat', function () {
-    return view('pages.stat');
-});
-//
-//Route::get('/selection', 'SelectionController@index')->name('selection.index');
-//
 Auth::routes();
-//
-//Route::get('/home', 'HomeController@index')->name('home');
-//
-//Route::get('/', 'PageController@index')->name('pages.index');
+
+Route::get('/contact', 'ContactController@index')->name('contact.index');
+Route::get('/select', 'SelectionController@index')->name('selection.index');
+Route::get('/statistic/bachelor', 'StatisticController@index')->name('stat.index');
+
+
 Route::get('/{route}', 'PageController@route')->name('pages.route');
-Route::get('/', 'SelectionController@index')->name('selection.index');
-
-
+Route::get('/', 'PageController@index')->name('pages.home');

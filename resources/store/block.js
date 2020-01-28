@@ -69,7 +69,6 @@ export default {
                     'Content-Type': 'multipart/form-data'
                 }
             });
-            console.log(data.infoblock)
             context.commit('EDIT_BLOCK', data.infoblock)
         },
 

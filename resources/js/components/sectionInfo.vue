@@ -108,7 +108,7 @@
                                                     <div class="col-4">
                                                         <button type="button"
                                                                 class="btn btn-sm btn-primary col-12"
-                                                                @click="addDocField(index)">Add file
+                                                                @click="addDocField(index)">Добавить файл
                                                         </button>
                                                     </div>
                                                     <div v-for="(file,i) in input.content">
@@ -181,8 +181,8 @@
                     <div class="col-3">
                         <div class="card">
                             <div class="card-body">
-                                <button class="btn btn-sm btn-primary col-12 mb-2" @click="addTextField">Text</button>
-                                <button class="btn btn-sm btn-primary col-12" @click="addFileGroup">Files</button>
+                                <button class="btn btn-sm btn-primary col-12 mb-2" @click="addTextField">Текстовое поле</button>
+                                <button class="btn btn-sm btn-primary col-12" @click="addFileGroup">Поле с файлами</button>
                             </div>
                         </div>
                     </div>

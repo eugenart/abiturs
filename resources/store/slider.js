@@ -56,7 +56,6 @@ export default {
                     'Content-Type': 'multipart/form-data'
                 }
             });
-            console.log(data.slider)
             context.commit('EDIT_SLIDE', data.slider)
         },
 

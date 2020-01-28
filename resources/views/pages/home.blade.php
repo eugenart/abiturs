@@ -29,7 +29,12 @@
                                 </div>
                             @else
                                 <div class="carousel-item">
-                                    <img class="d-block w-100" src="storage/slider/{{ $slide->image }}">
+                                    @if ($slide->url != null)
+                                        <a href="{{ $slide->url }}" target="_blank"><img class="d-block w-100"
+                                                                                         src="storage/slider/{{ $slide->image }}"></a>
+                                    @else
+                                        <img class="d-block w-100" src="storage/slider/{{ $slide->image }}">
+                                    @endif
                                 </div>
                             @endif
                         @endforeach

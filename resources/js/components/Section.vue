@@ -92,19 +92,19 @@
                             <div class="row">
                                 <div class="col-6">
                                     <button v-show="!isSectionUpdate" class="btn col-12 btn-primary"
-                                            type="submit">
+                                            type="submit" onclick="$('#infoblockForm').hide()">
                                         Создать
                                     </button>
                                     <button v-show="isSectionUpdate" class="btn col-12 btn-success"
-                                            type="submit">
+                                            type="submit" onclick="$('#infoblockForm').hide()">
                                         Сохранить изменения
                                     </button>
                                 </div>
                                 <div class="col-6">
-                                    <button class="btn btn-light col-12" type="button" @click="clearCurrentSection">
-                                        Очистить
-                                        форму
-                                    </button>
+<!--                                    <button class="btn btn-light col-12" type="button" @click="clearCurrentSection">-->
+<!--                                        Очистить-->
+<!--                                        форму-->
+<!--                                    </button>-->
                                 </div>
                             </div>
                         </div>
@@ -116,37 +116,36 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <p class="m-0">Подразделы</p>
+                        <div class="row">
+                            <div class="col-6">
+                                <p class="m-0">Подразделы</p>
+                            </div>
+                        </div>
                     </div>
                     <div class="card-body">
                         <div class="col-12">
                             <div class="row">
-                                <div class="col-6" v-for="section in sections">
+                                <div class="col-6" v-for="block in blocks">
                                     <div class="card">
                                         <div class="card-header">
                                             <div class="row">
                                                 <div class="col-6">
-                                                    {{section.name}}
+                                                    {{block.name}}
                                                 </div>
                                                 <div class="col-6 float-right">
                                                     <p class="text-right m-0">
-                                                        <i class="fas fa-folder-plus"
-                                                           style="font-size: 20px; cursor: pointer"
-                                                           v-b-tooltip.hover title="Добавить папку"
-                                                           @click="changeParents(section.id, null, true);"
-                                                        ></i>
-                                                        &nbsp;
+
                                                         <i style="font-size: 20px; cursor: pointer"
                                                            class="fas fa-file-medical"
                                                            v-b-tooltip.hover title="Добавить элемент"
-                                                           @click="changeParents(section.id, null, false)">
+                                                           @click="changeParents(block.id, null, false)">
                                                         </i>
                                                     </p>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="card-body">
-                                            <div v-for="sec in section.sectionsList">
+                                            <div v-for="sec in sections" v-if="sec.infoblockID === block.id">
                                                 <div v-if="!sec.isFolder">
                                                     <div class="row">
                                                         <div class="col-9">
@@ -161,17 +160,17 @@
                                                     <span class="float-right">
                                                         <i class="far fa-eye" v-if="sec.activity"
                                                            style="cursor: pointer"
-                                                           @click="changeActivity(sec)"></i>
+                                                           @click="changeActivity(sec)"/>
                                                         <i class="far fa-eye-slash"
                                                            style="cursor: pointer"
                                                            v-else
-                                                           @click="changeActivity(sec)"></i>
+                                                           @click="changeActivity(sec)"/>
                                                         &nbsp;
                                                         <i class="fas fa-pen" style="cursor: pointer"
-                                                           @click="changeSection(sec)"></i>
+                                                           @click="changeSection(sec)"/>
                                                          &nbsp;
                                                         <i class="fas fa-trash-alt" style="cursor: pointer; color:red;"
-                                                           @click="removeSection(sec.id, sec.infoblockID, sec.sectionID)"></i>
+                                                           @click="removeSection(sec.id, sec.infoblockID, sec.sectionID)"/>
                                                     </span>
                                                             </p>
                                                         </div>
@@ -307,7 +306,6 @@
         methods: {
 
             changeActivity(section) {
-                console.log('lol')
                 section.activity = !section.activity
                 this.section = section
                 this.updateSection()
@@ -391,7 +389,7 @@
                     "ю": "yu",
                     ' ': '-'
                 };
-                let letters = /^[A-Za-z]+$/;
+                let letters = /^[A-Za-z0-9]+$/;
                 this.section.url = this.section.name.split('').map(function (char) {
                     return a[char] || char.match(letters);
                 }).join("");
@@ -406,13 +404,13 @@
             changeSection(section) {
                 this.section = section;
                 this.isSectionUpdate = true
+                $('#infoblockForm').show()
             },
 
             updateSection() {
                 this.$store.dispatch('UPDATE_SECTION', this.section);
                 this.isSectionUpdate = false
                 this.clearCurrentSection()
-
             },
 
             removeSection(id, iId, sId) {
