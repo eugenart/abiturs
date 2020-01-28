@@ -211,6 +211,7 @@ class ParserJsonController extends Controller
 
     public function parseAreas()
     {
+        set_time_limit(0);
         $filejson = file_get_contents(storage_path('app/public/files/test2.json'));
         $json_arr = json_decode($filejson, true);
         $json_data = $json_arr['data'];
