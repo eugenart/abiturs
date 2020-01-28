@@ -28,6 +28,7 @@ class ParserJsonController extends Controller
 
     public function parseStudents()
     {
+        ini_set('memory_limit', '100M');
         $filejson = file_get_contents(storage_path('app/public/files/test3.json'));
         $json_arr = json_decode($filejson, true);
         $json_data = $json_arr['data'];
@@ -274,7 +275,6 @@ class ParserJsonController extends Controller
     public function parseFromJson(Request $request)
     {
         set_time_limit(1200);
-
         $this->parseStudents();
         $this->parseStat();
         $this->parseScore();
