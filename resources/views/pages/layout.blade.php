@@ -46,11 +46,12 @@
                 </li>
                 @foreach($pages->sortByDesc('menuPriority') as $page)
                     <li class="nav-item active">
-                        <a class="nav-link" href="{{ $page->url }}">{{ $page->name }}</a>
+                        <a class="nav-link" href="{{route($page->url)}}">{{ $page->name }}</a>
                     </li>
                 @endforeach
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{route('contact.index')}}">Обратная связь <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{{route('contact.index')}}">Обратная связь <span
+                            class="sr-only">(current)</span></a>
                 </li>
             </ul>
         </div>
