@@ -181,17 +181,23 @@ class StatisticController extends Controller
 // ----------------поиск по имени-------------------
         if (isset($search_fio)) {
 
-            $id_students = Student::where('fio', 'LIKE', '%' . $search_fio . '%')->get();
-
+            $id_students = Student::where('fio', 'LIKE', '%' . $search_fio . '%')
+                ->select('id')
+                ->get();
             $id_stud_arr = array();
             foreach ($id_students as $student) {
                 $id_stud_arr[] = $student->id;
             }
+            $id_stud_arr = array_map('intval', $id_stud_arr);
+
             //если таких человеков нет нужно как это сказать
             if (empty($id_students)) {
-                return $studyForms;
+                return var_dump('Not found');
             }
+
             $statistic_for_people = Statistic::whereIn('id_student', $id_stud_arr)->get();
+            //echo("<pre>" . $statistic_for_people . "</pre>");
+
             //записей максимум 5-6 если человек ввел фамилию и имя
             $id_forms_arr = array();
             $id_cat_arr = array();
@@ -227,16 +233,17 @@ class StatisticController extends Controller
                                 //выбор специальности для этого факультета и и подходящего под людей(уменешели колво)
                                 $specialities_id = DB::table('statistics')
                                     ->where('id_faculty', '=', $faculty->id)
+                                    ->whereIn('id_speciality', $id_spec_arr)
                                     ->select('statistics.id_speciality')
                                     ->distinct()
                                     ->get();
 
-                                $id_spec_arr = array();
+                                $id_spec_arr_2 = array();
                                 foreach ($specialities_id as $item) {
-                                    $id_spec_arr[] = $item->id_speciality;
+                                    $id_spec_arr_2[] = $item->id_speciality;
                                 }
                                 //выберем имена и коды специальностей
-                                $specialities = Speciality::whereIn('id', $id_spec_arr)->get();
+                                $specialities = Speciality::whereIn('id', $id_spec_arr_2)->get();
 
                                 foreach ($specialities as $k0 => $speciality) {
 
