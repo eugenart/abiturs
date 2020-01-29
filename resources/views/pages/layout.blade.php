@@ -52,7 +52,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-light main-nav pt-0 pb-0">
     <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav d-flex justify-content-between w-50 m-auto mrsu-uppertext text-center">
+            <ul class="navbar-nav d-flex justify-content-between w-75 m-auto mrsu-uppertext text-center">
                 <li class="nav-item active d-flex align-items-center justify-content-center">
                     <a class="nav-link" href="{{route('stat.index')}}">Статистика приема <span
                             class="sr-only">(current)</span></a>
