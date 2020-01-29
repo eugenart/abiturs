@@ -95,7 +95,10 @@ class StatisticController extends Controller
             $id_cat_arr = array_unique($id_cat_arr, SORT_REGULAR);
             $id_adm_arr = array_unique($id_adm_arr, SORT_REGULAR);
             $id_prep_arr = array_unique($id_prep_arr, SORT_REGULAR);
-            $id_spec_arr = array_intersect($id_spec_arr, $search_specialities_arr);
+
+            if(!empty($search_specialities_arr)){
+                $id_spec_arr = array_intersect($id_spec_arr, $search_specialities_arr);
+            }
             $id_spec_arr = array_unique($id_spec_arr, SORT_REGULAR);
             //var_dump($id_spec_arr);
 
@@ -259,19 +262,19 @@ class StatisticController extends Controller
                             $faculties = Faculty::whereIn('id', $id_fac_arr)->get();
                             foreach ($faculties as $k1 => $faculty) {
                                 //выбор специальности для этого факультета и и подходящего под людей(уменешели колво)
-                                $specialities_id = DB::table('statistics')
-                                    ->where('id_faculty', '=', $faculty->id)
-                                    ->whereIn('id_speciality', $id_spec_arr)
-                                    ->select('statistics.id_speciality')
-                                    ->distinct()
-                                    ->get();
-
-                                $id_spec_arr_2 = array();
-                                foreach ($specialities_id as $item) {
-                                    $id_spec_arr_2[] = $item->id_speciality;
-                                }
+//                                $specialities_id = DB::table('statistics')
+//                                    ->where('id_faculty', '=', $faculty->id)
+//                                    ->whereIn('id_speciality', $id_spec_arr)
+//                                    ->select('statistics.id_speciality')
+//                                    ->distinct()
+//                                    ->get();
+//
+//                                $id_spec_arr_2 = array();
+//                                foreach ($specialities_id as $item) {
+//                                    $id_spec_arr_2[] = $item->id_speciality;
+//                                }
                                 //выберем имена и коды специальностей
-                                $specialities = Speciality::whereIn('id', $id_spec_arr_2)->get();
+                                $specialities = Speciality::whereIn('id', $id_spec_arr)->get();
 
                                 foreach ($specialities as $k0 => $speciality) {
 
