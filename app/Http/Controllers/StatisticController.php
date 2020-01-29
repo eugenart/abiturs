@@ -47,7 +47,7 @@ class StatisticController extends Controller
         if (isset($studyForms)) {
             $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
             return view('pages.stat', ['studyForms' => $studyForms, 'faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs, 'actual_link' => $actual_link]);
-
+           // echo ("<pre>" . $studyForms . "</pre>");
         } else {
             return view('pages.stat', compact('faculties'), compact('studyFormsForInputs'));
             //return $studyForms;
@@ -70,57 +70,85 @@ class StatisticController extends Controller
         $search_studyForms = array_map('intval', $search_studyForms);
         $search_specialities_arr = array_map('intval', $search_specialities_arr);
 
+
+
         //если запросили по факультетам или спец
         if (!empty($search_faculties)) {
+            $info_faculties = Statistic::whereIn('id_faculty', $search_faculties)
+                ->select('id_studyForm', 'id_category', 'id_admissionBasis', 'id_preparationLevel', 'id_speciality')
+                ->distinct()
+                ->get();
+
+            $id_forms_arr = array();
+            $id_cat_arr = array();
+            $id_adm_arr = array();
+            $id_prep_arr = array();
+            $id_spec_arr = array();
+            foreach ($info_faculties as $stat) {
+                $id_forms_arr[] = $stat->id_studyForm;
+                $id_cat_arr[] = $stat->id_category;
+                $id_adm_arr[] = $stat->id_admissionBasis;
+                $id_prep_arr[] = $stat->id_preparationLevel;
+                $id_spec_arr[] = $stat->id_speciality;
+            }
+            $id_forms_arr = array_unique($id_forms_arr, SORT_REGULAR);
+            $id_cat_arr = array_unique($id_cat_arr, SORT_REGULAR);
+            $id_adm_arr = array_unique($id_adm_arr, SORT_REGULAR);
+            $id_prep_arr = array_unique($id_prep_arr, SORT_REGULAR);
+            $id_spec_arr = array_intersect($id_spec_arr, $search_specialities_arr);
+            $id_spec_arr = array_unique($id_spec_arr, SORT_REGULAR);
+            //var_dump($id_spec_arr);
+
             if (!empty($search_studyForms)) {
-                $studyForms = StudyForm::whereIn('id', $search_studyForms)->get();
+                $studyForms = StudyForm::whereIn('id', $search_studyForms)
+                    ->whereIn('id', $id_forms_arr)
+                    ->get();
+
             } else {
-                $studyForms = StudyForm::all();
+                $studyForms = StudyForm::whereIn('id', $id_forms_arr)->get();
             }
 
             foreach ($studyForms as $k5 => $studyForm) {
-                $categories = Category::all();
+                $categories = Category::whereIn('id', $id_cat_arr)->get();
+
                 foreach ($categories as $k4 => $category) {
-                    $admissionBases = AdmissionBasis::all();
+                    $admissionBases = AdmissionBasis::whereIn('id', $id_adm_arr)->get();
                     foreach ($admissionBases as $k3 => $admissionBasis) {
-                        $preparationLevels = PreparationLevel::all();
+                        $preparationLevels = PreparationLevel::whereIn('id', $id_prep_arr)->get();
                         foreach ($preparationLevels as $k2 => $preparationLevel) {
-                            //находим нужные нам факультеты
+                            //находим нужные нам факультеты их имена
                             $faculties = Faculty::whereIn('id', $search_faculties)->get();
 
-
                             foreach ($faculties as $k1 => $faculty) {
-                                if (!empty($search_specialities_arr)) {
-                                    $specialities_id = DB::table('statistics')
-                                        ->where('id_faculty', '=', $faculty->id)
-                                        ->whereIn('id_speciality', $search_specialities_arr)
-                                        ->select('statistics.id_speciality')
-                                        ->distinct()
-                                        ->get();
-                                    //return var_dump($specialities_id);
-                                } else {
-                                    $specialities_id = DB::table('statistics')
-                                        ->where('id_faculty', '=', $faculty->id)
-                                        ->select('statistics.id_speciality')
-                                        ->distinct()
-                                        ->get();
-                                }
-                                // return var_dump($specialities_id);
-                                $id_spec_arr = array();
-                                foreach ($specialities_id as $item) {
-                                    $id_spec_arr[] = $item->id_speciality;
-                                }
+//                                if (!empty($search_specialities_arr)) {
+//                                    $specialities_id = DB::table('statistics')
+//                                        ->where('id_faculty', '=', $faculty->id)
+//                                        ->whereIn('id_speciality', $search_specialities_arr)
+//                                       // ->whereIn('id', $id_spec_arr) //кажется в этом нет смысла
+//                                        ->select('statistics.id_speciality')
+//                                        ->distinct()
+//                                        ->get();
+//                                } else {
+//                                    $specialities_id = DB::table('statistics')
+//                                        ->where('id_faculty', '=', $faculty->id)
+//                                        ->select('statistics.id_speciality')
+//                                        ->distinct()
+//                                        ->get();
+//                                }
+//                                $id_spec_arr = array();
+//                                foreach ($specialities_id as $item) {
+//                                    $id_spec_arr[] = $item->id_speciality;
+//                                }
 
                                 //для выбора названий специальностей
                                 $specialities = Speciality::whereIn('id', $id_spec_arr)->get();
                                 foreach ($specialities as $k0 => $speciality) {
-
                                     $temp = Statistic::where('id_studyForm', '=', $studyForm->id)
+                                        ->where('id_speciality', '=', $speciality->id)
                                         ->where('id_preparationLevel', '=', $preparationLevel->id)
                                         ->where('id_admissionBasis', '=', $admissionBasis->id)
                                         ->where('id_category', '=', $category->id)
                                         ->where('id_faculty', '=', $faculty->id)
-                                        ->where('id_speciality', '=', $speciality->id)
                                         ->get();
 
                                     $freeSeatsNumber = TrainingArea::where('id_speciality', '=', $speciality->id)
