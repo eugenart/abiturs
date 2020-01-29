@@ -180,60 +180,79 @@ class StatisticController extends Controller
         }
 // ----------------поиск по имени-------------------
         if (isset($search_fio)) {
-            $students = Student::where('fio', 'LIKE', '%' . $search_fio . '%')->get();
+
+            $id_students = Student::where('fio', 'LIKE', '%' . $search_fio . '%')->get();
+
             $id_stud_arr = array();
-            foreach ($students as $student) {
+            foreach ($id_students as $student) {
                 $id_stud_arr[] = $student->id;
             }
+            //если таких человеков нет нужно как это сказать
+            if (empty($id_students)) {
+                return $studyForms;
+            }
+            $statistic_for_people = Statistic::whereIn('id_student', $id_stud_arr)->get();
+            //записей максимум 5-6 если человек ввел фамилию и имя
+            $id_forms_arr = array();
+            $id_cat_arr = array();
+            $id_adm_arr = array();
+            $id_prep_arr = array();
+            $id_fac_arr = array();
+            $id_spec_arr = array();
+            foreach ($statistic_for_people as $stat) {
+                $id_forms_arr[] = $stat->id_studyForm;
+                $id_cat_arr[] = $stat->id_category;
+                $id_adm_arr[] = $stat->id_admissionBasis;
+                $id_prep_arr[] = $stat->id_preparationLevel;
+                $id_fac_arr[] = $stat->id_faculty;
+                $id_spec_arr[] = $stat->id_speciality;
+            }
+            $id_forms_arr = array_unique($id_forms_arr, SORT_REGULAR);
+            $id_cat_arr = array_unique($id_cat_arr, SORT_REGULAR);
+            $id_adm_arr = array_unique($id_adm_arr, SORT_REGULAR);
+            $id_prep_arr = array_unique($id_prep_arr, SORT_REGULAR);
+            $id_fac_arr = array_unique($id_fac_arr, SORT_REGULAR);
+            $id_spec_arr = array_unique($id_spec_arr, SORT_REGULAR);
 
-            $studyForms = StudyForm::all();
+            $studyForms = StudyForm::whereIn('id', $id_forms_arr)->get();
             foreach ($studyForms as $k5 => $studyForm) {
-                $categories = Category::all();
+                $categories = Category::whereIn('id', $id_cat_arr)->get();
                 foreach ($categories as $k4 => $category) {
-                    $admissionBases = AdmissionBasis::all();
+                    $admissionBases = AdmissionBasis::whereIn('id', $id_adm_arr)->get();
                     foreach ($admissionBases as $k3 => $admissionBasis) {
-                        $preparationLevels = PreparationLevel::all();
+                        $preparationLevels = PreparationLevel::whereIn('id', $id_prep_arr)->get();
                         foreach ($preparationLevels as $k2 => $preparationLevel) {
-                            $faculties = Faculty::all();
+                            $faculties = Faculty::whereIn('id', $id_fac_arr)->get();
                             foreach ($faculties as $k1 => $faculty) {
+                                //выбор специальности для этого факультета и и подходящего под людей(уменешели колво)
                                 $specialities_id = DB::table('statistics')
                                     ->where('id_faculty', '=', $faculty->id)
                                     ->select('statistics.id_speciality')
                                     ->distinct()
                                     ->get();
+
                                 $id_spec_arr = array();
                                 foreach ($specialities_id as $item) {
                                     $id_spec_arr[] = $item->id_speciality;
                                 }
+                                //выберем имена и коды специальностей
                                 $specialities = Speciality::whereIn('id', $id_spec_arr)->get();
 
                                 foreach ($specialities as $k0 => $speciality) {
-                                    $id_spec = Statistic::where('id_studyForm', '=', $studyForm->id)
+
+                                    $temp = Statistic::where('id_studyForm', '=', $studyForm->id)
                                         ->where('id_preparationLevel', '=', $preparationLevel->id)
                                         ->where('id_admissionBasis', '=', $admissionBasis->id)
                                         ->where('id_category', '=', $category->id)
                                         ->where('id_faculty', '=', $faculty->id)
                                         ->where('id_speciality', '=', $speciality->id)
-                                        ->whereIn('id_student', $id_stud_arr)
-                                        ->select('id_speciality')
-                                        ->first();
-                                    $temp = collect(new Statistic);
-                                    if (isset($id_spec) && $id_spec->id_speciality == $speciality->id) {
-                                        $temp = Statistic::where('id_studyForm', '=', $studyForm->id)
-                                            ->where('id_preparationLevel', '=', $preparationLevel->id)
-                                            ->where('id_admissionBasis', '=', $admissionBasis->id)
-                                            ->where('id_category', '=', $category->id)
-                                            ->where('id_faculty', '=', $faculty->id)
-                                            ->where('id_speciality', '=', $speciality->id)
-                                            ->get();
+                                        ->get();
 
-                                    }
 
                                     $freeSeatsNumber = TrainingArea::where('id_speciality', '=', $speciality->id)
                                         ->where('id_studyForm', '=', $studyForm->id)
                                         ->first();
 
-//                                $temp->search('id_student',$id_stud_arr);
                                     if ($temp->count()) {
                                         $speciality->abiturs = $temp;
                                         foreach ($id_stud_arr as $id) {
