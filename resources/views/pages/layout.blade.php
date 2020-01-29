@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
 
-    <meta property="og:title" content="Приёмная кампания МГУ им. Н.П. Огарева 2020."/>
+    <meta property="og:title" content="Приёмная кампания МГУ им. Н.П. Огарева 2020"/>
     <meta property="og:description"
           content="Приёмная кампания МГУ им. Н.П. Огарева 2020. Статистика рпиёма, подбор направления."/>
     <meta property="og:image" content="https://abitur.mrsu.ru/storage/preview/20200128_163227_image.jpeg"/>
@@ -50,24 +50,22 @@
     </div>
 </div>
 <nav class="navbar navbar-expand-lg navbar-dark bg-light main-nav pt-0 pb-0">
-    <div class="container">
-
+    <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav d-flex justify-content-between w-100 mrsu-uppertext">
-
-                <li class="nav-item active">
+            <ul class="navbar-nav d-flex justify-content-between w-50 m-auto mrsu-uppertext text-center">
+                <li class="nav-item active d-flex align-items-center justify-content-center">
                     <a class="nav-link" href="{{route('stat.index')}}">Статистика приема <span
                             class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item active d-flex align-items-center justify-content-center">
                     <a class="nav-link" href="{{route('selection.index')}}">Подбор направления <span class="sr-only">(current)</span></a>
                 </li>
                 @foreach($pages->sortByDesc('menuPriority') as $page)
-                    <li class="nav-item active">
+                    <li class="nav-item active d-flex align-items-center justify-content-center">
                         <a class="nav-link" href="{{url($page->url)}}">{{ $page->name }}</a>
                     </li>
                 @endforeach
-                <li class="nav-item active">
+                <li class="nav-item active d-flex align-items-center justify-content-center">
                     <a class="nav-link" href="{{route('contact.index')}}">Обратная связь <span
                             class="sr-only">(current)</span></a>
                 </li>
@@ -80,21 +78,6 @@
 
 @show
 <hr class="mrsu-hr mrsu-bg m-auto">
-
-{{--<div class="container mt-3">--}}
-{{--    <div class="row">--}}
-{{--        @foreach($pages->sortByDesc('menuPriority') as $page)--}}
-{{--        <div class="col-2">--}}
-{{--            <p class="mb-0">{{ $page->name }}</p>--}}
-{{--            <ul class="m-0 list-unstyled pl-3">--}}
-{{--                @foreach($page->sections as $section)--}}
-{{--                    <li><a href="{{ $section->url }}">{{ $section->name }}</a></li>--}}
-{{--                @endforeach--}}
-{{--            </ul>--}}
-{{--        </div>--}}
-{{--        @endforeach--}}
-{{--    </div>--}}
-{{--</div>--}}
 
 </body>
 <script
