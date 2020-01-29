@@ -46,7 +46,7 @@
                 </li>
                 @foreach($pages->sortByDesc('menuPriority') as $page)
                     <li class="nav-item active">
-                        <a class="nav-link" href="{{route($page->url)}}">{{ $page->name }}</a>
+                        <a class="nav-link" href="{{url($page->url)}}">{{ $page->name }}</a>
                     </li>
                 @endforeach
                 <li class="nav-item active">
