@@ -38,7 +38,7 @@ class StatisticController extends Controller
         }
 
         if (isset($search_fio) || !empty($search_faculties)) {
-            $studyForms = $this->search($search_fio, $search_faculties, $search_specialities, $search_studyForms);
+            $studyForms = $this->search($search_fio, $search_faculties, $search_specialities, $search_studyForms, $notification);
         }
 
 
@@ -46,18 +46,23 @@ class StatisticController extends Controller
         $studyFormsForInputs = StudyForm::all();
         if (isset($studyForms)) {
             $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-            return view('pages.stat', ['studyForms' => $studyForms, 'faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs, 'actual_link' => $actual_link]);
-           // echo ("<pre>" . $studyForms . "</pre>");
+            return view('pages.stat', ['studyForms' => $studyForms, 'faculties' => $faculties,
+                'studyFormsForInputs' => $studyFormsForInputs, 'actual_link' => $actual_link]);
+
         } else {
-            return view('pages.stat', compact('faculties'), compact('studyFormsForInputs'));
-            //return $studyForms;
+            if(isset($notification)){
+                return view('pages.stat', ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs, 'notification' => $notification]);
+            }
+            else{
+                return view('pages.stat', compact('faculties'), compact('studyFormsForInputs'));
+            }
         }
 
 
     }
 
 
-    public function search($search_fio, $search_faculties, $search_specialities, $search_studyForms)
+    public function search($search_fio, $search_faculties, $search_specialities, $search_studyForms, &$notification)
     {
 //----------------поиск по категориям-------------------
         $search_specialities_arr = array();
@@ -69,7 +74,6 @@ class StatisticController extends Controller
         $search_faculties = array_map('intval', $search_faculties);
         $search_studyForms = array_map('intval', $search_studyForms);
         $search_specialities_arr = array_map('intval', $search_specialities_arr);
-
 
 
         //если запросили по факультетам или спец
@@ -96,7 +100,7 @@ class StatisticController extends Controller
             $id_adm_arr = array_unique($id_adm_arr, SORT_REGULAR);
             $id_prep_arr = array_unique($id_prep_arr, SORT_REGULAR);
 
-            if(!empty($search_specialities_arr)){
+            if (!empty($search_specialities_arr)) {
                 $id_spec_arr = array_intersect($id_spec_arr, $search_specialities_arr);
             }
             $id_spec_arr = array_unique($id_spec_arr, SORT_REGULAR);
@@ -211,25 +215,35 @@ class StatisticController extends Controller
         }
 // ----------------поиск по имени-------------------
         if (isset($search_fio)) {
-
+            //выбираем всех студентов подходящих по фио
             $id_students = Student::where('fio', 'LIKE', '%' . $search_fio . '%')
-                ->select('id')
+                ->select('id', 'fio')
                 ->get();
+
+
+            if($id_students->count() > 9){
+                $notification = 'Пожалуйста уточните запрос.';
+                return;
+            }
+            if($id_students->count() == 0){
+                $notification = 'По вашему запросу ничего не найдено.';
+                return;
+            }
+
+
+            //делаем из этого массив id
             $id_stud_arr = array();
             foreach ($id_students as $student) {
                 $id_stud_arr[] = $student->id;
             }
             $id_stud_arr = array_map('intval', $id_stud_arr);
 
-            //если таких человеков нет нужно как это сказать
-            if (empty($id_students)) {
-                return var_dump('Not found');
-            }
-
+            //выбираем всю статистику где id студентов как нам нужно
             $statistic_for_people = Statistic::whereIn('id_student', $id_stud_arr)->get();
             //echo("<pre>" . $statistic_for_people . "</pre>");
 
             //записей максимум 5-6 если человек ввел фамилию и имя
+            //создаем массивы по каждой категории
             $id_forms_arr = array();
             $id_cat_arr = array();
             $id_adm_arr = array();
@@ -251,6 +265,9 @@ class StatisticController extends Controller
             $id_fac_arr = array_unique($id_fac_arr, SORT_REGULAR);
             $id_spec_arr = array_unique($id_spec_arr, SORT_REGULAR);
 
+           // echo("<pre>" . $id_spec_arr . "</pre>");
+
+            //проходим по каждой категории и ищем нужные нам записи статистики чтобы привести их в правильную структуру для вывода
             $studyForms = StudyForm::whereIn('id', $id_forms_arr)->get();
             foreach ($studyForms as $k5 => $studyForm) {
                 $categories = Category::whereIn('id', $id_cat_arr)->get();
@@ -261,23 +278,9 @@ class StatisticController extends Controller
                         foreach ($preparationLevels as $k2 => $preparationLevel) {
                             $faculties = Faculty::whereIn('id', $id_fac_arr)->get();
                             foreach ($faculties as $k1 => $faculty) {
-                                //выбор специальности для этого факультета и и подходящего под людей(уменешели колво)
-//                                $specialities_id = DB::table('statistics')
-//                                    ->where('id_faculty', '=', $faculty->id)
-//                                    ->whereIn('id_speciality', $id_spec_arr)
-//                                    ->select('statistics.id_speciality')
-//                                    ->distinct()
-//                                    ->get();
-//
-//                                $id_spec_arr_2 = array();
-//                                foreach ($specialities_id as $item) {
-//                                    $id_spec_arr_2[] = $item->id_speciality;
-//                                }
                                 //выберем имена и коды специальностей
                                 $specialities = Speciality::whereIn('id', $id_spec_arr)->get();
-
                                 foreach ($specialities as $k0 => $speciality) {
-
                                     $temp = Statistic::where('id_studyForm', '=', $studyForm->id)
                                         ->where('id_preparationLevel', '=', $preparationLevel->id)
                                         ->where('id_admissionBasis', '=', $admissionBasis->id)
@@ -285,29 +288,44 @@ class StatisticController extends Controller
                                         ->where('id_faculty', '=', $faculty->id)
                                         ->where('id_speciality', '=', $speciality->id)
                                         ->get();
-
-
+                                    $temp2 = $temp->intersect($statistic_for_people);
+//                                    if(!$temp2->isEmpty()) {
+//
+//                                    }
+                                    //нужно проверить содержит ли полученная коллекция нужных студентов
+                                    //выбираем свободные места на этой специальности
                                     $freeSeatsNumber = TrainingArea::where('id_speciality', '=', $speciality->id)
                                         ->where('id_studyForm', '=', $studyForm->id)
                                         ->first();
-
-                                    if ($temp->count()) {
-                                        $speciality->abiturs = $temp;
+                                    //обозначаем выбранного студента цветом
+                                    if ($temp->count() && !$temp2->isEmpty()) {
+                                        $speciality->abiturs = $temp; //записываем статистику в специальность
+                                        $chosenStudents = collect(new Student);
                                         foreach ($id_stud_arr as $id) {
+                                            $serialNumSpec = 0;
                                             foreach ($temp as $student) {
+                                                $serialNumSpec++;
                                                 if ($student->id_student === $id) {
                                                     $student->is_chosen = true;
+                                                    $chosenStudents->push($student->student);
+                                                    $chosenStudent_last = $chosenStudents->last();
+                                                    $chosenStudent_last->serialNum = $serialNumSpec;
                                                 } else {
                                                     continue;
                                                 }
                                             }
                                         }
+                                        $chosenStudents = $chosenStudents->sortBy('serialNum');
+                                        //запишем выбранных студентов в специальность
+                                        $speciality->chosenStudents = $chosenStudents;
+                                        //считаем оригиналы
                                         $originalsCount = 0;
                                         foreach ($temp as $student) {
                                             if ($student->original == true) {
                                                 $originalsCount += 1;
                                             }
                                         }
+                                        //считаем колво человек на место
                                         if (!empty($freeSeatsNumber)) {
                                             $speciality->freeSeatsNumber = $freeSeatsNumber->freeSeatsNumber;
                                             if ($freeSeatsNumber->freeSeatsNumber != 0) {
@@ -318,13 +336,13 @@ class StatisticController extends Controller
                                             $speciality->freeSeatsNumber = null;
                                         }
                                     } else {
-                                        $speciality->abiturs = null;
+                                        $speciality->abiturs = null; //если статистики для специальности нет то не записываем
                                     }
-                                    if (empty($speciality->abiturs)) {
+                                    if (empty($speciality->abiturs)) { //если не записали, удаляем специальность из списка
                                         unset($specialities[$k0]);
                                     }
                                 }
-                                $specialities->count() ? $faculty->specialities = $specialities : null; //В любом случае не пустые
+                                $specialities->count() ? $faculty->specialities = $specialities : null;
                                 if (empty($faculty->specialities)) {
                                     unset($faculties[$k1]);
                                 }
@@ -349,18 +367,16 @@ class StatisticController extends Controller
                     unset($studyForms[$k5]);
                 }
             }
-
         }
-//Выборка для инпутов
+
+        //Выборка для инпутов
         $studyFormsForInputs = StudyForm::all();
         $faculties = $this->fetchFaculties();
         return $studyForms;
 
-// return view('pages.stat', ['studyForms' => $studyForms, 'faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs]);
     }
 
-    public
-    function fetchFaculties()
+    public function fetchFaculties()
     {
         $faculties = Faculty::all();
         foreach ($faculties as $faculty) {

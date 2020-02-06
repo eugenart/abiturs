@@ -16,7 +16,7 @@
                     </div>
                     <div class="modal-body">
                         <img class="d-block m-auto"
-                            src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl={{$actual_link}}&choe=UTF-8"/>
+                             src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl={{$actual_link}}&choe=UTF-8"/>
                     </div>
                 </div>
             </div>
@@ -33,7 +33,8 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav">
                             <li class="nav-item active">
-                                <a class="nav-link font-weight-bold" href="{{route('stat.index')}}"><b><i class="fas fa-university"></i>
+                                <a class="nav-link font-weight-bold" href="{{route('stat.index')}}"><b><i
+                                            class="fas fa-university"></i>
                                         Бакалавриат и специалитет</b></a>
                             </li>
                             <li class="nav-item">
@@ -54,9 +55,11 @@
         <div class="container">
             <div class="row m-4">
                 <div class="col-12 d-flex justify-content-between align-items-center">
-                    <h6 class="m-0 p-0"><a href="" class="underline-label" data-toggle="modal" data-target="#QRCode">Получить
-                            QR-код запроса</a></h6>
-                    <span class="m-0 p-0">Дата последнего обновления инфорации: <b>20.02.2020 18:30</b></span>
+                    <div class="m-0 p-0 h6"><a href="" class="underline-label main-color" data-toggle="modal"
+                                               data-target="#QRCode">Получить
+                            QR-код запроса</a></div>
+                    <span
+                        class="m-0 p-0 main-color">Дата последнего обновления инфорации: <b>20.02.2020 18:30</b></span>
                 </div>
             </div>
         </div>
@@ -89,6 +92,9 @@
         </form>
         <div class="row mt-4">
             <div class="col-12">
+                @if(isset($notification))
+                    <div class="text-center m-4 h4">{{$notification}}</div>
+                @endif
                 @if(isset($studyForms))
                     @foreach($studyForms as $studyForm)
                         @if(isset($studyForm->stat ))
@@ -101,8 +107,8 @@
                                                     @foreach($preparationLevel->faculties as $faculty)
                                                         @if(isset($faculty->specialities))
                                                             @foreach($faculty->specialities as $speciality)
-                                                                <div class="row mt-4">
-                                                                    <div class="col-12">
+                                                                <div class="row mt-4 justify-content-start">
+                                                                    <div class="col-8">
                                                                         <div class="exam-info-outer">
                                                                             <div class="col-6 float-left p-0">
                                                                                 <div class="examInfo p-3">
@@ -111,7 +117,8 @@
                                                                                             <table>
                                                                                                 <tbody>
                                                                                                 <tr>
-                                                                                                    <td>Форма обучения</td>
+                                                                                                    <td>Форма обучения
+                                                                                                    </td>
                                                                                                     <td>
                                                                                                         <b class="mrsu-uppertext">{{$studyForm->name}}</b>
                                                                                                     </td>
@@ -132,7 +139,8 @@
                                                                                                     </td>
                                                                                                 </tr>
                                                                                                 <tr>
-                                                                                                    <td>Уровень подготовки
+                                                                                                    <td>Уровень
+                                                                                                        подготовки
                                                                                                     </td>
                                                                                                     <td>
                                                                                                         <b class="mrsu-uppertext">{{$preparationLevel->name}}</b>
@@ -144,13 +152,16 @@
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="col-6 float-left p-0 d-flex align-items-stretch">
+                                                                            <div
+                                                                                class="col-6 float-left p-0 d-flex align-items-stretch">
                                                                                 <div class="examInfo-bottom pl-4">
-                                                                                    <div class="row d-flex align-items-center justify-content-center h-100">
+                                                                                    <div
+                                                                                        class="row d-flex align-items-center justify-content-center h-100">
                                                                                         <div class="col-12">
                                                                                             <p class="m-0 text-uppercase font-weight-bold">{{$faculty->name}}</p>
                                                                                             <p class="m-0 font-weight-bold">{{$speciality->name}}</p>
-                                                                                            <p class="m-0">Кол-во бюджетных
+                                                                                            <p class="m-0">Кол-во
+                                                                                                бюджетных
                                                                                                 мест: <span
                                                                                                     class="font-weight-bold">{{$speciality->freeSeatsNumber}}</span>
                                                                                             </p>
@@ -166,7 +177,39 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
+
+                                                                    <div class="col-4">
+                                                                        <div class="font-weight-bold">
+                                                                            Согласие:
+                                                                        </div>
+                                                                        <div><i class="fa fa-check-circle"
+                                                                                style="color: rgba(0,128,0,0.51)"></i>
+                                                                            &mdash; Первое согласие на зачисление
+                                                                        </div>
+                                                                        <div><i class="fa fa-check-circle"
+                                                                                style="color: rgba(0,128,0,0.51)"></i>
+                                                                            <i class="fa fa-check-circle"
+                                                                               style="color: rgba(0,128,0,0.51)"></i>
+                                                                            &mdash; Второе согласие на зачисление
+                                                                        </div>
+                                                                    </div>
+
                                                                 </div>
+                                                                @if(isset($speciality->chosenStudents))
+                                                                    <div>
+                                                                        @foreach($speciality->chosenStudents as $chosenStudent)
+                                                                            <div class="main-color h6">
+                                                                                <span
+                                                                                    class="font-weight-bold">{{$chosenStudent->fio}} </span>
+                                                                                &mdash;
+                                                                                <a class="main-color underline-label h6"
+                                                                                   href="#stud-{{$chosenStudent->id}}-{{$speciality->id}}">конкурсное
+                                                                                    место
+                                                                                    <b>{{$chosenStudent->serialNum}}</b></a>
+                                                                            </div>
+                                                                        @endforeach
+                                                                    </div>
+                                                                @endif
                                                                 @if(isset($speciality->abiturs))
                                                                     <table
                                                                         class="table table-bordered table-sm base-exams-table">
@@ -236,29 +279,27 @@
                                                                                 <tr class="text-center">
                                                                                     @endif
                                                                                     <td class="text-center">{{$k + 1}}</td>
-                                                                                    <td class="text-left">{{$abitur->student->fio}}</td>
-                                                                                    @if($abitur->original)
-                                                                                        <td>
+                                                                                    <td class="text-left"
+                                                                                        id="stud-{{$abitur->student->id}}-{{$abitur->id_speciality}}">{{$abitur->student->fio}}</td>
+                                                                                    <td>
+                                                                                        @if($abitur->original)
                                                                                             <i class="fa fa-check-circle"
                                                                                                style="color: rgba(0,128,0,0.51)"></i>
-                                                                                        </td>
-                                                                                    @else
-                                                                                        <td>
-                                                                                            <i class="fa fa-times-circle"
-                                                                                               style="color: rgba(128,0,0,0.51)"></i>
-                                                                                        </td>
-                                                                                    @endif
-                                                                                    @if($abitur->accept)
-                                                                                        <td>
+                                                                                        @endif
+                                                                                    </td>
+
+                                                                                    {{--                                                                                                <i class="fa fa-times-circle"--}}
+                                                                                    {{--                                                                                                   style="color: rgba(128,0,0,0.51)"></i>--}}
+
+
+                                                                                    <td>
+                                                                                        @if($abitur->accept)
                                                                                             <i class="fa fa-check-circle"
                                                                                                style="color: rgba(0,128,0,0.51)"></i>
-                                                                                        </td>
-                                                                                    @else
-                                                                                        <td>
-                                                                                            <i class="fa fa-times-circle"
-                                                                                               style="color: rgba(128,0,0,0.51)"></i>
-                                                                                        </td>
-                                                                                    @endif
+                                                                                        @endif
+                                                                                    </td>
+
+
                                                                                     @foreach($abitur->score as $ab_sc)
                                                                                         <td>{{$ab_sc->score}}</td>
                                                                                     @endforeach
@@ -268,11 +309,12 @@
                                                                                     <td>{{$abitur->summContest}}</td>
                                                                                     <td>ЕГЭ</td>
                                                                                     <td>{{$abitur->notice1}}</td>
-                                                                                    @if($abitur->needHostel)
-                                                                                        <td style="background-color: rgba(0,255,0,0.1)">Да</td>
-                                                                                    @else
-                                                                                        <td style="background-color: rgba(255,0,0,0.1)">Нет</td>
-                                                                                    @endif
+
+                                                                                    <td>@if($abitur->needHostel)
+                                                                                            <i class="fa fa-check-circle"
+                                                                                               style="color: rgba(0,128,0,0.51)"></i>
+                                                                                        @endif
+                                                                                    </td>
                                                                                 </tr>
                                                                                 @endforeach
 
@@ -294,7 +336,10 @@
                     @endforeach
 
                 @else
-                    <h4 class="text-center m-4">Введите <b>ФИО</b> или выберите <b>факультет/институт</b> для получения информации о статистике приема.</h4>
+                    <div class="text-center m-4 h4">Введите <b>ФИО</b> или выберите <b>факультет/институт</b> для
+                        получения
+                        информации о статистике приема.
+                    </div>
                 @endif
             </div>
         </div>
