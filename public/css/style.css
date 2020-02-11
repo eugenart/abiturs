@@ -600,6 +600,10 @@ marquee {
 
 @media screen and (max-width: 500px) {
 
+    .carousel-item {
+        height: 250px !important;
+    }
+
     .foreign-link {
         color: white;
     }
@@ -655,5 +659,17 @@ marquee {
 
     .h5-mrsu {
         font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 375px){
+    .carousel-item {
+        height: 200px !important;
+    }
+}
+
+@media screen and (max-width: 320px){
+    .carousel-item {
+        height: 150px !important;
     }
 }
