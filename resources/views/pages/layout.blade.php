@@ -21,50 +21,72 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
     <link rel="shortcut icon" href="{{asset('storage/images/iconka_mrsu.png')}}" type="image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
           integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('css/hamburgers.css')}}">
     @section('style')
     @show
     <title>Приемная кампания 2020</title>
 </head>
 <body>
-<div class="container">
+<div class="container cont-w-100" style="z-index: 500 !important;">
     <div class="row header p-3">
         <div class="col-6">
-            <a href="/"><img src="{{asset('storage/images/logo_mrsu.png')}}" class="mrsu-logo-img" alt=""></a>
+            <a href="/"><img src="{{asset('storage/images/iconka_mrsu_white.png')}}"
+                             class="mrsu-logo-img d-lg-none d-md-block" alt=""></a>
+            <a href="/"><img src="{{asset('storage/images/logo_mrsu.png')}}" class="mrsu-logo-img mrsu-logo-blue d-lg-block d-md-none d-sm-none"
+                             alt=""></a>
         </div>
-        <div class="col-6 justify-content-end d-flex align-items-center p-0">
-            <img src="{{asset('storage/images/icon_eng.gif')}}" class="mr-3" width="20" height="13" alt="">
-            <img src="{{asset('storage/images/eye.png')}}" class="mr-2" width="22" height="13" alt="">
-            <button class="navbar-toggler d-lg-none d-md-block" type="button" data-toggle="collapse"
+        <div class="col-6 justify-content-end d-flex align-items-center">
+            <a href="" class="ml-4 foreign-link mr-3">Ru </a>
+            <img src="{{asset('storage/images/eye-white.png')}}" class="ml-2 mr-4 d-lg-none d-md-block" width="35" height="auto" alt="">
+            <img src="{{asset('storage/images/eye-blue.png')}}" class="ml-2 mr-4 d-lg-block d-md-none d-sm-none mrsu-eye-blue" width="35" height="auto" alt="">
+            <button class="hamburger hamburger--collapse  d-lg-none d-md-block" type="button" data-toggle="collapse"
                     data-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="fas fa-bars"></i>
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
             </button>
         </div>
     </div>
 </div>
-<nav class="navbar navbar-expand-lg navbar-dark bg-light main-nav pt-0 pb-0">
-    <div class="container-fluid">
+
+<div id="bg-blur"></div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-light main-nav pt-0 pb-0" style="z-index: 500 !important;">
+    <div class="container">
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav d-flex justify-content-between w-75 m-auto mrsu-uppertext text-center">
+            <ul class="navbar-nav d-flex justify-content-between w-100 m-auto mrsu-uppertext text-center">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Уровни подготовки
+                    </a>
+                    <div class="dropdown-menu main-color" aria-labelledby="navbarDropdown">
+                        @foreach($pages->sortByDesc('menuPriority') as $page)
+                            <a class="nav-link text-white" href="{{url($page->url)}}">{{ $page->name }}</a>
+                        @endforeach
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Статистика приема
+                    </a>
+                    <div class="dropdown-menu main-color" aria-labelledby="navbarDropdown">
+                        <a class="nav-link text-white" href="{{route('selection.index')}}">Бакалавриат</a>
+                    </div>
+                </li>
                 <li class="nav-item active d-flex align-items-center justify-content-center">
-                    <a class="nav-link" href="{{route('stat.index')}}">Статистика приема <span
+                    <a class="nav-link" href="{{route('selection.index')}}">Подбор направления<span
                             class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item active d-flex align-items-center justify-content-center">
-                    <a class="nav-link" href="{{route('selection.index')}}">Подбор направления <span class="sr-only">(current)</span></a>
-                </li>
-                @foreach($pages->sortByDesc('menuPriority') as $page)
-                    <li class="nav-item active d-flex align-items-center justify-content-center">
-                        <a class="nav-link" href="{{url($page->url)}}">{{ $page->name }}</a>
-                    </li>
-                @endforeach
                 <li class="nav-item active d-flex align-items-center justify-content-center">
                     <a class="nav-link" href="{{route('contact.index')}}">Обратная связь <span
                             class="sr-only">(current)</span></a>
@@ -75,9 +97,7 @@
 </nav>
 
 @section('page')
-
 @show
-<hr class="mrsu-hr mrsu-bg m-auto">
 
 </body>
 <script
@@ -90,13 +110,13 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.9/js/i18n/defaults-ru_RU.min.js"></script>
+<script>
+    $('.hamburger').click(() => {
+        $('.hamburger').toggleClass('is-active');
+    })
+</script>
 @section("js")
 @show
 </html>

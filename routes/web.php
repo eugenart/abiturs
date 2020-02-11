@@ -53,6 +53,7 @@ Route::get('/contact', 'ContactController@index')->name('contact.index');
 Route::get('/select', 'SelectionController@index')->name('selection.index');
 Route::get('/statistic/bachelor', 'StatisticController@index')->name('stat.index');
 
+Route::get('/foreign', 'ForeignController@index')->name('foreign.index');
 
 Route::get('/{route}', 'PageController@route')->name('pages.route');
 Route::get('/', 'PageController@index')->name('pages.home');
