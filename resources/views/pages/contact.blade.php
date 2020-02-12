@@ -3,7 +3,7 @@
 @section('page')
     <div class="container">
         <div class="row">
-            <div class="col-12 m-5 contact-us-div">
+            <div class="col-12 mt-5 contact-us-div">
                 <h1 class="text-center main-color">Остались вопросы? Напишите нам</h1>
                 <h5 class="text-center">Воспользуйтесь формой обратной связи, чтобы задать интересующие Вас
                     вопросы:</h5>
