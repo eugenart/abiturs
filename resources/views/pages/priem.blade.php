@@ -16,12 +16,13 @@
         <div class="row mt-4">
             <div class="col-12">
                 <a href="/" class="main-color">Главная</a> / <a href="{{ $block->infoblock->url }}"
-                                             class="text-capitalize main-color">{{ $block->infoblock->name }}</a> / <a
+                                                                class="text-capitalize main-color">{{ $block->infoblock->name }}</a>
+                / <a
                     href="{{ $block->url }}" class="main-color">{{ $block->name }}</a>
             </div>
         </div>
-        <div class="row mt-2">
-            <div class="col-9">
+        <div class="row mt-2 section-content-block">
+            <div class="col-xl-9 col-lg-8 col-md-12 col-sm-12 col-12">
                 <div class="row">
                     <div class="col-12">
                         <h5 class="text-center mrsu-uppertext pt-3 text-primary font-weight-bold main-color">
@@ -68,12 +69,14 @@
                     </div>
                 </div>
             </div>
-            <div class="col-3">
+            <div class="col-xl-3 col-lg-4 col-md-12 col-sm-12 col-12">
                 <div class="mrsu-card pt-3 pb-1">
-                    <p class="w-100 mrsu-uppertext title-text text-center p-1 main-color"><b>{{ $block->infoblock->name }}</b></p>
+                    <p class="w-100 mrsu-uppertext title-text text-center p-1 main-color">
+                        <b>{{ $block->infoblock->name }}</b></p>
                     <ul class="list-unstyled p-3 list-sections main-color">
                         @foreach($block->infoblock->sections->where('activity', true) as $section)
-                            <li class="mrsu-uppertext"><a class="text-white" href="{{ $section->url }}">{{ $section->name }}</a></li>
+                            <li class="mrsu-uppertext"><a class="text-white"
+                                                          href="{{ $section->url }}">{{ $section->name }}</a></li>
                         @endforeach
                     </ul>
                 </div>
