@@ -16,7 +16,7 @@
                     <button type="submit">ОТПРАВИТЬ</button>
                 </form>
             </div>
-            <div class="col-12 m-5 text-center form-sent">
+            <div class="col-12 mt-5 text-center form-sent">
                 <i class="fa fa-check"></i>
                 <br>
                 <span>Вопрос успешно отправлен! <br> Мы свяжемся с Вами в ближайшее время.</span>
@@ -35,7 +35,7 @@
             $('.form-sent').hide();
         })
 
-        $('button').click(() => {
+        $('button[type="submit"]').click(() => {
             $('.contact-us-div').hide();
             $('.form-sent').show();
         })
