@@ -44,15 +44,17 @@
                                 name="specialities[]" id="specialities">
                         </select>
 
-                        <select class="selectpicker form-control-sm col-md-3 col-12" multiple title="Форма обучения"
+                        <select class="selectpicker form-control-sm col-lg-3 col-xl-3 col-md-2 col-12" multiple title="Форма обучения"
                                 name="studyforms[]"
                                 id="studyforms">
                             @foreach ($studyFormsForInputs as $form)
                                 <option value="{{$form->id}}">{{$form->name}}</option>
                             @endforeach
                         </select>
-                        <div class="col-md-2 col-12 d-flex justify-content-center align-items-center">
-                            <button class="w-100 btn btn-warning btn-sm" type="button" id="clearSelects">Отменить выбор</button>
+                        <div class="col-lg-2 col-xl-2 col-md-3 col-12 d-flex justify-content-center align-items-center">
+                            <button class="w-100 btn btn-warning btn-sm" type="button" id="clearSelects">Отменить
+                                выбор
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -91,8 +93,8 @@
                                                         @if(isset($faculty->specialities))
                                                             @foreach($faculty->specialities as $speciality)
                                                                 <div class="row mt-4 justify-content-start">
-                                                                    <div class="col-8">
-                                                                        <div class="exam-info-outer">
+                                                                    <div class="col-xl-8 col-lg-12 col-md-12 col-12">
+                                                                        <div class="exam-info-outer w-100">
                                                                             <div class="col-6 float-left p-0">
                                                                                 <div class="examInfo p-3">
                                                                                     <div class="row">
@@ -160,8 +162,8 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-
-                                                                    <div class="col-4">
+                                                                    <div
+                                                                        class="col-xl-4 col-lg-12 col-md-12 col-12 mb-lg-4">
                                                                         <div class="font-weight-bold">
                                                                             Согласие:
                                                                         </div>
@@ -199,8 +201,10 @@
                                                                         <thead>
                                                                         <tr style="vertical-align: center">
                                                                             <td rowspan="2" class="text-center">№</td>
-                                                                            <td rowspan="2" class="text-center">Фамилия,
-                                                                                имя, отчество
+                                                                            <td rowspan="2" class="text-center">
+                                                                                <span class="d-xl-table-cell d-lg-none d-none">Фамилия,
+                                                                                имя, отчество</span>
+                                                                                <span>ФИО</span>
                                                                             </td>
                                                                             <td rowspan="2" class="text-center">
                                                                                 Оригинал
@@ -208,8 +212,8 @@
                                                                             <td rowspan="2" class="text-center">
                                                                                 Согласие
                                                                             </td>
-
-                                                                            <td colspan="{{count($speciality->abiturs->first()->score) + 1}}">
+                                                                            <td class="d-xl-table-cell d-lg-none d-none"
+                                                                                colspan="{{count($speciality->abiturs->first()->score) + 1}}">
                                                                                 @foreach($speciality->abiturs->first()->score as $i => $sc)
                                                                                     @if($i < count($speciality->abiturs->first()->score) -1)
                                                                                         <p class="m-0"> {{$i + 1}}
@@ -224,7 +228,7 @@
                                                                                     @endif
                                                                                 @endforeach
                                                                             </td>
-                                                                            <td class="text-center" rowspan="2">Сумма
+                                                                            <td class="text-center d-xl-table-cell d-lg-none d-none" rowspan="2">Сумма
                                                                                 баллов<br/> за
                                                                                 ЕГЭ/ВИ
                                                                             </td>
@@ -235,7 +239,7 @@
                                                                             <td class="text-center" rowspan="2">Тип
                                                                                 экзамена
                                                                             </td>
-                                                                            <td class="text-center" rowspan="2">Статус
+                                                                            <td class="text-center d-xl-table-cell d-lg-none d-none" rowspan="2">Статус
                                                                                 проверки
                                                                             </td>
                                                                             <td class="text-center" rowspan="2">
@@ -243,7 +247,7 @@
                                                                                 общежитии
                                                                             </td>
                                                                         </tr>
-                                                                        <tr class="text-center">
+                                                                        <tr class="text-center d-xl-table-row d-lg-none d-none">
                                                                             @foreach($speciality->abiturs->first()->score as $i => $sc)
                                                                                 @if($i < count($speciality->abiturs->first()->score) -1)
                                                                                     <td>{{$i + 1}}</td>
@@ -270,37 +274,28 @@
                                                                                                style="color: rgba(0,128,0,0.51)"></i>
                                                                                         @endif
                                                                                     </td>
-
-                                                                                    {{--                                                                                                <i class="fa fa-times-circle"--}}
-                                                                                    {{--                                                                                                   style="color: rgba(128,0,0,0.51)"></i>--}}
-
-
                                                                                     <td>
                                                                                         @if($abitur->accept)
                                                                                             <i class="fa fa-check-circle"
                                                                                                style="color: rgba(0,128,0,0.51)"></i>
                                                                                         @endif
                                                                                     </td>
-
-
                                                                                     @foreach($abitur->score as $ab_sc)
-                                                                                        <td>{{$ab_sc->score}}</td>
+                                                                                        <td class="d-xl-table-cell d-lg-none d-none">{{$ab_sc->score}}</td>
                                                                                     @endforeach
-
-                                                                                    <td>{{$abitur->indAchievement}}</td>
-                                                                                    <td>{{$abitur->summ}}</td>
+                                                                                    <td class="d-xl-table-cell d-lg-none d-none">{{$abitur->indAchievement}}</td>
+                                                                                    <td class="d-xl-table-cell d-lg-none d-none">{{$abitur->summ}}</td>
                                                                                     <td>{{$abitur->summContest}}</td>
                                                                                     <td>ЕГЭ</td>
-                                                                                    <td>{{$abitur->notice1}}</td>
-
-                                                                                    <td>@if($abitur->needHostel)
+                                                                                    <td class="d-xl-table-cell d-lg-none d-none">{{$abitur->notice1}}</td>
+                                                                                    <td>
+                                                                                        @if($abitur->needHostel)
                                                                                             <i class="fa fa-check-circle"
                                                                                                style="color: rgba(0,128,0,0.51)"></i>
                                                                                         @endif
                                                                                     </td>
                                                                                 </tr>
                                                                                 @endforeach
-
                                                                         </tbody>
                                                                     </table>
 
