@@ -6,9 +6,9 @@
     <meta property="og:title" content="Приёмная кампания МГУ им. Н.П. Огарева 2020"/>
     <meta property="og:description"
           content="Приёмная кампания МГУ им. Н.П. Огарева 2020. Статистика рпиёма, подбор направления."/>
-    <meta property="og:image" content="https://abitur.mrsu.ru/storage/preview/20200128_163227_image.jpeg"/>
+    <meta property="og:image" content="https://abiturs.mrsu.ru/storage/preview/20200128_163227_image.jpeg"/>
     <meta property="og:type" content="profile"/>
-    <meta property="og:url" content="https://abitur.mrsu.ru/"/>
+    <meta property="og:url" content="https://abiturs.mrsu.ru/"/>
 
     <meta name="keywords"
           content="Приемная кампания, МГУ Огарева, МГУ им. Н.П. Огарева, приемная комиссия, приемная комиссия 2020"/>
@@ -16,8 +16,8 @@
     <meta name="author" content="Арташкин Евгений, Элина Кирдяшкина">
     <meta name="robots" content="index,follow"/>
     <meta name="description" content="Приемная кампания МГУ им. Н.П. Огарева 2020"/>
-    <meta name="url" content="https://abitur.mrsu.ru/">
-    <meta name="identifier-URL" content="https://abitur.mrsu.ru/">
+    <meta name="url" content="https://abiturs.mrsu.ru/">
+    <meta name="identifier-URL" content="https://abiturs.mrsu.ru/">
     <meta name="viewport"
           content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=1.5, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
