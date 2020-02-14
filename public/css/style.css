@@ -587,6 +587,10 @@ marquee {
 }
 
 @media screen and (max-width: 1000px) {
+    .link-section {
+        padding-top: 10px !important;
+        padding-bottom: 10px !important;
+    }
 
     .section-content-block {
         display: flex;
