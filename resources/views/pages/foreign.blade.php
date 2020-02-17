@@ -7,7 +7,7 @@
                 <div class="card infoblock-card">
                     <a href="{{route('pages.home')}}">
                         <div class="card-body mrsu-bg">
-                            <img src="storage/preview/default.jpg" class="w-100" alt="">
+                            <img src="{{asset('storage/images/9.jpg')}}" class="w-100" alt="">
                             <p class="text-center m-0 pt-2 mrsu-uppertext">Соотечественники</p>
                         </div>
                     </a>
@@ -17,7 +17,7 @@
                 <div class="card infoblock-card">
                     <a href="{{route('foreign.index')}}">
                         <div class="card-body mrsu-bg">
-                            <img src="storage/preview/default.jpg" class="w-100" alt="">
+                            <img src="{{asset('storage/images/8.jpg')}}" class="w-100" alt="">
                             <p class="text-center m-0 pt-2 mrsu-uppertext">Русскоговорящие иностранцы</p>
                         </div>
                     </a>
@@ -27,7 +27,7 @@
                 <div class="card infoblock-card">
                     <a href="{{route('foreign.index')}}">
                         <div class="card-body mrsu-bg">
-                            <img src="storage/preview/default.jpg" class="w-100" alt="">
+                            <img src="{{asset('storage/images/7.jpg')}}" class="w-100" alt="">
                             <p class="text-center m-0 pt-2 mrsu-uppertext">Иностранцы</p>
                         </div>
                     </a>
