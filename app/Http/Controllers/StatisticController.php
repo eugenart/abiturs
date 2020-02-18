@@ -222,7 +222,7 @@ class StatisticController extends Controller
 
 
             if($id_students->count() > 9){
-                $notification = 'Пожалуйста уточните запрос.';
+                $notification = 'По вашему запросу найдено слишком много совпадений. Пожалуйста, уточните запрос.';
                 return;
             }
             if($id_students->count() == 0){

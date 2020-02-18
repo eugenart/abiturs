@@ -87,37 +87,45 @@
                                             <table class="table table-sm table-scores">
                                                 <thead>
                                                 <tr>
-                                                    <th width="40%">Направление подготовки</th>
+                                                    <th width="30" style="vertical-align: middle">Направление подготовки</th>
                                                     {{--                                                    <th width="10%">Форма обучения</th>--}}
                                                     {{--                            <th>Проходной балл предыдущего года</th>--}}
-                                                    <th width="50%">Вступительные испытания в порядке приоритетности для
+                                                    <th width="50" style="vertical-align: middle">Вступительные испытания в порядке приоритетности для
                                                         ранжирования
                                                     </th>
-                                                    <th width="10%">Минимальные баллы</th>
+                                                    <th width="10" style="vertical-align: middle">Минимальные баллы</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
                                                 @foreach($faculty->tArea as $item)
                                                     <tr class="nps-tr search-tr"
                                                         data-exams="{{ implode(',', $item->subjects) }}">
-                                                        <td rowspan="{{count($item->area->scores)}}">
-                                                            <button type="button" class="btn btn-link"
+                                                        <td rowspan="{{count($item->area->scores) -1}}">
+                                                            <button style="white-space: normal;" type="button"
+                                                                    class="btn btn-link"
                                                                     data-toggle="modal"
                                                                     data-target="#exampleModalScrollable"
                                                                     data-content="{{$item->area}}">
                                                                 <b>{{$item->area->sp_name->name}}</b>
                                                             </button>
-
                                                         </td>
-                                                        {{--                                                        <td rowspan="{{count($item->area->scores)}}">{{$item->area->trainingForm}}</td>--}}
-                                                    </tr>
-                                                    @foreach($item->area->scores as $score)
-                                                        @if (!strpos($score->subject->name, 'достижение'))
-                                                            <tr class="nps-tr search-tr"
-                                                                data-exams="{{ implode(',', $item->subjects) }}">
+                                                        @foreach($item->area->scores as $k => $score)
+                                                            @if($k == 0)
                                                                 <td>{{$score->subject->name}}</td>
                                                                 <td>{{$score->minScore}}</td>
-                                                            </tr>
+                                                            @endif
+                                                        @endforeach
+                                                        {{--                                                        <td rowspan="{{count($item->area->scores)}}">{{$item->area->trainingForm}}</td>--}}
+                                                    </tr>
+                                                    @foreach($item->area->scores as $k => $score)
+                                                        @if (!strpos($score->subject->name, 'достижение'))
+                                                            @if($k !== 0)
+                                                                <tr class="nps-tr search-tr"
+                                                                    data-exams="{{ implode(',', $item->subjects) }}">
+                                                                    <td>{{$score->subject->name}}</td>
+                                                                    <td>{{$score->minScore}}</td>
+                                                                </tr>
+                                                            @endif
                                                         @endif
                                                     @endforeach
                                                 @endforeach
@@ -157,39 +165,47 @@
                                              data-exams="{{ implode(',', $faculty->subjects) }}">
                                             <h3><a href="" style="color: #2366a5" target="_blank">{{$faculty->name}}</a>
                                             </h3>
-                                            <table class="table table-sm table-scores">
+                                            <table class="table table-sm table-scores w-100">
                                                 <thead>
                                                 <tr>
-                                                    <th width="40%">Направление подготовки</th>
+                                                    <th style="vertical-align: middle">Направление подготовки</th>
                                                     {{--                                                    <th width="10%">Форма обучения</th>--}}
                                                     {{--                            <th>Проходной балл предыдущего года</th>--}}
-                                                    <th width="40%">Вступительные испытания в порядке приоритетности для
+                                                    <th style="vertical-align: middle">Вступительные испытания в порядке приоритетности для
                                                         ранжирования
                                                     </th>
-                                                    <th width="10%">Минимальные баллы</th>
+                                                    <th style="vertical-align: middle">Минимальные баллы</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
                                                 @foreach($faculty->tArea as $item)
                                                     <tr class="nps-tr search-tr-by-faculties"
                                                         data-exams="{{ implode(',', $item->subjects) }}">
-                                                        <td rowspan="{{count($item->area->scores)}}">
-                                                            <button type="button" class="btn btn-link"
+                                                        <td rowspan="{{count($item->area->scores) -1}}">
+                                                            <button style="white-space: normal;" type="button"
+                                                                    class="btn btn-link"
                                                                     data-toggle="modal"
                                                                     data-target="#exampleModalScrollable"
                                                                     data-content="{{$item->area}}">
                                                                 <b>{{$item->area->sp_name->name}}</b>
                                                             </button>
                                                         </td>
-                                                        {{--                                                        <td rowspan="{{count($item->area->scores)}}">{{$item->area->trainingForm}}</td>--}}
-                                                    </tr>
-                                                    @foreach($item->area->scores as $score)
-                                                        @if (!strpos($score->subject->name, 'достижение'))
-                                                            <tr class="nps-tr search-tr-by-faculties"
-                                                                data-exams="{{ implode(',', $item->subjects) }}">
+                                                        @foreach($item->area->scores as $k => $score)
+                                                            @if($k == 0)
                                                                 <td>{{$score->subject->name}}</td>
                                                                 <td>{{$score->minScore}}</td>
-                                                            </tr>
+                                                            @endif
+                                                        @endforeach
+                                                    </tr>
+                                                    @foreach($item->area->scores as $k => $score)
+                                                        @if (!strpos($score->subject->name, 'достижение'))
+                                                            @if($k !== 0)
+                                                                <tr class="nps-tr search-tr-by-faculties"
+                                                                    data-exams="{{ implode(',', $item->subjects) }}">
+                                                                    <td>{{$score->subject->name}}</td>
+                                                                    <td>{{$score->minScore}}</td>
+                                                                </tr>
+                                                            @endif
                                                         @endif
                                                     @endforeach
                                                 @endforeach
