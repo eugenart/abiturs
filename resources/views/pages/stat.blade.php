@@ -60,11 +60,11 @@
                 </div>
                 <div class="col-12 mt-2 mb-2">
                     <div class="row">
-                        <div class="col-10">
+                        <div class="col-md-10 col-9">
                             <input class="form-control form-control-sm" type="search" placeholder="Поиск по ФИО"
                                    aria-label="Search" name="fio">
                         </div>
-                        <div class="col-md-2 col-2">
+                        <div class="col-md-2 col-3">
                             <button class="btn btn-sm btn-primary d-block w-100" type="submit"><i
                                     class="fa fa-search"></i>
                             </button>
@@ -94,8 +94,8 @@
                                                             @foreach($faculty->specialities as $speciality)
                                                                 <div class="row mt-4 justify-content-start">
                                                                     <div class="col-xl-8 col-lg-12 col-md-12 col-12">
-                                                                        <div class="exam-info-outer w-100">
-                                                                            <div class="col-6 float-left p-0">
+                                                                        <div class="exam-info-outer w-100 d-lg-flex flex-lg-row d-sm-flex flex-sm-column d-flex flex-column">
+                                                                            <div class="col-xl-6 col-lg-6 col-12 float-left p-0">
                                                                                 <div class="examInfo p-3">
                                                                                     <div class="row">
                                                                                         <div class="col-12">
@@ -137,8 +137,7 @@
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-                                                                            <div
-                                                                                class="col-6 float-left p-0 d-flex align-items-stretch">
+                                                                            <div class="col-xl-6 col-lg-6 col-12 float-left p-0 d-flex align-items-stretch">
                                                                                 <div class="examInfo-bottom pl-4">
                                                                                     <div
                                                                                         class="row d-flex align-items-center justify-content-center h-100">
@@ -204,13 +203,15 @@
                                                                             <td rowspan="2" class="text-center">
                                                                                 <span class="d-xl-table-cell d-lg-none d-none">Фамилия,
                                                                                 имя, отчество</span>
-                                                                                <span>ФИО</span>
+                                                                                <span class="d-xl-none d-lg-table-cell d-lg-table-cell">ФИО</span>
                                                                             </td>
                                                                             <td rowspan="2" class="text-center">
-                                                                                Оригинал
+                                                                                <span class="d-xl-inline d-lg-none d-none">Оригинал</span>
+                                                                                <span class="d-xl-none d-lg-inline d-inline">O</span>
                                                                             </td>
                                                                             <td rowspan="2" class="text-center">
-                                                                                Согласие
+                                                                                <span class="d-xl-inline d-lg-none d-none">Согласие</span>
+                                                                                <span class="d-xl-none d-lg-inline d-inline">С</span>
                                                                             </td>
                                                                             <td class="d-xl-table-cell d-lg-none d-none"
                                                                                 colspan="{{count($speciality->abiturs->first()->score) + 1}}">
@@ -236,13 +237,13 @@
                                                                                 Сумма<br/>
                                                                                 конкурсных<br/> баллов
                                                                             </td>
-                                                                            <td class="text-center" rowspan="2">Тип
+                                                                            <td class="text-center d-xl-table-cell d-lg-none d-none" rowspan="2">Тип
                                                                                 экзамена
                                                                             </td>
                                                                             <td class="text-center d-xl-table-cell d-lg-none d-none" rowspan="2">Статус
                                                                                 проверки
                                                                             </td>
-                                                                            <td class="text-center" rowspan="2">
+                                                                            <td class="text-center d-xl-table-cell d-lg-none d-none" rowspan="2">
                                                                                 Нуждаемость <br> в
                                                                                 общежитии
                                                                             </td>
@@ -286,9 +287,9 @@
                                                                                     <td class="d-xl-table-cell d-lg-none d-none">{{$abitur->indAchievement}}</td>
                                                                                     <td class="d-xl-table-cell d-lg-none d-none">{{$abitur->summ}}</td>
                                                                                     <td>{{$abitur->summContest}}</td>
-                                                                                    <td>ЕГЭ</td>
+                                                                                    <td class="d-xl-table-cell d-lg-none d-none">ЕГЭ</td>
                                                                                     <td class="d-xl-table-cell d-lg-none d-none">{{$abitur->notice1}}</td>
-                                                                                    <td>
+                                                                                    <td class="d-xl-table-cell d-lg-none d-none">
                                                                                         @if($abitur->needHostel)
                                                                                             <i class="fa fa-check-circle"
                                                                                                style="color: rgba(0,128,0,0.51)"></i>
