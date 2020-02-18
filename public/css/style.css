@@ -5,6 +5,19 @@ body {
     outline: none !important;
 }
 
+#square {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #2366a5;
+    color: white;
+    z-index: 1000;
+    padding: 10px 15px;
+    opacity: 0.7;
+    display: none;
+    cursor: pointer;
+}
+
 #bg-blur {
     display: none;
     position: fixed;
@@ -624,6 +637,10 @@ marquee {
 }
 
 @media screen and (max-width: 500px) {
+
+    .examInfo, .exam-info-bottom {
+        font-size: 16px;
+    }
 
     .carousel-item {
         height: 250px !important;
