@@ -34,21 +34,21 @@
             </div>
         </div>
     @endif
-    <div class="container pt-0 padding-0">
+    <div class="container pt-0 padding-0 mt-4">
         <form action="{{ route('stat.index') }}" id="sendFormWithFacultets" method="get">
             <div class="row">
                 <div class="col-12">
                     <div class="row">
-                        <select class="selectpicker form-control-sm col-lg-3 col-xl-3 col-md-2 col-12" multiple
+                        <select class="selectpicker form-control-sm col-lg-3 col-xl-3 col-md-3 col-12" multiple
                                 title="Факультет / Институт" name="faculties[]" id="allfaculties">
                         </select>
-                        <select class="selectpicker form-control-sm col-lg-3 col-xl-3 col-md-2 col-12"
+                        <select class="selectpicker form-control-sm col-lg-3 col-xl-3 col-md-3 col-12"
                                 data-live-search="true" multiple
                                 title="Специальность"
                                 name="specialities[]" id="specialities">
                         </select>
 
-                        <select class="selectpicker form-control-sm col-lg-3 col-xl-3 col-md-2 col-12" multiple
+                        <select class="selectpicker form-control-sm col-lg-3 col-xl-3 col-md-3 col-12" multiple
                                 title="Форма обучения"
                                 name="studyforms[]"
                                 id="studyforms">
@@ -56,7 +56,7 @@
                                 <option value="{{$form->id}}">{{$form->name}}</option>
                             @endforeach
                         </select>
-                        <div class="col-lg-2 col-xl-3 col-md-3 col-12 d-flex justify-content-center align-items-center">
+                        <div class="col-lg-3 col-xl-3 col-md-3 col-12 d-flex justify-content-center align-items-center">
                             <button class="w-100 btn btn-warning btn-sm" type="button" id="clearSelects">Отменить
                                 выбор
                             </button>
@@ -78,7 +78,7 @@
                 </div>
             </div>
         </form>
-    </div>
+    </div >
     <div class="container-fluid pt-0 padding-0 mb-5">
         <div class="row mt-4">
             <div class="col-12">
@@ -184,7 +184,7 @@
                                                                                style="color: rgba(0,128,0,0.51)"></i>
                                                                             &mdash; Второе согласие на зачисление
                                                                         </div>
-                                                                        <div class="d-lg-none d-sm-flex flex-column">
+                                                                        <div class="d-xl-none d-lg-flex d-md-flex d-sm-flex flex-column">
                                                                             <span class="d-inline-block w-100"><b>О</b> - оригинал диплома</span>
                                                                             <span class="d-inline-block w-100"><b>C</b> - согласие на зачисление</span>
                                                                             <span class="d-inline-block w-100"><b>СКБ</b> - сумма конкурсных баллов</span>
@@ -382,7 +382,7 @@
 
         function fillFaculties(faculties) {
             $.each(faculties, (k, faculty) => {
-                $('#allfaculties').append('<option value="' + faculty.id + '">' + faculty.name + '</option>')
+                $('#allfaculties').append('<option style="word-break: break-all;" value="' + faculty.id + '">' + faculty.name + '</option>')
                 refreshInputs();
             })
         }
