@@ -580,9 +580,6 @@ marquee {
     .foreign-link {
         font-size: 24px;
     }
-    .header {
-        background-color: #2366a5;
-    }
 
     .foreign-link {
         color: white;
@@ -636,7 +633,7 @@ marquee {
     }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 1000px) {
 
     .examInfo, .exam-info-bottom {
         font-size: 16px;
@@ -705,6 +702,12 @@ marquee {
 
     .padding-0 {
         padding-top: 0 !important;
+    }
+}
+
+@media screen and (max-width: 990px){
+    .header {
+        background-color: #2366a5;
     }
 }
 

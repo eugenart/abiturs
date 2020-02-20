@@ -71,167 +71,169 @@
                 </ul>
             </div>
         </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                        <div class="row mt-5 d-flex flex-column-reverse flex-sm-row">
+                           <div class="col-12 col-sm-9">
+                               @foreach($faculties as $faculty)
+                                   @if(count($faculty->tArea))
+                                       <div class="col-12 mb-5 search-div"
+                                            data-exams="{{ implode(',', $faculty->subjects) }}">
+                                           <h3><a href="" target="_blank" class="main-color">{{$faculty->name}}</a>
+                                           </h3>
+                                           <table style="width: 100% !important;" class="table table-sm table-scores w-100">
+                                               <thead>
+                                               <tr>
+                                                   <th width="30%" style="vertical-align: middle">Направление подготовки</th>
+                                                   {{--                                                    <th width="10%">Форма обучения</th>--}}
+                                                   {{--                            <th>Проходной балл предыдущего года</th>--}}
+                                                   <th width="50%" style="vertical-align: middle">Вступительные испытания в
+                                                       порядке приоритетности для
+                                                       ранжирования
+                                                   </th>
+                                                   <th width="10%" style="vertical-align: middle">Минимальные баллы</th>
+                                               </tr>
+                                               </thead>
+                                               <tbody>
+                                               @foreach($faculty->tArea as $item)
+                                                   <tr class="nps-tr search-tr"
+                                                       data-exams="{{ implode(',', $item->subjects) }}">
+                                                       <td rowspan="{{count($item->area->scores) -1}}">
+                                                           <button style="white-space: normal;" type="button"
+                                                                   class="btn btn-link text-left d-block w-100"
+                                                                   data-toggle="modal"
+                                                                   data-target="#exampleModalScrollable"
+                                                                   data-content="{{$item->area}}">
+                                                               <b>{{$item->area->sp_name->name}}</b>
+                                                           </button>
+                                                       </td>
+                                                       @foreach($item->area->scores as $k => $score)
+                                                           @if($k == 0)
+                                                               <td>{{$score->subject->name}}</td>
+                                                               <td class="text-center">{{$score->minScore}}</td>
+                                                           @endif
+                                                       @endforeach
+                                                       {{--                                                        <td rowspan="{{count($item->area->scores)}}">{{$item->area->trainingForm}}</td>--}}
+                                                   </tr>
+                                                   @foreach($item->area->scores as $k => $score)
+                                                       @if (!strpos($score->subject->name, 'достижение'))
+                                                           @if($k !== 0)
+                                                               <tr class="nps-tr search-tr"
+                                                                   data-exams="{{ implode(',', $item->subjects) }}">
+                                                                   <td>{{$score->subject->name}}</td>
+                                                                   <td class="text-center">{{$score->minScore}}</td>
+                                                               </tr>
+                                                           @endif
+                                                       @endif
+                                                   @endforeach
+                                               @endforeach
+                                               </tbody>
+                                           </table>
+                                       </div>
+                                   @endif
+                               @endforeach
 
-        <div class="col-12">
-            <div class="tab-content" id="pills-tabContent">
-                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                    <div class="row mt-5 d-flex flex-column-reverse flex-sm-row">
-                        <div class="col-12 col-sm-9">
-                            <div class="row">
-                                @foreach($faculties as $faculty)
-                                    @if(count($faculty->tArea))
-                                        <div class="col-12 mb-5 search-div"
-                                             data-exams="{{ implode(',', $faculty->subjects) }}">
-                                            <h3><a href="" target="_blank" class="main-color">{{$faculty->name}}</a>
-                                            </h3>
-                                            <table class="table table-sm table-scores">
-                                                <thead>
-                                                <tr>
-                                                    <th width="30" style="vertical-align: middle">Направление подготовки</th>
-                                                    {{--                                                    <th width="10%">Форма обучения</th>--}}
-                                                    {{--                            <th>Проходной балл предыдущего года</th>--}}
-                                                    <th width="50" style="vertical-align: middle">Вступительные испытания в порядке приоритетности для
-                                                        ранжирования
-                                                    </th>
-                                                    <th width="10" style="vertical-align: middle">Минимальные баллы</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                @foreach($faculty->tArea as $item)
-                                                    <tr class="nps-tr search-tr"
-                                                        data-exams="{{ implode(',', $item->subjects) }}">
-                                                        <td rowspan="{{count($item->area->scores) -1}}">
-                                                            <button style="white-space: normal;" type="button"
-                                                                    class="btn btn-link"
-                                                                    data-toggle="modal"
-                                                                    data-target="#exampleModalScrollable"
-                                                                    data-content="{{$item->area}}">
-                                                                <b>{{$item->area->sp_name->name}}</b>
-                                                            </button>
-                                                        </td>
-                                                        @foreach($item->area->scores as $k => $score)
-                                                            @if($k == 0)
-                                                                <td>{{$score->subject->name}}</td>
-                                                                <td>{{$score->minScore}}</td>
-                                                            @endif
-                                                        @endforeach
-                                                        {{--                                                        <td rowspan="{{count($item->area->scores)}}">{{$item->area->trainingForm}}</td>--}}
-                                                    </tr>
-                                                    @foreach($item->area->scores as $k => $score)
-                                                        @if (!strpos($score->subject->name, 'достижение'))
-                                                            @if($k !== 0)
-                                                                <tr class="nps-tr search-tr"
-                                                                    data-exams="{{ implode(',', $item->subjects) }}">
-                                                                    <td>{{$score->subject->name}}</td>
-                                                                    <td>{{$score->minScore}}</td>
-                                                                </tr>
-                                                            @endif
-                                                        @endif
-                                                    @endforeach
-                                                @endforeach
-                                                </tbody>
-                                            </table>
+                           </div>
+                            <div class="col-12 col-sm-3">
+                                <h4 class="mb-3">Мои ступительные испытания</h4>
+                                <div class="row text-uppercase mb-5">
+                                    @foreach($subjects as $subject)
+                                        <div class="col-6 col-sm-12">
+                                            <div class="form-group form-check check-subjects">
+                                                <input type="checkbox" class="form-check-input"
+                                                       id="option{{ $loop->index }}"
+                                                       onclick="addToChosenExams('{{ $subject->name }}')">
+                                                <label class="form-check-label ml-2 underline-label"
+                                                       for="option{{ $loop->index }}">{{ $subject->name }}</label>
+                                            </div>
                                         </div>
-                                    @endif
-                                @endforeach
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-3">
-                            <h4 class="mb-3">Мои ступительные испытания</h4>
-                            <div class="row text-uppercase mb-5">
-                                @foreach($subjects as $subject)
-                                    <div class="col-6 col-sm-12">
-                                        <div class="form-group form-check check-subjects">
-                                            <input type="checkbox" class="form-check-input"
-                                                   id="option{{ $loop->index }}"
-                                                   onclick="addToChosenExams('{{ $subject->name }}')">
-                                            <label class="form-check-label ml-2 underline-label"
-                                                   for="option{{ $loop->index }}">{{ $subject->name }}</label>
-                                        </div>
-                                    </div>
-                                @endforeach
+                                    @endforeach
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                    <div class="row mt-5 d-flex flex-column-reverse flex-sm-row">
-                        <div class="col-12 col-sm-9">
-                            <div class="row">
-                                @foreach($faculties as $faculty)
-                                    @if(count($faculty->tArea))
-                                        <div class="col-12 mb-5 search-div-by-faculties"
-                                             data-faculty="{{ $faculty->name }}"
-                                             data-exams="{{ implode(',', $faculty->subjects) }}">
-                                            <h3><a href="" style="color: #2366a5" target="_blank">{{$faculty->name}}</a>
-                                            </h3>
-                                            <table class="table table-sm table-scores w-100">
-                                                <thead>
-                                                <tr>
-                                                    <th style="vertical-align: middle">Направление подготовки</th>
-                                                    {{--                                                    <th width="10%">Форма обучения</th>--}}
-                                                    {{--                            <th>Проходной балл предыдущего года</th>--}}
-                                                    <th style="vertical-align: middle">Вступительные испытания в порядке приоритетности для
-                                                        ранжирования
-                                                    </th>
-                                                    <th style="vertical-align: middle">Минимальные баллы</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                @foreach($faculty->tArea as $item)
-                                                    <tr class="nps-tr search-tr-by-faculties"
-                                                        data-exams="{{ implode(',', $item->subjects) }}">
-                                                        <td rowspan="{{count($item->area->scores) -1}}">
-                                                            <button style="white-space: normal;" type="button"
-                                                                    class="btn btn-link"
-                                                                    data-toggle="modal"
-                                                                    data-target="#exampleModalScrollable"
-                                                                    data-content="{{$item->area}}">
-                                                                <b>{{$item->area->sp_name->name}}</b>
-                                                            </button>
-                                                        </td>
+                    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                        <div class="row mt-5 d-flex flex-column-reverse flex-sm-row">
+                            <div class="col-12 col-sm-9">
+                                <div class="row">
+                                    @foreach($faculties as $faculty)
+                                        @if(count($faculty->tArea))
+                                            <div class="col-12 mb-5 search-div-by-faculties"
+                                                 data-faculty="{{ $faculty->name }}"
+                                                 data-exams="{{ implode(',', $faculty->subjects) }}">
+                                                <h3><a href="" style="color: #2366a5" target="_blank">{{$faculty->name}}</a>
+                                                </h3>
+                                                <table class="table table-sm table-scores w-100">
+                                                    <thead>
+                                                    <tr>
+                                                        <th width="30%" style="vertical-align: middle">Направление подготовки</th>
+                                                        {{--                                                    <th width="10%">Форма обучения</th>--}}
+                                                        {{--                            <th>Проходной балл предыдущего года</th>--}}
+                                                        <th width="50%" style="vertical-align: middle">Вступительные испытания в порядке
+                                                            приоритетности для
+                                                            ранжирования
+                                                        </th>
+                                                        <th width="10%" style="vertical-align: middle">Минимальные баллы</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    @foreach($faculty->tArea as $item)
+                                                        <tr class="nps-tr search-tr-by-faculties"
+                                                            data-exams="{{ implode(',', $item->subjects) }}">
+                                                            <td rowspan="{{count($item->area->scores) -1}}">
+                                                                <button style="white-space: normal;" type="button"
+                                                                        class="btn btn-link text-left w-100 d-block"
+                                                                        data-toggle="modal"
+                                                                        data-target="#exampleModalScrollable"
+                                                                        data-content="{{$item->area}}">
+                                                                    <b>{{$item->area->sp_name->name}}</b>
+                                                                </button>
+                                                            </td>
+                                                            @foreach($item->area->scores as $k => $score)
+                                                                @if($k == 0)
+                                                                    <td>{{$score->subject->name}}</td>
+                                                                    <td class="text-center">{{$score->minScore}}</td>
+                                                                @endif
+                                                            @endforeach
+                                                        </tr>
                                                         @foreach($item->area->scores as $k => $score)
-                                                            @if($k == 0)
-                                                                <td>{{$score->subject->name}}</td>
-                                                                <td>{{$score->minScore}}</td>
+                                                            @if (!strpos($score->subject->name, 'достижение'))
+                                                                @if($k !== 0)
+                                                                    <tr class="nps-tr search-tr-by-faculties"
+                                                                        data-exams="{{ implode(',', $item->subjects) }}">
+                                                                        <td>{{$score->subject->name}}</td>
+                                                                        <td class="text-center">{{$score->minScore}}</td>
+                                                                    </tr>
+                                                                @endif
                                                             @endif
                                                         @endforeach
-                                                    </tr>
-                                                    @foreach($item->area->scores as $k => $score)
-                                                        @if (!strpos($score->subject->name, 'достижение'))
-                                                            @if($k !== 0)
-                                                                <tr class="nps-tr search-tr-by-faculties"
-                                                                    data-exams="{{ implode(',', $item->subjects) }}">
-                                                                    <td>{{$score->subject->name}}</td>
-                                                                    <td>{{$score->minScore}}</td>
-                                                                </tr>
-                                                            @endif
-                                                        @endif
                                                     @endforeach
-                                                @endforeach
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    @endif
-                                @endforeach
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-3">
-                            <h4 class="mb-3">Факультеты и институты</h4>
-                            <div class="row text-uppercase mb-5">
-                                @foreach($faculties as $faculty)
-                                    @if(count($faculty->tArea))
-                                        <div class="col-12">
-                                            <div class="form-group form-check check-faculties">
-                                                <input type="checkbox" class="form-check-input"
-                                                       id="optionFaculties{{ $loop->index }}"
-                                                       onclick="addToChosenFaculties('{{ $faculty->name }}')">
-                                                <label class="form-check-label ml-2 underline-label"
-                                                       for="optionFaculties{{ $loop->index }}">{{ $faculty->name }}</label>
+                                                    </tbody>
+                                                </table>
                                             </div>
-                                        </div>
-                                    @endif
-                                @endforeach
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-3">
+                                <h4 class="mb-3">Факультеты и институты</h4>
+                                <div class="row text-uppercase mb-5">
+                                    @foreach($faculties as $faculty)
+                                        @if(count($faculty->tArea))
+                                            <div class="col-12">
+                                                <div class="form-group form-check check-faculties">
+                                                    <input type="checkbox" class="form-check-input"
+                                                           id="optionFaculties{{ $loop->index }}"
+                                                           onclick="addToChosenFaculties('{{ $faculty->name }}')">
+                                                    <label class="form-check-label ml-2 underline-label"
+                                                           for="optionFaculties{{ $loop->index }}">{{ $faculty->name }}</label>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    @endforeach
+                                </div>
                             </div>
                         </div>
                     </div>
