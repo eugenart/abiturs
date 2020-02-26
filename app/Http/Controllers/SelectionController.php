@@ -28,15 +28,15 @@ class SelectionController extends Controller
 
 
         foreach ($faculties as $faculty) {
-            $spec_com = "";
-            $spez_com = "";
+            $spec_com = array();
+            $spez_com = array();
             foreach ($faculty->plan as $k => $plan) {
 
-                if (($spec_com == $plan->id_speciality) && ($spez_com == $plan->id_specialization)) {
+                if (in_array($plan->id_speciality, $spec_com) && in_array($plan->id_specialization, $spez_com)) {
                     unset($faculty->plan[$k]);
                 } else {
-                    $spec_com = $plan->id_speciality;
-                    $spez_com = $plan->id_specialization;
+                    $spec_com[] = $plan->id_speciality;
+                    $spez_com[] = $plan->id_specialization;
 
                     $plan->speciality = $plan->speciality()->first();
                     $plan->specialization = $plan->specialization()->first();
@@ -44,11 +44,12 @@ class SelectionController extends Controller
                     //выбираем формы обучения для одной специальности и спецз
                     $SpecForms = Plan::where('id_speciality', '=', $plan->id_speciality)
                         ->where('id_specialization', '=', $plan->id_specialization)
-                        ->select('id_studyForm', 'id')->get();
+                        ->select('id_studyForm', 'id', 'years')->get();
                     $arr_studyForm = array();
-
+                    $plan->years = null;
                     foreach ($SpecForms as $form) {
                         $form_temp= StudyForm::where('id', '=', $form->id_studyForm)->select('name')->first();
+                        $form_temp->years = $form->years;
                         $plan_comp_form = PlanCompetition::where('id_plan', '=', $form->id)->first();
                         $form_temp->freeseats = $plan_comp_form->freeseats()->get();
                         foreach ($form_temp->freeseats as $value) {
@@ -102,7 +103,7 @@ class SelectionController extends Controller
             $faculty->subjects = $fsubjs;
         }
 
-       //return $faculties;
+       return $faculties;
         return view('pages.selection')->with('subjects', $subjects)->with('faculties', $faculties);
 
     }
