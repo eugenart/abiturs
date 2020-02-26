@@ -1,0 +1,154 @@
+{
+"data": [
+{
+"Plan": {
+"planId": "000014189",
+"facultyId": "000000019",
+"facultyName": "Рузаевский институт машиностроения",
+"trainingForm": "Заочная",
+"trainingAreasId": "00000023",
+"trainingAreasName": "Конструкторско-технологическое обеспечение машиностроительных производств",
+"specializationID": "0000000210",
+"specializationName": "Технология машиностроения",
+"years": 5
+},
+"Competition": {
+"CompetitionId": "000003186",
+"CompetitionName": "РИМ_КТОМСП_АБ_1"
+},
+"freeSeatsNumber": 0,
+"subjects": [
+{
+"subjectId": "000000008",
+"name": "Физика",
+"minScore": 36
+},
+{
+"subjectId": "000000001",
+"name": "Русский язык",
+"minScore": 36
+},
+{
+"subjectId": "000000015",
+"name": "Индивидуальное достижение",
+"minScore": 0
+},
+{
+"subjectId": "000000002",
+"name": "Математика",
+"minScore": 27
+}
+]
+},
+{
+"Plan": {
+"planId": "000014189",
+"facultyId": "000000019",
+"facultyName": "Рузаевский институт машиностроения",
+"trainingForm": "Заочная",
+"trainingAreasId": "00000023",
+"trainingAreasName": "Конструкторско-технологическое обеспечение машиностроительных производств",
+"specializationID": "0000000210",
+"specializationName": "Технология машиностроения",
+"years": 5
+},
+"Competition": {
+"CompetitionId": "000003187",
+"CompetitionName": "РИМ_КТОМСП_АБ_ин"
+},
+"freeSeatsNumber": 0,
+"subjects": [
+{
+"subjectId": "000000001",
+"name": "Русский язык",
+"minScore": 36
+},
+{
+"subjectId": "000000015",
+"name": "Индивидуальное достижение",
+"minScore": 0
+},
+{
+"subjectId": "000000002",
+"name": "Математика",
+"minScore": 27
+}
+]
+},
+{
+"Plan": {
+"planId": "000014190",
+"facultyId": "000000019",
+"facultyName": "Рузаевский институт машиностроения",
+"trainingForm": "Очная",
+"trainingAreasId": "00000023",
+"trainingAreasName": "Конструкторско-технологическое обеспечение машиностроительных производств",
+"specializationID": "",
+"specializationName": "",
+"years": 4
+},
+"Competition": {
+"CompetitionId": "000003186",
+"CompetitionName": "РИМ_КТОМСП_АБ_1"
+},
+"freeSeatsNumber": 27,
+"subjects": [
+{
+"subjectId": "000000008",
+"name": "Физика",
+"minScore": 36
+},
+{
+"subjectId": "000000001",
+"name": "Русский язык",
+"minScore": 36
+},
+{
+"subjectId": "000000015",
+"name": "Индивидуальное достижение",
+"minScore": 0
+},
+{
+"subjectId": "000000002",
+"name": "Математика",
+"minScore": 27
+}
+]
+},
+{
+"Plan": {
+"planId": "000014190",
+"facultyId": "000000019",
+"facultyName": "Рузаевский институт машиностроения",
+"trainingForm": "Очная",
+"trainingAreasId": "00000023",
+"trainingAreasName": "Конструкторско-технологическое обеспечение машиностроительных производств",
+"specializationID": "",
+"specializationName": "",
+"years": 4
+},
+"Competition": {
+"CompetitionId": "000003187",
+"CompetitionName": "РИМ_КТОМСП_АБ_ин"
+},
+"freeSeatsNumber": 0,
+"subjects": [
+{
+"subjectId": "000000001",
+"name": "Русский язык",
+"minScore": 36
+},
+{
+"subjectId": "000000015",
+"name": "Индивидуальное достижение",
+"minScore": 0
+},
+{
+"subjectId": "000000002",
+"name": "Математика",
+"minScore": 27
+}
+]
+}
+]
+}

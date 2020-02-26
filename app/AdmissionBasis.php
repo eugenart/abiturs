@@ -11,4 +11,7 @@ class AdmissionBasis extends Model
     public function statistics() {
         return $this->hasMany(Statistic::class, 'id_admissionBasis');
     }
+    public function freeseats() {
+        return $this->hasMany(Freeseats_bases::class, 'id_admissionBasis');
+    }
 }

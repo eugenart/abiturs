@@ -1,0 +1,309 @@
+{
+"data": [
+{
+"Plan": {
+"planId": "000014429",
+"facultyId": "000000026",
+"facultyName": "Аспирантура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000545",
+"trainingAreasName": "Клиническая медицина",
+"specializationID": "0000000114",
+"specializationName": "Анестезиология и реаниматология",
+"years": 3
+},
+"Competition": {
+"CompetitionId": "000003592",
+"CompetitionName": "АСП_КлинМед_Квота_1"
+},
+"freeSeatsNumber": 0,
+"subjects": [
+{
+"subjectId": "000000015",
+"name": "Индивидуальное достижение",
+"minScore": 0
+},
+{
+"subjectId": "000000933",
+"name": "Специальность",
+"minScore": 70
+}
+]
+},
+{
+"Plan": {
+"planId": "000014483",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000576",
+"trainingAreasName": "Терапия",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"CompetitionId": "000003593",
+"CompetitionName": "Орд_Терапия_Квота_1"
+},
+"freeSeatsNumber": 0,
+"subjects": [
+{
+"subjectId": "000000015",
+"name": "Индивидуальное достижение",
+"minScore": 0
+},
+{
+"subjectId": "000009138",
+"name": "Тестирование",
+"minScore": 70
+}
+]
+},
+{
+"Plan": {
+"planId": "000014492",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000581",
+"trainingAreasName": "Травматология и ортопедия",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"CompetitionId": "000003594",
+"CompetitionName": "Орд_ТравмИОртоп_Квота_1"
+},
+"freeSeatsNumber": 0,
+"subjects": [
+{
+"subjectId": "000000015",
+"name": "Индивидуальное достижение",
+"minScore": 0
+},
+{
+"subjectId": "000009138",
+"name": "Тестирование",
+"minScore": 70
+}
+]
+},
+{
+"Plan": {
+"planId": "000014000",
+"facultyId": "000000011",
+"facultyName": "Географический факультет",
+"trainingForm": "Очная",
+"trainingAreasId": "00000062",
+"trainingAreasName": "Экология и природопользование",
+"specializationID": "",
+"specializationName": "",
+"years": 4
+},
+"Competition": {
+"CompetitionId": "000003603",
+"CompetitionName": "ГЕО_ЭиП_АБ_Квота_1"
+},
+"freeSeatsNumber": 0,
+"subjects": [
+{
+"subjectId": "000000001",
+"name": "Русский язык",
+"minScore": 36
+},
+{
+"subjectId": "000000003",
+"name": "География",
+"minScore": 38
+},
+{
+"subjectId": "000000015",
+"name": "Индивидуальное достижение",
+"minScore": 0
+}
+]
+},
+{
+"Plan": {
+"planId": "000014052",
+"facultyId": "000000007",
+"facultyName": "Медицинский институт",
+"trainingForm": "Очная",
+"trainingAreasId": "00000025",
+"trainingAreasName": "Лечебное дело",
+"specializationID": "",
+"specializationName": "",
+"years": 6
+},
+"Competition": {
+"CompetitionId": "000003605",
+"CompetitionName": "МЕД_ЛЕЧ_С1_Квота_1"
+},
+"freeSeatsNumber": 0,
+"subjects": [
+{
+"subjectId": "000000001",
+"name": "Русский язык",
+"minScore": 36
+},
+{
+"subjectId": "000000004",
+"name": "Биология",
+"minScore": 40
+},
+{
+"subjectId": "000000015",
+"name": "Индивидуальное достижение",
+"minScore": 0
+}
+]
+},
+{
+"Plan": {
+"planId": "000014055",
+"facultyId": "000000007",
+"facultyName": "Медицинский институт",
+"trainingForm": "Очная",
+"trainingAreasId": "00000045",
+"trainingAreasName": "Стоматология",
+"specializationID": "",
+"specializationName": "",
+"years": 5
+},
+"Competition": {
+"CompetitionId": "000003606",
+"CompetitionName": "МЕД_СТОМ_С_Квота_1"
+},
+"freeSeatsNumber": 0,
+"subjects": [
+{
+"subjectId": "000000001",
+"name": "Русский язык",
+"minScore": 38
+},
+{
+"subjectId": "000000015",
+"name": "Индивидуальное достижение",
+"minScore": 0
+},
+{
+"subjectId": "000000007",
+"name": "Химия",
+"minScore": 42
+}
+]
+},
+{
+"Plan": {
+"planId": "000014067",
+"facultyId": "000000012",
+"facultyName": "Факультет математики и информационных технологий",
+"trainingForm": "Очная",
+"trainingAreasId": "00000074",
+"trainingAreasName": "Фундаментальная информатика и информационные технологии",
+"specializationID": "",
+"specializationName": "",
+"years": 4
+},
+"Competition": {
+"CompetitionId": "000003604",
+"CompetitionName": "Мат_ФИиИТ_АБ_Квота_1"
+},
+"freeSeatsNumber": 0,
+"subjects": [
+{
+"subjectId": "000000008",
+"name": "Физика",
+"minScore": 40
+},
+{
+"subjectId": "000000001",
+"name": "Русский язык",
+"minScore": 40
+},
+{
+"subjectId": "000000002",
+"name": "Математика",
+"minScore": 40
+}
+]
+},
+{
+"Plan": {
+"planId": "000014145",
+"facultyId": "000000166",
+"facultyName": "Институт электроники и светотехники",
+"trainingForm": "Очная",
+"trainingAreasId": "00000517",
+"trainingAreasName": "Электроэнергетика и электротехника",
+"specializationID": "0000000226",
+"specializationName": "Устройства силовой электроники в автоматизированном электроприводе",
+"years": 2
+},
+"Competition": {
+"CompetitionId": "000003607",
+"CompetitionName": "ИЭС_ЭиЭ_М_Квота_1"
+},
+"freeSeatsNumber": 0,
+"subjects": [
+{
+"subjectId": "000000008",
+"name": "Физика",
+"minScore": 40
+},
+{
+"subjectId": "000000001",
+"name": "Русский язык",
+"minScore": 40
+},
+{
+"subjectId": "000000002",
+"name": "Математика",
+"minScore": 40
+}
+]
+},
+{
+"Plan": {
+"planId": "000014068",
+"facultyId": "000000014",
+"facultyName": "Филологический факультет",
+"trainingForm": "Очная",
+"trainingAreasId": "00000015",
+"trainingAreasName": "Журналистика",
+"specializationID": "0000000417",
+"specializationName": "Журналистика",
+"years": 4
+},
+"Competition": {
+"CompetitionId": "000003608",
+"CompetitionName": "ФИЛ_ЖУР_ПБ_Квота_1"
+},
+"freeSeatsNumber": 0,
+"subjects": [
+{
+"subjectId": "000000001",
+"name": "Русский язык",
+"minScore": 42
+},
+{
+"subjectId": "000000021",
+"name": "Творческое испытание (публицистическое сочинение)",
+"minScore": 60
+},
+{
+"subjectId": "000008678",
+"name": "Профессиональное испытание (конкурсное собеседование)",
+"minScore": 60
+},
+{
+"subjectId": "000000015",
+"name": "Индивидуальное достижение",
+"minScore": 0
+}
+]
+}
+]
+}

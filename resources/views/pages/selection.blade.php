@@ -78,7 +78,7 @@
                         <div class="row mt-5 d-flex flex-column-reverse flex-sm-row">
                            <div class="col-12 col-sm-9">
                                @foreach($faculties as $faculty)
-                                   @if(count($faculty->tArea))
+                                   @if(count($faculty->plan))
                                        <div class="col-12 mb-5 search-div"
                                             data-exams="{{ implode(',', $faculty->subjects) }}">
                                            <h3><a href="" target="_blank" class="main-color">{{$faculty->name}}</a>
@@ -97,27 +97,32 @@
                                                </tr>
                                                </thead>
                                                <tbody>
-                                               @foreach($faculty->tArea as $item)
+                                               @foreach($faculty->plan as $item)
                                                    <tr class="nps-tr search-tr"
                                                        data-exams="{{ implode(',', $item->subjects) }}">
-                                                       <td rowspan="{{count($item->area->scores) -1}}">
+                                                       <td rowspan="{{count($item->scores) -1}}">
                                                            <button style="white-space: normal;" type="button"
                                                                    class="btn btn-link text-left d-block w-100"
                                                                    data-toggle="modal"
                                                                    data-target="#exampleModalScrollable"
-                                                                   data-content="{{$item->area}}">
-                                                               <b>{{$item->area->sp_name->name}}</b>
+                                                                   data-content="{{$item->plan}}">
+                                                               <b>{{$item->speciality->name}}
+                                                                   @if($item->specialization)
+                                                                       - {{$item->specialization->name}}
+                                                                   @endif
+                                                               </b>
+
                                                            </button>
                                                        </td>
-                                                       @foreach($item->area->scores as $k => $score)
+                                                       @foreach($item->scores as $k => $score)
                                                            @if($k == 0)
                                                                <td>{{$score->subject->name}}</td>
                                                                <td class="text-center">{{$score->minScore}}</td>
                                                            @endif
                                                        @endforeach
-                                                       {{--                                                        <td rowspan="{{count($item->area->scores)}}">{{$item->area->trainingForm}}</td>--}}
+{{--                                                                                                               <td rowspan="{{count($item->area->scores)}}">{{$item->area->trainingForm}}</td>--}}
                                                    </tr>
-                                                   @foreach($item->area->scores as $k => $score)
+                                                   @foreach($item->scores as $k => $score)
                                                        @if (!strpos($score->subject->name, 'достижение'))
                                                            @if($k !== 0)
                                                                <tr class="nps-tr search-tr"
@@ -159,7 +164,7 @@
                             <div class="col-12 col-sm-9">
                                 <div class="row">
                                     @foreach($faculties as $faculty)
-                                        @if(count($faculty->tArea))
+                                        @if(count($faculty->plan))
                                             <div class="col-12 mb-5 search-div-by-faculties"
                                                  data-faculty="{{ $faculty->name }}"
                                                  data-exams="{{ implode(',', $faculty->subjects) }}">
@@ -169,8 +174,8 @@
                                                     <thead>
                                                     <tr>
                                                         <th width="30%" style="vertical-align: middle">Направление подготовки</th>
-                                                        {{--                                                    <th width="10%">Форма обучения</th>--}}
-                                                        {{--                            <th>Проходной балл предыдущего года</th>--}}
+{{--                                                                                                            <th width="10%">Форма обучения</th>--}}
+{{--                                                                                    <th>Проходной балл предыдущего года</th>--}}
                                                         <th width="50%" style="vertical-align: middle">Вступительные испытания в порядке
                                                             приоритетности для
                                                             ранжирования
@@ -179,26 +184,31 @@
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                    @foreach($faculty->tArea as $item)
+                                                    @foreach($faculty->plan as $item)
                                                         <tr class="nps-tr search-tr-by-faculties"
                                                             data-exams="{{ implode(',', $item->subjects) }}">
-                                                            <td rowspan="{{count($item->area->scores) -1}}">
+                                                            <td rowspan="{{count($item->scores) -1}}">
                                                                 <button style="white-space: normal;" type="button"
                                                                         class="btn btn-link text-left w-100 d-block"
                                                                         data-toggle="modal"
                                                                         data-target="#exampleModalScrollable"
-                                                                        data-content="{{$item->area}}">
-                                                                    <b>{{$item->area->sp_name->name}}</b>
+                                                                        data-content="{{$item->plan}}">
+                                                                    <b>{{$item->speciality->name}}
+                                                                        @if($item->specialization)
+                                                                            - {{$item->specialization->name}}
+                                                                        @endif
+                                                                    </b>
                                                                 </button>
                                                             </td>
-                                                            @foreach($item->area->scores as $k => $score)
+
+                                                            @foreach($item->scores as $k => $score)
                                                                 @if($k == 0)
                                                                     <td>{{$score->subject->name}}</td>
                                                                     <td class="text-center">{{$score->minScore}}</td>
                                                                 @endif
                                                             @endforeach
                                                         </tr>
-                                                        @foreach($item->area->scores as $k => $score)
+                                                        @foreach($item->scores as $k => $score)
                                                             @if (!strpos($score->subject->name, 'достижение'))
                                                                 @if($k !== 0)
                                                                     <tr class="nps-tr search-tr-by-faculties"
@@ -221,7 +231,7 @@
                                 <h4 class="mb-3">Факультеты и институты</h4>
                                 <div class="row text-uppercase mb-5">
                                     @foreach($faculties as $faculty)
-                                        @if(count($faculty->tArea))
+                                        @if(count($faculty->plan))
                                             <div class="col-12">
                                                 <div class="form-group form-check check-faculties">
                                                     <input type="checkbox" class="form-check-input"
