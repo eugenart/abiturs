@@ -103,7 +103,7 @@ class SelectionController extends Controller
             $faculty->subjects = $fsubjs;
         }
 
-       return $faculties;
+//       return $faculties;
         return view('pages.selection')->with('subjects', $subjects)->with('faculties', $faculties);
 
     }

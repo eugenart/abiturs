@@ -236,10 +236,10 @@
                                                                                 colspan="{{count($speciality->abiturs->first()->score) + 1}}">
                                                                                 @foreach($speciality->abiturs->first()->score as $i => $sc)
                                                                                     @if($i < count($speciality->abiturs->first()->score) -1)
-                                                                                        <p class="m-0"> {{$i + 1}}
+                                                                                        <p class="m-0"> {{$sc->priority}}
                                                                                             ) {{$sc->subject->name}}</p>
                                                                                     @else
-                                                                                        <p class="m-0"> {{$i + 1}}
+                                                                                        <p class="m-0"> {{$sc->priority}}
                                                                                             ) {{$sc->subject->name}}</p>
                                                                                         <p class="m-0">{{$i + 2}} ) Балл
                                                                                             за
@@ -277,9 +277,9 @@
                                                                         <tr class="text-center d-xl-table-row d-lg-none d-none">
                                                                             @foreach($speciality->abiturs->first()->score as $i => $sc)
                                                                                 @if($i < count($speciality->abiturs->first()->score) -1)
-                                                                                    <th>{{$i + 1}}</th>
+                                                                                    <th>{{$sc->priority}}</th>
                                                                                 @else
-                                                                                    <th>{{$i + 1}}</th>
+                                                                                    <th>{{$sc->priority}}</th>
                                                                                     <th>{{$i + 2}}</th>
                                                                                 @endif
                                                                             @endforeach
