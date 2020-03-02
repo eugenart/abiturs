@@ -356,14 +356,16 @@
             });
             modal.find('table').empty()
             modal.find('#examsNames').empty().text(names)
-            let number = recipient.years.toString().slice(-1)
-            let year = years[number];
+
             modal.find('#forms').empty()
             $.each(recipient.studyForm, (k, v) => {
+                let number = v.years.toString().slice(-1)
+                let year = years[number];
                 let templateRecipient =
                     "<div class='row'>" +
                     "<div class='col-12'>" +
                     "<h4><strong>" + v.name + "</strong></h4>" +
+                    "<h6><strong>Количество лет обучения: " + v.years + " " + year + "</strong></h6>"
                     "<h6><strong>Количество мест:</strong></h6>" +
                     "</div>" +
                     "<div class='col-12'>" //+
