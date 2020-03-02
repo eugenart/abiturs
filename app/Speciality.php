@@ -13,12 +13,15 @@ class Speciality extends Model
     {
         return $this->hasMany(Statistic::class, 'id_speciality');
     }
-
+    //больше не нужно
     public function area()
     {
         return $this->hasOne(TrainingArea::class, 'id_speciality');
     }
-
+    public function plan()
+    {
+        return $this->hasMany(Plan::class, 'id_speciality');
+    }
     public function specialization()
     {
         return $this->hasMany(Specialization::class, 'id_speciality');

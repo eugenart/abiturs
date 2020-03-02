@@ -27,11 +27,7 @@
                         <div class="col-12">Вступительные испытания</div>
                         <div class="col-12" id="examsNames">биология, математика, русский язык</div>
                         <hr class="w-50 bg-white">
-                        <div class="col-12 mt-3">
-                            <table class="table table-sm w-100 ">
-                                <tbody>
-                                </tbody>
-                            </table>
+                        <div class="col-12 mt-3" id="forms">
                         </div>
                     </div>
                 </div>
@@ -74,68 +70,80 @@
         <div class="row">
             <div class="col-12">
                 <div class="tab-content" id="pills-tabContent">
-                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
+                         aria-labelledby="pills-home-tab">
                         <div class="row mt-5 d-flex flex-column-reverse flex-sm-row">
-                           <div class="col-12 col-sm-9">
-                               @foreach($faculties as $faculty)
-                                   @if(count($faculty->tArea))
-                                       <div class="col-12 mb-5 search-div"
-                                            data-exams="{{ implode(',', $faculty->subjects) }}">
-                                           <h3><a href="" target="_blank" class="main-color">{{$faculty->name}}</a>
-                                           </h3>
-                                           <table style="width: 100% !important;" class="table table-sm table-scores w-100">
-                                               <thead>
-                                               <tr>
-                                                   <th width="30%" style="vertical-align: middle">Направление подготовки</th>
-                                                   {{--                                                    <th width="10%">Форма обучения</th>--}}
-                                                   {{--                            <th>Проходной балл предыдущего года</th>--}}
-                                                   <th width="50%" style="vertical-align: middle">Вступительные испытания в
-                                                       порядке приоритетности для
-                                                       ранжирования
-                                                   </th>
-                                                   <th width="10%" style="vertical-align: middle">Минимальные баллы</th>
-                                               </tr>
-                                               </thead>
-                                               <tbody>
-                                               @foreach($faculty->tArea as $item)
-                                                   <tr class="nps-tr search-tr"
-                                                       data-exams="{{ implode(',', $item->subjects) }}">
-                                                       <td rowspan="{{count($item->area->scores) -1}}">
-                                                           <button style="white-space: normal;" type="button"
-                                                                   class="btn btn-link text-left d-block w-100"
-                                                                   data-toggle="modal"
-                                                                   data-target="#exampleModalScrollable"
-                                                                   data-content="{{$item->area}}">
-                                                               <b>{{$item->area->sp_name->name}}</b>
-                                                           </button>
-                                                       </td>
-                                                       @foreach($item->area->scores as $k => $score)
-                                                           @if($k == 0)
-                                                               <td>{{$score->subject->name}}</td>
-                                                               <td class="text-center">{{$score->minScore}}</td>
-                                                           @endif
-                                                       @endforeach
-                                                       {{--                                                        <td rowspan="{{count($item->area->scores)}}">{{$item->area->trainingForm}}</td>--}}
-                                                   </tr>
-                                                   @foreach($item->area->scores as $k => $score)
-                                                       @if (!strpos($score->subject->name, 'достижение'))
-                                                           @if($k !== 0)
-                                                               <tr class="nps-tr search-tr"
-                                                                   data-exams="{{ implode(',', $item->subjects) }}">
-                                                                   <td>{{$score->subject->name}}</td>
-                                                                   <td class="text-center">{{$score->minScore}}</td>
-                                                               </tr>
-                                                           @endif
-                                                       @endif
-                                                   @endforeach
-                                               @endforeach
-                                               </tbody>
-                                           </table>
-                                       </div>
-                                   @endif
-                               @endforeach
+                            <div class="col-12 col-sm-9">
+                                @foreach($faculties as $faculty)
+                                    @if(count($faculty->plan))
+                                        <div class="col-12 mb-5 search-div"
+                                             data-exams="{{ implode(',', $faculty->subjects) }}">
+                                            <h3><a href="" target="_blank" class="main-color">{{$faculty->name}}</a>
+                                            </h3>
+                                            <table style="width: 100% !important;"
+                                                   class="table table-sm table-scores w-100">
+                                                <thead>
+                                                <tr>
+                                                    <th width="30%" style="vertical-align: middle">Направление
+                                                        подготовки
+                                                    </th>
+                                                    {{--                                                    <th width="10%">Форма обучения</th>--}}
+                                                    {{--                            <th>Проходной балл предыдущего года</th>--}}
+                                                    <th width="50%" style="vertical-align: middle">Вступительные
+                                                        испытания в
+                                                        порядке приоритетности для
+                                                        ранжирования
+                                                    </th>
+                                                    <th width="10%" style="vertical-align: middle">Минимальные баллы
+                                                    </th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                @foreach($faculty->plan as $item)
+                                                    <tr class="nps-tr search-tr"
+                                                        data-exams="{{ implode(',', $item->subjects) }}">
+                                                        <td rowspan="{{count($item->scores) -1}}">
+                                                            <button style="white-space: normal;" type="button"
+                                                                    class="btn btn-link text-left d-block w-100"
+                                                                    data-toggle="modal"
+                                                                    data-target="#exampleModalScrollable"
+                                                                    data-content="{{$item}}">
+                                                                {{$item->speciality->code}}
+                                                                <b>{{$item->speciality->name}}
+                                                                    @if($item->specialization)
+                                                                        - {{$item->specialization->name}}
+                                                                    @endif
+                                                                </b>
 
-                           </div>
+                                                            </button>
+                                                        </td>
+                                                        @foreach($item->scores as $k => $score)
+                                                            @if($k == 0)
+                                                                <td>{{$score->subject->name}}</td>
+                                                                <td class="text-center">{{$score->minScore}}</td>
+                                                            @endif
+                                                        @endforeach
+                                                        {{--                                                                                                               <td rowspan="{{count($item->area->scores)}}">{{$item->area->trainingForm}}</td>--}}
+                                                    </tr>
+                                                    @foreach($item->scores as $k => $score)
+                                                        @if (!strpos($score->subject->name, 'достижение'))
+                                                            @if($k !== 0)
+                                                                <tr class="nps-tr search-tr"
+                                                                    data-exams="{{ implode(',', $item->subjects) }}">
+                                                                    <td>{{$score->subject->name}}</td>
+                                                                    <td class="text-center">{{$score->minScore}}</td>
+                                                                </tr>
+                                                            @endif
+                                                        @endif
+                                                    @endforeach
+                                                @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    @endif
+                                @endforeach
+
+                            </div>
                             <div class="col-12 col-sm-3">
                                 <h4 class="mb-3">Мои ступительные испытания</h4>
                                 <div class="row text-uppercase mb-5">
@@ -159,46 +167,58 @@
                             <div class="col-12 col-sm-9">
                                 <div class="row">
                                     @foreach($faculties as $faculty)
-                                        @if(count($faculty->tArea))
+                                        @if(count($faculty->plan))
                                             <div class="col-12 mb-5 search-div-by-faculties"
                                                  data-faculty="{{ $faculty->name }}"
                                                  data-exams="{{ implode(',', $faculty->subjects) }}">
-                                                <h3><a href="" style="color: #2366a5" target="_blank">{{$faculty->name}}</a>
+                                                <h3><a href="" style="color: #2366a5"
+                                                       target="_blank">{{$faculty->name}}</a>
                                                 </h3>
                                                 <table class="table table-sm table-scores w-100">
                                                     <thead>
                                                     <tr>
-                                                        <th width="30%" style="vertical-align: middle">Направление подготовки</th>
-                                                        {{--                                                    <th width="10%">Форма обучения</th>--}}
-                                                        {{--                            <th>Проходной балл предыдущего года</th>--}}
-                                                        <th width="50%" style="vertical-align: middle">Вступительные испытания в порядке
+                                                        <th width="30%" style="vertical-align: middle">Направление
+                                                            подготовки / Специальность
+                                                        </th>
+                                                        {{--                                                                                                            <th width="10%">Форма обучения</th>--}}
+                                                        {{--                                                                                    <th>Проходной балл предыдущего года</th>--}}
+                                                        <th width="50%" style="vertical-align: middle">Вступительные
+                                                            испытания в порядке
                                                             приоритетности для
                                                             ранжирования
                                                         </th>
-                                                        <th width="10%" style="vertical-align: middle">Минимальные баллы</th>
+                                                        <th width="10%" style="vertical-align: middle">Минимальные
+                                                            баллы
+                                                        </th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                    @foreach($faculty->tArea as $item)
+                                                    @foreach($faculty->plan as $item)
                                                         <tr class="nps-tr search-tr-by-faculties"
                                                             data-exams="{{ implode(',', $item->subjects) }}">
-                                                            <td rowspan="{{count($item->area->scores) -1}}">
+                                                            <td rowspan="{{count($item->scores) -1}}">
                                                                 <button style="white-space: normal;" type="button"
                                                                         class="btn btn-link text-left w-100 d-block"
                                                                         data-toggle="modal"
                                                                         data-target="#exampleModalScrollable"
-                                                                        data-content="{{$item->area}}">
-                                                                    <b>{{$item->area->sp_name->name}}</b>
+                                                                        data-content="{{$item}}">
+                                                                    {{$item->speciality->code}}
+                                                                    <b>{{$item->speciality->name}}
+                                                                        @if($item->specialization)
+                                                                            ({{$item->specialization->name}})
+                                                                        @endif
+                                                                    </b>
                                                                 </button>
                                                             </td>
-                                                            @foreach($item->area->scores as $k => $score)
+
+                                                            @foreach($item->scores as $k => $score)
                                                                 @if($k == 0)
                                                                     <td>{{$score->subject->name}}</td>
                                                                     <td class="text-center">{{$score->minScore}}</td>
                                                                 @endif
                                                             @endforeach
                                                         </tr>
-                                                        @foreach($item->area->scores as $k => $score)
+                                                        @foreach($item->scores as $k => $score)
                                                             @if (!strpos($score->subject->name, 'достижение'))
                                                                 @if($k !== 0)
                                                                     <tr class="nps-tr search-tr-by-faculties"
@@ -221,7 +241,7 @@
                                 <h4 class="mb-3">Факультеты и институты</h4>
                                 <div class="row text-uppercase mb-5">
                                     @foreach($faculties as $faculty)
-                                        @if(count($faculty->tArea))
+                                        @if(count($faculty->plan))
                                             <div class="col-12">
                                                 <div class="form-group form-check check-faculties">
                                                     <input type="checkbox" class="form-check-input"
@@ -325,7 +345,7 @@
             var modal = $(this)
             console.log(recipient)
             modal.find('#facultyName').empty().text(recipient.faculty)
-            modal.find('#directionName').empty().text(recipient.sp_name.name)
+            modal.find('#directionName').empty().text(recipient.speciality.name + (recipient.specialization !== null ? ' (' + recipient.specialization.name + ')' : ''))
             let names = ''
             $.each(recipient.subjects, function (k, v) {
                 if (k === recipient.subjects.length - 1) {
@@ -336,73 +356,38 @@
             });
             modal.find('table').empty()
             modal.find('#examsNames').empty().text(names)
-            let number = recipient.years.toString().slice(-1)
-            let year = years[number];
-            let templateRecipient = "<tr id=\"intramural\">\n" +
-                "                                <td>\n" +
-                "                                    <strong>" + recipient.studyForm.name + "</strong>\n" +
-                "                                    <br>\n" +
-                "                                    <span>" + recipient.years + " " + year + " обучения</span>\n" +
-                "                                </td>\n" +
-                "                                <td>\n" +
-                "                                    <strong>" + recipient.freeSeatsNumber + "</strong>\n" +
-                "                                    <br>\n" +
-                "                                    <span>бюджетных мест</span>\n" +
-                "                                </td>\n" +
-                "                                <td>\n" +
-                "                                    <strong>" + changeNum((recipient.price / recipient.years).toFixed(0)) + "</strong>\n" + "<span style='font-size: 20px;'>₽</span>" +
-                "                                    <br>\n" +
-                "                                    <span>в год</span>\n" +
-                "                                </td>\n" +
-                "                            </tr>";
-            modal.find('table').append(templateRecipient)
 
+            modal.find('#forms').empty()
+            $.each(recipient.studyForm, (k, v) => {
+                let number = v.years.toString().slice(-1)
+                let year = years[number];
+                let templateRecipient =
+                    "<div class='row'>" +
+                    "<div class='col-12'>" +
+                    "<h4><strong>" + v.name + "</strong></h4>" +
+                    "<h6><strong>Количество лет обучения: " + v.years + " " + year + "</strong></h6>"
+                    "<h6><strong>Количество мест:</strong></h6>" +
+                    "</div>" +
+                    "<div class='col-12'>" //+
+                //"<table class='teble table-borderless table-sm'><tbody>";
 
-            if (recipient.partTime) {
-                let number = recipient.partTime.year.toString().slice(-1)
-                let year = years[number]
-                let templatePartTime = "<tr id=\"partTime\">\n" +
-                    "                                <td>\n" +
-                    "                                    <strong>" + recipient.partTime.name + "</strong>\n" +
-                    "                                    <br>\n" +
-                    "                                    <span>" + recipient.partTime.year + " " + year + " обучения</span>\n" +
-                    "                                </td>\n" +
-                    "                                <td>\n" +
-                    "                                    <strong>" + recipient.partTime.budget + "</strong>\n" +
-                    "                                    <br>\n" +
-                    "                                    <span>бюджетных мест</span>\n" +
-                    "                                </td>\n" +
-                    "                                <td>\n" +
-                    "                                    <strong>" + $.number(recipient.partTime.price, 0, '', ' ') + "</strong>\n" +
-                    "                                    <br>\n" +
-                    "                                    <span>рублей в год</span>\n" +
-                    "                                </td>\n" +
-                    "                            </tr>";
-                modal.find('table').append(templatePartTime)
-            }
+                $.each(v.freeseats, (key, seat) => {
+                    //templateRecipient += "<tr><td>" + seat.admissionBasis.name + "</td><td>" + seat.value + "</td></tr>"
+                    templateRecipient += "<p class='text-left'><span>" + seat.admissionBasis.name + ": </span><b>" + seat.value + "</b></p>"
+                });
 
-            if (recipient.correspondence) {
-                let number = recipient.correspondence.year.toString().slice(-1)
-                let year = years[number]
-                let templateCorrespondece = "<tr id=\"templateCorrespondece\">\n" +
-                    "                                <td>\n" +
-                    "                                    <strong>" + recipient.correspondence.name + "</strong>\n" +
-                    "                                    <br>\n" +
-                    "                                    <span>" + recipient.correspondence.year + " " + year + " обучения</span>\n" +
-                    "                                </td>\n" +
-                    "                                <td>\n" +
-                    "                                    <strong>" + recipient.correspondence.budget + "</strong>\n" +
-                    "                                    <br>\n" +
-                    "                                    <span>бюджетных мест</span>\n" +
-                    "                                </td>\n" +
-                    "                                <td>\n" +
-                    "                                    <strong>" + $.number(recipient.correspondence.price, 0, '', ' ') + "</strong>\n" +
-                    "                                    <br>\n" +
-                    "                                    <span>рублей в год</span>\n" +
-                    "                                </td>\n" +
-                    "                            </tr>";
-                modal.find('table').append(templateCorrespondece)
-            }
+                //templateRecipient += "</tbody></table></div></div>";
+                templateRecipient += "</div>";
+                templateRecipient += "<div class='col-12'>";
+                templateRecipient += "<h6><strong>Цена за обучение:</strong></h6>"
+                $.each(v.prices, (key, price) => {
+                    templateRecipient += "<p class='text-left'><span>" + price.info + ": </span><b>" + price.price + "₽</b></p>"
+                })
+                templateRecipient += "</div></div>";
+
+                modal.find('#forms').append(templateRecipient)
+            })
+            //
 
             //template.format(recipient.intramural.name, recipient.intramural.year, recipient.intramural.budget, recipient.intramural.price)
             // modal.find('.modal-body input').val(recipient)

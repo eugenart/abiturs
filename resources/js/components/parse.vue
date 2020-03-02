@@ -134,7 +134,7 @@
             },
             parseAreas: function () {
                 this.loadingparseAreasStatus = true;
-                let data = axios.get('/admin/parse-areas')
+                let data = axios.get('/admin/parse-areassarbach')
                     .then(response => {
                         this.loadingparseAreasStatus = false;
                         this.parseAreasStatus = response.data

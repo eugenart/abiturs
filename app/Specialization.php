@@ -15,4 +15,9 @@ class Specialization extends Model
     public function statistics() {
         return $this->hasMany(Statistic::class, 'id_specialization');
     }
+
+    public function plan()
+    {
+        return $this->hasMany(Plan::class, 'id_specialization');
+    }
 }

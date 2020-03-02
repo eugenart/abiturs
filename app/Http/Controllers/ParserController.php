@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\AdmissionBasis;
 use App\Faculty;
 use App\Speciality;
 use App\Specialization;
@@ -114,5 +115,29 @@ class ParserController extends Controller
         return json_encode('Факультеты и дисциплины успешно выгружены!');
     }
 
+    public function parseFromXlsAdmission(Request $request)
+    {
+        require_once 'Classes/PHPExcel.php';
 
+        //Удаляем записи из таблиц
+        AdmissionBasis::truncate();
+        // Парсим Специализации
+        $xlsSpz = PHPExcel_IOFactory::load(storage_path('app/public/files/Список основ.xls'));
+        // Первый лист
+        $xlsSpz->setActiveSheetIndex(0);
+        $sheetSpz = $xlsSpz->getActiveSheet();
+        $sheetSpz = $sheetSpz->toArray();
+
+        for($i=1; $i<count($sheetSpz); $i++){
+
+            //Добавляем записи основ
+            AdmissionBasis::insert(array(
+                'baseId'  => $sheetSpz[$i][1],
+                'name'   => $sheetSpz[$i][0],
+                'short_name'   => $sheetSpz[$i][2]
+            ));
+        }
+
+        return json_encode('Основания для поступления успешно выгружены!');
+    }
 }
