@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\AdmissionBasis;
 use App\Category;
 use App\Faculty;
+use App\Plan;
+use App\PlanCompetition;
 use App\PreparationLevel;
 use App\Speciality;
 use App\Statistic;
@@ -158,9 +160,16 @@ class StatisticController extends Controller
                                         ->where('id_faculty', '=', $faculty->id)
                                         ->get();
 
-                                    $freeSeatsNumber = TrainingArea::where('id_speciality', '=', $speciality->id)
+                                    $idPlan = Plan::where('id_speciality', '=', $speciality->id)
                                         ->where('id_studyForm', '=', $studyForm->id)
                                         ->first();
+                                    if(!empty($idPlan)) {
+                                        $freeSeatsNumber = PlanCompetition::where('id_plan', '=', intval($idPlan->id))->first();
+                                    }
+
+//                                    $freeSeatsNumber = TrainingArea::where('id_speciality', '=', $speciality->id)
+//                                        ->where('id_studyForm', '=', $studyForm->id)
+//                                        ->first();
 
                                     if ($temp->count()) {
                                         $speciality->abiturs = $temp; //добавляем запись
@@ -294,9 +303,15 @@ class StatisticController extends Controller
 //                                    }
                                     //нужно проверить содержит ли полученная коллекция нужных студентов
                                     //выбираем свободные места на этой специальности
-                                    $freeSeatsNumber = TrainingArea::where('id_speciality', '=', $speciality->id)
+                                    $idPlan = Plan::where('id_speciality', '=', $speciality->id)
                                         ->where('id_studyForm', '=', $studyForm->id)
                                         ->first();
+                                    if(!empty($idPlan)) {
+                                        $freeSeatsNumber = PlanCompetition::where('id_plan', '=', intval($idPlan->id))->first();
+                                    }
+//                                    $freeSeatsNumber = TrainingArea::where('id_speciality', '=', $speciality->id)
+//                                        ->where('id_studyForm', '=', $studyForm->id)
+//                                        ->first();
                                     //обозначаем выбранного студента цветом
                                     if ($temp->count() && !$temp2->isEmpty()) {
                                         $speciality->abiturs = $temp; //записываем статистику в специальность
@@ -391,16 +406,20 @@ class StatisticController extends Controller
             $specialities = Speciality::whereIn('id', $id_spec_arr)->get();
 
             foreach ($specialities as $speciality) {
-                $id_studyForms = TrainingArea::where('id_speciality', '=', $speciality->id)
+                $id_studyForms = Plan::where('id_speciality', '=', $speciality->id)
                     ->select('id_studyForm')
                     ->get();
 
+//                $id_studyForms = TrainingArea::where('id_speciality', '=', $speciality->id)
+//                    ->select('id_studyForm')
+//                    ->get();
+//
                 $id_studyForms_arr = array();
                 foreach ($id_studyForms as $item) {
                     $id_studyForms_arr[] = $item->id_studyForm;
                 }
                 $studyForms = StudyForm::whereIn('id', $id_studyForms_arr)->get();
-
+//
                 $studyForms->count() ? $speciality->studyForms = $studyForms : null;
             }
             $faculty->speciality = $specialities;
