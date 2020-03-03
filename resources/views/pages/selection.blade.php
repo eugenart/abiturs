@@ -27,7 +27,7 @@
                         <div class="col-12">Вступительные испытания</div>
                         <div class="col-12" id="examsNames">биология, математика, русский язык</div>
                         <hr class="w-50 bg-white">
-                        <div class="col-12 mt-3" id="forms">
+                        <div class="col-12" id="forms">
                         </div>
                     </div>
                 </div>
@@ -365,25 +365,25 @@
                     "<div class='row'>" +
                     "<div class='col-12'>" +
                     "<h4><strong>" + v.name + "</strong></h4>" +
-                    "<h6><strong>Количество лет обучения: " + v.years + " " + year + "</strong></h6>"
-                    "<h6><strong>Количество мест:</strong></h6>" +
+                    "<h5><strong>Количество лет обучения: " + v.years + " " + year + "</strong></h5>"
+                    "<h5><strong>Количество мест - </strong></h5>" +
                     "</div>" +
                     "<div class='col-12'>" //+
                 //"<table class='teble table-borderless table-sm'><tbody>";
 
                 $.each(v.freeseats, (key, seat) => {
                     //templateRecipient += "<tr><td>" + seat.admissionBasis.name + "</td><td>" + seat.value + "</td></tr>"
-                    templateRecipient += "<p class='text-left'><span>" + seat.admissionBasis.name + ": </span><b>" + seat.value + "</b></p>"
+                    templateRecipient += "<p class='text-center'><span>" + seat.admissionBasis.name + " - </span><b>" + seat.value + "</b></p>"
                 });
 
                 //templateRecipient += "</tbody></table></div></div>";
                 templateRecipient += "</div>";
                 templateRecipient += "<div class='col-12'>";
-                templateRecipient += "<h6><strong>Цена за обучение:</strong></h6>"
+                templateRecipient += "<h5><strong>Цена за обучение:</strong></h5>"
                 $.each(v.prices, (key, price) => {
-                    templateRecipient += "<p class='text-left'><span>" + price.info + ": </span><b>" + price.price + "₽</b></p>"
+                    templateRecipient += "<p class='text-center'><span>" + price.info + " - </span><b>" + price.price + "₽</b></p>"
                 })
-                templateRecipient += "</div></div>";
+                templateRecipient += "<hr class='w-50 bg-white' /></div></div>";
 
                 modal.find('#forms').append(templateRecipient)
             })
