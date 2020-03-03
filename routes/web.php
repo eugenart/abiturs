@@ -42,7 +42,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
     Route::get('/parse', 'ParserController@index')->name('parse.index');
     Route::get('/parse-specialities', 'ParserController@parseFromXls')->name('parse.parseFromXls');
-    Route::get('/parse-admissionbases', 'ParserController@parseFromXlsAdmission')->name('parse.parseFromXlsAdmission');
+    Route::get('/c', 'ParserController@parseFromXlsAdmission')->name('parse.parseFromXlsAdmission');
     Route::get('/parse-students', 'ParserJsonController@parseFromJson')->name('parse.parseFromJson');
 //    Route::get('/parse-areas', 'ParserJsonController@parseAreas')->name('parse.parseAreas');
     Route::get('/parse-sub', 'ParserController@parseFromXlsSub')->name('parse.parseFromXlsSub');
