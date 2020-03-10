@@ -195,6 +195,13 @@ class ParserJsonController extends Controller
         Competition::truncate();
         PlanCompetition::truncate();
         PlanCompScore::truncate();
+        Price::truncate();
+        Freeseats_bases::truncate();
+
+
+
+
+
 
         $arr_plan = array();
         $arr_competition = array();
