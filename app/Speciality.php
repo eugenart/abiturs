@@ -27,6 +27,11 @@ class Speciality extends Model
         return $this->hasMany(Specialization::class, 'id_speciality');
     }
 
+    public function pastContests()
+    {
+        return $this->hasMany(PastContests::class, 'id_studyForm');
+    }
+
 //    public static function allWithSpez()
 //    {
 //        return DB::table('specialities')

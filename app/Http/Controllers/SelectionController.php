@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Faculty;
+use App\PastContests;
 use App\Plan;
 use App\PlanCompetition;
 use App\StudyForm;
@@ -38,24 +39,40 @@ class SelectionController extends Controller
                     $spec_com[] = $plan->id_speciality;
                     $spez_com[] = $plan->id_specialization;
 
-                    $plan->speciality = $plan->speciality()->first();
-                    $plan->specialization = $plan->specialization()->first();
+                    $plan->speciality = $plan->speciality()->select('code', 'name')->first();
+                    $plan->specialization = $plan->specialization()->select('name', 'id_speciality')->first();
 
                     //выбираем формы обучения для одной специальности и спецз
                     $SpecForms = Plan::where('id_speciality', '=', $plan->id_speciality)
                         ->where('id_specialization', '=', $plan->id_specialization)
                         ->select('id_studyForm', 'id', 'years')->get();
                     $arr_studyForm = array();
+
                     $plan->years = null;
                     foreach ($SpecForms as $form) {
+
                         $form_temp= StudyForm::where('id', '=', $form->id_studyForm)->select('name')->first();
                         $form_temp->years = $form->years;
                         $plan_comp_form = PlanCompetition::where('id_plan', '=', $form->id)->first();
                         $form_temp->freeseats = $plan_comp_form->freeseats()->get();
                         foreach ($form_temp->freeseats as $value) {
                             $value->admissionBasis = $value->admissionBasis()->first();
+
+                            $past_contests = PastContests::where('id_speciality', '=', $plan->id_speciality)
+                                ->where('id_studyForm', '=',  $form->id_studyForm)
+                                ->where('id_admissionBasis', '=', $value->id_admissionBasis)
+                                ->select('year', 'minScore')
+                                ->get();
+
+
+
+                            $value->pastContests = $past_contests;
+
                         }
                         $form_temp->prices = $plan_comp_form->prices()->get();
+
+
+
 
                         $arr_studyForm[] = $form_temp;
                     }
@@ -103,8 +120,8 @@ class SelectionController extends Controller
             $faculty->subjects = $fsubjs;
         }
 
-//       return $faculties;
-        return view('pages.selection')->with('subjects', $subjects)->with('faculties', $faculties);
+       return $faculties;
+  //      return view('pages.selection')->with('subjects', $subjects)->with('faculties', $faculties);
 
     }
 }

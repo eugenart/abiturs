@@ -7,6 +7,7 @@ use App\Category;
 use App\Competition;
 use App\Faculty;
 use App\Freeseats_bases;
+use App\PastContests;
 use App\Plan;
 use App\PlanCompetition;
 use App\PlanCompScore;
@@ -20,8 +21,10 @@ use App\Student;
 use App\StudyForm;
 use App\Subject;
 use Illuminate\Http\Request;
+use Mockery\Exception;
 use RecursiveArrayIterator;
 use RecursiveIteratorIterator;
+use Throwable;
 
 class ParserJsonController extends Controller
 {
@@ -29,7 +32,7 @@ class ParserJsonController extends Controller
     //парсинг статистики
     public function parseCatalogs(){
         ini_set('memory_limit', '1024M');
-        $filejson = file_get_contents(storage_path('app/public/files/test3.json'));
+        $filejson = file_get_contents(storage_path('app/public/files/test3_oo.json'));
         $json_arr = json_decode($filejson, true);
         $json_data = $json_arr['data'];
 
@@ -48,16 +51,26 @@ class ParserJsonController extends Controller
             );
             $studyForms[] = $stdForm;
 
-            foreach ($fac_stat['List'] as $student) {
+            foreach ($fac_stat['List'] as $stud_element) {
+//                try {
+//                    $stud_element['fio'];
+//                } catch (Throwable $t) {
+//                    var_dump($stud_element);
+//                }
+               // var_dump($stud_element['preparationLevel']);
+
+//
                 $prepLevel = array(
-                    'name' => $student['preparationLevel']
+                    'name' => $stud_element['preparationLevel']
                 );
                 $prepLevels[] = $prepLevel;
 
+
                 $category = array(
-                    'name' => $student['category']
+                    'name' => $stud_element['category']
                 );
                 $categories[] = $category;
+//
             }
         }
 
@@ -74,7 +87,7 @@ class ParserJsonController extends Controller
     public function parseStat2()
     {
         ini_set('memory_limit', '1024M');
-        $filejson = file_get_contents(storage_path('app/public/files/test3.json'));
+        $filejson = file_get_contents(storage_path('app/public/files/test3_oo.json'));
         $json_arr = json_decode($filejson, true);
         $json_data = $json_arr['data'];
 
@@ -272,15 +285,45 @@ class ParserJsonController extends Controller
         return json_encode('12345!');
     }
 
+    public function parsePastContests(){
+        ini_set('memory_limit', '1024M');
+        $filejson = file_get_contents(storage_path('app/public/files/конкурсы.json'));
+        $json_arr = json_decode($filejson, true);
+        $json_data = $json_arr['data'];
+
+        PastContests::truncate();
+
+        $arr_contests = array();
+
+        foreach ($json_data as $k => $element) {
+            $id_studyForm = StudyForm::where('name', '=', $element['trainingForm'])->first();
+            $id_admissionBasis = AdmissionBasis::where('baseId', '=', $element['IdBasis'])->first();
+            $id_speciality = Speciality::where('specialityId', '=', $element['trainingAreasId'])->first();
+
+
+            $contest = array(
+                'id_studyForm' => intval($id_studyForm->id),
+                'id_admissionBasis' =>intval($id_admissionBasis->id),
+                'id_speciality' => intval($id_speciality->id),
+                'year' => $element['year'],
+                'minScore' => $element['value']
+            );
+
+            $arr_contests[] = $contest;
+        }
+
+        PastContests::insert($arr_contests);
+
+        return json_encode('ok!');
+
+    }
+
     public function parseFromJson(Request $request)
     {
         set_time_limit(1200);
-//        $this->parseStudents();
-//        $this->parseStat();
-//        $this->parseScore();
 
         $this->parseCatalogs();
-        $this->parseStat2();
+      //  $this->parseStat2();
 
 
         return json_encode('Информация об абитуриентах успешно выгружена!');
