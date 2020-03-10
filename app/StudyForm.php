@@ -12,14 +12,14 @@ class StudyForm extends Model
     {
         return $this->hasMany(Statistic::class, 'id_studyForm');
     }
-    //больше не нужно
-    public function area()
-    {
-        return $this->hasMany(TrainingArea::class, 'id_studyForm');
-    }
 
     public function plan()
     {
         return $this->hasMany(Plan::class, 'id_studyForm');
+    }
+
+    public function pastContests()
+    {
+        return $this->hasMany(PastContests::class, 'id_studyForm');
     }
 }
