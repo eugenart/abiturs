@@ -81,20 +81,32 @@
                                             <h3><a href="" target="_blank" class="main-color">{{$faculty->name}}</a>
                                             </h3>
                                             <table style="width: 100% !important;"
-                                                   class="table table-sm table-scores w-100">
+                                                   class="table table-sm table-scores w-100 table-b-border">
                                                 <thead>
                                                 <tr>
-                                                    <th width="30%" style="vertical-align: middle">Направление
-                                                        подготовки
+                                                    <th width="30%" rowspan="2" style="vertical-align: middle">
+                                                        Направление
+                                                        подготовки / Специальность
                                                     </th>
-                                                    {{--                                                    <th width="10%">Форма обучения</th>--}}
-                                                    {{--                            <th>Проходной балл предыдущего года</th>--}}
-                                                    <th width="50%" style="vertical-align: middle">Вступительные
-                                                        испытания в
-                                                        порядке приоритетности для
+                                                    <th width="30%" rowspan="2" style="vertical-align: middle">
+                                                        Вступительные
+                                                        испытания в порядке
+                                                        приоритетности для
                                                         ранжирования
                                                     </th>
-                                                    <th width="10%" style="vertical-align: middle">Минимальные баллы
+                                                    <th width="10%" rowspan="2" style="vertical-align: middle">
+                                                        Минимальные
+                                                        баллы
+                                                    </th>
+                                                    <th colspan="2">
+                                                        Статистика проходных баллов <br> (очно, бюджет, общий конкурс)
+                                                    </th>
+                                                </tr>
+                                                <tr>
+                                                    <th width="10%" style="vertical-align: middle">Формы обучения
+                                                    </th>
+                                                    <th width="10%"
+                                                        style="vertical-align: middle">{{strval(date ( 'Y' ) - 1)}}
                                                     </th>
                                                 </tr>
                                                 </thead>
@@ -102,36 +114,76 @@
                                                 @foreach($faculty->plan as $item)
                                                     <tr class="nps-tr search-tr"
                                                         data-exams="{{ implode(',', $item->subjects) }}">
-                                                        <td rowspan="{{count($item->scores) -1}}">
+                                                        <td rowspan="{{count($item->scores) -1}}"
+                                                            style="border-bottom: 2px solid #2366a5 !important;">
                                                             <button style="white-space: normal;" type="button"
                                                                     class="btn btn-link text-left d-block w-100"
                                                                     data-toggle="modal"
                                                                     data-target="#exampleModalScrollable"
                                                                     data-content="{{$item}}">
                                                                 {{$item->speciality->code}}
-                                                                <b>{{$item->speciality->name}}
-                                                                    @if($item->specialization)
-                                                                        - {{$item->specialization->name}}
-                                                                    @endif
-                                                                </b>
-
+                                                                <b>{{$item->speciality->name}}</b>
+                                                                @if($item->specialization)
+                                                                    - {{$item->specialization->name}}
+                                                                @endif
                                                             </button>
                                                         </td>
                                                         @foreach($item->scores as $k => $score)
-                                                            @if($k == 0)
-                                                                <td>{{$score->subject->name}}</td>
-                                                                <td class="text-center">{{$score->minScore}}</td>
+                                                            @if (!strpos($score->subject->name, 'достижение'))
+                                                                @if($k == 0)
+                                                                    <td>{{$score->subject->name}}</td>
+                                                                    <td class="text-center">{{$score->minScore}}</td>
+                                                                @endif
                                                             @endif
                                                         @endforeach
-                                                        {{--                                                                                                               <td rowspan="{{count($item->area->scores)}}">{{$item->area->trainingForm}}</td>--}}
+                                                        <td rowspan="{{count($item->scores) -1}}" class="text-center"
+                                                            style="border-bottom:2px solid #2366a5 !important;">
+                                                            @foreach($item->studyForm as $sf)
+                                                                <span>{{$sf->name}}</span>
+                                                                <br>
+                                                            @endforeach
+                                                        </td>
+                                                        <td rowspan="{{count($item->scores) -1}}" class="text-center"
+                                                            style="border-bottom:2px solid #2366a5 !important;">
+                                                            @foreach($item->studyForm as $sf)
+                                                                @php
+                                                                    $counter = 0;
+                                                                @endphp
+                                                                @foreach($sf->freeseats as $fs)
+
+                                                                    @if($fs->admissionBasis->short_name == 'БО')
+                                                                        @php
+                                                                            $counter++;
+                                                                        @endphp
+                                                                        @foreach($fs->pastContests as $pc)
+                                                                            @if($pc->year === strval(date ( 'Y' ) - 1))
+                                                                                <span>{{$pc->minScore}}</span>
+                                                                                <br>
+                                                                            @endif
+                                                                        @endforeach
+                                                                    @endif
+                                                                @endforeach
+                                                                @if(!$counter)
+                                                                    <span>-</span>
+                                                                    <br>
+                                                                @endif
+                                                            @endforeach
+                                                        </td>
                                                     </tr>
                                                     @foreach($item->scores as $k => $score)
                                                         @if (!strpos($score->subject->name, 'достижение'))
-                                                            @if($k !== 0)
+                                                            @if($k !== 0 && $k !== (count($item->scores) - 1))
                                                                 <tr class="nps-tr search-tr"
                                                                     data-exams="{{ implode(',', $item->subjects) }}">
                                                                     <td>{{$score->subject->name}}</td>
                                                                     <td class="text-center">{{$score->minScore}}</td>
+                                                                </tr>
+                                                            @elseif ($k == (count($item->scores) - 1))
+                                                                <tr class="nps-tr search-tr"
+                                                                    data-exams="{{ implode(',', $item->subjects) }}">
+                                                                    <td style="border-bottom: 2px solid #2366a5 !important;">{{$score->subject->name}}</td>
+                                                                    <td style="border-bottom: 2px solid #2366a5 !important;;"
+                                                                        class="text-center">{{$score->minScore}}</td>
                                                                 </tr>
                                                             @endif
                                                         @endif
@@ -174,21 +226,32 @@
                                                 <h3><a href="" style="color: #2366a5"
                                                        target="_blank">{{$faculty->name}}</a>
                                                 </h3>
-                                                <table class="table table-sm table-scores w-100">
+                                                <table class="table table-b-border table-sm table-scores w-100">
                                                     <thead>
                                                     <tr>
-                                                        <th width="30%" style="vertical-align: middle">Направление
+                                                        <th width="30%" rowspan="2" style="vertical-align: middle">
+                                                            Направление
                                                             подготовки / Специальность
                                                         </th>
-                                                        {{--                                                                                                            <th width="10%">Форма обучения</th>--}}
-                                                        {{--                                                                                    <th>Проходной балл предыдущего года</th>--}}
-                                                        <th width="50%" style="vertical-align: middle">Вступительные
+                                                        <th width="30%" rowspan="2" style="vertical-align: middle">
+                                                            Вступительные
                                                             испытания в порядке
                                                             приоритетности для
                                                             ранжирования
                                                         </th>
-                                                        <th width="10%" style="vertical-align: middle">Минимальные
+                                                        <th width="10%" rowspan="2" style="vertical-align: middle">
+                                                            Минимальные
                                                             баллы
+                                                        </th>
+                                                        <th colspan="2">
+                                                            Статистика проходных баллов <br> (очно, бюджет, общий конкурс)
+                                                        </th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th width="10%" style="vertical-align: middle">Формы обучения
+                                                        </th>
+                                                        <th width="10%"
+                                                            style="vertical-align: middle">{{strval(date ( 'Y' ) - 1)}}
                                                         </th>
                                                     </tr>
                                                     </thead>
@@ -196,39 +259,84 @@
                                                     @foreach($faculty->plan as $item)
                                                         <tr class="nps-tr search-tr-by-faculties"
                                                             data-exams="{{ implode(',', $item->subjects) }}">
-                                                            <td rowspan="{{count($item->scores) -1}}">
+                                                            <td rowspan="{{count($item->scores) -1}}"
+                                                                style="border-bottom: 2px solid #2366a5 !important;">
                                                                 <button style="white-space: normal;" type="button"
                                                                         class="btn btn-link text-left w-100 d-block"
                                                                         data-toggle="modal"
                                                                         data-target="#exampleModalScrollable"
                                                                         data-content="{{$item}}">
                                                                     {{$item->speciality->code}}
-                                                                    <b>{{$item->speciality->name}}
-                                                                        @if($item->specialization)
-                                                                            ({{$item->specialization->name}})
-                                                                        @endif
-                                                                    </b>
+                                                                    <b>{{$item->speciality->name}}</b>
+                                                                    @if($item->specialization)
+                                                                        - {{$item->specialization->name}}
+                                                                    @endif
                                                                 </button>
                                                             </td>
 
                                                             @foreach($item->scores as $k => $score)
-                                                                @if($k == 0)
-                                                                    <td>{{$score->subject->name}}</td>
-                                                                    <td class="text-center">{{$score->minScore}}</td>
+                                                                @if (!strpos($score->subject->name, 'достижение'))
+                                                                    @if($k == 0)
+                                                                        <td>{{$score->subject->name}}</td>
+                                                                        <td class="text-center">{{$score->minScore}}</td>
+                                                                    @endif
                                                                 @endif
                                                             @endforeach
+                                                            <td rowspan="{{count($item->scores) -1}}"
+                                                                class="text-center"
+                                                                style="border-bottom:2px solid #2366a5 !important;">
+                                                                @foreach($item->studyForm as $sf)
+                                                                    <span>{{$sf->name}}</span>
+                                                                    <br>
+                                                                @endforeach
+                                                            </td>
+                                                            <td rowspan="{{count($item->scores) -1}}" class="text-center"
+                                                                style="border-bottom:2px solid #2366a5 !important;">
+                                                                @foreach($item->studyForm as $sf)
+                                                                    @php
+                                                                        $counter = 0;
+                                                                    @endphp
+                                                                    @foreach($sf->freeseats as $fs)
+
+                                                                        @if($fs->admissionBasis->short_name == 'БО')
+                                                                            @php
+                                                                                $counter++;
+                                                                            @endphp
+                                                                            @foreach($fs->pastContests as $pc)
+                                                                                @if($pc->year === strval(date ( 'Y' ) - 1))
+                                                                                    <span>{{$pc->minScore}}</span>
+                                                                                    <br>
+                                                                                @endif
+                                                                            @endforeach
+                                                                        @endif
+                                                                    @endforeach
+                                                                    @if(!$counter)
+                                                                        <span>-</span>
+                                                                        <br>
+                                                                    @endif
+                                                                @endforeach
+                                                            </td>
                                                         </tr>
+
                                                         @foreach($item->scores as $k => $score)
                                                             @if (!strpos($score->subject->name, 'достижение'))
-                                                                @if($k !== 0)
-                                                                    <tr class="nps-tr search-tr-by-faculties"
+                                                                @if($k !== 0 && $k !== (count($item->scores) - 1))
+                                                                    <tr class="nps-tr search-tr-by-facluties"
                                                                         data-exams="{{ implode(',', $item->subjects) }}">
                                                                         <td>{{$score->subject->name}}</td>
                                                                         <td class="text-center">{{$score->minScore}}</td>
                                                                     </tr>
+                                                                @elseif ($k == (count($item->scores) - 1))
+                                                                    <tr class="nps-tr search-tr-by-facluties"
+                                                                        data-exams="{{ implode(',', $item->subjects) }}">
+                                                                        <td style="border-bottom: 2px solid #2366a5 !important;">{{$score->subject->name}}</td>
+                                                                        <td style="border-bottom: 2px solid #2366a5 !important;;"
+                                                                            class="text-center">{{$score->minScore}}</td>
+                                                                    </tr>
                                                                 @endif
                                                             @endif
                                                         @endforeach
+                                                        <tr>
                                                     @endforeach
                                                     </tbody>
                                                 </table>
@@ -366,9 +474,9 @@
                     "<div class='col-12'>" +
                     "<h4><strong>" + v.name + "</strong></h4>" +
                     "<h5><strong>Количество лет обучения: " + v.years + " " + year + "</strong></h5>"
-                    "<h5><strong>Количество мест - </strong></h5>" +
-                    "</div>" +
-                    "<div class='col-12'>" //+
+                "<h5><strong>Количество мест - </strong></h5>" +
+                "</div>" +
+                "<div class='col-12'>" //+
                 //"<table class='teble table-borderless table-sm'><tbody>";
 
                 $.each(v.freeseats, (key, seat) => {
