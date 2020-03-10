@@ -404,8 +404,12 @@ marquee {
     outline: none !important;
 }
 
+.table-b-border {
+    border: 2px solid #2366a5;
+}
+
 .nps-tr {
-    border-top: 2px solid rgba(0, 0, 0, .5);
+    border-top: 1px solid #2366a5;
 }
 
 .nps-tr td {

@@ -51,7 +51,7 @@ class SelectionController extends Controller
                     $plan->years = null;
                     foreach ($SpecForms as $form) {
 
-                        $form_temp= StudyForm::where('id', '=', $form->id_studyForm)->select('name')->first();
+                        $form_temp = StudyForm::where('id', '=', $form->id_studyForm)->select('name')->first();
                         $form_temp->years = $form->years;
                         $plan_comp_form = PlanCompetition::where('id_plan', '=', $form->id)->first();
                         $form_temp->freeseats = $plan_comp_form->freeseats()->get();
@@ -59,19 +59,16 @@ class SelectionController extends Controller
                             $value->admissionBasis = $value->admissionBasis()->first();
 
                             $past_contests = PastContests::where('id_speciality', '=', $plan->id_speciality)
-                                ->where('id_studyForm', '=',  $form->id_studyForm)
+                                ->where('id_studyForm', '=', $form->id_studyForm)
                                 ->where('id_admissionBasis', '=', $value->id_admissionBasis)
                                 ->select('year', 'minScore')
                                 ->get();
-
 
 
                             $value->pastContests = $past_contests;
 
                         }
                         $form_temp->prices = $plan_comp_form->prices()->get();
-
-
 
 
                         $arr_studyForm[] = $form_temp;
@@ -93,12 +90,11 @@ class SelectionController extends Controller
 //                    $prices_temp = $plan->plan_comp->prices()->get();
 
 
-
                 }
             }
         }
 
-      //  return $faculties;
+        //  return $faculties;
 
 
         foreach ($faculties as $faculty) {
@@ -120,8 +116,8 @@ class SelectionController extends Controller
             $faculty->subjects = $fsubjs;
         }
 
-       return $faculties;
-  //      return view('pages.selection')->with('subjects', $subjects)->with('faculties', $faculties);
+        // return $faculties;
+        return view('pages.selection')->with('subjects', $subjects)->with('faculties', $faculties);
 
     }
 }
