@@ -115,7 +115,7 @@ class SelectionController extends Controller
             $fsubjs = array_values($fsubjs);
             $faculty->subjects = $fsubjs;
         }
-
+//
 //         return $faculties;
         return view('pages.selection')->with('subjects', $subjects)->with('faculties', $faculties);
 
