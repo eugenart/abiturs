@@ -99,7 +99,7 @@
                                                         баллы
                                                     </th>
                                                     <th colspan="2">
-                                                        Статистика проходных баллов <br> (очно, бюджет, общий конкурс)
+                                                        Статистика проходных баллов <br> (бюджет, общий конкурс)
                                                     </th>
                                                 </tr>
                                                 <tr>
@@ -229,29 +229,36 @@
                                                 <table class="table table-b-border table-sm table-scores w-100">
                                                     <thead>
                                                     <tr>
-                                                        <th width="30%" rowspan="2" style="vertical-align: middle">
+                                                        <th width="30%" rowspan="3" style="vertical-align: middle">
                                                             Направление
                                                             подготовки / Специальность
                                                         </th>
-                                                        <th width="30%" rowspan="2" style="vertical-align: middle">
+                                                        <th width="30%" rowspan="3" style="vertical-align: middle">
                                                             Вступительные
                                                             испытания в порядке
                                                             приоритетности для
                                                             ранжирования
                                                         </th>
-                                                        <th width="10%" rowspan="2" style="vertical-align: middle">
+                                                        <th width="10%" rowspan="3" style="vertical-align: middle">
                                                             Минимальные
                                                             баллы
                                                         </th>
-                                                        <th colspan="2">
-                                                            Статистика проходных баллов <br> (очно, бюджет, общий конкурс)
+                                                        <th width="10%" rowspan="3" style="vertical-align: middle">Формы
+                                                            обучения
+                                                        </th>
+                                                        <th colspan="4">
+                                                            Статистика проходных баллов <br> (бюджет, общий конкурс)
                                                         </th>
                                                     </tr>
                                                     <tr>
-                                                        <th width="10%" style="vertical-align: middle">Формы обучения
-                                                        </th>
                                                         <th width="10%"
                                                             style="vertical-align: middle">{{strval(date ( 'Y' ) - 1)}}
+                                                        </th>
+                                                        <th width="10%"
+                                                            style="vertical-align: middle">{{strval(date ( 'Y' ) - 2)}}
+                                                        </th>
+                                                        <th width="10%"
+                                                            style="vertical-align: middle">{{strval(date ( 'Y' ) - 3)}}
                                                         </th>
                                                     </tr>
                                                     </thead>
@@ -273,7 +280,6 @@
                                                                     @endif
                                                                 </button>
                                                             </td>
-
                                                             @foreach($item->scores as $k => $score)
                                                                 @if (!strpos($score->subject->name, 'достижение'))
                                                                     @if($k == 0)
@@ -290,7 +296,8 @@
                                                                     <br>
                                                                 @endforeach
                                                             </td>
-                                                            <td rowspan="{{count($item->scores) -1}}" class="text-center"
+                                                            <td rowspan="{{count($item->scores) -1}}"
+                                                                class="text-center"
                                                                 style="border-bottom:2px solid #2366a5 !important;">
                                                                 @foreach($item->studyForm as $sf)
                                                                     @php
@@ -308,6 +315,76 @@
                                                                                     <br>
                                                                                 @endif
                                                                             @endforeach
+                                                                        @endif
+                                                                    @endforeach
+                                                                    @if(!$counter)
+                                                                        <span>-</span>
+                                                                        <br>
+                                                                    @endif
+                                                                @endforeach
+                                                            </td>
+                                                            <td rowspan="{{count($item->scores) -1}}"
+                                                                class="text-center"
+                                                                style="border-bottom:2px solid #2366a5 !important;">
+                                                                @foreach($item->studyForm as $sf)
+                                                                    @php
+                                                                        $counter = 0;
+                                                                    @endphp
+                                                                    @foreach($sf->freeseats as $fs)
+
+                                                                        @if($fs->admissionBasis->short_name == 'БО')
+                                                                            @php
+                                                                                $counter++;
+                                                                            @endphp
+                                                                                @php
+                                                                                $counter1=0;
+                                                                                @endphp
+
+                                                                                @foreach($fs->pastContests as $pc)
+                                                                                    @if($pc->year == strval(date ( 'Y' ) - 3))
+                                                                                    @php
+                                                                                        $counter1++;
+                                                                                    @endphp
+                                                                                        <span>{{$pc->minScore}}</span>
+                                                                                        <br>
+                                                                                    @endif
+                                                                                @endforeach
+                                                                            @if(!$counter1)
+                                                                                <span>-</span>
+                                                                                <br>
+                                                                                @endif
+                                                                        @endif
+                                                                    @endforeach
+                                                                    @if(!$counter)
+                                                                        <span>-</span>
+                                                                        <br>
+                                                                    @endif
+                                                                @endforeach
+                                                            </td>
+                                                            <td rowspan="{{count($item->scores) -1}}"
+                                                                class="text-center"
+                                                                style="border-bottom:2px solid #2366a5 !important;">
+                                                                @foreach($item->studyForm as $sf)
+                                                                    @php
+                                                                        $counter = 0;
+                                                                    @endphp
+                                                                    @foreach($sf->freeseats as $fs)
+
+                                                                        @if($fs->admissionBasis->short_name == 'БО')
+                                                                            @php
+                                                                                $counter++;
+                                                                            @endphp
+                                                                            @if(isset($fs->pastContests))
+                                                                                @foreach($fs->pastContests as $pc)
+                                                                                    @if($pc->year === strval(date ( 'Y' ) - 3))
+                                                                                        <span>{{$pc->minScore}}</span>
+                                                                                        <br>
+                                                                                    @endif
+                                                                                @endforeach
+                                                                            @else
+                                                                                <span>-</span>
+                                                                                <br>
+                                                                            @endif
                                                                         @endif
                                                                     @endforeach
                                                                     @if(!$counter)
