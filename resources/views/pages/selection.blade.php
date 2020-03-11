@@ -123,14 +123,13 @@
                                                         <td rowspan="{{count($item->scores) }}"
                                                             style="border-bottom: 2px solid #2366a5 !important;">
                                                             <button style="white-space: normal;" type="button"
-                                                                    class="btn btn-link text-left d-block w-100"
+                                                                    class="btn btn-link text-left d-block w-100 p-0"
                                                                     data-toggle="modal"
                                                                     data-target="#exampleModalScrollable"
                                                                     data-content="{{$item}}">
                                                                 {{$item->speciality->code}}
                                                                 <b>{{$item->speciality->name}}</b>
-                                                                @if($item->specialization)
-                                                                    - {{$item->specialization->name}}
+                                                                @if($item->specialization)&nbsp;-&nbsp;{{$item->specialization->name}}
                                                                 @endif
                                                             </button>
                                                         </td>
@@ -346,14 +345,13 @@
                                                             <td rowspan="{{count($item->scores)}}"
                                                                 style="border-bottom: 2px solid #2366a5 !important;">
                                                                 <button style="white-space: normal;" type="button"
-                                                                        class="btn btn-link text-left w-100 d-block"
+                                                                        class="btn btn-link text-left w-100 p-0 d-block"
                                                                         data-toggle="modal"
                                                                         data-target="#exampleModalScrollable"
                                                                         data-content="{{$item}}">
                                                                     {{$item->speciality->code}}
                                                                     <b>{{$item->speciality->name}}</b>
-                                                                    @if($item->specialization)
-                                                                        - {{$item->specialization->name}}
+                                                                    @if($item->specialization)&nbsp;-&nbsp;{{$item->specialization->name}}
                                                                     @endif
                                                                 </button>
                                                             </td>
