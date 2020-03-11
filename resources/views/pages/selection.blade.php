@@ -121,7 +121,7 @@
                                                 @foreach($faculty->plan as $item)
                                                     <tr class="nps-tr search-tr"
                                                         data-exams="{{ implode(',', $item->subjects) }}">
-                                                        <td rowspan="{{count($item->scores) -1}}"
+                                                        <td rowspan="{{count($item->scores) }}"
                                                             style="border-bottom: 2px solid #2366a5 !important;">
                                                             <button style="white-space: normal;" type="button"
                                                                     class="btn btn-link text-left d-block w-100"
@@ -143,14 +143,14 @@
                                                                 @endif
                                                             @endif
                                                         @endforeach
-                                                        <td rowspan="{{count($item->scores) -1}}" class="text-center"
+                                                        <td rowspan="{{count($item->scores) }}" class="text-center"
                                                             style="border-bottom:2px solid #2366a5 !important;">
                                                             @foreach($item->studyForm as $sf)
                                                                 <span>{{$sf->name}}</span>
                                                                 <br>
                                                             @endforeach
                                                         </td>
-                                                        <td rowspan="{{count($item->scores) -1}}"
+                                                        <td rowspan="{{count($item->scores)}}"
                                                             class="text-center"
                                                             style="border-bottom:2px solid #2366a5 !important;">
                                                             @foreach($item->studyForm as $sf)
@@ -181,7 +181,7 @@
                                                                 @endif
                                                             @endforeach
                                                         </td>
-                                                        <td rowspan="{{count($item->scores) -1}}"
+                                                        <td rowspan="{{count($item->scores) }}"
                                                             class="text-center"
                                                             style="border-bottom:2px solid #2366a5 !important;">
                                                             @foreach($item->studyForm as $sf)
@@ -212,7 +212,7 @@
                                                                 @endif
                                                             @endforeach
                                                         </td>
-                                                        <td rowspan="{{count($item->scores) -1}}"
+                                                        <td rowspan="{{count($item->scores) }}"
                                                             class="text-center"
                                                             style="border-bottom:2px solid #2366a5 !important;">
                                                             @foreach($item->studyForm as $sf)
@@ -246,16 +246,17 @@
                                                                 @endif
                                                             @endforeach
                                                         </td>
+
                                                     </tr>
                                                     @foreach($item->scores as $k => $score)
                                                         @if (!strpos($score->subject->name, 'достижение'))
-                                                            @if($k !== 0 && $k !== (count($item->scores) - 1))
+                                                            @if($k !== 0 && $k !== (count($item->scores)-1))
                                                                 <tr class="nps-tr search-tr"
                                                                     data-exams="{{ implode(',', $item->subjects) }}">
                                                                     <td>{{$score->subject->name}}</td>
                                                                     <td class="text-center">{{$score->minScore}}</td>
                                                                 </tr>
-                                                            @elseif ($k == (count($item->scores) - 1))
+                                                            @elseif ($k == (count($item->scores)-1))
                                                                 <tr class="nps-tr search-tr"
                                                                     data-exams="{{ implode(',', $item->subjects) }}">
                                                                     <td style="border-bottom: 2px solid #2366a5 !important;">{{$score->subject->name}}</td>
@@ -343,7 +344,7 @@
                                                     @foreach($faculty->plan as $item)
                                                         <tr class="nps-tr search-tr-by-faculties"
                                                             data-exams="{{ implode(',', $item->subjects) }}">
-                                                            <td rowspan="{{count($item->scores) -1}}"
+                                                            <td rowspan="{{count($item->scores)}}"
                                                                 style="border-bottom: 2px solid #2366a5 !important;">
                                                                 <button style="white-space: normal;" type="button"
                                                                         class="btn btn-link text-left w-100 d-block"
@@ -365,7 +366,7 @@
                                                                     @endif
                                                                 @endif
                                                             @endforeach
-                                                            <td rowspan="{{count($item->scores) -1}}"
+                                                            <td rowspan="{{count($item->scores)}}"
                                                                 class="text-center"
                                                                 style="border-bottom:2px solid #2366a5 !important;">
                                                                 @foreach($item->studyForm as $sf)
@@ -373,7 +374,7 @@
                                                                     <br>
                                                                 @endforeach
                                                             </td>
-                                                            <td rowspan="{{count($item->scores) -1}}"
+                                                            <td rowspan="{{count($item->scores)}}"
                                                                 class="text-center"
                                                                 style="border-bottom:2px solid #2366a5 !important;">
                                                                 @foreach($item->studyForm as $sf)
@@ -404,7 +405,7 @@
                                                                     @endif
                                                                 @endforeach
                                                             </td>
-                                                            <td rowspan="{{count($item->scores) -1}}"
+                                                            <td rowspan="{{count($item->scores)}}"
                                                                 class="text-center"
                                                                 style="border-bottom:2px solid #2366a5 !important;">
                                                                 @foreach($item->studyForm as $sf)
@@ -434,7 +435,7 @@
                                                                     @endif
                                                                 @endforeach
                                                             </td>
-                                                            <td rowspan="{{count($item->scores) -1}}"
+                                                            <td rowspan="{{count($item->scores)}}"
                                                                 class="text-center"
                                                                 style="border-bottom:2px solid #2366a5 !important;">
                                                                 @foreach($item->studyForm as $sf)
@@ -488,7 +489,6 @@
                                                                 @endif
                                                             @endif
                                                         @endforeach
-                                                        <tr>
                                                     @endforeach
                                                     </tbody>
                                                 </table>
