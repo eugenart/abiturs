@@ -99,14 +99,14 @@
                                                         Минимальные
                                                         баллы
                                                     </th>
-                                                    <th width="10%" rowspan="3" style="vertical-align: middle">Формы
+                                                    <th width="10%" rowspan="3" style="vertical-align: middle" class="d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-none d-none">Формы
                                                         обучения
                                                     </th>
-                                                    <th colspan="4" width="20%">
+                                                    <th colspan="4" width="20%" class="d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-none d-none">
                                                         Статистика проходных баллов <br> (бюджет, общий конкурс)
                                                     </th>
                                                 </tr>
-                                                <tr>
+                                                <tr class="d-lg-table-row d-xl-table-row d-md-table-row d-sm-none d-none">
                                                     <th
                                                         style="vertical-align: middle">{{strval(date ( 'Y' ) - 1)}}
                                                     </th>
@@ -321,14 +321,14 @@
                                                             Минимальные
                                                             баллы
                                                         </th>
-                                                        <th width="10%" rowspan="3" style="vertical-align: middle">Формы
+                                                        <th width="10%" class="d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-none d-none" rowspan="3" style="vertical-align: middle">Формы
                                                             обучения
                                                         </th>
-                                                        <th colspan="4" width="20%">
+                                                        <th colspan="4" width="20%" class="d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-none d-none">
                                                             Статистика проходных баллов <br> (бюджет, общий конкурс)
                                                         </th>
                                                     </tr>
-                                                    <tr>
+                                                    <tr class="d-lg-table-row d-xl-table-row d-md-table-row d-sm-none d-none">
                                                         <th
                                                             style="vertical-align: middle">{{strval(date ( 'Y' ) - 1)}}
                                                         </th>
@@ -365,7 +365,7 @@
                                                                 @endif
                                                             @endforeach
                                                             <td rowspan="{{count($item->scores)}}"
-                                                                class="text-center"
+                                                                class="text-center d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-none d-none"
                                                                 style="border-bottom:2px solid #2366a5 !important;">
                                                                 @foreach($item->studyForm as $sf)
                                                                     <span style="white-space: nowrap" class="text-center">{{$sf->name}}</span>
@@ -373,7 +373,7 @@
                                                                 @endforeach
                                                             </td>
                                                             <td rowspan="{{count($item->scores)}}"
-                                                                class="text-center"
+                                                                class="text-center d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-none d-none"
                                                                 style="border-bottom:2px solid #2366a5 !important;">
                                                                 @foreach($item->studyForm as $sf)
                                                                     @php
@@ -404,7 +404,7 @@
                                                                 @endforeach
                                                             </td>
                                                             <td rowspan="{{count($item->scores)}}"
-                                                                class="text-center"
+                                                                class="text-center d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-none d-none"
                                                                 style="border-bottom:2px solid #2366a5 !important;">
                                                                 @foreach($item->studyForm as $sf)
                                                                     @php
@@ -434,7 +434,7 @@
                                                                 @endforeach
                                                             </td>
                                                             <td rowspan="{{count($item->scores)}}"
-                                                                class="text-center"
+                                                                class="text-center d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-none d-none"
                                                                 style="border-bottom:2px solid #2366a5 !important;">
                                                                 @foreach($item->studyForm as $sf)
                                                                     @php
