@@ -72,8 +72,8 @@
                 <div class="tab-content" id="pills-tabContent">
                     <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
                          aria-labelledby="pills-home-tab">
-                        <div class="row mt-2 d-flex flex-column-reverse flex-sm-row">
-                            <div class="col-12 col-sm-9">
+                        <div class="row mt-2 d-flex flex-xl-row flex-column-reverse flex-sm-column-reverse">
+                            <div class="col-12 col-xl-9 col-sm-12">
                                 @foreach($faculties as $faculty)
                                     @if(count($faculty->plan))
                                         <div class="col-12 mb-5 search-div"
@@ -273,7 +273,7 @@
                                 @endforeach
 
                             </div>
-                            <div class="col-12 col-sm-3">
+                            <div class="col-12 col-xl-3 col-sm-12">
                                 <h4 class="mb-3">Мои вступительные испытания</h4>
                                 <div class="row text-uppercase mb-5">
                                     @foreach($subjects as $subject)
@@ -292,8 +292,8 @@
                         </div>
                     </div>
                     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                        <div class="row mt-2 d-flex flex-column-reverse flex-sm-row">
-                            <div class="col-12 col-sm-9">
+                        <div class="row mt-2 d-flex flex-xl-row flex-column-reverse flex-sm-column-reverse">
+                            <div class="col-12 col-xl-9 col-sm-12">
                                 <div class="row">
                                     @foreach($faculties as $faculty)
                                         @if(count($faculty->plan))
@@ -497,7 +497,7 @@
                                     @endforeach
                                 </div>
                             </div>
-                            <div class="col-12 col-sm-3">
+                            <div class="col-12 col-xl-3 col-sm-12">
                                 <h4 class="mb-3">Факультеты и институты</h4>
                                 <div class="row text-uppercase mb-5">
                                     @foreach($faculties as $faculty)
