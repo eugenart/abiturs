@@ -254,10 +254,10 @@ marquee {
     margin: auto;
 }
 
-#exampleModalScrollable .modal-content {
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-}
+/*#exampleModalScrollable .modal-content {*/
+/*    border-top-left-radius: 20px;*/
+/*    border-top-right-radius: 20px;*/
+/*}*/
 
 #exampleModalScrollable .modal-body {
     background-color: #0c5b95;
@@ -274,11 +274,11 @@ marquee {
     border: none;
     position: absolute;
     color: white;
-    right: 0px;
-    top: 20px;
+    right: -30px;
     width: 57px;
     height: 57px;
     z-index: 10000000;
+    top: -25px;
 }
 
 #exampleModalScrollable table {
@@ -310,8 +310,9 @@ marquee {
 
 .topline {
     box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.32);
-    border-top: 95px solid #007ed0;
-    height: 50px;
+    /*border-top: 50px solid #007ed0;*/
+    height: 75px;
+    background-color: #007ed0;
 }
 
 .inputGroup {
