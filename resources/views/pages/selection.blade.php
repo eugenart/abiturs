@@ -131,7 +131,7 @@
                                                                     data-content="{{$item}}">
                                                                 {{$item->speciality->code}}
                                                                 <b>{{$item->speciality->name}}</b>
-                                                                @if($item->specialization)&nbsp;-&nbsp;{{$item->specialization->name}}
+                                                                @if($item->specialization)&nbsp;- {{$item->specialization->name}}
                                                                 @endif
                                                             </button>
                                                         </td>
@@ -353,7 +353,7 @@
                                                                         data-content="{{$item}}">
                                                                     {{$item->speciality->code}}
                                                                     <b>{{$item->speciality->name}}</b>
-                                                                    @if($item->specialization)&nbsp;-&nbsp;{{$item->specialization->name}}
+                                                                    @if($item->specialization)&nbsp;- {{$item->specialization->name}}
                                                                     @endif
                                                                 </button>
                                                             </td>
@@ -635,7 +635,7 @@
                     "<div class='row d-flex justify-content-cetner'>" +
                     "<div class='col-12 d-flex align-items-center justify-content-center flex-column'>" +
                     "<h5><strong>" + v.name + " форма обучения, " + v.years + " " + year +  "</strong></h5>" +
-                "</div><div class='col-6'><h5 class='text-center'><strong>Количество мест:</strong></h5>"
+                "</div><div class='col-12 col-lg-6 col-xl-6 col-md-6 col-sm-12'><h5 class='text-center'><strong>Количество мест:</strong></h5>"
 
                 $.each(v.freeseats, (key, seat) => {
                     //templateRecipient += "<tr><td>" + seat.admissionBasis.name + "</td><td>" + seat.value + "</td></tr>"
@@ -644,7 +644,7 @@
 
                 //templateRecipient += "</tbody></table></div></div>";
                 templateRecipient += "</div>";
-                templateRecipient += "<div class='col-6'>";
+                templateRecipient += "<div class='col-12 col-lg-6 col-xl-6 col-md-6 col-sm-12'>";
                 templateRecipient += "<h5 class='text-center'><strong>Cтоимость обучения:</strong></h5>"
                 $.each(v.prices, (key, price) => {
                     templateRecipient += "<p class='mb-0 ml-lg-5 ml-xl-5 ml-md-5 ml-sm-0 ml-0 text-left'><span>" + price.info + " - </span><b>" + price.price + " ₽/год</b></p>"
