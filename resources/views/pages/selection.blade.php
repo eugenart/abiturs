@@ -129,8 +129,9 @@
                                                                     data-toggle="modal"
                                                                     data-target="#exampleModalScrollable"
                                                                     data-content="{{$item}}">
-                                                                {{$item->speciality->code}}
-                                                                <b>{{$item->speciality->name}}</b>@if($item->specialization)&nbsp;- {{$item->specialization->name}}
+                                                                {{$item->speciality->code}}<br>
+                                                                <b>{{$item->speciality->name}}</b>@if($item->specialization)<br>{{$item->specialization->name}}
+
                                                                 @endif
                                                             </button>
                                                         </td>
@@ -350,8 +351,8 @@
                                                                         data-toggle="modal"
                                                                         data-target="#exampleModalScrollable"
                                                                         data-content="{{$item}}">
-                                                                    {{$item->speciality->code}}
-                                                                    <b>{{$item->speciality->name}}</b>@if($item->specialization)&nbsp;- {{$item->specialization->name}}
+                                                                    {{$item->speciality->code}}<br>
+                                                                    <b>{{$item->speciality->name}}</b>@if($item->specialization)<br>{{$item->specialization->name}}
                                                                     @endif
                                                                 </button>
                                                             </td>
