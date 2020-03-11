@@ -17,7 +17,7 @@
                     </div>
                 </div>
                 <div class="modal-header pb-0 pt-0">
-                    <div class="row w-75 m-auto text-center pt-3 pb-3">
+                    <div class="row w-100 m-auto text-center pt-3 pb-3">
                         <div class="col-12"></div>
                         <div class="col-12"><h4 class="m-0"><b id="directionName">-</b><br><span id="spec"></span></h4></div>
                     </div>
@@ -25,7 +25,9 @@
                 <div class="modal-body text-center">
                     <div class="row">
                         <div class="col-12" id="examsNames">-</div>
-                        <hr class="w-100 bg-white">
+                        <div class="col-12">
+                            <hr class="w-100 bg-white">
+                        </div>
                         <div class="col-12" id="forms">
                         </div>
                     </div>
@@ -631,22 +633,21 @@
                 let year = years[number];
                 let templateRecipient =
                     "<div class='row d-flex justify-content-cetner'>" +
-                    "<div class='col-4 d-flex align-items-center justify-content-center flex-column'>" +
-                    "<h5><strong>" + v.name + "</strong></h5>" +
-                    "<h6><strong>" + v.years + " " + year + "</strong></h6>" +
-                "</div><div class='col-4'><h5><strong>Количество мест</strong></h5>"
+                    "<div class='col-12 d-flex align-items-center justify-content-center flex-column'>" +
+                    "<h5><strong>" + v.name + " форма обучения, " + v.years + " " + year +  "</strong></h5>" +
+                "</div><div class='col-6'><h5><strong>Количество мест:</strong></h5>"
 
                 $.each(v.freeseats, (key, seat) => {
                     //templateRecipient += "<tr><td>" + seat.admissionBasis.name + "</td><td>" + seat.value + "</td></tr>"
-                    templateRecipient += "<p class='m-0 text-center'><span>" + seat.admissionBasis.name + " - </span><b>" + seat.value + "</b></p>"
+                    templateRecipient += "<p class='mb-0 ml-5 text-left'><span>" + seat.admissionBasis.name + " - </span><b>" + seat.value + "</b></p>"
                 });
 
                 //templateRecipient += "</tbody></table></div></div>";
                 templateRecipient += "</div>";
-                templateRecipient += "<div class='col-4'>";
+                templateRecipient += "<div class='col-6'>";
                 templateRecipient += "<h5><strong>Цена за обучение:</strong></h5>"
                 $.each(v.prices, (key, price) => {
-                    templateRecipient += "<p class='m-0 text-center'><span>" + price.info + " - </span><b>" + price.price + "₽</b></p>"
+                    templateRecipient += "<p class='mb-0 ml-5 text-left'><span>" + price.info + " - </span><b>" + price.price + "₽</b></p>"
                 })
                 templateRecipient += "</div></div><hr class='w-100 bg-white' />";
 
