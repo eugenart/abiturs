@@ -42,7 +42,7 @@
     <div class="container-fluid p-5">
         <div class="row mt-2">
             <div class="col-12 col-sm-8 m-auto">
-                <h2 class="text-center h1-mrsu">Подбор образовательных программ</h2>
+                <h3 class="text-center h1-mrsu">Подбор образовательных программ</h3>
                 <h5 class="text-center h5-mrsu">Подберите направление подготовки по предметам ЕГЭ или из списка
                     направлений
                     подготовки и специальностей факультета или института
@@ -278,7 +278,7 @@
 
                             </div>
                             <div class="col-12 col-xl-3 col-sm-12">
-                                <h4 class="mb-3">Мои вступительные испытания</h4>
+                                <h4 class="mb-3 text-sm-center text-md-center">Мои вступительные испытания</h4>
                                 <div class="row text-uppercase mb-5">
                                     @foreach($subjects as $subject)
                                         <div class="col-12 col-lg-12 col-sm-4">
@@ -324,7 +324,7 @@
                                                             Минимальные
                                                             баллы
                                                         </th>
-                                                        <th width="10%" rowspan="3" style="vertical-align: middle" class="d-lg-none d-xl-none d-md-table-none d-sm-table-cell d-table-cell">
+                                                        <th width="10%" rowspan="3" style="vertical-align: middle" class="d-lg-none d-xl-none d-md-none d-sm-table-cell d-table-cell">
                                                             Мин. баллы
                                                         </th>
                                                         <th width="10%" class="d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-none d-none" rowspan="3" style="vertical-align: middle">Формы
@@ -502,7 +502,7 @@
                                 </div>
                             </div>
                             <div class="col-12 col-xl-3 col-sm-12">
-                                <h4 class="mb-3">Факультеты и институты</h4>
+                                <h4 class="mb-3 text-sm-center text-md-center">Факультеты и институты</h4>
                                 <div class="row text-uppercase mb-5">
                                     @foreach($faculties as $faculty)
                                         @if(count($faculty->plan))
