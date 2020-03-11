@@ -39,9 +39,9 @@
 
 
     <div class="container-fluid p-5">
-        <div class="row mt-5">
+        <div class="row mt-2">
             <div class="col-12 col-sm-8 m-auto">
-                <h1 class="text-center h1-mrsu">Подбор образовательных программ</h1>
+                <h2 class="text-center h1-mrsu">Подбор образовательных программ</h2>
                 <h5 class="text-center h5-mrsu">Подберите направление подготовки по предметам ЕГЭ или из списка
                     направлений
                     подготовки и специальностей факультета или института
@@ -50,7 +50,7 @@
         </div>
 
 
-        <div class="row mt-5">
+        <div class="row mt-3">
             <div class="col-12 p-0">
                 <ul class="nav nav-pills mb-3 d-flex justify-content-center" id="pills-tab" role="tablist">
                     <li class="nav-item swith-priem">
@@ -72,7 +72,7 @@
                 <div class="tab-content" id="pills-tabContent">
                     <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
                          aria-labelledby="pills-home-tab">
-                        <div class="row mt-5 d-flex flex-column-reverse flex-sm-row">
+                        <div class="row mt-2 d-flex flex-column-reverse flex-sm-row">
                             <div class="col-12 col-sm-9">
                                 @foreach($faculties as $faculty)
                                     @if(count($faculty->plan))
@@ -84,11 +84,11 @@
                                                    class="table table-sm table-scores w-100 table-b-border">
                                                 <thead>
                                                 <tr>
-                                                    <th width="30%" rowspan="3" style="vertical-align: middle">
+                                                    <th width="40%" rowspan="3" style="vertical-align: middle">
                                                         Направление
                                                         подготовки / Специальность
                                                     </th>
-                                                    <th width="30%" rowspan="3" style="vertical-align: middle">
+                                                    <th width="20%" rowspan="3" style="vertical-align: middle">
                                                         Вступительные
                                                         испытания в порядке
                                                         приоритетности для
@@ -101,18 +101,18 @@
                                                     <th width="10%" rowspan="3" style="vertical-align: middle">Формы
                                                         обучения
                                                     </th>
-                                                    <th colspan="4">
+                                                    <th colspan="4" width="20%">
                                                         Статистика проходных баллов <br> (бюджет, общий конкурс)
                                                     </th>
                                                 </tr>
                                                 <tr>
-                                                    <th width="10%"
+                                                    <th
                                                         style="vertical-align: middle">{{strval(date ( 'Y' ) - 1)}}
                                                     </th>
-                                                    <th width="10%"
+                                                    <th
                                                         style="vertical-align: middle">{{strval(date ( 'Y' ) - 2)}}
                                                     </th>
-                                                    <th width="10%"
+                                                    <th
                                                         style="vertical-align: middle">{{strval(date ( 'Y' ) - 3)}}
                                                     </th>
                                                 </tr>
@@ -121,7 +121,7 @@
                                                 @foreach($faculty->plan as $item)
                                                     <tr class="nps-tr search-tr"
                                                         data-exams="{{ implode(',', $item->subjects) }}">
-                                                        <td rowspan="{{count($item->scores) -1}}"
+                                                        <td rowspan="{{count($item->scores) }}"
                                                             style="border-bottom: 2px solid #2366a5 !important;">
                                                             <button style="white-space: normal;" type="button"
                                                                     class="btn btn-link text-left d-block w-100"
@@ -143,14 +143,14 @@
                                                                 @endif
                                                             @endif
                                                         @endforeach
-                                                        <td rowspan="{{count($item->scores) -1}}" class="text-center"
+                                                        <td rowspan="{{count($item->scores) }}" class="text-center"
                                                             style="border-bottom:2px solid #2366a5 !important;">
                                                             @foreach($item->studyForm as $sf)
                                                                 <span>{{$sf->name}}</span>
                                                                 <br>
                                                             @endforeach
                                                         </td>
-                                                        <td rowspan="{{count($item->scores) -1}}"
+                                                        <td rowspan="{{count($item->scores)}}"
                                                             class="text-center"
                                                             style="border-bottom:2px solid #2366a5 !important;">
                                                             @foreach($item->studyForm as $sf)
@@ -181,7 +181,7 @@
                                                                 @endif
                                                             @endforeach
                                                         </td>
-                                                        <td rowspan="{{count($item->scores) -1}}"
+                                                        <td rowspan="{{count($item->scores) }}"
                                                             class="text-center"
                                                             style="border-bottom:2px solid #2366a5 !important;">
                                                             @foreach($item->studyForm as $sf)
@@ -212,7 +212,7 @@
                                                                 @endif
                                                             @endforeach
                                                         </td>
-                                                        <td rowspan="{{count($item->scores) -1}}"
+                                                        <td rowspan="{{count($item->scores) }}"
                                                             class="text-center"
                                                             style="border-bottom:2px solid #2366a5 !important;">
                                                             @foreach($item->studyForm as $sf)
@@ -246,16 +246,17 @@
                                                                 @endif
                                                             @endforeach
                                                         </td>
+
                                                     </tr>
                                                     @foreach($item->scores as $k => $score)
                                                         @if (!strpos($score->subject->name, 'достижение'))
-                                                            @if($k !== 0 && $k !== (count($item->scores) - 1))
+                                                            @if($k !== 0 && $k !== (count($item->scores)-1))
                                                                 <tr class="nps-tr search-tr"
                                                                     data-exams="{{ implode(',', $item->subjects) }}">
                                                                     <td>{{$score->subject->name}}</td>
                                                                     <td class="text-center">{{$score->minScore}}</td>
                                                                 </tr>
-                                                            @elseif ($k == (count($item->scores) - 1))
+                                                            @elseif ($k == (count($item->scores)-1))
                                                                 <tr class="nps-tr search-tr"
                                                                     data-exams="{{ implode(',', $item->subjects) }}">
                                                                     <td style="border-bottom: 2px solid #2366a5 !important;">{{$score->subject->name}}</td>
@@ -274,7 +275,7 @@
 
                             </div>
                             <div class="col-12 col-sm-3">
-                                <h4 class="mb-3">Мои ступительные испытания</h4>
+                                <h4 class="mb-3">Мои вступительные испытания</h4>
                                 <div class="row text-uppercase mb-5">
                                     @foreach($subjects as $subject)
                                         <div class="col-6 col-sm-12">
@@ -292,7 +293,7 @@
                         </div>
                     </div>
                     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                        <div class="row mt-5 d-flex flex-column-reverse flex-sm-row">
+                        <div class="row mt-2 d-flex flex-column-reverse flex-sm-row">
                             <div class="col-12 col-sm-9">
                                 <div class="row">
                                     @foreach($faculties as $faculty)
@@ -306,11 +307,11 @@
                                                 <table class="table table-b-border table-sm table-scores w-100">
                                                     <thead>
                                                     <tr>
-                                                        <th width="30%" rowspan="3" style="vertical-align: middle">
+                                                        <th width="40%" rowspan="3" style="vertical-align: middle">
                                                             Направление
                                                             подготовки / Специальность
                                                         </th>
-                                                        <th width="30%" rowspan="3" style="vertical-align: middle">
+                                                        <th width="20%" rowspan="3" style="vertical-align: middle">
                                                             Вступительные
                                                             испытания в порядке
                                                             приоритетности для
@@ -323,18 +324,18 @@
                                                         <th width="10%" rowspan="3" style="vertical-align: middle">Формы
                                                             обучения
                                                         </th>
-                                                        <th colspan="4">
+                                                        <th colspan="4" width="20%">
                                                             Статистика проходных баллов <br> (бюджет, общий конкурс)
                                                         </th>
                                                     </tr>
                                                     <tr>
-                                                        <th width="10%"
+                                                        <th
                                                             style="vertical-align: middle">{{strval(date ( 'Y' ) - 1)}}
                                                         </th>
-                                                        <th width="10%"
+                                                        <th
                                                             style="vertical-align: middle">{{strval(date ( 'Y' ) - 2)}}
                                                         </th>
-                                                        <th width="10%"
+                                                        <th
                                                             style="vertical-align: middle">{{strval(date ( 'Y' ) - 3)}}
                                                         </th>
                                                     </tr>
@@ -343,7 +344,7 @@
                                                     @foreach($faculty->plan as $item)
                                                         <tr class="nps-tr search-tr-by-faculties"
                                                             data-exams="{{ implode(',', $item->subjects) }}">
-                                                            <td rowspan="{{count($item->scores) -1}}"
+                                                            <td rowspan="{{count($item->scores)}}"
                                                                 style="border-bottom: 2px solid #2366a5 !important;">
                                                                 <button style="white-space: normal;" type="button"
                                                                         class="btn btn-link text-left w-100 d-block"
@@ -365,15 +366,15 @@
                                                                     @endif
                                                                 @endif
                                                             @endforeach
-                                                            <td rowspan="{{count($item->scores) -1}}"
+                                                            <td rowspan="{{count($item->scores)}}"
                                                                 class="text-center"
                                                                 style="border-bottom:2px solid #2366a5 !important;">
                                                                 @foreach($item->studyForm as $sf)
-                                                                    <span>{{$sf->name}}</span>
+                                                                    <span style="white-space: nowrap" class="text-center">{{$sf->name}}</span>
                                                                     <br>
                                                                 @endforeach
                                                             </td>
-                                                            <td rowspan="{{count($item->scores) -1}}"
+                                                            <td rowspan="{{count($item->scores)}}"
                                                                 class="text-center"
                                                                 style="border-bottom:2px solid #2366a5 !important;">
                                                                 @foreach($item->studyForm as $sf)
@@ -387,12 +388,12 @@
                                                                                 $counter++;
                                                                             @endphp
                                                                             @if(!$fs->pastContests->contains('year', strval(date ( 'Y' ) - 1)))
-                                                                                <span>-</span>
+                                                                                <span class="text-center">-</span>
                                                                                 <br>
                                                                             @endif
                                                                             @foreach($fs->pastContests as $pc)
                                                                                 @if($pc->year === strval(date ( 'Y' ) - 1))
-                                                                                    <span>{{$pc->minScore}}</span>
+                                                                                    <span class="text-center">{{$pc->minScore}}</span>
                                                                                     <br>
                                                                                 @endif
                                                                             @endforeach
@@ -404,7 +405,7 @@
                                                                     @endif
                                                                 @endforeach
                                                             </td>
-                                                            <td rowspan="{{count($item->scores) -1}}"
+                                                            <td rowspan="{{count($item->scores)}}"
                                                                 class="text-center"
                                                                 style="border-bottom:2px solid #2366a5 !important;">
                                                                 @foreach($item->studyForm as $sf)
@@ -417,16 +418,15 @@
                                                                                 $counter = 1;
                                                                             @endphp
                                                                             @if(!$fs->pastContests->contains('year', strval(date ( 'Y' ) - 2)))
-                                                                                <span>-</span>
+                                                                                <span class="text-center">-</span>
                                                                                 <br>
                                                                             @endif
                                                                             @foreach($fs->pastContests as $pc)
                                                                                 @if($pc->year == strval(date ( 'Y' ) - 2))
-                                                                                    <span>{{$pc->minScore}}</span>
+                                                                                    <span class="text-center">{{$pc->minScore}}</span>
                                                                                     <br>
                                                                                 @endif
                                                                             @endforeach
-
                                                                         @endif
                                                                     @endforeach
                                                                     @if(!$counter)
@@ -435,7 +435,7 @@
                                                                     @endif
                                                                 @endforeach
                                                             </td>
-                                                            <td rowspan="{{count($item->scores) -1}}"
+                                                            <td rowspan="{{count($item->scores)}}"
                                                                 class="text-center"
                                                                 style="border-bottom:2px solid #2366a5 !important;">
                                                                 @foreach($item->studyForm as $sf)
@@ -450,13 +450,13 @@
                                                                             @endphp
 
                                                                             @if(!$fs->pastContests->contains('year', strval(date ( 'Y' ) - 3)))
-                                                                                <span>-</span>
+                                                                                <span class="text-center">-</span>
                                                                                 <br>
                                                                             @endif
 
                                                                             @foreach($fs->pastContests as $pc)
                                                                                 @if($pc->year === strval(date ( 'Y' ) - 3))
-                                                                                    <span>{{$pc->minScore}}</span>
+                                                                                    <span class="text-center">{{$pc->minScore}}</span>
                                                                                     <br>
                                                                                 @endif
                                                                             @endforeach
@@ -489,7 +489,6 @@
                                                                 @endif
                                                             @endif
                                                         @endforeach
-                                                        <tr>
                                                     @endforeach
                                                     </tbody>
                                                 </table>
