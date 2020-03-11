@@ -77,7 +77,12 @@ class SelectionController extends Controller
 
 
                     $plan->plan_comp = $plan->plan_comps()->first(); //связь с компетишн
-                    $plan->scores = $plan->plan_comp->scores()->get();
+                    $id_ind = Subject::where('name', 'LIKE', '%Индивидуальное достижение%')->get();
+                    $arr_id_ind = array();
+                    foreach ($id_ind as $id_ind_item){
+                        $arr_id_ind[] = $id_ind_item['id'];
+                    }
+                    $plan->scores = $plan->plan_comp->scores()->whereNotIn('id_subject', $arr_id_ind)->get();
                     foreach ($plan->scores as $value) {
                         $value->subject = $value->subject()->first();
                     }
