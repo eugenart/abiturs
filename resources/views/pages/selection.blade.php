@@ -635,7 +635,7 @@
                     "<div class='row d-flex justify-content-cetner'>" +
                     "<div class='col-12 d-flex align-items-center justify-content-center flex-column'>" +
                     "<h5><strong>" + v.name + " форма обучения, " + v.years + " " + year +  "</strong></h5>" +
-                "</div><div class='col-6'><h5><strong>Количество мест:</strong></h5>"
+                "</div><div class='col-6'><h5 class='text-center'><strong>Количество мест:</strong></h5>"
 
                 $.each(v.freeseats, (key, seat) => {
                     //templateRecipient += "<tr><td>" + seat.admissionBasis.name + "</td><td>" + seat.value + "</td></tr>"
@@ -645,9 +645,9 @@
                 //templateRecipient += "</tbody></table></div></div>";
                 templateRecipient += "</div>";
                 templateRecipient += "<div class='col-6'>";
-                templateRecipient += "<h5><strong>Цена за обучение:</strong></h5>"
+                templateRecipient += "<h5 class='text-center'><strong>Cтоимость обучения:</strong></h5>"
                 $.each(v.prices, (key, price) => {
-                    templateRecipient += "<p class='mb-0 ml-5 text-left'><span>" + price.info + " - </span><b>" + price.price + "₽</b></p>"
+                    templateRecipient += "<p class='mb-0 ml-5 text-left'><span>" + price.info + " - </span><b>" + price.price + " ₽/год</b></p>"
                 })
                 templateRecipient += "</div></div><hr class='w-100 bg-white' />";
 
