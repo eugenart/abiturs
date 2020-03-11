@@ -12,21 +12,20 @@
                     <i class="fa fa-times fa-2x"></i>
                 </button>
                 <div class="row w-100 m-0 p-0">
-                    <div class="topline col-12">
+                    <div class="topline col-12 d-flex align-items-center justify-content-center">
+                        <h4 class="m-0 text-white text-center" id="facultyName">-</h4>
                     </div>
                 </div>
-                <div class="modal-header">
-                    <div class="row w-100 text-center pt-3 pb-3">
-                        <div class="col-12"><h4 class="text-uppercase" id="facultyName">Институт механики и
-                                энергетики</h4></div>
-                        <div class="col-12"><h2><b id="directionName">Направление подготовки</b></h2></div>
+                <div class="modal-header pb-0 pt-0">
+                    <div class="row w-75 m-auto text-center pt-3 pb-3">
+                        <div class="col-12"></div>
+                        <div class="col-12"><h4 class="m-0"><b id="directionName">-</b><br><span id="spec"></span></h4></div>
                     </div>
                 </div>
                 <div class="modal-body text-center">
                     <div class="row">
-                        <div class="col-12">Вступительные испытания</div>
-                        <div class="col-12" id="examsNames">биология, математика, русский язык</div>
-                        <hr class="w-50 bg-white">
+                        <div class="col-12" id="examsNames">-</div>
+                        <hr class="w-100 bg-white">
                         <div class="col-12" id="forms">
                         </div>
                     </div>
@@ -124,14 +123,13 @@
                                                         <td rowspan="{{count($item->scores) }}"
                                                             style="border-bottom: 2px solid #2366a5 !important;">
                                                             <button style="white-space: normal;" type="button"
-                                                                    class="btn btn-link text-left d-block w-100"
+                                                                    class="btn btn-link text-left d-block w-100 p-0"
                                                                     data-toggle="modal"
                                                                     data-target="#exampleModalScrollable"
                                                                     data-content="{{$item}}">
                                                                 {{$item->speciality->code}}
                                                                 <b>{{$item->speciality->name}}</b>
-                                                                @if($item->specialization)
-                                                                    - {{$item->specialization->name}}
+                                                                @if($item->specialization)&nbsp;-&nbsp;{{$item->specialization->name}}
                                                                 @endif
                                                             </button>
                                                         </td>
@@ -347,14 +345,13 @@
                                                             <td rowspan="{{count($item->scores)}}"
                                                                 style="border-bottom: 2px solid #2366a5 !important;">
                                                                 <button style="white-space: normal;" type="button"
-                                                                        class="btn btn-link text-left w-100 d-block"
+                                                                        class="btn btn-link text-left w-100 p-0 d-block"
                                                                         data-toggle="modal"
                                                                         data-target="#exampleModalScrollable"
                                                                         data-content="{{$item}}">
                                                                     {{$item->speciality->code}}
                                                                     <b>{{$item->speciality->name}}</b>
-                                                                    @if($item->specialization)
-                                                                        - {{$item->specialization->name}}
+                                                                    @if($item->specialization)&nbsp;-&nbsp;{{$item->specialization->name}}
                                                                     @endif
                                                                 </button>
                                                             </td>
@@ -602,10 +599,20 @@
                 8: 'лет',
                 9: 'лет',
             };
+            let codes = {
+                3: 'Бакалавриат',
+                4: 'Магистратура',
+                5: 'Специалитет',
+                2: 'Среднее профессиональное образование',
+                6: 'Аспирантура',
+                7: 'Ординатура',
+                9: 'Ассистентура'
+            }
             var modal = $(this)
             console.log(recipient)
             modal.find('#facultyName').empty().text(recipient.faculty)
-            modal.find('#directionName').empty().text(recipient.speciality.name + (recipient.specialization !== null ? ' (' + recipient.specialization.name + ')' : ''))
+            modal.find('#directionName').empty().text(recipient.speciality.code + ' ' +recipient.speciality.name)
+            modal.find('#spec').empty().text((recipient.specialization !== null ? recipient.specialization.name : ''))
             let names = ''
             $.each(recipient.subjects, function (k, v) {
                 if (k === recipient.subjects.length - 1) {
@@ -614,36 +621,34 @@
                     names += v + ', '
                 }
             });
+            let specCode = recipient.speciality.code[4];
             modal.find('table').empty()
-            modal.find('#examsNames').empty().text(names)
+            modal.find('#examsNames').empty().text(codes[specCode])
 
             modal.find('#forms').empty()
             $.each(recipient.studyForm, (k, v) => {
                 let number = v.years.toString().slice(-1)
                 let year = years[number];
                 let templateRecipient =
-                    "<div class='row'>" +
-                    "<div class='col-12'>" +
-                    "<h4><strong>" + v.name + "</strong></h4>" +
-                    "<h5><strong>Количество лет обучения: " + v.years + " " + year + "</strong></h5>"
-                "<h5><strong>Количество мест - </strong></h5>" +
-                "</div>" +
-                "<div class='col-12'>" //+
-                //"<table class='teble table-borderless table-sm'><tbody>";
+                    "<div class='row d-flex justify-content-cetner'>" +
+                    "<div class='col-4 d-flex align-items-center justify-content-center flex-column'>" +
+                    "<h5><strong>" + v.name + "</strong></h5>" +
+                    "<h6><strong>" + v.years + " " + year + "</strong></h6>" +
+                "</div><div class='col-4'><h5><strong>Количество мест</strong></h5>"
 
                 $.each(v.freeseats, (key, seat) => {
                     //templateRecipient += "<tr><td>" + seat.admissionBasis.name + "</td><td>" + seat.value + "</td></tr>"
-                    templateRecipient += "<p class='text-center'><span>" + seat.admissionBasis.name + " - </span><b>" + seat.value + "</b></p>"
+                    templateRecipient += "<p class='m-0 text-center'><span>" + seat.admissionBasis.name + " - </span><b>" + seat.value + "</b></p>"
                 });
 
                 //templateRecipient += "</tbody></table></div></div>";
                 templateRecipient += "</div>";
-                templateRecipient += "<div class='col-12'>";
+                templateRecipient += "<div class='col-4'>";
                 templateRecipient += "<h5><strong>Цена за обучение:</strong></h5>"
                 $.each(v.prices, (key, price) => {
-                    templateRecipient += "<p class='text-center'><span>" + price.info + " - </span><b>" + price.price + "₽</b></p>"
+                    templateRecipient += "<p class='m-0 text-center'><span>" + price.info + " - </span><b>" + price.price + "₽</b></p>"
                 })
-                templateRecipient += "<hr class='w-50 bg-white' /></div></div>";
+                templateRecipient += "</div></div><hr class='w-100 bg-white' />";
 
                 modal.find('#forms').append(templateRecipient)
             })
