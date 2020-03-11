@@ -95,9 +95,12 @@
                                                         приоритетности для
                                                         ранжирования
                                                     </th>
-                                                    <th width="10%" rowspan="3" style="vertical-align: middle">
+                                                    <th width="10%" rowspan="3" style="vertical-align: middle" class="d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-none d-none">
                                                         Минимальные
                                                         баллы
+                                                    </th>
+                                                    <th width="10%" rowspan="3" style="vertical-align: middle" class="d-lg-none d-xl-none d-md-table-none d-sm-table-cell d-table-cell">
+                                                        Мин. баллы
                                                     </th>
                                                     <th width="10%" rowspan="3" style="vertical-align: middle" class="d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-none d-none">Формы
                                                         обучения
@@ -143,7 +146,7 @@
                                                                 @endif
                                                             @endif
                                                         @endforeach
-                                                        <td rowspan="{{count($item->scores) }}" class="text-center"
+                                                        <td rowspan="{{count($item->scores) }}" class="text-center d-lg-table-row d-xl-table-row d-md-table-row d-sm-none d-none"
                                                             style="border-bottom:2px solid #2366a5 !important;">
                                                             @foreach($item->studyForm as $sf)
                                                                 <span>{{$sf->name}}</span>
@@ -151,7 +154,7 @@
                                                             @endforeach
                                                         </td>
                                                         <td rowspan="{{count($item->scores)}}"
-                                                            class="text-center"
+                                                            class="text-center d-lg-table-row d-xl-table-row d-md-table-row d-sm-none d-none"
                                                             style="border-bottom:2px solid #2366a5 !important;">
                                                             @foreach($item->studyForm as $sf)
                                                                 @php
@@ -182,7 +185,7 @@
                                                             @endforeach
                                                         </td>
                                                         <td rowspan="{{count($item->scores) }}"
-                                                            class="text-center"
+                                                            class="text-center d-lg-table-row d-xl-table-row d-md-table-row d-sm-none d-none"
                                                             style="border-bottom:2px solid #2366a5 !important;">
                                                             @foreach($item->studyForm as $sf)
                                                                 @php
@@ -213,7 +216,7 @@
                                                             @endforeach
                                                         </td>
                                                         <td rowspan="{{count($item->scores) }}"
-                                                            class="text-center"
+                                                            class="text-center d-lg-table-row d-xl-table-row d-md-table-row d-sm-none d-none"
                                                             style="border-bottom:2px solid #2366a5 !important;">
                                                             @foreach($item->studyForm as $sf)
                                                                 @php
@@ -317,9 +320,12 @@
                                                             приоритетности для
                                                             ранжирования
                                                         </th>
-                                                        <th width="10%" rowspan="3" style="vertical-align: middle">
+                                                        <th width="10%" rowspan="3" style="vertical-align: middle" class="d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-none d-none">
                                                             Минимальные
                                                             баллы
+                                                        </th>
+                                                        <th width="10%" rowspan="3" style="vertical-align: middle" class="d-lg-none d-xl-none d-md-table-none d-sm-table-cell d-table-cell">
+                                                            Мин. баллы
                                                         </th>
                                                         <th width="10%" class="d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-none d-none" rowspan="3" style="vertical-align: middle">Формы
                                                             обучения
