@@ -278,7 +278,7 @@
                                 <h4 class="mb-3">Мои вступительные испытания</h4>
                                 <div class="row text-uppercase mb-5">
                                     @foreach($subjects as $subject)
-                                        <div class="col-6 col-sm-12">
+                                        <div class="col-12 col-lg-12 col-sm-4">
                                             <div class="form-group form-check check-subjects">
                                                 <input type="checkbox" class="form-check-input"
                                                        id="option{{ $loop->index }}"
@@ -502,7 +502,7 @@
                                 <div class="row text-uppercase mb-5">
                                     @foreach($faculties as $faculty)
                                         @if(count($faculty->plan))
-                                            <div class="col-12">
+                                            <div class="col-12 col-lg-12 col-sm-4">
                                                 <div class="form-group form-check check-faculties">
                                                     <input type="checkbox" class="form-check-input"
                                                            id="optionFaculties{{ $loop->index }}"
