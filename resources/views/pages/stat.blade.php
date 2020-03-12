@@ -39,7 +39,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="row">
-                        <select class="selectpicker form-control-sm col-lg-3 col-xl-3 col-md-3 col-12" multiple
+                        <select class="selectpicker mobile-device form-control-sm col-lg-3 col-xl-3 col-md-3 col-12" multiple
                                 title="Факультет / Институт" name="faculties[]" id="allfaculties">
                         </select>
                         <select class="selectpicker form-control-sm col-lg-3 col-xl-3 col-md-3 col-12"
@@ -53,7 +53,7 @@
                                 name="studyforms[]"
                                 id="studyforms">
                             @foreach ($studyFormsForInputs as $form)
-                                <option value="{{$form->id}}">{{$form->name}}</option>
+                                <option style="white-space: normal" value="{{$form->id}}">{{$form->name}}</option>
                             @endforeach
                         </select>
                         <div class="col-lg-3 col-xl-3 col-md-3 col-12 d-flex justify-content-center align-items-center">
@@ -371,6 +371,7 @@
             return false;
         });
     </script>
+
 
     <script>
         $(document).ready(() => {
