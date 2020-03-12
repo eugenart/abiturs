@@ -13,13 +13,13 @@
                 </button>
                 <div class="row w-100 m-0 p-0">
                     <div class="topline col-12 d-flex align-items-center justify-content-center">
-                        <h4 class="m-0 text-white text-center" id="facultyName">-</h4>
+                        <h5 class="m-0 text-white text-center" id="facultyName">-</h5>
                     </div>
                 </div>
                 <div class="modal-header pb-0 pt-0">
                     <div class="row w-100 m-auto text-center pt-3 pb-3">
                         <div class="col-12"></div>
-                        <div class="col-12"><h4 class="m-0"><b id="directionName">-</b><br><span id="spec"></span></h4></div>
+                        <div class="col-12"><h5 class="m-0"><b id="directionName">-</b><br><span id="spec"></span></h5></div>
                     </div>
                 </div>
                 <div class="modal-body text-center">
@@ -79,8 +79,8 @@
                                     @if(count($faculty->plan))
                                         <div class="col-12 mb-5 search-div"
                                              data-exams="{{ implode(',', $faculty->subjects) }}">
-                                            <h3><a href="" target="_blank" class="main-color">{{$faculty->name}}</a>
-                                            </h3>
+                                            <h4><a href="" target="_blank" class="main-color">{{$faculty->name}}</a>
+                                            </h4>
                                             <table style="width: 100% !important;"
                                                    class="table table-sm table-scores w-100 table-b-border">
                                                 <thead>
@@ -278,7 +278,7 @@
 
                             </div>
                             <div class="col-12 col-xl-3 col-sm-12">
-                                <h4 class="mb-3 text-sm-center text-md-center">Мои вступительные испытания</h4>
+                                <h4 class="mb-3 text-xl-left text-lg-left text-sm-center text-md-center text-center">Мои вступительные испытания</h4>
                                 <div class="row text-uppercase mb-5">
                                     @foreach($subjects as $subject)
                                         <div class="col-12 col-lg-12 col-sm-4">
@@ -304,9 +304,9 @@
                                             <div class="col-12 mb-5 search-div-by-faculties"
                                                  data-faculty="{{ $faculty->name }}"
                                                  data-exams="{{ implode(',', $faculty->subjects) }}">
-                                                <h3><a href="" style="color: #2366a5"
+                                                <h4><a href="" style="color: #2366a5"
                                                        target="_blank">{{$faculty->name}}</a>
-                                                </h3>
+                                                </h4>
                                                 <table class="table table-b-border table-sm table-scores w-100">
                                                     <thead>
                                                     <tr>
@@ -502,7 +502,7 @@
                                 </div>
                             </div>
                             <div class="col-12 col-xl-3 col-sm-12">
-                                <h4 class="mb-3 text-sm-center text-md-center">Факультеты и институты</h4>
+                                <h4 class="mb-3 text-xl-left text-lg-left text-sm-center text-md-center text-center">Факультеты и институты</h4>
                                 <div class="row text-uppercase mb-5">
                                     @foreach($faculties as $faculty)
                                         @if(count($faculty->plan))
