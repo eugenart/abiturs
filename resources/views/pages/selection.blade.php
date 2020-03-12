@@ -149,7 +149,7 @@
                                                         <td rowspan="{{count($item->scores) }}" class="text-center d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none"
                                                             style="border-bottom:2px solid #2366a5 !important;">
                                                             @foreach($item->studyForm as $sf)
-                                                                <span>{{$sf->name}}</span>
+                                                                <span style="white-space: nowrap">{{$sf->name}}</span>
                                                                 <br>
                                                             @endforeach
                                                         </td>
