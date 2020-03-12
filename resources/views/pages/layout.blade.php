@@ -44,8 +44,8 @@
                              alt=""></a>
         </div>
         <div class="col-6 justify-content-end d-flex align-items-center">
-            <a href="" class="ml-4 foreign-link mr-3">Ru </a>
-            <img src="{{asset('storage/images/eye-white.png')}}" class="ml-2 mr-4 d-lg-none d-md-block" width="35" height="auto" alt="">
+            <a href="" class="ml-3 mr-4 foreign-link ">En </a>
+{{--            <img src="{{asset('storage/images/eye-white.png')}}" class="ml-2 mr-4 d-lg-none d-md-block" width="35" height="auto" alt="">--}}
             <img src="{{asset('storage/images/eye-blue.png')}}" class="ml-2 mr-4 d-lg-block d-md-none d-sm-none mrsu-eye-blue" width="35" height="auto" alt="">
             <button class="hamburger hamburger--collapse  d-lg-none d-md-block" type="button" data-toggle="collapse"
                     data-target="#navbarNav"
@@ -110,7 +110,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
+<script src="{{asset('js/bootstrap-select.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.9/js/i18n/defaults-ru_RU.min.js"></script>
 <script>
     $('.hamburger').click(() => {

@@ -217,7 +217,7 @@
                                                         </td>
                                                         <td rowspan="{{count($item->scores) }}"
                                                             class="text-center d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none"
-                                                            style="border-bottom:2px solid #2366a5 !important;">
+                                                            style="border-bottom:2px solid #2366a5 !important; border-right:2px solid #2366a5 !important;">
                                                             @foreach($item->studyForm as $sf)
                                                                 @php
                                                                     $counter = 0;
@@ -441,7 +441,7 @@
                                                             </td>
                                                             <td rowspan="{{count($item->scores)}}"
                                                                 class="text-center d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none"
-                                                                style="border-bottom:2px solid #2366a5 !important;">
+                                                                style="border-bottom:2px solid #2366a5 !important; border-right:2px solid #2366a5 !important;">
                                                                 @foreach($item->studyForm as $sf)
                                                                     @php
                                                                         $counter = 0;
