@@ -616,7 +616,11 @@
                 9: 'Ассистентура'
             }
             var modal = $(this)
-            console.log(recipient)
+            if ((recipient.faculty).length > 30) {
+                $('#facultyName').css({'font-size':'1.25rem'})
+            } else {
+                $('#facultyName').css({'font-size':'1.5rem'})
+            }
             modal.find('#facultyName').empty().text(recipient.faculty)
             modal.find('#directionName').empty().text(recipient.speciality.code + ' ' +recipient.speciality.name)
             modal.find('#spec').empty().text((recipient.specialization !== null ? recipient.specialization.name : ''))
