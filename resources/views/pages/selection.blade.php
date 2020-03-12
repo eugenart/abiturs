@@ -277,7 +277,7 @@
                                 @endforeach
 
                             </div>
-                            <div class="col-12 col-xl-3 col-sm-12 pl-0 pr-0">
+                            <div class="col-12 col-xl-3 col-sm-12">
                                 <h4 class="mb-3 text-xl-left text-lg-left text-sm-center text-md-center text-center">Мои вступительные испытания</h4>
                                 <div class="row text-uppercase mb-5">
                                     @foreach($subjects as $subject)
