@@ -39,7 +39,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="row">
-                        <select class="selectpicker mobile-device form-control-sm col-lg-3 col-xl-3 col-md-3 col-12" multiple
+                        <select class="selectpicker form-control-sm col-lg-3 col-xl-3 col-md-3 col-12" multiple
                                 title="Факультет / Институт" name="faculties[]" id="allfaculties">
                         </select>
                         <select class="selectpicker form-control-sm col-lg-3 col-xl-3 col-md-3 col-12"
@@ -379,6 +379,12 @@
             faculties = {!! json_encode($faculties) !!};
             fillFaculties(faculties);
             fillSpecialitiesWithCheck(faculties)
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
+                $('.selectpicker').selectpicker('mobile');
+            }
+            else {
+                $('.selectpicker').selectpicker({});
+            }
         })
 
         function fillFaculties(faculties) {
