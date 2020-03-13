@@ -3,31 +3,37 @@
     <div id="square">
         <i class="fa fa-arrow-up"></i>
     </div>
-    @if(isset($studyForms))
-        <div class="modal fade" id="QRCode" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <img class="d-block m-auto"
-                             src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl={{$actual_link}}&choe=UTF-8"/>
-                    </div>
-                </div>
-            </div>
-        </div>
-    @endif
+{{--    @if(isset($studyForms))--}}
+    {{--        <div class="modal fade" id="QRCode" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"--}}
+    {{--             aria-hidden="true">--}}
+    {{--            <div class="modal-dialog" role="document">--}}
+    {{--                <div class="modal-content">--}}
+    {{--                    <div class="modal-header">--}}
+    {{--                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">--}}
+    {{--                            <span aria-hidden="true">&times;</span>--}}
+    {{--                        </button>--}}
+    {{--                    </div>--}}
+    {{--                    <div class="modal-body">--}}
+    {{--                        <img class="d-block m-auto"--}}
+    {{--                             src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl={{$actual_link}}&choe=UTF-8"/>--}}
+    {{--                    </div>--}}
+    {{--                </div>--}}
+    {{--            </div>--}}
+    {{--        </div>--}}
+    {{--    @endif--}}
     @if(isset($studyForms))
         <div class="container">
             <div class="row m-4">
                 <div class="col-12 d-flex justify-content-between align-items-center">
-                    <div class="m-0 p-0 h6 d-lg-block d-none"><a href="" class="underline-label main-color" data-toggle="modal"
-                                               data-target="#QRCode">Получить
-                            QR-код запроса</a></div>
+                    {{--                    <div class="m-0 p-0 h6 d-lg-block d-none"><a href="" class="underline-label main-color" data-toggle="modal"--}}
+                    {{--                                               data-target="#QRCode">Получить--}}
+                    {{--                            QR-код запроса</a>--}}
+                    <div class="m-0 p-0 h6 d-lg-block d-none">
+                        @if (isset($studyForms))
+                            <img class="d-block m-auto" style="width: 100px; height: auto"
+                                 src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl={{$actual_link}}&choe=UTF-8"/>
+                        @endif
+                    </div>
                     <span
                         class="m-0 p-0 main-color w-100 text-center">Дата последнего обновления: <b>20.02.2020 18:30</b></span>
                 </div>
@@ -155,7 +161,6 @@
                                                                                             <p class="m-0 text-uppercase font-weight-bold">{{$faculty->name}}</p>
                                                                                             <p class="m-0 font-weight-bold">{{$speciality->name}}</p>
                                                                                             <p class="m-0">Кол-во
-                                                                                                бюджетных
                                                                                                 мест: <span
                                                                                                     class="font-weight-bold">{{$speciality->freeSeatsNumber}}</span>
                                                                                             </p>
@@ -206,8 +211,8 @@
                                                                             - второе согласие</span>
                                                                                 </li>
                                                                             </ol>
-                                                                                <span
-                                                                                    class="d-inline-block w-100"><b>БИД</b> - балл за индивидуальные достижения</span>
+                                                                            <span
+                                                                                class="d-inline-block w-100"><b>БИД</b> - балл за индивидуальные достижения</span>
                                                                             <span
                                                                                 class="d-inline-block w-100"><b>СКБ</b> - сумма конкурсных баллов</span>
 
@@ -419,8 +424,8 @@
 
         function fillFaculties(faculties) {
             faculties.sort((prev, next) => {
-                if ( prev.name < next.name ) return -1;
-                if ( prev.name < next.name ) return 1;
+                if (prev.name < next.name) return -1;
+                if (prev.name < next.name) return 1;
             });
             $.each(faculties, (k, faculty) => {
                 if ((faculty.speciality).length) {
