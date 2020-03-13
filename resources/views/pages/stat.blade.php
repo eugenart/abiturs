@@ -39,7 +39,8 @@
             <div class="row">
                 <div class="col-12">
                     <div class="row">
-                        <select style="font-size: 16px !important;" class="selectpicker form-control-sm col-lg-3 col-xl-3 col-md-3 col-12" multiple
+                        <select style="font-size: 16px !important;"
+                                class="selectpicker form-control-sm col-lg-3 col-xl-3 col-md-3 col-12" multiple
                                 title="Факультет / Институт" name="faculties[]" id="allfaculties">
                         </select>
                         <select class="selectpicker form-control-sm col-lg-3 col-xl-3 col-md-3 col-12"
@@ -78,7 +79,7 @@
                 </div>
             </div>
         </form>
-    </div >
+    </div>
     <div class="container-fluid pt-0 padding-0 mb-5">
         <div class="row mt-4">
             <div class="col-12">
@@ -184,10 +185,12 @@
                                                                                style="color: rgba(0,128,0,0.51)"></i>
                                                                             &mdash; Второе согласие на зачисление
                                                                         </div>
-                                                                        <div class="d-xl-none d-lg-flex d-md-flex d-sm-flex flex-column">
+                                                                        <div
+                                                                            class="d-xl-none d-lg-flex d-md-flex d-sm-flex flex-column">
                                                                             <span class="d-inline-block w-100"><b>О</b> - оригинал диплома</span>
                                                                             <span class="d-inline-block w-100"><b>C</b> - согласие на зачисление</span>
-                                                                            <span class="d-inline-block w-100"><b>СКБ</b> - сумма конкурсных баллов</span>
+                                                                            <span
+                                                                                class="d-inline-block w-100"><b>СКБ</b> - сумма конкурсных баллов</span>
                                                                         </div>
                                                                     </div>
 
@@ -374,18 +377,21 @@
 
 
     <script>
+        $('select').click(() => {
+            $('.selectpicker .dropdown-menu').css({'min-width': '0', 'max-width': '100vw'})
+        })
         $(document).ready(() => {
             $('#submitInfo').attr('disabled', true)
             faculties = {!! json_encode($faculties) !!};
             fillFaculties(faculties);
             fillSpecialitiesWithCheck(faculties)
-            if (/android|webos|iphone|ipad|ipod|blackberry|windows phone|/i.test(navigator.userAgent.toLowerCase())) {
-                $('.selectpicker').selectpicker('mobile');
-                console.log('mobile')
-            }
-            else {
-                $('.selectpicker').selectpicker({});
-            }
+            // if (/android|webos|iphone|ipad|ipod|blackberry|windows phone|/i.test(navigator.userAgent.toLowerCase())) {
+            //     $('.selectpicker').selectpicker('mobile');
+            //     console.log('mobile')
+            // }
+            // else {
+            //     $('.selectpicker').selectpicker({});
+            // }
         })
 
         function fillFaculties(faculties) {
