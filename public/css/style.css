@@ -274,11 +274,11 @@ marquee {
     border: none;
     position: absolute;
     color: white;
-    right: -30px;
+    right: -15px;
     width: 57px;
     height: 57px;
     z-index: 10000000;
-    top: -25px;
+    top: -45px;
 }
 
 #exampleModalScrollable table {

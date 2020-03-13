@@ -6,7 +6,7 @@
 
     <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog"
          aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered" role="document">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered mt-5" role="document">
             <div class="modal-content">
                 <button type="button" class="close-btn" data-dismiss="modal" aria-label="Close">
                     <i class="fa fa-times fa-2x"></i>
