@@ -535,6 +535,12 @@ marquee {
     border: 1px solid #2366a5 !important;
 }
 
+.dropdown-item:focus, .dropdown-item:hover, .dropdown-item:active {
+    color: #16181b;
+    text-decoration: none;
+     background-color: transparent !important;
+    outline: none !important;
+}
 .table-scores th {
     color: white;
 }
