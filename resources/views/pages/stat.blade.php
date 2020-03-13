@@ -379,6 +379,7 @@
             faculties = {!! json_encode($faculties) !!};
             fillFaculties(faculties);
             fillSpecialitiesWithCheck(faculties)
+            console.log(navigator.userAgent)
             if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
                 $('.selectpicker').selectpicker('mobile');
             }
