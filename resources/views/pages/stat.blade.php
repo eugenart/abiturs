@@ -25,11 +25,11 @@
         <div class="container">
             <div class="row m-4">
                 <div class="col-12 d-flex justify-content-between align-items-center">
-                    <div class="m-0 p-0 h6"><a href="" class="underline-label main-color" data-toggle="modal"
+                    <div class="m-0 p-0 h6 d-lg-block d-none"><a href="" class="underline-label main-color" data-toggle="modal"
                                                data-target="#QRCode">Получить
                             QR-код запроса</a></div>
                     <span
-                        class="m-0 p-0 main-color">Дата последнего обновления инфорации: <b>20.02.2020 18:30</b></span>
+                        class="m-0 p-0 main-color w-100 text-center">Дата последнего обновления: <b>20.02.2020 18:30</b></span>
                 </div>
             </div>
         </div>
@@ -81,8 +81,8 @@
             </div>
         </form>
     </div>
-    <div class="container-fluid pt-0 padding-0 mb-5">
-        <div class="row mt-4">
+    <div class="container-fluid pt-0 padding-0 mb-5 mt-xl-3">
+        <div class="row">
             <div class="col-12">
                 @if(isset($notification))
                     <div class="text-center m-4 h4">{{$notification}}</div>
@@ -99,7 +99,7 @@
                                                     @foreach($preparationLevel->faculties as $faculty)
                                                         @if(isset($faculty->specialities))
                                                             @foreach($faculty->specialities as $speciality)
-                                                                <div class="row mt-4 justify-content-start">
+                                                                <div class="row mt-1 justify-content-start">
                                                                     <div class="col-xl-8 col-lg-12 col-md-12 col-12">
                                                                         <div
                                                                             class="exam-info-outer w-100 d-lg-flex flex-lg-row d-sm-flex flex-sm-column d-flex flex-column">
@@ -172,7 +172,7 @@
                                                                         </div>
                                                                     </div>
                                                                     <div
-                                                                        class="col-xl-4 col-lg-12 col-md-12 col-12 mb-lg-4 mb-2">
+                                                                        class="col-xl-4 col-lg-12 col-md-12 col-12 mb-lg-4 mb-lg-2">
                                                                         <div
                                                                             class="font-weight-bold d-xl-block d-lg-none d-none">
                                                                             Согласие:
@@ -232,7 +232,7 @@
                                                                 @endif
                                                                 @if(isset($speciality->abiturs))
                                                                     <table
-                                                                        class="table table-bordered table-sm base-exams-table">
+                                                                        class="table table-bordered table-sm base-exams-table mt-xl-2 mt-0">
                                                                         <thead style="background-color: #e9eff6">
                                                                         <tr style="vertical-align: center">
                                                                             <th rowspan="2" class="text-center">№</th>

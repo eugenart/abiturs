@@ -195,7 +195,7 @@ body {
 
 .exam-info-outer {
     width: max-content;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     display: flex;
     align-items: stretch;
     height: max-content;
@@ -424,6 +424,11 @@ marquee {
 
 .border-priem {
     border: 1px solid #2366a5 !important;
+}
+
+.swith-priem {
+    min-width: 340px;
+    font-size: 20px !important;
 }
 
 .swith-priem a {
@@ -698,7 +703,7 @@ marquee {
     }
 
     .swith-priem a {
-        font-size: .65rem;
+        font-size: 1rem;
         padding: .5rem .6rem !important;
     }
 
