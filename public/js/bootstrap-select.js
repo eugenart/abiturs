@@ -910,7 +910,7 @@
                 var S = this, t = z(document);
 
                 function e() {
-                    S.options.liveSearch ? S.$searchbox.trigger("focus") : S.$menuInner.trigger("focus")
+                    // S.options.liveSearch ? S.$searchbox.trigger("focus") : S.$menuInner.trigger("focus")
                 }
 
                 function i() {
