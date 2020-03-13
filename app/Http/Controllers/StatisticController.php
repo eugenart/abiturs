@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\AdmissionBasis;
 use App\Category;
 use App\Faculty;
+use App\Freeseats_bases;
 use App\Plan;
 use App\PlanCompetition;
 use App\PreparationLevel;
@@ -164,7 +165,12 @@ class StatisticController extends Controller
                                         ->where('id_studyForm', '=', $studyForm->id)
                                         ->first();
                                     if(!empty($idPlan)) {
-                                        $freeSeatsNumber = PlanCompetition::where('id_plan', '=', intval($idPlan->id))->first();
+//                                        $freeSeatsNumber = PlanCompetition::where('id_plan', '=', intval($idPlan->id))->first();
+                                        $id_plan_comps = PlanCompetition::where('id_plan', '=', intval($idPlan->id))->first();
+                                        if(!empty($id_plan_comps)){
+                                            $freeSeatsNumber = Freeseats_bases::where('id_plan_comp', '=', intval($id_plan_comps->id))->
+                                                where('id_admissionBasis', '=', intval($admissionBasis->id))->first();
+                                        }
                                     }
 
 //                                    $freeSeatsNumber = TrainingArea::where('id_speciality', '=', $speciality->id)
@@ -181,9 +187,9 @@ class StatisticController extends Controller
                                             }
                                         }
                                         if (!empty($freeSeatsNumber)) {
-                                            $speciality->freeSeatsNumber = $freeSeatsNumber->freeSeatsNumber;
-                                            if ($freeSeatsNumber->freeSeatsNumber != 0) {
-                                                $speciality->originalsCount = round(floatval($originalsCount) / $freeSeatsNumber->freeSeatsNumber, 2);
+                                            $speciality->freeSeatsNumber = $freeSeatsNumber->value;
+                                            if ($freeSeatsNumber->value != 0) {
+                                                $speciality->originalsCount = round(floatval($originalsCount) / $freeSeatsNumber->value, 2);
                                             }
                                         } else {
                                             $speciality->originalsCount = null;
