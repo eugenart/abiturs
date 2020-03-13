@@ -45,7 +45,7 @@
                         </select>
                         <select class="selectpicker form-control-sm col-lg-3 col-xl-3 col-md-3 col-12"
                                 data-live-search="true" multiple
-                                title="Специальность"
+                                title="Направление / Специальность"
                                 name="specialities[]" id="specialities">
                         </select>
 
@@ -418,8 +418,14 @@
         })
 
         function fillFaculties(faculties) {
+            faculties.sort((prev, next) => {
+                if ( prev.name < next.name ) return -1;
+                if ( prev.name < next.name ) return 1;
+            });
             $.each(faculties, (k, faculty) => {
-                $('#allfaculties').append('<option style="word-break: break-all;" value="' + faculty.id + '">' + faculty.name + '</option>')
+                if ((faculty.speciality).length) {
+                    $('#allfaculties').append('<option style="word-break: break-all;" value="' + faculty.id + '">' + faculty.name + '</option>')
+                }
                 refreshInputs();
             })
         }
