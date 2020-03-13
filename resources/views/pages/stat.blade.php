@@ -174,15 +174,15 @@
                                                                     <div
                                                                         class="col-xl-4 col-lg-12 col-md-12 col-12 mb-lg-4 mb-2">
                                                                         <div
-                                                                            class="font-weight-bold d-xl-block d-lg-none">
+                                                                            class="font-weight-bold d-xl-block d-lg-none d-none">
                                                                             Согласие:
                                                                         </div>
-                                                                        <div class="d-xl-block d-lg-none"><i
+                                                                        <div class="d-xl-block d-lg-none d-none"><i
                                                                                 class="fa fa-check-circle "
                                                                                 style="color: rgba(0,128,0,0.51)"></i>
                                                                             &mdash; Первое согласие на зачисление
                                                                         </div>
-                                                                        <div class="d-xl-block d-lg-none"><i
+                                                                        <div class="d-xl-block d-lg-none d-none"><i
                                                                                 class="fa fa-check-circle"
                                                                                 style="color: rgba(0,128,0,0.51)"></i>
                                                                             <i class="fa fa-check-circle"
