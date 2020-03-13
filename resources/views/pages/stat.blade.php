@@ -57,7 +57,8 @@
                                 <option style="white-space: normal" value="{{$form->id}}">{{$form->name}}</option>
                             @endforeach
                         </select>
-                        <div class="col-lg-3 col-xl-3 col-md-3 col-12 d-flex justify-content-center align-items-center">
+                        <div
+                            class="col-lg-3 col-xl-3 col-md-3 col-12 mt-xl-0 mt-md-1 mt-1 d-flex justify-content-center align-items-center">
                             <button class="w-100 btn btn-warning btn-sm" type="button" id="clearSelects">Отменить
                                 выбор
                             </button>
@@ -172,14 +173,17 @@
                                                                     </div>
                                                                     <div
                                                                         class="col-xl-4 col-lg-12 col-md-12 col-12 mb-lg-4 mb-2">
-                                                                        <div class="font-weight-bold">
+                                                                        <div
+                                                                            class="font-weight-bold d-xl-block d-lg-none">
                                                                             Согласие:
                                                                         </div>
-                                                                        <div><i class="fa fa-check-circle"
+                                                                        <div class="d-xl-block d-lg-none"><i
+                                                                                class="fa fa-check-circle "
                                                                                 style="color: rgba(0,128,0,0.51)"></i>
                                                                             &mdash; Первое согласие на зачисление
                                                                         </div>
-                                                                        <div><i class="fa fa-check-circle"
+                                                                        <div class="d-xl-block d-lg-none"><i
+                                                                                class="fa fa-check-circle"
                                                                                 style="color: rgba(0,128,0,0.51)"></i>
                                                                             <i class="fa fa-check-circle"
                                                                                style="color: rgba(0,128,0,0.51)"></i>
@@ -187,10 +191,26 @@
                                                                         </div>
                                                                         <div
                                                                             class="d-xl-none d-lg-flex d-md-flex d-sm-flex flex-column">
+                                                                            <span class="d-inline-block w-100"><b>Легенда:</b></span>
                                                                             <span class="d-inline-block w-100"><b>О</b> - оригинал диплома</span>
-                                                                            <span class="d-inline-block w-100"><b>C</b> - согласие на зачисление</span>
+                                                                            <span class="d-inline-block w-100"><b>C</b> - согласие на зачисление:</span>
+                                                                            <ol class="d-inline-block w-100 mb-0 list-unstyled pl-2">
+                                                                                <li><span><i class="fa fa-check-circle "
+                                                                                             style="color: rgba(0,128,0,0.51)"></i>
+                                                                            - первое согласие</span>
+                                                                                </li>
+                                                                                <li><span><i class="fa fa-check-circle"
+                                                                                             style="color: rgba(0,128,0,0.51)"></i>
+                                                                            <i class="fa fa-check-circle"
+                                                                               style="color: rgba(0,128,0,0.51)"></i>
+                                                                            - второе согласие</span>
+                                                                                </li>
+                                                                            </ol>
+                                                                                <span
+                                                                                    class="d-inline-block w-100"><b>БИД</b> - балл за индивидуальные достижения</span>
                                                                             <span
                                                                                 class="d-inline-block w-100"><b>СКБ</b> - сумма конкурсных баллов</span>
+
                                                                         </div>
                                                                     </div>
 
@@ -235,7 +255,7 @@
                                                                                 <span
                                                                                     class="d-xl-none d-lg-inline d-inline">С</span>
                                                                             </th>
-                                                                            <th class="d-xl-table-cell d-lg-none d-none"
+                                                                            <th class="d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none"
                                                                                 colspan="{{count($speciality->abiturs->first()->score) + 1}}">
                                                                                 @foreach($speciality->abiturs->first()->score as $i => $sc)
                                                                                     @if($i < count($speciality->abiturs->first()->score) -1)
@@ -244,10 +264,13 @@
                                                                                     @else
                                                                                         <p class="m-0"> {{$sc->priority}}
                                                                                             ) {{$sc->subject->name}}</p>
-                                                                                        <p class="m-0">{{$i + 2}} ) Балл
+                                                                                        <p class="m-0 d-xl-inline d-lg-none d-none">{{$i + 2}}
+                                                                                            ) Балл
                                                                                             за
                                                                                             индивидуальные
                                                                                             достижения</p>
+                                                                                        <p class="m-0 d-xl-none d-lg-inline d-inline">{{$i + 2}}
+                                                                                            ) БИД</p>
                                                                                     @endif
                                                                                 @endforeach
                                                                             </th>
@@ -277,7 +300,7 @@
                                                                                 общежитии
                                                                             </th>
                                                                         </tr>
-                                                                        <tr class="text-center d-xl-table-row d-lg-none d-none">
+                                                                        <tr class="text-center d-lg-table-row d-xl-table-row d-md-table-row d-sm-table-row d-none">
                                                                             @foreach($speciality->abiturs->first()->score as $i => $sc)
                                                                                 @if($i < count($speciality->abiturs->first()->score) -1)
                                                                                     <th>{{$sc->priority}}</th>
@@ -311,9 +334,9 @@
                                                                                         @endif
                                                                                     </td>
                                                                                     @foreach($abitur->score as $ab_sc)
-                                                                                        <td class="d-xl-table-cell d-lg-none d-none">{{$ab_sc->score}}</td>
+                                                                                        <td class="d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none">{{$ab_sc->score}}</td>
                                                                                     @endforeach
-                                                                                    <td class="d-xl-table-cell d-lg-none d-none">{{$abitur->indAchievement}}</td>
+                                                                                    <td class="d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none">{{$abitur->indAchievement}}</td>
                                                                                     <td class="d-xl-table-cell d-lg-none d-none">{{$abitur->summ}}</td>
                                                                                     <td>{{$abitur->summContest}}</td>
                                                                                     <td class="d-xl-table-cell d-lg-none d-none">
@@ -348,7 +371,7 @@
                 @else
                     <div class="text-center m-4 h4">Введите <b>ФИО</b> или выберите <b>факультет/институт</b> для
                         получения
-                        информации о статистике приема.
+                        информации о статистике приема
                     </div>
                 @endif
             </div>
