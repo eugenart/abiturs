@@ -239,6 +239,8 @@
 }
 
 .bootstrap-select .dropdown-menu.inner {
+    min-width: 100%;
+    width: fit-content;
     position: static;
     float: none;
     border: 0;
@@ -332,12 +334,16 @@
     margin-top: -1px
 }
 
-.bootstrap-select.show-tick .dropdown-menu .selected span.check-mark {
-    position: absolute;
-    display: inline-block;
-    right: 15px;
-    top: 5px
+.bootstrap-select.show-tick .dropdown-menu li.selected  {
+    background-color: #d1e1f5;
 }
+
+/*.bootstrap-select.show-tick .dropdown-menu .selected span.check-mark {*/
+/*    position: absolute;*/
+/*    display: inline-block;*/
+/*    right: 15px;*/
+/*    top: 5px*/
+/*}*/
 
 .bootstrap-select.show-tick .dropdown-menu li a span.text {
     margin-right: 34px
