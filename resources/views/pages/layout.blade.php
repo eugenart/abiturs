@@ -82,7 +82,10 @@
                         Статистика приема
                     </a>
                     <div class="dropdown-menu main-color" aria-labelledby="navbarDropdown">
-                        <a class="nav-link text-white" href="{{route('stat.index')}}">Бакалавриат</a>
+                        <a class="nav-link text-white" href="{{route('stat.index')}}">Бакалавриат и специалитет</a>
+                        <a class="nav-link text-white" href="{{route('stat.index')}}">Магистратура</a>
+                        <a class="nav-link text-white" href="{{route('stat.index')}}">Аспирантура</a>
+                        <a class="nav-link text-white" href="{{route('stat.index')}}">Среднее профессиональное образование</a>
                     </div>
                 </li>
                 <li class="nav-item active d-flex align-items-center justify-content-center">

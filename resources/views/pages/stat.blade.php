@@ -3,7 +3,7 @@
     <div id="square">
         <i class="fa fa-arrow-up"></i>
     </div>
-{{--    @if(isset($studyForms))--}}
+    {{--    @if(isset($studyForms))--}}
     {{--        <div class="modal fade" id="QRCode" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"--}}
     {{--             aria-hidden="true">--}}
     {{--            <div class="modal-dialog" role="document">--}}
@@ -355,6 +355,11 @@
                                                                                         @endif
                                                                                     </td>
                                                                                 </tr>
+                                                                                @if($abitur->yellowline)
+                                                                                    <tr  style="background-color: yellow;">
+                                                                                        <td colspan="100%"></td>
+                                                                                    </tr>
+                                                                                @endif
                                                                                 @endforeach
                                                                         </tbody>
                                                                     </table>

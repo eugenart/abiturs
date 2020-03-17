@@ -49,7 +49,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
 //    Route::get('/parse-areas', 'ParserJsonController@parseAreas')->name('parse.parseAreas');
     Route::get('/parse-sub', 'ParserController@parseFromXlsSub')->name('parse.parseFromXlsSub');
-    Route::get('/parse-areassarbach', 'ParserJsonController@parseAreasSarBach')->name('parse.parseAreasSarBach');
+    Route::get('/parse-plansbach', 'ParserJsonController@parsePlansBach')->name('parse.parsePlansBach');
 
 });
 Auth::routes();
