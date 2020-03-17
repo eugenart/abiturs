@@ -8,7 +8,8 @@ class Statistic extends Model
 {
     protected $fillable = ['id_student', 'id_faculty', 'id_speciality', 'id_specialization',
         'id_preparationLevel', 'id_admissionBasis', 'id_studyForm', 'id_category', 'accept', 'original',
-        'summ', 'indAchievement', 'summContest', 'needHostel', 'notice1', 'notice2'];
+        'summ', 'indAchievement', 'summContest', 'needHostel', 'notice1', 'notice2',
+        'id_plan', 'is_chosen', 'id_competition', 'foreigner', 'yellowline'];
 
     public function student() {
         return $this->belongsTo(Student::class, 'id_student');

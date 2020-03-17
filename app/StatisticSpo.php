@@ -4,14 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class StatisticsPart extends Model
+class StatisticSpo extends Model
 {
     protected $fillable = ['id_student', 'id_faculty', 'id_speciality', 'id_specialization',
         'id_preparationLevel', 'id_admissionBasis', 'id_studyForm', 'id_category', 'accept', 'original',
-        'summ', 'indAchievement', 'summContest', 'needHostel', 'notice1', 'notice2'];
+        'summ', 'indAchievement', 'summContest', 'needHostel', 'notice1', 'notice2',
+        'id_plan', 'is_chosen', 'id_competition', 'foreigner', 'yellowline'];
 
     public function student() {
-        return $this->belongsTo(Student::class, 'id_student');
+        return $this->belongsTo(StudentSpo::class, 'id_student');
     }
 
     public function faculty() {
@@ -26,7 +27,7 @@ class StatisticsPart extends Model
         return $this->belongsTo(Specialization::class, 'id_specialization');
     }
     public function score() {
-        return $this->hasMany(Score::class, 'id_statistic');
+        return $this->hasMany(ScoreSpo::class, 'id_statistic');
     }
 
     public function preparationLevel() {
@@ -42,5 +43,4 @@ class StatisticsPart extends Model
     public function category() {
         return $this->belongsTo(Category::class, 'id_category');
     }
-
 }
