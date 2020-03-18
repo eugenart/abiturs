@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
           integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
-    <link rel="stylesheet" href="{{asset('css/hamburgers.css')}}">
+    <link rel="stylesheet" href="{{asset('css/hamburgers.css')}}" id="ovzCSSLink">
     @section('style')
     @show
     <title>Приемная кампания 2020</title>
@@ -40,13 +40,15 @@
         <div class="col-6">
             <a href="/"><img src="{{asset('storage/images/iconka_mrsu_white.png')}}"
                              class="mrsu-logo-img d-lg-none d-md-block" alt=""></a>
-            <a href="/"><img src="{{asset('storage/images/logo_mrsu.png')}}" class="mrsu-logo-img mrsu-logo-blue d-lg-block d-md-none d-sm-none"
+            <a href="/"><img src="{{asset('storage/images/logo_mrsu.png')}}"
+                             class="mrsu-logo-img mrsu-logo-blue d-lg-block d-md-none d-sm-none"
                              alt=""></a>
         </div>
         <div class="col-6 justify-content-end d-flex align-items-center">
             <a href="" class="ml-3 mr-4 foreign-link ">En </a>
-{{--            <img src="{{asset('storage/images/eye-white.png')}}" class="ml-2 mr-4 d-lg-none d-md-block" width="35" height="auto" alt="">--}}
-            <img src="{{asset('storage/images/eye-blue.png')}}" class="ml-2 mr-4 d-lg-block d-md-none d-sm-none mrsu-eye-blue" width="35" height="auto" alt="">
+            {{--            <img src="{{asset('storage/images/eye-white.png')}}" class="ml-2 mr-4 d-lg-none d-md-block" width="35" height="auto" alt="">--}}
+            <img id="ovz_version" src="{{asset('storage/images/eye-blue.png')}}"
+                 class="ml-2 mr-4 d-lg-block d-md-none d-sm-none mrsu-eye-blue" width="35" height="auto" alt="">
             <button class="hamburger hamburger--collapse  d-lg-none d-md-block" type="button" data-toggle="collapse"
                     data-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -80,7 +82,10 @@
                         Статистика приема
                     </a>
                     <div class="dropdown-menu main-color" aria-labelledby="navbarDropdown">
-                        <a class="nav-link text-white" href="{{route('stat.index')}}">Бакалавриат</a>
+                        <a class="nav-link text-white" href="{{route('stat.index')}}">Бакалавриат и специалитет</a>
+                        <a class="nav-link text-white" href="{{route('statmaster.index')}}">Магистратура</a>
+                        <a class="nav-link text-white" href="{{route('statasp.index')}}">Аспирантура и ординатура</a>
+                        <a class="nav-link text-white" href="{{route('statspo.index')}}">Среднее профессиональное образование</a>
                     </div>
                 </li>
                 <li class="nav-item active d-flex align-items-center justify-content-center">
@@ -100,10 +105,12 @@
 @show
 
 </body>
+<script src="{{asset('js/version.js')}}"></script>
 <script
     src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
     crossorigin="anonymous"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
@@ -112,6 +119,7 @@
         crossorigin="anonymous"></script>
 <script src="{{asset('js/bootstrap-select.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.9/js/i18n/defaults-ru_RU.min.js"></script>
+
 <script>
     $('.hamburger').click(() => {
         $('.hamburger').toggleClass('is-active');

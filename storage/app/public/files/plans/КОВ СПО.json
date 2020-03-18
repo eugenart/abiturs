@@ -1,0 +1,195 @@
+{
+"data": [
+{
+"Plan": {
+"planId": "000014748",
+"facultyId": "000000025",
+"facultyName": "Ковылкинский филиал (СПО)",
+"trainingForm": "Очная",
+"trainingAreasId": "00000084",
+"trainingCode": "09.02.03",
+"trainingAreasName": "Программирование в компьютерных системах ",
+"specializationID": "",
+"specializationName": "",
+"years": 4
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000003261",
+"CompetitionName": "КОВ_Прог_СПО_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 13
+},
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 12
+}
+],
+"freeSeatsNumber": 13,
+"subjects": [
+{
+"subjectId": "000000939",
+"name": "КонкурсАттестатов",
+"minScore": 50
+}
+]
+},
+{
+"Plan": {
+"planId": "000014749",
+"facultyId": "000000025",
+"facultyName": "Ковылкинский филиал (СПО)",
+"trainingForm": "Очная",
+"trainingAreasId": "00000086",
+"trainingCode": "11.02.01",
+"trainingAreasName": "Радиоаппаратостроение ",
+"specializationID": "",
+"specializationName": "",
+"years": 4
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000003262",
+"CompetitionName": "КОВ_Рад_СПО_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 25
+},
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 5
+}
+],
+"freeSeatsNumber": 25,
+"subjects": [
+{
+"subjectId": "000000939",
+"name": "КонкурсАттестатов",
+"minScore": 50
+}
+]
+},
+{
+"Plan": {
+"planId": "000014750",
+"facultyId": "000000025",
+"facultyName": "Ковылкинский филиал (СПО)",
+"trainingForm": "Очная",
+"trainingAreasId": "00000538",
+"trainingCode": "15.02.08",
+"trainingAreasName": "Технология машиностроения",
+"specializationID": "",
+"specializationName": "",
+"years": 4
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000003263",
+"CompetitionName": "КОВ_Техн_СПО_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 20
+},
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 5
+}
+],
+"freeSeatsNumber": 20,
+"subjects": [
+{
+"subjectId": "000000939",
+"name": "КонкурсАттестатов",
+"minScore": 50
+}
+]
+},
+{
+"Plan": {
+"planId": "000014751",
+"facultyId": "000000025",
+"facultyName": "Ковылкинский филиал (СПО)",
+"trainingForm": "Очная",
+"trainingAreasId": "00000092",
+"trainingCode": "40.02.01",
+"trainingAreasName": "Право и организация социального обеспечения",
+"specializationID": "",
+"specializationName": "",
+"years": 3
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000003264",
+"CompetitionName": "КОВ_Прав_СПО_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 25
+}
+],
+"freeSeatsNumber": 0,
+"subjects": [
+{
+"subjectId": "000000939",
+"name": "КонкурсАттестатов",
+"minScore": 50
+}
+]
+}
+]
+}

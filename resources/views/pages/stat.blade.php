@@ -3,7 +3,12 @@
     <div id="square">
         <i class="fa fa-arrow-up"></i>
     </div>
-{{--    @if(isset($studyForms))--}}
+    <div class="row mt-3">
+        <div class="col-12">
+            <h3 class="text-center h1-mrsu main-color mb-4">Бакалавриат и специалитет</h3>
+        </div>
+    </div>
+    {{--    @if(isset($studyForms))--}}
     {{--        <div class="modal fade" id="QRCode" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"--}}
     {{--             aria-hidden="true">--}}
     {{--            <div class="modal-dialog" role="document">--}}
@@ -78,7 +83,7 @@
                                    aria-label="Search" name="fio">
                         </div>
                         <div class="col-md-2 col-3">
-                            <button class="btn btn-sm btn-primary d-block w-100" type="submit"><i
+                            <button class="btn btn-sm btn-primary d-block w-100 mrsu-bg-button" type="submit"><i
                                     class="fa fa-search"></i>
                             </button>
                         </div>
@@ -355,6 +360,11 @@
                                                                                         @endif
                                                                                     </td>
                                                                                 </tr>
+                                                                                @if($abitur->yellowline)
+                                                                                    <tr style="background-color: yellow;">
+                                                                                        <td colspan="100%"></td>
+                                                                                    </tr>
+                                                                                @endif
                                                                                 @endforeach
                                                                         </tbody>
                                                                     </table>

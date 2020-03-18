@@ -2,6 +2,10 @@
 
 @section('page')
 
+    <div id="square">
+        <i class="fa fa-arrow-up"></i>
+    </div>
+
     {{--  modal  --}}
 
     <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog"
@@ -668,5 +672,22 @@
             // modal.find('.modal-body input').val(recipient)
         })
 
+    </script>
+
+    <script>
+        $(window).scroll(() => {
+            if ($(window).scrollTop()) {
+                $('#square').fadeIn()
+            } else {
+                $('#square').fadeOut()
+            }
+        })
+
+        $('#square').click(function () {
+            $('body,html').animate({
+                scrollTop: 0
+            }, 400);
+            return false;
+        });
     </script>
 @endsection

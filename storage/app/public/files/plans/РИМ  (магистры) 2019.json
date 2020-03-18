@@ -1,0 +1,102 @@
+{
+"data": [
+{
+"Plan": {
+"planId": "000014098",
+"facultyId": "000000019",
+"facultyName": "Рузаевский институт машиностроения",
+"trainingForm": "Очно-заочная ",
+"trainingAreasId": "00000635",
+"trainingCode": "15.04.05",
+"trainingAreasName": "Конструкторско-технологическое обеспечение машиностроительных производств",
+"specializationID": "",
+"specializationName": "",
+"years": 3
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000003265",
+"CompetitionName": "РИМ_КТОМ_М_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 7
+}
+],
+"freeSeatsNumber": 0,
+"subjects": [
+{
+"subjectId": "000000023",
+"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"minScore": 40
+},
+{
+"subjectId": "000000015",
+"name": "Индивидуальное достижение",
+"minScore": 0
+}
+]
+},
+{
+"Plan": {
+"planId": "000014098",
+"facultyId": "000000019",
+"facultyName": "Рузаевский институт машиностроения",
+"trainingForm": "Очно-заочная ",
+"trainingAreasId": "00000635",
+"trainingCode": "15.04.05",
+"trainingAreasName": "Конструкторско-технологическое обеспечение машиностроительных производств",
+"specializationID": "",
+"specializationName": "",
+"years": 3
+},
+"Competition": {
+"foreigner": true,
+"CompetitionId": "000003266",
+"CompetitionName": "РИМ_КТОМ_М_ин"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 7
+}
+],
+"freeSeatsNumber": 0,
+"subjects": [
+{
+"subjectId": "000000023",
+"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"minScore": 40
+},
+{
+"subjectId": "000000015",
+"name": "Индивидуальное достижение",
+"minScore": 0
+}
+]
+}
+]
+}

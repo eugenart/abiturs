@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Score extends Model
 {
-    protected $fillable = ['score', 'id_statistic', 'id_subject'];
+    protected $fillable = ['score', 'id_statistic', 'id_subject', 'priority'];
 
     public function statistic() {
         return $this->belongsTo(Statistic::class, 'id_statistic');
