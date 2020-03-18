@@ -23,6 +23,7 @@
     {{--    @endif--}}
     @if(isset($studyForms))
         <div class="container">
+
             <div class="row m-4">
                 <div class="col-12 d-flex justify-content-between align-items-center">
                     {{--                    <div class="m-0 p-0 h6 d-lg-block d-none"><a href="" class="underline-label main-color" data-toggle="modal"--}}
@@ -41,6 +42,11 @@
         </div>
     @endif
     <div class="container pt-0 padding-0 mt-4">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="text-center h1-mrsu main-color mb-4">Бакалавриат и специалитет</h3>
+            </div>
+        </div>
         <form action="{{ route('stat.index') }}" id="sendFormWithFacultets" method="get">
             <div class="row">
                 <div class="col-12">
@@ -78,7 +84,7 @@
                                    aria-label="Search" name="fio">
                         </div>
                         <div class="col-md-2 col-3">
-                            <button class="btn btn-sm btn-primary d-block w-100" type="submit"><i
+                            <button class="btn btn-sm btn-primary d-block w-100 mrsu-bg-button" type="submit"><i
                                     class="fa fa-search"></i>
                             </button>
                         </div>
@@ -356,7 +362,7 @@
                                                                                     </td>
                                                                                 </tr>
                                                                                 @if($abitur->yellowline)
-                                                                                    <tr  style="background-color: yellow;">
+                                                                                    <tr style="background-color: yellow;">
                                                                                         <td colspan="100%"></td>
                                                                                     </tr>
                                                                                 @endif

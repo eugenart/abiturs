@@ -5,19 +5,18 @@ namespace App\Http\Controllers;
 use App\AdmissionBasis;
 use App\Category;
 use App\Faculty;
-use App\Freeseats_bases;
-use App\Plan;
-use App\PlanCompetition;
+use App\Freeseats_basesAsp;
+use App\PlanAsp;
+use App\PlanCompetitionAsp;
 use App\PreparationLevel;
 use App\Speciality;
-use App\Statistic;
-use App\Student;
+use App\StatisticAsp;
+use App\StudentAsp;
 use App\StudyForm;
-use App\TrainingArea;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class StatisticController extends Controller
+class StatisticAspController extends Controller
 {
     public function index(Request $request)
     {
@@ -46,19 +45,18 @@ class StatisticController extends Controller
 
 
         $faculties = $this->fetchFaculties();
-        $studyFormsForInputs = DB::table('study_forms')->join('statistics', 'study_forms.id', '=', 'statistics.id_studyForm')
-            ->groupBy('study_forms.id')->select('study_forms.*')->get();;
+        $studyFormsForInputs = DB::table('study_forms')->join('statistic_asps', 'study_forms.id', '=', 'statistic_asps.id_studyForm')->groupBy('study_forms.id')->select('study_forms.*')->get();;
         if (isset($studyForms)) {
             $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-            return view('pages.stat', ['studyForms' => $studyForms, 'faculties' => $faculties,
+            return view('pages.statasp', ['studyForms' => $studyForms, 'faculties' => $faculties,
                 'studyFormsForInputs' => $studyFormsForInputs, 'actual_link' => $actual_link]);
 
         } else {
             if(isset($notification)){
-                return view('pages.stat', ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs, 'notification' => $notification]);
+                return view('pages.statasp', ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs, 'notification' => $notification]);
             }
             else{
-                return view('pages.stat', compact('faculties'), compact('studyFormsForInputs'));
+                return view('pages.statasp', compact('faculties'), compact('studyFormsForInputs'));
             }
         }
 
@@ -82,7 +80,7 @@ class StatisticController extends Controller
 
         //если запросили по факультетам или спец
         if (!empty($search_faculties)) {
-            $info_faculties = Statistic::whereIn('id_faculty', $search_faculties)
+            $info_faculties = StatisticAsp::whereIn('id_faculty', $search_faculties)
                 ->select('id_studyForm', 'id_category', 'id_admissionBasis', 'id_preparationLevel', 'id_speciality')
                 ->distinct()
                 ->get();
@@ -131,30 +129,11 @@ class StatisticController extends Controller
                             $faculties = Faculty::whereIn('id', $search_faculties)->get();
 
                             foreach ($faculties as $k1 => $faculty) {
-//                                if (!empty($search_specialities_arr)) {
-//                                    $specialities_id = DB::table('statistics')
-//                                        ->where('id_faculty', '=', $faculty->id)
-//                                        ->whereIn('id_speciality', $search_specialities_arr)
-//                                       // ->whereIn('id', $id_spec_arr) //кажется в этом нет смысла
-//                                        ->select('statistics.id_speciality')
-//                                        ->distinct()
-//                                        ->get();
-//                                } else {
-//                                    $specialities_id = DB::table('statistics')
-//                                        ->where('id_faculty', '=', $faculty->id)
-//                                        ->select('statistics.id_speciality')
-//                                        ->distinct()
-//                                        ->get();
-//                                }
-//                                $id_spec_arr = array();
-//                                foreach ($specialities_id as $item) {
-//                                    $id_spec_arr[] = $item->id_speciality;
-//                                }
 
                                 //для выбора названий специальностей
                                 $specialities = Speciality::whereIn('id', $id_spec_arr)->get();
                                 foreach ($specialities as $k0 => $speciality) {
-                                    $temp = Statistic::where('id_studyForm', '=', $studyForm->id)
+                                    $temp = StatisticAsp::where('id_studyForm', '=', $studyForm->id)
                                         ->where('id_speciality', '=', $speciality->id)
                                         ->where('id_preparationLevel', '=', $preparationLevel->id)
                                         ->where('id_admissionBasis', '=', $admissionBasis->id)
@@ -162,21 +141,17 @@ class StatisticController extends Controller
                                         ->where('id_faculty', '=', $faculty->id)
                                         ->get();
 
-                                    $idPlan = Plan::where('id_speciality', '=', $speciality->id)
+                                    $idPlan = PlanAsp::where('id_speciality', '=', $speciality->id)
                                         ->where('id_studyForm', '=', $studyForm->id)
                                         ->first();
                                     if(!empty($idPlan)) {
 //                                        $freeSeatsNumber = PlanCompetition::where('id_plan', '=', intval($idPlan->id))->first();
-                                        $id_plan_comps = PlanCompetition::where('id_plan', '=', intval($idPlan->id))->first();
+                                        $id_plan_comps = PlanCompetitionAsp::where('id_plan', '=', intval($idPlan->id))->first();
                                         if(!empty($id_plan_comps)){
-                                            $freeSeatsNumber = Freeseats_bases::where('id_plan_comp', '=', intval($id_plan_comps->id))->
-                                                where('id_admissionBasis', '=', intval($admissionBasis->id))->first();
+                                            $freeSeatsNumber = Freeseats_basesAsp::where('id_plan_comp', '=', intval($id_plan_comps->id))->
+                                            where('id_admissionBasis', '=', intval($admissionBasis->id))->first();
                                         }
                                     }
-
-//                                    $freeSeatsNumber = TrainingArea::where('id_speciality', '=', $speciality->id)
-//                                        ->where('id_studyForm', '=', $studyForm->id)
-//                                        ->first();
 
                                     if ($temp->count()) {
                                         $speciality->abiturs = $temp; //добавляем запись
@@ -232,7 +207,7 @@ class StatisticController extends Controller
 // ----------------поиск по имени-------------------
         if (isset($search_fio)) {
             //выбираем всех студентов подходящих по фио
-            $id_students = Student::where('fio', 'LIKE', '%' . $search_fio . '%')
+            $id_students = StudentAsp::where('fio', 'LIKE', '%' . $search_fio . '%')
                 ->select('id', 'fio')
                 ->get();
 
@@ -255,7 +230,7 @@ class StatisticController extends Controller
             $id_stud_arr = array_map('intval', $id_stud_arr);
 
             //выбираем всю статистику где id студентов как нам нужно
-            $statistic_for_people = Statistic::whereIn('id_student', $id_stud_arr)->get();
+            $statistic_for_people = StatisticAsp::whereIn('id_student', $id_stud_arr)->get();
             //echo("<pre>" . $statistic_for_people . "</pre>");
 
             //записей максимум 5-6 если человек ввел фамилию и имя
@@ -281,7 +256,7 @@ class StatisticController extends Controller
             $id_fac_arr = array_unique($id_fac_arr, SORT_REGULAR);
             $id_spec_arr = array_unique($id_spec_arr, SORT_REGULAR);
 
-           // echo("<pre>" . $id_spec_arr . "</pre>");
+            // echo("<pre>" . $id_spec_arr . "</pre>");
 
             //проходим по каждой категории и ищем нужные нам записи статистики чтобы привести их в правильную структуру для вывода
             $studyForms = StudyForm::whereIn('id', $id_forms_arr)->get();
@@ -297,7 +272,7 @@ class StatisticController extends Controller
                                 //выберем имена и коды специальностей
                                 $specialities = Speciality::whereIn('id', $id_spec_arr)->get();
                                 foreach ($specialities as $k0 => $speciality) {
-                                    $temp = Statistic::where('id_studyForm', '=', $studyForm->id)
+                                    $temp = StatisticAsp::where('id_studyForm', '=', $studyForm->id)
                                         ->where('id_preparationLevel', '=', $preparationLevel->id)
                                         ->where('id_admissionBasis', '=', $admissionBasis->id)
                                         ->where('id_category', '=', $category->id)
@@ -310,11 +285,11 @@ class StatisticController extends Controller
 //                                    }
                                     //нужно проверить содержит ли полученная коллекция нужных студентов
                                     //выбираем свободные места на этой специальности
-                                    $idPlan = Plan::where('id_speciality', '=', $speciality->id)
+                                    $idPlan = PlanAsp::where('id_speciality', '=', $speciality->id)
                                         ->where('id_studyForm', '=', $studyForm->id)
                                         ->first();
                                     if(!empty($idPlan)) {
-                                        $freeSeatsNumber = PlanCompetition::where('id_plan', '=', intval($idPlan->id))->first();
+                                        $freeSeatsNumber = PlanCompetitionAsp::where('id_plan', '=', intval($idPlan->id))->first();
                                     }
 //                                    $freeSeatsNumber = TrainingArea::where('id_speciality', '=', $speciality->id)
 //                                        ->where('id_studyForm', '=', $studyForm->id)
@@ -322,7 +297,8 @@ class StatisticController extends Controller
                                     //обозначаем выбранного студента цветом
                                     if ($temp->count() && !$temp2->isEmpty()) {
                                         $speciality->abiturs = $temp; //записываем статистику в специальность
-                                        $chosenStudents = collect(new Student);
+                                        $chosenStudents = collect(new StudentAsp
+                                        );
                                         foreach ($id_stud_arr as $id) {
                                             $serialNumSpec = 0;
                                             foreach ($temp as $student) {
@@ -392,8 +368,7 @@ class StatisticController extends Controller
         }
 
         //Выборка для инпутов
-        $studyFormsForInputs = DB::table('study_forms')->join('statistics', 'study_forms.id', '=', 'statistics.id_studyForm')
-            ->groupBy('study_forms.id')->select('study_forms.*')->get();;
+        $studyFormsForInputs = DB::table('study_forms')->join('statistic_asps', 'study_forms.id', '=', 'statistic_asps.id_studyForm')->groupBy('study_forms.id')->select('study_forms.*')->get();;
         $faculties = $this->fetchFaculties();
         return $studyForms;
 
@@ -403,7 +378,7 @@ class StatisticController extends Controller
     {
         $faculties = Faculty::all();
         foreach ($faculties as $faculty) {
-            $id_specialities = Statistic::where('id_faculty', '=', $faculty->id)
+            $id_specialities = StatisticAsp::where('id_faculty', '=', $faculty->id)
                 ->select('id_speciality')
                 ->get();
 
@@ -414,7 +389,7 @@ class StatisticController extends Controller
             $specialities = Speciality::whereIn('id', $id_spec_arr)->get();
 
             foreach ($specialities as $speciality) {
-                $id_studyForms = Plan::where('id_speciality', '=', $speciality->id)
+                $id_studyForms = PlanAsp::where('id_speciality', '=', $speciality->id)
                     ->select('id_studyForm')
                     ->get();
 

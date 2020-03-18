@@ -47,10 +47,15 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/parse-students', 'ParserJsonController@parseFromJson')->name('parse.parseFromJson');
     Route::get('/parse-contests', 'ParserJsonController@parsePastContests')->name('parse.parsePastContests');
     Route::get('/parse-students-master', 'ParserJsonController@parseFromJsonMaster')->name('parse.parseFromJsonMaster');
-//    Route::get('/parse-areas', 'ParserJsonController@parseAreas')->name('parse.parseAreas');
+    Route::get('/parse-students-asp', 'ParserJsonController@parseFromJsonAsp')->name('parse.parseFromJsonAsp');
+    Route::get('/parse-students-spo', 'ParserJsonController@parseFromJsonSpo')->name('parse.parseFromJsonSpo');
+
     Route::get('/parse-sub', 'ParserController@parseFromXlsSub')->name('parse.parseFromXlsSub');
     Route::get('/parse-plans-bach', 'ParserJsonController@parsePlansBach')->name('parse.parsePlansBach');
     Route::get('/parse-plans-master', 'ParserJsonController@parsePlansMaster')->name('parse.parsePlansMaster');
+    Route::get('/parse-plans-asp', 'ParserJsonController@parsePlansAspMain')->name('parse.parsePlansAspMain');
+    Route::get('/parse-plans-spo', 'ParserJsonController@parsePlansSpo')->name('parse.parsePlansSpo');
+
 
 });
 Auth::routes();
@@ -59,6 +64,8 @@ Route::get('/contact', 'ContactController@index')->name('contact.index');
 Route::get('/select', 'SelectionController@index')->name('selection.index');
 Route::get('/statistic/bachelor', 'StatisticController@index')->name('stat.index');
 Route::get('/statistic/master', 'StatisticMasterController@index')->name('statmaster.index');
+Route::get('/statistic/aspirant', 'StatisticAspController@index')->name('statasp.index');
+Route::get('/statistic/spo', 'StatisticSpoController@index')->name('statspo.index');
 
 Route::get('/foreign', 'ForeignController@index')->name('foreign.index');
 

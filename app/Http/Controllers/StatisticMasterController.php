@@ -5,20 +5,16 @@ namespace App\Http\Controllers;
 use App\AdmissionBasis;
 use App\Category;
 use App\Faculty;
-use App\Freeseats_bases;
 use App\Freeseats_basesMaster;
-use App\Plan;
-use App\PlanCompetition;
 use App\PlanCompetitionMaster;
 use App\PlanMaster;
 use App\PreparationLevel;
 use App\Speciality;
-use App\Statistic;
 use App\StatisticMaster;
-use App\Student;
 use App\StudentMaster;
 use App\StudyForm;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class StatisticMasterController extends Controller
 {
@@ -49,7 +45,8 @@ class StatisticMasterController extends Controller
 
 
         $faculties = $this->fetchFaculties();
-        $studyFormsForInputs = StudyForm::all();
+        $studyFormsForInputs = DB::table('study_forms')->join('statistic_masters', 'study_forms.id', '=', 'statistic_masters.id_studyForm')
+            ->groupBy('study_forms.id')->select('study_forms.*')->get();;
         if (isset($studyForms)) {
             $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
             return view('pages.statmaster', ['studyForms' => $studyForms, 'faculties' => $faculties,
@@ -372,7 +369,7 @@ class StatisticMasterController extends Controller
         }
 
         //Выборка для инпутов
-        $studyFormsForInputs = StudyForm::all();
+        $studyFormsForInputs = DB::table('study_forms')->join('statistic_masters', 'study_forms.id', '=', 'statistic_masters.id_studyForm')->groupBy('study_forms.id')->select('study_forms.*')->get();;
         $faculties = $this->fetchFaculties();
         return $studyForms;
 

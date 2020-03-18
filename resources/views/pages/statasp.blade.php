@@ -41,7 +41,8 @@
         </div>
     @endif
     <div class="container pt-0 padding-0 mt-4">
-        <form action="{{ route('statmaster.index') }}" id="sendFormWithFacultets" method="get">
+
+        <form action="{{ route('statasp.index') }}" id="sendFormWithFacultets" method="get">
             <div class="row">
                 <div class="col-12">
                     <div class="row">
