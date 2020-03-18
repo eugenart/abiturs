@@ -3,6 +3,11 @@
     <div id="square">
         <i class="fa fa-arrow-up"></i>
     </div>
+    <div class="row mt-3">
+        <div class="col-12">
+            <h3 class="text-center h1-mrsu main-color mb-4">Аспирантура и ординатура</h3>
+        </div>
+    </div>
     {{--    @if(isset($studyForms))--}}
     {{--        <div class="modal fade" id="QRCode" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"--}}
     {{--             aria-hidden="true">--}}
@@ -41,7 +46,6 @@
         </div>
     @endif
     <div class="container pt-0 padding-0 mt-4">
-
         <form action="{{ route('statasp.index') }}" id="sendFormWithFacultets" method="get">
             <div class="row">
                 <div class="col-12">
