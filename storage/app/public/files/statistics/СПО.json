@@ -1,0 +1,4098 @@
+{
+"data": [
+{
+"planId": "000014256",
+"facultyId": "000000023",
+"facultyName": "Институт национальной культуры (СПО)",
+"trainingForm": "Очная",
+"trainingAreasId": "00000080",
+"trainingAreasCode": "54.02.02",
+"trainingAreasName": "Декоративно-прикладное искусство и народные промыслы (по видам)",
+"specializationID": "",
+"specializationName": "",
+"foreigner": false,
+"CompetitionId": "000003192",
+"CompetitionName": "ИНК_ДПИ_СПО_1",
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"Stage": null,
+"StageTitle": null,
+"List": [
+{
+"studentId": "000067573",
+"fio": "Долганина Анастасия Владимировна",
+"facultyId": "000000023",
+"speciality": "00000080",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "На общих основаниях",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000025",
+"subjectScore": ""
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000066463",
+"fio": "Журавлева Ирина Александровна",
+"facultyId": "000000023",
+"speciality": "00000080",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "На общих основаниях",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000025",
+"subjectScore": ""
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000067726",
+"fio": "Пиянзина Кристина Николаевна",
+"facultyId": "000000023",
+"speciality": "00000080",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "На общих основаниях",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000025",
+"subjectScore": ""
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000067812",
+"fio": "Хрущалина Ангелина Эдуардовна",
+"facultyId": "000000023",
+"speciality": "00000080",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "На общих основаниях",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000025",
+"subjectScore": ""
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+}
+]
+},
+{
+"planId": "000014256",
+"facultyId": "000000023",
+"facultyName": "Институт национальной культуры (СПО)",
+"trainingForm": "Очная",
+"trainingAreasId": "00000080",
+"trainingAreasCode": "54.02.02",
+"trainingAreasName": "Декоративно-прикладное искусство и народные промыслы (по видам)",
+"specializationID": "",
+"specializationName": "",
+"foreigner": false,
+"CompetitionId": "000003192",
+"CompetitionName": "ИНК_ДПИ_СПО_1",
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"Stage": null,
+"StageTitle": null,
+"List": [
+{
+"studentId": "000066396",
+"fio": "Маглатий Даниил Денисович",
+"facultyId": "000000023",
+"speciality": "00000080",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000025",
+"subjectScore": ""
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000065692",
+"fio": "Зорков Дмитрий Артемович",
+"facultyId": "000000023",
+"speciality": "00000080",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000025",
+"subjectScore": ""
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000066634",
+"fio": "Афанасьева Дарья Александровна",
+"facultyId": "000000023",
+"speciality": "00000080",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000025",
+"subjectScore": ""
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+}
+]
+},
+{
+"planId": "000014255",
+"facultyId": "000000023",
+"facultyName": "Институт национальной культуры (СПО)",
+"trainingForm": "Очная",
+"trainingAreasId": "00000078",
+"trainingAreasCode": "54.02.01",
+"trainingAreasName": "Дизайн (по отраслям)",
+"specializationID": "",
+"specializationName": "",
+"foreigner": false,
+"CompetitionId": "000003191",
+"CompetitionName": "ИНК_Диз_СПО_1",
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"Stage": null,
+"StageTitle": null,
+"List": [
+{
+"studentId": "000066463",
+"fio": "Журавлева Ирина Александровна",
+"facultyId": "000000023",
+"speciality": "00000078",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "На общих основаниях",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000025",
+"subjectScore": ""
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000068637",
+"fio": "Липатова Виктория Константиновна",
+"facultyId": "000000023",
+"speciality": "00000078",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "На общих основаниях",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000025",
+"subjectScore": ""
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": true,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000067726",
+"fio": "Пиянзина Кристина Николаевна",
+"facultyId": "000000023",
+"speciality": "00000078",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "На общих основаниях",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000025",
+"subjectScore": ""
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+}
+]
+},
+{
+"planId": "000014253",
+"facultyId": "000000023",
+"facultyName": "Институт национальной культуры (СПО)",
+"trainingForm": "Очная",
+"trainingAreasId": "00000636",
+"trainingAreasCode": "51.02.01",
+"trainingAreasName": "Народное художественное творчество (по видам)",
+"specializationID": "",
+"specializationName": "",
+"foreigner": false,
+"CompetitionId": "000003189",
+"CompetitionName": "ИНК_НХК_СПО_1",
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"Stage": null,
+"StageTitle": null,
+"List": [
+{
+"studentId": "000070582",
+"fio": "Спиридонова Ксения Михайловна",
+"facultyId": "000000023",
+"speciality": "00000636",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "На общих основаниях",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000026",
+"subjectScore": ""
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": true,
+"acceptСount": 1,
+"notice1": "",
+"notice2": "Средний балл"
+}
+]
+},
+{
+"planId": "000014254",
+"facultyId": "000000023",
+"facultyName": "Институт национальной культуры (СПО)",
+"trainingForm": "Очная",
+"trainingAreasId": "00000081",
+"trainingAreasCode": "53.02.05",
+"trainingAreasName": "Сольное и хоровое народное пение",
+"specializationID": "",
+"specializationName": "",
+"foreigner": false,
+"CompetitionId": "000003190",
+"CompetitionName": "ИНК_СХНП_СПО_1",
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"Stage": null,
+"StageTitle": null,
+"List": [
+{
+"studentId": "000067472",
+"fio": "Родькина Анастасия Анатольевна",
+"facultyId": "000000023",
+"speciality": "00000081",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "На общих основаниях",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000028",
+"subjectScore": ""
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": "Средний балл"
+}
+]
+},
+{
+"planId": "000014751",
+"facultyId": "000000025",
+"facultyName": "Ковылкинский филиал (СПО)",
+"trainingForm": "Очная",
+"trainingAreasId": "00000092",
+"trainingAreasCode": "40.02.01",
+"trainingAreasName": "Право и организация социального обеспечения",
+"specializationID": "",
+"specializationName": "",
+"foreigner": false,
+"CompetitionId": "000003264",
+"CompetitionName": "КОВ_Прав_СПО_1",
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"Stage": null,
+"StageTitle": null,
+"List": [
+{
+"studentId": "000065809",
+"fio": "Карабаза Екатерина Михайловна",
+"facultyId": "000000025",
+"speciality": "00000092",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4.63
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000065596",
+"fio": "Фролова Софья Александровна",
+"facultyId": "000000025",
+"speciality": "00000092",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4.06
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+}
+]
+},
+{
+"planId": "000014748",
+"facultyId": "000000025",
+"facultyName": "Ковылкинский филиал (СПО)",
+"trainingForm": "Очная",
+"trainingAreasId": "00000084",
+"trainingAreasCode": "09.02.03",
+"trainingAreasName": "Программирование в компьютерных системах ",
+"specializationID": "",
+"specializationName": "",
+"foreigner": false,
+"CompetitionId": "000003261",
+"CompetitionName": "КОВ_Прог_СПО_1",
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"Stage": null,
+"StageTitle": null,
+"List": [
+{
+"studentId": "000069211",
+"fio": "Сентяева Анастасия Александровна",
+"facultyId": "000000025",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.83
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000069116",
+"fio": "Капранов Илья Сергеевич",
+"facultyId": "000000025",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.44
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 1,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000069583",
+"fio": "Ермаков Александр Дмитриевич",
+"facultyId": "000000025",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.44
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000065240",
+"fio": "Арсенкин Артем Викторович",
+"facultyId": "000000025",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.37
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": true,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000068814",
+"fio": "Иванова Анжелика Павловна",
+"facultyId": "000000025",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.29
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+}
+]
+},
+{
+"planId": "000014748",
+"facultyId": "000000025",
+"facultyName": "Ковылкинский филиал (СПО)",
+"trainingForm": "Очная",
+"trainingAreasId": "00000084",
+"trainingAreasCode": "09.02.03",
+"trainingAreasName": "Программирование в компьютерных системах ",
+"specializationID": "",
+"specializationName": "",
+"foreigner": false,
+"CompetitionId": "000003261",
+"CompetitionName": "КОВ_Прог_СПО_1",
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"Stage": null,
+"StageTitle": null,
+"List": [
+{
+"studentId": "000071102",
+"fio": "Чукаров Никита Александрович",
+"facultyId": "000000025",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.38
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+}
+]
+},
+{
+"planId": "000014749",
+"facultyId": "000000025",
+"facultyName": "Ковылкинский филиал (СПО)",
+"trainingForm": "Очная",
+"trainingAreasId": "00000086",
+"trainingAreasCode": "11.02.01",
+"trainingAreasName": "Радиоаппаратостроение ",
+"specializationID": "",
+"specializationName": "",
+"foreigner": false,
+"CompetitionId": "000003262",
+"CompetitionName": "КОВ_Рад_СПО_1",
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"Stage": null,
+"StageTitle": null,
+"List": [
+{
+"studentId": "000070524",
+"fio": "Борискин Андрей Федорович",
+"facultyId": "000000025",
+"speciality": "00000086",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4.16
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000065841",
+"fio": "Слугин Даниил Андреевич",
+"facultyId": "000000025",
+"speciality": "00000086",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000069195",
+"fio": "Полынов Павел Юрьевич",
+"facultyId": "000000025",
+"speciality": "00000086",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.89
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000069749",
+"fio": "Тихонов Владимир Геннадьевич",
+"facultyId": "000000025",
+"speciality": "00000086",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.8
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": true,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000068888",
+"fio": "Загороднов Никита Александрович",
+"facultyId": "000000025",
+"speciality": "00000086",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.6
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": true,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000069116",
+"fio": "Капранов Илья Сергеевич",
+"facultyId": "000000025",
+"speciality": "00000086",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.44
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000065240",
+"fio": "Арсенкин Артем Викторович",
+"facultyId": "000000025",
+"speciality": "00000086",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.37
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": true,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000068975",
+"fio": "Чириков Максим Сергеевич",
+"facultyId": "000000025",
+"speciality": "00000086",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.33
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+}
+]
+},
+{
+"planId": "000014750",
+"facultyId": "000000025",
+"facultyName": "Ковылкинский филиал (СПО)",
+"trainingForm": "Очная",
+"trainingAreasId": "00000538",
+"trainingAreasCode": "15.02.08",
+"trainingAreasName": "Технология машиностроения",
+"specializationID": "",
+"specializationName": "",
+"foreigner": false,
+"CompetitionId": "000003263",
+"CompetitionName": "КОВ_Техн_СПО_1",
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"Stage": null,
+"StageTitle": null,
+"List": [
+{
+"studentId": "000065174",
+"fio": "Тараканкин Александр Николаевич",
+"facultyId": "000000025",
+"speciality": "00000538",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.5
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000065240",
+"fio": "Арсенкин Артем Викторович",
+"facultyId": "000000025",
+"speciality": "00000538",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.37
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": true,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000065772",
+"fio": "Унанян Ваак Бартегмосович",
+"facultyId": "000000025",
+"speciality": "00000538",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.31
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000066722",
+"fio": "Сарайкин Андрей Сергеевич",
+"facultyId": "000000025",
+"speciality": "00000538",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.31
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000068814",
+"fio": "Иванова Анжелика Павловна",
+"facultyId": "000000025",
+"speciality": "00000538",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.29
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000067227",
+"fio": "Моисеев Валерий Игоревич",
+"facultyId": "000000025",
+"speciality": "00000538",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.17
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000068058",
+"fio": "Каткова Людмила Валерьевна",
+"facultyId": "000000025",
+"speciality": "00000538",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.13
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": true,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000067977",
+"fio": "Панюшин Иван Сергеевич",
+"facultyId": "000000025",
+"speciality": "00000538",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.11
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+}
+]
+},
+{
+"planId": "000014746",
+"facultyId": "000000024",
+"facultyName": "Рузаевский институт машиностроения (СПО)",
+"trainingForm": "Очная",
+"trainingAreasId": "00000085",
+"trainingAreasCode": "15.02.01",
+"trainingAreasName": "Монтаж и техническая эксплуатация промышленного оборудования (по отраслям)",
+"specializationID": "",
+"specializationName": "",
+"foreigner": false,
+"CompetitionId": "000003259",
+"CompetitionName": "РИМ_Монт_СПО_1",
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"Stage": null,
+"StageTitle": null,
+"List": [
+{
+"studentId": "000065084",
+"fio": "Дерин Ярослав Игоревич",
+"facultyId": "000000024",
+"speciality": "00000085",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4.44
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": true,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000067601",
+"fio": "Кондратьева Екатерина Евгеньевна",
+"facultyId": "000000024",
+"speciality": "00000085",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4.21
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000065237",
+"fio": "Илюшкин Александр Витальевич",
+"facultyId": "000000024",
+"speciality": "00000085",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4.18
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000068009",
+"fio": "Илюшкин Максим Олегович",
+"facultyId": "000000024",
+"speciality": "00000085",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000068776",
+"fio": "Пазухина Елизавета Михайловна",
+"facultyId": "000000024",
+"speciality": "00000085",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000068021",
+"fio": "Ферапонтов Максим Андреевич",
+"facultyId": "000000024",
+"speciality": "00000085",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.83
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000070148",
+"fio": "Мухаметова Альбина Римовна",
+"facultyId": "000000024",
+"speciality": "00000085",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.67
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000069640",
+"fio": "Максимов Александр Владимирович",
+"facultyId": "000000024",
+"speciality": "00000085",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.63
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000070444",
+"fio": "Колосовский Никита Александрович",
+"facultyId": "000000024",
+"speciality": "00000085",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.6
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000066444",
+"fio": "Ковальчук Владислав Ринатович",
+"facultyId": "000000024",
+"speciality": "00000085",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.56
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000069384",
+"fio": "Махров Иван Алексеевич",
+"facultyId": "000000024",
+"speciality": "00000085",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.53
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000065099",
+"fio": "Глебов Максим Александрович",
+"facultyId": "000000024",
+"speciality": "00000085",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.5
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": true,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000065201",
+"fio": "Гарина Валерия Олеговна",
+"facultyId": "000000024",
+"speciality": "00000085",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.44
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000068635",
+"fio": "Ромашов Александр Денисович",
+"facultyId": "000000024",
+"speciality": "00000085",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.25
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+}
+]
+},
+{
+"planId": "000014746",
+"facultyId": "000000024",
+"facultyName": "Рузаевский институт машиностроения (СПО)",
+"trainingForm": "Очная",
+"trainingAreasId": "00000085",
+"trainingAreasCode": "15.02.01",
+"trainingAreasName": "Монтаж и техническая эксплуатация промышленного оборудования (по отраслям)",
+"specializationID": "",
+"specializationName": "",
+"foreigner": false,
+"CompetitionId": "000003259",
+"CompetitionName": "РИМ_Монт_СПО_1",
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"Stage": null,
+"StageTitle": null,
+"List": [
+{
+"studentId": "000067066",
+"fio": "Шеянов Александр Дмитриевич",
+"facultyId": "000000024",
+"speciality": "00000085",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.81
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000066444",
+"fio": "Ковальчук Владислав Ринатович",
+"facultyId": "000000024",
+"speciality": "00000085",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.56
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+}
+]
+},
+{
+"planId": "000014745",
+"facultyId": "000000024",
+"facultyName": "Рузаевский институт машиностроения (СПО)",
+"trainingForm": "Очная",
+"trainingAreasId": "00000084",
+"trainingAreasCode": "09.02.03",
+"trainingAreasName": "Программирование в компьютерных системах ",
+"specializationID": "",
+"specializationName": "",
+"foreigner": false,
+"CompetitionId": "000003258",
+"CompetitionName": "РИМ_Прог_СПО_1",
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"Stage": null,
+"StageTitle": null,
+"List": [
+{
+"studentId": "000066395",
+"fio": "Столбова Елена Павловна",
+"facultyId": "000000024",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4.29
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000065894",
+"fio": "Парамонов Данила Алексеевич",
+"facultyId": "000000024",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4.12
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000068171",
+"fio": "Караваев Вадим Эдуардович",
+"facultyId": "000000024",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.75
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000069805",
+"fio": "Канаев Владислав Денисович",
+"facultyId": "000000024",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.72
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000065099",
+"fio": "Глебов Максим Александрович",
+"facultyId": "000000024",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.5
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": true,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+}
+]
+},
+{
+"planId": "000014745",
+"facultyId": "000000024",
+"facultyName": "Рузаевский институт машиностроения (СПО)",
+"trainingForm": "Очная",
+"trainingAreasId": "00000084",
+"trainingAreasCode": "09.02.03",
+"trainingAreasName": "Программирование в компьютерных системах ",
+"specializationID": "",
+"specializationName": "",
+"foreigner": false,
+"CompetitionId": "000003258",
+"CompetitionName": "РИМ_Прог_СПО_1",
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"Stage": null,
+"StageTitle": null,
+"List": [
+{
+"studentId": "000065155",
+"fio": "Арюков Александр Дмитриевич",
+"facultyId": "000000024",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4.89
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000066384",
+"fio": "Латынин Александр Петрович",
+"facultyId": "000000024",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4.4
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000066395",
+"fio": "Столбова Елена Павловна",
+"facultyId": "000000024",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4.29
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000066426",
+"fio": "Алешин Данила Алексеевич",
+"facultyId": "000000024",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4.28
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000070346",
+"fio": "Левин Артем Александрович",
+"facultyId": "000000024",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4.2
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": true,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000069227",
+"fio": "Данилова Елена Алексеевна",
+"facultyId": "000000024",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4.13
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000065894",
+"fio": "Парамонов Данила Алексеевич",
+"facultyId": "000000024",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4.12
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000066999",
+"fio": "Чернов Евгений Алексеевич",
+"facultyId": "000000024",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4.12
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000071105",
+"fio": "Быкова Нина Вячеславовна",
+"facultyId": "000000024",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4.11
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000065446",
+"fio": "Кириллов Владислав Юрьевич",
+"facultyId": "000000024",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4.07
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000065899",
+"fio": "Авдонин Никита Владиславович",
+"facultyId": "000000024",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4.06
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000065561",
+"fio": "Николаев Виталий Александрович",
+"facultyId": "000000024",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4.06
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000067374",
+"fio": "Глазунов Кирилл Евгеньевич",
+"facultyId": "000000024",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000066913",
+"fio": "Зиников Олег Наильевич",
+"facultyId": "000000024",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000068776",
+"fio": "Пазухина Елизавета Михайловна",
+"facultyId": "000000024",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000068807",
+"fio": "Орешкина Алина Александровна",
+"facultyId": "000000024",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.94
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000069990",
+"fio": "Теплова Кристина Владимировна",
+"facultyId": "000000024",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.89
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000068021",
+"fio": "Ферапонтов Максим Андреевич",
+"facultyId": "000000024",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.83
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000068140",
+"fio": "Котлов Илья Сергеевич",
+"facultyId": "000000024",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.83
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000065724",
+"fio": "Бунтов Максим Алексеевич",
+"facultyId": "000000024",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.78
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000068865",
+"fio": "Федорова Алина Дмитриевна",
+"facultyId": "000000024",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.78
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000068212",
+"fio": "Пономарев Михаил Владимирович",
+"facultyId": "000000024",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.76
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000068171",
+"fio": "Караваев Вадим Эдуардович",
+"facultyId": "000000024",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.75
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000069805",
+"fio": "Канаев Владислав Денисович",
+"facultyId": "000000024",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.72
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000070148",
+"fio": "Мухаметова Альбина Римовна",
+"facultyId": "000000024",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.67
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000067785",
+"fio": "Лыков Максим Андреевич",
+"facultyId": "000000024",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.61
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000070444",
+"fio": "Колосовский Никита Александрович",
+"facultyId": "000000024",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.6
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000065099",
+"fio": "Глебов Максим Александрович",
+"facultyId": "000000024",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.5
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": true,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000065201",
+"fio": "Гарина Валерия Олеговна",
+"facultyId": "000000024",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.44
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+}
+]
+},
+{
+"planId": "000014747",
+"facultyId": "000000024",
+"facultyName": "Рузаевский институт машиностроения (СПО)",
+"trainingForm": "Очная",
+"trainingAreasId": "00000088",
+"trainingAreasCode": "38.02.01",
+"trainingAreasName": "Экономика и бухгалтерский учет",
+"specializationID": "",
+"specializationName": "",
+"foreigner": false,
+"CompetitionId": "000003260",
+"CompetitionName": "РИМ_ЭБУ_СПО_1",
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"Stage": null,
+"StageTitle": null,
+"List": [
+{
+"studentId": "000067350",
+"fio": "Бунденкова Вероника Вадимовна",
+"facultyId": "000000024",
+"speciality": "00000088",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4.39
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000066186",
+"fio": "Логинова Елена Алексеевна",
+"facultyId": "000000024",
+"speciality": "00000088",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4.35
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000066237",
+"fio": "Сазоненкова Маргарита Александровна",
+"facultyId": "000000024",
+"speciality": "00000088",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4.33
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000069227",
+"fio": "Данилова Елена Алексеевна",
+"facultyId": "000000024",
+"speciality": "00000088",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4.13
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000068807",
+"fio": "Орешкина Алина Александровна",
+"facultyId": "000000024",
+"speciality": "00000088",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.94
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000069990",
+"fio": "Теплова Кристина Владимировна",
+"facultyId": "000000024",
+"speciality": "00000088",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.89
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000068865",
+"fio": "Федорова Алина Дмитриевна",
+"facultyId": "000000024",
+"speciality": "00000088",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.78
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000065724",
+"fio": "Бунтов Максим Алексеевич",
+"facultyId": "000000024",
+"speciality": "00000088",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.78
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000069469",
+"fio": "Боброва Яна Сергеевна",
+"facultyId": "000000024",
+"speciality": "00000088",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.7
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": true,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000069899",
+"fio": "Лемайкина Арина Денисовна",
+"facultyId": "000000024",
+"speciality": "00000088",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.13
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+}
+]
+},
+{
+"planId": "000014259",
+"facultyId": "000000021",
+"facultyName": "Факультет довузовской подготовки и среднего профессионального образования",
+"trainingForm": "Очная",
+"trainingAreasId": "00000092",
+"trainingAreasCode": "40.02.01",
+"trainingAreasName": "Право и организация социального обеспечения",
+"specializationID": "",
+"specializationName": "",
+"foreigner": false,
+"CompetitionId": "000003195",
+"CompetitionName": "ФДП_Прав_СПО_1",
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"Stage": null,
+"StageTitle": null,
+"List": [
+{
+"studentId": "000070159",
+"fio": "Лизунова Алёна Николаевна",
+"facultyId": "000000021",
+"speciality": "00000092",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 5
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": true,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000067800",
+"fio": "Пивкина Екатерина Николаевна",
+"facultyId": "000000021",
+"speciality": "00000092",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4.94
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": true,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000066522",
+"fio": "Шапшаева Зарина Рафиковна",
+"facultyId": "000000021",
+"speciality": "00000092",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4.61
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000067718",
+"fio": "Данилина Мария Николаевна",
+"facultyId": "000000021",
+"speciality": "00000092",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4.56
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000068775",
+"fio": "Юрченкова Надежда Сергеевна",
+"facultyId": "000000021",
+"speciality": "00000092",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4.47
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 1,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000068077",
+"fio": "Ивлиева Арина Александровна",
+"facultyId": "000000021",
+"speciality": "00000092",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.94
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000066971",
+"fio": "Шичкин Денис Александрович",
+"facultyId": "000000021",
+"speciality": "00000092",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.87
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": true,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000070582",
+"fio": "Спиридонова Ксения Михайловна",
+"facultyId": "000000021",
+"speciality": "00000092",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.5
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": true,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+}
+]
+},
+{
+"planId": "000014259",
+"facultyId": "000000021",
+"facultyName": "Факультет довузовской подготовки и среднего профессионального образования",
+"trainingForm": "Очная",
+"trainingAreasId": "00000092",
+"trainingAreasCode": "40.02.01",
+"trainingAreasName": "Право и организация социального обеспечения",
+"specializationID": "",
+"specializationName": "",
+"foreigner": false,
+"CompetitionId": "000003195",
+"CompetitionName": "ФДП_Прав_СПО_1",
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"Stage": null,
+"StageTitle": null,
+"List": [
+{
+"studentId": "000064865",
+"fio": "Яхаев Руслан Сехраб Оглы",
+"facultyId": "000000021",
+"speciality": "00000092",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "На общих основаниях",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.67
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": true,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+}
+]
+},
+{
+"planId": "000014257",
+"facultyId": "000000021",
+"facultyName": "Факультет довузовской подготовки и среднего профессионального образования",
+"trainingForm": "Очная",
+"trainingAreasId": "00000084",
+"trainingAreasCode": "09.02.03",
+"trainingAreasName": "Программирование в компьютерных системах ",
+"specializationID": "",
+"specializationName": "",
+"foreigner": false,
+"CompetitionId": "000003193",
+"CompetitionName": "ФДП_Прог_СПО_1",
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"Stage": null,
+"StageTitle": null,
+"List": [
+{
+"studentId": "000066089",
+"fio": "Помелова Дарья Витальевна",
+"facultyId": "000000021",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4.89
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000065284",
+"fio": "Малыйкин Артём Александрович",
+"facultyId": "000000021",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4.85
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": true,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000065870",
+"fio": "Гузнова Анастасия Дмитриевна",
+"facultyId": "000000021",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4.81
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000070302",
+"fio": "Гришенькин Серафим Витальевич",
+"facultyId": "000000021",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4.41
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 1,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000066230",
+"fio": "Кузьмин Никита Андреевич",
+"facultyId": "000000021",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4.41
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000065212",
+"fio": "Ключагин Константин Алексеевич",
+"facultyId": "000000021",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4.27
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": true,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000066016",
+"fio": "Новосельцев Антон Игоревич",
+"facultyId": "000000021",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4.21
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 2,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000064987",
+"fio": "Жалимов Азат Филяритович",
+"facultyId": "000000021",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.56
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000067426",
+"fio": "Кузнецов Александр Николаевич",
+"facultyId": "000000021",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.41
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": true,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+}
+]
+},
+{
+"planId": "000014257",
+"facultyId": "000000021",
+"facultyName": "Факультет довузовской подготовки и среднего профессионального образования",
+"trainingForm": "Очная",
+"trainingAreasId": "00000084",
+"trainingAreasCode": "09.02.03",
+"trainingAreasName": "Программирование в компьютерных системах ",
+"specializationID": "",
+"specializationName": "",
+"foreigner": false,
+"CompetitionId": "000003193",
+"CompetitionName": "ФДП_Прог_СПО_1",
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"Stage": null,
+"StageTitle": null,
+"List": [
+{
+"studentId": "000067435",
+"fio": "Тимошина Татьяна Николаевна",
+"facultyId": "000000021",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 5
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000069766",
+"fio": "Балкаев Александр Александрович",
+"facultyId": "000000021",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4.79
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": true,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000065570",
+"fio": "Юров Данила Алексеевич",
+"facultyId": "000000021",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4.53
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000065246",
+"fio": "Салтыков Иван Васильевич",
+"facultyId": "000000021",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4.47
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"yelloyline": true,
+"acceptСount": 2,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000066676",
+"fio": "Асанов Олег Рифатович",
+"facultyId": "000000021",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4.44
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 2,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000066230",
+"fio": "Кузьмин Никита Андреевич",
+"facultyId": "000000021",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4.41
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000065336",
+"fio": "Завражнов Владимир Николаевич",
+"facultyId": "000000021",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4.35
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000065212",
+"fio": "Ключагин Константин Алексеевич",
+"facultyId": "000000021",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4.27
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": true,
+"acceptСount": 1,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000066070",
+"fio": "Калинин Андрей Сергеевич",
+"facultyId": "000000021",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4.24
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000064965",
+"fio": "Шаров Вадим Юрьевич",
+"facultyId": "000000021",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4.05
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000065535",
+"fio": "Гусев Михаил Михайлович",
+"facultyId": "000000021",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": true,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000068905",
+"fio": "Коробков Андрей Александрович",
+"facultyId": "000000021",
+"speciality": "00000084",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Бюджетная основа",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.56
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": true,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+}
+]
+},
+{
+"planId": "000014260",
+"facultyId": "000000021",
+"facultyName": "Факультет довузовской подготовки и среднего профессионального образования",
+"trainingForm": "Очная",
+"trainingAreasId": "00000093",
+"trainingAreasCode": "43.02.10",
+"trainingAreasName": "Туризм",
+"specializationID": "",
+"specializationName": "",
+"foreigner": false,
+"CompetitionId": "000003196",
+"CompetitionName": "ФДП_Тур_СПО_1",
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"Stage": null,
+"StageTitle": null,
+"List": [
+{
+"studentId": "000069096",
+"fio": "Кузнецова Ксения Эдуардовна",
+"facultyId": "000000021",
+"speciality": "00000093",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4.47
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000065903",
+"fio": "Люнина Екатерина Геннадьевна",
+"facultyId": "000000021",
+"speciality": "00000093",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4.26
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": true,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000069984",
+"fio": "Любаева Юлия Александровна",
+"facultyId": "000000021",
+"speciality": "00000093",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.88
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000069286",
+"fio": "Николаев Никита Сергеевич",
+"facultyId": "000000021",
+"speciality": "00000093",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.88
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000065219",
+"fio": "Милавкина Дарья Олеговна",
+"facultyId": "000000021",
+"speciality": "00000093",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.71
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000070425",
+"fio": "Серкова Дарина Александровна",
+"facultyId": "000000021",
+"speciality": "00000093",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.5
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+}
+]
+},
+{
+"planId": "000014258",
+"facultyId": "000000021",
+"facultyName": "Факультет довузовской подготовки и среднего профессионального образования",
+"trainingForm": "Очная",
+"trainingAreasId": "00000091",
+"trainingAreasCode": "38.02.01",
+"trainingAreasName": "Экономика и бухгалтерский учет (по отраслям)",
+"specializationID": "",
+"specializationName": "",
+"foreigner": false,
+"CompetitionId": "000003194",
+"CompetitionName": "ФДП_ЭкБух_СПО_1",
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"Stage": null,
+"StageTitle": null,
+"List": [
+{
+"studentId": "000068669",
+"fio": "Родионов Дмитрий Владимирович",
+"facultyId": "000000021",
+"speciality": "00000091",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": true,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4.94
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"yelloyline": true,
+"acceptСount": 3,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000069227",
+"fio": "Данилова Елена Алексеевна",
+"facultyId": "000000021",
+"speciality": "00000091",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4.13
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000066734",
+"fio": "Равилов Алик Ильдарович",
+"facultyId": "000000021",
+"speciality": "00000091",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 4.11
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 1,
+"notice1": "",
+"notice2": null
+},
+{
+"studentId": "000068807",
+"fio": "Орешкина Алина Александровна",
+"facultyId": "000000021",
+"speciality": "00000091",
+"specialization": "",
+"preparationLevel": "Специалист(СПО)",
+"admissionBasis": "Полное возмещение затрат",
+"studyForm": "Очная",
+"category": "Без вступительных испытаний",
+"accept": false,
+"original": false,
+"score": [
+{
+"Priority": 1,
+"subjectId": "000000939",
+"subjectScore": 3.94
+}
+],
+"summ": 0,
+"indAchievement": 0,
+"summContest": 0,
+"needHostel": false,
+"acceptСount": 0,
+"notice1": "",
+"notice2": null
+}
+]
+}
+]
+}

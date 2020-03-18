@@ -1,0 +1,371 @@
+{
+"data": [
+{
+"Plan": {
+"planId": "000014253",
+"facultyId": "000000023",
+"facultyName": "Институт национальной культуры (СПО)",
+"trainingForm": "Очная",
+"trainingAreasId": "00000636",
+"trainingCode": "51.02.01",
+"trainingAreasName": "Народное художественное творчество (по видам)",
+"specializationID": "",
+"specializationName": "",
+"years": 4
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000003189",
+"CompetitionName": "ИНК_НХК_СПО_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 20
+},
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 10
+}
+],
+"freeSeatsNumber": 20,
+"subjects": [
+{
+"subjectId": "000000026",
+"name": "Творческий экзамен(по видам)_1",
+"minScore": 60
+}
+]
+},
+{
+"Plan": {
+"planId": "000014254",
+"facultyId": "000000023",
+"facultyName": "Институт национальной культуры (СПО)",
+"trainingForm": "Очная",
+"trainingAreasId": "00000081",
+"trainingCode": "53.02.05",
+"trainingAreasName": "Сольное и хоровое народное пение",
+"specializationID": "",
+"specializationName": "",
+"years": 4
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000003190",
+"CompetitionName": "ИНК_СХНП_СПО_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 10
+},
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 10
+}
+],
+"freeSeatsNumber": 10,
+"subjects": [
+{
+"subjectId": "000000028",
+"name": "Творческое испытание (вокал)",
+"minScore": 60
+}
+]
+},
+{
+"Plan": {
+"planId": "000014255",
+"facultyId": "000000023",
+"facultyName": "Институт национальной культуры (СПО)",
+"trainingForm": "Очная",
+"trainingAreasId": "00000078",
+"trainingCode": "54.02.01",
+"trainingAreasName": "Дизайн (по отраслям)",
+"specializationID": "",
+"specializationName": "",
+"years": 4
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000003191",
+"CompetitionName": "ИНК_Диз_СПО_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 20
+}
+],
+"freeSeatsNumber": 0,
+"subjects": [
+{
+"subjectId": "000000025",
+"name": "Творческое испытание (рисунок, композиция)",
+"minScore": 60
+}
+]
+},
+{
+"Plan": {
+"planId": "000014256",
+"facultyId": "000000023",
+"facultyName": "Институт национальной культуры (СПО)",
+"trainingForm": "Очная",
+"trainingAreasId": "00000080",
+"trainingCode": "54.02.02",
+"trainingAreasName": "Декоративно-прикладное искусство и народные промыслы (по видам)",
+"specializationID": "",
+"specializationName": "",
+"years": 4
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000003192",
+"CompetitionName": "ИНК_ДПИ_СПО_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 20
+}
+],
+"freeSeatsNumber": 0,
+"subjects": [
+{
+"subjectId": "000000025",
+"name": "Творческое испытание (рисунок, композиция)",
+"minScore": 60
+}
+]
+},
+{
+"Plan": {
+"planId": "000014257",
+"facultyId": "000000021",
+"facultyName": "Факультет довузовской подготовки и среднего профессионального образования",
+"trainingForm": "Очная",
+"trainingAreasId": "00000084",
+"trainingCode": "09.02.03",
+"trainingAreasName": "Программирование в компьютерных системах ",
+"specializationID": "",
+"specializationName": "",
+"years": 4
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000003193",
+"CompetitionName": "ФДП_Прог_СПО_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 14
+},
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 11
+}
+],
+"freeSeatsNumber": 14,
+"subjects": [
+{
+"subjectId": "000000939",
+"name": "КонкурсАттестатов",
+"minScore": 51
+}
+]
+},
+{
+"Plan": {
+"planId": "000014258",
+"facultyId": "000000021",
+"facultyName": "Факультет довузовской подготовки и среднего профессионального образования",
+"trainingForm": "Очная",
+"trainingAreasId": "00000091",
+"trainingCode": "38.02.01",
+"trainingAreasName": "Экономика и бухгалтерский учет (по отраслям)",
+"specializationID": "",
+"specializationName": "",
+"years": 3
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000003194",
+"CompetitionName": "ФДП_ЭкБух_СПО_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 50
+}
+],
+"freeSeatsNumber": 0,
+"subjects": [
+{
+"subjectId": "000000939",
+"name": "КонкурсАттестатов",
+"minScore": 51
+}
+]
+},
+{
+"Plan": {
+"planId": "000014259",
+"facultyId": "000000021",
+"facultyName": "Факультет довузовской подготовки и среднего профессионального образования",
+"trainingForm": "Очная",
+"trainingAreasId": "00000092",
+"trainingCode": "40.02.01",
+"trainingAreasName": "Право и организация социального обеспечения",
+"specializationID": "",
+"specializationName": "",
+"years": 3
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000003195",
+"CompetitionName": "ФДП_Прав_СПО_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 50
+}
+],
+"freeSeatsNumber": 0,
+"subjects": [
+{
+"subjectId": "000000939",
+"name": "КонкурсАттестатов",
+"minScore": 51
+}
+]
+},
+{
+"Plan": {
+"planId": "000014260",
+"facultyId": "000000021",
+"facultyName": "Факультет довузовской подготовки и среднего профессионального образования",
+"trainingForm": "Очная",
+"trainingAreasId": "00000093",
+"trainingCode": "43.02.10",
+"trainingAreasName": "Туризм",
+"specializationID": "",
+"specializationName": "",
+"years": 3
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000003196",
+"CompetitionName": "ФДП_Тур_СПО_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 25
+}
+],
+"freeSeatsNumber": 0,
+"subjects": [
+{
+"subjectId": "000000939",
+"name": "КонкурсАттестатов",
+"minScore": 51
+}
+]
+}
+]
+}
