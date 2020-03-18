@@ -46,10 +46,11 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
     Route::get('/parse-students', 'ParserJsonController@parseFromJson')->name('parse.parseFromJson');
     Route::get('/parse-contests', 'ParserJsonController@parsePastContests')->name('parse.parsePastContests');
-
+    Route::get('/parse-students-master', 'ParserJsonController@parseFromJsonMaster')->name('parse.parseFromJsonMaster');
 //    Route::get('/parse-areas', 'ParserJsonController@parseAreas')->name('parse.parseAreas');
     Route::get('/parse-sub', 'ParserController@parseFromXlsSub')->name('parse.parseFromXlsSub');
-    Route::get('/parse-plansbach', 'ParserJsonController@parsePlansBach')->name('parse.parsePlansBach');
+    Route::get('/parse-plans-bach', 'ParserJsonController@parsePlansBach')->name('parse.parsePlansBach');
+    Route::get('/parse-plans-master', 'ParserJsonController@parsePlansMaster')->name('parse.parsePlansMaster');
 
 });
 Auth::routes();
@@ -57,6 +58,7 @@ Auth::routes();
 Route::get('/contact', 'ContactController@index')->name('contact.index');
 Route::get('/select', 'SelectionController@index')->name('selection.index');
 Route::get('/statistic/bachelor', 'StatisticController@index')->name('stat.index');
+Route::get('/statistic/master', 'StatisticMasterController@index')->name('statmaster.index');
 
 Route::get('/foreign', 'ForeignController@index')->name('foreign.index');
 
