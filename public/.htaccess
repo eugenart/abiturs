@@ -4,6 +4,8 @@
     </IfModule>
 
     RewriteEngine On
+    RewriteCond %{HTTPS} !=on
+    RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R,L]
 
     Order Allow,Deny
     Allow from 194.54
