@@ -37,7 +37,7 @@ class SendMailController extends Controller
         {
             $message->from('us@example.com', 'Laravel');
 
-            $message->to('elionorablack@gmail.com');
+            $message->to('artashkinep@mrsu.ru');
         });
 
 
