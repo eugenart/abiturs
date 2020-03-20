@@ -10,7 +10,7 @@
 
                 <form id="contactform" method="POST" action=""
                       class="contact-us d-flex align-items-center justify-content-center flex-column p-0">
-                    {{ csrf_field() }}
+                    @csrf
                     <input name="fio" id="fio" pattern="^[A-Za-zА-Яа-яЁё\s]+$" type="text" placeholder="ФИО *" value=""
                            required>
                     <input name="email" id="email" type="email" placeholder="Email *" required>
@@ -24,11 +24,11 @@
 
             </div>
             <div class="col-12 mt-5 text-center form-sent">
-{{--                                <i class="fa fa-check"></i>--}}
-{{--                                <br>--}}
-{{--                                <span>Вопрос успешно отправлен! <br> Мы свяжемся с Вами в ближайшее время.</span>--}}
-{{--                                <br>--}}
-{{--                                <a href="/">Вернуться на главную</a>--}}
+                {{--                                <i class="fa fa-check"></i>--}}
+                {{--                                <br>--}}
+                {{--                                <span>Вопрос успешно отправлен! <br> Мы свяжемся с Вами в ближайшее время.</span>--}}
+                {{--                                <br>--}}
+                {{--                                <a href="/">Вернуться на главную</a>--}}
             </div>
         </div>
     </div>
