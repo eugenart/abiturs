@@ -33,7 +33,7 @@ class SendMailController extends Controller
         $headers = 'From: abiturs.mrsu.ru' . "\r\n" .
             'X-Mailer: PHP/' . phpversion();
 
-        Mail::send('test', array('key' => 'value'), function ($message) {
+        Mail::send(function ($message) {
             $message->to('elionorablack@gmail.com')->from('noreply@localhost')->subject('test');
         });
 
