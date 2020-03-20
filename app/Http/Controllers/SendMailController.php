@@ -23,7 +23,7 @@ class SendMailController extends Controller
         $mail->question = $question;
         $mail->save();
 
-        $to = 'kirdyashkinaei@mrsu.ru';
+        $to = 'elionorablack@gmail.com';
         $subject = 'Вопрос с сайта приемной кампании МГУ им. Н.П.Огарева';
         $message = 'ФИО: '. $fio . '.'. "\r\n".
             'E-mail: '. $email . '.'. "\r\n".
