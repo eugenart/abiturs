@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\ContactMail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class SendMailController extends Controller
 {
@@ -25,14 +26,16 @@ class SendMailController extends Controller
 
         $to = 'elionorablack@gmail.com';
         $subject = 'Вопрос с сайта приемной кампании МГУ им. Н.П.Огарева';
-        $message = 'ФИО: '. $fio . '.'. "\r\n".
-            'E-mail: '. $email . '.'. "\r\n".
-            'Телефон: '. $phone . '.'. "\r\n".
-            'Вопрос: '. $question . '.';
+        $message = 'ФИО: ' . $fio . '.' . "\r\n" .
+            'E-mail: ' . $email . '.' . "\r\n" .
+            'Телефон: ' . $phone . '.' . "\r\n" .
+            'Вопрос: ' . $question . '.';
         $headers = 'From: abiturs.mrsu.ru' . "\r\n" .
             'X-Mailer: PHP/' . phpversion();
 
-        mail($to, $subject, $message, $headers);
+        Mail::send('test', array('key' => 'value'), function ($message) {
+            $message->to('elionorablack@gmail.com')->from('noreply@localhost')->subject('test');
+        });
 
 
         $result = array(
