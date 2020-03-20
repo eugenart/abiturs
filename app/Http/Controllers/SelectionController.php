@@ -9,12 +9,17 @@ use App\PlanCompetition;
 use App\StudyForm;
 use App\Subject;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SelectionController extends Controller
 {
     public function index()
     {
-        $subjects = Subject::all();
+        //$subjects = Subject::all();
+        $subjects = DB::table('subjects')->join('plan_comp_scores', 'subjects.id', '=', 'plan_comp_scores.id_subject')
+            ->groupBy('subjects.id')->select('subjects.*')->get();
+//            $studyFormsForInputs = DB::table('study_forms')->join('statistics', 'study_forms.id', '=', 'statistics.id_studyForm')
+//                ->groupBy('study_forms.id')->select('study_forms.*')->get();;
         foreach ($subjects as $k => $subject) {
             if (strpos($subject->name, 'испытание') or strpos($subject->name, 'достижение')) {
                 unset($subjects[$k]);
