@@ -44,6 +44,16 @@ body {
     color:black;
     border: 1px solid #000000;
 }
+.mrsu-bg-button-ovz {
+    background-color: #ffffff;
+    border: 1px solid #000000;
+    font-size: 20px;
+}
+.mrsu-bg-button-ovz:hover{
+    background-color: #ffffff;
+    color:black;
+    border: 1px solid #000000;
+}
 .fa-search{
     color:black!important;
 }

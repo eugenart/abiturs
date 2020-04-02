@@ -70,7 +70,7 @@
                         </select>
                         <div
                             class="col-lg-3 col-xl-3 col-md-3 col-12 mt-xl-0 mt-md-1 mt-1 d-flex justify-content-center align-items-center">
-                            <button class="mrsu-bg-button w-100 btn btn-warning btn-sm" type="button" id="clearSelects">Отменить
+                            <button class="mrsu-bg-button-ovz w-100 btn btn-warning btn-sm" type="button" id="clearSelects">Отменить
                                 выбор
                             </button>
                         </div>
