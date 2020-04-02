@@ -70,7 +70,7 @@
                         </select>
                         <div
                             class="col-lg-3 col-xl-3 col-md-3 col-12 mt-xl-0 mt-md-1 mt-1 d-flex justify-content-center align-items-center">
-                            <button class="w-100 btn btn-warning btn-sm" type="button" id="clearSelects">Отменить
+                            <button class="mrsu-bg-button w-100 btn btn-warning btn-sm" type="button" id="clearSelects">Отменить
                                 выбор
                             </button>
                         </div>
@@ -242,7 +242,7 @@
                                                                 @endif
                                                                 @if(isset($speciality->abiturs))
                                                                     <table
-                                                                        class="table table-bordered table-sm base-exams-table mt-xl-2 mt-0">
+                                                                        class="table table-bordered table-ovz table-sm base-exams-table mt-xl-2 mt-0">
                                                                         <thead style="background-color: #e9eff6">
                                                                         <tr style="vertical-align: center">
                                                                             <th rowspan="2" class="text-center">№</th>

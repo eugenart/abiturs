@@ -32,7 +32,8 @@
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
           integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{asset('css/style.css')}}">
+{{--    <link rel="stylesheet" href="{{asset('css/style.css')}}">--}}
+    <link rel="stylesheet" href="{{asset('css/ovz.css')}}">
     <link rel="stylesheet" href="{{asset('css/hamburgers.css')}}" id="ovzCSSLink">
     @section('style')
     @show
@@ -46,6 +47,9 @@
                              class="mrsu-logo-img d-lg-none d-md-block" alt=""></a>
             <a href="/"><img src="{{asset('storage/images/logo_mrsu.png')}}"
                              class="mrsu-logo-img mrsu-logo-blue d-lg-block d-md-none d-sm-none"
+                             alt=""></a>
+            <a href="/"><img src="{{asset('storage/images/logo_mrsu-ovz.png')}}"
+                             class="mrsu-logo-img-ovz mrsu-logo-blue d-lg-block d-md-none d-sm-none"
                              alt=""></a>
         </div>
         <div class="col-6 justify-content-end d-flex align-items-center">
@@ -74,7 +78,7 @@
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Уровни подготовки
                     </a>
-                    <div class="dropdown-menu main-color" aria-labelledby="navbarDropdown">
+                    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
                         @foreach($pages->sortByDesc('menuPriority') as $page)
                             <a class="nav-link text-white" href="{{url($page->url)}}">{{ $page->name }}</a>
                         @endforeach

@@ -47,6 +47,10 @@ body {
     height: 54px;
 }
 
+.mrsu-logo-img-ovz {
+    width: 0;
+}
+
 .chosen-student {
     background-color: rgba(0, 128, 0, 0.1);
 }
