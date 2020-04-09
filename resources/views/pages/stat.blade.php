@@ -40,7 +40,7 @@
                         @endif
                     </div>
                     <span
-                        class="m-0 p-0 main-color w-100 text-center">Дата последнего обновления: <b>20.02.2020 18:30</b></span>
+                        class="m-0 p-0 main-color w-100 text-right">Дата последнего обновления: <b>20.02.2020 18:30</b></span>
                 </div>
             </div>
         </div>
@@ -48,7 +48,7 @@
     <div class="container pt-0 padding-0 mt-4">
         <form class="ovz-form" action="{{ route('stat.index') }}" id="sendFormWithFacultets" method="get">
             <div class="row">
-                <div class="col-12">
+                <div class="col-12 main-ver-div">
                     <div class="row">
                         <select style="font-size: 16px !important;"
                                 class="selectpicker form-control-sm col-lg-3 col-xl-3 col-md-3 col-12" multiple
@@ -226,7 +226,7 @@
 
                                                                 </div>
                                                                 @if(isset($speciality->chosenStudents))
-                                                                    <div>
+                                                                    <div class="chosen-student-ovz">
                                                                         @foreach($speciality->chosenStudents as $chosenStudent)
                                                                             <div class="main-color h6">
                                                                                 <span

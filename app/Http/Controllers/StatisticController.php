@@ -48,6 +48,7 @@ class StatisticController extends Controller
         $faculties = $this->fetchFaculties();
         $studyFormsForInputs = DB::table('study_forms')->join('statistics', 'study_forms.id', '=', 'statistics.id_studyForm')
             ->groupBy('study_forms.id')->select('study_forms.*')->get();;
+
         if (isset($studyForms)) {
             $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
             return view('pages.stat', ['studyForms' => $studyForms, 'faculties' => $faculties,

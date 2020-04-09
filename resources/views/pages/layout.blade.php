@@ -32,8 +32,8 @@
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
           integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{asset('css/style.css')}}">
-{{--    <link rel="stylesheet" href="{{asset('css/ovz.css')}}">--}}
+{{--    <link rel="stylesheet" href="{{asset('css/style.css')}}">--}}
+    <link rel="stylesheet" href="{{asset('css/ovz.css')}}">
     <link rel="stylesheet" href="{{asset('css/hamburgers.css')}}" id="ovzCSSLink">
     @section('style')
     @show
@@ -57,6 +57,8 @@
             {{--            <img src="{{asset('storage/images/eye-white.png')}}" class="ml-2 mr-4 d-lg-none d-md-block" width="35" height="auto" alt="">--}}
             <img id="ovz_version" src="{{asset('storage/images/eye-blue.png')}}"
                  class="ml-2 mr-4 d-lg-block d-md-none d-sm-none mrsu-eye-blue" width="35" height="auto" alt="">
+            <img id="main_version" src="{{asset('storage/images/eye-black.png')}}"
+                 class="ml-2 mr-4 d-lg-block d-md-none d-sm-none mrsu-eye-black" width="35" height="auto" alt="">
             <button class="hamburger hamburger--collapse  d-lg-none d-md-block" type="button" data-toggle="collapse"
                     data-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

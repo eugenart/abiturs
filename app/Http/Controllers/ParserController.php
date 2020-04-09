@@ -85,6 +85,8 @@ class ParserController extends Controller
         $sheetSpz = $xlsSpz->getActiveSheet();
         $sheetSpz = $sheetSpz->toArray();
 
+
+        //return count($sheetSpz);
         for($i=3; $i<count($sheetSpz); $i++){
 
             //Добавляем записи Специализаций
