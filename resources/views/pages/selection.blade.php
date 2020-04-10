@@ -20,7 +20,7 @@
                         <h5 class="m-0 text-white text-center" id="facultyName">-</h5>
                     </div>
                 </div>
-                <div class="modal-header pb-0 pt-0">
+                <div class="modal-header pb-0 pt-0 modal-header-ovz">
                     <div class="row w-100 m-auto text-center pt-3 pb-3">
                         <div class="col-12"></div>
                         <div class="col-12"><h5 class="m-0"><b id="directionName">-</b><br><span id="spec"></span></h5></div>

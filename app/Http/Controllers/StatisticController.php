@@ -403,7 +403,7 @@ class StatisticController extends Controller
     public function fetchFaculties()
     {
         $faculties = Faculty::all();
-        foreach ($faculties as $faculty) {
+        foreach ($faculties as $k => $faculty) {
             $id_specialities = Statistic::where('id_faculty', '=', $faculty->id)
                 ->select('id_speciality')
                 ->get();
@@ -412,6 +412,7 @@ class StatisticController extends Controller
             foreach ($id_specialities as $item) {
                 $id_spec_arr[] = $item->id_speciality;
             }
+
             $specialities = Speciality::whereIn('id', $id_spec_arr)->get();
 
             foreach ($specialities as $speciality) {

@@ -457,7 +457,7 @@
         function fillSpecialitiesWithCheck(faculties, facultiesIds = []) {
             $.each(faculties, (k, faculty) => {
                 if (facultiesIds.length > 0) {
-                    if ($.inArray(k + 1, facultiesIds) !== -1) {
+                    if ($.inArray(k+1, facultiesIds) !== -1) {
                         fillSpecialities(faculty)
                     }
                 } else {

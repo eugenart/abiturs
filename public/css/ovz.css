@@ -427,10 +427,16 @@ marquee {
 /*}*/
 
 #exampleModalScrollable .modal-body {
-    background-color: #0c5b95;
+    background-color: #474747;
     color: white;
+    border:2px solid black;
 }
-
+.modal-content{
+    border:4px solid #ffffff;
+}
+.modal-header-ovz{
+    border:2px solid black;
+}
 .copy-right a {
     color: #000;
     text-decoration: underline;
@@ -479,7 +485,9 @@ marquee {
     box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.32);
     /*border-top: 50px solid #007ed0;*/
     height: 75px;
-    background-color: #007ed0;
+    background-color: #474747;
+    color:black;
+    border:2px solid black;
 }
 
 .inputGroup {
