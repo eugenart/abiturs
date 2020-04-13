@@ -49,7 +49,7 @@
         <form class="ovz-form" action="{{ route('statasp.index') }}" id="sendFormWithFacultets" method="get">
             <div class="row">
                 <div class="col-12">
-                    <div class="row">
+                    <div class="row ovz-row">
                         <select style="font-size: 16px !important;"
                                 class="selectpicker form-control-sm col-lg-3 col-xl-3 col-md-3 col-12" multiple
                                 title="Факультет / Институт" name="faculties[]" id="allfaculties">
