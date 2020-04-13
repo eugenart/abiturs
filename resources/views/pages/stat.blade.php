@@ -433,10 +433,10 @@
         })
 
         function fillFaculties(faculties) {
-            faculties.sort((prev, next) => {
-                if (prev.name < next.name) return -1;
-                if (prev.name < next.name) return 1;
-            });
+            // faculties.sort((prev, next) => {
+            //     if (prev.name < next.name) return -1;
+            //     if (prev.name < next.name) return 1;
+            // });
             $.each(faculties, (k, faculty) => {
                 if ((faculty.speciality).length) {
                     $('#allfaculties').append('<option style="word-break: break-all;" value="' + faculty.id + '">' + faculty.name + '</option>')
@@ -455,9 +455,10 @@
         }
 
         function fillSpecialitiesWithCheck(faculties, facultiesIds = []) {
+            console.log(facultiesIds);
             $.each(faculties, (k, faculty) => {
                 if (facultiesIds.length > 0) {
-                    if ($.inArray(k+1, facultiesIds) !== -1) {
+                    if ($.inArray(faculty.id, facultiesIds) !== -1) {
                         fillSpecialities(faculty)
                     }
                 } else {

@@ -51,9 +51,14 @@ class StatisticController extends Controller
 
         if (isset($studyForms)) {
             $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-            return view('pages.stat', ['studyForms' => $studyForms, 'faculties' => $faculties,
-                'studyFormsForInputs' => $studyFormsForInputs, 'actual_link' => $actual_link]);
-
+            if($studyForms->count()!=0){
+                return view('pages.stat', ['studyForms' => $studyForms, 'faculties' => $faculties,
+                    'studyFormsForInputs' => $studyFormsForInputs, 'actual_link' => $actual_link]);
+            }
+            else{
+                $notification = "По Вашему запросу ничего не найдено";
+                return view('pages.stat', ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs, 'notification' => $notification]);
+            }
         } else {
             if(isset($notification)){
                 return view('pages.stat', ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs, 'notification' => $notification]);
@@ -402,7 +407,7 @@ class StatisticController extends Controller
 
     public function fetchFaculties()
     {
-        $faculties = Faculty::all();
+        $faculties = Faculty::orderBy('name')->get();
         foreach ($faculties as $k => $faculty) {
             $id_specialities = Statistic::where('id_faculty', '=', $faculty->id)
                 ->select('id_speciality')

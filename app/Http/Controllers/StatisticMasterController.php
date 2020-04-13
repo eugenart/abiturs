@@ -48,9 +48,14 @@ class StatisticMasterController extends Controller
         $studyFormsForInputs = DB::table('study_forms')->join('statistic_masters', 'study_forms.id', '=', 'statistic_masters.id_studyForm')->groupBy('study_forms.id')->select('study_forms.*')->get();;
         if (isset($studyForms)) {
             $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-            return view('pages.statmaster', ['studyForms' => $studyForms, 'faculties' => $faculties,
-                'studyFormsForInputs' => $studyFormsForInputs, 'actual_link' => $actual_link]);
-
+            if($studyForms->count()!=0){
+                return view('pages.statmaster', ['studyForms' => $studyForms, 'faculties' => $faculties,
+                    'studyFormsForInputs' => $studyFormsForInputs, 'actual_link' => $actual_link]);
+            }
+            else{
+                $notification = "По Вашему запросу ничего не найдено";
+                return view('pages.statmaster', ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs, 'notification' => $notification]);
+            }
         } else {
             if(isset($notification)){
                 return view('pages.statmaster', ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs, 'notification' => $notification]);
@@ -376,7 +381,7 @@ class StatisticMasterController extends Controller
 
     public function fetchFaculties()
     {
-        $faculties = Faculty::all();
+        $faculties = Faculty::orderBy('name')->get();
         foreach ($faculties as $faculty) {
             $id_specialities = StatisticMaster::where('id_faculty', '=', $faculty->id)
                 ->select('id_speciality')
