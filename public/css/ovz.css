@@ -2,19 +2,11 @@
 
 body {
     font-family: 'PT Sans', sans-serif;
-    font-size: 22px;
+
     outline: none !important;
 }
 
-a {
-    color: black;
-    text-decoration: none;
-}
 
-a:hover {
-    font-weight: bold;
-    color: black;
-}
 
 #square {
     position: fixed;
@@ -41,137 +33,16 @@ a:hover {
 }
 
 .mrsu-bg {
-    background-color: #000000;
+    background-color: #2366a5;
 }
 
 .mrsu-bg-button {
-    background-color: #ffffff;
-    border: 1px solid #000000;
-    font-size: 20px;
-}
-
-.mrsu-bg-button:hover {
-    background-color: #ffffff;
-    color: black;
-    border: 1px solid #000000;
-}
-
-.mrsu-bg-button-ovz {
-    background-color: #ffffff;
-    border: 1px solid #000000;
-    font-size: 20px;
-}
-
-.mrsu-bg-button-ovz:hover {
-    background-color: #ffffff;
-    color: black;
-    border: 1px solid #000000;
-}
-
-.fa-search {
-    color: black !important;
-}
-
-.ovz-form {
-    font-size: 20px;
+    background-color: #2366a5;
+    border-color: #2366a5;
 }
 
 .mrsu-uppertext {
     text-transform: uppercase;
-}
-
-.ovz-form .filter-option-inner-inner {
-    /*font-size:20px;*/
-    font-weight: bold;
-}
-
-.ovz-form input {
-    font-size: 20px;
-    border: 2px solid black;
-}
-
-.ovz-form .btn {
-    border: 2px solid black;
-}
-
-.chosen-student-ovz {
-    margin: 20px 0;
-}
-
-.chosen-student-ovz span {
-    font-size: 24px !important;
-}
-
-.chosen-student-ovz a {
-    font-size: 24px !important;
-}
-
-.h1-mrsu {
-    font-weight: bold;
-}
-h4{
-    font-weight: bold;
-}
-.ovz-text{
-    font-size:22px;
-}
-.check-subjects input {
-    width: 26px;
-    height: 26px;
-}
-.check-faculties input {
-    width: 26px;
-    height: 26px;
-}
-
-
-
-
-.bold-border-imp{
-    border-bottom:2px solid black !important;
-}
-.bold-border-right-imp{
-    border-bottom:2px solid black !important;
-    border-right:2px solid black !important;
-}
-
-.table-ovz-select, .table-ovz-select thead {
-    border: 2px solid black;
-}
-.table-ovz-select thead {
-    background-color: #ffffff !important;
-}
-
- .table-ovz-select tbody,.table-ovz-select tr, .table-ovz-select td, .table-ovz-select th {
-    border: 1px solid black ;
-}
-.table-ovz-select thead th{
-    border: 1px solid black;
-}
-.faculty-head{
-    color:black;
-}
-
-
-
-.table-ovz {
-    border: 2px solid black;
-}
-.table-ovz thead {
-    background-color: #ffffff !important;
-}
-
-.table-ovz thead, .table-ovz tbody, .table-ovz tr, .table-ovz td, .table-ovz th {
-    border: 1px solid black !important;
-}
-
-
-.mrsu-logo-img {
-    width: 0;
-}
-
-.mrsu-logo-img-ovz {
-    width: 800px;
 }
 
 .chosen-student {
@@ -179,28 +50,27 @@ h4{
 }
 
 .main-nav {
-    /*background-color: #2366a5 !important;*/
+    background-color: #2366a5 !important;
 }
-
+.faculty-head{
+    color:#2366a5;
+}
 .main-nav button span {
-    color: #000000;
+    color: white;
 }
 
 .main-nav ul li a {
-    color: #000000 !important;
-    font-size: 20px;
+    color: white;
+    font-size: 13px;
     padding: 15px 0;
 }
 
 .main-nav ul li:hover {
-    background-color: #ffff;
-    border-right: 1px solid black;
-    border-left: 1px solid black;
+    background-color: #2689cd;
 }
 
 .mrsu-card {
-    background-color: #ffffff;
-    border: 1px solid #000000;
+    background-color: #f9f9f9;
 }
 
 .mrsu-card > ul {
@@ -214,17 +84,14 @@ h4{
 
 .navbar .dropdown-menu {
     z-index: 100;
-    background-color: #ffffff !important;
-    color: black !important;
+    background-color: #2366a5 !important;
+    color: white !important;
     width: 300px !important;
     top: 46px !important;
     border-radius: 0 !important;
-    border: 1px solid black;
 }
 
-.navbar {
-    border: 1px solid black;
-}
+
 
 .mrsu-card > ul > li {
     margin-bottom: 5px;
@@ -235,9 +102,6 @@ h4{
     margin-bottom: 5px;
 }
 
-#ovz_version {
-    display: none !important;
-}
 
 .title-text {
     font-size: 24px;
@@ -254,35 +118,32 @@ h4{
 }
 
 .infoblock-card .card-body {
-    background-color: #ffffff;
-    color: black;
+    background-color: #2366a5;
+    color: white;
     padding: 5px;
-    font-size: 20px;
-    border: 1px solid black;
+    font-size: 13px;
 }
 
-.infoblock-card a:hover {
-    border: 2px solid black;
-}
+
 
 .infoblock-card .card-body img {
     height: auto;
 }
 
-h5 {
-    font-size: 24px;
-}
 
 .list-sections li {
     padding: 5px 10px;
-    background-color: #ffffff;
-    border: 1px solid #000000;
-
+    background-color: #2366a5;
 }
 
-.list-sections li > a {
-    color: black !important;
+.bold-border-imp{
+    border-bottom:2px solid #2366a5 !important;
 }
+.bold-border-right-imp{
+    border-bottom:2px solid #2366a5 !important;
+    border-right:2px solid #2366a5 !important;
+}
+
 
 /*.navbar-toggler {*/
 /*    display: none;*/
@@ -295,8 +156,8 @@ h5 {
 
 .infoblock-card .card-footer ul li a {
     font-style: italic;
-    color: #000000;
-    font-size: 18px;
+    color: #2366a5;
+    font-size: 13px;
 }
 
 .infoblock-card .card-footer ul {
@@ -307,7 +168,7 @@ h5 {
     content: "—";
     position: relative;
     left: -5px;
-    color: #000000;
+    color: #2366a5;
 }
 
 .base-exams-table thead tr td {
@@ -324,18 +185,15 @@ h5 {
 }
 
 .bac-mag .nav-link {
-    color: rgba(0, 0, 0, 0.7) !important;
+    color: rgba(35, 102, 165, 0.7) !important;
 }
-
+.bac-mag .nav-link:hover {
+    color: #2366a5 !important;
+}
 /*.bac-mag .nav-link:hover {*/
 /*    color: #2366a5 !important;*/
 /*}*/
-.nav-pills {
-    font-size: 24px;
-    color: black;
-    background-color: white;
 
-}
 
 .form-row button {
     background-color: rgba(35, 102, 165, 0.7);
@@ -367,29 +225,26 @@ h5 {
 }
 
 .examInfo {
-    background-color: #ffffff;
-    color: #000000;
-    font-size: 24px;
+    background-color: rgba(35, 102, 165, 0.1);
+    color: #2366a5;
+    font-size: 18px;
     border-top-left-radius: 2px;
     border-bottom-left-radius: 2px;
     width: inherit;
     min-height: inherit;
-    border: 2px solid black;
 }
-
 .examInfo-bottom {
     width: 100%;
-    padding: 18px;
-    color: black;
-    background-color: #ffffff;
-    font-size: 24px;
+    padding: 16px;
+    color: white;
+    background-color: #2366a5;
+    font-size: 18px;
     border-top-right-radius: 2px;
     border-bottom-right-radius: 2px;
-    border: 2px solid black;
 }
 
 .examInfo-bottom .spec {
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.51);
 }
 
 
@@ -398,7 +253,7 @@ h5 {
 }
 
 .examInfo tbody tr {
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid rgba(35, 102, 165, 0.33);
 }
 
 .examInfo tbody tr:last-child {
@@ -427,16 +282,10 @@ marquee {
 /*}*/
 
 #exampleModalScrollable .modal-body {
-    background-color: #474747;
+    background-color: #0c5b95;
     color: white;
-    border:2px solid black;
 }
-.modal-content{
-    border:4px solid #ffffff;
-}
-.modal-header-ovz{
-    border:2px solid black;
-}
+
 .copy-right a {
     color: #000;
     text-decoration: underline;
@@ -485,9 +334,7 @@ marquee {
     box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.32);
     /*border-top: 50px solid #007ed0;*/
     height: 75px;
-    background-color: #474747;
-    color:black;
-    border:2px solid black;
+    background-color: #007ed0;
 }
 
 .inputGroup {
@@ -498,7 +345,7 @@ marquee {
 }
 
 .foreign-link {
-    color: #000000;
+    color: #2366a5;
     font-size: 24px;
 }
 
@@ -581,11 +428,11 @@ marquee {
 }
 
 .table-b-border {
-    border: 2px solid black;
+    border: 2px solid #2366a5;
 }
 
 .nps-tr {
-    border-top: 1px solid black;
+    border-top: 1px solid #2366a5;
 }
 
 .nps-tr td {
@@ -598,8 +445,7 @@ marquee {
 }
 
 .border-priem {
-    border: 1px solid black !important;
-    font-size: 24px;
+    border: 1px solid #2366a5 !important;
 }
 
 .swith-priem {
@@ -608,12 +454,12 @@ marquee {
 }
 
 .swith-priem a {
-    color: black;
+    color: #2366a5;
     border-radius: 0 !important;
 }
 
 .swith-priem a.active {
-    background-color: black !important;
+    background-color: #2366a5 !important;
 }
 
 .course-name:first-child {
@@ -647,7 +493,7 @@ marquee {
 }
 
 .file-link-div a {
-    color: #000000;
+    color: #1b4b72;
 }
 
 
@@ -695,10 +541,10 @@ marquee {
 .contact-us input, .contact-us textarea {
     margin: 10px;
     width: 90%;
-    border: 1px solid black;
+    border: 1px solid #1b4b72;
     padding: 10px;
-    color: black;
-    font-size: 18px;
+    color: #1b4b72;
+    font-size: 16px;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
 }
 
@@ -706,15 +552,14 @@ marquee {
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
     margin: 10px;
     width: 90%;
-    border: 1px solid black;
+    border: 1px solid #1b4b72;
     padding: 10px;
     cursor: pointer;
-    background-color: black;
+    background-color: #1b4b72;
     color: white;
 }
-
 .table-scores td, .table-scores th {
-    border: 1px solid black;
+    border: 1px solid #2366a5 ;
 }
 
 .dropdown-item:focus, .dropdown-item:hover, .dropdown-item:active {
@@ -725,11 +570,11 @@ marquee {
 }
 
 .table-scores th {
-    color: black;
+    color: white;
 }
 
 .table-scores thead tr th {
-    background-color: white !important;
+    background-color: #2366a5 !important;
     text-transform: uppercase;
     font-weight: normal;
     padding: 8px;
@@ -738,11 +583,11 @@ marquee {
 }
 
 .table-scores tr td button {
-    color: black !important;
+    color: #2366a5 !important;
 }
 
 .main-color {
-    color: black !important
+    color: #2366a5 !important
 }
 
 /*.dropdown-menu a.nav-link.text-white:active {*/
@@ -751,6 +596,339 @@ marquee {
 
 /*ovz*/
 @media screen and (min-width: 1300px) {
+
+    body {
+        font-size: 22px;
+    }
+    a {
+        color: black;
+        text-decoration: none;
+    }
+
+    a:hover {
+        font-weight: bold;
+        color: black;
+    }
+    .mrsu-bg {
+        background-color: #000000;
+    }
+    .mrsu-bg-button {
+        background-color: #ffffff;
+        border: 1px solid #000000;
+        font-size: 20px;
+    }
+    .mrsu-bg-button-ovz {
+        background-color: #ffffff;
+        border: 1px solid #000000;
+        font-size: 20px;
+    }
+
+    .mrsu-bg-button:hover {
+        background-color: #ffffff;
+        color: black;
+        border: 1px solid #000000;
+    }
+
+    .fa-search {
+        color: black !important;
+    }
+
+    .ovz-form {
+        font-size: 20px;
+    }
+
+    .ovz-form .filter-option-inner-inner {
+        /*font-size:20px;*/
+        font-weight: bold;
+    }
+    .ovz-form input {
+        font-size: 20px;
+        border: 2px solid black;
+    }
+
+    .ovz-form .btn {
+        border: 2px solid black;
+    }
+
+    .chosen-student-ovz {
+        margin: 20px 0;
+    }
+
+    .chosen-student-ovz span {
+        font-size: 24px !important;
+    }
+
+    .chosen-student-ovz a {
+        font-size: 24px !important;
+    }
+
+    .h1-mrsu {
+        font-weight: bold;
+    }
+    h4{
+        font-weight: bold;
+    }
+    .ovz-text{
+        font-size:22px;
+    }
+    .check-subjects input {
+        width: 26px;
+        height: 26px;
+    }
+    .check-faculties input {
+        width: 26px;
+        height: 26px;
+    }
+    .bold-border-imp{
+        border-bottom:2px solid black !important;
+    }
+    .bold-border-right-imp{
+        border-bottom:2px solid black !important;
+        border-right:2px solid black !important;
+    }
+
+    .table-ovz-select, .table-ovz-select thead {
+        border: 2px solid black;
+    }
+    .table-ovz-select thead {
+        background-color: #ffffff !important;
+    }
+
+    .table-ovz-select tbody,.table-ovz-select tr, .table-ovz-select td, .table-ovz-select th {
+        border: 1px solid black ;
+    }
+    .table-ovz-select thead th{
+        border: 1px solid black;
+    }
+    .faculty-head{
+        color:black;
+    }
+
+
+
+    .table-ovz {
+        border: 2px solid black;
+    }
+    .table-ovz thead {
+        background-color: #ffffff !important;
+    }
+
+    .table-ovz thead, .table-ovz tbody, .table-ovz tr, .table-ovz td, .table-ovz th {
+        border: 1px solid black !important;
+    }
+    .mrsu-logo-img {
+        width: 0;
+    }
+    .mrsu-logo-img-ovz {
+        width: 800px;
+    }
+
+    .main-nav button span {
+        color: #000000;
+    }
+
+    .main-nav ul li a {
+        color: #000000 !important;
+        font-size: 20px;
+        padding: 15px 0;
+    }
+
+    .main-nav ul li:hover {
+        background-color: #ffff;
+        border-right: 1px solid black;
+        border-left: 1px solid black;
+    }
+    .navbar .dropdown-menu {
+        z-index: 100;
+        background-color: #ffffff !important;
+        color: black !important;
+        width: 300px !important;
+        top: 46px !important;
+        border-radius: 0 !important;
+        border: 1px solid black;
+    }
+    .mrsu-card {
+        background-color: #ffffff;
+        border: 1px solid #000000;
+    }
+    .navbar {
+        border: 1px solid black;
+    }
+    #ovz_version {
+        display: none !important;
+    }
+
+    .infoblock-card .card-body {
+        background-color: #ffffff;
+        color: black;
+        padding: 5px;
+        font-size: 20px;
+        border: 1px solid black;
+    }
+    .infoblock-card a:hover {
+        border: 2px solid black;
+    }
+    h5 {
+        font-size: 24px;
+    }
+    .list-sections li {
+        padding: 5px 10px;
+        background-color: #ffffff;
+        border: 1px solid #000000;
+
+    }
+    .list-sections li > a {
+        color: black !important;
+    }
+
+    .infoblock-card .card-footer ul li a {
+        font-style: italic;
+        color: #000000;
+        font-size: 18px;
+    }
+    .infoblock-card .card-footer ul li:before {
+        content: "—";
+        position: relative;
+        left: -5px;
+        color: #000000;
+    }
+    .nav-pills {
+        font-size: 24px;
+        color: black;
+        background-color: white;
+
+    }
+    .bac-mag .nav-link {
+        color: rgba(0, 0, 0, 0.7) !important;
+    }
+
+    .examInfo {
+        background-color: #ffffff;
+        color: #000000;
+        font-size: 24px;
+        border-top-left-radius: 2px;
+        border-bottom-left-radius: 2px;
+        width: inherit;
+        min-height: inherit;
+        border: 2px solid black;
+    }
+    .examInfo-bottom {
+        width: 100%;
+        padding: 18px;
+        color: black;
+        background-color: #ffffff;
+        font-size: 24px;
+        border-top-right-radius: 2px;
+        border-bottom-right-radius: 2px;
+        border: 2px solid black;
+    }
+
+    .examInfo-bottom .spec {
+        border-bottom: 1px solid black;
+    }
+    .examInfo tbody tr {
+        border-bottom: 1px solid black;
+    }
+
+    #exampleModalScrollable .modal-body {
+        background-color: #474747;
+        color: white;
+        border:2px solid black;
+    }
+
+    .modal-content{
+        border:4px solid #ffffff;
+    }
+    .modal-header-ovz{
+        border:2px solid black;
+    }
+
+    .topline {
+        box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.32);
+        /*border-top: 50px solid #007ed0;*/
+        height: 75px;
+        background-color: #474747;
+        color:black;
+        border:2px solid black;
+    }
+
+    .foreign-link {
+        color: #000000;
+        font-size: 24px;
+    }
+
+    .table-b-border {
+        border: 2px solid black;
+    }
+
+    .nps-tr {
+        border-top: 1px solid black;
+    }
+
+    .border-priem {
+        border: 1px solid black !important;
+        font-size: 24px;
+    }
+
+    .swith-priem a {
+        color: black;
+        border-radius: 0 !important;
+    }
+
+    .swith-priem a.active {
+        background-color: black !important;
+    }
+    .file-link-div a {
+        color: #000000;
+    }
+
+    .contact-us input, .contact-us textarea {
+        margin: 10px;
+        width: 90%;
+        border: 1px solid black;
+        padding: 10px;
+        color: black;
+        font-size: 18px;
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+    }
+    .contact-us button {
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+        margin: 10px;
+        width: 90%;
+        border: 1px solid black;
+        padding: 10px;
+        cursor: pointer;
+        background-color: black;
+        color: white;
+    }
+
+    .table-scores td, .table-scores th {
+        border: 1px solid black;
+    }
+
+    .main-nav {
+        background-color: #f8f9fa !important;
+    }
+
+    .table-scores th {
+        color: black;
+    }
+    .table-scores thead tr th {
+        background-color: white !important;
+        text-transform: uppercase;
+        font-weight: normal;
+        padding: 8px;
+        text-align: center;
+        vertical-align: center;
+    }
+
+    .table-scores tr td button {
+        color: black !important;
+    }
+
+    .main-color {
+        color: black !important
+    }
 
     .ovz-form{
         margin-bottom: 35px;
