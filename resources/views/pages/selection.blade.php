@@ -20,7 +20,7 @@
                         <h5 class="m-0 text-white text-center" id="facultyName">-</h5>
                     </div>
                 </div>
-                <div class="modal-header pb-0 pt-0">
+                <div class="modal-header pb-0 pt-0 modal-header-ovz">
                     <div class="row w-100 m-auto text-center pt-3 pb-3">
                         <div class="col-12"></div>
                         <div class="col-12"><h5 class="m-0"><b id="directionName">-</b><br><span id="spec"></span></h5></div>
@@ -86,7 +86,7 @@
                                             <h4><a href="" target="_blank" class="main-color">{{$faculty->name}}</a>
                                             </h4>
                                             <table style="width: 100% !important;"
-                                                   class="table table-sm table-scores w-100 table-b-border">
+                                                   class="table table-sm table-scores w-100 table-b-border table-ovz-select">
                                                 <thead>
                                                 <tr>
                                                     <th width="40%" rowspan="3" style="vertical-align: middle">
@@ -120,7 +120,7 @@
                                                     <th
                                                         style="vertical-align: middle">{{strval(date ( 'Y' ) - 2)}}
                                                     </th>
-                                                    <th
+                                                    <th class="bold-border-right-imp"
                                                         style="vertical-align: middle">{{strval(date ( 'Y' ) - 3)}}
                                                     </th>
                                                 </tr>
@@ -130,9 +130,11 @@
                                                     <tr class="nps-tr search-tr"
                                                         data-exams="{{ implode(',', $item->subjects) }}">
                                                         <td rowspan="{{count($item->scores) }}"
-                                                            style="border-bottom: 2px solid #2366a5 !important;">
+                                                            class="bold-border-imp"
+{{--                                                            style="border-bottom: 2px solid #2366a5 !important;"--}}
+                                                        >
                                                             <button style="white-space: normal;" type="button"
-                                                                    class="btn btn-link text-left d-block w-100 p-0"
+                                                                    class="btn btn-link text-left d-block w-100 p-0 ovz-text"
                                                                     data-toggle="modal"
                                                                     data-target="#exampleModalScrollable"
                                                                     data-content="{{$item}}">
@@ -150,16 +152,18 @@
                                                                 @endif
                                                             @endif
                                                         @endforeach
-                                                        <td rowspan="{{count($item->scores) }}" class="text-center d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none"
-                                                            style="border-bottom:2px solid #2366a5 !important;">
+                                                        <td rowspan="{{count($item->scores) }}" class="text-center d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none bold-border-imp"
+{{--                                                            style="border-bottom:2px solid #2366a5 !important;"--}}
+                                                        >
                                                             @foreach($item->studyForm as $sf)
                                                                 <span style="white-space: nowrap">{{$sf->name}}</span>
                                                                 <br>
                                                             @endforeach
                                                         </td>
                                                         <td rowspan="{{count($item->scores)}}"
-                                                            class="text-center d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none"
-                                                            style="border-bottom:2px solid #2366a5 !important;">
+                                                            class="text-center d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none bold-border-imp"
+{{--                                                            style="border-bottom:2px solid #2366a5 !important;"--}}
+                                                        >
                                                             @foreach($item->studyForm as $sf)
                                                                 @php
                                                                     $counter = 0;
@@ -189,8 +193,9 @@
                                                             @endforeach
                                                         </td>
                                                         <td rowspan="{{count($item->scores) }}"
-                                                            class="text-center d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none"
-                                                            style="border-bottom:2px solid #2366a5 !important;">
+                                                            class="text-center d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none bold-border-imp"
+{{--                                                            style="border-bottom:2px solid #2366a5 !important;"--}}
+                                                        >
                                                             @foreach($item->studyForm as $sf)
                                                                 @php
                                                                     $counter = 0;
@@ -220,8 +225,9 @@
                                                             @endforeach
                                                         </td>
                                                         <td rowspan="{{count($item->scores) }}"
-                                                            class="text-center d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none"
-                                                            style="border-bottom:2px solid #2366a5 !important; border-right:2px solid #2366a5 !important;">
+                                                            class="text-center d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none bold-border-right-imp"
+{{--                                                            style="border-bottom:2px solid #2366a5 !important; border-right:2px solid #2366a5 !important;"--}}
+                                                        >
                                                             @foreach($item->studyForm as $sf)
                                                                 @php
                                                                     $counter = 0;
@@ -266,9 +272,12 @@
                                                             @elseif ($k == (count($item->scores)-1))
                                                                 <tr class="nps-tr search-tr"
                                                                     data-exams="{{ implode(',', $item->subjects) }}">
-                                                                    <td style="border-bottom: 2px solid #2366a5 !important;">{{$score->subject->name}}</td>
-                                                                    <td style="border-bottom: 2px solid #2366a5 !important;;"
-                                                                        class="text-center">{{$score->minScore}}</td>
+                                                                    <td class="bold-border-imp"
+{{--                                                                        style="border-bottom: 2px solid #2366a5 !important;"--}}
+                                                                    >{{$score->subject->name}}</td>
+                                                                    <td
+{{--                                                                        style="border-bottom: 2px solid #2366a5 !important;;"--}}
+                                                                        class="text-center bold-border-imp">{{$score->minScore}}</td>
                                                                 </tr>
                                                             @endif
                                                         @endif
@@ -308,10 +317,12 @@
                                             <div class="col-12 mb-5 search-div-by-faculties"
                                                  data-faculty="{{ $faculty->name }}"
                                                  data-exams="{{ implode(',', $faculty->subjects) }}">
-                                                <h4><a href="" style="color: #2366a5"
+                                                <h4><a href=""
+                                                       class="faculty-head"
+{{--                                                       style="color: #2366a5"--}}
                                                        target="_blank">{{$faculty->name}}</a>
                                                 </h4>
-                                                <table class="table table-b-border table-sm table-scores w-100">
+                                                <table class="table table-b-border table-sm table-scores w-100 table-ovz-select">
                                                     <thead>
                                                     <tr>
                                                         <th width="40%" rowspan="3" style="vertical-align: middle">
@@ -345,7 +356,7 @@
                                                         <th
                                                             style="vertical-align: middle">{{strval(date ( 'Y' ) - 2)}}
                                                         </th>
-                                                        <th
+                                                        <th class="bold-border-right-imp"
                                                             style="vertical-align: middle">{{strval(date ( 'Y' ) - 3)}}
                                                         </th>
                                                     </tr>
@@ -355,9 +366,11 @@
                                                         <tr class="nps-tr search-tr-by-faculties"
                                                             data-exams="{{ implode(',', $item->subjects) }}">
                                                             <td rowspan="{{count($item->scores)}}"
-                                                                style="border-bottom: 2px solid #2366a5 !important;">
+                                                                class="bold-border-imp"
+{{--                                                                style="border-bottom: 2px solid #2366a5 !important;"--}}
+                                                            >
                                                                 <button style="white-space: normal;" type="button"
-                                                                        class="btn btn-link text-left w-100 p-0 d-block"
+                                                                        class="btn btn-link text-left w-100 p-0 d-block  ovz-text"
                                                                         data-toggle="modal"
                                                                         data-target="#exampleModalScrollable"
                                                                         data-content="{{$item}}">
@@ -375,16 +388,18 @@
                                                                 @endif
                                                             @endforeach
                                                             <td rowspan="{{count($item->scores)}}"
-                                                                class="text-center d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none"
-                                                                style="border-bottom:2px solid #2366a5 !important;">
+                                                                class="text-center d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none bold-border-imp"
+{{--                                                                style="border-bottom:2px solid #2366a5 !important;"--}}
+                                                            >
                                                                 @foreach($item->studyForm as $sf)
                                                                     <span style="white-space: nowrap" class="text-center">{{$sf->name}}</span>
                                                                     <br>
                                                                 @endforeach
                                                             </td>
                                                             <td rowspan="{{count($item->scores)}}"
-                                                                class="text-center d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none"
-                                                                style="border-bottom:2px solid #2366a5 !important;">
+                                                                class="text-center d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none bold-border-imp"
+{{--                                                                style="border-bottom:2px solid #2366a5 !important;"--}}
+                                                            >
                                                                 @foreach($item->studyForm as $sf)
                                                                     @php
                                                                         $counter = 0;
@@ -414,8 +429,9 @@
                                                                 @endforeach
                                                             </td>
                                                             <td rowspan="{{count($item->scores)}}"
-                                                                class="text-center d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none"
-                                                                style="border-bottom:2px solid #2366a5 !important;">
+                                                                class="text-center d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none bold-border-imp"
+{{--                                                                style="border-bottom:2px solid #2366a5 !important;"--}}
+                                                            >
                                                                 @foreach($item->studyForm as $sf)
                                                                     @php
                                                                         $counter = 0;
@@ -444,8 +460,9 @@
                                                                 @endforeach
                                                             </td>
                                                             <td rowspan="{{count($item->scores)}}"
-                                                                class="text-center d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none"
-                                                                style="border-bottom:2px solid #2366a5 !important; border-right:2px solid #2366a5 !important;">
+                                                                class="text-center d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none bold-border-right-imp"
+{{--                                                                style="border-bottom:2px solid #2366a5 !important; border-right:2px solid #2366a5 !important;"--}}
+                                                            >
                                                                 @foreach($item->studyForm as $sf)
                                                                     @php
                                                                         $counter = 0;
@@ -490,9 +507,12 @@
                                                                 @elseif ($k == (count($item->scores) - 1))
                                                                     <tr class="nps-tr search-tr-by-facluties"
                                                                         data-exams="{{ implode(',', $item->subjects) }}">
-                                                                        <td style="border-bottom: 2px solid #2366a5 !important;">{{$score->subject->name}}</td>
-                                                                        <td style="border-bottom: 2px solid #2366a5 !important;;"
-                                                                            class="text-center">{{$score->minScore}}</td>
+                                                                        <td class="bold-border-imp"
+{{--                                                                            style="border-bottom: 2px solid #2366a5 !important;"--}}
+                                                                        >{{$score->subject->name}}</td>
+                                                                        <td
+{{--                                                                            style="border-bottom: 2px solid #2366a5 !important;;"--}}
+                                                                            class="text-center bold-border-imp">{{$score->minScore}}</td>
                                                                     </tr>
                                                                 @endif
                                                             @endif

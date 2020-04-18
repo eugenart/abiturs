@@ -48,11 +48,17 @@ class StatisticController extends Controller
         $faculties = $this->fetchFaculties();
         $studyFormsForInputs = DB::table('study_forms')->join('statistics', 'study_forms.id', '=', 'statistics.id_studyForm')
             ->groupBy('study_forms.id')->select('study_forms.*')->get();;
+
         if (isset($studyForms)) {
             $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-            return view('pages.stat', ['studyForms' => $studyForms, 'faculties' => $faculties,
-                'studyFormsForInputs' => $studyFormsForInputs, 'actual_link' => $actual_link]);
-
+            if($studyForms->count()!=0){
+                return view('pages.stat', ['studyForms' => $studyForms, 'faculties' => $faculties,
+                    'studyFormsForInputs' => $studyFormsForInputs, 'actual_link' => $actual_link]);
+            }
+            else{
+                $notification = "По Вашему запросу ничего не найдено";
+                return view('pages.stat', ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs, 'notification' => $notification]);
+            }
         } else {
             if(isset($notification)){
                 return view('pages.stat', ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs, 'notification' => $notification]);
@@ -401,8 +407,8 @@ class StatisticController extends Controller
 
     public function fetchFaculties()
     {
-        $faculties = Faculty::all();
-        foreach ($faculties as $faculty) {
+        $faculties = Faculty::orderBy('name')->get();
+        foreach ($faculties as $k => $faculty) {
             $id_specialities = Statistic::where('id_faculty', '=', $faculty->id)
                 ->select('id_speciality')
                 ->get();
@@ -411,6 +417,7 @@ class StatisticController extends Controller
             foreach ($id_specialities as $item) {
                 $id_spec_arr[] = $item->id_speciality;
             }
+
             $specialities = Speciality::whereIn('id', $id_spec_arr)->get();
 
             foreach ($specialities as $speciality) {

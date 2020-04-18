@@ -40,17 +40,17 @@
                         @endif
                     </div>
                     <span
-                        class="m-0 p-0 main-color w-100 text-center">Дата последнего обновления: <b>20.02.2020 18:30</b></span>
+                        class="m-0 p-0 main-color w-100 text-right">Дата последнего обновления: <b>20.02.2020 18:30</b></span>
                 </div>
             </div>
         </div>
     @endif
     <div class="container pt-0 padding-0 mt-4">
 
-        <form action="{{ route('statspo.index') }}" id="sendFormWithFacultets" method="get">
+        <form class="ovz-form" action="{{ route('statspo.index') }}" id="sendFormWithFacultets" method="get">
             <div class="row">
                 <div class="col-12">
-                    <div class="row">
+                    <div class="row ovz-row">
                         <select style="font-size: 16px !important;"
                                 class="selectpicker form-control-sm col-lg-3 col-xl-3 col-md-3 col-12" multiple
                                 title="Факультет / Институт" name="faculties[]" id="allfaculties">
@@ -71,7 +71,8 @@
                         </select>
                         <div
                             class="col-lg-3 col-xl-3 col-md-3 col-12 mt-xl-0 mt-md-1 mt-1 d-flex justify-content-center align-items-center">
-                            <button class="w-100 btn btn-warning btn-sm" type="button" id="clearSelects">Отменить
+                            <button class="mrsu-bg-button-ovz w-100 btn btn-warning btn-sm" type="button"
+                                    id="clearSelects">Отменить
                                 выбор
                             </button>
                         </div>
@@ -227,7 +228,7 @@
 
                                                                 </div>
                                                                 @if(isset($speciality->chosenStudents))
-                                                                    <div>
+                                                                    <div class="chosen-student-ovz">
                                                                         @foreach($speciality->chosenStudents as $chosenStudent)
                                                                             <div class="main-color h6">
                                                                                 <span
@@ -243,7 +244,7 @@
                                                                 @endif
                                                                 @if(isset($speciality->abiturs))
                                                                     <table
-                                                                        class="table table-bordered table-sm base-exams-table mt-xl-2 mt-0">
+                                                                        class="table table-bordered  table-ovz table-sm base-exams-table mt-xl-2 mt-0">
                                                                         <thead style="background-color: #e9eff6">
                                                                         <tr style="vertical-align: center">
                                                                             <th rowspan="2" class="text-center">№</th>
@@ -362,7 +363,7 @@
                                                                                     </td>
                                                                                 </tr>
                                                                                 @if($abitur->yellowline)
-                                                                                    <tr  style="background-color: yellow;">
+                                                                                    <tr style="background-color: yellow;">
                                                                                         <td colspan="100%"></td>
                                                                                     </tr>
                                                                                 @endif
@@ -434,10 +435,10 @@
         })
 
         function fillFaculties(faculties) {
-            faculties.sort((prev, next) => {
-                if (prev.name < next.name) return -1;
-                if (prev.name < next.name) return 1;
-            });
+            // faculties.sort((prev, next) => {
+            //     if (prev.name < next.name) return -1;
+            //     if (prev.name < next.name) return 1;
+            // });
             $.each(faculties, (k, faculty) => {
                 if ((faculty.speciality).length) {
                     $('#allfaculties').append('<option style="word-break: break-all;" value="' + faculty.id + '">' + faculty.name + '</option>')
@@ -458,7 +459,7 @@
         function fillSpecialitiesWithCheck(faculties, facultiesIds = []) {
             $.each(faculties, (k, faculty) => {
                 if (facultiesIds.length > 0) {
-                    if ($.inArray(k + 1, facultiesIds) !== -1) {
+                    if ($.inArray(faculty.id, facultiesIds) !== -1) {
                         fillSpecialities(faculty)
                     }
                 } else {

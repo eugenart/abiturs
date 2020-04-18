@@ -32,7 +32,15 @@
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
           integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    @php
+        $stylesh = 'css/';
+        $stylesh .= session('ovz-style', 'style');
+        $stylesh .= '.css';
+    @endphp
+    <link href="{{asset( $stylesh )}}" rel="stylesheet" type="text/css">
+
+    {{--    <link rel="stylesheet" href="{{asset('css/style.css')}}">--}}
+    {{--    <link rel="stylesheet" href="{{asset('css/ovz.css')}}">--}}
     <link rel="stylesheet" href="{{asset('css/hamburgers.css')}}" id="ovzCSSLink">
     @section('style')
     @show
@@ -47,12 +55,19 @@
             <a href="/"><img src="{{asset('storage/images/logo_mrsu.png')}}"
                              class="mrsu-logo-img mrsu-logo-blue d-lg-block d-md-none d-sm-none"
                              alt=""></a>
+            <a href="/"><img src="{{asset('storage/images/logo_mrsu-ovz.png')}}"
+                             class="mrsu-logo-img-ovz mrsu-logo-blue d-lg-block d-md-none d-sm-none"
+                             alt=""></a>
         </div>
         <div class="col-6 justify-content-end d-flex align-items-center">
             <a href="" class="ml-3 mr-4 foreign-link ">En </a>
             {{--            <img src="{{asset('storage/images/eye-white.png')}}" class="ml-2 mr-4 d-lg-none d-md-block" width="35" height="auto" alt="">--}}
-            <img id="ovz_version" src="{{asset('storage/images/eye-blue.png')}}"
-                 class="ml-2 mr-4 d-lg-block d-md-none d-sm-none mrsu-eye-blue" width="35" height="auto" alt="">
+            <a href="{{route('ses.toOvzVer')}}"><img id="ovz_version" src="{{asset('storage/images/eye-blue.png')}}"
+                            class="ml-2 mr-4 d-lg-block d-md-none d-sm-none mrsu-eye-blue" width="35" height="auto"
+                            alt=""> </a>
+            <a href="{{route('ses.backToMainVer')}}"><img id="main_version" src="{{asset('storage/images/eye-black.png')}}"
+                            class="ml-2 mr-4 d-lg-block d-md-none d-sm-none mrsu-eye-black" width="35" height="auto"
+                            alt=""></a>
             <button class="hamburger hamburger--collapse  d-lg-none d-md-block" type="button" data-toggle="collapse"
                     data-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -74,7 +89,7 @@
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Уровни подготовки
                     </a>
-                    <div class="dropdown-menu main-color" aria-labelledby="navbarDropdown">
+                    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
                         @foreach($pages->sortByDesc('menuPriority') as $page)
                             <a class="nav-link text-white" href="{{url($page->url)}}">{{ $page->name }}</a>
                         @endforeach
@@ -89,7 +104,8 @@
                         <a class="nav-link text-white" href="{{route('stat.index')}}">Бакалавриат и специалитет</a>
                         <a class="nav-link text-white" href="{{route('statmaster.index')}}">Магистратура</a>
                         <a class="nav-link text-white" href="{{route('statasp.index')}}">Аспирантура и ординатура</a>
-                        <a class="nav-link text-white" href="{{route('statspo.index')}}">Среднее профессиональное образование</a>
+                        <a class="nav-link text-white" href="{{route('statspo.index')}}">Среднее профессиональное
+                            образование</a>
                     </div>
                 </li>
                 <li class="nav-item active d-flex align-items-center justify-content-center">

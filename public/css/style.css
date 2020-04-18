@@ -47,6 +47,12 @@ body {
     height: 54px;
 }
 
+.mrsu-logo-img-ovz {
+    width: 0;
+}
+#main_version{
+    display:none !important;
+}
 .chosen-student {
     background-color: rgba(0, 128, 0, 0.1);
 }
@@ -130,6 +136,13 @@ body {
     background-color: #2366a5;
 }
 
+.bold-border-imp{
+    border-bottom:2px solid #2366a5 !important;
+}
+.bold-border-right-imp{
+    border-bottom:2px solid #2366a5 !important;
+    border-right:2px solid #2366a5 !important;
+}
 /*.navbar-toggler {*/
 /*    display: none;*/
 /*}*/
@@ -542,9 +555,15 @@ marquee {
     color: white;
 }
 .table-scores td, .table-scores th {
-    border: 1px solid #2366a5 !important;
+    border: 1px solid #2366a5 ;
+}
+.table-ovz-select thead th{
+    border: 1px solid #2366a5;
 }
 
+.faculty-head{
+    color: #2366a5;
+}
 .dropdown-item:focus, .dropdown-item:hover, .dropdown-item:active {
     color: #16181b;
     text-decoration: none;
