@@ -25,8 +25,8 @@ class SendMailController extends Controller
         $mail->save();
 
         $to      = 'eugen.art@mail.ru';
-        $subject = 'the subject';
-        $message = 'hello';
+        $subject = 'Приемная кампания';
+        $message = 'Текст сообщения приемной кампании';
         $headers = array(
             'From' => 'webmaster@example.com',
             'Reply-To' => 'webmaster@example.com',
