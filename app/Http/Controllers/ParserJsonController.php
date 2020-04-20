@@ -109,7 +109,7 @@ class ParserJsonController extends Controller
         PreparationLevel::insert($prepLevels);
         $categories = array_unique($categories, SORT_REGULAR);
         Category::insert($categories);
-
+        return json_encode('Формы обучения, категории, уровни подготовки успешно выгружены!');
     }
 
     public function parseStat2()
