@@ -400,7 +400,7 @@ class ParserJsonController extends Controller
         $this->parseCatalogsMaster();
         $this->parseStatMaster();
 
-        return json_encode('Информация об абитуриентах (masters) успешно выгружена!');
+        return json_encode('Информация об абитуриентах (магистратура) успешно выгружена!');
     }
 //------------------------КОНЕЦ парсинг статистики Магистры--------------------------------
 
@@ -563,7 +563,7 @@ class ParserJsonController extends Controller
         $this->parseCatalogsAsp();
         $this->parseStatAsp();
 
-        return json_encode('Информация об абитуриентах (aspirants) успешно выгружена!');
+        return json_encode('Информация об абитуриентах (аспирантура) успешно выгружена!');
     }
 //------------------------КОНЕЦ парсинг статистики Аспиранты--------------------------------
 
@@ -726,7 +726,7 @@ class ParserJsonController extends Controller
         $this->parseCatalogsSpo();
         $this->parseStatSpo();
 
-        return json_encode('Информация об абитуриентах (SPO) успешно выгружена!');
+        return json_encode('Информация об абитуриентах (СПО) успешно выгружена!');
     }
 //------------------------КОНЕЦ парсинг статистики СПО--------------------------------
 
@@ -940,7 +940,7 @@ class ParserJsonController extends Controller
         $this->parsePlansBachSpecSar();
         $this->parsePlansBachSpecRuz(); //отдельно запускать нельзя, только в такой последовательности
 
-        return json_encode('Bachelors Saransk and Ruzaevka success!');
+        return json_encode('Планы, цены за обучение и количество мест бакалавриата и специалитета успешно выгружены!');
     }
 //------------------------КОНЕЦ парсинг планов Бакалавров--------------------------------
 
@@ -1152,7 +1152,7 @@ class ParserJsonController extends Controller
         $this->parsePlansMasterSar();
         $this->parsePlansMasterRuz(); //отдельно запускать нельзя, только в такой последовательности
 
-        return json_encode('Masters Saransk and Ruzaevka success!');
+        return json_encode('Планы, цены за обучение и количество мест магистратуры успешно выгружены!');
     }
 //------------------------КОНЕЦ парсинг планов Магистров--------------------------------
 
@@ -1268,7 +1268,7 @@ class ParserJsonController extends Controller
 
         $this->parsePlansAsp();
 
-        return json_encode('Aspirants success!');
+        return json_encode('Планы, цены за обучение и количество мест аспирантуры успешно выгружены!');
     }
 //------------------------КОНЕЦ парсинг планов Аспиранты--------------------------------
 
@@ -1578,7 +1578,7 @@ class ParserJsonController extends Controller
         $this->parsePlansSpoRuz(); //отдельно запускать нельзя, только в такой последовательности
         $this->parsePlansSpoKov(); //отдельно запускать нельзя, только в такой последовательности
 
-        return json_encode('SPO Saransk + Ruzaevka + Kov success!');
+        return json_encode('Планы, цены за обучение и количество мест СПО успешно выгружены!');
     }
 //------------------------КОНЕЦ парсинг планов СПО--------------------------------
 
@@ -1614,7 +1614,7 @@ class ParserJsonController extends Controller
 
         PastContests::insert($arr_contests);
 
-        return json_encode('ok!');
+        return json_encode('Статистика предыдущих лет успешно выгружена!');
 
     }
 
