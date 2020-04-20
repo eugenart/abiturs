@@ -4420,10 +4420,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "parse",
   data: function data() {
@@ -4550,7 +4546,7 @@ __webpack_require__.r(__webpack_exports__);
       this.loadingparseStudentsMasterStatus = true;
       var data = axios.get('/admin/parse-students-master').then(function (response) {
         _this10.loadingparseStudentsMasterStatus = false;
-        _this10.parsePlansMasterStatus = response.data;
+        _this10.parseStudentsMasterStatus = response.data;
       });
     },
     parseStudentsAsp: function parseStudentsAsp() {
@@ -4559,7 +4555,7 @@ __webpack_require__.r(__webpack_exports__);
       this.loadingparseStudentsAspStatus = true;
       var data = axios.get('/admin/parse-students-asp').then(function (response) {
         _this11.loadingparseStudentsAspStatus = false;
-        _this11.parsePlansAspStatus = response.data;
+        _this11.parseStudentsAspStatus = response.data;
       });
     },
     parseStudentsSpo: function parseStudentsSpo() {
@@ -4568,7 +4564,7 @@ __webpack_require__.r(__webpack_exports__);
       this.loadingparseStudentsSpoStatus = true;
       var data = axios.get('/admin/parse-students-spo').then(function (response) {
         _this12.loadingparseStudentsSpoStatus = false;
-        _this12.parsePlansSpoStatus = response.data;
+        _this12.parseStudentsSpoStatus = response.data;
       });
     },
     parseContests: function parseContests() {
@@ -92448,7 +92444,7 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "Начать выгрузку форм обучения,\n                                            категорий, уровней подготовки\n                                        "
+                            "Начать выгрузку планов, цен на обучение и количества мест\n                                        "
                           )
                         ]
                       )
@@ -92494,7 +92490,7 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "Начать выгрузку форм обучения,\n                                            категорий, уровней подготовки\n                                        "
+                            "Начать выгрузку планов, цен на обучение и количества мест\n                                        "
                           )
                         ]
                       )
@@ -92542,7 +92538,7 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "Начать выгрузку форм обучения,\n                                            категорий, уровней подготовки\n                                        "
+                            "Начать выгрузку планов, цен на обучение и количества мест\n                                        "
                           )
                         ]
                       )
@@ -92586,7 +92582,7 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "Начать выгрузку форм обучения,\n                                            категорий, уровней подготовки\n                                        "
+                            "Начать выгрузку планов, цен на обучение и количества мест\n                                        "
                           )
                         ]
                       )

@@ -195,8 +195,7 @@
                                     <div class="row">
                                         <div class="col-4">
                                             <button class="btn btn-sm btn-success w-100"
-                                                    @click="this.parsePlansBach">Начать выгрузку форм обучения,
-                                                категорий, уровней подготовки
+                                                    @click="this.parsePlansBach">Начать выгрузку планов, цен на обучение и количества мест
                                             </button>
                                         </div>
                                         <div class="col-8 text-center d-flex justify-content-center align-items-center">
@@ -217,8 +216,7 @@
                                     <div class="row">
                                         <div class="col-4">
                                             <button class="btn btn-sm btn-success w-100"
-                                                    @click="this.parsePlansMaster">Начать выгрузку форм обучения,
-                                                категорий, уровней подготовки
+                                                    @click="this.parsePlansMaster">Начать выгрузку планов, цен на обучение и количества мест
                                             </button>
                                         </div>
                                         <div class="col-8 text-center d-flex justify-content-center align-items-center">
@@ -239,8 +237,7 @@
                                     <div class="row">
                                         <div class="col-4">
                                             <button class="btn btn-sm btn-success w-100"
-                                                    @click="this.parsePlansAsp">Начать выгрузку форм обучения,
-                                                категорий, уровней подготовки
+                                                    @click="this.parsePlansAsp">Начать выгрузку планов, цен на обучение и количества мест
                                             </button>
                                         </div>
                                         <div class="col-8 text-center d-flex justify-content-center align-items-center">
@@ -261,8 +258,7 @@
                                     <div class="row">
                                         <div class="col-4">
                                             <button class="btn btn-sm btn-success w-100"
-                                                    @click="this.parsePlansSpo">Начать выгрузку форм обучения,
-                                                категорий, уровней подготовки
+                                                    @click="this.parsePlansSpo">Начать выгрузку планов, цен на обучение и количества мест
                                             </button>
                                         </div>
                                         <div class="col-8 text-center d-flex justify-content-center align-items-center">
@@ -533,7 +529,7 @@
                 let data = axios.get('/admin/parse-students-master')
                     .then(response => {
                         this.loadingparseStudentsMasterStatus = false;
-                        this.parsePlansMasterStatus = response.data
+                        this.parseStudentsMasterStatus = response.data
                     })
             },
             parseStudentsAsp: function () {
@@ -541,7 +537,7 @@
                 let data = axios.get('/admin/parse-students-asp')
                     .then(response => {
                         this.loadingparseStudentsAspStatus = false;
-                        this.parsePlansAspStatus = response.data
+                        this.parseStudentsAspStatus = response.data
                     })
             },
             parseStudentsSpo: function () {
@@ -549,7 +545,7 @@
                 let data = axios.get('/admin/parse-students-spo')
                     .then(response => {
                         this.loadingparseStudentsSpoStatus = false;
-                        this.parsePlansSpoStatus = response.data
+                        this.parseStudentsSpoStatus = response.data
                     })
             },
 
