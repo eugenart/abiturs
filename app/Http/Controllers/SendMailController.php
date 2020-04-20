@@ -24,21 +24,16 @@ class SendMailController extends Controller
         $mail->question = $question;
         $mail->save();
 
-        $to = 'elionorablack@gmail.com';
-        $subject = 'Вопрос с сайта приемной кампании МГУ им. Н.П.Огарева';
-        $message = 'ФИО: ' . $fio . '.' . "\r\n" .
-            'E-mail: ' . $email . '.' . "\r\n" .
-            'Телефон: ' . $phone . '.' . "\r\n" .
-            'Вопрос: ' . $question . '.';
-        $headers = 'From: abiturs.mrsu.ru' . "\r\n" .
-            'X-Mailer: PHP/' . phpversion();
+        $to      = 'eugen.art@mail.ru';
+        $subject = 'the subject';
+        $message = 'hello';
+        $headers = array(
+            'From' => 'webmaster@example.com',
+            'Reply-To' => 'webmaster@example.com',
+            'X-Mailer' => 'PHP/' . phpversion()
+        );
 
-        Mail::raw('Текст письма', function($message)
-        {
-            $message->from('us@example.com', 'Laravel');
-
-            $message->to('artashkinep@mrsu.ru');
-        });
+        mail($to, $subject, $message, $headers);
 
 
         $result = array(
