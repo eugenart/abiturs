@@ -28,13 +28,17 @@ class SendMailController extends Controller
         $header .= "X-Mailer: Mail.Ru Mailer 1.0\r\n";
         $header .= "Reply-To: =?UTF-8?B?" . base64_encode('Приёмная кампания 2020') . "?= <abiturs@mrsu.ru>\r\n";
         $header .= "X-Priority: 3 (Normal)\r\n";
-        $header .= "Message-ID: <172562218." . date("YmjHis") . "@mail.ru>\r\n";
-        $header .= "To: =?UTF-8?B?" . base64_encode('Сергей') . "?= <asd@qwe.ru>\r\n";
-        $header .= "Subject: =?UTF-8?B?" . base64_encode('проверка') . "?=\r\n";
+        $header .= "Message-ID: <172562218." . date("YmjHis") . "@abiturs.mrsu.ru>\r\n";
+        $header .= "To: =?UTF-8?B?" . base64_encode('Ответственный за проведение приемной кампании') . "?= <test@mrsu.ru>\r\n";
+        $header .= "Subject: =?UTF-8?B?" . base64_encode('Вопрос от абитуриента') . "?=\r\n";
         $header .= "MIME-Version: 1.0\r\n";
         $header .= "Content-Type: text/plain; charset=utf-8\r\n";
         $header .= "Content-Transfer-Encoding: 8bit\r\n";
-        $text = "Это текст письма\r\n";
+        $text = "ФИО: " . $request->fio . "\r\n";
+        $text .= "Email: " . $request->email . "\r\n";
+        $text .= "Номер телефона: " . $request->phone . "\r\n";
+        $text .= "Текст вопроса: " . $request->question . ".\r\n";
+
         $smtp_conn = fsockopen("m.mrsu.ru", 25, $errno, $errstr);
         $data = $this->get_data($smtp_conn);
 
