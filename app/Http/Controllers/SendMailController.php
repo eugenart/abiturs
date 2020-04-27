@@ -43,7 +43,7 @@ class SendMailController extends Controller
 
         $size_msg = strlen($header . "\r\n" . $text);
 
-        fputs($smtp_conn, "MAIL FROM: <abiturs@mrsu.ru> SIZE=" . $size_msg . "\r\n");
+        fputs($smtp_conn, "MAIL FROM: <mailer@abiturs.mrsu.ru> SIZE=" . $size_msg . "\r\n");
         $data = $this->get_data($smtp_conn);
 
         fputs($smtp_conn, "RCPT TO: <artashkinep@mrsu.ru>\r\n");
