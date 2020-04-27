@@ -69,7 +69,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 });
 Auth::routes();
 
-Route::post('/send_mail', 'SendMailController@index');
+Route::get('/send_mail', 'SendMailController@index');
 
 Route::get('/contact', 'ContactController@index')->name('contact.index');
 Route::get('/select', 'SelectionController@index')->name('selection.index');

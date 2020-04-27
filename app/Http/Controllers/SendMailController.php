@@ -9,55 +9,56 @@ use Illuminate\Support\Facades\Mail;
 class SendMailController extends Controller
 {
 
+    public function get_data($smtp_conn)
+    {
+        $data = "";
+        while ($str = fgets($smtp_conn, 515)) {
+            $data .= $str;
+            if (substr($str, 3, 1) == " ") {
+                break;
+            }
+        }
+        return $data;
+    }
 
     public function index(Request $request)
     {
-        $fio = $request->fio;
-        $email = $request->email;
-        $phone = $request->phone;
-        $question = $request->question;
-
-        $mail = new ContactMail;
-        $mail->fio = $fio;
-        $mail->email = $email;
-        $mail->phone = $phone;
-        $mail->question = $question;
-        $mail->save();
-
-        $to      = 'eugen.art@mail.ru';
-        $subject = 'Приемная кампания';
-        $message = 'Текст сообщения приемной кампании';
-        $headers = array(
-            'From' => 'webmaster@example.com',
-            'Reply-To' => 'webmaster@example.com',
-            'X-Mailer' => 'PHP/' . phpversion()
-        );
-
-        mail($to, $subject, $message, $headers);
+        $header = "Date: " . date("D, j M Y G:i:s") . " +0300\r\n";
+        $header .= "From: =?UTF-8?B?" . base64_encode('Приёмная кампания 2020') . "?= <abiturs@mrsu.ru>\r\n";
+        $header .= "X-Mailer: Mail.Ru Mailer 1.0\r\n";
+        $header .= "Reply-To: =?UTF-8?B?" . base64_encode('Приёмная кампания 2020') . "?= <abiturs@mrsu.ru>\r\n";
+        $header .= "X-Priority: 3 (Normal)\r\n";
+        $header .= "Message-ID: <172562218." . date("YmjHis") . "@mail.ru>\r\n";
+        $header .= "To: =?UTF-8?B?" . base64_encode('Сергей') . "?= <asd@qwe.ru>\r\n";
+        $header .= "Subject: =?UTF-8?B?" . base64_encode('проверка') . "?=\r\n";
+        $header .= "MIME-Version: 1.0\r\n";
+        $header .= "Content-Type: text/plain; charset=utf-8\r\n";
+        $header .= "Content-Transfer-Encoding: 8bit\r\n";
+        $text = "Это текст письма\r\n";
+        $smtp_conn = fsockopen("m.mrsu.ru", 25, $errno, $errstr);
+        $data = $this->get_data($smtp_conn);
 
 
-        $result = array(
-            'result' => "<i class=\"fa fa-check\"></i>
-                                <br>
-                                <span>Вопрос успешно отправлен! <br> Мы свяжемся с Вами в ближайшее время.</span>
-                                <br>
-                                <a href=\"/\">Вернуться на главную</a>"
-        );
-        return json_encode($result);
+        fputs($smtp_conn, "EHLO Eugene Art\r\n");
 
+        $size_msg = strlen($header . "\r\n" . $text);
+
+        fputs($smtp_conn, "MAIL FROM: <abiturs@mrsu.ru> SIZE=" . $size_msg . "\r\n");
+        $data = $this->get_data($smtp_conn);
+
+        fputs($smtp_conn, "RCPT TO: <artashkinep@mrsu.ru>\r\n");
+        $data = $this->get_data($smtp_conn);
+
+        fputs($smtp_conn, "DATA\r\n");
+        $data = $this->get_data($smtp_conn);
+
+        fputs($smtp_conn, $header . "\r\n" . $text . "\r\n.\r\n");
+        $data = $this->get_data($smtp_conn);
+
+        fputs($smtp_conn, "QUIT\r\n");
+        $data = $this->get_data($smtp_conn);
+
+        return json_encode($data);
     }
 
-//    public function send()
-//    {
-//        $to = 'artashkinep@mrsu.ru';
-//        $subject = 'the subject';
-//        $message = 'hello';
-//        $headers = 'From: webmaster@example.com' . "\r\n" .
-//            'Reply-To: webmaster@example.com' . "\r\n" .
-//            'X-Mailer: PHP/' . phpversion();
-//
-//        mail($to, $subject, $message, $headers);
-//
-//        return 'ok';
-//    }
 }

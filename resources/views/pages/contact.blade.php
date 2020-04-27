@@ -8,7 +8,7 @@
                 <h5 class="text-center">Воспользуйтесь формой обратной связи, чтобы задать интересующие Вас
                     вопросы:</h5>
 
-                <form id="contactform" method="POST" action=""
+                <form id="contactform" method="GET" action=""
                       class="contact-us d-flex align-items-center justify-content-center flex-column p-0">
                     @csrf
                     <input name="fio" id="fio" pattern="^[A-Za-zА-Яа-яЁё\s]+$" type="text" placeholder="ФИО *" value=""
@@ -54,7 +54,7 @@
                 // собираем данные с формы
                 $.ajax({
                     url: "/send_mail", // куда отправляем
-                    type: "post", // метод передачи
+                    type: "get", // метод передачи
                     dataType: "json", // тип передачи данных
                     data: serializedData,
 
@@ -62,7 +62,7 @@
                     success: function (data) {
                         $('.contact-us-div').hide();
                         $('.form-sent').show();
-                        $('.form-sent').html(data.result); // выводим ответ сервера
+                        $('.form-sent').html(data); // выводим ответ сервера
                         $('form input').val('')
                         console.log(data)
                     }
