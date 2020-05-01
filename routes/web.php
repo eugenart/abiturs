@@ -80,7 +80,7 @@ Route::get('/statistic/spo', 'StatisticSpoController@index')->name('statspo.inde
 
 Route::get('/toOvzVer', 'SessionController@toOvzVer')->name('ses.toOvzVer');
 Route::get('/backToMainVer', 'SessionController@backToMainVer')->name('ses.backToMainVer');
-Route::get('/test', 'SessionController@index')->name('ses.index');
+//Route::get('/test', 'SessionController@index')->name('ses.index');
 
 Route::get('/foreign', 'ForeignController@index')->name('foreign.index');
 
