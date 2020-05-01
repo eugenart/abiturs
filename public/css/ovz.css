@@ -528,11 +528,19 @@ marquee {
     text-decoration: underline;
 }
 
-.form-sent i {
+.form-sent .fa-check {
     font-size: 30px;
     color: #54E0C7;
     padding: 10px;
     border: 5px solid #54E0C7;
+    border-radius: 50%;
+}
+
+.form-sent .fa-times {
+    font-size: 30px;
+    color: #d70a1b;
+    padding: 10px 15px;
+    border: 5px solid #d70a1b;
     border-radius: 50%;
 }
 
