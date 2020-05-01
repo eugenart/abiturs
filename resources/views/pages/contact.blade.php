@@ -64,7 +64,7 @@
                         $('.form-sent').show();
                         $('.form-sent').html(data); // выводим ответ сервера
                         $('form input').val('')
-                        console.log(data)
+                        // console.log(data)
                     }
                 });
             });
