@@ -62,9 +62,9 @@
                     success: function (data) {
                         $('.contact-us-div').hide();
                         $('.form-sent').show();
-                        $('.form-sent').html(data); // выводим ответ сервера
+                        $('.form-sent').html(data[0]); // выводим ответ сервера
                         $('form input').val('')
-                        // console.log(data)
+                        console.log(data[1])
                     }
                 });
             });
