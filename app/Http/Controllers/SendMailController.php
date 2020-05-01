@@ -62,24 +62,26 @@ class SendMailController extends Controller
         fputs($smtp_conn, "QUIT\r\n");
         $data = $this->get_data($smtp_conn);
 
-        $answer = $data;
+        $answer = array();
         $code = substr($data,0,3);
         if($code == 250) {
-            $answer .= "<i class=\"fa fa-check\"></i>
+            $answer[0] = "<i class=\"fa fa-check\"></i>
                 <br>
                 <span>Вопрос успешно отправлен! <br> Мы свяжемся с Вами в ближайшее время.</span>
                 <br>
                 <a href=\"/\">Вернуться на главную</a>";
         }
         else{
-            $answer .= "<i class=\"fa fa-times\"></i>
+            $answer[0] = "<i class=\"fa fa-times\"></i>
                 <br>
                 <span>Письмо не может быть отправлено. <br> Очередь писем переполненна. Пожалуйста, попробуйте еще раз позже.</span>
                 <br>
                 <a href=\"/\">Вернуться на главную</a>";
         }
+        $answer[1] = $data;
 
             return json_encode($answer);
+
     }
 
 }
