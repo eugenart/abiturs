@@ -6,7 +6,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <div v-for="fc in prices" v-if="fc.tArea.length !== 0">
+                                <div v-for="fc in prices" v-if="fc.plan.length !== 0">
                                     <h3>{{fc.name}}</h3>
                                     <table class="table table-sm table-bordered">
                                         <thead>
@@ -16,16 +16,38 @@
                                         <th>Количество лет обучения</th>
                                         <th>Цена обучения за год</th>
                                         </thead>
-                                        <tbody v-for="tarea in fc.tArea">
-                                        <tr class="bordered">
-                                            <td width="50%">
-                                                {{tarea.area.sp_name.code}}
-                                                {{tarea.area.sp_name.name}}
+                                        <tbody v-for="plan in fc.plan">
+                                        <tr>
+                                            <td>
+                                                <p class="m-0">{{plan.speciality.code}}</p>
+                                                <p class="m-0"><b>{{plan.speciality.name}}</b></p>
+                                                <p class="m-0" v-if="plan.specialization">
+                                                    {{plan.specialization.name}}</p>
                                             </td>
-                                            <td width="10%">{{tarea.area.trainingForm}}</td>
-                                            <td width="15%">{{tarea.area.freeSeatsNumber}}</td>
-                                            <td width="15%">{{tarea.area.years}}</td>
-                                            <td width="10%">{{Math.ceil(tarea.area.price / tarea.area.years)}} руб.</td>
+                                            <td style="vertical-align: middle">
+                                                <p class="m-0 text-nowrap text-center" v-for="studyForm in plan.studyForm">
+                                                    {{studyForm.name}}
+                                                </p>
+                                            </td>
+                                            <td style="vertical-align: middle">
+                                                <p class="m-0 text-nowrap text-center" v-for="studyForm in plan.studyForm">
+                                                    <span class="text-nowrap" v-for="(fs, idx) in studyForm.freeseats">
+                                                        {{fs.admissionBasis.short_name}} - {{fs.value}};
+                                                    </span>
+                                                </p>
+                                            </td>
+                                            <td style="vertical-align: middle">
+                                                <p class="m-0 text-nowrap text-center" v-for="studyForm in plan.studyForm">
+                                                    {{studyForm.years}} года/лет
+                                                </p>
+                                            </td>
+                                            <td style="vertical-align: middle">
+                                                <p class="m-0 text-nowrap text-center" v-for="studyForm in plan.studyForm">
+                                                    <span class="text-nowrap" v-for="(ps, idx) in studyForm.prices">
+                                                        {{ps.info}} - {{ps.price}} руб.;
+                                                    </span>
+                                                </p>
+                                            </td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -55,7 +77,11 @@
 
             fetchScores() {
                 let data = axios.get('/admin/minscore')
-                    .then(response => (this.prices = response.data))
+                    .then(response => {
+                        console.log(response.data)
+                        this.prices = response.data
+                    })
+
             }
         }
     }
