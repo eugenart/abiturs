@@ -14,17 +14,26 @@ class Faculty extends Model
     }
 
     //больше не нужно
-    public function areas() {
-        return $this->hasMany(FacultyArea::class, 'id_faculty');
-    }
+//    public function areas() {
+//        return $this->hasMany(FacultyArea::class, 'id_faculty');
+//    }
 
     public function plans() {
         return $this->hasMany(Plan::class, 'id_faculty');
     }
+    public function plansAsp() {
+        return $this->hasMany(PlanAsp::class, 'id_faculty');
+    }
+    public function plansMaster() {
+        return $this->hasMany(PlanMaster::class, 'id_faculty');
+    }
+    public function plansSpo() {
+        return $this->hasMany(PlanSpo::class, 'id_faculty');
+    }
+
 
     public static function facultyJoinStat() {
        $query =  DB::table('faculties')
-            //->join('statistics', 'statistics.id_faculty', '=', 'faculties.id')
             ->select('faculties.name')
             ->distinct()
             ->get();

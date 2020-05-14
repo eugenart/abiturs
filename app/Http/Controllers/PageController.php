@@ -21,12 +21,14 @@ class PageController extends Controller
     {
         if ($route) {
             $infoblock = Infoblock::where('url', $route)->first();
-            $section = Section::where('url', $route)->first();
+            $section = Section::where('url', $route)->where('activity', true)->first();
             if ($section || $infoblock) {
                 if ($infoblock) {
                     if ($infoblock->sections->count() > 0) {
-                        $section = $infoblock->sections->first();
-                        return view('pages.priem')->with('block', $section);
+                        $section = $infoblock->sections->where('activity', true)->first();
+                        if($section) {
+                            return view('pages.priem')->with('block', $section);
+                        }
                     }
                 }
 
