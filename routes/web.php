@@ -12,7 +12,15 @@
 */
 
 use Illuminate\Support\Facades\Route;
-Auth::routes();
+//Auth::routes();
+Auth::routes(['register' => false]);
+
+Route::middleware('auth')->group(function () {
+// Registration Routes...
+    Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+    Route::post('/register', 'Auth\RegisterController@register');
+});
+
 Route::prefix('admin')->middleware('auth')->group(function () {
     Route::redirect('/', '/admin/infoblocks');
 
@@ -67,7 +75,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
 
 });
-Auth::routes();
+//Auth::routes();
 
 Route::get('/send_mail', 'SendMailController@index');
 
@@ -86,5 +94,6 @@ Route::get('/foreign', 'ForeignController@index')->name('foreign.index');
 
 Route::get('/{route}', 'PageController@route')->name('pages.route');
 Route::get('/', 'PageController@index')->name('pages.home');
+
 
 
