@@ -3990,6 +3990,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "minScore",
   data: function data() {
@@ -4006,7 +4016,12 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var data = axios.get('/admin/minscore').then(function (response) {
-        return _this.scores = response.data;
+        console.log(response.data);
+        response.data.sort(function (prev, next) {
+          if (prev.name < next.name) return -1;
+          if (prev.name < next.name) return 1;
+        });
+        _this.scores = response.data;
       });
     }
   }
@@ -4631,6 +4646,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "price",
   data: function data() {
@@ -4647,7 +4684,8 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var data = axios.get('/admin/minscore').then(function (response) {
-        return _this.prices = response.data;
+        console.log(response.data);
+        _this.prices = response.data;
       });
     }
   }
@@ -92125,70 +92163,111 @@ var render = function() {
                 "div",
                 { staticClass: "card-body" },
                 _vm._l(_vm.scores, function(fc) {
-                  return _c("div", [
-                    _c("h3", [_vm._v(_vm._s(fc.name))]),
-                    _vm._v(" "),
-                    _c(
-                      "table",
-                      { staticClass: "table table-sm table-bordered" },
-                      [
-                        _vm._m(0, true),
+                  return fc.plan.length !== 0
+                    ? _c("div", { key: fc.name }, [
+                        _c("h3", [_vm._v(_vm._s(fc.name))]),
                         _vm._v(" "),
-                        _vm._l(fc.tArea, function(tarea) {
-                          return _c(
-                            "tbody",
-                            [
-                              _c("tr", { staticClass: "bordered" }, [
-                                _c(
-                                  "td",
-                                  {
-                                    attrs: {
-                                      rowspan: tarea.area.scores.length + 1
-                                    }
-                                  },
-                                  [
-                                    _vm._v(
-                                      _vm._s(tarea.area.sp_name.code) +
-                                        " " +
-                                        _vm._s(tarea.area.sp_name.name)
-                                    )
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "td",
-                                  {
-                                    attrs: {
-                                      rowspan: tarea.area.scores.length + 1
-                                    }
-                                  },
-                                  [_vm._v(_vm._s(tarea.area.trainingForm))]
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _vm._l(tarea.area.scores, function(score) {
-                                return _c("tr", [
-                                  _c("td", [
-                                    _vm._v(
-                                      "\n                                                " +
-                                        _vm._s(score.subject.name) +
-                                        "\n                                            "
+                        _c(
+                          "table",
+                          { staticClass: "table table-sm table-bordered" },
+                          [
+                            _vm._m(0, true),
+                            _vm._v(" "),
+                            _vm._l(fc.plan, function(plan) {
+                              return _c(
+                                "tbody",
+                                [
+                                  _c("tr", [
+                                    _c(
+                                      "td",
+                                      {
+                                        attrs: { rowspan: plan.subjects.length }
+                                      },
+                                      [
+                                        _c("p", { staticClass: "m-0" }, [
+                                          _vm._v(_vm._s(plan.speciality.code))
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("p", { staticClass: "m-0" }, [
+                                          _c("b", [
+                                            _vm._v(_vm._s(plan.speciality.name))
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        plan.specialization
+                                          ? _c("p", { staticClass: "m-0" }, [
+                                              _vm._v(
+                                                "\n                                                " +
+                                                  _vm._s(
+                                                    plan.specialization.name
+                                                  )
+                                              )
+                                            ])
+                                          : _vm._e()
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _vm._v(_vm._s(plan.subjects[0]))
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _vm._v(_vm._s(plan.scores[0].minScore))
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "td",
+                                      {
+                                        staticStyle: {
+                                          "vertical-align": "middle"
+                                        },
+                                        attrs: { rowspan: plan.subjects.length }
+                                      },
+                                      _vm._l(plan.studyForm, function(sf) {
+                                        return _c(
+                                          "p",
+                                          {
+                                            staticClass:
+                                              "m-0 align-middle text-center text-nowrap"
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n                                                " +
+                                                _vm._s(sf.name) +
+                                                "\n                                            "
+                                            )
+                                          ]
+                                        )
+                                      }),
+                                      0
                                     )
                                   ]),
                                   _vm._v(" "),
-                                  _c("td", [
-                                    _c("b", [_vm._v(_vm._s(score.minScore))])
-                                  ])
-                                ])
-                              })
-                            ],
-                            2
-                          )
-                        })
-                      ],
-                      2
-                    )
-                  ])
+                                  _vm._l(
+                                    [].concat(Array(plan.subjects.length - 1)),
+                                    function(subj, i) {
+                                      return _c("tr", [
+                                        _c("td", [
+                                          _vm._v(_vm._s(plan.subjects[i + 1]))
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("td", [
+                                          _vm._v(
+                                            _vm._s(plan.scores[i + 1].minScore)
+                                          )
+                                        ])
+                                      ])
+                                    }
+                                  )
+                                ],
+                                2
+                              )
+                            })
+                          ],
+                          2
+                        )
+                      ])
+                    : _vm._e()
                 }),
                 0
               )
@@ -92205,13 +92284,25 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("thead", [
-      _c("th", { attrs: { width: "40%" } }, [_vm._v("Специальности")]),
+      _c("th", { staticClass: "text-center", attrs: { width: "50%" } }, [
+        _vm._v("НАПРАВЛЕНИЕ ПОДГОТОВКИ /"),
+        _c("br"),
+        _vm._v(" СПЕЦИАЛЬНОСТЬ\n                                    ")
+      ]),
       _vm._v(" "),
-      _c("th", { attrs: { width: "10%" } }, [_vm._v("Форма обучения")]),
+      _c("th", { staticClass: "text-center", attrs: { width: "30%" } }, [
+        _vm._v(
+          "ВСТУПИТЕЛЬНЫЕ ИСПЫТАНИЯ В ПОРЯДКЕ\n                                        ПРИОРИТЕТНОСТИ ДЛЯ РАНЖИРОВАНИЯ\n                                    "
+        )
+      ]),
       _vm._v(" "),
-      _c("th", { attrs: { width: "40%" } }, [_vm._v("Предметы")]),
+      _c("th", { staticClass: "text-center", attrs: { width: "10%" } }, [
+        _vm._v("МИНИМАЛЬНЫЕ БАЛЛЫ")
+      ]),
       _vm._v(" "),
-      _c("th", { attrs: { width: "10%" } }, [_vm._v("Оценки")])
+      _c("th", { staticClass: "text-center", attrs: { width: "10%" } }, [
+        _vm._v("ФОРМЫ ОБУЧЕНИЯ")
+      ])
     ])
   }
 ]
@@ -92896,7 +92987,7 @@ var render = function() {
                 "div",
                 { staticClass: "card-body" },
                 _vm._l(_vm.prices, function(fc) {
-                  return fc.tArea.length !== 0
+                  return fc.plan.length !== 0
                     ? _c("div", [
                         _c("h3", [_vm._v(_vm._s(fc.name))]),
                         _vm._v(" "),
@@ -92906,40 +92997,159 @@ var render = function() {
                           [
                             _vm._m(0, true),
                             _vm._v(" "),
-                            _vm._l(fc.tArea, function(tarea) {
+                            _vm._l(fc.plan, function(plan) {
                               return _c("tbody", [
-                                _c("tr", { staticClass: "bordered" }, [
-                                  _c("td", { attrs: { width: "50%" } }, [
-                                    _vm._v(
-                                      "\n                                            " +
-                                        _vm._s(tarea.area.sp_name.code) +
-                                        "\n                                            " +
-                                        _vm._s(tarea.area.sp_name.name) +
-                                        "\n                                        "
-                                    )
+                                _c("tr", [
+                                  _c("td", [
+                                    _c("p", { staticClass: "m-0" }, [
+                                      _vm._v(_vm._s(plan.speciality.code))
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("p", { staticClass: "m-0" }, [
+                                      _c("b", [
+                                        _vm._v(_vm._s(plan.speciality.name))
+                                      ])
+                                    ]),
+                                    _vm._v(" "),
+                                    plan.specialization
+                                      ? _c("p", { staticClass: "m-0" }, [
+                                          _vm._v(
+                                            "\n                                                " +
+                                              _vm._s(plan.specialization.name)
+                                          )
+                                        ])
+                                      : _vm._e()
                                   ]),
                                   _vm._v(" "),
-                                  _c("td", { attrs: { width: "10%" } }, [
-                                    _vm._v(_vm._s(tarea.area.trainingForm))
-                                  ]),
+                                  _c(
+                                    "td",
+                                    {
+                                      staticStyle: {
+                                        "vertical-align": "middle"
+                                      }
+                                    },
+                                    _vm._l(plan.studyForm, function(studyForm) {
+                                      return _c(
+                                        "p",
+                                        {
+                                          staticClass:
+                                            "m-0 text-nowrap text-center"
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                                " +
+                                              _vm._s(studyForm.name) +
+                                              "\n                                            "
+                                          )
+                                        ]
+                                      )
+                                    }),
+                                    0
+                                  ),
                                   _vm._v(" "),
-                                  _c("td", { attrs: { width: "15%" } }, [
-                                    _vm._v(_vm._s(tarea.area.freeSeatsNumber))
-                                  ]),
+                                  _c(
+                                    "td",
+                                    {
+                                      staticStyle: {
+                                        "vertical-align": "middle"
+                                      }
+                                    },
+                                    _vm._l(plan.studyForm, function(studyForm) {
+                                      return _c(
+                                        "p",
+                                        {
+                                          staticClass:
+                                            "m-0 text-nowrap text-center"
+                                        },
+                                        _vm._l(studyForm.freeseats, function(
+                                          fs,
+                                          idx
+                                        ) {
+                                          return _c(
+                                            "span",
+                                            { staticClass: "text-nowrap" },
+                                            [
+                                              _vm._v(
+                                                "\n                                                    " +
+                                                  _vm._s(
+                                                    fs.admissionBasis.short_name
+                                                  ) +
+                                                  " - " +
+                                                  _vm._s(fs.value) +
+                                                  ";\n                                                "
+                                              )
+                                            ]
+                                          )
+                                        }),
+                                        0
+                                      )
+                                    }),
+                                    0
+                                  ),
                                   _vm._v(" "),
-                                  _c("td", { attrs: { width: "15%" } }, [
-                                    _vm._v(_vm._s(tarea.area.years))
-                                  ]),
+                                  _c(
+                                    "td",
+                                    {
+                                      staticStyle: {
+                                        "vertical-align": "middle"
+                                      }
+                                    },
+                                    _vm._l(plan.studyForm, function(studyForm) {
+                                      return _c(
+                                        "p",
+                                        {
+                                          staticClass:
+                                            "m-0 text-nowrap text-center"
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                                " +
+                                              _vm._s(studyForm.years) +
+                                              " года/лет\n                                            "
+                                          )
+                                        ]
+                                      )
+                                    }),
+                                    0
+                                  ),
                                   _vm._v(" "),
-                                  _c("td", { attrs: { width: "10%" } }, [
-                                    _vm._v(
-                                      _vm._s(
-                                        Math.ceil(
-                                          tarea.area.price / tarea.area.years
-                                        )
-                                      ) + " руб."
-                                    )
-                                  ])
+                                  _c(
+                                    "td",
+                                    {
+                                      staticStyle: {
+                                        "vertical-align": "middle"
+                                      }
+                                    },
+                                    _vm._l(plan.studyForm, function(studyForm) {
+                                      return _c(
+                                        "p",
+                                        {
+                                          staticClass:
+                                            "m-0 text-nowrap text-center"
+                                        },
+                                        _vm._l(studyForm.prices, function(
+                                          ps,
+                                          idx
+                                        ) {
+                                          return _c(
+                                            "span",
+                                            { staticClass: "text-nowrap" },
+                                            [
+                                              _vm._v(
+                                                "\n                                                    " +
+                                                  _vm._s(ps.info) +
+                                                  " - " +
+                                                  _vm._s(ps.price) +
+                                                  " руб.;\n                                                "
+                                              )
+                                            ]
+                                          )
+                                        }),
+                                        0
+                                      )
+                                    }),
+                                    0
+                                  )
                                 ])
                               ])
                             })
