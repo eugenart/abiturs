@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class DownloadFileController extends Controller
 {
@@ -65,6 +66,7 @@ class DownloadFileController extends Controller
             fclose($local);
             fclose($remote);
     }
+
 
 
     }
