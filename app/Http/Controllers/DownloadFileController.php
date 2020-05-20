@@ -14,9 +14,9 @@ class DownloadFileController extends Controller
         $port = 22;
         $username = 'icmrsu';
         $password = 'KUGyjk76$$q@';
-        $remoteDir = '//home//icmrsu//catalogs';
+        $remoteDir = '/home/icmrsu/catalogs';
 //        $localDir = 'E:\Open Server 5.3.5\OSPanel\domains\abiturs\storage\app\public\files\catalogs';
-        $localDir = '//var//www//html//abiturs//storage//app//public//files//catalogs';
+        $localDir = '/var/www/html/abiturs/storage/app/public/files/catalogs';
 
         if (!function_exists("ssh2_connect"))
             die('Function ssh2_connect not found, you cannot use ssh2 here');
@@ -30,6 +30,11 @@ class DownloadFileController extends Controller
         if (!$stream = ssh2_sftp($connection))
             die('Unable to create a stream.');
 
+
+        echo "ssh2.sftp://{$stream}{$remoteDir}";
+        echo "</br>";
+        echo "</br>";
+
         if (!$dir = opendir("ssh2.sftp://{$stream}{$remoteDir}"))
             die('Could not open the directory');
 
@@ -40,15 +45,21 @@ class DownloadFileController extends Controller
             $files[] = $file;
         }
 
-
+        var_dump($files);
+        echo "</br>";
 
         foreach ($files as $file) {
             echo "Copying file: $file\n";
+            echo "</br>";
+            echo "ssh2.sftp://{$stream}/{$remoteDir}/{$file}";
+            echo "</br>";
 
             if (!$remote = @fopen("ssh2.sftp://{$stream}/{$remoteDir}/{$file}", 'r')) {
                 echo "Unable to open remote file: $file\n";
                 continue;
             }
+            echo $localDir .'/'. $file;
+            echo "</br>";
 
             if (!$local = @fopen($localDir .'/'. $file, 'w')) {
                 echo "Unable to create local file: $file\n";
