@@ -14,8 +14,9 @@ class DownloadFileController extends Controller
         $port = 22;
         $username = 'icmrsu';
         $password = 'KUGyjk76$$q@';
-        $remoteDir = '/home/icmrsu/catalogs';
-        $localDir = 'E:\Open Server 5.3.5\OSPanel\domains\abiturs\storage\app\public\files\catalogs';
+        $remoteDir = '//home//icmrsu//catalogs';
+//        $localDir = 'E:\Open Server 5.3.5\OSPanel\domains\abiturs\storage\app\public\files\catalogs';
+        $localDir = '//var//www//html//abiturs//storage//app//public//files//catalogs';
 
         if (!function_exists("ssh2_connect"))
             die('Function ssh2_connect not found, you cannot use ssh2 here');
