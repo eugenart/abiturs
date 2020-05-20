@@ -3,11 +3,6 @@
         Options -MultiViews -Indexes
     </IfModule>
 
-        Order Allow,Deny
-        Allow from 194.54
-        Allow from 127.0
-        Allow from 10.
-
     RewriteEngine On
     RewriteCond %{HTTPS} !=on
     RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R,L]

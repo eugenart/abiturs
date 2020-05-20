@@ -35,11 +35,11 @@ class DownloadFileController extends Controller
         echo "</br>";
         echo "</br>";
 
-        if (!$dir = opendir("ssh2.sftp://{$stream}{$remoteDir}"))
+        if (!$dir = scandir("ssh2.sftp://{$stream}{$remoteDir}"))
             die('Could not open the directory');
 
         $files = array();
-        while (false !== ($file = readdir($dir))) {
+        foreach ($dir as $file) {
             if ($file == "." || $file == "..")
                 continue;
             $files[] = $file;
