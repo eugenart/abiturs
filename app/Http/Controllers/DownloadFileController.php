@@ -17,33 +17,28 @@ class DownloadFileController extends Controller
         $username = 'icmrsu';
         $password = 'KUGyjk76$$q@';
 
-        if ($file_name=="disciplines.xls" || $file_name=="specializations.xls"
-            || $file_name=="specialities.xls"|| $file_name=="admission_bases.xls"
-            || $file_name=="faculties.xls"){
+        if ($file_name == "disciplines.xls" || $file_name == "specializations.xls"
+            || $file_name == "specialities.xls" || $file_name == "admission_bases.xls"
+            || $file_name == "faculties.xls") {
             $directory = "catalogs";
-        }
-        elseif($file_name=="past_contests.json" ){
+        } elseif ($file_name == "past_contests.json") {
             $directory = "pastContests";
-        }
-        elseif($file_name=="stat_asp.json" || $file_name=="stat_bach.json"
-            || $file_name=="stat_master.json"|| $file_name=="stat_spo.json"){
+        } elseif ($file_name == "stat_asp.json" || $file_name == "stat_bach.json"
+            || $file_name == "stat_master.json" || $file_name == "stat_spo.json") {
             $directory = "statistics";
-        }
-        elseif($file_name=="plans_kov_spo.json" ){
+        } elseif ($file_name == "plans_kov_spo.json") {
             $directory = "plans/plans_kov";
-        }
-        elseif($file_name=="plans_rim_bach.json" || $file_name=="plans_rim_master.json" || $file_name=="plans_rim_spo.json"){
+        } elseif ($file_name == "plans_rim_bach.json" || $file_name == "plans_rim_master.json" || $file_name == "plans_rim_spo.json") {
             $directory = "plans/plans_rim";
-        }
-        elseif($file_name=="plans_sar_master.json" || $file_name=="plans_sar_bach.json"
-            || $file_name=="plans_sar_spo.json"|| $file_name=="plans_sar_asp.json"){
+        } elseif ($file_name == "plans_sar_master.json" || $file_name == "plans_sar_bach.json"
+            || $file_name == "plans_sar_spo.json" || $file_name == "plans_sar_asp.json") {
             $directory = "plans/plans_saransk";
         }
 
-        $remoteDir = '/home/icmrsu/'. $directory;
-        $localDir = '/var/www/html/abiturs/storage/app/public/files/'. $directory;
-//      $localDir = 'E:\Open Server 5.3.5\OSPanel\domains\abiturs\storage\app\public\files\\' . $directory;
-        echo $localDir;
+        $remoteDir = '/home/icmrsu/' . $directory;
+//        $localDir = '/var/www/html/abiturs/storage/app/public/files/'. $directory;
+        $localDir = 'E:\Open Server 5.3.5\OSPanel\domains\abiturs\storage\app\public\files\\' . $directory;
+        //echo $localDir;
 
         if (!function_exists("ssh2_connect"))
             die('Function ssh2_connect not found, you cannot use ssh2 here');
@@ -75,7 +70,7 @@ class DownloadFileController extends Controller
         if (!($key === false)) {
             $file = $files[$key];
 
-            echo "Copying file: $file\n";
+            // echo "Copying file: $file\n";
 
             $remote_file_path = "ssh2.sftp://{$stream}/{$remoteDir}/{$file}";
             $local_file_path = $localDir . '/' . $file;
@@ -83,8 +78,35 @@ class DownloadFileController extends Controller
             if (file_exists($remote_file_path) && file_exists($local_file_path)) {
                 if (filesize($remote_file_path) == filesize($local_file_path)
                     && md5_file($remote_file_path) == md5_file($local_file_path)) {
-                    echo "</br>Файлы совпадают";
+                    echo "Файлы совпадают";
                     return;
+                }
+                else{
+                    if (!$remote = @fopen("ssh2.sftp://{$stream}/{$remoteDir}/{$file}", 'r')) {
+                        die("Unable to open remote file: $file\n");
+                    }
+
+                    if (!$local = @fopen($localDir . '/' . $file, 'w')) {
+                        fclose($remote);
+                        die("Unable to create local file: $file\n");
+                    }
+                    $read = 0;
+                    $filesize = filesize("ssh2.sftp://{$stream}/{$remoteDir}/{$file}");
+                    while ($read < $filesize && ($buffer = fread($remote, $filesize - $read))) {
+                        $read += strlen($buffer);
+                        if (fwrite($local, $buffer) === FALSE) {
+                            echo "Unable to write to local file: $file\n";
+                            break;
+                        }
+                    }
+                    if (file_exists($remote_file_path) && file_exists($local_file_path)) {
+                        if (filesize($remote_file_path) == filesize($local_file_path)
+                            && md5_file($remote_file_path) == md5_file($local_file_path)) {
+                            echo "Файл успешно загружен";
+                        }
+                    }
+                    fclose($local);
+                    fclose($remote);
                 }
             } elseif (file_exists($remote_file_path) && !file_exists($local_file_path)) {
                 if (!$remote = @fopen("ssh2.sftp://{$stream}/{$remoteDir}/{$file}", 'r')) {
@@ -107,17 +129,15 @@ class DownloadFileController extends Controller
                 if (file_exists($remote_file_path) && file_exists($local_file_path)) {
                     if (filesize($remote_file_path) == filesize($local_file_path)
                         && md5_file($remote_file_path) == md5_file($local_file_path)) {
-                        echo "</br>Файл успешно загружен";
+                        echo "Файл успешно загружен";
                     }
                 }
                 fclose($local);
                 fclose($remote);
             }
-
-
-        }else{
-            echo "</br>Файл ". $file_name ." отсутвует на удаленном сервере";
-            return;
+        } else {
+            echo "Файл " . $file_name . " отсутвует на удаленном сервере";
+//            return;
         }
     }
 
