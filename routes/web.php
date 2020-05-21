@@ -88,7 +88,10 @@ Route::get('/statistic/spo', 'StatisticSpoController@index')->name('statspo.inde
 
 Route::get('/toOvzVer', 'SessionController@toOvzVer')->name('ses.toOvzVer');
 Route::get('/backToMainVer', 'SessionController@backToMainVer')->name('ses.backToMainVer');
-Route::get('/test', 'DownloadFileController@index')->name('file.index');
+
+//Route::get('/test', 'DownloadFileController@index')->name('file.index');
+Route::get('/test1', 'DownloadFileController@show')->name('file.show');
+Route::post('/test', 'DownloadFileController@index')->name('file.download');
 
 Route::get('/foreign', 'ForeignController@index')->name('foreign.index');
 
