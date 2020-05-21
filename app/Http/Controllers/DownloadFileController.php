@@ -16,9 +16,33 @@ class DownloadFileController extends Controller
         $port = 22;
         $username = 'icmrsu';
         $password = 'KUGyjk76$$q@';
-        $remoteDir = '/home/icmrsu/catalogs';
-//        $localDir = 'E:\Open Server 5.3.5\OSPanel\domains\abiturs\storage\app\public\files\catalogs';
-        $localDir = '/var/www/html/abiturs/storage/app/public/files/catalogs';
+
+        if ($file_name=="disciplines.xls" || $file_name=="specializations.xls"
+            || $file_name=="specialities.xls"|| $file_name=="admission_bases.xls"
+            || $file_name=="faculties.xls"){
+            $directory = "catalogs";
+        }
+        elseif($file_name=="past_contests.json" ){
+            $directory = "pastContests";
+        }
+        elseif($file_name=="stat_asp.json" || $file_name=="stat_bach.json"
+            || $file_name=="stat_master.json"|| $file_name=="stat_spo.json"){
+            $directory = "statistics";
+        }
+        elseif($file_name=="plans_kov_spo.json" ){
+            $directory = "plans/plans_kov";
+        }
+        elseif($file_name=="plans_rim_bach.json" || $file_name=="plans_rim_master.json" || $file_name=="plans_rim_spo.json"){
+            $directory = "plans/plans_rim";
+        }
+        elseif($file_name=="plans_sar_master.json" || $file_name=="plans_sar_bach.json"
+            || $file_name=="plans_sar_spo.json"|| $file_name=="plans_sar_asp.json"){
+            $directory = "plans/plans_saransk";
+        }
+
+        $remoteDir = '/home/icmrsu/'. $directory;
+//        $localDir = '/var/www/html/abiturs/storage/app/public/files/'. $directory;
+      $localDir = 'E:\Open Server 5.3.5\OSPanel\domains\abiturs\storage\app\public\files\\' . $directory;
 
 
         if (!function_exists("ssh2_connect"))

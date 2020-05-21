@@ -61,7 +61,7 @@ class ParserJsonController extends Controller
     {
         ini_set('memory_limit', '1024M');
 //        $filejson = file_get_contents(storage_path('app/public/files/test3_oo.json'));
-        $filejson = file_get_contents(storage_path('app/public/files/statistics/БакСпец.json'));
+        $filejson = file_get_contents(storage_path('app/public/files/statistics/stat_bach.json'));
         $json_arr = json_decode($filejson, true);
         $json_data = $json_arr['data'];
 
@@ -116,7 +116,7 @@ class ParserJsonController extends Controller
     {
         ini_set('memory_limit', '1024M');
 //        $filejson = file_get_contents(storage_path('app/public/files/test3_oo.json'));
-        $filejson = file_get_contents(storage_path('app/public/files/statistics/БакСпец.json'));
+        $filejson = file_get_contents(storage_path('app/public/files/statistics/stat_bach.json'));
         $json_arr = json_decode($filejson, true);
         $json_data = $json_arr['data'];
 
@@ -235,7 +235,7 @@ class ParserJsonController extends Controller
     {
         ini_set('memory_limit', '1024M');
 
-        $filejson = file_get_contents(storage_path('app/public/files/statistics/Маг.json'));
+        $filejson = file_get_contents(storage_path('app/public/files/statistics/stat_master.json'));
         $json_arr = json_decode($filejson, true);
         $json_data = $json_arr['data'];
 
@@ -290,7 +290,7 @@ class ParserJsonController extends Controller
     public function parseStatMaster()
     {
         ini_set('memory_limit', '1024M');
-        $filejson = file_get_contents(storage_path('app/public/files/statistics/Маг.json'));
+        $filejson = file_get_contents(storage_path('app/public/files/statistics/stat_master.json'));
         $json_arr = json_decode($filejson, true);
         $json_data = $json_arr['data'];
 
@@ -409,7 +409,7 @@ class ParserJsonController extends Controller
     {
         ini_set('memory_limit', '1024M');
 
-        $filejson = file_get_contents(storage_path('app/public/files/statistics/Асп.json'));
+        $filejson = file_get_contents(storage_path('app/public/files/statistics/stat_asp.json'));
         $json_arr = json_decode($filejson, true);
         $json_data = $json_arr['data'];
 
@@ -453,7 +453,7 @@ class ParserJsonController extends Controller
     public function parseStatAsp()
     {
         ini_set('memory_limit', '1024M');
-        $filejson = file_get_contents(storage_path('app/public/files/statistics/Асп.json'));
+        $filejson = file_get_contents(storage_path('app/public/files/statistics/stat_asp.json'));
         $json_arr = json_decode($filejson, true);
         $json_data = $json_arr['data'];
 
@@ -572,7 +572,7 @@ class ParserJsonController extends Controller
     {
         ini_set('memory_limit', '1024M');
 
-        $filejson = file_get_contents(storage_path('app/public/files/statistics/СПО.json'));
+        $filejson = file_get_contents(storage_path('app/public/files/statistics/stat_spo.json'));
         $json_arr = json_decode($filejson, true);
         $json_data = $json_arr['data'];
 
@@ -616,7 +616,7 @@ class ParserJsonController extends Controller
     public function parseStatSpo()
     {
         ini_set('memory_limit', '1024M');
-        $filejson = file_get_contents(storage_path('app/public/files/statistics/СПО.json'));
+        $filejson = file_get_contents(storage_path('app/public/files/statistics/stat_spo.json'));
         $json_arr = json_decode($filejson, true);
         $json_data = $json_arr['data'];
 
@@ -736,7 +736,7 @@ class ParserJsonController extends Controller
     public function parsePlansBachSpecSar()
     {
         set_time_limit(0);
-        $filejson = file_get_contents(storage_path('app/public/files/plans/Саранск (бакалавры, спец-ты) 2019.json'));
+        $filejson = file_get_contents(storage_path('app/public/files/plans/plans_saransk/plans_sar_bach.json'));
         $json_arr = json_decode($filejson, true);
         $json_data = $json_arr['data'];
 
@@ -840,7 +840,7 @@ class ParserJsonController extends Controller
     public function parsePlansBachSpecRuz()
     {
         set_time_limit(0);
-        $filejson = file_get_contents(storage_path('app/public/files/plans/РИМ  (бакалавры, спец-ты) 2019.json'));
+        $filejson = file_get_contents(storage_path('app/public/files/plans/plans_rim/plans_rim_bach.json'));
         $json_arr = json_decode($filejson, true);
         $json_data = $json_arr['data'];
 
@@ -949,7 +949,7 @@ class ParserJsonController extends Controller
     public function parsePlansMasterSar()
     {
         set_time_limit(0);
-        $filejson = file_get_contents(storage_path('app/public/files/plans/Саранск(Магистр) 2019.json'));
+        $filejson = file_get_contents(storage_path('app/public/files/plans/plans_saransk/plans_sar_master.json'));
         $json_arr = json_decode($filejson, true);
         $json_data = $json_arr['data'];
 
@@ -1052,7 +1052,7 @@ class ParserJsonController extends Controller
     public function parsePlansMasterRuz()
     {
         set_time_limit(0);
-        $filejson = file_get_contents(storage_path('app/public/files/plans/РИМ  (магистры) 2019.json'));
+        $filejson = file_get_contents(storage_path('app/public/files/plans/plans_rim/plans_rim_master.json'));
         $json_arr = json_decode($filejson, true);
         $json_data = $json_arr['data'];
 
@@ -1163,7 +1163,7 @@ class ParserJsonController extends Controller
     public function parsePlansAsp()
     {
         set_time_limit(0);
-        $filejson = file_get_contents(storage_path('app/public/files/plans/Аспирантура.json'));
+        $filejson = file_get_contents(storage_path('app/public/files/plans/plans_saransk/plans_sar_asp.json'));
         $json_arr = json_decode($filejson, true);
         $json_data = $json_arr['data'];
 
@@ -1277,7 +1277,7 @@ class ParserJsonController extends Controller
     public function parsePlansSpoSar()
     {
         set_time_limit(0);
-        $filejson = file_get_contents(storage_path('app/public/files/plans/Саранск СПО.json'));
+        $filejson = file_get_contents(storage_path('app/public/files/plans/plans_saransk/plans_sar_spo.json'));
         $json_arr = json_decode($filejson, true);
         $json_data = $json_arr['data'];
 
@@ -1380,7 +1380,7 @@ class ParserJsonController extends Controller
     public function parsePlansSpoRuz()
     {
         set_time_limit(0);
-        $filejson = file_get_contents(storage_path('app/public/files/plans/РИМ СПО.json'));
+        $filejson = file_get_contents(storage_path('app/public/files/plans/plans_rim/plans_rim_spo.json'));
         $json_arr = json_decode($filejson, true);
         $json_data = $json_arr['data'];
 
@@ -1477,7 +1477,7 @@ class ParserJsonController extends Controller
     public function parsePlansSpoKov()
     {
         set_time_limit(0);
-        $filejson = file_get_contents(storage_path('app/public/files/plans/КОВ СПО.json'));
+        $filejson = file_get_contents(storage_path('app/public/files/plans/plans_kov/plans_kov_spo.json'));
         $json_arr = json_decode($filejson, true);
         $json_data = $json_arr['data'];
 
@@ -1587,7 +1587,7 @@ class ParserJsonController extends Controller
     public function parsePastContests()
     {
         ini_set('memory_limit', '1024M');
-        $filejson = file_get_contents(storage_path('app/public/files/конкурсы.json'));
+        $filejson = file_get_contents(storage_path('app/public/files/pastContests/past_contests.json'));
         $json_arr = json_decode($filejson, true);
         $json_data = $json_arr['data'];
 
