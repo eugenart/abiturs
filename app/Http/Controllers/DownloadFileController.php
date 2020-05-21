@@ -79,7 +79,34 @@ class DownloadFileController extends Controller
                 if (filesize($remote_file_path) == filesize($local_file_path)
                     && md5_file($remote_file_path) == md5_file($local_file_path)) {
                     echo "Файлы совпадают";
-//                    return;
+                    return;
+                }
+                else{
+                    if (!$remote = @fopen("ssh2.sftp://{$stream}/{$remoteDir}/{$file}", 'r')) {
+                        die("Unable to open remote file: $file\n");
+                    }
+
+                    if (!$local = @fopen($localDir . '/' . $file, 'w')) {
+                        fclose($remote);
+                        die("Unable to create local file: $file\n");
+                    }
+                    $read = 0;
+                    $filesize = filesize("ssh2.sftp://{$stream}/{$remoteDir}/{$file}");
+                    while ($read < $filesize && ($buffer = fread($remote, $filesize - $read))) {
+                        $read += strlen($buffer);
+                        if (fwrite($local, $buffer) === FALSE) {
+                            echo "Unable to write to local file: $file\n";
+                            break;
+                        }
+                    }
+                    if (file_exists($remote_file_path) && file_exists($local_file_path)) {
+                        if (filesize($remote_file_path) == filesize($local_file_path)
+                            && md5_file($remote_file_path) == md5_file($local_file_path)) {
+                            echo "Файл успешно загружен";
+                        }
+                    }
+                    fclose($local);
+                    fclose($remote);
                 }
             } elseif (file_exists($remote_file_path) && !file_exists($local_file_path)) {
                 if (!$remote = @fopen("ssh2.sftp://{$stream}/{$remoteDir}/{$file}", 'r')) {
