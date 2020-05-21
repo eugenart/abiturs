@@ -23,7 +23,7 @@ class ParserController extends Controller
         require_once 'Classes/PHPExcel.php';
 
         //Парсим Специальности
-        $xlsSpec = PHPExcel_IOFactory::load(storage_path('app/public/files/Специальности.xls'));
+        $xlsSpec = PHPExcel_IOFactory::load(storage_path('app/public/files/catalogs/specialities.xls'));
         // Первый лист
         $xlsSpec->setActiveSheetIndex(0);
         $sheetSpec = $xlsSpec->getActiveSheet();
@@ -45,7 +45,7 @@ class ParserController extends Controller
 
 
         // Парсим Специализации
-        $xlsSpz = PHPExcel_IOFactory::load(storage_path('app/public/files/Специализации.xls'));
+        $xlsSpz = PHPExcel_IOFactory::load(storage_path('app/public/files/catalogs/specializations.xls'));
         // Первый лист
         $xlsSpz->setActiveSheetIndex(0);
         $sheetSpz = $xlsSpz->getActiveSheet();
@@ -79,7 +79,7 @@ class ParserController extends Controller
         //Удаляем записи из таблиц
         Subject::truncate();
         // Парсим Специализации
-        $xlsSpz = PHPExcel_IOFactory::load(storage_path('app/public/files/Дисциплины.xls'));
+        $xlsSpz = PHPExcel_IOFactory::load(storage_path('app/public/files/catalogs/disciplines.xls'));
         // Первый лист
         $xlsSpz->setActiveSheetIndex(0);
         $sheetSpz = $xlsSpz->getActiveSheet();
@@ -99,7 +99,7 @@ class ParserController extends Controller
         //Удаляем записи из таблиц
         Faculty::truncate();
         // Парсим Специализации
-        $xlsSpz = PHPExcel_IOFactory::load(storage_path('app/public/files/Факультеты.xls'));
+        $xlsSpz = PHPExcel_IOFactory::load(storage_path('app/public/files/catalogs/faculties.xls'));
         // Первый лист
         $xlsSpz->setActiveSheetIndex(0);
         $sheetSpz = $xlsSpz->getActiveSheet();
@@ -124,7 +124,7 @@ class ParserController extends Controller
         //Удаляем записи из таблиц
         AdmissionBasis::truncate();
         // Парсим Специализации
-        $xlsSpz = PHPExcel_IOFactory::load(storage_path('app/public/files/Список основ.xls'));
+        $xlsSpz = PHPExcel_IOFactory::load(storage_path('app/public/files/catalogs/admission_bases.xls'));
         // Первый лист
         $xlsSpz->setActiveSheetIndex(0);
         $sheetSpz = $xlsSpz->getActiveSheet();
