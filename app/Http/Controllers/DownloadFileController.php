@@ -43,7 +43,7 @@ class DownloadFileController extends Controller
         $remoteDir = '/home/icmrsu/'. $directory;
         $localDir = '/var/www/html/abiturs/storage/app/public/files/'. $directory;
 //      $localDir = 'E:\Open Server 5.3.5\OSPanel\domains\abiturs\storage\app\public\files\\' . $directory;
-
+        echo $localDir;
 
         if (!function_exists("ssh2_connect"))
             die('Function ssh2_connect not found, you cannot use ssh2 here');
@@ -75,7 +75,7 @@ class DownloadFileController extends Controller
         if (!($key === false)) {
             $file = $files[$key];
 
-          //  echo "Copying file: $file\n";
+            echo "Copying file: $file\n";
 
             $remote_file_path = "ssh2.sftp://{$stream}/{$remoteDir}/{$file}";
             $local_file_path = $localDir . '/' . $file;
