@@ -41,8 +41,8 @@ class DownloadFileController extends Controller
         }
 
         $remoteDir = '/home/icmrsu/'. $directory;
-//        $localDir = '/var/www/html/abiturs/storage/app/public/files/'. $directory;
-      $localDir = 'E:\Open Server 5.3.5\OSPanel\domains\abiturs\storage\app\public\files\\' . $directory;
+        $localDir = '/var/www/html/abiturs/storage/app/public/files/'. $directory;
+//      $localDir = 'E:\Open Server 5.3.5\OSPanel\domains\abiturs\storage\app\public\files\\' . $directory;
 
 
         if (!function_exists("ssh2_connect"))
