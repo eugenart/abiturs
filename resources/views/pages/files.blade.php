@@ -8,7 +8,7 @@
 
                 <form method="POST" action="/test">
                     @csrf
-                    <input type="hidden" name="file_name" value="bachelors.json">
+                    <input type="hidden" name="file_name" value="plans_rim_master.json">
                     <button type="submit">Загрузить файл</button>
                 </form>
             </div>
