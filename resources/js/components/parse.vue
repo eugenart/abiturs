@@ -1,102 +1,4 @@
 <template>
-    <!--    <div>-->
-    <!--        <div class="row mt-4">-->
-    <!--            <div class="col-12">-->
-    <!--                <div class="row">-->
-    <!--                    <div class="col-12">-->
-    <!--                        <div class="card">-->
-    <!--                            <div class="card-body">-->
-    <!--                                <div class="card">-->
-    <!--                                    <div class="card-header">Выгрузка данных о специальностях и специализациях</div>-->
-    <!--                                    <div class="card-body">-->
-    <!--                                        <div class="row">-->
-    <!--                                            <div class="col-4">-->
-    <!--                                                <button class="btn btn-sm btn-success w-100"-->
-    <!--                                                        @click="this.parseSpecialities">Начать выгрузку-->
-    <!--                                                </button>-->
-    <!--                                            </div>-->
-    <!--                                            <div class="col-8 text-center">-->
-    <!--                                                <div v-if="loadingparseSpecialitiesStatus" class="lds-ring">-->
-    <!--                                                    <div></div>-->
-    <!--                                                    <div></div>-->
-    <!--                                                    <div></div>-->
-    <!--                                                    <div></div>-->
-    <!--                                                </div>-->
-    <!--                                                <p v-else class="m-0">{{parseSpecialitiesStatus}}</p>-->
-    <!--                                            </div>-->
-    <!--                                        </div>-->
-    <!--                                    </div>-->
-    <!--                                </div>-->
-    <!--                                <div class="card mt-4">-->
-    <!--                                    <div class="card-header">Выгрузка данных о статистике приема абитуриентов</div>-->
-    <!--                                    <div class="card-body">-->
-    <!--                                        <div class="row">-->
-    <!--                                            <div class="col-4">-->
-    <!--                                                <button class="btn btn-sm btn-success w-100"-->
-    <!--                                                        @click="this.parseStudents">Начать выгрузку-->
-    <!--                                                </button>-->
-    <!--                                            </div>-->
-    <!--                                            <div class="col-8 text-center">-->
-    <!--                                                <div v-if="loadingparseStudentsStatus" class="lds-ring">-->
-    <!--                                                    <div></div>-->
-    <!--                                                    <div></div>-->
-    <!--                                                    <div></div>-->
-    <!--                                                    <div></div>-->
-    <!--                                                </div>-->
-    <!--                                                <p v-else>{{parseStudentsStatus}}</p>-->
-    <!--                                            </div>-->
-    <!--                                        </div>-->
-    <!--                                    </div>-->
-    <!--                                </div>-->
-    <!--                                <div class="card mt-4">-->
-    <!--                                    <div class="card-header">Выгрузка данных о ценах на обучение</div>-->
-    <!--                                    <div class="card-body">-->
-    <!--                                        <div class="row">-->
-    <!--                                            <div class="col-4">-->
-    <!--                                                <button class="btn btn-sm btn-success w-100"-->
-    <!--                                                        @click="this.parseAreas">Начать выгрузку-->
-    <!--                                                </button>-->
-    <!--                                            </div>-->
-    <!--                                            <div class="col-8 text-center">-->
-    <!--                                                <div v-if="loadingparseAreasStatus" class="lds-ring">-->
-    <!--                                                    <div></div>-->
-    <!--                                                    <div></div>-->
-    <!--                                                    <div></div>-->
-    <!--                                                    <div></div>-->
-    <!--                                                </div>-->
-    <!--                                                <p v-else>{{parseAreasStatus}}</p>-->
-    <!--                                            </div>-->
-    <!--                                        </div>-->
-    <!--                                    </div>-->
-    <!--                                </div>-->
-    <!--                                <div class="card mt-4">-->
-    <!--                                    <div class="card-header">Выгрузка данных о факультетах и предметах</div>-->
-    <!--                                    <div class="card-body">-->
-    <!--                                        <div class="row">-->
-    <!--                                            <div class="col-4">-->
-    <!--                                                <button class="btn btn-sm btn-success w-100"-->
-    <!--                                                        @click="this.parseSub">Начать выгрузку-->
-    <!--                                                </button>-->
-    <!--                                            </div>-->
-    <!--                                            <div class="col-8 text-center">-->
-    <!--                                                <div v-if="loadingparseSubStatus" class="lds-ring">-->
-    <!--                                                    <div></div>-->
-    <!--                                                    <div></div>-->
-    <!--                                                    <div></div>-->
-    <!--                                                    <div></div>-->
-    <!--                                                </div>-->
-    <!--                                                <p v-else>{{parseSubStatus}}</p>-->
-    <!--                                            </div>-->
-    <!--                                        </div>-->
-    <!--                                    </div>-->
-    <!--                                </div>-->
-    <!--                            </div>-->
-    <!--                        </div>-->
-    <!--                    </div>-->
-    <!--                </div>-->
-    <!--            </div>-->
-    <!--        </div>-->
-    <!--    </div>-->
     <div class="row mt-4">
         <div class="col-12">
             <div class="card">
@@ -441,7 +343,7 @@
         methods: {
             parseSpecialities: function () {
                 this.loadingparseSpecialitiesStatus = true;
-                let data = axios.get('/admin/parse-specialities')
+                let data = axios.post('/test', {'param': 'specialities'})
                     .then(response => {
                         this.loadingparseSpecialitiesStatus = false;
                         this.parseSpecialitiesStatus = response.data
@@ -450,7 +352,7 @@
 
             parseSub: function () {
                 this.loadingparseSubStatus = true;
-                let data = axios.get('/admin/parse-sub')
+                let data = axios.post('/test', {'param': 'faculties'})
                     .then(response => {
                         this.loadingparseSubStatus = false;
                         this.parseSubStatus = response.data
@@ -459,7 +361,7 @@
 
             parseAdmissionBasis: function () {
                 this.loadingparseAdmissionBasis = true;
-                let data = axios.get('/admin/c')
+                let data = axios.post('/test', {'param': 'admission_bases'})
                     .then(response => {
                         this.loadingparseAdmissionBasis = false;
                         this.parseAdmissionBasisStatus = response.data
@@ -469,7 +371,7 @@
             parseCatalogs: function () {
                 console.log('test')
                 this.loadingparseCatalogsStatus = true;
-                let data = axios.get('/admin/parse-catalogs')
+                let data = axios.post('/test', {'param': 'stat_bach_catalogs'})
                     .then(response => {
                         this.loadingparseCatalogsStatus = false;
                         this.parseCatalogsStatus = response.data
@@ -479,7 +381,7 @@
             parsePlansBach: function () {
                 console.log('test')
                 this.loadingparsePlansBachStatus = true;
-                let data = axios.get('/admin/parse-plans-bach')
+                let data = axios.post('/test', {'param': 'plans_bach'})
                     .then(response => {
                         this.loadingparsePlansBachStatus = false;
                         this.parsePlansBachStatus = response.data
@@ -489,7 +391,7 @@
             parsePlansMaster: function () {
                 console.log('test')
                 this.loadingparsePlansMasterStatus = true;
-                let data = axios.get('/admin/parse-plans-master')
+                let data = axios.post('/test', {'param': 'plans_master'})
                     .then(response => {
                         this.loadingparsePlansMasterStatus = false;
                         this.parsePlansMasterStatus = response.data
@@ -499,7 +401,7 @@
             parsePlansAsp: function () {
                 console.log('test')
                 this.loadingparsePlansAspStatus = true;
-                let data = axios.get('/admin/parse-plans-asp')
+                let data = axios.post('/test', {'param': 'plans_asp'})
                     .then(response => {
                         this.loadingparsePlansAspStatus = false;
                         this.parsePlansAspStatus = response.data
@@ -509,7 +411,7 @@
             parsePlansSpo: function () {
                 console.log('test')
                 this.loadingparsePlansSpoStatus = true;
-                let data = axios.get('/admin/parse-plans-spo')
+                let data = axios.post('/test', {'param': 'plans_spo'})
                     .then(response => {
                         this.loadingparsePlansSpoStatus = false;
                         this.parsePlansSpoStatus = response.data
@@ -518,7 +420,7 @@
 
             parseStudents: function () {
                 this.loadingparseStudentsStatus = true;
-                let data = axios.get('/admin/parse-students')
+                let data = axios.post('/test', {'param': 'stat_bach'})
                     .then(response => {
                         this.loadingparseStudentsStatus = false;
                         this.parseStudentsStatus = response.data
@@ -526,7 +428,7 @@
             },
             parseStudentsMaster: function () {
                 this.loadingparseStudentsMasterStatus = true;
-                let data = axios.get('/admin/parse-students-master')
+                let data = axios.post('/test', {'param': 'stat_master'})
                     .then(response => {
                         this.loadingparseStudentsMasterStatus = false;
                         this.parseStudentsMasterStatus = response.data
@@ -534,7 +436,7 @@
             },
             parseStudentsAsp: function () {
                 this.loadingparseStudentsAspStatus = true;
-                let data = axios.get('/admin/parse-students-asp')
+                let data = axios.post('/test', {'param': 'stat_asp'})
                     .then(response => {
                         this.loadingparseStudentsAspStatus = false;
                         this.parseStudentsAspStatus = response.data
@@ -542,7 +444,7 @@
             },
             parseStudentsSpo: function () {
                 this.loadingparseStudentsSpoStatus = true;
-                let data = axios.get('/admin/parse-students-spo')
+                let data = axios.post('/test', {'param': 'stat_spo'})
                     .then(response => {
                         this.loadingparseStudentsSpoStatus = false;
                         this.parseStudentsSpoStatus = response.data
@@ -551,7 +453,7 @@
 
             parseContests: function () {
                 this.loadingparseContestsStatus = true;
-                let data = axios.get('/admin/parse-contests')
+                let data = axios.post('/test', {'param': 'past_contests'})
                     .then(response => {
                         this.loadingparseContestsStatus = false;
                         this.parseContestsStatus = response.data

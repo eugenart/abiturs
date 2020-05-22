@@ -4337,104 +4337,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "parse",
   data: function data() {
@@ -4473,7 +4375,9 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.loadingparseSpecialitiesStatus = true;
-      var data = axios.get('/admin/parse-specialities').then(function (response) {
+      var data = axios.post('/test', {
+        'param': 'specialities'
+      }).then(function (response) {
         _this.loadingparseSpecialitiesStatus = false;
         _this.parseSpecialitiesStatus = response.data;
       });
@@ -4482,7 +4386,9 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       this.loadingparseSubStatus = true;
-      var data = axios.get('/admin/parse-sub').then(function (response) {
+      var data = axios.post('/test', {
+        'param': 'faculties'
+      }).then(function (response) {
         _this2.loadingparseSubStatus = false;
         _this2.parseSubStatus = response.data;
       });
@@ -4491,7 +4397,9 @@ __webpack_require__.r(__webpack_exports__);
       var _this3 = this;
 
       this.loadingparseAdmissionBasis = true;
-      var data = axios.get('/admin/c').then(function (response) {
+      var data = axios.post('/test', {
+        'param': 'admission_bases'
+      }).then(function (response) {
         _this3.loadingparseAdmissionBasis = false;
         _this3.parseAdmissionBasisStatus = response.data;
       });
@@ -4501,7 +4409,9 @@ __webpack_require__.r(__webpack_exports__);
 
       console.log('test');
       this.loadingparseCatalogsStatus = true;
-      var data = axios.get('/admin/parse-catalogs').then(function (response) {
+      var data = axios.post('/test', {
+        'param': 'stat_bach_catalogs'
+      }).then(function (response) {
         _this4.loadingparseCatalogsStatus = false;
         _this4.parseCatalogsStatus = response.data;
       });
@@ -4511,7 +4421,9 @@ __webpack_require__.r(__webpack_exports__);
 
       console.log('test');
       this.loadingparsePlansBachStatus = true;
-      var data = axios.get('/admin/parse-plans-bach').then(function (response) {
+      var data = axios.post('/test', {
+        'param': 'plans_bach'
+      }).then(function (response) {
         _this5.loadingparsePlansBachStatus = false;
         _this5.parsePlansBachStatus = response.data;
       });
@@ -4521,7 +4433,9 @@ __webpack_require__.r(__webpack_exports__);
 
       console.log('test');
       this.loadingparsePlansMasterStatus = true;
-      var data = axios.get('/admin/parse-plans-master').then(function (response) {
+      var data = axios.post('/test', {
+        'param': 'plans_master'
+      }).then(function (response) {
         _this6.loadingparsePlansMasterStatus = false;
         _this6.parsePlansMasterStatus = response.data;
       });
@@ -4531,7 +4445,9 @@ __webpack_require__.r(__webpack_exports__);
 
       console.log('test');
       this.loadingparsePlansAspStatus = true;
-      var data = axios.get('/admin/parse-plans-asp').then(function (response) {
+      var data = axios.post('/test', {
+        'param': 'plans_asp'
+      }).then(function (response) {
         _this7.loadingparsePlansAspStatus = false;
         _this7.parsePlansAspStatus = response.data;
       });
@@ -4541,7 +4457,9 @@ __webpack_require__.r(__webpack_exports__);
 
       console.log('test');
       this.loadingparsePlansSpoStatus = true;
-      var data = axios.get('/admin/parse-plans-spo').then(function (response) {
+      var data = axios.post('/test', {
+        'param': 'plans_spo'
+      }).then(function (response) {
         _this8.loadingparsePlansSpoStatus = false;
         _this8.parsePlansSpoStatus = response.data;
       });
@@ -4550,7 +4468,9 @@ __webpack_require__.r(__webpack_exports__);
       var _this9 = this;
 
       this.loadingparseStudentsStatus = true;
-      var data = axios.get('/admin/parse-students').then(function (response) {
+      var data = axios.post('/test', {
+        'param': 'stat_bach'
+      }).then(function (response) {
         _this9.loadingparseStudentsStatus = false;
         _this9.parseStudentsStatus = response.data;
       });
@@ -4559,7 +4479,9 @@ __webpack_require__.r(__webpack_exports__);
       var _this10 = this;
 
       this.loadingparseStudentsMasterStatus = true;
-      var data = axios.get('/admin/parse-students-master').then(function (response) {
+      var data = axios.post('/test', {
+        'param': 'stat_master'
+      }).then(function (response) {
         _this10.loadingparseStudentsMasterStatus = false;
         _this10.parseStudentsMasterStatus = response.data;
       });
@@ -4568,7 +4490,9 @@ __webpack_require__.r(__webpack_exports__);
       var _this11 = this;
 
       this.loadingparseStudentsAspStatus = true;
-      var data = axios.get('/admin/parse-students-asp').then(function (response) {
+      var data = axios.post('/test', {
+        'param': 'stat_asp'
+      }).then(function (response) {
         _this11.loadingparseStudentsAspStatus = false;
         _this11.parseStudentsAspStatus = response.data;
       });
@@ -4577,7 +4501,9 @@ __webpack_require__.r(__webpack_exports__);
       var _this12 = this;
 
       this.loadingparseStudentsSpoStatus = true;
-      var data = axios.get('/admin/parse-students-spo').then(function (response) {
+      var data = axios.post('/test', {
+        'param': 'stat_spo'
+      }).then(function (response) {
         _this12.loadingparseStudentsSpoStatus = false;
         _this12.parseStudentsSpoStatus = response.data;
       });
@@ -4586,7 +4512,9 @@ __webpack_require__.r(__webpack_exports__);
       var _this13 = this;
 
       this.loadingparseContestsStatus = true;
-      var data = axios.get('/admin/parse-contests').then(function (response) {
+      var data = axios.post('/test', {
+        'param': 'past_contests'
+      }).then(function (response) {
         _this13.loadingparseContestsStatus = false;
         _this13.parseContestsStatus = response.data;
       });
@@ -113465,8 +113393,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Applications/MAMP/htdocs/abiturs/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/abiturs/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\OSPanel\domains\abiturs\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\OSPanel\domains\abiturs\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

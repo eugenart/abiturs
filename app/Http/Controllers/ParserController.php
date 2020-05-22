@@ -18,7 +18,7 @@ class ParserController extends Controller
         return view('structure.parse'/*, compact('sheet')*/);
     }
 
-    public function parseFromXls(Request $request)
+    public function parseFromXls()
     {
         require_once 'Classes/PHPExcel.php';
 
@@ -87,15 +87,17 @@ class ParserController extends Controller
 
 
         //return count($sheetSpz);
-        for($i=3; $i<count($sheetSpz); $i++){
+        for ($i = 3; $i < count($sheetSpz); $i++) {
 
             //Добавляем записи Специализаций
             Subject::insert(array(
-                'subjectId'  => $sheetSpz[$i][0],
-                'name'   => $sheetSpz[$i][1]
+                'subjectId' => $sheetSpz[$i][0],
+                'name' => $sheetSpz[$i][1]
             ));
         }
-
+        return json_encode('Дисциплины успешно выгружены!');
+    }
+    public function parseFromXlsFaculties(Request $request){
         //Удаляем записи из таблиц
         Faculty::truncate();
         // Парсим Специализации
@@ -114,7 +116,7 @@ class ParserController extends Controller
             ));
         }
 
-        return json_encode('Факультеты и дисциплины успешно выгружены!');
+        return json_encode('Факультеты успешно выгружены!');
     }
 
     public function parseFromXlsAdmission(Request $request)
