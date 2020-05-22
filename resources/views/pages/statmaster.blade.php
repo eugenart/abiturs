@@ -5,7 +5,7 @@
     </div>
     <div class="row mt-3">
         <div class="col-12">
-            <h3 class="text-center h1-mrsu main-color mb-4">Магистратура</h3>
+            <h3 class="text-center h1-mrsu main-color m-0">Магистратура</h3>
         </div>
     </div>
     {{--    @if(isset($studyForms))--}}
@@ -28,7 +28,7 @@
     {{--    @endif--}}
     @if(isset($studyForms))
         <div class="container">
-            <div class="row m-4">
+            <div class="row m-3">
                 <div class="col-12 d-flex justify-content-between align-items-center">
                     {{--                    <div class="m-0 p-0 h6 d-lg-block d-none"><a href="" class="underline-label main-color" data-toggle="modal"--}}
                     {{--                                               data-target="#QRCode">Получить--}}
@@ -45,7 +45,7 @@
             </div>
         </div>
     @endif
-    <div class="container pt-0 padding-0 mt-4">
+    <div class="container pt-0 padding-0 mt-3">
         <form class="ovz-form" action="{{ route('statmaster.index') }}" id="sendFormWithFacultets" method="get">
             <div class="row">
                 <div class="col-12">
@@ -83,8 +83,9 @@
                                    aria-label="Search" name="fio">
                         </div>
                         <div class="col-md-2 col-3">
-                            <button class="btn btn-sm btn-primary d-block w-100 mrsu-bg-button" type="submit"><i
+                            <button class="btn btn-sm btn-primary d-block w-100 mrsu-bg-button ovz-fa" type="submit"><i
                                     class="fa fa-search"></i>
+                                <span>Найти</span>
                             </button>
                         </div>
                     </div>

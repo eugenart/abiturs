@@ -4,9 +4,9 @@
     <div class="container">
         <div class="row">
             <div class="col-12 mt-5 contact-us-div">
-                <h1 class="text-center main-color">Остались вопросы? Напишите нам</h1>
-                <h5 class="text-center">Воспользуйтесь формой обратной связи, чтобы задать интересующие Вас
-                    вопросы:</h5>
+                <h3 class="text-center main-color">Остались вопросы? Напишите нам</h3>
+{{--                <h5 class="text-center">Воспользуйтесь формой обратной связи, чтобы задать интересующие Вас--}}
+{{--                    вопросы:</h5>--}}
 
                 <form id="contactform" method="GET" action=""
                       class="contact-us d-flex align-items-center justify-content-center flex-column p-0">
