@@ -43,10 +43,10 @@
     {{--  end modal  --}}
 
 
-    <div class="container-fluid p-5">
-        <div class="row mt-2">
+    <div class="container-fluid pr-5 pl-5 pb-5">
+        <div class="row mt-3">
             <div class="col-12 col-sm-8 m-auto">
-                <h3 class="text-center h1-mrsu">Подбор образовательных программ</h3>
+                <h3 class="text-center h1-mrsu main-color">Подбор образовательных программ</h3>
                 <h5 class="text-center h5-mrsu">Подберите направление подготовки по предметам ЕГЭ или из списка
                     направлений
                     подготовки и специальностей факультета или института
@@ -291,7 +291,7 @@
 
                             </div>
                             <div class="col-12 col-xl-3 col-sm-12">
-                                <h4 class="mb-3 text-xl-left text-lg-left text-sm-center text-md-center text-center">Мои вступительные испытания</h4>
+                                <h4 class="mb-3 text-xl-left text-lg-left text-sm-center main-color text-md-center text-center">Мои вступительные испытания</h4>
                                 <div class="row text-uppercase mb-5">
                                     @foreach($subjects as $subject)
                                         <div class="col-12 col-lg-12 col-sm-4">
@@ -526,7 +526,7 @@
                                 </div>
                             </div>
                             <div class="col-12 col-xl-3 col-sm-12">
-                                <h4 class="mb-3 text-xl-left text-lg-left text-sm-center text-md-center text-center">Факультеты и институты</h4>
+                                <h4 class="mb-3 text-xl-left text-lg-left text-sm-center text-md-center main-color text-center">Факультеты и институты</h4>
                                 <div class="row text-uppercase mb-5">
                                     @foreach($faculties as $faculty)
                                         @if(count($faculty->plan))
@@ -659,6 +659,7 @@
             let specCode = recipient.speciality.code[4];
             modal.find('table').empty()
             modal.find('#examsNames').empty().text(codes[specCode])
+            modal.find('#examsNames').css({'font-size': '20px', 'text-transform': 'uppercase'})
 
             modal.find('#forms').empty()
             $.each(recipient.studyForm, (k, v) => {

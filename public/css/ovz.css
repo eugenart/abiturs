@@ -607,7 +607,7 @@ marquee {
 /*}*/
 
 /*ovz*/
-@media screen and (min-width: 1300px) {
+@media screen and (min-width: 991px) {
 
     body {
         font-size: 22px;
@@ -637,6 +637,9 @@ marquee {
         background-color: #ffffff;
         border: 1px solid #000000;
         font-size: 20px;
+        margin-top: .3rem;
+        text-transform: uppercase;
+        font-weight: bold;
     }
 
     .mrsu-bg-button-ovz:hover {
@@ -659,8 +662,13 @@ marquee {
 
     .fa-search {
         color: black !important;
+        font-size: 0;
     }
-
+    .ovz-fa span{
+        color: black !important;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
     .ovz-form {
         font-size: 20px;
     }
@@ -1010,7 +1018,7 @@ marquee {
     }
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 990px) {
 
     nav.navbar {
         padding-left: 0;
@@ -1066,7 +1074,7 @@ marquee {
 
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 990px) {
     .link-section {
         padding-top: 10px !important;
         padding-bottom: 10px !important;
@@ -1090,7 +1098,7 @@ marquee {
     }
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 990px) {
 
     .examInfo, .exam-info-bottom {
         font-size: 18px;
