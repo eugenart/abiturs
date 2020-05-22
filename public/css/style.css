@@ -101,6 +101,10 @@ body {
     margin-bottom: 5px;
 }
 
+.ovz-fa span{
+    font-size: 0;
+}
+
 .mrsu-card > ul > li > ul li {
     font-style: italic;
     margin-bottom: 5px;

@@ -34,10 +34,10 @@
                     <div class="col-12 pt-2 content-page">
                         @foreach($block->sectionContent->sortBy('position') as $content)
                             @if ($content->type == 'text')
-                                <h5 class="m-1 font-weight-bolder"><b>{{ $content->name }}</b>:</h5>
+                                <h5 class=" font-weight-bolder ml-0"><b>{{ $content->name }}</b></h5>
                                 <div>{!! nl2br($content->content) !!}</div>
                             @else
-                                <h5 class="m-1 font-weight-bolder"><b>{{ $content->name }}</b> :</h5>
+                                <h5 class="ml-0 font-weight-bolder"><b>{{ $content->name }}</b></h5>
                                 <ul class="files-list">
                                     @foreach($content->childrenFiles->sortBy('position') as $file)
                                         <li>

@@ -98,7 +98,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white" href="" id="navbarDropdown" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Статистика приема
+                        Списки абитуриентов
                     </a>
                     <div class="dropdown-menu main-color" aria-labelledby="navbarDropdown">
                         <a class="nav-link text-white" href="{{route('stat.index')}}">Бакалавриат и специалитет</a>
@@ -113,7 +113,7 @@
                             class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active d-flex align-items-center justify-content-center">
-                    <a class="nav-link" href="{{route('contact.index')}}">Обратная связь <span
+                    <a class="nav-link" href="{{route('contact.index')}}">Контакты и Обратная связь <span
                             class="sr-only">(current)</span></a>
                 </li>
             </ul>
