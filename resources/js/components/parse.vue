@@ -2,12 +2,12 @@
     <div class="row mt-4">
         <div class="col-12">
             <div class="card">
-                <div class="card-header">Выгрузка данных о специальностях и специализациях</div>
+                <div class="card-header text-uppercase font-weight-bold">Специальности и специализации</div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-4">
                             <button class="btn btn-sm btn-success w-100"
-                                    @click="this.parseSpecialities">Начать выгрузку
+                                    @click="this.parseSpecialities">Выгрузить специальности и специализации
                             </button>
                         </div>
                         <div class="col-8 text-center d-flex justify-content-center align-items-center">
@@ -23,12 +23,12 @@
                 </div>
             </div>
             <div class="card mt-3">
-                <div class="card-header">Выгрузка факультетов, институтов и дисциплин</div>
+                <div class="card-header text-uppercase font-weight-bold">Факультеты/институты и дисциплины</div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-4">
                             <button class="btn btn-sm btn-success w-100"
-                                    @click="this.parseSub">Начать выгрузку факультетов, институтов и дисциплин
+                                    @click="this.parseSub">Выгрузить факультеты/институты и дисциплины
                             </button>
                         </div>
                         <div class="col-8 text-center d-flex justify-content-center align-items-center">
@@ -44,12 +44,12 @@
                 </div>
             </div>
             <div class="card mt-3">
-                <div class="card-header">Выгрузка оснований для приема</div>
+                <div class="card-header text-uppercase font-weight-bold">Основания для приема</div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-4">
                             <button class="btn btn-sm btn-success w-100"
-                                    @click="this.parseAdmissionBasis">Начать выгрузку оснований для приема
+                                    @click="this.parseAdmissionBasis">Выгрузить основания для приема
                             </button>
                         </div>
                         <div class="col-8 text-center d-flex justify-content-center align-items-center">
@@ -65,13 +65,12 @@
                 </div>
             </div>
             <div class="card mt-3">
-                <div class="card-header">Выгрузка форм обучения, категорий, уровней подготовки</div>
+                <div class="card-header text-uppercase font-weight-bold">Формы обучения, категории, уровни подготовки</div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-4">
                             <button class="btn btn-sm btn-success w-100"
-                                    @click="this.parseCatalogs">Начать выгрузку форм обучения, категорий, уровней
-                                подготовки
+                                    @click="this.parseCatalogs">Выгрузить каталоги
                             </button>
                         </div>
                         <div class="col-8 text-center d-flex justify-content-center align-items-center">
@@ -87,7 +86,7 @@
                 </div>
             </div>
             <div class="card mt-3">
-                <div class="card-header">Выгрузка планов, цен на обучение и количества мест</div>
+                <div class="card-header text-uppercase font-weight-bold">Планы, цены за обучение и количество мест</div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-12">
@@ -97,7 +96,7 @@
                                     <div class="row">
                                         <div class="col-4">
                                             <button class="btn btn-sm btn-success w-100"
-                                                    @click="this.parsePlansBach">Начать выгрузку планов, цен на обучение и количества мест
+                                                    @click="this.parsePlansBach">Выгрузить данные бакалвриата и специалитета
                                             </button>
                                         </div>
                                         <div class="col-8 text-center d-flex justify-content-center align-items-center">
@@ -118,7 +117,7 @@
                                     <div class="row">
                                         <div class="col-4">
                                             <button class="btn btn-sm btn-success w-100"
-                                                    @click="this.parsePlansMaster">Начать выгрузку планов, цен на обучение и количества мест
+                                                    @click="this.parsePlansMaster">Выгрузить данные магистратуры
                                             </button>
                                         </div>
                                         <div class="col-8 text-center d-flex justify-content-center align-items-center">
@@ -139,7 +138,7 @@
                                     <div class="row">
                                         <div class="col-4">
                                             <button class="btn btn-sm btn-success w-100"
-                                                    @click="this.parsePlansAsp">Начать выгрузку планов, цен на обучение и количества мест
+                                                    @click="this.parsePlansAsp">Выгрузить данные аспирантуры
                                             </button>
                                         </div>
                                         <div class="col-8 text-center d-flex justify-content-center align-items-center">
@@ -160,7 +159,7 @@
                                     <div class="row">
                                         <div class="col-4">
                                             <button class="btn btn-sm btn-success w-100"
-                                                    @click="this.parsePlansSpo">Начать выгрузку планов, цен на обучение и количества мест
+                                                    @click="this.parsePlansSpo">Выгрузить данные СПО
                                             </button>
                                         </div>
                                         <div class="col-8 text-center d-flex justify-content-center align-items-center">
@@ -180,7 +179,7 @@
                 </div>
             </div>
             <div class="card mt-3">
-                <div class="card-header">Выгрузка статистики приема</div>
+                <div class="card-header">Пофамильные списки абитуриентов</div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-12">
@@ -190,7 +189,7 @@
                                     <div class="row">
                                         <div class="col-4">
                                             <button class="btn btn-sm btn-success w-100"
-                                                    @click="this.parseStudents">Начать выгрузку статистики приема
+                                                    @click="this.parseStudents">Выгрузить списки
                                             </button>
                                         </div>
                                         <div class="col-8 text-center d-flex justify-content-center align-items-center">
@@ -211,7 +210,7 @@
                                     <div class="row">
                                         <div class="col-4">
                                             <button class="btn btn-sm btn-success w-100"
-                                                    @click="this.parseStudentsMaster">Начать выгрузку статистики приема
+                                                    @click="this.parseStudentsMaster">Выгрузить списки
                                             </button>
                                         </div>
                                         <div class="col-8 text-center d-flex justify-content-center align-items-center">
@@ -232,7 +231,7 @@
                                     <div class="row">
                                         <div class="col-4">
                                             <button class="btn btn-sm btn-success w-100"
-                                                    @click="this.parseStudentsAsp">Начать выгрузку статистики приема
+                                                    @click="this.parseStudentsAsp">Выгрузить списки
                                             </button>
                                         </div>
                                         <div class="col-8 text-center d-flex justify-content-center align-items-center">
@@ -253,7 +252,7 @@
                                     <div class="row">
                                         <div class="col-4">
                                             <button class="btn btn-sm btn-success w-100"
-                                                    @click="this.parseStudentsSpo">Начать выгрузку статистики приема
+                                                    @click="this.parseStudentsSpo">Выгрузить списки
                                             </button>
                                         </div>
                                         <div class="col-8 text-center d-flex justify-content-center align-items-center">
@@ -273,12 +272,12 @@
                 </div>
             </div>
             <div class="card mt-3 mb-3">
-                <div class="card-header">Выгрузка статистики предыдущих лет</div>
+                <div class="card-header">Статистика предыдущих лет</div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-4">
                             <button class="btn btn-sm btn-success w-100"
-                                    @click="this.parseContests">Начать выгрузку статистики предыдущих лет
+                                    @click="this.parseContests">Выгрузить статистики предыдущих лет
                             </button>
                         </div>
                         <div class="col-8 text-center d-flex justify-content-center align-items-center">

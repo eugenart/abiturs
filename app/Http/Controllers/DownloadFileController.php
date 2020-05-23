@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Traits\ParserXlsTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\ParserJsonController as ParserJsonController;
@@ -9,51 +10,62 @@ use App\Http\Controllers\ParserController;
 
 class DownloadFileController extends Controller
 {
+    use ParserXlsTrait;
+
     public function index(Request $request)
     {
         $param = $request->param;
 
         if ($param == "specialities" || $param == "faculties" || $param == "admission_bases" || $param == "stat_bach_catalogs") {
             $directory = "catalogs";
-            if($param == "specialities"){
+            if ($param == "specialities") {
                 $res = $this->download($directory, "specialities.xls");
-                if($res===0){
+                if ($res === 0) {
                     $res = $this->download($directory, "specializations.xls");
-                    if($res===0){
-                        app('App\Http\Controllers\ParserController')->parseFromXls();
-                        //echo $res;
+                    if ($res === 0) {
+                        $result = $this->parseSpecialities();
+                        return $result;
                     }
+                }
+            } elseif ($param == "faculties") {
+                $res = $this->download($directory, "faculties.xls");
+                $res1 = $this->download($directory, "subjects.xls");
+                if ($res === 0 && $res1 === 0) {
+                    $result = $this->parseSubFac();
+                    return $result;
+                } elseif ($res === 0 && $res1 != 0) {
+                    $result = $this->parseFaculties();
+                    return $result;
+                } elseif ($res != 0 && $res1 === 0) {
+                    $result = $this->parseSubjects();
+                    return $result;
+                }
+            } elseif ($param == "admission_bases"){
+                $res = $this->download($directory, "admission_bases.xls");
+                if ($res === 0) {
+                    $result = $this->parseAdmissionBases();
+                    return $result;
                 }
             }
         } elseif ($param == "past_contests") {
             $directory = "pastContests";
-        } elseif ($param == "stat_bach" || $param == "stat_master"
+        } elseif
+        ($param == "stat_bach" || $param == "stat_master"
             || $param == "stat_asp" || $param == "stat_spo") {
             $directory = "statistics";
         }
 
-
-
-// elseif ($file_name_arr[0] == "plans_kov_spo.json") {
-//            $directory = "plans/plans_kov";
-//        } elseif ($file_name_arr[0] == "plans_rim_bach.json" || $file_name_arr[0] == "plans_rim_master.json" || $file_name_arr[0] == "plans_rim_spo.json") {
-//            $directory = "plans/plans_rim";
-//        } elseif ($file_name_arr[0] == "plans_sar_master.json" || $file_name_arr[0] == "plans_sar_bach.json"
-//            || $file_name_arr[0] == "plans_sar_spo.json" || $file_name_arr[0] == "plans_sar_asp.json"
-//            || $file_name_arr[0] == "stat_bach_catalogs") {
-//            $directory = "plans/plans_saransk";
-//        }
-
-
-
     }
 
-    public function show(Request $request)
+    public
+    function show(Request $request)
     {
         return view('pages.files');
     }
 
-    public function download($directory,$file_name){
+    public
+    function download($directory, $file_name)
+    {
         $host = '194.54.64.15';
         $port = 22;
         $username = 'icmrsu';
@@ -61,7 +73,7 @@ class DownloadFileController extends Controller
 
         $remoteDir = '/home/icmrsu/' . $directory;
 //        $localDir = '/var/www/html/abiturs/storage/app/public/files/'. $directory;
-        $localDir = 'D:\OSPanel\domains\abiturs\storage\app\public\files\\' . $directory;
+        $localDir = 'E:\Open Server 5.3.5\OSPanel\domains\abiturs\storage\app\public\files\\' . $directory;
 
 
         if (!function_exists("ssh2_connect"))
@@ -97,7 +109,7 @@ class DownloadFileController extends Controller
             if (file_exists($remote_file_path) && file_exists($local_file_path)) {
                 if (filesize($remote_file_path) == filesize($local_file_path)
                     && md5_file($remote_file_path) == md5_file($local_file_path)) {
-                    echo "Файлы совпадают";
+                    echo "Файлы ". $file ." совпадают.\n";
                     return 1;
                 } else {
                     if (!$remote = @fopen("ssh2.sftp://{$stream}/{$remoteDir}/{$file}", 'r')) {
@@ -120,51 +132,8 @@ class DownloadFileController extends Controller
                     if (file_exists($remote_file_path) && file_exists($local_file_path)) {
                         if (filesize($remote_file_path) == filesize($local_file_path)
                             && md5_file($remote_file_path) == md5_file($local_file_path)) {
-                            echo "Файл успешно загружен";
+//                            echo "Файл ". $file ." успешно загружен.\n";
                             return 0;
-//                            if ($file == "specialities.xls" || $file == "specializations.xls") {
-////                                   $res = app('App\Http\Controllers\ParserController')->parseFromXls();
-////                                   echo $res;
-//                            } elseif ($file == "disciplines.xls") {
-//                                $res = app('App\Http\Controllers\ParserController')->parseFromXlsSub();
-//                                echo $res;
-//                            } elseif ($file == "faculties.xls") {
-//                                $res = app('App\Http\Controllers\ParserController')->parseFromXlsFaculties();
-//                                echo $res;
-//                            } elseif ($file == "admission_bases.xls") {
-//                                $res = app('App\Http\Controllers\ParserController')->parseFromXlsAdmission();
-//                                echo $res;
-//                            } elseif ($temp == "stat_bach_catalogs") {
-//                                $res = app('App\Http\Controllers\ParserJsonController')->parseCatalogs();
-//                                echo $res;
-//                            } elseif ($temp == "stat_bach.json") {
-//                                $res = app('App\Http\Controllers\ParserJsonController')->parseFromJson();
-//                                echo $res;
-//                            } elseif ($temp == "stat_master.json") {
-//                                $res = app('App\Http\Controllers\ParserJsonController')->parseFromJsonMaster();
-//                                echo $res;
-//                            } elseif ($temp == "stat_asp.json") {
-//                                $res = app('App\Http\Controllers\ParserJsonController')->parseFromJsonAsp();
-//                                echo $res;
-//                            } elseif ($temp == "stat_spo.json") {
-//                                $res = app('App\Http\Controllers\ParserJsonController')->parseFromJsonSpo();
-//                                echo $res;
-//                            } elseif ($temp == "plans_sar_bach.json") {//plans_rim_bach
-////                                   $res = app('App\Http\Controllers\ParserJsonController')->parsePlansBach();
-////                                   echo $res;
-//                            } elseif ($temp == "plans_sar_master.json") {//plans_rim_master
-////                                   $res = app('App\Http\Controllers\ParserJsonController')->parsePlansMaster();
-////                                   echo $res;
-//                            } elseif ($temp == "plans_sar_asp.json") {
-////                                   $res = app('App\Http\Controllers\ParserJsonController')->parsePlansAspMain();
-////                                   echo $res;
-//                            } elseif ($temp == "plans_sar_spo.json") {//plans_rim_spo //plans_kov_spo
-////                                   $res = app('App\Http\Controllers\ParserJsonController')->parsePlansSpo();
-////                                   echo $res;
-//                            } elseif ($temp == "past_contests.json") {//plans_rim_spo //plans_kov_spo
-////                                   $res = app('App\Http\Controllers\ParserJsonController')->parsePastContests();
-////                                   echo $res;
-//                            }
                         }
                     }
                     fclose($local);
@@ -191,7 +160,7 @@ class DownloadFileController extends Controller
                 if (file_exists($remote_file_path) && file_exists($local_file_path)) {
                     if (filesize($remote_file_path) == filesize($local_file_path)
                         && md5_file($remote_file_path) == md5_file($local_file_path)) {
-                        echo "Файл успешно загружен";
+//                        echo json_encode("Файл ". $file ." успешно загружен.\n");
                         return 0;
                     }
                 }
@@ -205,7 +174,8 @@ class DownloadFileController extends Controller
     }
 
 
-    public function iddex(Request $request)
+    public
+    function iddex(Request $request)
     {
 
 

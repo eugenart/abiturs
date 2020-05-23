@@ -50,11 +50,13 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
     Route::get('/parse', 'ParserController@index')->name('parse.index');
     //специальности специализации
-    Route::get('/parse-specialities', 'ParserController@parseFromXls')->name('parse.parseFromXls');
-    //дисциплины факультеты
-    Route::get('/parse-sub', 'ParserController@parseFromXlsSub')->name('parse.parseFromXlsSub');
+    Route::get('/parse-specialities', 'ParserController@parseSpecialitiesLocal')->name('parse.parseSpec');
+    //дисциплины
+    Route::get('/parse-subjects', 'ParserController@parseSubjectsLocal')->name('parse.parseSub');
+    // факультеты
+    Route::get('/parse-faculties', 'ParserController@parseFacultiesLocal')->name('parse.parseFac');
     //бюджет не бюджет
-    Route::get('/c', 'ParserController@parseFromXlsAdmission')->name('parse.parseFromXlsAdmission');
+    Route::get('/parse-admission', 'ParserController@parseAdmissionBasesLocal')->name('parse.parseAdm');
 
     //формы обучения, категории, уровни подготовки
     Route::get('/parse-catalogs', 'ParserJsonController@parseCatalogs')->name('parse.parseCatalogs');
