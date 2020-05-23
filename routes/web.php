@@ -48,28 +48,33 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/minscore', 'TrainingAreaController@index')->name('minscore.index');
     Route::get('/price', 'TrainingAreaController@price')->name('price.index');
 
+
+    Route::post('/download', 'DownloadFileController@index')->name('file.download');
+
     Route::get('/parse', 'ParserController@index')->name('parse.index');
     //специальности специализации
-    Route::get('/parse-specialities', 'ParserController@parseFromXls')->name('parse.parseFromXls');
-    //дисциплины факультеты
-    Route::get('/parse-sub', 'ParserController@parseFromXlsSub')->name('parse.parseFromXlsSub');
+    Route::get('/parse-specialities', 'ParserController@parseSpecialitiesLocal')->name('parse.parseSpec');
+    //дисциплины
+    Route::get('/parse-subjects', 'ParserController@parseSubjectsLocal')->name('parse.parseSub');
+    // факультеты
+    Route::get('/parse-faculties', 'ParserController@parseFacultiesLocal')->name('parse.parseFac');
     //бюджет не бюджет
-    Route::get('/c', 'ParserController@parseFromXlsAdmission')->name('parse.parseFromXlsAdmission');
+    Route::get('/parse-admission', 'ParserController@parseAdmissionBasesLocal')->name('parse.parseAdm');
 
     //формы обучения, категории, уровни подготовки
-    Route::get('/parse-catalogs', 'ParserJsonController@parseCatalogs')->name('parse.parseCatalogs');
+    Route::get('/parse-catalogs', 'ParserJsonController@parseCatalogsLocal')->name('parse.parseCatalogs');
     //планы, цены, места
-    Route::get('/parse-plans-bach', 'ParserJsonController@parsePlansBach')->name('parse.parsePlansBach');
-    Route::get('/parse-plans-master', 'ParserJsonController@parsePlansMaster')->name('parse.parsePlansMaster');
-    Route::get('/parse-plans-asp', 'ParserJsonController@parsePlansAspMain')->name('parse.parsePlansAspMain');
-    Route::get('/parse-plans-spo', 'ParserJsonController@parsePlansSpo')->name('parse.parsePlansSpo');
+    Route::get('/parse-plans-bach', 'ParserJsonController@parsePlansBachLocal')->name('parse.parsePlansBach');
+    Route::get('/parse-plans-master', 'ParserJsonController@parsePlansMasterLocal')->name('parse.parsePlansMaster');
+    Route::get('/parse-plans-asp', 'ParserJsonController@parsePlansAspMainLocal')->name('parse.parsePlansAspMain');
+    Route::get('/parse-plans-spo', 'ParserJsonController@parsePlansSpoLocal')->name('parse.parsePlansSpo');
     //статистика приема
-    Route::get('/parse-students', 'ParserJsonController@parseFromJson')->name('parse.parseFromJson');
-    Route::get('/parse-students-master', 'ParserJsonController@parseFromJsonMaster')->name('parse.parseFromJsonMaster');
-    Route::get('/parse-students-asp', 'ParserJsonController@parseFromJsonAsp')->name('parse.parseFromJsonAsp');
-    Route::get('/parse-students-spo', 'ParserJsonController@parseFromJsonSpo')->name('parse.parseFromJsonSpo');
+    Route::get('/parse-students', 'ParserJsonController@parseStatBachAllLocal')->name('parse.parseFromJson');
+    Route::get('/parse-students-master', 'ParserJsonController@parseStatMasterAllLocal')->name('parse.parseFromJsonMaster');
+    Route::get('/parse-students-asp', 'ParserJsonController@parseStatAspAllLocal')->name('parse.parseFromJsonAsp');
+    Route::get('/parse-students-spo', 'ParserJsonController@parseStatSpoAllLocal')->name('parse.parseFromJsonSpo');
 
-    Route::get('/parse-contests', 'ParserJsonController@parsePastContests')->name('parse.parsePastContests');
+    Route::get('/parse-contests', 'ParserJsonController@parsePastContestsLocal')->name('parse.parsePastContests');
 
 
 
@@ -90,9 +95,8 @@ Route::get('/toOvzVer', 'SessionController@toOvzVer')->name('ses.toOvzVer');
 Route::get('/backToMainVer', 'SessionController@backToMainVer')->name('ses.backToMainVer');
 
 //Route::get('/test', 'DownloadFileController@index')->name('file.index');
-Route::get('/test1', 'DownloadFileController@show')->name('file.show');
-Route::post('/test', 'DownloadFileController@index')->name('file.download');
-
+//Route::get('/test1', 'DownloadFileController@show')->name('file.show');
+//Route::post('/test', 'DownloadFileController@index')->name('file.download');
 Route::get('/foreign', 'ForeignController@index')->name('foreign.index');
 
 Route::get('/{route}', 'PageController@route')->name('pages.route');
