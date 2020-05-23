@@ -4374,7 +4374,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.loadingparseSpecialitiesStatus = true;
-      var data = axios.post('admin/download', {
+      var data = axios.post('/admin/download', {
         'param': 'specialities'
       }).then(function (response) {
         _this.loadingparseSpecialitiesStatus = false;
@@ -4385,7 +4385,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       this.loadingparseSubStatus = true;
-      var data = axios.post('admin/download', {
+      var data = axios.post('/admin/download', {
         'param': 'faculties'
       }).then(function (response) {
         _this2.loadingparseSubStatus = false;
@@ -4396,7 +4396,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this3 = this;
 
       this.loadingparseAdmissionBasis = true;
-      var data = axios.post('admin/download', {
+      var data = axios.post('/admin/download', {
         'param': 'admission_bases'
       }).then(function (response) {
         _this3.loadingparseAdmissionBasis = false;
@@ -4408,7 +4408,7 @@ __webpack_require__.r(__webpack_exports__);
 
       console.log('test');
       this.loadingparseCatalogsStatus = true;
-      var data = axios.post('admin/download', {
+      var data = axios.post('/admin/download', {
         'param': 'stat_bach_catalogs'
       }).then(function (response) {
         _this4.loadingparseCatalogsStatus = false;
@@ -4420,7 +4420,7 @@ __webpack_require__.r(__webpack_exports__);
 
       console.log('test');
       this.loadingparsePlansBachStatus = true;
-      var data = axios.post('admin/download', {
+      var data = axios.post('/admin/download', {
         'param': 'plans_bach'
       }).then(function (response) {
         _this5.loadingparsePlansBachStatus = false;
@@ -4432,7 +4432,7 @@ __webpack_require__.r(__webpack_exports__);
 
       console.log('test');
       this.loadingparsePlansMasterStatus = true;
-      var data = axios.post('admin/download', {
+      var data = axios.post('/admin/download', {
         'param': 'plans_master'
       }).then(function (response) {
         _this6.loadingparsePlansMasterStatus = false;
@@ -4444,7 +4444,7 @@ __webpack_require__.r(__webpack_exports__);
 
       console.log('test');
       this.loadingparsePlansAspStatus = true;
-      var data = axios.post('admin/download', {
+      var data = axios.post('/admin/download', {
         'param': 'plans_asp'
       }).then(function (response) {
         _this7.loadingparsePlansAspStatus = false;
@@ -4456,7 +4456,7 @@ __webpack_require__.r(__webpack_exports__);
 
       console.log('test');
       this.loadingparsePlansSpoStatus = true;
-      var data = axios.post('admin/download', {
+      var data = axios.post('/admin/download', {
         'param': 'plans_spo'
       }).then(function (response) {
         _this8.loadingparsePlansSpoStatus = false;
@@ -4467,7 +4467,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this9 = this;
 
       this.loadingparseStudentsStatus = true;
-      var data = axios.post('admin/download', {
+      var data = axios.post('/admin/download', {
         'param': 'stat_bach'
       }).then(function (response) {
         _this9.loadingparseStudentsStatus = false;
@@ -4478,7 +4478,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this10 = this;
 
       this.loadingparseStudentsMasterStatus = true;
-      var data = axios.post('admin/download', {
+      var data = axios.post('/admin/download', {
         'param': 'stat_master'
       }).then(function (response) {
         _this10.loadingparseStudentsMasterStatus = false;
@@ -4489,7 +4489,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this11 = this;
 
       this.loadingparseStudentsAspStatus = true;
-      var data = axios.post('admin/download', {
+      var data = axios.post('/admin/download', {
         'param': 'stat_asp'
       }).then(function (response) {
         _this11.loadingparseStudentsAspStatus = false;
@@ -4500,7 +4500,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this12 = this;
 
       this.loadingparseStudentsSpoStatus = true;
-      var data = axios.post('admin/download', {
+      var data = axios.post('/admin/download', {
         'param': 'stat_spo'
       }).then(function (response) {
         _this12.loadingparseStudentsSpoStatus = false;
@@ -4511,7 +4511,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this13 = this;
 
       this.loadingparseContestsStatus = true;
-      var data = axios.post('admin/download', {
+      var data = axios.post('/admin/download', {
         'param': 'past_contests'
       }).then(function (response) {
         _this13.loadingparseContestsStatus = false;

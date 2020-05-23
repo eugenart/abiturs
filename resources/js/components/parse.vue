@@ -342,7 +342,7 @@
         methods: {
             parseSpecialities: function () {
                 this.loadingparseSpecialitiesStatus = true;
-                let data = axios.post('admin/download', {'param': 'specialities'})
+                let data = axios.post('/admin/download', {'param': 'specialities'})
                     .then(response => {
                         this.loadingparseSpecialitiesStatus = false;
                         this.parseSpecialitiesStatus = response.data
@@ -351,7 +351,7 @@
 
             parseSub: function () {
                 this.loadingparseSubStatus = true;
-                let data = axios.post('admin/download', {'param': 'faculties'})
+                let data = axios.post('/admin/download', {'param': 'faculties'})
                     .then(response => {
                         this.loadingparseSubStatus = false;
                         this.parseSubStatus = response.data
@@ -360,7 +360,7 @@
 
             parseAdmissionBasis: function () {
                 this.loadingparseAdmissionBasis = true;
-                let data = axios.post('admin/download', {'param': 'admission_bases'})
+                let data = axios.post('/admin/download', {'param': 'admission_bases'})
                     .then(response => {
                         this.loadingparseAdmissionBasis = false;
                         this.parseAdmissionBasisStatus = response.data
@@ -370,7 +370,7 @@
             parseCatalogs: function () {
                 console.log('test')
                 this.loadingparseCatalogsStatus = true;
-                let data = axios.post('admin/download', {'param': 'stat_bach_catalogs'})
+                let data = axios.post('/admin/download', {'param': 'stat_bach_catalogs'})
                     .then(response => {
                         this.loadingparseCatalogsStatus = false;
                         this.parseCatalogsStatus = response.data
@@ -380,7 +380,7 @@
             parsePlansBach: function () {
                 console.log('test')
                 this.loadingparsePlansBachStatus = true;
-                let data = axios.post('admin/download', {'param': 'plans_bach'})
+                let data = axios.post('/admin/download', {'param': 'plans_bach'})
                     .then(response => {
                         this.loadingparsePlansBachStatus = false;
                         this.parsePlansBachStatus = response.data
@@ -390,7 +390,7 @@
             parsePlansMaster: function () {
                 console.log('test')
                 this.loadingparsePlansMasterStatus = true;
-                let data = axios.post('admin/download', {'param': 'plans_master'})
+                let data = axios.post('/admin/download', {'param': 'plans_master'})
                     .then(response => {
                         this.loadingparsePlansMasterStatus = false;
                         this.parsePlansMasterStatus = response.data
@@ -400,7 +400,7 @@
             parsePlansAsp: function () {
                 console.log('test')
                 this.loadingparsePlansAspStatus = true;
-                let data = axios.post('admin/download', {'param': 'plans_asp'})
+                let data = axios.post('/admin/download', {'param': 'plans_asp'})
                     .then(response => {
                         this.loadingparsePlansAspStatus = false;
                         this.parsePlansAspStatus = response.data
@@ -410,7 +410,7 @@
             parsePlansSpo: function () {
                 console.log('test')
                 this.loadingparsePlansSpoStatus = true;
-                let data = axios.post('admin/download', {'param': 'plans_spo'})
+                let data = axios.post('/admin/download', {'param': 'plans_spo'})
                     .then(response => {
                         this.loadingparsePlansSpoStatus = false;
                         this.parsePlansSpoStatus = response.data
@@ -419,7 +419,7 @@
 
             parseStudents: function () {
                 this.loadingparseStudentsStatus = true;
-                let data = axios.post('admin/download', {'param': 'stat_bach'})
+                let data = axios.post('/admin/download', {'param': 'stat_bach'})
                     .then(response => {
                         this.loadingparseStudentsStatus = false;
                         this.parseStudentsStatus = response.data
@@ -427,7 +427,7 @@
             },
             parseStudentsMaster: function () {
                 this.loadingparseStudentsMasterStatus = true;
-                let data = axios.post('admin/download', {'param': 'stat_master'})
+                let data = axios.post('/admin/download', {'param': 'stat_master'})
                     .then(response => {
                         this.loadingparseStudentsMasterStatus = false;
                         this.parseStudentsMasterStatus = response.data
@@ -435,7 +435,7 @@
             },
             parseStudentsAsp: function () {
                 this.loadingparseStudentsAspStatus = true;
-                let data = axios.post('admin/download', {'param': 'stat_asp'})
+                let data = axios.post('/admin/download', {'param': 'stat_asp'})
                     .then(response => {
                         this.loadingparseStudentsAspStatus = false;
                         this.parseStudentsAspStatus = response.data
@@ -443,7 +443,7 @@
             },
             parseStudentsSpo: function () {
                 this.loadingparseStudentsSpoStatus = true;
-                let data = axios.post('admin/download', {'param': 'stat_spo'})
+                let data = axios.post('/admin/download', {'param': 'stat_spo'})
                     .then(response => {
                         this.loadingparseStudentsSpoStatus = false;
                         this.parseStudentsSpoStatus = response.data
@@ -452,7 +452,7 @@
 
             parseContests: function () {
                 this.loadingparseContestsStatus = true;
-                let data = axios.post('admin/download', {'param': 'past_contests'})
+                let data = axios.post('/admin/download', {'param': 'past_contests'})
                     .then(response => {
                         this.loadingparseContestsStatus = false;
                         this.parseContestsStatus = response.data
