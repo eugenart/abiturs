@@ -62,7 +62,8 @@ trait ParserXlsTrait {
             ));
         }
 
-        return json_encode('Специальности и специализации успешно выгружены!');
+//        return json_encode('Специальности и специализации успешно выгружены!');
+        return 'Специальности и специализации успешно выгружены!';
 
     }
 
@@ -73,7 +74,7 @@ trait ParserXlsTrait {
         //Удаляем записи из таблиц
         Subject::truncate();
         // Парсим Специализации
-        $xlsSpz = PHPExcel_IOFactory::load(storage_path('app/public/files/catalogs/disciplines.xls'));
+        $xlsSpz = PHPExcel_IOFactory::load(storage_path('app/public/files/catalogs/subjects.xls'));
         // Первый лист
         $xlsSpz->setActiveSheetIndex(0);
         $sheetSpz = $xlsSpz->getActiveSheet();
@@ -89,7 +90,7 @@ trait ParserXlsTrait {
                 'name' => $sheetSpz[$i][1]
             ));
         }
-        return json_encode('Дисциплины успешно выгружены!');
+        return 'Дисциплины успешно выгружены!';
     }
 
     public function parseFaculties(){
@@ -114,13 +115,13 @@ trait ParserXlsTrait {
             ));
         }
 
-        return json_encode('Факультеты успешно выгружены!');
+        return 'Факультеты успешно выгружены!';
     }
 
     public  function parseSubFac(){
         $this->parseSubjects();
         $this->parseFaculties();
-        return json_encode('Факультеты и дисциплины успешно выгружены!');
+        return 'Факультеты и дисциплины успешно выгружены!';
     }
     public function parseAdmissionBases()
     {
@@ -145,7 +146,7 @@ trait ParserXlsTrait {
             ));
         }
 
-        return json_encode('Основания для поступления успешно выгружены!');
+        return 'Основания для поступления успешно выгружены!';
     }
 
 }

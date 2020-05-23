@@ -22,9 +22,9 @@ class DownloadFileController extends Controller
             $directory = "catalogs";
             if ($param == "specialities") {
                 $res = $this->download($directory, "specialities.xls");
-                if ($res === 0) {
-                    $res = $this->download($directory, "specializations.xls");
-                    if ($res === 0) {
+                if ($res === 0 || $res === 2) {
+                    $res1 = $this->download($directory, "specializations.xls");
+                    if (($res1 === 0 && $res === 0) || ($res === 2 && $res1 === 0) || ($res === 0 && $res1 === 2)) {
                         $result = $this->parseSpecialities();
                         return $result;
                     }
@@ -96,34 +96,35 @@ class DownloadFileController extends Controller
                 $res = $this->download($directory, "plans_sar_bach.json");
                 $directory = "plans/plans_rim";
                 $res1 = $this->download($directory, "plans_rim_bach.json");
-                if ($res === 0 && $res1 === 0) {
+                //если оба новые, или один из них новый
+                if (($res === 0 && $res1 === 0) || ($res === 2 && $res1 === 0) || ($res === 0 && $res1 === 2)) {
                     $result = $this->parsePlansBach();
                     return $result;
                 }
-            }elseif ($param == "plans_master"){
+            } elseif ($param == "plans_master") {
                 $directory = "plans/plans_saransk";
                 $res = $this->download($directory, "plans_sar_master.json");
                 $directory = "plans/plans_rim";
                 $res1 = $this->download($directory, "plans_rim_master.json");
-                if ($res === 0 && $res1 === 0) {
+                if (($res === 0 && $res1 === 0) || ($res === 2 && $res1 === 0) || ($res === 0 && $res1 === 2)) {
                     $result = $this->parsePlansMaster();
                     return $result;
                 }
-            }elseif ($param == "plans_asp"){
+            } elseif ($param == "plans_asp") {
                 $directory = "plans/plans_saransk";
                 $res = $this->download($directory, "plans_sar_asp.json");
                 if ($res === 0) {
                     $result = $this->parsePlansAspMain();
                     return $result;
                 }
-            }elseif ($param == "plans_spo"){
+            } elseif ($param == "plans_spo") {
                 $directory = "plans/plans_saransk";
                 $res = $this->download($directory, "plans_sar_spo.json");
                 $directory = "plans/plans_rim";
                 $res1 = $this->download($directory, "plans_rim_spo.json");
                 $directory = "plans/plans_kov";
                 $res2 = $this->download($directory, "plans_kov_spo.json");
-                if ($res === 0 && $res1 === 0 && $res2 === 0) {
+                if (($res === 0 || $res === 2) && ($res1 === 0 || $res1 === 2) && ($res2 === 0 || $res2 === 2)) {
                     $result = $this->parsePlansSpo();
                     return $result;
                 }
@@ -179,7 +180,7 @@ class DownloadFileController extends Controller
                 if (filesize($remote_file_path) == filesize($local_file_path)
                     && md5_file($remote_file_path) == md5_file($local_file_path)) {
                     echo "Файлы " . $file . " совпадают.\n";
-                    return 0;
+                    return 2;
                 } else {
                     if (!$remote = @fopen("ssh2.sftp://{$stream}/{$remoteDir}/{$file}", 'r')) {
                         die("Невозможно открыть файл на удаленном сервере: $file\n");
@@ -201,7 +202,7 @@ class DownloadFileController extends Controller
                     if (file_exists($remote_file_path) && file_exists($local_file_path)) {
                         if (filesize($remote_file_path) == filesize($local_file_path)
                             && md5_file($remote_file_path) == md5_file($local_file_path)) {
-//                            echo "Файл ". $file ." успешно загружен.\n";
+                            echo "Файл ". $file ." успешно загружен.\n";
                             return 0;
                         } else {
                             return 1;
@@ -231,7 +232,7 @@ class DownloadFileController extends Controller
                 if (file_exists($remote_file_path) && file_exists($local_file_path)) {
                     if (filesize($remote_file_path) == filesize($local_file_path)
                         && md5_file($remote_file_path) == md5_file($local_file_path)) {
-//                        echo json_encode("Файл ". $file ." успешно загружен.\n");
+                        echo "Файл ". $file ." успешно загружен.\n";
                         return 0;
                     } else {
                         return 1;

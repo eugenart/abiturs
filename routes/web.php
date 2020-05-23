@@ -48,6 +48,9 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/minscore', 'TrainingAreaController@index')->name('minscore.index');
     Route::get('/price', 'TrainingAreaController@price')->name('price.index');
 
+
+    Route::post('/download', 'DownloadFileController@index')->name('file.download');
+
     Route::get('/parse', 'ParserController@index')->name('parse.index');
     //специальности специализации
     Route::get('/parse-specialities', 'ParserController@parseSpecialitiesLocal')->name('parse.parseSpec');
@@ -92,9 +95,8 @@ Route::get('/toOvzVer', 'SessionController@toOvzVer')->name('ses.toOvzVer');
 Route::get('/backToMainVer', 'SessionController@backToMainVer')->name('ses.backToMainVer');
 
 //Route::get('/test', 'DownloadFileController@index')->name('file.index');
-Route::get('/test1', 'DownloadFileController@show')->name('file.show');
-Route::post('/test', 'DownloadFileController@index')->name('file.download');
-
+//Route::get('/test1', 'DownloadFileController@show')->name('file.show');
+//Route::post('/test', 'DownloadFileController@index')->name('file.download');
 Route::get('/foreign', 'ForeignController@index')->name('foreign.index');
 
 Route::get('/{route}', 'PageController@route')->name('pages.route');
