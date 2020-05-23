@@ -4336,7 +4336,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "parse",
   data: function data() {
@@ -92258,9 +92257,11 @@ var render = function() {
   return _c("div", { staticClass: "row mt-4" }, [
     _c("div", { staticClass: "col-12" }, [
       _c("div", { staticClass: "card" }, [
-        _c("div", { staticClass: "card-header" }, [
-          _vm._v("Выгрузка данных о специальностях и специализациях")
-        ]),
+        _c(
+          "div",
+          { staticClass: "card-header text-uppercase font-weight-bold" },
+          [_vm._v("Специальности и специализации")]
+        ),
         _vm._v(" "),
         _c("div", { staticClass: "card-body" }, [
           _c("div", { staticClass: "row" }, [
@@ -92271,7 +92272,11 @@ var render = function() {
                   staticClass: "btn btn-sm btn-success w-100",
                   on: { click: this.parseSpecialities }
                 },
-                [_vm._v("Начать выгрузку\n                        ")]
+                [
+                  _vm._v(
+                    "Выгрузить специальности и специализации\n                        "
+                  )
+                ]
               )
             ]),
             _vm._v(" "),
@@ -92302,9 +92307,11 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "card mt-3" }, [
-        _c("div", { staticClass: "card-header" }, [
-          _vm._v("Выгрузка факультетов, институтов и дисциплин")
-        ]),
+        _c(
+          "div",
+          { staticClass: "card-header text-uppercase font-weight-bold" },
+          [_vm._v("Факультеты/институты и дисциплины")]
+        ),
         _vm._v(" "),
         _c("div", { staticClass: "card-body" }, [
           _c("div", { staticClass: "row" }, [
@@ -92317,7 +92324,7 @@ var render = function() {
                 },
                 [
                   _vm._v(
-                    "Начать выгрузку факультетов, институтов и дисциплин\n                        "
+                    "Выгрузить факультеты/институты и дисциплины\n                        "
                   )
                 ]
               )
@@ -92348,9 +92355,11 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "card mt-3" }, [
-        _c("div", { staticClass: "card-header" }, [
-          _vm._v("Выгрузка оснований для приема")
-        ]),
+        _c(
+          "div",
+          { staticClass: "card-header text-uppercase font-weight-bold" },
+          [_vm._v("Основания для приема")]
+        ),
         _vm._v(" "),
         _c("div", { staticClass: "card-body" }, [
           _c("div", { staticClass: "row" }, [
@@ -92363,7 +92372,7 @@ var render = function() {
                 },
                 [
                   _vm._v(
-                    "Начать выгрузку оснований для приема\n                        "
+                    "Выгрузить основания для приема\n                        "
                   )
                 ]
               )
@@ -92394,9 +92403,11 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "card mt-3" }, [
-        _c("div", { staticClass: "card-header" }, [
-          _vm._v("Выгрузка форм обучения, категорий, уровней подготовки")
-        ]),
+        _c(
+          "div",
+          { staticClass: "card-header text-uppercase font-weight-bold" },
+          [_vm._v("Формы обучения, категории, уровни подготовки")]
+        ),
         _vm._v(" "),
         _c("div", { staticClass: "card-body" }, [
           _c("div", { staticClass: "row" }, [
@@ -92407,11 +92418,7 @@ var render = function() {
                   staticClass: "btn btn-sm btn-success w-100",
                   on: { click: this.parseCatalogs }
                 },
-                [
-                  _vm._v(
-                    "Начать выгрузку форм обучения, категорий, уровней\n                            подготовки\n                        "
-                  )
-                ]
+                [_vm._v("Выгрузить каталоги\n                        ")]
               )
             ]),
             _vm._v(" "),
@@ -92440,9 +92447,11 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "card mt-3" }, [
-        _c("div", { staticClass: "card-header" }, [
-          _vm._v("Выгрузка планов, цен на обучение и количества мест")
-        ]),
+        _c(
+          "div",
+          { staticClass: "card-header text-uppercase font-weight-bold" },
+          [_vm._v("Планы, цены за обучение и количество мест")]
+        ),
         _vm._v(" "),
         _c("div", { staticClass: "card-body" }, [
           _c("div", { staticClass: "row" }, [
@@ -92463,7 +92472,7 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "Начать выгрузку планов, цен на обучение и количества мест\n                                        "
+                            "Выгрузить данные бакалвриата и специалитета\n                                        "
                           )
                         ]
                       )
@@ -92509,7 +92518,7 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "Начать выгрузку планов, цен на обучение и количества мест\n                                        "
+                            "Выгрузить данные магистратуры\n                                        "
                           )
                         ]
                       )
@@ -92557,7 +92566,7 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "Начать выгрузку планов, цен на обучение и количества мест\n                                        "
+                            "Выгрузить данные аспирантуры\n                                        "
                           )
                         ]
                       )
@@ -92601,7 +92610,7 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "Начать выгрузку планов, цен на обучение и количества мест\n                                        "
+                            "Выгрузить данные СПО\n                                        "
                           )
                         ]
                       )
@@ -92637,7 +92646,7 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "card mt-3" }, [
         _c("div", { staticClass: "card-header" }, [
-          _vm._v("Выгрузка статистики приема")
+          _vm._v("Пофамильные списки абитуриентов")
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "card-body" }, [
@@ -92659,7 +92668,7 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "Начать выгрузку статистики приема\n                                        "
+                            "Выгрузить списки\n                                        "
                           )
                         ]
                       )
@@ -92705,7 +92714,7 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "Начать выгрузку статистики приема\n                                        "
+                            "Выгрузить списки\n                                        "
                           )
                         ]
                       )
@@ -92753,7 +92762,7 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "Начать выгрузку статистики приема\n                                        "
+                            "Выгрузить списки\n                                        "
                           )
                         ]
                       )
@@ -92799,7 +92808,7 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "Начать выгрузку статистики приема\n                                        "
+                            "Выгрузить списки\n                                        "
                           )
                         ]
                       )
@@ -92837,7 +92846,7 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "card mt-3 mb-3" }, [
         _c("div", { staticClass: "card-header" }, [
-          _vm._v("Выгрузка статистики предыдущих лет")
+          _vm._v("Статистика предыдущих лет")
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "card-body" }, [
@@ -92851,7 +92860,7 @@ var render = function() {
                 },
                 [
                   _vm._v(
-                    "Начать выгрузку статистики предыдущих лет\n                        "
+                    "Выгрузить статистики предыдущих лет\n                        "
                   )
                 ]
               )
