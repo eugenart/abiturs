@@ -101,6 +101,7 @@ trait ParserJsonTrait{
         $categories = array_unique($categories, SORT_REGULAR);
         Category::insert($categories);
 //        return json_encode('Формы обучения, категории, уровни подготовки успешно выгружены!');
+
         return 'Формы обучения, категории, уровни подготовки успешно выгружены!';
 
     }

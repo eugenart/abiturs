@@ -56,12 +56,11 @@ class DownloadFileController extends Controller
                 $result = $this->parsePastContests();
                 return $result;
             }
-        } elseif
-        ($param == "stat_bach" || $param == "stat_master" || $param == "stat_asp" || $param == "stat_spo" || $param == "stat_bach_catalogs") {
+        } elseif ($param == "stat_bach" || $param == "stat_master" || $param == "stat_asp" || $param == "stat_spo" || $param == "stat_bach_catalogs") {
             $directory = "statistics";
             if ($param == "stat_bach_catalogs") {
                 $res = $this->download($directory, "stat_bach.json");
-                if ($res === 0) {
+                if ($res === 0 || $res === 2) {
                     $result = $this->parseCatalogs();
                     return $result;
                 }
@@ -124,7 +123,7 @@ class DownloadFileController extends Controller
                 $res1 = $this->download($directory, "plans_rim_spo.json");
                 $directory = "plans/plans_kov";
                 $res2 = $this->download($directory, "plans_kov_spo.json");
-                if (($res === 0 || $res === 2) && ($res1 === 0 || $res1 === 2) && ($res2 === 0 || $res2 === 2)) {
+                if (!($res === 2 && $res1 === 2 && $res2 === 2)) {
                     $result = $this->parsePlansSpo();
                     return $result;
                 }
