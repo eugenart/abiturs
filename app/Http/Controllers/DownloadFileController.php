@@ -49,6 +49,11 @@ class DownloadFileController extends Controller
             }
         } elseif ($param == "past_contests") {
             $directory = "pastContests";
+            $res = $this->download($directory, "past_contests.json");
+//            if ($res === 0) {
+//                $result = $this->parseAdmissionBases();
+//                return $result;
+//            }
         } elseif
         ($param == "stat_bach" || $param == "stat_master"
             || $param == "stat_asp" || $param == "stat_spo") {

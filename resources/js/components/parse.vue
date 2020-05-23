@@ -96,7 +96,7 @@
                                     <div class="row">
                                         <div class="col-4">
                                             <button class="btn btn-sm btn-success w-100"
-                                                    @click="this.parsePlansBach">Выгрузить данные бакалвриата и специалитета
+                                                    @click="this.parsePlansBach">Выгрузить данные
                                             </button>
                                         </div>
                                         <div class="col-8 text-center d-flex justify-content-center align-items-center">
@@ -117,7 +117,7 @@
                                     <div class="row">
                                         <div class="col-4">
                                             <button class="btn btn-sm btn-success w-100"
-                                                    @click="this.parsePlansMaster">Выгрузить данные магистратуры
+                                                    @click="this.parsePlansMaster">Выгрузить данные
                                             </button>
                                         </div>
                                         <div class="col-8 text-center d-flex justify-content-center align-items-center">
@@ -138,7 +138,7 @@
                                     <div class="row">
                                         <div class="col-4">
                                             <button class="btn btn-sm btn-success w-100"
-                                                    @click="this.parsePlansAsp">Выгрузить данные аспирантуры
+                                                    @click="this.parsePlansAsp">Выгрузить данные
                                             </button>
                                         </div>
                                         <div class="col-8 text-center d-flex justify-content-center align-items-center">
@@ -159,7 +159,7 @@
                                     <div class="row">
                                         <div class="col-4">
                                             <button class="btn btn-sm btn-success w-100"
-                                                    @click="this.parsePlansSpo">Выгрузить данные СПО
+                                                    @click="this.parsePlansSpo">Выгрузить данные
                                             </button>
                                         </div>
                                         <div class="col-8 text-center d-flex justify-content-center align-items-center">
@@ -277,7 +277,7 @@
                     <div class="row">
                         <div class="col-4">
                             <button class="btn btn-sm btn-success w-100"
-                                    @click="this.parseContests">Выгрузить статистики предыдущих лет
+                                    @click="this.parseContests">Выгрузить статистику предыдущих лет
                             </button>
                         </div>
                         <div class="col-8 text-center d-flex justify-content-center align-items-center">
