@@ -92257,11 +92257,9 @@ var render = function() {
   return _c("div", { staticClass: "row mt-4" }, [
     _c("div", { staticClass: "col-12" }, [
       _c("div", { staticClass: "card" }, [
-        _c(
-          "div",
-          { staticClass: "card-header text-uppercase font-weight-bold" },
-          [_vm._v("Специальности и специализации")]
-        ),
+        _c("div", { staticClass: "card-header  font-weight-bold" }, [
+          _vm._v("Специальности и специализации")
+        ]),
         _vm._v(" "),
         _c("div", { staticClass: "card-body" }, [
           _c("div", { staticClass: "row" }, [
@@ -92307,11 +92305,9 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "card mt-3" }, [
-        _c(
-          "div",
-          { staticClass: "card-header text-uppercase font-weight-bold" },
-          [_vm._v("Факультеты/институты и дисциплины")]
-        ),
+        _c("div", { staticClass: "card-header  font-weight-bold" }, [
+          _vm._v("Факультеты/институты и дисциплины")
+        ]),
         _vm._v(" "),
         _c("div", { staticClass: "card-body" }, [
           _c("div", { staticClass: "row" }, [
@@ -92355,11 +92351,9 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "card mt-3" }, [
-        _c(
-          "div",
-          { staticClass: "card-header text-uppercase font-weight-bold" },
-          [_vm._v("Основания для приема")]
-        ),
+        _c("div", { staticClass: "card-header  font-weight-bold" }, [
+          _vm._v("Основания для приема")
+        ]),
         _vm._v(" "),
         _c("div", { staticClass: "card-body" }, [
           _c("div", { staticClass: "row" }, [
@@ -92403,11 +92397,9 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "card mt-3" }, [
-        _c(
-          "div",
-          { staticClass: "card-header text-uppercase font-weight-bold" },
-          [_vm._v("Формы обучения, категории, уровни подготовки")]
-        ),
+        _c("div", { staticClass: "card-header  font-weight-bold" }, [
+          _vm._v("Формы обучения, категории, уровни подготовки")
+        ]),
         _vm._v(" "),
         _c("div", { staticClass: "card-body" }, [
           _c("div", { staticClass: "row" }, [
@@ -92447,11 +92439,9 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "card mt-3" }, [
-        _c(
-          "div",
-          { staticClass: "card-header text-uppercase font-weight-bold" },
-          [_vm._v("Планы, цены за обучение и количество мест")]
-        ),
+        _c("div", { staticClass: "card-header  font-weight-bold" }, [
+          _vm._v("Планы, цены за обучение и количество мест")
+        ]),
         _vm._v(" "),
         _c("div", { staticClass: "card-body" }, [
           _c("div", { staticClass: "row" }, [
@@ -92645,7 +92635,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "card mt-3" }, [
-        _c("div", { staticClass: "card-header" }, [
+        _c("div", { staticClass: "card-header font-weight-bold" }, [
           _vm._v("Пофамильные списки абитуриентов")
         ]),
         _vm._v(" "),
@@ -92845,7 +92835,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "card mt-3 mb-3" }, [
-        _c("div", { staticClass: "card-header" }, [
+        _c("div", { staticClass: "card-header font-weight-bold" }, [
           _vm._v("Статистика предыдущих лет")
         ]),
         _vm._v(" "),

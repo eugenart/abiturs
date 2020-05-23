@@ -2,7 +2,7 @@
     <div class="row mt-4">
         <div class="col-12">
             <div class="card">
-                <div class="card-header text-uppercase font-weight-bold">Специальности и специализации</div>
+                <div class="card-header  font-weight-bold">Специальности и специализации</div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-4">
@@ -23,7 +23,7 @@
                 </div>
             </div>
             <div class="card mt-3">
-                <div class="card-header text-uppercase font-weight-bold">Факультеты/институты и дисциплины</div>
+                <div class="card-header  font-weight-bold">Факультеты/институты и дисциплины</div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-4">
@@ -44,7 +44,7 @@
                 </div>
             </div>
             <div class="card mt-3">
-                <div class="card-header text-uppercase font-weight-bold">Основания для приема</div>
+                <div class="card-header  font-weight-bold">Основания для приема</div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-4">
@@ -65,7 +65,7 @@
                 </div>
             </div>
             <div class="card mt-3">
-                <div class="card-header text-uppercase font-weight-bold">Формы обучения, категории, уровни подготовки</div>
+                <div class="card-header  font-weight-bold">Формы обучения, категории, уровни подготовки</div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-4">
@@ -86,7 +86,7 @@
                 </div>
             </div>
             <div class="card mt-3">
-                <div class="card-header text-uppercase font-weight-bold">Планы, цены за обучение и количество мест</div>
+                <div class="card-header  font-weight-bold">Планы, цены за обучение и количество мест</div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-12">
@@ -179,7 +179,7 @@
                 </div>
             </div>
             <div class="card mt-3">
-                <div class="card-header">Пофамильные списки абитуриентов</div>
+                <div class="card-header font-weight-bold">Пофамильные списки абитуриентов</div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-12">
@@ -272,7 +272,7 @@
                 </div>
             </div>
             <div class="card mt-3 mb-3">
-                <div class="card-header">Статистика предыдущих лет</div>
+                <div class="card-header font-weight-bold">Статистика предыдущих лет</div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-4">
