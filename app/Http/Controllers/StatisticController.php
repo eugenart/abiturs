@@ -15,11 +15,13 @@ use App\Statistic;
 use App\Student;
 use App\StudyForm;
 use App\TrainingArea;
+use App\Traits\XlsMakerTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class StatisticController extends Controller
 {
+    use XlsMakerTrait;
     public function index(Request $request)
     {
 
@@ -400,6 +402,9 @@ class StatisticController extends Controller
         $studyFormsForInputs = DB::table('study_forms')->join('statistics', 'study_forms.id', '=', 'statistics.id_studyForm')
             ->groupBy('study_forms.id')->select('study_forms.*')->get();;
         $faculties = $this->fetchFaculties();
+
+
+        $this->createXls($studyForms);
         return $studyForms;
 
     }
