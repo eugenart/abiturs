@@ -40,7 +40,7 @@
                         @endif
                     </div>
                     <span
-                        class="m-0 p-0 main-color w-100 text-right">Дата последнего обновления: <b>20.02.2020 18:30</b></span>
+                        class="m-0 p-0 main-color w-100 text-right">Дата последнего обновления: <b>{{$date_update->date_update}}</b></span>
                 </div>
             </div>
         </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\AdmissionBasis;
 use App\Category;
+use App\DateUpdate;
 use App\Faculty;
 use App\Freeseats_basesAsp;
 use App\PlanAsp;
@@ -43,6 +44,7 @@ class StatisticAspController extends Controller
             $studyForms = $this->search($search_fio, $search_faculties, $search_specialities, $search_studyForms, $notification);
         }
 
+        $date_update = DateUpdate::where('name_file', '=', 'stat_asp')->first();
 
         $faculties = $this->fetchFaculties();
         $studyFormsForInputs = DB::table('study_forms')->join('statistic_asps', 'study_forms.id', '=', 'statistic_asps.id_studyForm')->groupBy('study_forms.id')->select('study_forms.*')->get();;
@@ -50,7 +52,7 @@ class StatisticAspController extends Controller
             $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
             if($studyForms->count()!=0){
                 return view('pages.statasp', ['studyForms' => $studyForms, 'faculties' => $faculties,
-                    'studyFormsForInputs' => $studyFormsForInputs, 'actual_link' => $actual_link]);
+                    'studyFormsForInputs' => $studyFormsForInputs, 'actual_link' => $actual_link, 'date_update' => $date_update]);
             }
             else{
                 $notification = "По Вашему запросу ничего не найдено";

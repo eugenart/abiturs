@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\DateUpdate;
 use App\Traits\ParserXlsTrait;
 use App\Traits\ParserJsonTrait;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\ParserJsonController as ParserJsonController;
@@ -13,6 +15,21 @@ class DownloadFileController extends Controller
 {
     use ParserXlsTrait;
     use ParserJsonTrait;
+
+    public function date_update($name_file){
+        $date_last = DateUpdate::where('name_file', '=', $name_file)->first();
+        if(!empty($date_last)){
+            $date_update = DateUpdate::find($date_last->id);
+            $date_update->date_update = Carbon::now();
+            $date_update->save();
+        }else{
+            $date_update = new DateUpdate;
+            $date_update->name_file = $name_file;
+            $date_update->date_update = Carbon::now();;
+            $date_update->save();
+        }
+
+    }
 
     public function index(Request $request)
     {
@@ -26,7 +43,11 @@ class DownloadFileController extends Controller
                     $res1 = $this->download($directory, "specializations.xls");
                     if (($res1 === 0 && $res === 0) || ($res === 2 && $res1 === 0) || ($res === 0 && $res1 === 2)) {
                         $result = $this->parseSpecialities();
+                        if($result){
+                           $this->date_update($param);
+                        }
                         return $result;
+
                     }
                 }
             }
@@ -35,12 +56,21 @@ class DownloadFileController extends Controller
                 $res1 = $this->download($directory, "subjects.xls");
                 if ($res === 0 && $res1 === 0) {
                     $result = $this->parseSubFac();
+                    if($result){
+                        $this->date_update($param);
+                    }
                     return $result;
                 } elseif ($res === 0 && $res1 != 0) {
                     $result = $this->parseFaculties();
+                    if($result){
+                        $this->date_update("faculties.xls");
+                    }
                     return $result;
                 } elseif ($res != 0 && $res1 === 0) {
                     $result = $this->parseSubjects();
+                    if($result){
+                        $this->date_update("subjects.xls");
+                    }
                     return $result;
                 }
             }
@@ -48,6 +78,9 @@ class DownloadFileController extends Controller
                 $res = $this->download($directory, "admission_bases.xls");
                 if ($res === 0) {
                     $result = $this->parseAdmissionBases();
+                    if($result){
+                        $this->date_update($param);
+                    }
                     return $result;
                 }
             }
@@ -57,6 +90,9 @@ class DownloadFileController extends Controller
             $res = $this->download($directory, "past_contests.json");
             if ($res === 0) {
                 $result = $this->parsePastContests();
+                if($result){
+                    $this->date_update($param);
+                }
                 return $result;
             }
         }
@@ -64,9 +100,12 @@ class DownloadFileController extends Controller
             || $param == "stat_spo" || $param == "stat_bach_catalogs") {
             $directory = "statistics";
             if ($param == "stat_bach_catalogs") {
-                $res = $this->download($directory, "stat_bach.json");
-                if ($res === 0 || $res === 2) {
-                    $result = $this->parseCatalogs();
+                $res = $this->download($directory, "stat_bach.json", true);
+                if ($res === 0 /*|| $res === 2*/) {
+                    $result = $this->parseCatalogs("stat_bach_catalog.json");
+                    if($result){
+                        $this->date_update($param);
+                    }
                     return $result;
                 }
             }
@@ -74,6 +113,9 @@ class DownloadFileController extends Controller
                 $res = $this->download($directory, "stat_bach.json");
                 if ($res === 0) {
                     $result = $this->parseStatBachAll();
+                    if($result){
+                        $this->date_update($param);
+                    }
                     return $result;
                 }
             }
@@ -81,6 +123,9 @@ class DownloadFileController extends Controller
                 $res = $this->download($directory, "stat_master.json");
                 if ($res === 0) {
                     $result = $this->parseStatMasterAll();
+                    if($result){
+                        $this->date_update($param);
+                    }
                     return $result;
                 }
             }
@@ -88,6 +133,9 @@ class DownloadFileController extends Controller
                 $res = $this->download($directory, "stat_asp.json");
                 if ($res === 0) {
                     $result = $this->parseStatAspAll();
+                    if($result){
+                        $this->date_update($param);
+                    }
                     return $result;
                 }
             }
@@ -95,6 +143,9 @@ class DownloadFileController extends Controller
                 $res = $this->download($directory, "stat_spo.json");
                 if ($res === 0) {
                     $result = $this->parseStatSpoAll();
+                    if($result){
+                        $this->date_update($param);
+                    }
                     return $result;
                 }
             }
@@ -108,6 +159,9 @@ class DownloadFileController extends Controller
                 //если оба новые, или один из них новый
                 if (($res === 0 && $res1 === 0) || ($res === 2 && $res1 === 0) || ($res === 0 && $res1 === 2)) {
                     $result = $this->parsePlansBach();
+                    if($result){
+                        $this->date_update($param);
+                    }
                     return $result;
                 }
             }
@@ -118,6 +172,9 @@ class DownloadFileController extends Controller
                 $res1 = $this->download($directory, "plans_rim_master.json");
                 if (($res === 0 && $res1 === 0) || ($res === 2 && $res1 === 0) || ($res === 0 && $res1 === 2)) {
                     $result = $this->parsePlansMaster();
+                    if($result){
+                        $this->date_update($param);
+                    }
                     return $result;
                 }
             }
@@ -126,6 +183,9 @@ class DownloadFileController extends Controller
                 $res = $this->download($directory, "plans_sar_asp.json");
                 if ($res === 0) {
                     $result = $this->parsePlansAspMain();
+                    if($result){
+                        $this->date_update($param);
+                    }
                     return $result;
                 }
             }
@@ -138,6 +198,9 @@ class DownloadFileController extends Controller
                 $res2 = $this->download($directory, "plans_kov_spo.json");
                 if (!($res === 2 && $res1 === 2 && $res2 === 2)) {
                     $result = $this->parsePlansSpo();
+                    if($result){
+                        $this->date_update($param);
+                    }
                     return $result;
                 }
             }
@@ -146,7 +209,7 @@ class DownloadFileController extends Controller
     }
 
 
-    public function download($directory, $file_name)
+    public function download($directory, $file_name, $catalog = false)
     {
         $host = '194.54.64.15';
         $port = 22;
@@ -154,8 +217,8 @@ class DownloadFileController extends Controller
         $password = 'KUGyjk76$$q@';
 
         $remoteDir = '/home/icmrsu/' . $directory;
-        $localDir = '/var/www/html/abiturs/storage/app/public/files/'. $directory;
-//        $localDir = 'E:\Open Server 5.3.5\OSPanel\domains\abiturs\storage\app\public\files\\' . $directory;
+//        $localDir = '/var/www/html/abiturs/storage/app/public/files/'. $directory;
+        $localDir = 'E:\Open Server 5.3.5\OSPanel\domains\abiturs\storage\app\public\files\\' . $directory;
 
 
         if (!function_exists("ssh2_connect"))
@@ -181,12 +244,17 @@ class DownloadFileController extends Controller
             $files[] = $file;
         }
 
-        $key = array_search($file_name, $files);
+        $key = array_search($file_name, $files); //находим файл на фтп
         if (!($key === false)) {
             $file = $files[$key];
 
             $remote_file_path = "ssh2.sftp://{$stream}/{$remoteDir}/{$file}";
-            $local_file_path = $localDir . '/' . $file;
+            if($catalog) {
+                $local_file = "stat_bach_catalog.json";
+            }else{
+                $local_file = $file;
+            }
+                $local_file_path = $localDir . '/' . $local_file;
 
             if (file_exists($remote_file_path) && file_exists($local_file_path)) {
                 if (filesize($remote_file_path) == filesize($local_file_path)
@@ -198,7 +266,7 @@ class DownloadFileController extends Controller
                         die("Невозможно открыть файл на удаленном сервере: $file\n");
                     }
 
-                    if (!$local = @fopen($localDir . '/' . $file, 'w')) {
+                    if (!$local = @fopen($localDir . '/' . $local_file, 'w')) {
                         fclose($remote);
                         die("Невозможно создать файл на локальном сервере: $file\n");
                     }
@@ -228,7 +296,7 @@ class DownloadFileController extends Controller
                     die("Невозможно открыть файл на удаленном сервере: $file\n");
                 }
 
-                if (!$local = @fopen($localDir . '/' . $file, 'w')) {
+                if (!$local = @fopen($localDir . '/' . $local_file, 'w')) {
                     fclose($remote);
                     die("Невозможно создать файл на локальном сервере: $file\n");
                 }
