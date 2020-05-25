@@ -134,7 +134,7 @@
 {{--                                                            style="border-bottom: 2px solid #2366a5 !important;"--}}
                                                         >
                                                             <button style="white-space: normal;" type="button"
-                                                                    class="btn btn-link text-left d-block w-100 p-0 ovz-text"
+                                                                    class=" spec-ovz-link btn btn-link text-left d-block w-100 p-0 ovz-text"
                                                                     data-toggle="modal"
                                                                     data-target="#exampleModalScrollable"
                                                                     data-content="{{$item}}">
@@ -370,7 +370,7 @@
 {{--                                                                style="border-bottom: 2px solid #2366a5 !important;"--}}
                                                             >
                                                                 <button style="white-space: normal;" type="button"
-                                                                        class="btn btn-link text-left w-100 p-0 d-block  ovz-text"
+                                                                        class="spec-ovz-link btn btn-link text-left w-100 p-0 d-block  ovz-text"
                                                                         data-toggle="modal"
                                                                         data-target="#exampleModalScrollable"
                                                                         data-content="{{$item}}">

@@ -18,7 +18,7 @@ class DownloadFileController extends Controller
     {
         $param = $request->param;
 
-        if ($param == "specialities" || $param == "faculties" || $param == "admission_bases" || $param == "stat_bach_catalogs") {
+        if ($param == "specialities" || $param == "faculties" || $param == "admission_bases") {
             $directory = "catalogs";
             if ($param == "specialities") {
                 $res = $this->download($directory, "specialities.xls");
@@ -29,7 +29,8 @@ class DownloadFileController extends Controller
                         return $result;
                     }
                 }
-            } elseif ($param == "faculties") {
+            }
+            if ($param == "faculties") {
                 $res = $this->download($directory, "faculties.xls");
                 $res1 = $this->download($directory, "subjects.xls");
                 if ($res === 0 && $res1 === 0) {
@@ -42,21 +43,25 @@ class DownloadFileController extends Controller
                     $result = $this->parseSubjects();
                     return $result;
                 }
-            } elseif ($param == "admission_bases") {
+            }
+            if ($param == "admission_bases") {
                 $res = $this->download($directory, "admission_bases.xls");
                 if ($res === 0) {
                     $result = $this->parseAdmissionBases();
                     return $result;
                 }
             }
-        } elseif ($param == "past_contests") {
+        }
+        if ($param == "past_contests") {
             $directory = "pastContests";
             $res = $this->download($directory, "past_contests.json");
             if ($res === 0) {
                 $result = $this->parsePastContests();
                 return $result;
             }
-        } elseif ($param == "stat_bach" || $param == "stat_master" || $param == "stat_asp" || $param == "stat_spo" || $param == "stat_bach_catalogs") {
+        }
+        if ($param == "stat_bach" || $param == "stat_master" || $param == "stat_asp"
+            || $param == "stat_spo" || $param == "stat_bach_catalogs") {
             $directory = "statistics";
             if ($param == "stat_bach_catalogs") {
                 $res = $this->download($directory, "stat_bach.json");
@@ -64,32 +69,37 @@ class DownloadFileController extends Controller
                     $result = $this->parseCatalogs();
                     return $result;
                 }
-            } elseif ($param == "stat_bach") {
+            }
+            if ($param == "stat_bach") {
                 $res = $this->download($directory, "stat_bach.json");
                 if ($res === 0) {
                     $result = $this->parseStatBachAll();
                     return $result;
                 }
-            } elseif ($param == "stat_master") {
+            }
+            if ($param == "stat_master") {
                 $res = $this->download($directory, "stat_master.json");
                 if ($res === 0) {
                     $result = $this->parseStatMasterAll();
                     return $result;
                 }
-            } elseif ($param == "stat_asp") {
+            }
+            if ($param == "stat_asp") {
                 $res = $this->download($directory, "stat_asp.json");
                 if ($res === 0) {
                     $result = $this->parseStatAspAll();
                     return $result;
                 }
-            } elseif ($param == "stat_spo") {
+            }
+            if ($param == "stat_spo") {
                 $res = $this->download($directory, "stat_spo.json");
                 if ($res === 0) {
                     $result = $this->parseStatSpoAll();
                     return $result;
                 }
             }
-        } elseif ($param == "plans_bach" || $param == "plans_master" || $param == "plans_asp" || $param == "plans_spo") {
+        }
+        if ($param == "plans_bach" || $param == "plans_master" || $param == "plans_asp" || $param == "plans_spo") {
             if ($param == "plans_bach") {
                 $directory = "plans/plans_saransk";
                 $res = $this->download($directory, "plans_sar_bach.json");
@@ -100,7 +110,8 @@ class DownloadFileController extends Controller
                     $result = $this->parsePlansBach();
                     return $result;
                 }
-            } elseif ($param == "plans_master") {
+            }
+            if ($param == "plans_master") {
                 $directory = "plans/plans_saransk";
                 $res = $this->download($directory, "plans_sar_master.json");
                 $directory = "plans/plans_rim";
@@ -109,14 +120,16 @@ class DownloadFileController extends Controller
                     $result = $this->parsePlansMaster();
                     return $result;
                 }
-            } elseif ($param == "plans_asp") {
+            }
+            if ($param == "plans_asp") {
                 $directory = "plans/plans_saransk";
                 $res = $this->download($directory, "plans_sar_asp.json");
                 if ($res === 0) {
                     $result = $this->parsePlansAspMain();
                     return $result;
                 }
-            } elseif ($param == "plans_spo") {
+            }
+            if ($param == "plans_spo") {
                 $directory = "plans/plans_saransk";
                 $res = $this->download($directory, "plans_sar_spo.json");
                 $directory = "plans/plans_rim";
@@ -201,7 +214,7 @@ class DownloadFileController extends Controller
                     if (file_exists($remote_file_path) && file_exists($local_file_path)) {
                         if (filesize($remote_file_path) == filesize($local_file_path)
                             && md5_file($remote_file_path) == md5_file($local_file_path)) {
-                            echo "Файл ". $file ." успешно загружен.\n";
+                            echo "Файл " . $file . " успешно загружен.\n";
                             return 0;
                         } else {
                             return 1;
@@ -231,7 +244,7 @@ class DownloadFileController extends Controller
                 if (file_exists($remote_file_path) && file_exists($local_file_path)) {
                     if (filesize($remote_file_path) == filesize($local_file_path)
                         && md5_file($remote_file_path) == md5_file($local_file_path)) {
-                        echo "Файл ". $file ." успешно загружен.\n";
+                        echo "Файл " . $file . " успешно загружен.\n";
                         return 0;
                     } else {
                         return 1;
