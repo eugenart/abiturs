@@ -514,8 +514,13 @@ marquee {
 .contact-main-tel{
     font-weight: 900;
     font-size: 2.5em;
-    text-decoration: underline;
+    /*text-decoration: underline;*/
 }
+
+.contact-main-tel a {
+    color: #2366a5;
+}
+
 .contact-div{
     /*font-size: 1.2em;*/
 }
