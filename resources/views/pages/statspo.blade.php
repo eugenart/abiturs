@@ -3,7 +3,7 @@
     <div id="square">
         <i class="fa fa-arrow-up"></i>
     </div>
-    <div class="row mt-3">
+    <div class="row mt-5">
         <div class="col-12">
             <h3 class="text-center h1-mrsu main-color m-0">Среднее профессиональное образование</h3>
         </div>
@@ -45,7 +45,7 @@
             </div>
         </div>
     @endif
-    <div class="container pt-0 padding-0 mt-3">
+    <div class="container pt-0 padding-0 mt-4">
 
         <form class="ovz-form" action="{{ route('statspo.index') }}" id="sendFormWithFacultets" method="get">
             <div class="row">
@@ -388,8 +388,7 @@
 
                 @else
                     <div class="text-center m-4 h4">Введите <b>ФИО</b> или выберите <b>факультет/институт</b> для
-                        получения
-                        информации о статистике приема
+                        вывода списков поступающих
                     </div>
                 @endif
             </div>

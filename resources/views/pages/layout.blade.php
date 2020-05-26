@@ -60,7 +60,13 @@
                              alt=""></a>
         </div>
         <div class="col-6 justify-content-end d-flex align-items-center">
-            <a href="" class="ml-3 mr-4 foreign-link ">En </a>
+
+            {{-- Версия для иностранцев--}}
+
+{{--            <a href="" class="ml-3 mr-4 foreign-link ">En </a>--}}
+
+
+
             {{--            <img src="{{asset('storage/images/eye-white.png')}}" class="ml-2 mr-4 d-lg-none d-md-block" width="35" height="auto" alt="">--}}
             <a href="{{route('ses.toOvzVer')}}"><img id="ovz_version" src="{{asset('storage/images/eye-blue.png')}}"
                             class="ml-2 mr-4 d-lg-block d-md-none d-sm-none mrsu-eye-blue" width="35" height="auto"
@@ -113,7 +119,11 @@
                             class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active d-flex align-items-center justify-content-center">
-                    <a class="nav-link" href="{{route('contact.index')}}">Контакты и Обратная связь <span
+                    <a class="nav-link" href="{{route('contact.index')}}">Контакты <span
+                            class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active d-flex align-items-center justify-content-center">
+                    <a class="nav-link" target="_blank" href="http://abitportal.mrsu.ru">подача документов<span
                             class="sr-only">(current)</span></a>
                 </li>
             </ul>
