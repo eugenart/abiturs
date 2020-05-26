@@ -40,7 +40,7 @@
                         @endif
                     </div>
                     <span
-                        class="m-0 p-0 main-color w-100 text-right">Дата последнего обновления: <b>{{$date_update->date_update}}</b></span>
+                        class="m-0 p-0 main-color w-100 text-right">Дата последнего обновления: <b>@if(isset($date_update)){{$date_update->date_update}}@endif</b></span>
                 </div>
             </div>
         </div>
@@ -344,6 +344,10 @@
                                                                                         @if($abitur->accept)
                                                                                             <i class="fa fa-check-circle"
                                                                                                style="color: rgba(0,128,0,0.51)"></i>
+                                                                                            @if($abitur->acceptCount>0)
+                                                                                                <i class="fa fa-check-circle"
+                                                                                                   style="color: rgba(0,128,0,0.51)"></i>
+                                                                                            @endif
                                                                                         @endif
                                                                                     </td>
                                                                                     @foreach($abitur->score as $ab_sc)

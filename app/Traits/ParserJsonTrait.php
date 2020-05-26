@@ -57,7 +57,7 @@ trait ParserJsonTrait
     {
         ini_set('memory_limit', '1024M');
         try {
-            $filejson = file_get_contents(storage_path('app/public/files/statistics/'.$file));
+            $filejson = file_get_contents(storage_path('app/public/files/statistics/' . $file));
             $json_arr = json_decode($filejson, true);
             $json_data = $json_arr['data'];
 
@@ -178,7 +178,8 @@ trait ParserJsonTrait
                             'id_plan' => intval($idPlan->id),
                             'id_competition' => intval($idCompetition->id),
                             'foreigner' => $fac_stat['foreigner'],
-                            'yellowline' => isset($student['yelloyline']) ? true : false
+                            'yellowline' => isset($student['yelloyline']) ? true : false,
+                            'acceptCount' => $student['acceptСount']
                         );
                         $studentsStat[] = $stat;
                     }
@@ -200,13 +201,13 @@ trait ParserJsonTrait
                 Student::insert($students);
             }
 
-            $chunks = array_chunk($studentsStat, 3000);
+            $chunks = array_chunk($studentsStat, 2000);
             Statistic::truncate();
             foreach ($chunks as $chunk) {
                 Statistic::insert($chunk);
             }
 
-            $chunks = array_chunk($scores, 3000);
+            $chunks = array_chunk($scores, 2000);
             Score::truncate();
             foreach ($chunks as $chunk) {
                 Score::insert($chunk);
@@ -350,7 +351,8 @@ trait ParserJsonTrait
                             'id_plan' => intval($idPlan->id),
                             'id_competition' => intval($idCompetition->id),
                             'foreigner' => $fac_stat['foreigner'],
-                            'yellowline' => isset($student['yelloyline']) ? true : false
+                            'yellowline' => isset($student['yelloyline']) ? true : false,
+                            'acceptCount' => $student['acceptСount']
                         );
                         $studentsStat[] = $stat;
                     }
@@ -374,13 +376,13 @@ trait ParserJsonTrait
             }
 
 
-            $chunks = array_chunk($studentsStat, 3000);
+            $chunks = array_chunk($studentsStat, 2000);
             StatisticMaster::truncate();
             foreach ($chunks as $chunk) {
                 StatisticMaster::insert($chunk);
             }
 
-            $chunks = array_chunk($scores, 3000);
+            $chunks = array_chunk($scores, 2000);
             ScoreMaster::truncate();
             foreach ($chunks as $chunk) {
                 ScoreMaster::insert($chunk);
@@ -526,7 +528,8 @@ trait ParserJsonTrait
                             'id_plan' => intval($idPlan->id),
                             'id_competition' => intval($idCompetition->id),
                             'foreigner' => $fac_stat['foreigner'],
-                            'yellowline' => isset($student['yelloyline']) ? true : false
+                            'yellowline' => isset($student['yelloyline']) ? true : false,
+                            'acceptCount' => $student['acceptСount']
                         );
                         $studentsStat[] = $stat;
                     }
@@ -549,14 +552,14 @@ trait ParserJsonTrait
                 StudentAsp::insert($students);
             }
 
-            $chunks = array_chunk($studentsStat, 3000);
+            $chunks = array_chunk($studentsStat, 2000);
             StatisticAsp::truncate();
 
             foreach ($chunks as $chunk) {
                 StatisticAsp::insert($chunk);
             }
 
-            $chunks = array_chunk($scores, 3000);
+            $chunks = array_chunk($scores, 2000);
             ScoreAsp::truncate();
             foreach ($chunks as $chunk) {
                 ScoreAsp::insert($chunk);
@@ -700,7 +703,8 @@ trait ParserJsonTrait
                             'id_plan' => intval($idPlan->id),
                             'id_competition' => intval($idCompetition->id),
                             'foreigner' => $fac_stat['foreigner'],
-                            'yellowline' => isset($student['yelloyline']) ? true : false
+                            'yellowline' => isset($student['yelloyline']) ? true : false,
+                            'acceptCount' => $student['acceptСount']
                         );
                         $studentsStat[] = $stat;
                     }
@@ -723,14 +727,14 @@ trait ParserJsonTrait
                 StudentSpo::insert($students);
             }
 
-            $chunks = array_chunk($studentsStat, 3000);
+            $chunks = array_chunk($studentsStat, 2000);
             StatisticSpo::truncate();
 
             foreach ($chunks as $chunk) {
                 StatisticSpo::insert($chunk);
             }
 
-            $chunks = array_chunk($scores, 3000);
+            $chunks = array_chunk($scores, 2000);
             ScoreSpo::truncate();
             foreach ($chunks as $chunk) {
                 ScoreSpo::insert($chunk);
@@ -1665,7 +1669,6 @@ trait ParserJsonTrait
             $filejson = file_get_contents(storage_path('app/public/files/pastContests/past_contests.json'));
             $json_arr = json_decode($filejson, true);
             $json_data = $json_arr['data'];
-
 
 
             $arr_contests = array();

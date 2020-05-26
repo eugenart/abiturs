@@ -18,10 +18,12 @@ use App\TrainingArea;
 use App\Traits\XlsMakerTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Psy\Exception\ErrorException;
 
 class StatisticController extends Controller
 {
     use XlsMakerTrait;
+
     public function index(Request $request)
     {
 
@@ -404,7 +406,9 @@ class StatisticController extends Controller
         $faculties = $this->fetchFaculties();
 
 
-        //$this->createXls($studyForms);
+        $this->createXls($studyForms);
+
+
         return $studyForms;
 
     }

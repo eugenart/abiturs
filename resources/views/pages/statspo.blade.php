@@ -344,6 +344,10 @@
                                                                                         @if($abitur->accept)
                                                                                             <i class="fa fa-check-circle"
                                                                                                style="color: rgba(0,128,0,0.51)"></i>
+                                                                                            @if($abitur->acceptCount>0)
+                                                                                                <i class="fa fa-check-circle"
+                                                                                                   style="color: rgba(0,128,0,0.51)"></i>
+                                                                                            @endif
                                                                                         @endif
                                                                                     </td>
                                                                                     @foreach($abitur->score as $ab_sc)

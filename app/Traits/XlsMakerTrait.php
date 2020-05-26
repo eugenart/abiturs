@@ -12,9 +12,13 @@ use App\PreparationLevel;
 use App\Speciality;
 use App\Statistic;
 use App\StudyForm;
+use ErrorException;
 use PHPExcel;
 use PHPExcel_Style_Alignment;
+use PHPExcel_Style_Border;
 use PHPExcel_Style_Fill;
+use PHPExcel_Style_Font;
+use PHPExcel_Style;
 use PHPExcel_Writer_Excel5;
 
 trait XlsMakerTrait
@@ -38,17 +42,55 @@ trait XlsMakerTrait
 
 // Вставляем текст в ячейку A1
             $sheet->setCellValue("A1", 'Полный пофамильный перечень лиц, успешно прошедших вступительные испытания и допущенных к участию в конкурсе на зачисление по каждому направлению подготовки (специальности) очной формы обучения на места в рамках контрольных цифр приема с указанием суммы конкурсных баллов по всем вступительным испытаниям ');
-            $sheet->getStyle('A1')->getFill()->setFillType(
-                PHPExcel_Style_Fill::FILL_SOLID);
-//        $sheet->getStyle('A1')->getFill()->getStartColor()->setRGB('EEEEEE');
+            $sheet->getStyle('A1')->getFont()->setBold(true);
+            $sheet->getStyle('A1')->getFont()->setSize(14);
+            $sheet->getRowDimension("1")->setRowHeight(80);
+            $sheet->getStyle("A1")->getAlignment()->setWrapText(true);
+
+//
 
 // Объединяем ячейки
-            $sheet->mergeCells('A1:M3');
+            $sheet->mergeCells('A1:M1');
 
 // Выравнивание текста
-            $sheet->getStyle('A1')->getAlignment()->setHorizontal(
-                PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+            $sheet->getStyle('A1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+            $sheet->getStyle('A1')->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_TOP);;
+            $c = 5;
+            //ширина столбцов
+            $sheet->getColumnDimension("A")->setWidth(8);
+            $sheet->getColumnDimension("B")->setWidth(33);
+            $sheet->getColumnDimension("C")->setWidth(15);
+            $sheet->getColumnDimension("D")->setWidth(13);
+            $sheet->getColumnDimension("E")->setWidth(17);
+            $sheet->getColumnDimension("F")->setWidth(17);
+            $sheet->getColumnDimension("G")->setWidth(17);
+            $sheet->getColumnDimension("H")->setWidth(17);
+            $sheet->getColumnDimension("I")->setWidth(11);
+            $sheet->getColumnDimension("J")->setWidth(12);
+            $sheet->getColumnDimension("K")->setWidth(12);
+            $sheet->getColumnDimension("L")->setWidth(13);
+            $sheet->getColumnDimension("M")->setWidth(13);
 
+            $bg_green = array(
+                'fill' => array(
+                    'type' => PHPExcel_Style_Fill::FILL_SOLID,
+                    'color' => array('rgb' => '006600')
+                )
+            );
+            $bg_red = array(
+                'fill' => array(
+                    'type' => PHPExcel_Style_Fill::FILL_SOLID,
+                    'color' => array('rgb' => 'ef1010')
+                )
+            );
+            $border = array(
+                'borders' => array(
+                    'allborders' => array(
+                        'style' => PHPExcel_Style_Border::BORDER_THIN,
+                        'color' => array('rgb' => '000000')
+                    )
+                )
+            );
             foreach ($studyForms as $studyForm) {
                 if (isset($studyForm->stat)) {
                     foreach ($studyForm->stat as $category) {
@@ -59,15 +101,152 @@ trait XlsMakerTrait
                                         if (isset($preparationLevel->faculties)) {
                                             foreach ($preparationLevel->faculties as $faculty) {
                                                 if (isset($faculty->specialities)) {
-                                                    foreach ($faculty->specialities as $speciality=>$k0) {
-                                                        $sheet->setCellValue("A4", "Факультет / институт:	");
-                                                        $sheet->setCellValue("A5", "Направление подготовки / специальность:");
-                                                        $sheet->setCellValue("A6", "Уровень подготовки:");
-                                                        $sheet->setCellValue("B4", $faculty->name);
-                                                        $sheet->setCellValue("B5", $speciality->name);
-                                                        $sheet->setCellValue("B6", $preparationLevel->name);
+                                                    foreach ($faculty->specialities as $k0 => $speciality) {
+
+                                                        //значение
+                                                        $sheet->setCellValueByColumnAndRow(0, $c, "Факультет / институт:");
+                                                        $sheet->setCellValueByColumnAndRow(0, $c + 1, "Направление подготовки / специальность:");
+                                                        $sheet->setCellValueByColumnAndRow(0, $c + 2, "Уровень подготовки:");
+                                                        //объединение
+                                                        $sheet->mergeCellsByColumnAndRow(0, $c, 3, $c);
+                                                        $sheet->mergeCellsByColumnAndRow(0, $c + 1, 3, $c + 1);
+                                                        $sheet->mergeCellsByColumnAndRow(0, $c + 2, 3, $c + 2);
+                                                        //
+                                                        $sheet->setCellValueByColumnAndRow(4, $c, $faculty->name);
+                                                        $sheet->setCellValueByColumnAndRow(4, $c + 1, $speciality->name);
+                                                        $sheet->setCellValueByColumnAndRow(4, $c + 2, $preparationLevel->name);
+                                                        //жирность
+                                                        $sheet->getStyleByColumnAndRow(4, $c)->getFont()->setBold(true);
+                                                        $sheet->getStyleByColumnAndRow(4, $c + 1)->getFont()->setBold(true);
+                                                        $sheet->getStyleByColumnAndRow(4, $c + 2)->getFont()->setBold(true);
+
+                                                        $sheet->mergeCellsByColumnAndRow(4, $c, 6, $c);
+                                                        $sheet->mergeCellsByColumnAndRow(4, $c + 1, 6, $c + 1);
+                                                        $sheet->mergeCellsByColumnAndRow(4, $c + 2, 6, $c + 2);
+
+                                                        $sheet->setCellValueByColumnAndRow(7, $c, "Основание для поступления:");
+                                                        $sheet->setCellValueByColumnAndRow(7, $c + 1, "Форма обучения:");
+                                                        $sheet->setCellValueByColumnAndRow(7, $c + 2, "Категория приема:");
+
+                                                        $sheet->mergeCellsByColumnAndRow(7, $c, 8, $c);
+                                                        $sheet->mergeCellsByColumnAndRow(7, $c + 1, 8, $c + 1);
+                                                        $sheet->mergeCellsByColumnAndRow(7, $c + 2, 8, $c + 2);
+
+                                                        $sheet->setCellValueByColumnAndRow(9, $c, $admissionBasis->name);
+                                                        $sheet->setCellValueByColumnAndRow(9, $c + 1, $studyForm->name);
+                                                        $sheet->setCellValueByColumnAndRow(9, $c + 2, $category->name);
+
+                                                        $sheet->getStyleByColumnAndRow(9, $c)->getFont()->setBold(true);
+                                                        $sheet->getStyleByColumnAndRow(9, $c + 1)->getFont()->setBold(true);
+                                                        $sheet->getStyleByColumnAndRow(9, $c + 2)->getFont()->setBold(true);
 
 
+                                                        $sheet->mergeCellsByColumnAndRow(9, $c, 12, $c);
+                                                        $sheet->mergeCellsByColumnAndRow(9, $c + 1, 12, $c + 1);
+                                                        $sheet->mergeCellsByColumnAndRow(9, $c + 2, 12, $c + 2);
+
+                                                        $sheet->setCellValueByColumnAndRow(0, $c + 4, "Кол-во мест:");
+                                                        $sheet->setCellValueByColumnAndRow(4, $c + 4, $speciality->freeSeatsNumber);
+
+                                                        $c = $c + 6;
+
+                                                        if (isset($speciality->abiturs)) {
+                                                            //шапка таблицы
+                                                            $sheet->setCellValueByColumnAndRow(0, $c, "№ п/п");
+                                                            $sheet->mergeCellsByColumnAndRow(0, $c, 0, $c + 1);
+                                                            $sheet->setCellValueByColumnAndRow(1, $c, "Фамилия, имя, отчество");
+                                                            $sheet->mergeCellsByColumnAndRow(1, $c, 1, $c + 1);
+                                                            $sheet->setCellValueByColumnAndRow(2, $c, "Согласие на зачисление");
+                                                            $sheet->mergeCellsByColumnAndRow(2, $c, 2, $c + 1);
+                                                            $sheet->setCellValueByColumnAndRow(3, $c, "Оригинал. Копия");
+                                                            $sheet->mergeCellsByColumnAndRow(3, $c, 3, $c + 1);
+                                                            $sheet->setCellValueByColumnAndRow(4, $c, "Баллы по предметам");
+                                                            $sheet->mergeCellsByColumnAndRow(4, $c, 6, $c);
+//
+                                                            $kolvoSub = 0;
+                                                            foreach ($speciality->abiturs->first()->score as $i => $sc) {
+                                                                $sheet->setCellValueByColumnAndRow($i + 4, $c + 1, $sc->subject->name);
+                                                                $kolvoSub++;
+                                                            }
+                                                            $sheet->setCellValueByColumnAndRow(4 + $kolvoSub, $c, "Сумма баллов за ЕГЭ/ВИ");
+                                                            $sheet->mergeCellsByColumnAndRow(4 + $kolvoSub, $c, 4 + $kolvoSub, $c + 1);
+                                                            $sheet->setCellValueByColumnAndRow(5 + $kolvoSub, $c, "Сумма баллов за Индивидуальные Достижения");
+                                                            $sheet->mergeCellsByColumnAndRow(5 + $kolvoSub, $c, 5 + $kolvoSub, $c + 1);
+                                                            $sheet->setCellValueByColumnAndRow(6 + $kolvoSub, $c, "Сумма конкурсных баллов");
+                                                            $sheet->mergeCellsByColumnAndRow(6 + $kolvoSub, $c, 6 + $kolvoSub, $c + 1);
+                                                            $sheet->setCellValueByColumnAndRow(7 + $kolvoSub, $c, "Нуждаемость в общежитии");
+                                                            $sheet->mergeCellsByColumnAndRow(7 + $kolvoSub, $c, 7 + $kolvoSub, $c + 1);
+                                                            $sheet->setCellValueByColumnAndRow(8 + $kolvoSub, $c, "Примечание 1");
+                                                            $sheet->mergeCellsByColumnAndRow(8 + $kolvoSub, $c, 8 + $kolvoSub, $c + 1);
+                                                            $sheet->setCellValueByColumnAndRow(9 + $kolvoSub, $c, "Примечание 2");
+                                                            $sheet->mergeCellsByColumnAndRow(9 + $kolvoSub, $c, 9 + $kolvoSub, $c + 1);
+
+
+
+                                                            $sheet->getStyleByColumnAndRow(0, $c, 9 + $kolvoSub, $c + 1)->applyFromArray($border);
+                                                            for ($i = 0; $i < 2; $i++) {
+                                                                $sheet->getRowDimension($c + $i)->setRowHeight(45);
+                                                                for ($j = 0; $j < 10 + $kolvoSub; $j++) {
+                                                                    $sheet->getStyleByColumnAndRow($j, $c + $i)->getAlignment()->setWrapText(true);
+                                                                    $sheet->getStyleByColumnAndRow($j, $c + $i)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+                                                                    $sheet->getStyleByColumnAndRow($j, $c + $i)->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
+                                                                }
+                                                            }
+                                                            $c = $c + 2;
+                                                            //основная часть таблицы
+                                                            foreach ($speciality->abiturs as $k => $abitur) {
+                                                                $sheet->setCellValueByColumnAndRow(0, $c, $k + 1);
+                                                                $sheet->setCellValueByColumnAndRow(1, $c, $abitur->student->fio);
+                                                                if ($abitur->accept) {
+                                                                    $sheet->setCellValueByColumnAndRow(2, $c, "✔");
+                                                                    $sheet->getStyleByColumnAndRow(2, $c)->applyFromArray($bg_green);
+                                                                    if($abitur->acceptCount>0){
+                                                                        $sheet->getStyleByColumnAndRow(2, $c)->applyFromArray($bg_red);
+                                                                    }
+                                                                }
+                                                                if ($abitur->original) {
+                                                                    $sheet->setCellValueByColumnAndRow(3, $c, "Оригинал");
+                                                                } else {
+                                                                    $sheet->setCellValueByColumnAndRow(3, $c, "Копия");
+                                                                }
+
+                                                                $kolvoSub = 0;
+                                                                foreach ($abitur->score as $o => $ab_sc) {
+                                                                    if($ab_sc->score!=0)
+                                                                    $sheet->setCellValueByColumnAndRow($o + 4, $c, $ab_sc->score);
+                                                                    $kolvoSub++;
+                                                                }
+                                                                if($abitur->summ!=0) {
+                                                                    $sheet->setCellValueByColumnAndRow(4 + $kolvoSub, $c, $abitur->summ);
+                                                                }
+                                                                if($abitur->indAchievement!=0) {
+                                                                    $sheet->setCellValueByColumnAndRow(5 + $kolvoSub, $c, $abitur->indAchievement);
+                                                                }
+                                                                if($abitur->summContest!=0) {
+                                                                    $sheet->setCellValueByColumnAndRow(6 + $kolvoSub, $c, $abitur->summContest);
+                                                                }
+                                                                if($abitur->needHostel){
+                                                                    $sheet->setCellValueByColumnAndRow(7 + $kolvoSub, $c, "Да");
+                                                                }else{
+                                                                    $sheet->setCellValueByColumnAndRow(7 + $kolvoSub, $c, "Нет");
+                                                                }
+                                                                $sheet->setCellValueByColumnAndRow(8 + $kolvoSub, $c, $abitur->notice1);
+                                                                $sheet->setCellValueByColumnAndRow(9 + $kolvoSub, $c, $abitur->notice2);
+
+                                                                $sheet->getStyleByColumnAndRow(0, $c, 9 + $kolvoSub, $c)->applyFromArray($border);
+
+                                                                for ($j = 0; $j < 8 + $kolvoSub; $j++) {
+                                                                    if ($j != 1) {
+                                                                        $sheet->getStyleByColumnAndRow($j, $c)->getAlignment()->setWrapText(true);
+                                                                        $sheet->getStyleByColumnAndRow($j, $c)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+                                                                        $sheet->getStyleByColumnAndRow($j, $c)->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_TOP);
+                                                                    }
+                                                                }
+
+                                                                $c++;
+                                                            }
+                                                            $c = $c + 2;
+                                                        }
                                                     }
                                                 }
                                             }
@@ -77,13 +256,16 @@ trait XlsMakerTrait
                             }
                         }
                     }
+
+
+                    $objWriter = new PHPExcel_Writer_Excel5($xls);
+                    try {
+                        $objWriter->save('E:\Open Server 5.3.5\OSPanel\domains\abiturs\storage\app\public\files-xls\file.xls');
+                    } catch (ErrorException $e) {
+                        echo $e;
+                    }
                 }
             }
-
-
-            $objWriter = new PHPExcel_Writer_Excel5($xls);
-            $objWriter->save('E:\Open Server 5.3.5\OSPanel\domains\abiturs\storage\app\public\files-xls\file.xls');
         }
     }
 }
-
