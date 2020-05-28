@@ -342,7 +342,7 @@
         methods: {
             parseSpecialities: function () {
                 this.loadingparseSpecialitiesStatus = true;
-                let data = axios.post('/admin/download', {'param': 'specialities'})
+                let data = axios.post('/admin/download', 'param=specialities')
                     .then(response => {
                         this.loadingparseSpecialitiesStatus = false;
                         this.parseSpecialitiesStatus = response.data;
