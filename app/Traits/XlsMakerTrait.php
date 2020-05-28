@@ -32,8 +32,8 @@ trait XlsMakerTrait
         if (isset($studyForms)) {
 
 
-            require_once '..\app\Http\Controllers\Classes\PHPExcel.php';
-            require_once('..\app\Http\Controllers\Classes\PHPExcel\Writer\Excel5.php');
+            require_once 'var\www\html\abiturs\app\Http\Controllers\Classes\PHPExcel.php';
+            require_once('var\www\html\abiturs\app\Http\Controllers\Classes\PHPExcel\Writer\Excel5.php');
 
             // Создаем объект класса PHPExcel
             $xls = new PHPExcel();

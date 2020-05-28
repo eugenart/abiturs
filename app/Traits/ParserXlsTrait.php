@@ -13,7 +13,7 @@ trait ParserXlsTrait {
 
     public function parseSpecialities()
     {
-        require_once '..\app\Http\Controllers\Classes\PHPExcel.php';
+        require_once 'var\www\html\abiturs\app\Http\Controllers\Classes\PHPExcel.php';
 
         //Парсим Специальности
         $xlsSpec = PHPExcel_IOFactory::load(storage_path('app/public/files/catalogs/specialities.xls'));
@@ -69,7 +69,7 @@ trait ParserXlsTrait {
 
     public function parseSubjects()
     {
-        require_once '..\app\Http\Controllers\Classes\PHPExcel.php';
+        require_once 'var\www\html\abiturs\app\Http\Controllers\Classes\PHPExcel.php';
 
         //Удаляем записи из таблиц
         Subject::truncate();
@@ -95,7 +95,7 @@ trait ParserXlsTrait {
 
     public function parseFaculties(){
 
-        require_once '..\app\Http\Controllers\Classes\PHPExcel.php';
+        require_once 'var\www\html\abiturs\app\Http\Controllers\Classes\PHPExcel.php';
 
         //Удаляем записи из таблиц
         Faculty::truncate();
@@ -125,7 +125,7 @@ trait ParserXlsTrait {
     }
     public function parseAdmissionBases()
     {
-        require_once '..\app\Http\Controllers\Classes\PHPExcel.php';
+        require_once 'var\www\html\abiturs\app\Http\Controllers\Classes\PHPExcel.php';
 
         //Удаляем записи из таблиц
         AdmissionBasis::truncate();
