@@ -349,7 +349,7 @@
                         console.log(response);
                     })
                     .catch(function (error) {
-                        console.log(error);
+                        console.log('here', error);
                     });
             },
 
@@ -359,8 +359,10 @@
                     .then(response => {
                         this.loadingparseSubStatus = false;
                         this.parseSubStatus = response.data
+                        console.log(response);
                     })
                     .catch(function (error) {
+                        console.log('here2', error);
                         console.log(error);
                     });
             },
