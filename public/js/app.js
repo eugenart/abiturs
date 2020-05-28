@@ -4374,9 +4374,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.loadingparseSpecialitiesStatus = true;
-      var data = axios.post('/admin/download', {
-        'param': 'specialities'
-      }).then(function (response) {
+      var data = axios.post('/admin/download', 'param=specialities').then(function (response) {
         _this.loadingparseSpecialitiesStatus = false;
         _this.parseSpecialitiesStatus = response.data;
         console.log(response);
