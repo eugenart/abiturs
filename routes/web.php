@@ -50,7 +50,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
 //    Route::get('/test', 'XlsMakerController@index')->name('xls.create');
     Route::post('/download', 'DownloadFileController@index')->name('json.download');
-    Route::get('/download', 'DownloadFileController@stop')->name('json.download');
+//    Route::get('/download', 'DownloadFileController@stop')->name('json.download');
 
 
     Route::get('/parse', 'ParserController@index')->name('parse.index');
