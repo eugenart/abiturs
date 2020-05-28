@@ -345,8 +345,14 @@
                 let data = axios.post('/admin/download', {'param': 'specialities'})
                     .then(response => {
                         this.loadingparseSpecialitiesStatus = false;
-                        this.parseSpecialitiesStatus = response.data
+                        this.parseSpecialitiesStatus = response.data;
+                        console.log(response);
+                        res.status(200).send(response.data);
                     })
+                    .catch(function (error) {
+                        console.log(error);
+                        res.status(500).send(error);
+                    });
             },
 
             parseSub: function () {
