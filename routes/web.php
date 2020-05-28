@@ -49,8 +49,8 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/price', 'TrainingAreaController@price')->name('price.index');
 
 //    Route::get('/test', 'XlsMakerController@index')->name('xls.create');
+    Route::post('/download', 'DownloadFileController@index')->name('json.download');
 
-    Route::post('/download', 'DownloadFileController@index')->name('file.download');
 
     Route::get('/parse', 'ParserController@index')->name('parse.index');
     //специальности специализации
