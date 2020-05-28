@@ -332,6 +332,11 @@ class DownloadFileController extends Controller
     {
         return view('pages.files');
     }
+    public function stop(Request $request)
+    {
+        return view('errors.404');
+    }
+
 
 
 }
