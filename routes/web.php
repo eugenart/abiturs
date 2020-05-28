@@ -48,7 +48,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/minscore', 'TrainingAreaController@index')->name('minscore.index');
     Route::get('/price', 'TrainingAreaController@price')->name('price.index');
 
-    Route::get('/test', 'XlsMakerController@index')->name('xls.create');
+//    Route::get('/test', 'XlsMakerController@index')->name('xls.create');
 
     Route::post('/download', 'DownloadFileController@index')->name('file.download');
 
