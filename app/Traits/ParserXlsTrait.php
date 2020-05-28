@@ -8,6 +8,7 @@ use App\Specialization;
 use App\Subject;
 use Illuminate\Http\Request;
 use PHPExcel_IOFactory;
+use Psy\Exception\ErrorException;
 
 trait ParserXlsTrait {
 
@@ -16,7 +17,12 @@ trait ParserXlsTrait {
         require_once (__DIR__.'/../Http/Controllers/Classes/PHPExcel.php');
 
         //Парсим Специальности
-        $xlsSpec = PHPExcel_IOFactory::load(storage_path('app/public/files/catalogs/specialities.xls'));
+        try {
+            $xlsSpec = PHPExcel_IOFactory::load(storage_path('app/public/files/catalogs/specialities.xls'));
+        }
+        catch (ErrorException $e){
+            return $e;
+        }
         // Первый лист
         $xlsSpec->setActiveSheetIndex(0);
         $sheetSpec = $xlsSpec->getActiveSheet();
