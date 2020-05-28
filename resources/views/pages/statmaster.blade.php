@@ -3,7 +3,7 @@
     <div id="square">
         <i class="fa fa-arrow-up"></i>
     </div>
-    <div class="row mt-3">
+    <div class="row mt-5">
         <div class="col-12">
             <h3 class="text-center h1-mrsu main-color m-0">Магистратура</h3>
         </div>
@@ -40,12 +40,12 @@
                         @endif
                     </div>
                     <span
-                        class="m-0 p-0 main-color w-100 text-right">Дата последнего обновления: <b>20.02.2020 18:30</b></span>
+                        class="m-0 p-0 main-color w-100 text-right">Дата последнего обновления: <b>@if(isset($date_update)){{$date_update->date_update}}@endif</b></span>
                 </div>
             </div>
         </div>
     @endif
-    <div class="container pt-0 padding-0 mt-3">
+    <div class="container pt-0 padding-0 mt-4">
         <form class="ovz-form" action="{{ route('statmaster.index') }}" id="sendFormWithFacultets" method="get">
             <div class="row">
                 <div class="col-12">
@@ -342,6 +342,10 @@
                                                                                         @if($abitur->accept)
                                                                                             <i class="fa fa-check-circle"
                                                                                                style="color: rgba(0,128,0,0.51)"></i>
+                                                                                            @if($abitur->acceptCount>0)
+                                                                                                <i class="fa fa-check-circle"
+                                                                                                   style="color: rgba(0,128,0,0.51)"></i>
+                                                                                            @endif
                                                                                         @endif
                                                                                     </td>
                                                                                     @foreach($abitur->score as $ab_sc)
@@ -386,8 +390,7 @@
 
                 @else
                     <div class="text-center m-4 h4">Введите <b>ФИО</b> или выберите <b>факультет/институт</b> для
-                        получения
-                        информации о статистике приема
+                        вывода списков поступающих
                     </div>
                 @endif
             </div>

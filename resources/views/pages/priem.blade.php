@@ -59,7 +59,7 @@
                                                    target="_blank">{{ $file->name }}</a>
                                                 <br>
                                                 <span>{{round(stat($_SERVER['DOCUMENT_ROOT'] . '/storage/section-files/' . $file->file_name)[7] / 1024 /1024, 2)}} MB</span>
-                                                <span class="badge">{{ $file->updated_at }}</span>
+{{--                                                <span class="badge">{{ $file->updated_at }}</span>--}}
                                             </div>
                                         </li>
                                     @endforeach

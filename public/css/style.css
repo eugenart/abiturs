@@ -43,7 +43,7 @@ body {
 }
 
 .mrsu-logo-img {
-    width: 342px;
+    /*width: 342px;*/
     height: 54px;
 }
 
@@ -77,6 +77,7 @@ body {
 
 .mrsu-card {
     background-color: #f9f9f9;
+    margin-top: 4px;
 }
 
 .mrsu-card > ul {
@@ -336,7 +337,15 @@ marquee {
     height: 75px;
     background-color: #007ed0;
 }
-
+.topline-stat {
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.32);
+    /*border-top: 50px solid #007ed0;*/
+    height: 75px;
+    background-color: #2366a5;
+}
+.files-stat{
+    color:#2366a5;
+}
 .inputGroup {
     background-color: rgba(85, 98, 235, 0.51);
     display: block;
@@ -509,6 +518,19 @@ marquee {
     margin: auto;
     padding: 50px 20px;
     width: fit-content;
+}
+.contact-main-tel{
+    font-weight: 900;
+    font-size: 2.5em;
+    /*text-decoration: underline;*/
+}
+
+.contact-main-tel a {
+    color: #2366a5;
+}
+
+.contact-div{
+    /*font-size: 1.2em;*/
 }
 
 .input-mistake {
