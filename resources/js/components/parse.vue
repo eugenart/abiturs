@@ -347,11 +347,9 @@
                         this.loadingparseSpecialitiesStatus = false;
                         this.parseSpecialitiesStatus = response.data;
                         console.log(response);
-                        res.status(200).send(response.data);
                     })
                     .catch(function (error) {
                         console.log(error);
-                        res.status(500).send(error);
                     });
             },
 
@@ -362,6 +360,9 @@
                         this.loadingparseSubStatus = false;
                         this.parseSubStatus = response.data
                     })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
             },
 
             parseAdmissionBasis: function () {
