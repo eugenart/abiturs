@@ -44,7 +44,7 @@
 
 
     <div class="container-fluid pr-5 pl-5 pb-5">
-        <div class="row mt-3">
+        <div class="row mt-5">
             <div class="col-12 col-sm-8 m-auto">
                 <h3 class="text-center h1-mrsu main-color">Подбор образовательных программ</h3>
                 <h5 class="text-center h5-mrsu">Подберите направление подготовки по предметам ЕГЭ или из списка
@@ -55,13 +55,13 @@
         </div>
 
 
-        <div class="row mt-3">
+        <div class="row mt-4">
             <div class="col-12 p-0">
                 <ul class="nav nav-pills mb-3 d-flex justify-content-center" id="pills-tab" role="tablist">
                     <li class="nav-item swith-priem">
                         <a class="nav-link border-priem active text-uppercase btn btn-lg" id="pills-home-tab"
                            data-toggle="pill" href="#pills-home" role="tab"
-                           aria-controls="pills-home" aria-selected="true">ПОДБОР ПО ПРЕДМЕТАМ ЕГЭ</a>
+                           aria-controls="pills-home" aria-selected="true">ПО ПРЕДМЕТАМ ЕГЭ</a>
                     </li>
                     <li class="nav-item swith-priem">
                         <a class="nav-link border-priem text-uppercase btn btn-lg" id="pills-profile-tab"
@@ -83,7 +83,7 @@
                                     @if(count($faculty->plan))
                                         <div class="col-12 mb-5 search-div"
                                              data-exams="{{ implode(',', $faculty->subjects) }}">
-                                            <h4><a href="" target="_blank" class="main-color">{{$faculty->name}}</a>
+                                            <h4><a href="" target="_blank" class="main-color" style="text-decoration: underline">{{$faculty->name}}</a>
                                             </h4>
                                             <table style="width: 100% !important;"
                                                    class="table table-sm table-scores w-100 table-b-border table-ovz-select">
@@ -120,7 +120,7 @@
                                                     <th
                                                         style="vertical-align: middle">{{strval(date ( 'Y' ) - 2)}}
                                                     </th>
-                                                    <th class="bold-border-right-imp"
+                                                    <th class=""
                                                         style="vertical-align: middle">{{strval(date ( 'Y' ) - 3)}}
                                                     </th>
                                                 </tr>
@@ -134,7 +134,7 @@
 {{--                                                            style="border-bottom: 2px solid #2366a5 !important;"--}}
                                                         >
                                                             <button style="white-space: normal;" type="button"
-                                                                    class="btn btn-link text-left d-block w-100 p-0 ovz-text"
+                                                                    class=" spec-ovz-link btn btn-link text-left d-block w-100 p-0 ovz-text"
                                                                     data-toggle="modal"
                                                                     data-target="#exampleModalScrollable"
                                                                     data-content="{{$item}}">
@@ -318,7 +318,7 @@
                                                  data-faculty="{{ $faculty->name }}"
                                                  data-exams="{{ implode(',', $faculty->subjects) }}">
                                                 <h4><a href=""
-                                                       class="faculty-head"
+                                                       class="faculty-head" style="text-decoration: underline"
 {{--                                                       style="color: #2366a5"--}}
                                                        target="_blank">{{$faculty->name}}</a>
                                                 </h4>
@@ -370,7 +370,7 @@
 {{--                                                                style="border-bottom: 2px solid #2366a5 !important;"--}}
                                                             >
                                                                 <button style="white-space: normal;" type="button"
-                                                                        class="btn btn-link text-left w-100 p-0 d-block  ovz-text"
+                                                                        class="spec-ovz-link btn btn-link text-left w-100 p-0 d-block  ovz-text"
                                                                         data-toggle="modal"
                                                                         data-target="#exampleModalScrollable"
                                                                         data-content="{{$item}}">
@@ -666,6 +666,7 @@
                 let number = v.years.toString().slice(-1)
                 let year = years[number];
                 let templateRecipient =
+                    "<div class='row d-flex justify-content-cetner'>" +
                     "<div class='row d-flex justify-content-cetner'>" +
                     "<div class='col-12 d-flex align-items-center justify-content-center flex-column'>" +
                     "<h5><strong>" + v.name + " форма, " + v.years + " " + year +  "</strong></h5>" +
