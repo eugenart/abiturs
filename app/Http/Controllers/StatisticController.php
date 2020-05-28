@@ -406,8 +406,9 @@ class StatisticController extends Controller
         $faculties = $this->fetchFaculties();
 
 
-        $this->createXls($studyForms);
+        $file_name = $this->createXls($studyForms);
 
+        $studyForms->file_xls = $file_name;
 
         return $studyForms;
 

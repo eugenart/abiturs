@@ -10,6 +10,7 @@
                     @csrf
                     <input type="hidden" name="param" value="stat_bach">
                     <button type="submit">Загрузить файл</button>
+
                 </form>
             </div>
         </div>

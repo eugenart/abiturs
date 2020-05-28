@@ -52,6 +52,7 @@ use Exception;
 
 trait ParserJsonTrait
 {
+    use XlsMakerTrait;
 //------------------------НАЧАЛО парсинг статистики Бакалавры--------------------------------
     public function parseCatalogs($file)
     {
@@ -224,6 +225,8 @@ trait ParserJsonTrait
         set_time_limit(1200);
         $this->parseCatalogs("stat_bach.json");
         $this->parseStatBach();
+//        $this->XlsBach();
+
         return 'Информация об абитуриентах (бакалавриат,специалитет) успешно выгружена!';
     }
 //------------------------КОНЕЦ парсинг статистики Бакалавры--------------------------------
@@ -401,6 +404,7 @@ trait ParserJsonTrait
 
         $this->parseCatalogsMaster();
         $this->parseStatMaster();
+//        $this->XlsMaster();
 
         return 'Информация об абитуриентах (магистратура) успешно выгружена!';
     }

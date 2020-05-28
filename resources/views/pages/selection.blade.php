@@ -667,6 +667,7 @@
                 let year = years[number];
                 let templateRecipient =
                     "<div class='row d-flex justify-content-cetner'>" +
+                    "<div class='row d-flex justify-content-cetner'>" +
                     "<div class='col-12 d-flex align-items-center justify-content-center flex-column'>" +
                     "<h5><strong>" + v.name + " форма, " + v.years + " " + year +  "</strong></h5>" +
                 "</div><div class='col-12 col-lg-6 col-xl-6 col-md-6 col-sm-12 mb-2'><h5 class='text-center mb-0'><strong>Количество мест:</strong></h5>"
