@@ -4379,6 +4379,11 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (response) {
         _this.loadingparseSpecialitiesStatus = false;
         _this.parseSpecialitiesStatus = response.data;
+        console.log(response);
+        res.status(200).send(response.data);
+      })["catch"](function (error) {
+        console.log(error);
+        res.status(500).send(error);
       });
     },
     parseSub: function parseSub() {
