@@ -553,13 +553,15 @@
 @endsection
 @section('js')
     <script>
-
-        $(document).ready(() =>{
-            $('.form-check-input').prop('checked', false);
-        })
-
         var chosenExams = [];
         var chosenFaculties = [];
+        $(document).ready(() =>{
+            $('.form-check-input').prop('checked', false);
+            chosenExams = [];
+            chosenFaculties = [];
+        })
+
+
 
         function addToChosenExams(exam) {
             let idx = chosenExams.indexOf(exam);
