@@ -16,11 +16,6 @@
                         <table
                             class="table table-borderless d-flex align-items-center justify-content-center flex-column mb-3">
                             <tbody>
-                            {{--                        <tr>--}}
-                            {{--                            <th scope="row" class="text-right"><span class="main-color font-weight-bold"><a style="color: #2366a5"--}}
-                            {{--                                        href="tel:(8342) 22-32-31">(8342) 22-32-31</a></span></th>--}}
-                            {{--                            <td>консультации по заключению договоров об обучении</td>--}}
-                            {{--                        </tr>--}}
                             <tr>
                                 <th scope="row" class="text-right"><span
                                         class="font-weight-bold main-color">Адрес:</span></th>
@@ -44,7 +39,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="col-lg-6 col-md-12 ">
+                    <div class="col-lg-6 col-md-12" id="to-hide">
                         <h3 class="text-center main-color h1-mrsu mb-3 mb-3">Остались вопросы? Напишите нам</h3>
                         {{--                <h5 class="text-center">Воспользуйтесь формой обратной связи, чтобы задать интересующие Вас--}}
                         {{--                    вопросы:</h5>--}}
@@ -65,15 +60,11 @@
                         </form>
 
                     </div>
+                    <div class="col-lg-6 col-md-12 text-center form-sent">
+                    </div>
                 </div>
             </div>
-            <div class="col-12 mt-5 text-center form-sent">
-                {{--                                <i class="fa fa-check"></i>--}}
-                {{--                                <br>--}}
-                {{--                                <span>Вопрос успешно отправлен! <br> Мы свяжемся с Вами в ближайшее время.</span>--}}
-                {{--                                <br>--}}
-                {{--                                <a href="/">Вернуться на главную</a>--}}
-            </div>
+
         </div>
     </div>
 @endsection
@@ -104,7 +95,7 @@
 
                     // после получения ответа сервера
                     success: function (data) {
-                        $('.contact-us-div').hide();
+                        $('#to-hide').hide();
                         $('.form-sent').show();
                         $('.form-sent').html(data[0]); // выводим ответ сервера
                         $('form input').val('')
