@@ -568,7 +568,7 @@
                 let showDiv = false;
                 $.each($(searchDiv).find('.search-tr'), function (i, item) {
                     let exams = $(item).data("exams").split(',');
-                    if (exams.length <= chosenExams.length && chosenExams.length > 2) {
+                    if (exams.length <= chosenExams.length && chosenExams.length > 0) {
                         if (include(exams, chosenExams)) {
                             $(item).show();
                             showDiv = true;
