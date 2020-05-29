@@ -43,8 +43,8 @@
     {{--  end modal  --}}
 
 
-    <div class="container-fluid pr-5 pl-5 pb-5">
-        <div class="row mt-5">
+    <div class="container-fluid pr-5 pl-5 pb-5 pt-0">
+        <div class="row mt-lg-5 mt-xl-5 mt-md-3 mt-sm-3 mt-3">
             <div class="col-12 col-sm-8 m-auto">
                 <h3 class="text-center h1-mrsu main-color">Подбор образовательных программ</h3>
                 <h5 class="text-center h5-mrsu">Подберите направление подготовки по предметам ЕГЭ или из списка

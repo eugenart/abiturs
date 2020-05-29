@@ -3,7 +3,7 @@
     <div id="square">
         <i class="fa fa-arrow-up"></i>
     </div>
-    <div class="row mt-5">
+    <div class="row mt-lg-5 mt-xl-5 mt-md-3 mt-sm-3 mt-3">
         <div class="col-12">
             <h3 class="text-center h1-mrsu main-color m-0">Магистратура</h3>
         </div>
@@ -45,7 +45,7 @@
             </div>
         </div>
     @endif
-    <div class="container pt-0 padding-0 mt-4">
+    <div class="container pt-0 padding-0 mt-lg-4 mt-xl-4 mt-md-3 mt-sm-3 mt-3">
         <form class="ovz-form" action="{{ route('statmaster.index') }}" id="sendFormWithFacultets" method="get">
             <div class="row">
                 <div class="col-12">
