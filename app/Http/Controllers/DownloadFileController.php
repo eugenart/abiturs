@@ -272,11 +272,14 @@ class DownloadFileController extends Controller
                         die("Невозможно создать файл на локальном сервере: $file\n");
                     }
                     $read = 0;
+
                     $filesize = filesize("ssh2.sftp://{$stream}/{$remoteDir}/{$file}");
                     while ($read < $filesize && ($buffer = fread($remote, $filesize - $read))) {
                         $read += strlen($buffer);
                         if (fwrite($local, $buffer) === FALSE) {
                             echo "Невозможно записать локальный файл: $file\n";
+                            fclose($local);
+                            fclose($remote);
                             break;
                         }
                     }
@@ -284,13 +287,16 @@ class DownloadFileController extends Controller
                         if (filesize($remote_file_path) == filesize($local_file_path)
                             && md5_file($remote_file_path) == md5_file($local_file_path)) {
                             echo "Файл " . $file . " успешно загружен.\n";
+                            fclose($local);
+                            fclose($remote);
                             return 0;
                         } else {
+                            fclose($local);
+                            fclose($remote);
                             return 1;
                         }
                     }
-                    fclose($local);
-                    fclose($remote);
+
                 }
             } elseif (file_exists($remote_file_path) && !file_exists($local_file_path)) {
                 if (!$remote = @fopen("ssh2.sftp://{$stream}/{$remoteDir}/{$file}", 'r')) {
@@ -307,6 +313,8 @@ class DownloadFileController extends Controller
                     $read += strlen($buffer);
                     if (fwrite($local, $buffer) === FALSE) {
                         echo "Невозможно записать локальный файл: $file\n";
+                        fclose($local);
+                        fclose($remote);
                         break;
                     }
                 }
@@ -314,13 +322,15 @@ class DownloadFileController extends Controller
                     if (filesize($remote_file_path) == filesize($local_file_path)
                         && md5_file($remote_file_path) == md5_file($local_file_path)) {
                         echo "Файл " . $file . " успешно загружен.\n";
+                        fclose($local);
+                        fclose($remote);
                         return 0;
                     } else {
+                        fclose($local);
+                        fclose($remote);
                         return 1;
                     }
                 }
-                fclose($local);
-                fclose($remote);
             }
         } else {
             echo "Файл " . $file_name . " отсутвует на удаленном сервере";
