@@ -1,7 +1,7 @@
 @extends('pages.layout')
 
 @section('page')
-    <div class="container-fluid p-5">
+    <div class="container-fluid p-lg-5 p-xl-5 p-md-3 p-sm-3 p-3">
         @if (count($block->infoblock->news))
             <div class="row">
                 <div class="col-12">
