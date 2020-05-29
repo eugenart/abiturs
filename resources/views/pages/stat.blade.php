@@ -3,9 +3,11 @@
     <div id="square">
         <i class="fa fa-arrow-up"></i>
     </div>
-    <div class="row mt-lg-5 mt-xl-5 mt-md-3 mt-sm-3 mt-3">
-        <div class="col-12">
-            <h3 class="text-center h1-mrsu main-color m-0">Бакалавриат и специалитет</h3>
+    <div class="container">
+        <div class="row mt-lg-5 mt-xl-5 mt-md-3 mt-sm-3 mt-3">
+            <div class="col-12">
+                <h3 class="text-center h1-mrsu main-color m-0">Бакалавриат и специалитет</h3>
+            </div>
         </div>
     </div>
 
@@ -118,7 +120,6 @@
                                 </div>
                                 <div
                                     class="d-xl-none d-lg-flex d-md-flex d-sm-flex flex-column">
-                                    <span class="d-inline-block w-100"><b>Легенда:</b></span>
                                     <span class="d-inline-block w-100"><b>О</b> - оригинал диплома</span>
                                     <span class="d-inline-block w-100"><b>C</b> - согласие на зачисление:</span>
                                     <ol class="d-inline-block w-100 mb-0 list-unstyled pl-2">
@@ -208,14 +209,15 @@
             </div>
         </form>
     </div>
-    <div class="container-fluid pt-0 padding-0 mb-5 mt-xl-3">
+    <div class="container">
         <div class="row mt-4">
             <div class="col-12">
-                <span
-                    class="m-0 p-0 main-color d-xl-none d-md-inline w-100">Обновлено: <b>@if(isset($date_update)){{explode(' ', $date_update->date_update)[0]}}@endif</b></span>
                 @if(isset($studyForms))
+                    <span
+                        class="m-0 p-0 main-color d-lg-none d-md-inline w-100">Обновлено: <b>@if(isset($date_update)){{explode(' ', $date_update->date_update)[0]}}@endif</b></span>
+
                     <button style="white-space: normal;" type="button"
-                            class="files-stat spec-ovz-link btn btn-link text-left d-xl-none d-md-block w-100 p-0 ovz-text"
+                            class="files-stat spec-ovz-link btn btn-link text-left d-lg-none d-md-block w-100 p-0 ovz-text"
                             data-toggle="modal"
                             data-target="#exampleModalScrollable"
                         {{--                data-content="{{$item}}"--}}
@@ -225,6 +227,8 @@
                 @endif
             </div>
         </div>
+    </div>
+    <div class="container-fluid pt-0 padding-0 mb-5 mt-xl-3">
         <div class="row">
             <div class="col-12">
                 @if(isset($notification))
@@ -314,12 +318,14 @@
                                                                         </div>
                                                                     </div>
                                                                     <div
-                                                                        class="col-xl-4 col-lg-4 col-md-12 col-12 d-flex flex-column justify-content-around">
-                                                                        <span
-                                                                            class="m-0 p-0 main-color d-xl-inline d-md-none w-100">Обновлено: <b>@if(isset($date_update)){{explode(' ', $date_update->date_update)[0]}}@endif</b></span>
+                                                                        class="col-xl-4 col-lg-4 col-md-12 col-12 d-lg-flex d-md-none d-none flex-column justify-content-around">
                                                                         @if(isset($studyForms))
-                                                                            <button style="white-space: normal;" type="button"
-                                                                                    class="files-stat spec-ovz-link btn btn-link text-left d-xl-block d-md-none w-100 p-0 ovz-text"
+                                                                            <span
+                                                                                class="m-0 p-0 main-color d-lg-inline d-md-none w-100">Обновлено: <b>@if(isset($date_update)){{explode(' ', $date_update->date_update)[0]}}@endif</b></span>
+
+                                                                            <button style="white-space: normal;"
+                                                                                    type="button"
+                                                                                    class="files-stat spec-ovz-link btn btn-link text-left d-lg-block d-md-none w-100 p-0 ovz-text"
                                                                                     data-toggle="modal"
                                                                                     data-target="#exampleModalScrollable"
                                                                                 {{--                data-content="{{$item}}"--}}
@@ -327,8 +333,9 @@
                                                                                 <b><u>Скачать списки</u></b>
                                                                             </button>
                                                                         @endif
-                                                                        <div class="m-0 p-0 h6 d-lg-block d-md-none d-sm-none d-none"
-                                                                             style="height: fit-content">
+                                                                        <div
+                                                                            class="m-0 p-0 h6 d-lg-block d-md-none d-sm-none d-none"
+                                                                            style="height: fit-content">
                                                                             <div class="row">
                                                                                 @if (isset($studyForms))
                                                                                     <div class="col-lg-4 pr-0 w-50">
@@ -336,7 +343,8 @@
                                                                                              style="width: 100px; height: auto;"
                                                                                              src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl={{$actual_link}}&choe=UTF-8"/>
                                                                                     </div>
-                                                                                    <div class="col-lg-8 pl-0 w-50 d-flex justify-content-center align-items-center">
+                                                                                    <div
+                                                                                        class="col-lg-8 pl-0 w-50 d-flex justify-content-center align-items-center">
                                                                                     <span
                                                                                         class="">Сохранить параметры запроса на мобильном устройстве</span>
                                                                                     </div>
@@ -368,7 +376,9 @@
                                                                             <button data-toggle="modal"
                                                                                     data-target="#legend"
                                                                                     class="btn btn-sm btn-link p-0"
-                                                                                    style="color: #2366a5; font-size: 14px !important; text-decoration: underline">Легенда</button>
+                                                                                    style="color: #2366a5; font-size: 14px !important; text-decoration: underline">
+                                                                                Легенда
+                                                                            </button>
                                                                         </div>
                                                                     </div>
                                                                     <table
