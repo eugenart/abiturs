@@ -11,7 +11,6 @@
 
     @if(isset($studyForms))
         {{--  modal  --}}
-
         <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog"
              aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
             <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered mt-5" role="document">
@@ -21,7 +20,7 @@
                     </button>
                     <div class="row w-100 m-0 p-0">
                         <div class="topline-stat col-12 d-flex align-items-center justify-content-center">
-                            <h5 class="m-0 text-white text-center">Списки в формате xls</h5>
+                            <h5 class="m-0 text-white text-center">Скачать списки поступающих в формате .xls</h5>
                         </div>
                     </div>
                     <div class="modal-header pb-0 pt-0 modal-header-ovz">
@@ -77,6 +76,69 @@
                                         </div>
                                     </li>
                                 </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="legend" tabindex="-1" role="dialog"
+             aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered mt-5" role="document">
+                <div class="modal-content">
+                    <button type="button" class="close-btn" data-dismiss="modal" aria-label="Close">
+                        <i class="fa fa-times fa-2x"></i>
+                    </button>
+                    <div class="row w-100 m-0 p-0">
+                        <div class="topline-stat col-12 d-flex align-items-center justify-content-center">
+                            <h5 class="m-0 text-white text-center">Легенда</h5>
+                        </div>
+                    </div>
+                    <div class="modal-header pb-0 pt-0 modal-header-ovz">
+                        <div class="row w-100 m-auto pt-3 pb-3">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div
+                                        class="font-weight-bold d-xl-block d-lg-none d-none col-12">
+                                        Согласие:
+                                    </div>
+                                    <div class="d-xl-block d-lg-none d-none col-12"><i
+                                            class="fa fa-check-circle "
+                                            style="color: rgba(0,128,0,0.51)"></i>
+                                        &mdash; Первое согласие на зачисление
+                                    </div>
+                                    <div class="d-xl-block d-lg-none d-none col-12"><i
+                                            class="fa fa-check-circle"
+                                            style="color: rgba(0,128,0,0.51)"></i>
+                                        <i class="fa fa-check-circle"
+                                           style="color: rgba(0,128,0,0.51)"></i>
+                                        &mdash; Второе согласие на зачисление
+                                    </div>
+                                </div>
+                                <div
+                                    class="d-xl-none d-lg-flex d-md-flex d-sm-flex flex-column">
+                                    <span class="d-inline-block w-100"><b>Легенда:</b></span>
+                                    <span class="d-inline-block w-100"><b>О</b> - оригинал диплома</span>
+                                    <span class="d-inline-block w-100"><b>C</b> - согласие на зачисление:</span>
+                                    <ol class="d-inline-block w-100 mb-0 list-unstyled pl-2">
+                                        <li><span><i class="fa fa-check-circle "
+                                                     style="color: rgba(0,128,0,0.51)"></i>
+                                                                                                            - первое согласие</span>
+                                        </li>
+                                        <li><span><i class="fa fa-check-circle"
+                                                     style="color: rgba(0,128,0,0.51)"></i>
+                                                                                                            <i class="fa fa-check-circle"
+                                                                                                               style="color: rgba(0,128,0,0.51)"></i>
+                                                                                                            - второе согласие</span>
+                                        </li>
+                                    </ol>
+                                    <span
+                                        class="d-xl-inline-block w-100 d-sm-inline d-none"><b>БИД</b> - балл за индивидуальные достижения</span>
+                                    <span
+                                        class="d-inline-block w-100"><b>СКБ</b> - сумма конкурсных баллов</span>
+
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -145,16 +207,6 @@
                 </div>
             </div>
         </form>
-        @if(isset($studyForms))
-            <button style="white-space: normal;" type="button"
-                    class="files-stat spec-ovz-link btn btn-link text-left d-block w-100 p-0 ovz-text"
-                    data-toggle="modal"
-                    data-target="#exampleModalScrollable"
-                {{--                data-content="{{$item}}"--}}
-            >
-                <b>Скачать в формате xls</b>
-            </button>
-        @endif
     </div>
     <div class="container-fluid pt-0 padding-0 mb-5 mt-xl-3">
         <div class="row">
@@ -186,7 +238,7 @@
                                                                                         <div class="col-12">
                                                                                             <p class="m-0 text-uppercase font-weight-bold">{{$faculty->name}}</p>
                                                                                             <p class="m-0 font-weight-bold">{{$speciality->name}}</p>
-                                                                                            <p class="m-0">Кол-во
+                                                                                            <p class="m-0">Количество
                                                                                                 мест: <span
                                                                                                     class="font-weight-bold">{{$speciality->freeSeatsNumber}}</span>
                                                                                             </p>
@@ -249,6 +301,16 @@
                                                                         class="col-xl-4 col-lg-12 col-md-12 col-12 d-flex flex-column justify-content-around">
                                                                         <span
                                                                             class="m-0 p-0 main-color w-100">Обновлено: <b>@if(isset($date_update)){{explode(' ', $date_update->date_update)[0]}}@endif</b></span>
+                                                                        @if(isset($studyForms))
+                                                                            <button style="white-space: normal;" type="button"
+                                                                                    class="files-stat spec-ovz-link btn btn-link text-left d-block w-100 p-0 ovz-text"
+                                                                                    data-toggle="modal"
+                                                                                    data-target="#exampleModalScrollable"
+                                                                                {{--                data-content="{{$item}}"--}}
+                                                                            >
+                                                                                <b><u>Скачать списки</u></b>
+                                                                            </button>
+                                                                        @endif
                                                                         <div class="m-0 p-0 h6 d-lg-block d-none"
                                                                              style="height: fit-content">
                                                                             <div class="row">
@@ -265,47 +327,7 @@
                                                                                 @endif
                                                                             </div>
                                                                         </div>
-                                                                        {{--                                                                        <div class="row">--}}
-                                                                        {{--                                                                            <div--}}
-                                                                        {{--                                                                                class="font-weight-bold d-xl-block d-lg-none d-none col-12">--}}
-                                                                        {{--                                                                                Согласие:--}}
-                                                                        {{--                                                                            </div>--}}
-                                                                        {{--                                                                            <div class="d-xl-block d-lg-none d-none col-12"><i--}}
-                                                                        {{--                                                                                    class="fa fa-check-circle "--}}
-                                                                        {{--                                                                                    style="color: rgba(0,128,0,0.51)"></i>--}}
-                                                                        {{--                                                                                &mdash; Первое согласие на зачисление--}}
-                                                                        {{--                                                                            </div>--}}
-                                                                        {{--                                                                            <div class="d-xl-block d-lg-none d-none col-12"><i--}}
-                                                                        {{--                                                                                    class="fa fa-check-circle"--}}
-                                                                        {{--                                                                                    style="color: rgba(0,128,0,0.51)"></i>--}}
-                                                                        {{--                                                                                <i class="fa fa-check-circle"--}}
-                                                                        {{--                                                                                   style="color: rgba(0,128,0,0.51)"></i>--}}
-                                                                        {{--                                                                                &mdash; Второе согласие на зачисление--}}
-                                                                        {{--                                                                            </div>--}}
-                                                                        {{--                                                                        </div>--}}
-                                                                        {{--                                                                        <div--}}
-                                                                        {{--                                                                            class="d-xl-none d-lg-flex d-md-flex d-sm-flex flex-column">--}}
-                                                                        {{--                                                                            <span class="d-inline-block w-100"><b>Легенда:</b></span>--}}
-                                                                        {{--                                                                            <span class="d-inline-block w-100"><b>О</b> - оригинал диплома</span>--}}
-                                                                        {{--                                                                            <span class="d-inline-block w-100"><b>C</b> - согласие на зачисление:</span>--}}
-                                                                        {{--                                                                            <ol class="d-inline-block w-100 mb-0 list-unstyled pl-2">--}}
-                                                                        {{--                                                                                <li><span><i class="fa fa-check-circle "--}}
-                                                                        {{--                                                                                             style="color: rgba(0,128,0,0.51)"></i>--}}
-                                                                        {{--                                                                            - первое согласие</span>--}}
-                                                                        {{--                                                                                </li>--}}
-                                                                        {{--                                                                                <li><span><i class="fa fa-check-circle"--}}
-                                                                        {{--                                                                                             style="color: rgba(0,128,0,0.51)"></i>--}}
-                                                                        {{--                                                                            <i class="fa fa-check-circle"--}}
-                                                                        {{--                                                                               style="color: rgba(0,128,0,0.51)"></i>--}}
-                                                                        {{--                                                                            - второе согласие</span>--}}
-                                                                        {{--                                                                                </li>--}}
-                                                                        {{--                                                                            </ol>--}}
-                                                                        {{--                                                                            <span--}}
-                                                                        {{--                                                                                class="d-inline-block w-100"><b>БИД</b> - балл за индивидуальные достижения</span>--}}
-                                                                        {{--                                                                            <span--}}
-                                                                        {{--                                                                                class="d-inline-block w-100"><b>СКБ</b> - сумма конкурсных баллов</span>--}}
 
-                                                                        {{--                                                                        </div>--}}
                                                                     </div>
 
                                                                 </div>
@@ -325,8 +347,16 @@
                                                                     </div>
                                                                 @endif
                                                                 @if(isset($speciality->abiturs))
+                                                                    <div class="row p-0 m-0">
+                                                                        <div class="col-12 d-flex justify-content-end">
+                                                                            <button data-toggle="modal"
+                                                                                    data-target="#legend"
+                                                                                    class="btn btn-sm btn-link p-0"
+                                                                                    style="color: #2366a5; font-size: 14px !important; text-decoration: underline">Легенда</button>
+                                                                        </div>
+                                                                    </div>
                                                                     <table
-                                                                        class="table table-bordered table-ovz table-sm base-exams-table mt-xl-2 mt-0">
+                                                                        class="table table-bordered table-ovz table-sm base-exams-table mt-0">
                                                                         <thead
                                                                             style="background-color: #e9eff6; color: #2366a5">
                                                                         <tr style="vertical-align: center">

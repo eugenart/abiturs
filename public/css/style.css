@@ -282,7 +282,7 @@ marquee {
 /*    border-top-right-radius: 20px;*/
 /*}*/
 
-#exampleModalScrollable .modal-body {
+#exampleModalScrollable .modal-body, #legend .modal-body {
     background-color: #0c5b95;
     color: white;
 }
@@ -292,9 +292,10 @@ marquee {
     text-decoration: underline;
 }
 
-#exampleModalScrollable .close-btn {
+#exampleModalScrollable .close-btn, #legend .close-btn {
     background-color: transparent;
     border: none;
+    cursor: pointer;
     position: absolute;
     color: white;
     right: -15px;
