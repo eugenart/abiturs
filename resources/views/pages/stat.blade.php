@@ -13,6 +13,7 @@
 
     @if(isset($studyForms))
         {{--  modal  --}}
+
         <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog"
              aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
             <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered mt-5" role="document">
@@ -22,7 +23,7 @@
                     </button>
                     <div class="row w-100 m-0 p-0">
                         <div class="topline-stat col-12 d-flex align-items-center justify-content-center">
-                            <h5 class="m-0 text-white text-center">Скачать списки поступающих в формате .xls</h5>
+                            <h5 class="m-0 text-white text-center">Списки в формате xls</h5>
                         </div>
                     </div>
                     <div class="modal-header pb-0 pt-0 modal-header-ovz">
@@ -55,33 +56,46 @@
                                 </ul>
                                 <h5 class="m-0 text-center">Полные списки - бакалавриат</h5>
                                 <ul class="files-list">
-                                    <li>
-                                        <div>
-                                            @if(file_exists($_SERVER['DOCUMENT_ROOT'] . '/storage/file-types/xls.png'))
-                                                <img width="60px" height="60px"
-                                                     src="{{ asset('storage/file-types/xls.png' )}}"
-                                                     alt="">
-                                            @else
-                                                <img width="60px" height="60px"
-                                                     src="{{ asset('storage/file-types/nofile.jpg' )}}"
-                                                     alt="">
-                                            @endif
-                                        </div>
-                                        <div class="file-link-div ">
 
-                                            <a href="{{ asset('storage/files-xls/' . $studyForms->file_xls . '.xls') }}"
-                                               target="_blank">
-                                                Файл с данными запроса.xls
-                                            </a>
-                                            <br>
-                                            <span>{{round(stat($_SERVER['DOCUMENT_ROOT'] . '/storage/files-xls/' . $studyForms->file_xls . '.xls')[7] / 1024 /1024, 2)}} MB</span>
+                                    @if(!empty($files_xls))
+                                        @foreach($files_xls as $file_xls_stat)
+                                            <li>
+                                                <div>
+                                                    @if(file_exists($_SERVER['DOCUMENT_ROOT'] . '/storage/file-types/xls.png'))
+                                                        <img width="60px" height="60px"
+                                                             src="{{ asset('storage/file-types/xls.png' )}}"
+                                                             alt="">
+                                                    @else
+                                                        <img width="60px" height="60px"
+                                                             src="{{ asset('storage/file-types/nofile.jpg' )}}"
+                                                             alt="">
+                                                    @endif
+                                                </div>
+                                                <div class="file-link-div ">
+
+                                                    <a href="{{ asset('storage/files-xls-stat/bach/' . $file_xls_stat) }}"
+                                                       target="_blank">
+                                                        {{$file_xls_stat}}
+                                                    </a>
+                                                    <br>
+                                                    <span>{{round(stat($_SERVER['DOCUMENT_ROOT'] . '/storage/files-xls-stat/bach/' . $file_xls_stat)[7] / 1024 /1024, 2)}} MB</span>
+                                                </div>
+                                            </li>
+                                        @endforeach
+                                    @else
+                                        <div class="m-2 text-center">
+                                            Файлы отсутствуют
                                         </div>
-                                    </li>
+                                    @endif
+                                    <div>
+                                        {{$notification_files}}
+                                    </div>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
 

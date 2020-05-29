@@ -225,7 +225,7 @@ trait ParserJsonTrait
         set_time_limit(1200);
         $this->parseCatalogs("stat_bach.json");
         $this->parseStatBach();
-//        $this->XlsBach();
+        $this->XlsBach();
 
         return 'Информация об абитуриентах (бакалавриат,специалитет) успешно выгружена!';
     }
@@ -404,7 +404,7 @@ trait ParserJsonTrait
 
         $this->parseCatalogsMaster();
         $this->parseStatMaster();
-//        $this->XlsMaster();
+        $this->XlsMaster();
 
         return 'Информация об абитуриентах (магистратура) успешно выгружена!';
     }
@@ -581,6 +581,7 @@ trait ParserJsonTrait
 
         $this->parseCatalogsAsp();
         $this->parseStatAsp();
+        $this->XlsAsp();
 
         return 'Информация об абитуриентах (аспирантура) успешно выгружена!';
     }
@@ -756,6 +757,7 @@ trait ParserJsonTrait
 
         $this->parseCatalogsSpo();
         $this->parseStatSpo();
+        $this->XlsSpo();
 
         return 'Информация об абитуриентах (СПО) успешно выгружена!';
     }
