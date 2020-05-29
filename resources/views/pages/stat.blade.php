@@ -209,6 +209,22 @@
         </form>
     </div>
     <div class="container-fluid pt-0 padding-0 mb-5 mt-xl-3">
+        <div class="row mt-4">
+            <div class="col-12">
+                <span
+                    class="m-0 p-0 main-color d-xl-none d-md-inline w-100">Обновлено: <b>@if(isset($date_update)){{explode(' ', $date_update->date_update)[0]}}@endif</b></span>
+                @if(isset($studyForms))
+                    <button style="white-space: normal;" type="button"
+                            class="files-stat spec-ovz-link btn btn-link text-left d-xl-none d-md-block w-100 p-0 ovz-text"
+                            data-toggle="modal"
+                            data-target="#exampleModalScrollable"
+                        {{--                data-content="{{$item}}"--}}
+                    >
+                        <b><u>Скачать списки</u></b>
+                    </button>
+                @endif
+            </div>
+        </div>
         <div class="row">
             <div class="col-12">
                 @if(isset($notification))
@@ -300,10 +316,10 @@
                                                                     <div
                                                                         class="col-xl-4 col-lg-4 col-md-12 col-12 d-flex flex-column justify-content-around">
                                                                         <span
-                                                                            class="m-0 p-0 main-color w-100">Обновлено: <b>@if(isset($date_update)){{explode(' ', $date_update->date_update)[0]}}@endif</b></span>
+                                                                            class="m-0 p-0 main-color d-xl-inline d-md-none w-100">Обновлено: <b>@if(isset($date_update)){{explode(' ', $date_update->date_update)[0]}}@endif</b></span>
                                                                         @if(isset($studyForms))
                                                                             <button style="white-space: normal;" type="button"
-                                                                                    class="files-stat spec-ovz-link btn btn-link text-left d-block w-100 p-0 ovz-text"
+                                                                                    class="files-stat spec-ovz-link btn btn-link text-left d-xl-block d-md-none w-100 p-0 ovz-text"
                                                                                     data-toggle="modal"
                                                                                     data-target="#exampleModalScrollable"
                                                                                 {{--                data-content="{{$item}}"--}}
@@ -315,12 +331,12 @@
                                                                              style="height: fit-content">
                                                                             <div class="row">
                                                                                 @if (isset($studyForms))
-                                                                                    <div class="col-lg-4 w-50">
+                                                                                    <div class="col-lg-4 pr-0 w-50">
                                                                                         <img class="d-block float-left"
-                                                                                             style="width: 100px; height: auto; border-right: 1px solid black"
+                                                                                             style="width: 100px; height: auto;"
                                                                                              src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl={{$actual_link}}&choe=UTF-8"/>
                                                                                     </div>
-                                                                                    <div class="col-lg-8 w-50 d-flex justify-content-center align-items-center">
+                                                                                    <div class="col-lg-8 pl-0 w-50 d-flex justify-content-center align-items-center">
                                                                                     <span
                                                                                         class="">Сохранить параметры запроса на мобильном устройстве</span>
                                                                                     </div>
