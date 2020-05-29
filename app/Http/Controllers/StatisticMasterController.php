@@ -14,11 +14,13 @@ use App\Speciality;
 use App\StatisticMaster;
 use App\StudentMaster;
 use App\StudyForm;
+use App\Traits\XlsMakerTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class StatisticMasterController extends Controller
 {
+    use XlsMakerTrait;
     public function index(Request $request)
     {
 
@@ -44,6 +46,22 @@ class StatisticMasterController extends Controller
             $studyForms = $this->search($search_fio, $search_faculties, $search_specialities, $search_studyForms, $notification);
         }
 
+        //получим все названия файлов xls
+        $files_xls = array();
+        $notification_files="";
+        if ($dir = scandir(storage_path('app/public/files-xls-stat/master'))){
+            $files_xls = array();
+            foreach ($dir as $file) {
+                if ($file == "." || $file == "..")
+                    continue;
+                $files_xls[] = $file;
+            }
+            arsort($files_xls);
+        }else{
+            $notification_files = "Не удалось открыть директорию с файлами";
+        }
+
+
         $date_update = DateUpdate::where('name_file', '=', 'stat_master')->first();
         $faculties = $this->fetchFaculties();
         $studyFormsForInputs = DB::table('study_forms')->join('statistic_masters', 'study_forms.id', '=', 'statistic_masters.id_studyForm')->groupBy('study_forms.id')->select('study_forms.*')->get();;
@@ -51,7 +69,8 @@ class StatisticMasterController extends Controller
             $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
             if($studyForms->count()!=0){
                 return view('pages.statmaster', ['studyForms' => $studyForms, 'faculties' => $faculties,
-                    'studyFormsForInputs' => $studyFormsForInputs, 'actual_link' => $actual_link, 'date_update' => $date_update]);
+                    'studyFormsForInputs' => $studyFormsForInputs, 'actual_link' => $actual_link, 'date_update' => $date_update,
+                'files_xls'=>$files_xls, 'notification_files' => $notification_files]);
             }
             else{
                 $notification = "По Вашему запросу ничего не найдено";
@@ -376,6 +395,11 @@ class StatisticMasterController extends Controller
         //Выборка для инпутов
         $studyFormsForInputs = DB::table('study_forms')->join('statistic_masters', 'study_forms.id', '=', 'statistic_masters.id_studyForm')->groupBy('study_forms.id')->select('study_forms.*')->get();;
         $faculties = $this->fetchFaculties();
+
+        $file_name = $this->createXls($studyForms);
+
+        $studyForms->file_xls = $file_name;
+
         return $studyForms;
 
     }

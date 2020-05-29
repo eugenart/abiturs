@@ -27,6 +27,92 @@
     {{--        </div>--}}
     {{--    @endif--}}
     @if(isset($studyForms))
+
+        <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog"
+             aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered mt-5" role="document">
+                <div class="modal-content">
+                    <button type="button" class="close-btn" data-dismiss="modal" aria-label="Close">
+                        <i class="fa fa-times fa-2x"></i>
+                    </button>
+                    <div class="row w-100 m-0 p-0">
+                        <div class="topline-stat col-12 d-flex align-items-center justify-content-center">
+                            <h5 class="m-0 text-white text-center">Списки в формате xls</h5>
+                        </div>
+                    </div>
+                    <div class="modal-header pb-0 pt-0 modal-header-ovz">
+                        <div class="row w-100 m-auto pt-3 pb-3">
+                            <div class="col-12">
+                                {{--                                                                <a href="{{ asset('storage/files-xls/' . $studyForms->file_xls . '.xls') }}">Скачать файл с данными запроса</a>--}}
+                                <ul class="files-list">
+                                    <li>
+                                        <div>
+                                            @if(file_exists($_SERVER['DOCUMENT_ROOT'] . '/storage/file-types/xls.png'))
+                                                <img width="60px" height="60px"
+                                                     src="{{ asset('storage/file-types/xls.png' )}}"
+                                                     alt="">
+                                            @else
+                                                <img width="60px" height="60px"
+                                                     src="{{ asset('storage/file-types/nofile.jpg' )}}"
+                                                     alt="">
+                                            @endif
+                                        </div>
+                                        <div class="file-link-div ">
+
+                                            <a href="{{ asset('storage/files-xls/' . $studyForms->file_xls . '.xls') }}"
+                                               target="_blank">
+                                                Файл с данными запроса.xls
+                                            </a>
+                                            <br>
+                                            <span>{{round(stat($_SERVER['DOCUMENT_ROOT'] . '/storage/files-xls/' . $studyForms->file_xls . '.xls')[7] / 1024 /1024, 2)}} MB</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <h5 class="m-0 text-center">Полные списки - магистратура</h5>
+                                <ul class="files-list">
+
+                                    @if(!empty($files_xls))
+                                        @foreach($files_xls as $file_xls_stat)
+                                            <li>
+                                                <div>
+                                                    @if(file_exists($_SERVER['DOCUMENT_ROOT'] . '/storage/file-types/xls.png'))
+                                                        <img width="60px" height="60px"
+                                                             src="{{ asset('storage/file-types/xls.png' )}}"
+                                                             alt="">
+                                                    @else
+                                                        <img width="60px" height="60px"
+                                                             src="{{ asset('storage/file-types/nofile.jpg' )}}"
+                                                             alt="">
+                                                    @endif
+                                                </div>
+                                                <div class="file-link-div ">
+
+                                                    <a href="{{ asset('storage/files-xls-stat/master/' . $file_xls_stat) }}"
+                                                       target="_blank">
+                                                        {{$file_xls_stat}}
+                                                    </a>
+                                                    <br>
+                                                    <span>{{round(stat($_SERVER['DOCUMENT_ROOT'] . '/storage/files-xls-stat/master/' . $file_xls_stat)[7] / 1024 /1024, 2)}} MB</span>
+                                                </div>
+                                            </li>
+                                        @endforeach
+                                    @else
+                                        <div class="m-2 text-center">
+                                            Файлы отсутствуют
+                                        </div>
+                                    @endif
+                                    <div>
+                                        {{$notification_files}}
+                                    </div>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
         <div class="container">
             <div class="row m-3">
                 <div class="col-12 d-flex justify-content-between align-items-center">
@@ -92,6 +178,16 @@
                 </div>
             </div>
         </form>
+        @if(isset($studyForms))
+            <button style="white-space: normal;" type="button"
+                    class="files-stat spec-ovz-link btn btn-link text-left d-block w-100 p-0 ovz-text"
+                    data-toggle="modal"
+                    data-target="#exampleModalScrollable"
+                {{--                data-content="{{$item}}"--}}
+            >
+                <b>Скачать в формате xls</b>
+            </button>
+        @endif
     </div>
     <div class="container-fluid pt-0 padding-0 mb-5 mt-xl-3">
         <div class="row">
@@ -512,6 +608,13 @@
 
         $('#clearSelects').click(() => {
             $('#allfaculties, #specialities').selectpicker('deselectAll');
+        })
+    </script>
+    <script>
+        $('#exampleModalScrollable').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var recipient = button.data('content') // Extract info from data-* attributes
+
         })
     </script>
 @endsection

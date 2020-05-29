@@ -49,6 +49,22 @@ class StatisticController extends Controller
             $studyForms = $this->search($search_fio, $search_faculties, $search_specialities, $search_studyForms, $notification);
         }
 
+        //получим все названия файлов xls
+        $files_xls = array();
+        $notification_files="";
+        if ($dir = scandir(storage_path('app/public/files-xls-stat/bach'))){
+            $files_xls = array();
+            foreach ($dir as $file) {
+                if ($file == "." || $file == "..")
+                    continue;
+                $files_xls[] = $file;
+            }
+            arsort($files_xls);
+        }else{
+            $notification_files = "Не удалось открыть директорию с файлами";
+        }
+
+
         $date_update = DateUpdate::where('name_file', '=', 'stat_bach')->first();
         $faculties = $this->fetchFaculties();
         $studyFormsForInputs = DB::table('study_forms')->join('statistics', 'study_forms.id', '=', 'statistics.id_studyForm')
@@ -58,7 +74,8 @@ class StatisticController extends Controller
             $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
             if ($studyForms->count() != 0) {
                 return view('pages.stat', ['studyForms' => $studyForms, 'faculties' => $faculties,
-                    'studyFormsForInputs' => $studyFormsForInputs, 'actual_link' => $actual_link, 'date_update' => $date_update]);
+                    'studyFormsForInputs' => $studyFormsForInputs, 'actual_link' => $actual_link, 'date_update' => $date_update,
+                    'files_xls'=>$files_xls, 'notification_files' => $notification_files]);
             } else {
                 $notification = "По Вашему запросу ничего не найдено";
                 return view('pages.stat', ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs, 'notification' => $notification]);
