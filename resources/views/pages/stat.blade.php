@@ -246,55 +246,66 @@
                                                                         </div>
                                                                     </div>
                                                                     <div
-                                                                        class="col-xl-4 col-lg-12 col-md-12 col-12 mb-lg-4 mb-lg-2">
-                                                                        <div class="m-0 p-0 h6 d-lg-block d-none">
-                                                                            @if (isset($studyForms))
-                                                                                <img class="d-block"
-                                                                                     style="width: 100px; height: auto"
-                                                                                     src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl={{$actual_link}}&choe=UTF-8"/>
-                                                                            @endif
-                                                                        </div>
+                                                                        class="col-xl-4 col-lg-12 col-md-12 col-12 d-flex flex-column justify-content-around">
                                                                         <span
-                                                                            class="m-0 p-0 main-color w-100 text-right">Дата последнего обновления: <b>@if(isset($date_update)){{explode(' ', $date_update->date_update)[0]}}@endif</b></span>
-                                                                        <div
-                                                                            class="font-weight-bold d-xl-block d-lg-none d-none">
-                                                                            Согласие:
+                                                                            class="m-0 p-0 main-color w-100">Обновлено: <b>@if(isset($date_update)){{explode(' ', $date_update->date_update)[0]}}@endif</b></span>
+                                                                        <div class="m-0 p-0 h6 d-lg-block d-none"
+                                                                             style="height: fit-content">
+                                                                            <div class="row">
+                                                                                @if (isset($studyForms))
+                                                                                    <div class="col-lg-3 w-50">
+                                                                                        <img class="d-block float-left"
+                                                                                             style="width: 100px; height: auto; border-right: 1px solid black"
+                                                                                             src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl={{$actual_link}}&choe=UTF-8"/>
+                                                                                    </div>
+                                                                                    <div class="col-lg-6 w-50 d-flex justify-content-center align-items-center">
+                                                                                    <span
+                                                                                        class="">Сохранить параметры запроса на мобильном устройстве</span>
+                                                                                    </div>
+                                                                                @endif
+                                                                            </div>
                                                                         </div>
-                                                                        <div class="d-xl-block d-lg-none d-none"><i
-                                                                                class="fa fa-check-circle "
-                                                                                style="color: rgba(0,128,0,0.51)"></i>
-                                                                            &mdash; Первое согласие на зачисление
-                                                                        </div>
-                                                                        <div class="d-xl-block d-lg-none d-none"><i
-                                                                                class="fa fa-check-circle"
-                                                                                style="color: rgba(0,128,0,0.51)"></i>
-                                                                            <i class="fa fa-check-circle"
-                                                                               style="color: rgba(0,128,0,0.51)"></i>
-                                                                            &mdash; Второе согласие на зачисление
-                                                                        </div>
-                                                                        <div
-                                                                            class="d-xl-none d-lg-flex d-md-flex d-sm-flex flex-column">
-                                                                            <span class="d-inline-block w-100"><b>Легенда:</b></span>
-                                                                            <span class="d-inline-block w-100"><b>О</b> - оригинал диплома</span>
-                                                                            <span class="d-inline-block w-100"><b>C</b> - согласие на зачисление:</span>
-                                                                            <ol class="d-inline-block w-100 mb-0 list-unstyled pl-2">
-                                                                                <li><span><i class="fa fa-check-circle "
-                                                                                             style="color: rgba(0,128,0,0.51)"></i>
-                                                                            - первое согласие</span>
-                                                                                </li>
-                                                                                <li><span><i class="fa fa-check-circle"
-                                                                                             style="color: rgba(0,128,0,0.51)"></i>
-                                                                            <i class="fa fa-check-circle"
-                                                                               style="color: rgba(0,128,0,0.51)"></i>
-                                                                            - второе согласие</span>
-                                                                                </li>
-                                                                            </ol>
-                                                                            <span
-                                                                                class="d-inline-block w-100"><b>БИД</b> - балл за индивидуальные достижения</span>
-                                                                            <span
-                                                                                class="d-inline-block w-100"><b>СКБ</b> - сумма конкурсных баллов</span>
+                                                                        {{--                                                                        <div class="row">--}}
+                                                                        {{--                                                                            <div--}}
+                                                                        {{--                                                                                class="font-weight-bold d-xl-block d-lg-none d-none col-12">--}}
+                                                                        {{--                                                                                Согласие:--}}
+                                                                        {{--                                                                            </div>--}}
+                                                                        {{--                                                                            <div class="d-xl-block d-lg-none d-none col-12"><i--}}
+                                                                        {{--                                                                                    class="fa fa-check-circle "--}}
+                                                                        {{--                                                                                    style="color: rgba(0,128,0,0.51)"></i>--}}
+                                                                        {{--                                                                                &mdash; Первое согласие на зачисление--}}
+                                                                        {{--                                                                            </div>--}}
+                                                                        {{--                                                                            <div class="d-xl-block d-lg-none d-none col-12"><i--}}
+                                                                        {{--                                                                                    class="fa fa-check-circle"--}}
+                                                                        {{--                                                                                    style="color: rgba(0,128,0,0.51)"></i>--}}
+                                                                        {{--                                                                                <i class="fa fa-check-circle"--}}
+                                                                        {{--                                                                                   style="color: rgba(0,128,0,0.51)"></i>--}}
+                                                                        {{--                                                                                &mdash; Второе согласие на зачисление--}}
+                                                                        {{--                                                                            </div>--}}
+                                                                        {{--                                                                        </div>--}}
+                                                                        {{--                                                                        <div--}}
+                                                                        {{--                                                                            class="d-xl-none d-lg-flex d-md-flex d-sm-flex flex-column">--}}
+                                                                        {{--                                                                            <span class="d-inline-block w-100"><b>Легенда:</b></span>--}}
+                                                                        {{--                                                                            <span class="d-inline-block w-100"><b>О</b> - оригинал диплома</span>--}}
+                                                                        {{--                                                                            <span class="d-inline-block w-100"><b>C</b> - согласие на зачисление:</span>--}}
+                                                                        {{--                                                                            <ol class="d-inline-block w-100 mb-0 list-unstyled pl-2">--}}
+                                                                        {{--                                                                                <li><span><i class="fa fa-check-circle "--}}
+                                                                        {{--                                                                                             style="color: rgba(0,128,0,0.51)"></i>--}}
+                                                                        {{--                                                                            - первое согласие</span>--}}
+                                                                        {{--                                                                                </li>--}}
+                                                                        {{--                                                                                <li><span><i class="fa fa-check-circle"--}}
+                                                                        {{--                                                                                             style="color: rgba(0,128,0,0.51)"></i>--}}
+                                                                        {{--                                                                            <i class="fa fa-check-circle"--}}
+                                                                        {{--                                                                               style="color: rgba(0,128,0,0.51)"></i>--}}
+                                                                        {{--                                                                            - второе согласие</span>--}}
+                                                                        {{--                                                                                </li>--}}
+                                                                        {{--                                                                            </ol>--}}
+                                                                        {{--                                                                            <span--}}
+                                                                        {{--                                                                                class="d-inline-block w-100"><b>БИД</b> - балл за индивидуальные достижения</span>--}}
+                                                                        {{--                                                                            <span--}}
+                                                                        {{--                                                                                class="d-inline-block w-100"><b>СКБ</b> - сумма конкурсных баллов</span>--}}
 
-                                                                        </div>
+                                                                        {{--                                                                        </div>--}}
                                                                     </div>
 
                                                                 </div>
