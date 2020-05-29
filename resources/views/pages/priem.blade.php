@@ -1,5 +1,7 @@
 @extends('pages.layout')
-
+@section('style')
+    <link rel="stylesheet" href="{{asset('css/vue2editor.css')}}">
+@endsection
 @section('page')
     <div class="container-fluid p-lg-5 p-xl-5 p-md-3 p-sm-3 p-3">
         @if (count($block->infoblock->news))
@@ -35,7 +37,7 @@
                         @foreach($block->sectionContent->sortBy('position') as $content)
                             @if ($content->type == 'text')
                                 <h5 class=" font-weight-bolder ml-0"><b>{{ $content->name }}</b></h5>
-                                <div>{!! nl2br($content->content) !!}</div>
+                                <div class="ql-editor">{!! nl2br($content->content) !!}</div>
                             @else
                                 <h5 class="ml-0 font-weight-bolder"><b>{{ $content->name }}</b></h5>
                                 <ul class="files-list">
@@ -59,7 +61,7 @@
                                                    target="_blank">{{ $file->name }}</a>
                                                 <br>
                                                 <span>{{round(stat($_SERVER['DOCUMENT_ROOT'] . '/storage/section-files/' . $file->file_name)[7] / 1024 /1024, 2)}} MB</span>
-{{--                                                <span class="badge">{{ $file->updated_at }}</span>--}}
+                                                {{--                                                <span class="badge">{{ $file->updated_at }}</span>--}}
                                             </div>
                                         </li>
                                     @endforeach
