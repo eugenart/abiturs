@@ -137,7 +137,7 @@
                                                                     data-target="#exampleModalScrollable"
                                                                     data-content="{{$item}}">
                                                                 {{$item->speciality->code}}<br>
-                                                                <b>{{$item->speciality->name}}</b>@if($item->specialization)<br>{{$item->specialization->name}}
+                                                                <b><u>{{$item->speciality->name}}</u></b>@if($item->specialization)<br>{{$item->specialization->name}}
 
                                                                 @endif
                                                             </button>
@@ -373,7 +373,7 @@
                                                                         data-target="#exampleModalScrollable"
                                                                         data-content="{{$item}}">
                                                                     {{$item->speciality->code}}<br>
-                                                                    <b>{{$item->speciality->name}}</b>@if($item->specialization)<br>{{$item->specialization->name}}
+                                                                    <b><u>{{$item->speciality->name}}</u></b>@if($item->specialization)<br>{{$item->specialization->name}}
                                                                     @endif
                                                                 </button>
                                                             </td>
@@ -679,7 +679,7 @@
 
                 $.each(v.freeseats, (key, seat) => {
                     //templateRecipient += "<tr><td>" + seat.admissionBasis.name + "</td><td>" + seat.value + "</td></tr>"
-                    templateRecipient += "<p class='mb-0 ml-lg-5 ml-xl-5 ml-md-5 ml-sm-0 ml-0 text-left'><span>" + seat.admissionBasis.name + " - </span><b>" + seat.value + "</b></p>"
+                    templateRecipient += "<p class='mb-0 ml-lg-5 ml-xl-5 ml-md-5 ml-sm-3 ml-lg-0 ml-md-2 ml-2 text-left'><span>" + seat.admissionBasis.name + " - </span><b>" + seat.value + "</b></p>"
                 });
 
                 //templateRecipient += "</tbody></table></div></div>";
@@ -687,9 +687,9 @@
                 templateRecipient += "<div class='col-12 col-lg-6 col-xl-6 col-md-6 col-sm-12 mb-2'>";
                 templateRecipient += "<h5 class='text-center mb-0'><strong>Cтоимость обучения:</strong></h5>"
                 $.each(v.prices, (key, price) => {
-                    templateRecipient += "<p class='mb-0 ml-lg-5 ml-xl-5 ml-md-5 ml-sm-0 ml-0 text-left'><span>" + price.info + " - </span><b>" + price.price + " ₽/год</b></p>"
+                    templateRecipient += "<p class='mb-0 ml-lg-5 ml-xl-5 ml-md-5 ml-sm-3 ml-lg-0 ml-md-2 ml-2 text-left'><span>" + price.info + " - </span><b>" + price.price + " ₽/год</b></p>"
                 })
-                templateRecipient += "</div></div><hr class='w-100 bg-white' />";
+                templateRecipient += "</div></div><div class='col-12'><hr class='w-100 bg-white' /></div>";
 
                 modal.find('#forms').append(templateRecipient)
             })
