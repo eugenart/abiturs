@@ -3,171 +3,56 @@
     <div id="square">
         <i class="fa fa-arrow-up"></i>
     </div>
-    <div class="container">
-        <div class="row mt-lg-5 mt-xl-5 mt-md-3 mt-sm-3 mt-3">
-            <div class="col-12">
-                <h3 class="text-center h1-mrsu main-color m-0">Магистратура</h3>
-            </div>
+    <div class="row mt-5">
+        <div class="col-12">
+            <h3 class="text-center h1-mrsu main-color m-0">Магистратура</h3>
         </div>
     </div>
-
+    {{--    @if(isset($studyForms))--}}
+    {{--        <div class="modal fade" id="QRCode" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"--}}
+    {{--             aria-hidden="true">--}}
+    {{--            <div class="modal-dialog" role="document">--}}
+    {{--                <div class="modal-content">--}}
+    {{--                    <div class="modal-header">--}}
+    {{--                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">--}}
+    {{--                            <span aria-hidden="true">&times;</span>--}}
+    {{--                        </button>--}}
+    {{--                    </div>--}}
+    {{--                    <div class="modal-body">--}}
+    {{--                        <img class="d-block m-auto"--}}
+    {{--                             src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl={{$actual_link}}&choe=UTF-8"/>--}}
+    {{--                    </div>--}}
+    {{--                </div>--}}
+    {{--            </div>--}}
+    {{--        </div>--}}
+    {{--    @endif--}}
     @if(isset($studyForms))
-        {{--  modal  --}}
-        <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog"
-             aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-            <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered mt-5" role="document">
-                <div class="modal-content">
-                    <button type="button" class="close-btn" data-dismiss="modal" aria-label="Close">
-                        <i class="fa fa-times fa-2x"></i>
-                    </button>
-                    <div class="row w-100 m-0 p-0">
-                        <div class="topline-stat col-12 d-flex align-items-center justify-content-center">
-                            <h5 class="m-0 text-white text-center">Скачать списки поступающих в формате .xls</h5>
-                        </div>
-                    </div>
-                    <div class="modal-header pb-0 pt-0 modal-header-ovz">
-                        <div class="row w-100 m-auto pt-3 pb-3">
-                            <div class="col-12">
-                                {{--                                                                <a href="{{ asset('storage/files-xls/' . $studyForms->file_xls . '.xls') }}">Скачать файл с данными запроса</a>--}}
-                                <ul class="files-list">
-                                    <li>
-                                        <div>
-                                            @if(file_exists($_SERVER['DOCUMENT_ROOT'] . '/storage/file-types/xls.png'))
-                                                <img width="60px" height="60px"
-                                                     src="{{ asset('storage/file-types/xls.png' )}}"
-                                                     alt="">
-                                            @else
-                                                <img width="60px" height="60px"
-                                                     src="{{ asset('storage/file-types/nofile.jpg' )}}"
-                                                     alt="">
-                                            @endif
-                                        </div>
-                                        <div class="file-link-div ">
-
-                                            <a href="{{ asset('storage/files-xls/' . $studyForms->file_xls . '.xls') }}"
-                                               target="_blank">
-                                                Файл с данными запроса.xls
-                                            </a>
-                                            <br>
-                                            <span>{{round(stat($_SERVER['DOCUMENT_ROOT'] . '/storage/files-xls/' . $studyForms->file_xls . '.xls')[7] / 1024 /1024, 2)}} MB</span>
-                                        </div>
-                                    </li>
-                                </ul>
-                                <h5 class="m-0 text-center">Полные списки - бакалавриат</h5>
-                                <ul class="files-list">
-                                    <li>
-                                        <div>
-                                            @if(file_exists($_SERVER['DOCUMENT_ROOT'] . '/storage/file-types/xls.png'))
-                                                <img width="60px" height="60px"
-                                                     src="{{ asset('storage/file-types/xls.png' )}}"
-                                                     alt="">
-                                            @else
-                                                <img width="60px" height="60px"
-                                                     src="{{ asset('storage/file-types/nofile.jpg' )}}"
-                                                     alt="">
-                                            @endif
-                                        </div>
-                                        <div class="file-link-div ">
-
-                                            <a href="{{ asset('storage/files-xls/' . $studyForms->file_xls . '.xls') }}"
-                                               target="_blank">
-                                                Файл с данными запроса.xls
-                                            </a>
-                                            <br>
-                                            <span>{{round(stat($_SERVER['DOCUMENT_ROOT'] . '/storage/files-xls/' . $studyForms->file_xls . '.xls')[7] / 1024 /1024, 2)}} MB</span>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="modal fade" id="legend" tabindex="-1" role="dialog"
-             aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered mt-5" role="document">
-                <div class="modal-content">
-                    <button type="button" class="close-btn" data-dismiss="modal" aria-label="Close">
-                        <i class="fa fa-times fa-2x"></i>
-                    </button>
-                    <div class="row w-100 m-0 p-0">
-                        <div class="topline-stat col-12 d-flex align-items-center justify-content-center">
-                            <h5 class="m-0 text-white text-center">Легенда</h5>
-                        </div>
-                    </div>
-                    <div class="modal-header pb-0 pt-0 modal-header-ovz">
-                        <div class="row w-100 m-auto pt-3 pb-3">
-                            <div class="col-12">
-                                <div class="row">
-                                    <div
-                                        class="font-weight-bold d-xl-block d-lg-none d-none col-12">
-                                        Согласие:
-                                    </div>
-                                    <div class="d-xl-block d-lg-none d-none col-12"><i
-                                            class="fa fa-check-circle "
-                                            style="color: rgba(0,128,0,0.51)"></i>
-                                        &mdash; Первое согласие на зачисление
-                                    </div>
-                                    <div class="d-xl-block d-lg-none d-none col-12"><i
-                                            class="fa fa-check-circle"
-                                            style="color: rgba(0,128,0,0.51)"></i>
-                                        <i class="fa fa-check-circle"
-                                           style="color: rgba(0,128,0,0.51)"></i>
-                                        &mdash; Второе согласие на зачисление
-                                    </div>
-                                </div>
-                                <div
-                                    class="d-xl-none d-lg-flex d-md-flex d-sm-flex flex-column">
-                                    <span class="d-inline-block w-100"><b>О</b> - оригинал диплома</span>
-                                    <span class="d-inline-block w-100"><b>C</b> - согласие на зачисление:</span>
-                                    <ol class="d-inline-block w-100 mb-0 list-unstyled pl-2">
-                                        <li><span><i class="fa fa-check-circle "
-                                                     style="color: rgba(0,128,0,0.51)"></i>
-                                                                                                            - первое согласие</span>
-                                        </li>
-                                        <li><span><i class="fa fa-check-circle"
-                                                     style="color: rgba(0,128,0,0.51)"></i>
-                                                                                                            <i class="fa fa-check-circle"
-                                                                                                               style="color: rgba(0,128,0,0.51)"></i>
-                                                                                                            - второе согласие</span>
-                                        </li>
-                                    </ol>
-                                    <span
-                                        class="d-xl-inline-block w-100 d-sm-inline d-none"><b>БИД</b> - балл за индивидуальные достижения</span>
-                                    <span
-                                        class="d-inline-block w-100"><b>СКБ</b> - сумма конкурсных баллов</span>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        {{--  end modal  --}}
-
         <div class="container">
             <div class="row m-3">
                 <div class="col-12 d-flex justify-content-between align-items-center">
                     {{--                    <div class="m-0 p-0 h6 d-lg-block d-none"><a href="" class="underline-label main-color" data-toggle="modal"--}}
                     {{--                                               data-target="#QRCode">Получить--}}
                     {{--                            QR-код запроса</a>--}}
+                    <div class="m-0 p-0 h6 d-lg-block d-none">
+                        @if (isset($studyForms))
+                            <img class="d-block m-auto" style="width: 100px; height: auto"
+                                 src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl={{$actual_link}}&choe=UTF-8"/>
+                        @endif
+                    </div>
+                    <span
+                        class="m-0 p-0 main-color w-100 text-right">Дата последнего обновления: <b>@if(isset($date_update)){{$date_update->date_update}}@endif</b></span>
                 </div>
             </div>
         </div>
     @endif
-    <div class="container pt-0 padding-0 mt-lg-4 mt-xl-4 mt-md-3 mt-sm-3 mt-3">
-        <form class="ovz-form" action="{{ route('stat.index') }}" id="sendFormWithFacultets" method="get">
+    <div class="container pt-0 padding-0 mt-4">
+        <form class="ovz-form" action="{{ route('statmaster.index') }}" id="sendFormWithFacultets" method="get">
             <div class="row">
-                <div class="col-12 main-ver-div">
+                <div class="col-12">
                     <div class="row ovz-row">
-                        <select
-                            {{--                            style="font-size: 16px !important;"--}}
-                            class="selectpicker form-control-sm col-lg-3 col-xl-3 col-md-3 col-12" multiple
-                            title="Факультет / Институт" name="faculties[]" id="allfaculties">
+                        <select style="font-size: 16px !important;"
+                                class="selectpicker form-control-sm col-lg-3 col-xl-3 col-md-3 col-12" multiple
+                                title="Факультет / Институт" name="faculties[]" id="allfaculties">
                         </select>
                         <select class="selectpicker form-control-sm col-lg-3 col-xl-3 col-md-3 col-12"
                                 data-live-search="true" multiple
@@ -185,8 +70,7 @@
                         </select>
                         <div
                             class="col-lg-3 col-xl-3 col-md-3 col-12 mt-xl-0 mt-md-1 mt-1 d-flex justify-content-center align-items-center">
-                            <button class="mrsu-bg-button-ovz w-100 btn btn-warning btn-sm" type="button"
-                                    id="clearSelects">Отменить
+                            <button class=" mrsu-bg-button-ovz w-100 btn btn-warning btn-sm" type="button" id="clearSelects">Отменить
                                 выбор
                             </button>
                         </div>
@@ -199,8 +83,8 @@
                                    aria-label="Search" name="fio">
                         </div>
                         <div class="col-md-2 col-3">
-                            <button class="btn btn-sm btn-primary d-block w-100 mrsu-bg-button ovz-fa" type="submit">
-                                <i class="fa fa-search"></i>
+                            <button class="btn btn-sm btn-primary d-block w-100 mrsu-bg-button ovz-fa" type="submit"><i
+                                    class="fa fa-search"></i>
                                 <span>Найти</span>
                             </button>
                         </div>
@@ -208,25 +92,6 @@
                 </div>
             </div>
         </form>
-    </div>
-    <div class="container">
-        <div class="row mt-4">
-            <div class="col-12">
-                @if(isset($studyForms))
-                    <span
-                        class="m-0 p-0 main-color d-lg-none d-md-inline w-100">Обновлено: <b>@if(isset($date_update)){{explode(' ', $date_update->date_update)[0]}}@endif</b></span>
-
-                    <button style="white-space: normal;" type="button"
-                            class="files-stat spec-ovz-link btn btn-link text-left d-lg-none d-md-block w-100 p-0 ovz-text"
-                            data-toggle="modal"
-                            data-target="#exampleModalScrollable"
-                        {{--                data-content="{{$item}}"--}}
-                    >
-                        <b><u>Скачать списки</u></b>
-                    </button>
-                @endif
-            </div>
-        </div>
     </div>
     <div class="container-fluid pt-0 padding-0 mb-5 mt-xl-3">
         <div class="row">
@@ -247,31 +112,9 @@
                                                         @if(isset($faculty->specialities))
                                                             @foreach($faculty->specialities as $speciality)
                                                                 <div class="row mt-1 justify-content-start">
-                                                                    <div class="col-xl-8 col-lg-8 col-md-12 col-12">
+                                                                    <div class="col-xl-8 col-lg-12 col-md-12 col-12">
                                                                         <div
                                                                             class="exam-info-outer w-100 d-lg-flex flex-lg-row d-sm-flex flex-sm-column d-flex flex-column">
-                                                                            <div
-                                                                                class="exam-info-bottom col-xl-6 col-lg-6 col-12 float-left p-0 d-flex align-items-stretch">
-                                                                                <div class="examInfo-bottom pl-4">
-                                                                                    <div
-                                                                                        class="row d-flex align-items-center justify-content-center h-100">
-                                                                                        <div class="col-12">
-                                                                                            <p class="m-0 text-uppercase font-weight-bold">{{$faculty->name}}</p>
-                                                                                            <p class="m-0 font-weight-bold">{{$speciality->name}}</p>
-                                                                                            <p class="m-0">Количество
-                                                                                                мест: <span
-                                                                                                    class="font-weight-bold">{{$speciality->freeSeatsNumber}}</span>
-                                                                                            </p>
-                                                                                            <p class="m-0">
-                                                                                                Конкурс: <span
-                                                                                                    class="font-weight-bold">{{$speciality->originalsCount}}</span>
-                                                                                                чел.
-                                                                                                / место
-                                                                                            </p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
                                                                             <div
                                                                                 class="col-xl-6 col-lg-6 col-12 float-left p-0">
                                                                                 <div class="examInfo p-3">
@@ -315,43 +158,71 @@
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
+                                                                            <div
+                                                                                class="exam-info-bottom col-xl-6 col-lg-6 col-12 float-left p-0 d-flex align-items-stretch">
+                                                                                <div class="examInfo-bottom pl-4">
+                                                                                    <div
+                                                                                        class="row d-flex align-items-center justify-content-center h-100">
+                                                                                        <div class="col-12">
+                                                                                            <p class="m-0 text-uppercase font-weight-bold">{{$faculty->name}}</p>
+                                                                                            <p class="m-0 font-weight-bold">{{$speciality->name}}</p>
+                                                                                            <p class="m-0">Кол-во
+                                                                                                мест: <span
+                                                                                                    class="font-weight-bold">{{$speciality->freeSeatsNumber}}</span>
+                                                                                            </p>
+                                                                                            <p class="m-0">
+                                                                                                Конкурс: <span
+                                                                                                    class="font-weight-bold">{{$speciality->originalsCount}}</span>
+                                                                                                чел.
+                                                                                                / место
+                                                                                            </p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                     <div
-                                                                        class="col-xl-4 col-lg-4 col-md-12 col-12 d-lg-flex d-md-none d-none flex-column justify-content-around">
-                                                                        @if(isset($studyForms))
-                                                                            <span
-                                                                                class="m-0 p-0 main-color d-lg-inline d-md-none w-100">Обновлено: <b>@if(isset($date_update)){{explode(' ', $date_update->date_update)[0]}}@endif</b></span>
-
-                                                                            <button style="white-space: normal;"
-                                                                                    type="button"
-                                                                                    class="files-stat spec-ovz-link btn btn-link text-left d-lg-block d-md-none w-100 p-0 ovz-text"
-                                                                                    data-toggle="modal"
-                                                                                    data-target="#exampleModalScrollable"
-                                                                                {{--                data-content="{{$item}}"--}}
-                                                                            >
-                                                                                <b><u>Скачать списки</u></b>
-                                                                            </button>
-                                                                        @endif
+                                                                        class="col-xl-4 col-lg-12 col-md-12 col-12 mb-lg-4 mb-lg-2">
                                                                         <div
-                                                                            class="m-0 p-0 h6 d-lg-block d-md-none d-sm-none d-none"
-                                                                            style="height: fit-content">
-                                                                            <div class="row">
-                                                                                @if (isset($studyForms))
-                                                                                    <div class="col-lg-4 pr-0 w-50">
-                                                                                        <img class="d-block float-left"
-                                                                                             style="width: 100px; height: auto;"
-                                                                                             src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl={{$actual_link}}&choe=UTF-8"/>
-                                                                                    </div>
-                                                                                    <div
-                                                                                        class="col-lg-8 pl-0 w-50 d-flex justify-content-center align-items-center">
-                                                                                    <span
-                                                                                        class="">Сохранить параметры запроса на мобильном устройстве</span>
-                                                                                    </div>
-                                                                                @endif
-                                                                            </div>
+                                                                            class="font-weight-bold d-xl-block d-lg-none d-none">
+                                                                            Согласие:
                                                                         </div>
+                                                                        <div class="d-xl-block d-lg-none d-none"><i
+                                                                                class="fa fa-check-circle "
+                                                                                style="color: rgba(0,128,0,0.51)"></i>
+                                                                            &mdash; Первое согласие на зачисление
+                                                                        </div>
+                                                                        <div class="d-xl-block d-lg-none d-none"><i
+                                                                                class="fa fa-check-circle"
+                                                                                style="color: rgba(0,128,0,0.51)"></i>
+                                                                            <i class="fa fa-check-circle"
+                                                                               style="color: rgba(0,128,0,0.51)"></i>
+                                                                            &mdash; Второе согласие на зачисление
+                                                                        </div>
+                                                                        <div
+                                                                            class="d-xl-none d-lg-flex d-md-flex d-sm-flex flex-column">
+                                                                            <span class="d-inline-block w-100"><b>Легенда:</b></span>
+                                                                            <span class="d-inline-block w-100"><b>О</b> - оригинал диплома</span>
+                                                                            <span class="d-inline-block w-100"><b>C</b> - согласие на зачисление:</span>
+                                                                            <ol class="d-inline-block w-100 mb-0 list-unstyled pl-2">
+                                                                                <li><span><i class="fa fa-check-circle "
+                                                                                             style="color: rgba(0,128,0,0.51)"></i>
+                                                                            - первое согласие</span>
+                                                                                </li>
+                                                                                <li><span><i class="fa fa-check-circle"
+                                                                                             style="color: rgba(0,128,0,0.51)"></i>
+                                                                            <i class="fa fa-check-circle"
+                                                                               style="color: rgba(0,128,0,0.51)"></i>
+                                                                            - второе согласие</span>
+                                                                                </li>
+                                                                            </ol>
+                                                                            <span
+                                                                                class="d-inline-block w-100"><b>БИД</b> - балл за индивидуальные достижения</span>
+                                                                            <span
+                                                                                class="d-inline-block w-100"><b>СКБ</b> - сумма конкурсных баллов</span>
 
+                                                                        </div>
                                                                     </div>
 
                                                                 </div>
@@ -371,20 +242,9 @@
                                                                     </div>
                                                                 @endif
                                                                 @if(isset($speciality->abiturs))
-                                                                    <div class="row p-0 m-0">
-                                                                        <div class="col-12 d-flex justify-content-end">
-                                                                            <button data-toggle="modal"
-                                                                                    data-target="#legend"
-                                                                                    class="btn btn-sm btn-link p-0"
-                                                                                    style="color: #2366a5; font-size: 14px !important; text-decoration: underline">
-                                                                                Легенда
-                                                                            </button>
-                                                                        </div>
-                                                                    </div>
                                                                     <table
-                                                                        class="table table-bordered table-ovz table-sm base-exams-table mt-0">
-                                                                        <thead
-                                                                            style="background-color: #e9eff6; color: #2366a5">
+                                                                        class="table table-bordered  table-ovz table-sm base-exams-table mt-xl-2 mt-0">
+                                                                        <thead style="background-color: #e9eff6">
                                                                         <tr style="vertical-align: center">
                                                                             <th rowspan="2" class="text-center">№</th>
                                                                             <th rowspan="2" class="text-center">
@@ -506,7 +366,7 @@
                                                                                     </td>
                                                                                 </tr>
                                                                                 @if($abitur->yellowline)
-                                                                                    <tr style="background-color: yellow;">
+                                                                                    <tr  style="background-color: yellow;">
                                                                                         <td colspan="100%"></td>
                                                                                     </tr>
                                                                                 @endif
@@ -599,7 +459,6 @@
         }
 
         function fillSpecialitiesWithCheck(faculties, facultiesIds = []) {
-            console.log(facultiesIds);
             $.each(faculties, (k, faculty) => {
                 if (facultiesIds.length > 0) {
                     if ($.inArray(faculty.id, facultiesIds) !== -1) {
@@ -655,13 +514,4 @@
             $('#allfaculties, #specialities').selectpicker('deselectAll');
         })
     </script>
-
-    <script>
-        $('#exampleModalScrollable').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget) // Button that triggered the modal
-            var recipient = button.data('content') // Extract info from data-* attributes
-
-        })
-    </script>
-
 @endsection
