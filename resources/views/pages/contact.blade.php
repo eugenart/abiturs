@@ -7,7 +7,7 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-12 d-flex align-items-center flex-column contact-div pt-0">
                         <h3 class="text-center main-color h1-mrsu">Контакты</h3>
-                        <div class="mb-4 mt-3">
+                        <div class="mt-lg-4 mt-xl-4 mt-md-3 mt-sm-3 mt-3">
                             <h3 class=" mb-0 text-center main-color contact-main-tel text-decoration-none"><a
                                     href="tel:8 800 222 13 77">8 800 222 13 77</a></h3>
                             <div class="text-center">Бесплатная горячая линия для всех регионов России</div>
