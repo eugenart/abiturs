@@ -48,8 +48,8 @@
 </head>
 <body>
 <div class="container cont-w-100" style="z-index: 500 !important;">
-    <div class="row header p-3">
-        <div class="col-6 p-0">
+    <div class="row header p-2">
+        <div class="col-6 pl-2">
             <a href="/"><img src="{{asset('storage/images/iconka_mrsu_white.png')}}"
                              class="mrsu-logo-img d-lg-none d-md-block" alt=""></a>
             <a href="/"><img src="{{asset('storage/images/logo_mrsu.png')}}"
