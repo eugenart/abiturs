@@ -227,7 +227,7 @@
                                                         @if(isset($faculty->specialities))
                                                             @foreach($faculty->specialities as $speciality)
                                                                 <div class="row mt-1 justify-content-start">
-                                                                    <div class="col-xl-8 col-lg-12 col-md-12 col-12">
+                                                                    <div class="col-xl-8 col-lg-8 col-md-12 col-12">
                                                                         <div
                                                                             class="exam-info-outer w-100 d-lg-flex flex-lg-row d-sm-flex flex-sm-column d-flex flex-column">
                                                                             <div
@@ -298,7 +298,7 @@
                                                                         </div>
                                                                     </div>
                                                                     <div
-                                                                        class="col-xl-4 col-lg-12 col-md-12 col-12 d-flex flex-column justify-content-around">
+                                                                        class="col-xl-4 col-lg-4 col-md-12 col-12 d-flex flex-column justify-content-around">
                                                                         <span
                                                                             class="m-0 p-0 main-color w-100">Обновлено: <b>@if(isset($date_update)){{explode(' ', $date_update->date_update)[0]}}@endif</b></span>
                                                                         @if(isset($studyForms))
@@ -311,16 +311,16 @@
                                                                                 <b><u>Скачать списки</u></b>
                                                                             </button>
                                                                         @endif
-                                                                        <div class="m-0 p-0 h6 d-lg-block d-none"
+                                                                        <div class="m-0 p-0 h6 d-lg-block d-md-none d-sm-none d-none"
                                                                              style="height: fit-content">
                                                                             <div class="row">
                                                                                 @if (isset($studyForms))
-                                                                                    <div class="col-lg-3 w-50">
+                                                                                    <div class="col-lg-4 w-50">
                                                                                         <img class="d-block float-left"
                                                                                              style="width: 100px; height: auto; border-right: 1px solid black"
                                                                                              src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl={{$actual_link}}&choe=UTF-8"/>
                                                                                     </div>
-                                                                                    <div class="col-lg-6 w-50 d-flex justify-content-center align-items-center">
+                                                                                    <div class="col-lg-8 w-50 d-flex justify-content-center align-items-center">
                                                                                     <span
                                                                                         class="">Сохранить параметры запроса на мобильном устройстве</span>
                                                                                     </div>
