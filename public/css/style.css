@@ -44,7 +44,7 @@ body {
 
 .mrsu-logo-img {
     /*width: 342px;*/
-    height: 54px;
+    height: 45px;
 }
 
 .mrsu-logo-img-ovz {
@@ -674,7 +674,7 @@ marquee {
 
     .mrsu-logo-img {
         width: auto;
-        height: 36px;
+        height: 45px;
     }
 
     .cont-w-100 {
@@ -736,11 +736,11 @@ marquee {
 
     .mrsu-logo-img {
         width: auto;
-        height: 36px;
+        height: 45px;
     }
 
     .container-fluid {
-        padding: 1.5rem !important;
+        /*padding: 1.5rem !important;*/
     }
 
     .course-name {
