@@ -92,14 +92,6 @@
                     {{--                    <div class="m-0 p-0 h6 d-lg-block d-none"><a href="" class="underline-label main-color" data-toggle="modal"--}}
                     {{--                                               data-target="#QRCode">Получить--}}
                     {{--                            QR-код запроса</a>--}}
-                    <div class="m-0 p-0 h6 d-lg-block d-none">
-                        @if (isset($studyForms))
-                            <img class="d-block m-auto" style="width: 100px; height: auto"
-                                 src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl={{$actual_link}}&choe=UTF-8"/>
-                        @endif
-                    </div>
-                    <span
-                        class="m-0 p-0 main-color w-100 text-right">Дата последнего обновления: <b>@if(isset($date_update)){{$date_update->date_update}}@endif</b></span>
                 </div>
             </div>
         </div>
@@ -187,6 +179,28 @@
                                                                         <div
                                                                             class="exam-info-outer w-100 d-lg-flex flex-lg-row d-sm-flex flex-sm-column d-flex flex-column">
                                                                             <div
+                                                                                class="exam-info-bottom col-xl-6 col-lg-6 col-12 float-left p-0 d-flex align-items-stretch">
+                                                                                <div class="examInfo-bottom pl-4">
+                                                                                    <div
+                                                                                        class="row d-flex align-items-center justify-content-center h-100">
+                                                                                        <div class="col-12">
+                                                                                            <p class="m-0 text-uppercase font-weight-bold">{{$faculty->name}}</p>
+                                                                                            <p class="m-0 font-weight-bold">{{$speciality->name}}</p>
+                                                                                            <p class="m-0">Кол-во
+                                                                                                мест: <span
+                                                                                                    class="font-weight-bold">{{$speciality->freeSeatsNumber}}</span>
+                                                                                            </p>
+                                                                                            <p class="m-0">
+                                                                                                Конкурс: <span
+                                                                                                    class="font-weight-bold">{{$speciality->originalsCount}}</span>
+                                                                                                чел.
+                                                                                                / место
+                                                                                            </p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div
                                                                                 class="col-xl-6 col-lg-6 col-12 float-left p-0">
                                                                                 <div class="examInfo p-3">
                                                                                     <div class="row">
@@ -229,32 +243,19 @@
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-                                                                            <div
-                                                                                class="exam-info-bottom col-xl-6 col-lg-6 col-12 float-left p-0 d-flex align-items-stretch">
-                                                                                <div class="examInfo-bottom pl-4">
-                                                                                    <div
-                                                                                        class="row d-flex align-items-center justify-content-center h-100">
-                                                                                        <div class="col-12">
-                                                                                            <p class="m-0 text-uppercase font-weight-bold">{{$faculty->name}}</p>
-                                                                                            <p class="m-0 font-weight-bold">{{$speciality->name}}</p>
-                                                                                            <p class="m-0">Кол-во
-                                                                                                мест: <span
-                                                                                                    class="font-weight-bold">{{$speciality->freeSeatsNumber}}</span>
-                                                                                            </p>
-                                                                                            <p class="m-0">
-                                                                                                Конкурс: <span
-                                                                                                    class="font-weight-bold">{{$speciality->originalsCount}}</span>
-                                                                                                чел.
-                                                                                                / место
-                                                                                            </p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                     <div
                                                                         class="col-xl-4 col-lg-12 col-md-12 col-12 mb-lg-4 mb-lg-2">
+                                                                        <div class="m-0 p-0 h6 d-lg-block d-none">
+                                                                            @if (isset($studyForms))
+                                                                                <img class="d-block"
+                                                                                     style="width: 100px; height: auto"
+                                                                                     src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl={{$actual_link}}&choe=UTF-8"/>
+                                                                            @endif
+                                                                        </div>
+                                                                        <span
+                                                                            class="m-0 p-0 main-color w-100 text-right">Дата последнего обновления: <b>@if(isset($date_update)){{$date_update->date_update}}@endif</b></span>
                                                                         <div
                                                                             class="font-weight-bold d-xl-block d-lg-none d-none">
                                                                             Согласие:
@@ -315,7 +316,8 @@
                                                                 @if(isset($speciality->abiturs))
                                                                     <table
                                                                         class="table table-bordered table-ovz table-sm base-exams-table mt-xl-2 mt-0">
-                                                                        <thead style="background-color: #e9eff6">
+                                                                        <thead
+                                                                            style="background-color: #e9eff6; color: #2366a5">
                                                                         <tr style="vertical-align: center">
                                                                             <th rowspan="2" class="text-center">№</th>
                                                                             <th rowspan="2" class="text-center">
