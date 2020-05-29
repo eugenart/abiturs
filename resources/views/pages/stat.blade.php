@@ -255,7 +255,7 @@
                                                                             @endif
                                                                         </div>
                                                                         <span
-                                                                            class="m-0 p-0 main-color w-100 text-right">Дата последнего обновления: <b>@if(isset($date_update)){{$date_update->date_update}}@endif</b></span>
+                                                                            class="m-0 p-0 main-color w-100 text-right">Дата последнего обновления: <b>@if(isset($date_update)){{str_split($date_update->date_update)[0]}}@endif</b></span>
                                                                         <div
                                                                             class="font-weight-bold d-xl-block d-lg-none d-none">
                                                                             Согласие:
