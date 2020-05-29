@@ -59,15 +59,15 @@
             <div class="col-12 p-0">
                 <ul class="nav nav-pills mb-3 d-flex justify-content-center" id="pills-tab" role="tablist">
                     <li class="nav-item swith-priem">
-                        <a class="nav-link border-priem active text-uppercase btn btn-lg" id="pills-home-tab"
-                           data-toggle="pill" href="#pills-home" role="tab"
-                           aria-controls="pills-home" aria-selected="true">ПО ПРЕДМЕТАМ ЕГЭ</a>
-                    </li>
-                    <li class="nav-item swith-priem">
-                        <a class="nav-link border-priem text-uppercase btn btn-lg" id="pills-profile-tab"
+                        <a class="nav-link border-priem active text-uppercase btn btn-lg" id="pills-profile-tab"
                            data-toggle="pill"
                            href="#pills-profile" role="tab"
-                           aria-controls="pills-profile" aria-selected="false">ПО ФАКУЛЬТЕТАМ И ИНСТИТУТАМ</a>
+                           aria-controls="pills-profile" aria-selected="true">ПО ФАКУЛЬТЕТАМ И ИНСТИТУТАМ</a>
+                    </li>
+                    <li class="nav-item swith-priem">
+                        <a class="nav-link border-priem text-uppercase btn btn-lg" id="pills-home-tab"
+                           data-toggle="pill" href="#pills-home" role="tab"
+                           aria-controls="pills-home" aria-selected="false">ПО ПРЕДМЕТАМ ЕГЭ</a>
                     </li>
                 </ul>
             </div>
@@ -75,7 +75,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="tab-content" id="pills-tabContent">
-                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
+                    <div class="tab-pane fade " id="pills-home" role="tabpanel"
                          aria-labelledby="pills-home-tab">
                         <div class="row mt-2 d-flex flex-xl-row flex-column-reverse flex-sm-column-reverse">
                             <div class="col-12 col-xl-9 col-sm-12 pl-0 pr-0">
@@ -308,7 +308,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                    <div class="tab-pane fade show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                         <div class="row mt-2 d-flex flex-xl-row flex-column-reverse flex-sm-column-reverse">
                             <div class="col-12 col-xl-9 col-sm-12">
                                 <div class="row">
@@ -553,6 +553,11 @@
 @endsection
 @section('js')
     <script>
+
+        $(document).ready(() =>{
+            $('.form-check-input').prop('checked', false);
+        })
+
         var chosenExams = [];
         var chosenFaculties = [];
 
