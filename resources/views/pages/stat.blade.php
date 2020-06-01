@@ -45,7 +45,7 @@
 
                                             <a href="{{ asset('storage/files-xls/' . $studyForms->file_xls . '.xls') }}"
                                                target="_blank">
-                                                Файл с данными запроса.xls
+                                                Файл с данными запроса
                                             </a>
                                             <br>
                                             <span>{{round(stat($_SERVER['DOCUMENT_ROOT'] . '/storage/files-xls/' . $studyForms->file_xls . '.xls')[7] / 1024 /1024, 2)}} MB</span>
@@ -73,7 +73,7 @@
 
                                                     <a href="{{ asset('storage/files-xls-stat/bach/' . $file_xls_stat) }}"
                                                        target="_blank">
-                                                        {{$file_xls_stat}}
+                                                        {{substr($file_xls_stat, 0, -4)}}
                                                     </a>
                                                     <br>
                                                     <span>{{round(stat($_SERVER['DOCUMENT_ROOT'] . '/storage/files-xls-stat/bach/' . $file_xls_stat)[7] / 1024 /1024, 2)}} MB</span>
