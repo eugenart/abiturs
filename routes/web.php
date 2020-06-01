@@ -11,6 +11,8 @@
 |
 */
 
+use App\Mail\WelcomeEmail;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 Auth::routes(['register' => false]);
@@ -19,6 +21,11 @@ Route::middleware('auth')->group(function () {
 // Registration Routes...
     Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
     Route::post('/register', 'Auth\RegisterController@register');
+});
+
+Route::get('/email', function () {
+    Mail::to('artashkinep@mrsu.ru')->send(new WelcomeEmail());
+    return new WelcomeEmail();
 });
 
 Route::prefix('admin')->middleware('auth')->group(function () {
