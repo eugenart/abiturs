@@ -418,7 +418,8 @@
                 payload.id = id
                 payload.iId = iId
                 payload.sId = sId
-                this.$store.dispatch('DELETE_SECTION', payload)
+                let isDelete = confirm("Вы действительно хотите удалить выбранный подраздел? Данное действие нельзя отменить");
+                isDelete ? this.$store.dispatch('DELETE_SECTION', payload) : null;
             },
 
             clearCurrentSection() {

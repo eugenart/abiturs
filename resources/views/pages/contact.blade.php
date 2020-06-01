@@ -6,9 +6,9 @@
             <div class="col-12 mt-lg-5 mt-xl-5 mt-md-3 mt-sm-3 mt-3 contact-us-div">
                 <div class="row">
                     <div class="col-lg-6 col-md-12 d-flex align-items-center flex-column contact-div pt-0">
-                        <h3 class="text-center main-color h1-mrsu">Контакты</h3>
+                        <h3 class="text-center main-color h1-mrsu mb-0">Контакты</h3>
                         <div class="mt-lg-4 mt-xl-4 mt-md-3 mt-sm-3 mt-3">
-                            <h3 class=" mb-0 text-center main-color contact-main-tel text-decoration-none"><a
+                            <h3 class="mb-0 text-center main-color contact-main-tel text-decoration-none"><a
                                     href="tel:8 800 222 13 77">8 800 222 13 77</a></h3>
                             <div class="text-center">Бесплатная горячая линия для всех регионов России</div>
                         </div>
@@ -22,7 +22,7 @@
                                 <td>г. Саранск, ул. Полежаева, д. 44/3. <br> Учебный корпус № 28</td>
                             </tr>
                             <tr>
-                                <th scope="row" rowspan="3" class="text-right"><span
+                                <th scope="row" rowspan="3" class="text-right"  style="border-bottom: 1px solid #dee2e6"><span
                                         class="main-color font-weight-bold">Режим работы:</span></th>
                                 <td colspan="2">Понедельник &mdash; пятница с 9.00 до 17.00 <br/> Перерыв с 12.00 до
                                     13.00
@@ -32,7 +32,7 @@
                                 {{--                            <th scope="row"></th>--}}
                                 <td colspan="2">Суббота с 9.00 до 13.00</td>
                             </tr>
-                            <tr>
+                            <tr style="border-bottom: 1px solid #dee2e6">
                                 {{--                            <th scope="row"></th>--}}
                                 <td colspan="2">Воскресенье &mdash; выходной</td>
                             </tr>

@@ -46,14 +46,14 @@
     <div class="container-fluid pr-5 pl-5 pb-5 pt-0">
         <div class="row mt-lg-5 mt-xl-5 mt-md-3 mt-sm-3 mt-3">
             <div class="col-12 m-auto">
-                <h3 class="text-center h1-mrsu main-color">Подбор образовательных программ</h3>
+                <h3 class="text-center h1-mrsu main-color m-0">Подбор образовательных программ</h3>
 {{--                <h5 class="text-center h5-mrsu">Выберите направление подготовки из списка --}}
 {{--                </h5>--}}
             </div>
         </div>
 
 
-        <div class="row mt-4">
+        <div class="row mt-lg-4 mt-xl-4 mt-md-3 mt-sm-3 mt-3">
             <div class="col-12 p-0">
                 <ul class="nav nav-pills mb-3 d-flex justify-content-center" id="pills-tab" role="tablist">
                     <li class="nav-item swith-priem">

@@ -436,7 +436,8 @@
             },
 
             removeInfoblock(id, index) {
-                this.$store.dispatch('DELETE_BLOCK', id, index)
+                let isDelete = confirm("Вы действительно хотите удалить выбранный раздел? Данное действие нельзя отменить");
+                isDelete ? this.$store.dispatch('DELETE_BLOCK', id, index) : null
             },
 
             clearCurrentInfoblock() {
