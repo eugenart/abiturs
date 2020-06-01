@@ -16,14 +16,6 @@
                 </div>
             </div>
         @endif
-        {{--        <div class="row mt-4">--}}
-        {{--            <div class="col-12">--}}
-        {{--                <a href="/" class="main-color">Главная</a> / <a href="{{ $block->infoblock->url }}"--}}
-        {{--                                                                class="text-capitalize main-color">{{ $block->infoblock->name }}</a>--}}
-        {{--                / <a--}}
-        {{--                    href="{{ $block->url }}" class="main-color">{{ $block->name }}</a>--}}
-        {{--            </div>--}}
-        {{--        </div>--}}
         <div class="row mt-2 section-content-block">
             <div class="col-xl-9 col-lg-8 col-md-12 col-sm-12 col-12">
                 <div class="row">
@@ -78,9 +70,13 @@
                         <b>{{ $block->infoblock->name }}</b></p>
                     <ul class="list-unstyled p-3 list-sections main-color">
                         @foreach($block->infoblock->sections->where('activity', true) as $section)
-                            <li class="mrsu-uppertext link-section"><a class="text-white"
-                                                                       href="{{ $section->url }}">{{ $section->name }}</a>
-                            </li>
+                            @if((($date_now > $section->activityFrom || $date_now == $section->activityFrom) &&
+                            ($date_now < $section->activityTo || $date_now == $section->activityTo))
+                            || (is_null($section->activityFrom) && is_null($section->activityTo)))
+                                <li class="mrsu-uppertext link-section"><a class="text-white"
+                                                                           href="{{ $section->url }}">{{ $section->name }}</a>
+                                </li>
+                            @endif
                         @endforeach
                     </ul>
                 </div>
