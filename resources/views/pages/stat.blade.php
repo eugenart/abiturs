@@ -12,8 +12,6 @@
     </div>
 
     @if(isset($studyForms))
-        {{--  modal  --}}
-
         <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog"
              aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
             <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered mt-5" role="document">
@@ -23,7 +21,7 @@
                     </button>
                     <div class="row w-100 m-0 p-0">
                         <div class="topline-stat col-12 d-flex align-items-center justify-content-center">
-                            <h5 class="m-0 text-white text-center">Списки в формате xls</h5>
+                            <h5 class="m-0 text-white text-center">Списки в формате .xls</h5>
                         </div>
                     </div>
                     <div class="modal-header pb-0 pt-0 modal-header-ovz">
@@ -54,7 +52,7 @@
                                         </div>
                                     </li>
                                 </ul>
-                                <h5 class="m-0 text-center">Полные списки - бакалавриат</h5>
+                                <h5 class="m-0 text-center">Полные списки поступающих. Бакалавриат и специалитет</h5>
                                 <ul class="files-list">
 
                                     @if(!empty($files_xls))
@@ -162,16 +160,6 @@
         </div>
 
         {{--  end modal  --}}
-
-        <div class="container">
-            <div class="row m-3">
-                <div class="col-12 d-flex justify-content-between align-items-center">
-                    {{--                    <div class="m-0 p-0 h6 d-lg-block d-none"><a href="" class="underline-label main-color" data-toggle="modal"--}}
-                    {{--                                               data-target="#QRCode">Получить--}}
-                    {{--                            QR-код запроса</a>--}}
-                </div>
-            </div>
-        </div>
     @endif
     <div class="container pt-0 padding-0 mt-lg-4 mt-xl-4 mt-md-3 mt-sm-3 mt-3">
         <form class="ovz-form" action="{{ route('stat.index') }}" id="sendFormWithFacultets" method="get">
@@ -224,7 +212,7 @@
         </form>
     </div>
     <div class="container">
-        <div class="row mt-4">
+        <div class="row mt-lg-4 mt-xl-4 mt-md-3 mt-sm-3 mt-3">
             <div class="col-12">
                 @if(isset($studyForms))
                     <span
