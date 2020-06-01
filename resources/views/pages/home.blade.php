@@ -56,16 +56,20 @@
         @endif
         <div class="row mb-30px">
             @foreach($infoblocks->sortByDesc('startPagePriority') as $infoblock)
-                <div class="col-lg-4 col-md-6 col-sm-6 mb-4">
-                    <div class="card infoblock-card">
-                        <a href="{{ $infoblock->url }}">
-                            <div class="card-body mrsu-bg">
-                                <img src="storage/preview/{{ $infoblock->image }}" class="w-100" alt="">
-                                <p class="text-center m-0 pt-2 mrsu-uppertext">{{ $infoblock->name }}</p>
-                            </div>
-                        </a>
+                @if((($date_now > $infoblock->activityFrom || $date_now == $infoblock->activityFrom) &&
+                    ($date_now < $infoblock->activityTo || $date_now == $infoblock->activityTo))
+                    ||(is_null($infoblock->activityFrom) && is_null($infoblock->activityTo)))
+                    <div class="col-lg-4 col-md-6 col-sm-6 mb-4">
+                        <div class="card infoblock-card">
+                            <a href="{{ $infoblock->url }}">
+                                <div class="card-body mrsu-bg">
+                                    <img src="storage/preview/{{ $infoblock->image }}" class="w-100" alt="">
+                                    <p class="text-center m-0 pt-2 mrsu-uppertext">{{ $infoblock->name }}</p>
+                                </div>
+                            </a>
+                        </div>
                     </div>
-                </div>
+                @endif
             @endforeach
             <div class="col-lg-4 col-md-6 col-sm-6 mb-4">
                 <div class="card infoblock-card">
