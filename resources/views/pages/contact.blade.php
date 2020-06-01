@@ -99,7 +99,7 @@
                         $('.form-sent').show();
                         $('.form-sent').html(data[0]); // выводим ответ сервера
                         $('form input').val('')
-                        console.log(data[1])
+                        console.log(data)
                     }
                 });
             });
