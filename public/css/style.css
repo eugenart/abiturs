@@ -46,7 +46,15 @@ body {
     /*width: 342px;*/
     height: 45px;
 }
-
+.table-stat thead{
+    background-color: #e9eff6;
+    color: #2366a5
+}
+.legend{
+    color: #2366a5;
+    font-size: 14px !important;
+    text-decoration: underline
+}
 .mrsu-logo-img-ovz {
     width: 0;
 }
@@ -343,6 +351,7 @@ marquee {
     /*border-top: 50px solid #007ed0;*/
     height: 75px;
     background-color: #2366a5;
+    color:#FFFFFF;
 }
 .files-stat{
     color:#2366a5;
