@@ -17,13 +17,13 @@
         <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog"
              aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
             <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered mt-5" role="document">
-                <div class="modal-content">
+                <div class="modal-content modal-stat">
                     <button type="button" class="close-btn" data-dismiss="modal" aria-label="Close">
                         <i class="fa fa-times fa-2x"></i>
                     </button>
                     <div class="row w-100 m-0 p-0">
                         <div class="topline-stat col-12 d-flex align-items-center justify-content-center">
-                            <h5 class="m-0 text-white text-center">Списки в формате .xls</h5>
+                            <h5 class="m-0 text-center">Списки в формате .xls</h5>
                         </div>
                     </div>
                     <div class="modal-header pb-0 pt-0 modal-header-ovz">
@@ -379,16 +379,14 @@
                                                                         <div class="col-12 d-flex justify-content-end">
                                                                             <button data-toggle="modal"
                                                                                     data-target="#legend"
-                                                                                    class="btn btn-sm btn-link p-0"
-                                                                                    style="color: #2366a5; font-size: 14px !important; text-decoration: underline">
+                                                                                    class="btn btn-sm btn-link p-0 legend">
                                                                                 Легенда
                                                                             </button>
                                                                         </div>
                                                                     </div>
                                                                     <table
-                                                                        class="table table-bordered table-ovz table-sm base-exams-table mt-0">
-                                                                        <thead
-                                                                            style="background-color: #e9eff6; color: #2366a5">
+                                                                        class="table table-bordered table-stat table-ovz table-sm base-exams-table mt-0">
+                                                                        <thead>
                                                                         <tr style="vertical-align: center">
                                                                             <th rowspan="2" class="text-center">№</th>
                                                                             <th rowspan="2" class="text-center">
