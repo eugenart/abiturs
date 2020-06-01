@@ -99,6 +99,7 @@ Route::get('/statistic/bachelor', 'StatisticController@index')->name('stat.index
 Route::get('/statistic/master', 'StatisticMasterController@index')->name('statmaster.index');
 Route::get('/statistic/aspirant', 'StatisticAspController@index')->name('statasp.index');
 Route::get('/statistic/spo', 'StatisticSpoController@index')->name('statspo.index');
+Route::get('/statistic/total', 'TotalStatController@index')->name('total.index');
 
 Route::get('/toOvzVer', 'SessionController@toOvzVer')->name('ses.toOvzVer');
 Route::get('/backToMainVer', 'SessionController@backToMainVer')->name('ses.backToMainVer');

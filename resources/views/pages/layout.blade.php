@@ -113,6 +113,7 @@
                         <a class="nav-link text-white" href="{{route('statasp.index')}}">Аспирантура и ординатура</a>
                         <a class="nav-link text-white" href="{{route('statspo.index')}}">Среднее профессиональное
                             образование</a>
+                        <a class="nav-link text-white" href="{{route('total.index')}}">Статистика приема</a>
                     </div>
                 </li>
                 <li class="nav-item active d-flex align-items-center justify-content-center">
