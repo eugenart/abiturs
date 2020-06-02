@@ -13,7 +13,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+//        \App\Console\Commands\FilesXlsDelete::class
+    '\App\Console\Commands\FilesXlsDelete'
     ];
 
     /**
@@ -24,6 +25,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+        $schedule->command('filesxls:delete')->dailyAt('00:01');
         // $schedule->command('inspire')
         //          ->hourly();
     }
