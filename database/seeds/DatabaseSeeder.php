@@ -13,11 +13,11 @@ class DatabaseSeeder extends Seeder
     {
         $this->call('FacultyTableSeeder');
 
-        $this->command->info('Таблица факультетов загружена данными!');
+        $this->command->info('Ссылки на факультеты выруженны!');
 
-        $this->call('SubjectTableSeeder');
+        //$this->call('SubjectTableSeeder');
 
-        $this->command->info('Таблица предметов загружена данными!');
+        //$this->command->info('Таблица предметов загружена данными!');
 
     }
 }

@@ -81,7 +81,7 @@
                                     @if(count($faculty->plan))
                                         <div class="col-12 mb-5 search-div"
                                              data-exams="{{ implode(',', $faculty->subjects) }}">
-                                            <h4><a href="" target="_blank" class="main-color" style="text-decoration: underline">{{$faculty->name}}</a>
+                                            <h4><a href="{{$faculty->link}}" target="_blank" class="main-color" style="text-decoration: underline">{{$faculty->name}}</a>
                                             </h4>
                                             <table style="width: 100% !important;"
                                                    class="table table-sm table-scores w-100 table-b-border table-ovz-select">
@@ -315,7 +315,7 @@
                                             <div class="col-12 mb-5 search-div-by-faculties"
                                                  data-faculty="{{ $faculty->name }}"
                                                  data-exams="{{ implode(',', $faculty->subjects) }}">
-                                                <h4><a href=""
+                                                <h4><a href="{{$faculty->link}}"
                                                        class="faculty-head" style="text-decoration: underline"
 {{--                                                       style="color: #2366a5"--}}
                                                        target="_blank">{{$faculty->name}}</a>
