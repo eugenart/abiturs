@@ -44,7 +44,6 @@ export default {
                     'Content-Type': 'multipart/form-data'
                 }
             })
-
             context.commit('ADD_BLOCK', data.infoblock)
 
         },
@@ -82,7 +81,18 @@ export default {
             async (context, payload) => {
                 let {data} = await axios.get('/admin/infoblocks');
                 context.commit('SET_BLOCKS', data)
+            },
+        COPY_BLOCK:
+            async (context, payload) => {
+                let {data} = await axios.get('/admin/infoblock/', {
+                    params: {
+                        copy_id: payload
+                    }
+                });
+                console.log(payload)
+                context.commit('ADD_BLOCK', data.infoblock);
             }
+
     },
     getters: {
         BLOCKS: state => {
