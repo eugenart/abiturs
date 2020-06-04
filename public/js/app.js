@@ -113459,8 +113459,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Applications/MAMP/htdocs/abiturs/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/abiturs/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! E:\Open Server 5.3.5\OSPanel\domains\abiturs\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! E:\Open Server 5.3.5\OSPanel\domains\abiturs\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

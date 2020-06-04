@@ -111,4 +111,9 @@ class InfoblockController extends Controller
         }
         return response()->json(['message' => 'Oops'], 404);
     }
+
+    public function copy(Request $request, $copy_id){
+      //  echo $copy_id;
+        return view('pages.files');
+    }
 }
