@@ -84,7 +84,7 @@ export default {
             },
         COPY_BLOCK:
             async (context, payload) => {
-                let {data} = await axios.get('/admin/infoblock/', {
+                let {data} = await axios.get('/admin/infoblocks/', {
                     params: {
                         copy_id: payload
                     }

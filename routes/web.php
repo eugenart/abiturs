@@ -23,11 +23,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/register', 'Auth\RegisterController@register');
 });
 
-Route::get('/email', function () {
-    Mail::to('artashkinep@mrsu.ru')->send(new WelcomeEmail());
-    return new WelcomeEmail();
-});
-
 Route::prefix('admin')->middleware('auth')->group(function () {
     Route::redirect('/', '/admin/infoblocks');
 
@@ -35,7 +30,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::post('/infoblock', 'InfoblockController@store')->name('infoblock.store');
     Route::post('/infoblock/{id}', 'InfoblockController@update')->name('infoblock.update');
     Route::delete('/infoblock/{id}', 'InfoblockController@destroy')->name('infoblock.destroy');
-    Route::get('/infoblock/{copy_id}', 'InfoblockController@copy')->name('infoblock.copy');
+    Route::get('/infoblocks/{copy_id}', 'InfoblockController@copy')->name('infoblock.copy');
 
 
     Route::get('/sections', 'SectionController@index')->name('section.index');

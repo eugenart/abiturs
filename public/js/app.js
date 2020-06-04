@@ -112985,7 +112985,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context5.prev = _context5.next) {
               case 0:
                 _context5.next = 2;
-                return axios.get('/admin/infoblock/', {
+                return axios.get('/admin/infoblocks/', {
                   params: {
                     copy_id: payload
                   }
@@ -113459,8 +113459,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! E:\Open Server 5.3.5\OSPanel\domains\abiturs\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! E:\Open Server 5.3.5\OSPanel\domains\abiturs\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Applications/MAMP/htdocs/abiturs/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/abiturs/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -112,8 +112,9 @@ class InfoblockController extends Controller
         return response()->json(['message' => 'Oops'], 404);
     }
 
-    public function copy(Request $request, $copy_id){
+    public function copy(Request $request){
+        return json_encode($request);
       //  echo $copy_id;
-        return view('pages.files');
+       // return view('pages.files');
     }
 }
