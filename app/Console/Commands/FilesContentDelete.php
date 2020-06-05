@@ -39,8 +39,7 @@ class FilesContentDelete extends Command
      */
     public function handle()
     {
-        //удаление файлов секций
-        if ($dir = scandir(storage_path('app/public/section-files'))) {
+           if ($dir = scandir(storage_path('app/public/section-files'))) {
             $all_files = array();
             foreach ($dir as $file) {
                 if ($file == "." || $file == "..")
@@ -86,7 +85,6 @@ class FilesContentDelete extends Command
             $this->info("Can't open the directory");
             return;
         }
-
 
     }
 }
