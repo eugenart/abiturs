@@ -191,6 +191,9 @@
                                             <div class="col-4">
                                                 <p>
                                                     <span class="float-right">
+                                                        <i class="fa fa-copy" style="cursor: pointer" @click="copyInfoblock(block.id)">
+                                                        </i>
+
                                                         <i class="far fa-eye" style="cursor: pointer"
                                                            v-if="block.activity"
                                                            @click="changeActivity(block)"/>
@@ -311,7 +314,6 @@
         },
 
         methods: {
-
             addNews() {
                 this.infoblock.news.push(this.news)
                 this.news = null
@@ -418,7 +420,10 @@
                 this.isBlockUpdate = false;
                 this.$store.dispatch('SAVE_BLOCK', this.infoblock);
                 this.clearCurrentInfoblock();
+            },
 
+            copyInfoblock(bId) {
+                this.$store.dispatch('COPY_BLOCK', bId);
             },
 
             changeInfoblock(block) {

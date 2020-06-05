@@ -184,7 +184,7 @@ class SectionContentController extends Controller
 
             if ($sectionContent->childrenFiles->count() > 0) {
                 foreach ($sectionContent->childrenFiles as $file) {
-                    Storage::delete('public/section-files/' . $file->file_name);
+//                    Storage::delete('public/section-files/' . $file->file_name);
                     $file->delete();
                 }
             }
