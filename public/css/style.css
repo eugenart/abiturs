@@ -339,7 +339,9 @@ marquee {
 .section-content-block {
 
 }
-
+.ql-editor{
+    height:fit-content !important;
+}
 .topline {
     box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.32);
     /*border-top: 50px solid #007ed0;*/

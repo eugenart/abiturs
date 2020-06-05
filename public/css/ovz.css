@@ -548,6 +548,9 @@ marquee {
 .modal-stat h5{
     font-weight: bold;
 }
+.ql-editor{
+    height:fit-content !important;
+}
 .modal-stat{
     border: 4px #000000 solid !important;
 }

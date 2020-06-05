@@ -14,19 +14,23 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
 //        \App\Console\Commands\FilesXlsDelete::class
-    '\App\Console\Commands\FilesXlsDelete'
+        '\App\Console\Commands\FilesXlsDelete',
+        '\App\Console\Commands\FilesContentDelete',
+        '\App\Console\Commands\FilesPreviewDelete'
     ];
 
     /**
      * Define the application's command schedule.
      *
-     * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
+     * @param \Illuminate\Console\Scheduling\Schedule $schedule
      * @return void
      */
     protected function schedule(Schedule $schedule)
     {
 //        $schedule->command('filesxls:delete')->cron('0 */2 * * *'); // every 2 hours
-          $schedule->command('filesxls:delete')->daily();
+        $schedule->command('filesxls:delete')->daily();
+        $schedule->command('filesContent:delete')->monthlyOn(6, '00:02');
+        $schedule->command('filesPreview:delete')->monthlyOn(6, '00:04');
         // $schedule->command('inspire')
         //          ->hourly();
     }
@@ -38,7 +42,7 @@ class Kernel extends ConsoleKernel
      */
     protected function commands()
     {
-        $this->load(__DIR__.'/Commands');
+        $this->load(__DIR__ . '/Commands');
 
         require base_path('routes/console.php');
     }

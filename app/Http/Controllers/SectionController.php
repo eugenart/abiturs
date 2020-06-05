@@ -73,7 +73,7 @@ class SectionController extends Controller
                 foreach ($section->sectionContent as $subSection) {
                     if ($subSection->type == 'files') {
                         foreach ($subSection->childrenFiles as $file) {
-                            Storage::delete('public/section-files/' . $file->file_name);
+//                            Storage::delete('public/section-files/' . $file->file_name);
                             $file->delete();
                         }
                     }
