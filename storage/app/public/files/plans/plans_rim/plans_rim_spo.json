@@ -2,7 +2,56 @@
 "data": [
 {
 "Plan": {
-"planId": "000014745",
+"planId": "000016560",
+"facultyId": "000000024",
+"facultyName": "Рузаевский институт машиностроения (СПО)",
+"trainingForm": "Очная",
+"trainingAreasId": "00000085",
+"trainingCode": "15.02.01",
+"trainingAreasName": "Монтаж и техническая эксплуатация промышленного оборудования (по отраслям)",
+"specializationID": "",
+"specializationName": "",
+"years": 4
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004003",
+"CompetitionName": "РИМ_Монт_СПО_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 5
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 25
+}
+],
+"freeSeatsNumber": 25,
+"subjects": [
+{
+"subjectId": "000000939",
+"name": "КонкурсАттестатов",
+"minScore": 50
+}
+]
+},
+{
+"Plan": {
+"planId": "000016565",
 "facultyId": "000000024",
 "facultyName": "Рузаевский институт машиностроения (СПО)",
 "trainingForm": "Очная",
@@ -15,7 +64,7 @@
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003258",
+"CompetitionId": "000004002",
 "CompetitionName": "РИМ_Прог_СПО_1"
 },
 "Prices": [
@@ -51,56 +100,7 @@
 },
 {
 "Plan": {
-"planId": "000014746",
-"facultyId": "000000024",
-"facultyName": "Рузаевский институт машиностроения (СПО)",
-"trainingForm": "Очная",
-"trainingAreasId": "00000085",
-"trainingCode": "15.02.01",
-"trainingAreasName": "Монтаж и техническая эксплуатация промышленного оборудования (по отраслям)",
-"specializationID": "",
-"specializationName": "",
-"years": 4
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003259",
-"CompetitionName": "РИМ_Монт_СПО_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 20
-},
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 5
-}
-],
-"freeSeatsNumber": 20,
-"subjects": [
-{
-"subjectId": "000000939",
-"name": "КонкурсАттестатов",
-"minScore": 50
-}
-]
-},
-{
-"Plan": {
-"planId": "000014747",
+"planId": "000016785",
 "facultyId": "000000024",
 "facultyName": "Рузаевский институт машиностроения (СПО)",
 "trainingForm": "Очная",
@@ -113,7 +113,7 @@
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003260",
+"CompetitionId": "000004004",
 "CompetitionName": "РИМ_ЭБУ_СПО_1"
 },
 "Prices": [

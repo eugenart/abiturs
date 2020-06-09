@@ -2,20 +2,20 @@
 "data": [
 {
 "Plan": {
-"planId": "000014189",
+"planId": "000016163",
 "facultyId": "000000019",
 "facultyName": "Рузаевский институт машиностроения",
 "trainingForm": "Заочная",
 "trainingAreasId": "00000023",
 "trainingCode": "15.03.05",
 "trainingAreasName": "Конструкторско-технологическое обеспечение машиностроительных производств",
-"specializationID": "0000000210",
-"specializationName": "Технология машиностроения",
-"years": 5
+"specializationID": "",
+"specializationName": "",
+"years": 4
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003186",
+"CompetitionId": "000003869",
 "CompetitionName": "РИМ_КТОМСП_АБ_1"
 },
 "Prices": [
@@ -33,19 +33,34 @@
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
 "value": 25
+},
+{
+"IdBasis": "000000005",
+"Basis": "Особое право",
+"value": 2
+},
+{
+"IdBasis": "000000001",
+"Basis": "Целевой прием",
+"value": 5
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 11
 }
 ],
-"freeSeatsNumber": 0,
+"freeSeatsNumber": 18,
 "subjects": [
 {
 "subjectId": "000000008",
 "name": "Физика",
-"minScore": 36
+"minScore": 40
 },
 {
 "subjectId": "000000001",
 "name": "Русский язык",
-"minScore": 36
+"minScore": 40
 },
 {
 "subjectId": "000000015",
@@ -55,26 +70,26 @@
 {
 "subjectId": "000000002",
 "name": "Математика",
-"minScore": 27
+"minScore": 39
 }
 ]
 },
 {
 "Plan": {
-"planId": "000014189",
+"planId": "000016163",
 "facultyId": "000000019",
 "facultyName": "Рузаевский институт машиностроения",
 "trainingForm": "Заочная",
 "trainingAreasId": "00000023",
 "trainingCode": "15.03.05",
 "trainingAreasName": "Конструкторско-технологическое обеспечение машиностроительных производств",
-"specializationID": "0000000210",
-"specializationName": "Технология машиностроения",
-"years": 5
+"specializationID": "",
+"specializationName": "",
+"years": 4
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003187",
+"CompetitionId": "000003870",
 "CompetitionName": "РИМ_КТОМСП_АБ_ин"
 },
 "Prices": [
@@ -99,7 +114,7 @@
 {
 "subjectId": "000000001",
 "name": "Русский язык",
-"minScore": 36
+"minScore": 40
 },
 {
 "subjectId": "000000015",
@@ -109,13 +124,13 @@
 {
 "subjectId": "000000002",
 "name": "Математика",
-"minScore": 27
+"minScore": 39
 }
 ]
 },
 {
 "Plan": {
-"planId": "000014190",
+"planId": "000016164",
 "facultyId": "000000019",
 "facultyName": "Рузаевский институт машиностроения",
 "trainingForm": "Очная",
@@ -128,7 +143,7 @@
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003186",
+"CompetitionId": "000003869",
 "CompetitionName": "РИМ_КТОМСП_АБ_1"
 },
 "Prices": [
@@ -143,11 +158,6 @@
 ],
 "admissionBasis": [
 {
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 25
-},
-{
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
 "value": 12
@@ -155,20 +165,30 @@
 {
 "IdBasis": "000000001",
 "Basis": "Целевой прием",
-"value": 2
+"value": 7
+},
+{
+"IdBasis": "000000005",
+"Basis": "Особое право",
+"value": 3
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 13
 }
 ],
-"freeSeatsNumber": 27,
+"freeSeatsNumber": 23,
 "subjects": [
 {
 "subjectId": "000000008",
 "name": "Физика",
-"minScore": 36
+"minScore": 40
 },
 {
 "subjectId": "000000001",
 "name": "Русский язык",
-"minScore": 36
+"minScore": 40
 },
 {
 "subjectId": "000000015",
@@ -178,13 +198,13 @@
 {
 "subjectId": "000000002",
 "name": "Математика",
-"minScore": 27
+"minScore": 39
 }
 ]
 },
 {
 "Plan": {
-"planId": "000014190",
+"planId": "000016164",
 "facultyId": "000000019",
 "facultyName": "Рузаевский институт машиностроения",
 "trainingForm": "Очная",
@@ -197,7 +217,7 @@
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003187",
+"CompetitionId": "000003870",
 "CompetitionName": "РИМ_КТОМСП_АБ_ин"
 },
 "Prices": [
@@ -222,7 +242,7 @@
 {
 "subjectId": "000000001",
 "name": "Русский язык",
-"minScore": 36
+"minScore": 40
 },
 {
 "subjectId": "000000015",
@@ -232,7 +252,7 @@
 {
 "subjectId": "000000002",
 "name": "Математика",
-"minScore": 27
+"minScore": 39
 }
 ]
 }

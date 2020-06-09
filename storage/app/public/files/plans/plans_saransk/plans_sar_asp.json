@@ -2,21 +2,21 @@
 "data": [
 {
 "Plan": {
-"planId": "000014409",
-"facultyId": "000000026",
-"facultyName": "Аспирантура",
+"planId": "000017711",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
 "trainingForm": "Очная",
-"trainingAreasId": "00000539",
-"trainingCode": "01.06.01",
-"trainingAreasName": "Математика и механика",
+"trainingAreasId": "00000643",
+"trainingCode": "31.08.72",
+"trainingAreasName": "Стоматология общей практики",
 "specializationID": "",
 "specializationName": "",
-"years": 4
+"years": 2
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003197",
-"CompetitionName": "АСП_МатМех_1"
+"CompetitionId": "000004134",
+"CompetitionName": "Орд_СтомОП_1"
 },
 "Prices": [
 {
@@ -30,52 +30,155 @@
 ],
 "admissionBasis": [
 {
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 8
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000017711",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000643",
+"trainingCode": "31.08.72",
+"trainingAreasName": "Стоматология общей практики",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": true,
+"CompetitionId": "000004141",
+"CompetitionName": "Орд_СтомО_1_ин"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 3
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016823",
+"facultyId": "000000026",
+"facultyName": "Аспирантура",
+"trainingForm": "Заочная",
+"trainingAreasId": "00000560",
+"trainingCode": "40.06.01",
+"trainingAreasName": "Юриспруденция",
+"specializationID": "",
+"specializationName": "",
+"years": 4
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004026",
+"CompetitionName": "АСП_Юри_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 4
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016848",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000589",
+"trainingCode": "31.08.20",
+"trainingAreasName": "Психиатрия",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004044",
+"CompetitionName": "Орд_Псих_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000001",
+"Basis": "Целевой прием",
+"value": 3
+},
+{
 "IdBasis": "000000003",
 "Basis": "Бюджетная основа",
-"value": 1
+"value": 0
 },
 {
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
-"value": 1
-},
-{
-"IdBasis": "000000001",
-"Basis": "Целевой прием",
-"value": 1
+"value": 5
 }
 ],
-"freeSeatsNumber": 2,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000000933",
-"name": "Специальность",
-"minScore": 70
-}
-]
+"freeSeatsNumber": 3,
+"subjects": []
 },
 {
 "Plan": {
-"planId": "000014410",
-"facultyId": "000000026",
-"facultyName": "Аспирантура",
-"trainingForm": "Заочная",
-"trainingAreasId": "00000539",
-"trainingCode": "01.06.01",
-"trainingAreasName": "Математика и механика",
+"planId": "000016848",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000589",
+"trainingCode": "31.08.20",
+"trainingAreasName": "Психиатрия",
 "specializationID": "",
 "specializationName": "",
-"years": 5
+"years": 2
 },
 "Competition": {
-"foreigner": false,
-"CompetitionId": "000003197",
-"CompetitionName": "АСП_МатМех_1"
+"foreigner": true,
+"CompetitionId": "000004079",
+"CompetitionName": "Орд_Псих_ин"
 },
 "Prices": [
 {
@@ -95,36 +198,25 @@
 }
 ],
 "freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000000933",
-"name": "Специальность",
-"minScore": 70
-}
-]
+"subjects": []
 },
 {
 "Plan": {
-"planId": "000014411",
+"planId": "000016804",
 "facultyId": "000000026",
 "facultyName": "Аспирантура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000540",
-"trainingCode": "03.06.01",
-"trainingAreasName": "Физика и астрономия",
+"trainingForm": "Заочная",
+"trainingAreasId": "00000551",
+"trainingCode": "13.06.01",
+"trainingAreasName": "Электро- и теплотехника",
 "specializationID": "",
 "specializationName": "",
-"years": 4
+"years": 5
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003198",
-"CompetitionName": "АСП_ФИЗиАС_1"
+"CompetitionId": "000004016",
+"CompetitionName": "АСП_ЭлТепл_1"
 },
 "Prices": [
 {
@@ -138,10 +230,43 @@
 ],
 "admissionBasis": [
 {
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
 "value": 1
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
 },
+{
+"Plan": {
+"planId": "000016811",
+"facultyId": "000000026",
+"facultyName": "Аспирантура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000553",
+"trainingCode": "35.06.01",
+"trainingAreasName": "Сельское хозяйство",
+"specializationID": "",
+"specializationName": "",
+"years": 4
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004020",
+"CompetitionName": "АСП_СельХоз_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
 {
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
@@ -151,39 +276,119 @@
 "IdBasis": "000000001",
 "Basis": "Целевой прием",
 "value": 1
-}
-],
-"freeSeatsNumber": 2,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
 },
 {
-"subjectId": "000000933",
-"name": "Специальность",
-"minScore": 70
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 2
 }
-]
+],
+"freeSeatsNumber": 3,
+"subjects": []
 },
 {
 "Plan": {
-"planId": "000014412",
-"facultyId": "000000026",
-"facultyName": "Аспирантура",
-"trainingForm": "Заочная",
-"trainingAreasId": "00000540",
-"trainingCode": "03.06.01",
-"trainingAreasName": "Физика и астрономия",
+"planId": "000016871",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000583",
+"trainingCode": "31.08.68",
+"trainingAreasName": "Урология",
 "specializationID": "",
 "specializationName": "",
-"years": 5
+"years": 2
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003198",
-"CompetitionName": "АСП_ФИЗиАС_1"
+"CompetitionId": "000004067",
+"CompetitionName": "Орд_Урол_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 4
+},
+{
+"IdBasis": "000000001",
+"Basis": "Целевой прием",
+"value": 1
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 0
+}
+],
+"freeSeatsNumber": 1,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016871",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000583",
+"trainingCode": "31.08.68",
+"trainingAreasName": "Урология",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": true,
+"CompetitionId": "000004102",
+"CompetitionName": "Орд_Урол_ин"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 2
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016827",
+"facultyId": "000000026",
+"facultyName": "Аспирантура",
+"trainingForm": "Заочная",
+"trainingAreasId": "00000561",
+"trainingCode": "42.06.01",
+"trainingAreasName": "Средства массовой информации и информационно-библиотечное дело",
+"specializationID": "",
+"specializationName": "",
+"years": 4
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004028",
+"CompetitionName": "АСП_СмиИбд_1"
 },
 "Prices": [
 {
@@ -203,36 +408,1105 @@
 }
 ],
 "freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000000933",
-"name": "Специальность",
-"minScore": 70
-}
-]
+"subjects": []
 },
 {
 "Plan": {
-"planId": "000014413",
+"planId": "000016849",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000590",
+"trainingCode": "31.08.26",
+"trainingAreasName": "Аллергология и иммунология",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004045",
+"CompetitionName": "Орд_Аллерг_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000001",
+"Basis": "Целевой прием",
+"value": 1
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 0
+},
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 1
+}
+],
+"freeSeatsNumber": 1,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016849",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000590",
+"trainingCode": "31.08.26",
+"trainingAreasName": "Аллергология и иммунология",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": true,
+"CompetitionId": "000004080",
+"CompetitionName": "Орд_Аллерг_ин"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 1
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016867",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000580",
+"trainingCode": "31.08.59",
+"trainingAreasName": "Офтальмология",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004063",
+"CompetitionName": "Орд_Офтальм_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 6
+},
+{
+"IdBasis": "000000001",
+"Basis": "Целевой прием",
+"value": 4
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 0
+}
+],
+"freeSeatsNumber": 4,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016867",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000580",
+"trainingCode": "31.08.59",
+"trainingAreasName": "Офтальмология",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": true,
+"CompetitionId": "000004098",
+"CompetitionName": "Орд_Офтальм_ин"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 2
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016839",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000567",
+"trainingCode": "31.08.02",
+"trainingAreasName": "Анестезиология-реаниматология",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004035",
+"CompetitionName": "Орд_АнестРеанимат_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 6
+},
+{
+"IdBasis": "000000001",
+"Basis": "Целевой прием",
+"value": 8
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 0
+}
+],
+"freeSeatsNumber": 8,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016839",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000567",
+"trainingCode": "31.08.02",
+"trainingAreasName": "Анестезиология-реаниматология",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": true,
+"CompetitionId": "000004070",
+"CompetitionName": "Орд_АнестРеанимат_ин"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 1
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016801",
 "facultyId": "000000026",
 "facultyName": "Аспирантура",
 "trainingForm": "Очная",
-"trainingAreasId": "00000541",
-"trainingCode": "04.06.01",
-"trainingAreasName": "Химические науки",
+"trainingAreasId": "00000552",
+"trainingCode": "09.06.01",
+"trainingAreasName": "Информатика и вычислительная техника",
 "specializationID": "",
 "specializationName": "",
 "years": 4
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003199",
-"CompetitionName": "АСП_ХимНаук_1"
+"CompetitionId": "000004015",
+"CompetitionName": "АСП_ИИВТ_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 2
+},
+{
+"IdBasis": "000000001",
+"Basis": "Целевой прием",
+"value": 2
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 8
+}
+],
+"freeSeatsNumber": 10,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016857",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000594",
+"trainingCode": "31.08.45",
+"trainingAreasName": "Пульмонология",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": true,
+"CompetitionId": "000004088",
+"CompetitionName": "Орд_Пульмон_ин"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 1
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016857",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000594",
+"trainingCode": "31.08.45",
+"trainingAreasName": "Пульмонология",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004053",
+"CompetitionName": "Орд_Пульм_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 2
+},
+{
+"IdBasis": "000000001",
+"Basis": "Целевой прием",
+"value": 1
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 0
+}
+],
+"freeSeatsNumber": 1,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016799",
+"facultyId": "000000026",
+"facultyName": "Аспирантура",
+"trainingForm": "Заочная",
+"trainingAreasId": "00000543",
+"trainingCode": "06.06.01",
+"trainingAreasName": "Биологические науки",
+"specializationID": "",
+"specializationName": "",
+"years": 5
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004013",
+"CompetitionName": "АСП_БиоНаук_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 1
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016805",
+"facultyId": "000000026",
+"facultyName": "Аспирантура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000548",
+"trainingCode": "20.06.01",
+"trainingAreasName": "Техносферная безопасность",
+"specializationID": "",
+"specializationName": "",
+"years": 4
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004017",
+"CompetitionName": "АСП_ТехБез_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 0
+},
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 1
+},
+{
+"IdBasis": "000000001",
+"Basis": "Целевой прием",
+"value": 1
+}
+],
+"freeSeatsNumber": 1,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016853",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000574",
+"trainingCode": "31.08.36",
+"trainingAreasName": "Кардиология",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004049",
+"CompetitionName": "Орд_Кардиол_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000001",
+"Basis": "Целевой прием",
+"value": 2
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 0
+},
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 6
+}
+],
+"freeSeatsNumber": 2,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016853",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000574",
+"trainingCode": "31.08.36",
+"trainingAreasName": "Кардиология",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": true,
+"CompetitionId": "000004084",
+"CompetitionName": "Орд_Кардиол_ин"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 5
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016831",
+"facultyId": "000000026",
+"facultyName": "Аспирантура",
+"trainingForm": "Заочная",
+"trainingAreasId": "00000562",
+"trainingCode": "45.06.01",
+"trainingAreasName": "Языкознание и литературоведение",
+"specializationID": "",
+"specializationName": "",
+"years": 4
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004030",
+"CompetitionName": "АСП_ЯзыкЛитер_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 2
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016840",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000585",
+"trainingCode": "31.08.07",
+"trainingAreasName": "Патологическая анатомия",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004036",
+"CompetitionName": "Орд_ПатАнатом_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 0
+},
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 2
+},
+{
+"IdBasis": "000000001",
+"Basis": "Целевой прием",
+"value": 3
+}
+],
+"freeSeatsNumber": 3,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016865",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000579",
+"trainingCode": "31.08.57",
+"trainingAreasName": "Онкология",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004061",
+"CompetitionName": "Орд_Онколог_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000001",
+"Basis": "Целевой прием",
+"value": 4
+},
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 5
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 0
+}
+],
+"freeSeatsNumber": 4,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016865",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000579",
+"trainingCode": "31.08.57",
+"trainingAreasName": "Онкология",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": true,
+"CompetitionId": "000004096",
+"CompetitionName": "Орд_Онколог_ин"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 1
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016850",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000572",
+"trainingCode": "31.08.28",
+"trainingAreasName": "Гастроэнтерология",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004046",
+"CompetitionName": "Орд_Гастроэн_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 0
+},
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 2
+},
+{
+"IdBasis": "000000001",
+"Basis": "Целевой прием",
+"value": 2
+}
+],
+"freeSeatsNumber": 2,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016850",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000572",
+"trainingCode": "31.08.28",
+"trainingAreasName": "Гастроэнтерология",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": true,
+"CompetitionId": "000004081",
+"CompetitionName": "Орд_Гастроэн_ин"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 2
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016860",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000576",
+"trainingCode": "31.08.49",
+"trainingAreasName": "Терапия",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004056",
+"CompetitionName": "Орд_Терапия_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 9
+},
+{
+"IdBasis": "000000001",
+"Basis": "Целевой прием",
+"value": 13
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 0
+}
+],
+"freeSeatsNumber": 13,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016860",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000576",
+"trainingCode": "31.08.49",
+"trainingAreasName": "Терапия",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": true,
+"CompetitionId": "000004091",
+"CompetitionName": "Орд_Терапия_ин"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 2
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016818",
+"facultyId": "000000026",
+"facultyName": "Аспирантура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000565",
+"trainingCode": "38.06.01",
+"trainingAreasName": "Экономика",
+"specializationID": "",
+"specializationName": "",
+"years": 3
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004024",
+"CompetitionName": "АСП_ЭКО_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000001",
+"Basis": "Целевой прием",
+"value": 1
+},
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 5
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 0
+}
+],
+"freeSeatsNumber": 1,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016816",
+"facultyId": "000000026",
+"facultyName": "Аспирантура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000555",
+"trainingCode": "37.06.01",
+"trainingAreasName": "Психологические науки",
+"specializationID": "",
+"specializationName": "",
+"years": 3
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004023",
+"CompetitionName": "АСП_ПсихНаук_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 1
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016858",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000595",
+"trainingCode": "31.08.46",
+"trainingAreasName": "Ревматология",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004054",
+"CompetitionName": "Орд_Ревмат_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000001",
+"Basis": "Целевой прием",
+"value": 1
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 0
+},
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 1
+}
+],
+"freeSeatsNumber": 1,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016858",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000595",
+"trainingCode": "31.08.46",
+"trainingAreasName": "Ревматология",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": true,
+"CompetitionId": "000004089",
+"CompetitionName": "Орд_Ревмат_ин"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 1
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016832",
+"facultyId": "000000026",
+"facultyName": "Аспирантура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000559",
+"trainingCode": "46.06.01",
+"trainingAreasName": "Исторические науки и археология",
+"specializationID": "",
+"specializationName": "",
+"years": 3
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004031",
+"CompetitionName": "АСП_ИстНаукАрх_1"
 },
 "Prices": [
 {
@@ -254,6 +1528,226 @@
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
 "value": 1
+}
+],
+"freeSeatsNumber": 1,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016694",
+"facultyId": "000000026",
+"facultyName": "Аспирантура",
+"trainingForm": "Заочная",
+"trainingAreasId": "00000547",
+"trainingCode": "08.06.01",
+"trainingAreasName": "Техника и технологии строительства ",
+"specializationID": "",
+"specializationName": "",
+"years": 5
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004014",
+"CompetitionName": "АСП_ТехТехСтроит_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 2
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016792",
+"facultyId": "000000026",
+"facultyName": "Аспирантура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000540",
+"trainingCode": "03.06.01",
+"trainingAreasName": "Физика и астрономия",
+"specializationID": "",
+"specializationName": "",
+"years": 4
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004010",
+"CompetitionName": "АСП_ФИЗиАС_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000001",
+"Basis": "Целевой прием",
+"value": 1
+},
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 2
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 1
+}
+],
+"freeSeatsNumber": 2,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016803",
+"facultyId": "000000026",
+"facultyName": "Аспирантура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000551",
+"trainingCode": "13.06.01",
+"trainingAreasName": "Электро- и теплотехника",
+"specializationID": "",
+"specializationName": "",
+"years": 4
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004016",
+"CompetitionName": "АСП_ЭлТепл_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000001",
+"Basis": "Целевой прием",
+"value": 1
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 3
+},
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 2
+}
+],
+"freeSeatsNumber": 4,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016836",
+"facultyId": "000000026",
+"facultyName": "Аспирантура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000563",
+"trainingCode": "51.06.01",
+"trainingAreasName": "Культурология",
+"specializationID": "",
+"specializationName": "",
+"years": 3
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004033",
+"CompetitionName": "АСП_Культ_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 1
+},
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 1
+}
+],
+"freeSeatsNumber": 1,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016845",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000588",
+"trainingCode": "31.08.16",
+"trainingAreasName": "Детская хирургия",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004041",
+"CompetitionName": "Орд_ДетХирург_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 0
+},
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 1
 },
 {
 "IdBasis": "000000001",
@@ -261,37 +1755,26 @@
 "value": 1
 }
 ],
-"freeSeatsNumber": 2,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000000933",
-"name": "Специальность",
-"minScore": 70
-}
-]
+"freeSeatsNumber": 1,
+"subjects": []
 },
 {
 "Plan": {
-"planId": "000014414",
-"facultyId": "000000026",
-"facultyName": "Аспирантура",
-"trainingForm": "Заочная",
-"trainingAreasId": "00000541",
-"trainingCode": "04.06.01",
-"trainingAreasName": "Химические науки",
+"planId": "000016845",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000588",
+"trainingCode": "31.08.16",
+"trainingAreasName": "Детская хирургия",
 "specializationID": "",
 "specializationName": "",
-"years": 5
+"years": 2
 },
 "Competition": {
-"foreigner": false,
-"CompetitionId": "000003199",
-"CompetitionName": "АСП_ХимНаук_1"
+"foreigner": true,
+"CompetitionId": "000004071",
+"CompetitionName": "Орд_ДетХирург_ин"
 },
 "Prices": [
 {
@@ -311,22 +1794,1349 @@
 }
 ],
 "freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000000933",
-"name": "Специальность",
-"minScore": 70
-}
-]
+"subjects": []
 },
 {
 "Plan": {
-"planId": "000014415",
+"planId": "000016861",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000597",
+"trainingCode": "31.08.51",
+"trainingAreasName": "Фтизиатрия",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004057",
+"CompetitionName": "Орд_Фтизи_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000001",
+"Basis": "Целевой прием",
+"value": 3
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 0
+},
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 1
+}
+],
+"freeSeatsNumber": 3,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016861",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000597",
+"trainingCode": "31.08.51",
+"trainingAreasName": "Фтизиатрия",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": true,
+"CompetitionId": "000004092",
+"CompetitionName": "Орд_Фтизи_ин"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 1
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016843",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000587",
+"trainingCode": "31.08.11",
+"trainingAreasName": "Ультразвуковая диагностика",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004039",
+"CompetitionName": "Орд_Ультр_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 5
+},
+{
+"IdBasis": "000000001",
+"Basis": "Целевой прием",
+"value": 2
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 0
+}
+],
+"freeSeatsNumber": 2,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016843",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000587",
+"trainingCode": "31.08.11",
+"trainingAreasName": "Ультразвуковая диагностика",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": true,
+"CompetitionId": "000004075",
+"CompetitionName": "Орд_Ультр_ин"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 1
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016870",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000582",
+"trainingCode": "31.08.67",
+"trainingAreasName": "Хирургия",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004066",
+"CompetitionName": "Орд_Хирург_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 0
+},
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 6
+},
+{
+"IdBasis": "000000001",
+"Basis": "Целевой прием",
+"value": 6
+}
+],
+"freeSeatsNumber": 6,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016870",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000582",
+"trainingCode": "31.08.67",
+"trainingAreasName": "Хирургия",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": true,
+"CompetitionId": "000004101",
+"CompetitionName": "Орд_Хирург_ин"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 3
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016822",
+"facultyId": "000000026",
+"facultyName": "Аспирантура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000560",
+"trainingCode": "40.06.01",
+"trainingAreasName": "Юриспруденция",
+"specializationID": "",
+"specializationName": "",
+"years": 3
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004026",
+"CompetitionName": "АСП_Юри_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000001",
+"Basis": "Целевой прием",
+"value": 1
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 0
+},
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 4
+}
+],
+"freeSeatsNumber": 1,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016798",
+"facultyId": "000000026",
+"facultyName": "Аспирантура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000543",
+"trainingCode": "06.06.01",
+"trainingAreasName": "Биологические науки",
+"specializationID": "",
+"specializationName": "",
+"years": 4
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004013",
+"CompetitionName": "АСП_БиоНаук_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 2
+},
+{
+"IdBasis": "000000001",
+"Basis": "Целевой прием",
+"value": 1
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 1
+}
+],
+"freeSeatsNumber": 2,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016825",
+"facultyId": "000000026",
+"facultyName": "Аспирантура",
+"trainingForm": "Заочная",
+"trainingAreasId": "00000557",
+"trainingCode": "41.06.01",
+"trainingAreasName": "Политические науки и регионоведение",
+"specializationID": "",
+"specializationName": "",
+"years": 4
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004027",
+"CompetitionName": "АСП_ПолитНаук_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 1
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016829",
+"facultyId": "000000026",
+"facultyName": "Аспирантура",
+"trainingForm": "Заочная",
+"trainingAreasId": "00000558",
+"trainingCode": "44.06.01",
+"trainingAreasName": "Образование и педагогические науки",
+"specializationID": "",
+"specializationName": "",
+"years": 4
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004029",
+"CompetitionName": "АСП_ОбрПедНаук_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 1
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016842",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000568",
+"trainingCode": "31.08.10",
+"trainingAreasName": "Судебно-медицинская экспертиза",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004038",
+"CompetitionName": "Орд_СудМедЭксп_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 3
+},
+{
+"IdBasis": "000000001",
+"Basis": "Целевой прием",
+"value": 3
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 0
+}
+],
+"freeSeatsNumber": 3,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016862",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000598",
+"trainingCode": "31.08.53",
+"trainingAreasName": "Эндокринология",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004058",
+"CompetitionName": "Орд_Эндокр_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 0
+},
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 2
+},
+{
+"IdBasis": "000000001",
+"Basis": "Целевой прием",
+"value": 2
+}
+],
+"freeSeatsNumber": 2,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016862",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000598",
+"trainingCode": "31.08.53",
+"trainingAreasName": "Эндокринология",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": true,
+"CompetitionId": "000004093",
+"CompetitionName": "Орд_Эндокр_ин"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 2
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016830",
+"facultyId": "000000026",
+"facultyName": "Аспирантура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000562",
+"trainingCode": "45.06.01",
+"trainingAreasName": "Языкознание и литературоведение",
+"specializationID": "",
+"specializationName": "",
+"years": 3
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004030",
+"CompetitionName": "АСП_ЯзыкЛитер_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 4
+},
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 2
+}
+],
+"freeSeatsNumber": 4,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016833",
+"facultyId": "000000026",
+"facultyName": "Аспирантура",
+"trainingForm": "Заочная",
+"trainingAreasId": "00000559",
+"trainingCode": "46.06.01",
+"trainingAreasName": "Исторические науки и археология",
+"specializationID": "",
+"specializationName": "",
+"years": 4
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004031",
+"CompetitionName": "АСП_ИстНаукАрх_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 1
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016820",
+"facultyId": "000000026",
+"facultyName": "Аспирантура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000556",
+"trainingCode": "39.06.01",
+"trainingAreasName": "Социологические науки",
+"specializationID": "",
+"specializationName": "",
+"years": 3
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004025",
+"CompetitionName": "АСП_СоцНаук_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000001",
+"Basis": "Целевой прием",
+"value": 1
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 0
+},
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 1
+}
+],
+"freeSeatsNumber": 1,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016834",
+"facultyId": "000000026",
+"facultyName": "Аспирантура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000564",
+"trainingCode": "47.06.01",
+"trainingAreasName": "Философия, этика и религиоведение",
+"specializationID": "",
+"specializationName": "",
+"years": 3
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004032",
+"CompetitionName": "АСП_ФилЭтикРелиг_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 1
+},
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 1
+}
+],
+"freeSeatsNumber": 1,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016866",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000599",
+"trainingCode": "31.08.58",
+"trainingAreasName": "Оториноларингология",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004062",
+"CompetitionName": "Орд_Оторинола_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 0
+},
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 3
+},
+{
+"IdBasis": "000000001",
+"Basis": "Целевой прием",
+"value": 3
+}
+],
+"freeSeatsNumber": 3,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016866",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000599",
+"trainingCode": "31.08.58",
+"trainingAreasName": "Оториноларингология",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": true,
+"CompetitionId": "000004097",
+"CompetitionName": "Орд_Оторинола_ин"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 1
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016688",
+"facultyId": "000000026",
+"facultyName": "Аспирантура",
+"trainingForm": "Заочная",
+"trainingAreasId": "00000553",
+"trainingCode": "35.06.01",
+"trainingAreasName": "Сельское хозяйство",
+"specializationID": "",
+"specializationName": "",
+"years": 5
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004020",
+"CompetitionName": "АСП_СельХоз_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 1
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016812",
+"facultyId": "000000026",
+"facultyName": "Аспирантура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000549",
+"trainingCode": "35.06.04",
+"trainingAreasName": "Технологии, средства механизации и энергетическое оборудование в сельском, лесном и рыбном хозяйстве",
+"specializationID": "",
+"specializationName": "",
+"years": 3
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004021",
+"CompetitionName": "АСП_ТехСредМех_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 2
+},
+{
+"IdBasis": "000000001",
+"Basis": "Целевой прием",
+"value": 1
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 4
+}
+],
+"freeSeatsNumber": 5,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016863",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000577",
+"trainingCode": "31.08.54",
+"trainingAreasName": "Общая врачебная практика (семейная медицина)",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004059",
+"CompetitionName": "Орд_ВрачПракт_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 0
+},
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 1
+},
+{
+"IdBasis": "000000001",
+"Basis": "Целевой прием",
+"value": 5
+}
+],
+"freeSeatsNumber": 5,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016863",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000577",
+"trainingCode": "31.08.54",
+"trainingAreasName": "Общая врачебная практика (семейная медицина)",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": true,
+"CompetitionId": "000004094",
+"CompetitionName": "Орд_ВрачПракт_ин"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 1
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016838",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000566",
+"trainingCode": "31.08.01",
+"trainingAreasName": "Акушерство и гинекология",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004034",
+"CompetitionName": "Орд_АкушИГен_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000001",
+"Basis": "Целевой прием",
+"value": 4
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 0
+},
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 10
+}
+],
+"freeSeatsNumber": 4,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016838",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000566",
+"trainingCode": "31.08.01",
+"trainingAreasName": "Акушерство и гинекология",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": true,
+"CompetitionId": "000004069",
+"CompetitionName": "Орд_АкушИГен_ин"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 2
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016869",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000581",
+"trainingCode": "31.08.66",
+"trainingAreasName": "Травматология и ортопедия",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004065",
+"CompetitionName": "Орд_ТравмИОртоп_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 4
+},
+{
+"IdBasis": "000000001",
+"Basis": "Целевой прием",
+"value": 5
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 0
+}
+],
+"freeSeatsNumber": 5,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016869",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000581",
+"trainingCode": "31.08.66",
+"trainingAreasName": "Травматология и ортопедия",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": true,
+"CompetitionId": "000004100",
+"CompetitionName": "Орд_ТравмИОртоп_ин"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 4
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016844",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000569",
+"trainingCode": "31.08.12",
+"trainingAreasName": "Функциональная диагностика",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004040",
+"CompetitionName": "Орд_ФункцДиагн_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 0
+},
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 2
+},
+{
+"IdBasis": "000000001",
+"Basis": "Целевой прием",
+"value": 3
+}
+],
+"freeSeatsNumber": 3,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016844",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000569",
+"trainingCode": "31.08.12",
+"trainingAreasName": "Функциональная диагностика",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": true,
+"CompetitionId": "000004076",
+"CompetitionName": "Орд_ФункцДиагн_ин"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 1
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016847",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000571",
+"trainingCode": "31.08.19",
+"trainingAreasName": "Педиатрия",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004043",
+"CompetitionName": "Орд_Пед_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000001",
+"Basis": "Целевой прием",
+"value": 9
+},
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 2
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 0
+}
+],
+"freeSeatsNumber": 9,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016847",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000571",
+"trainingCode": "31.08.19",
+"trainingAreasName": "Педиатрия",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": true,
+"CompetitionId": "000004078",
+"CompetitionName": "Орд_Пед_ин"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 1
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016796",
 "facultyId": "000000026",
 "facultyName": "Аспирантура",
 "trainingForm": "Очная",
@@ -339,7 +3149,7 @@
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003200",
+"CompetitionId": "000004012",
 "CompetitionName": "АСП_НаукОЗем_1"
 },
 "Prices": [
@@ -354,11 +3164,6 @@
 ],
 "admissionBasis": [
 {
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 5
-},
-{
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
 "value": 1
@@ -367,25 +3172,224 @@
 "IdBasis": "000000001",
 "Basis": "Целевой прием",
 "value": 1
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 5
 }
 ],
 "freeSeatsNumber": 6,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000000933",
-"name": "Специальность",
-"minScore": 70
-}
-]
+"subjects": []
 },
 {
 "Plan": {
-"planId": "000014416",
+"planId": "000016872",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000601",
+"trainingCode": "31.08.70",
+"trainingAreasName": "Эндоскопия",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004068",
+"CompetitionName": "Орд_Эндоскоп_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 1
+},
+{
+"IdBasis": "000000001",
+"Basis": "Целевой прием",
+"value": 2
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 0
+}
+],
+"freeSeatsNumber": 2,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016872",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000601",
+"trainingCode": "31.08.70",
+"trainingAreasName": "Эндоскопия",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": true,
+"CompetitionId": "000004103",
+"CompetitionName": "Орд_Эндоскоп_ин"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 1
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016807",
+"facultyId": "000000026",
+"facultyName": "Аспирантура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000544",
+"trainingCode": "30.06.01",
+"trainingAreasName": "Фундаментальная медицина",
+"specializationID": "",
+"specializationName": "",
+"years": 3
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004018",
+"CompetitionName": "АСП_ФунМед_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 4
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 5
+}
+],
+"freeSeatsNumber": 5,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016791",
+"facultyId": "000000026",
+"facultyName": "Аспирантура",
+"trainingForm": "Заочная",
+"trainingAreasId": "00000539",
+"trainingCode": "01.06.01",
+"trainingAreasName": "Математика и механика",
+"specializationID": "",
+"specializationName": "",
+"years": 5
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004009",
+"CompetitionName": "АСП_МатМех_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 1
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016819",
+"facultyId": "000000026",
+"facultyName": "Аспирантура",
+"trainingForm": "Заочная",
+"trainingAreasId": "00000565",
+"trainingCode": "38.06.01",
+"trainingAreasName": "Экономика",
+"specializationID": "",
+"specializationName": "",
+"years": 4
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004024",
+"CompetitionName": "АСП_ЭКО_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 4
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016797",
 "facultyId": "000000026",
 "facultyName": "Аспирантура",
 "trainingForm": "Заочная",
@@ -398,7 +3402,7 @@
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003200",
+"CompetitionId": "000004012",
 "CompetitionName": "АСП_НаукОЗем_1"
 },
 "Prices": [
@@ -419,36 +3423,25 @@
 }
 ],
 "freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000000933",
-"name": "Специальность",
-"minScore": 70
-}
-]
+"subjects": []
 },
 {
 "Plan": {
-"planId": "000014417",
-"facultyId": "000000026",
-"facultyName": "Аспирантура",
+"planId": "000016852",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
 "trainingForm": "Очная",
-"trainingAreasId": "00000543",
-"trainingCode": "06.06.01",
-"trainingAreasName": "Биологические науки",
+"trainingAreasId": "00000591",
+"trainingCode": "31.08.35",
+"trainingAreasName": "Инфекционные болезни",
 "specializationID": "",
 "specializationName": "",
-"years": 4
+"years": 2
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003201",
-"CompetitionName": "АСП_БиоНаук_1"
+"CompetitionId": "000004048",
+"CompetitionName": "Орд_Инфекц_1"
 },
 "Prices": [
 {
@@ -462,11 +3455,6 @@
 ],
 "admissionBasis": [
 {
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 1
-},
-{
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
 "value": 2
@@ -474,40 +3462,158 @@
 {
 "IdBasis": "000000001",
 "Basis": "Целевой прием",
-"value": 1
+"value": 2
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 0
 }
 ],
 "freeSeatsNumber": 2,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000000933",
-"name": "Специальность",
-"minScore": 70
-}
-]
+"subjects": []
 },
 {
 "Plan": {
-"planId": "000014418",
-"facultyId": "000000026",
-"facultyName": "Аспирантура",
-"trainingForm": "Заочная",
-"trainingAreasId": "00000543",
-"trainingCode": "06.06.01",
-"trainingAreasName": "Биологические науки",
+"planId": "000016852",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000591",
+"trainingCode": "31.08.35",
+"trainingAreasName": "Инфекционные болезни",
 "specializationID": "",
 "specializationName": "",
-"years": 5
+"years": 2
+},
+"Competition": {
+"foreigner": true,
+"CompetitionId": "000004083",
+"CompetitionName": "Орд_Инфекц_ин"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 2
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016856",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000575",
+"trainingCode": "31.08.42",
+"trainingAreasName": "Неврология",
+"specializationID": "",
+"specializationName": "",
+"years": 2
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003201",
-"CompetitionName": "АСП_БиоНаук_1"
+"CompetitionId": "000004052",
+"CompetitionName": "Орд_Невр_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 7
+},
+{
+"IdBasis": "000000001",
+"Basis": "Целевой прием",
+"value": 3
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 0
+}
+],
+"freeSeatsNumber": 3,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016856",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000575",
+"trainingCode": "31.08.42",
+"trainingAreasName": "Неврология",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": true,
+"CompetitionId": "000004087",
+"CompetitionName": "Орд_Невр_ин"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 4
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016859",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000596",
+"trainingCode": "31.08.48",
+"trainingAreasName": "Скорая медицинская помощь",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": true,
+"CompetitionId": "000004090",
+"CompetitionName": "Орд_СкорПомощь_ин"
 },
 "Prices": [
 {
@@ -527,22 +3633,59 @@
 }
 ],
 "freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000000933",
-"name": "Специальность",
-"minScore": 70
-}
-]
+"subjects": []
 },
 {
 "Plan": {
-"planId": "000014419",
+"planId": "000016859",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000596",
+"trainingCode": "31.08.48",
+"trainingAreasName": "Скорая медицинская помощь",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004055",
+"CompetitionName": "Орд_СкорПомощь_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 2
+},
+{
+"IdBasis": "000000001",
+"Basis": "Целевой прием",
+"value": 5
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 0
+}
+],
+"freeSeatsNumber": 5,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016800",
 "facultyId": "000000026",
 "facultyName": "Аспирантура",
 "trainingForm": "Очная",
@@ -555,7 +3698,7 @@
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003202",
+"CompetitionId": "000004014",
 "CompetitionName": "АСП_ТехТехСтроит_1"
 },
 "Prices": [
@@ -581,85 +3724,25 @@
 }
 ],
 "freeSeatsNumber": 9,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000000933",
-"name": "Специальность",
-"minScore": 70
-}
-]
+"subjects": []
 },
 {
 "Plan": {
-"planId": "000014420",
-"facultyId": "000000026",
-"facultyName": "Аспирантура",
-"trainingForm": "Заочная",
-"trainingAreasId": "00000547",
-"trainingCode": "08.06.01",
-"trainingAreasName": "Техника и технологии строительства ",
-"specializationID": "",
-"specializationName": "",
-"years": 5
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003202",
-"CompetitionName": "АСП_ТехТехСтроит_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 2
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000000933",
-"name": "Специальность",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014421",
+"planId": "000016828",
 "facultyId": "000000026",
 "facultyName": "Аспирантура",
 "trainingForm": "Очная",
-"trainingAreasId": "00000552",
-"trainingCode": "09.06.01",
-"trainingAreasName": "Информатика и вычислительная техника",
+"trainingAreasId": "00000558",
+"trainingCode": "44.06.01",
+"trainingAreasName": "Образование и педагогические науки",
 "specializationID": "",
 "specializationName": "",
-"years": 4
+"years": 3
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003203",
-"CompetitionName": "АСП_ИИВТ_1"
+"CompetitionId": "000004029",
+"CompetitionName": "АСП_ОбрПедНаук_1"
 },
 "Prices": [
 {
@@ -675,753 +3758,7 @@
 {
 "IdBasis": "000000003",
 "Basis": "Бюджетная основа",
-"value": 11
-},
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 2
-},
-{
-"IdBasis": "000000001",
-"Basis": "Целевой прием",
-"value": 3
-}
-],
-"freeSeatsNumber": 14,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000000933",
-"name": "Специальность",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014422",
-"facultyId": "000000026",
-"facultyName": "Аспирантура",
-"trainingForm": "Заочная",
-"trainingAreasId": "00000552",
-"trainingCode": "09.06.01",
-"trainingAreasName": "Информатика и вычислительная техника",
-"specializationID": "0000000088",
-"specializationName": "Математическое моделирование, численные методы и комплексы программ",
-"years": 5
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003203",
-"CompetitionName": "АСП_ИИВТ_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000000933",
-"name": "Специальность",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014423",
-"facultyId": "000000026",
-"facultyName": "Аспирантура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000551",
-"trainingCode": "13.06.01",
-"trainingAreasName": "Электро- и теплотехника",
-"specializationID": "",
-"specializationName": "",
-"years": 4
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003204",
-"CompetitionName": "АСП_ЭлТепл_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 3
-},
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 2
-},
-{
-"IdBasis": "000000001",
-"Basis": "Целевой прием",
-"value": 1
-}
-],
-"freeSeatsNumber": 4,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000000933",
-"name": "Специальность",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014424",
-"facultyId": "000000026",
-"facultyName": "Аспирантура",
-"trainingForm": "Заочная",
-"trainingAreasId": "00000551",
-"trainingCode": "13.06.01",
-"trainingAreasName": "Электро- и теплотехника",
-"specializationID": "",
-"specializationName": "",
-"years": 5
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003204",
-"CompetitionName": "АСП_ЭлТепл_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000000933",
-"name": "Специальность",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014425",
-"facultyId": "000000026",
-"facultyName": "Аспирантура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000548",
-"trainingCode": "20.06.01",
-"trainingAreasName": "Техносферная безопасность",
-"specializationID": "",
-"specializationName": "",
-"years": 4
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003205",
-"CompetitionName": "АСП_ТехБез_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 2
-},
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-},
-{
-"IdBasis": "000000001",
-"Basis": "Целевой прием",
 "value": 0
-}
-],
-"freeSeatsNumber": 2,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000000933",
-"name": "Специальность",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014426",
-"facultyId": "000000026",
-"facultyName": "Аспирантура",
-"trainingForm": "Заочная",
-"trainingAreasId": "00000548",
-"trainingCode": "20.06.01",
-"trainingAreasName": "Техносферная безопасность",
-"specializationID": "",
-"specializationName": "",
-"years": 5
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003205",
-"CompetitionName": "АСП_ТехБез_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000000933",
-"name": "Специальность",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014427",
-"facultyId": "000000026",
-"facultyName": "Аспирантура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000544",
-"trainingCode": "30.06.01",
-"trainingAreasName": "Фундаментальная медицина",
-"specializationID": "0000000101",
-"specializationName": "Патологическая физиология",
-"years": 3
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003206",
-"CompetitionName": "АСП_ФунМед_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 5
-},
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 4
-}
-],
-"freeSeatsNumber": 5,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000000933",
-"name": "Специальность",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014428",
-"facultyId": "000000026",
-"facultyName": "Аспирантура",
-"trainingForm": "Заочная",
-"trainingAreasId": "00000544",
-"trainingCode": "30.06.01",
-"trainingAreasName": "Фундаментальная медицина",
-"specializationID": "",
-"specializationName": "",
-"years": 4
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003206",
-"CompetitionName": "АСП_ФунМед_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000000933",
-"name": "Специальность",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014429",
-"facultyId": "000000026",
-"facultyName": "Аспирантура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000545",
-"trainingCode": "31.06.01",
-"trainingAreasName": "Клиническая медицина",
-"specializationID": "0000000114",
-"specializationName": "Анестезиология и реаниматология",
-"years": 3
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003207",
-"CompetitionName": "АСП_КлинМед_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 10
-},
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 6
-}
-],
-"freeSeatsNumber": 10,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000000933",
-"name": "Специальность",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014430",
-"facultyId": "000000026",
-"facultyName": "Аспирантура",
-"trainingForm": "Заочная",
-"trainingAreasId": "00000545",
-"trainingCode": "31.06.01",
-"trainingAreasName": "Клиническая медицина",
-"specializationID": "",
-"specializationName": "",
-"years": 4
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003207",
-"CompetitionName": "АСП_КлинМед_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000000933",
-"name": "Специальность",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014433",
-"facultyId": "000000026",
-"facultyName": "Аспирантура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000553",
-"trainingCode": "35.06.01",
-"trainingAreasName": "Сельское хозяйство",
-"specializationID": "",
-"specializationName": "",
-"years": 4
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003209",
-"CompetitionName": "АСП_СельХоз_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 1
-},
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 2
-},
-{
-"IdBasis": "000000001",
-"Basis": "Целевой прием",
-"value": 1
-}
-],
-"freeSeatsNumber": 2,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000000933",
-"name": "Специальность",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014434",
-"facultyId": "000000026",
-"facultyName": "Аспирантура",
-"trainingForm": "Заочная",
-"trainingAreasId": "00000553",
-"trainingCode": "35.06.01",
-"trainingAreasName": "Сельское хозяйство",
-"specializationID": "",
-"specializationName": "",
-"years": 5
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003209",
-"CompetitionName": "АСП_СельХоз_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000000933",
-"name": "Специальность",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014435",
-"facultyId": "000000026",
-"facultyName": "Аспирантура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000549",
-"trainingCode": "35.06.04",
-"trainingAreasName": "Технологии, средства механизации и энергетическое оборудование в сельском, лесном и рыбном хозяйстве",
-"specializationID": "",
-"specializationName": "",
-"years": 3
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003210",
-"CompetitionName": "АСП_ТехСредМех_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 5
-},
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 2
-},
-{
-"IdBasis": "000000001",
-"Basis": "Целевой прием",
-"value": 1
-}
-],
-"freeSeatsNumber": 6,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000000933",
-"name": "Специальность",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014436",
-"facultyId": "000000026",
-"facultyName": "Аспирантура",
-"trainingForm": "Заочная",
-"trainingAreasId": "00000549",
-"trainingCode": "35.06.04",
-"trainingAreasName": "Технологии, средства механизации и энергетическое оборудование в сельском, лесном и рыбном хозяйстве",
-"specializationID": "",
-"specializationName": "",
-"years": 4
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003210",
-"CompetitionName": "АСП_ТехСредМех_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 2
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000000933",
-"name": "Специальность",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014437",
-"facultyId": "000000026",
-"facultyName": "Аспирантура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000554",
-"trainingCode": "36.06.01",
-"trainingAreasName": "Ветеринария и зоотехния",
-"specializationID": "",
-"specializationName": "",
-"years": 3
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003211",
-"CompetitionName": "АСП_ВетЗоо_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 4
 },
 {
 "IdBasis": "000000002",
@@ -1434,85 +3771,25 @@
 "value": 1
 }
 ],
-"freeSeatsNumber": 5,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000000933",
-"name": "Специальность",
-"minScore": 70
-}
-]
+"freeSeatsNumber": 1,
+"subjects": []
 },
 {
 "Plan": {
-"planId": "000014438",
+"planId": "000016817",
 "facultyId": "000000026",
 "facultyName": "Аспирантура",
 "trainingForm": "Заочная",
-"trainingAreasId": "00000554",
-"trainingCode": "36.06.01",
-"trainingAreasName": "Ветеринария и зоотехния",
-"specializationID": "",
-"specializationName": "",
-"years": 4
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003211",
-"CompetitionName": "АСП_ВетЗоо_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000000933",
-"name": "Специальность",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014439",
-"facultyId": "000000026",
-"facultyName": "Аспирантура",
-"trainingForm": "Очная",
 "trainingAreasId": "00000555",
 "trainingCode": "37.06.01",
 "trainingAreasName": "Психологические науки",
 "specializationID": "",
 "specializationName": "",
-"years": 3
+"years": 4
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003212",
+"CompetitionId": "000004023",
 "CompetitionName": "АСП_ПсихНаук_1"
 },
 "Prices": [
@@ -1533,4331 +3810,11 @@
 }
 ],
 "freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000000933",
-"name": "Специальность",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014440",
-"facultyId": "000000026",
-"facultyName": "Аспирантура",
-"trainingForm": "Заочная",
-"trainingAreasId": "00000555",
-"trainingCode": "37.06.01",
-"trainingAreasName": "Психологические науки",
-"specializationID": "",
-"specializationName": "",
-"years": 4
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003212",
-"CompetitionName": "АСП_ПсихНаук_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000000933",
-"name": "Специальность",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014441",
-"facultyId": "000000026",
-"facultyName": "Аспирантура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000565",
-"trainingCode": "38.06.01",
-"trainingAreasName": "Экономика",
-"specializationID": "",
-"specializationName": "",
-"years": 3
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003213",
-"CompetitionName": "АСП_ЭКО_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 2
-},
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 5
-},
-{
-"IdBasis": "000000001",
-"Basis": "Целевой прием",
-"value": 0
-}
-],
-"freeSeatsNumber": 2,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000000933",
-"name": "Специальность",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014442",
-"facultyId": "000000026",
-"facultyName": "Аспирантура",
-"trainingForm": "Заочная",
-"trainingAreasId": "00000565",
-"trainingCode": "38.06.01",
-"trainingAreasName": "Экономика",
-"specializationID": "",
-"specializationName": "",
-"years": 4
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003213",
-"CompetitionName": "АСП_ЭКО_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 4
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000000933",
-"name": "Специальность",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014443",
-"facultyId": "000000026",
-"facultyName": "Аспирантура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000556",
-"trainingCode": "39.06.01",
-"trainingAreasName": "Социологические науки",
-"specializationID": "",
-"specializationName": "",
-"years": 3
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003214",
-"CompetitionName": "АСП_СоцНаук_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 1
-},
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-},
-{
-"IdBasis": "000000001",
-"Basis": "Целевой прием",
-"value": 1
-}
-],
-"freeSeatsNumber": 2,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000000933",
-"name": "Специальность",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014444",
-"facultyId": "000000026",
-"facultyName": "Аспирантура",
-"trainingForm": "Заочная",
-"trainingAreasId": "00000556",
-"trainingCode": "39.06.01",
-"trainingAreasName": "Социологические науки",
-"specializationID": "",
-"specializationName": "",
-"years": 4
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003214",
-"CompetitionName": "АСП_СоцНаук_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000000933",
-"name": "Специальность",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014445",
-"facultyId": "000000026",
-"facultyName": "Аспирантура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000560",
-"trainingCode": "40.06.01",
-"trainingAreasName": "Юриспруденция",
-"specializationID": "",
-"specializationName": "",
-"years": 3
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003215",
-"CompetitionName": "АСП_Юри_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 2
-},
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 4
-},
-{
-"IdBasis": "000000001",
-"Basis": "Целевой прием",
-"value": 0
-}
-],
-"freeSeatsNumber": 2,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000000933",
-"name": "Специальность",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014446",
-"facultyId": "000000026",
-"facultyName": "Аспирантура",
-"trainingForm": "Заочная",
-"trainingAreasId": "00000560",
-"trainingCode": "40.06.01",
-"trainingAreasName": "Юриспруденция",
-"specializationID": "",
-"specializationName": "",
-"years": 4
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003215",
-"CompetitionName": "АСП_Юри_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 4
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000000933",
-"name": "Специальность",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014447",
-"facultyId": "000000026",
-"facultyName": "Аспирантура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000557",
-"trainingCode": "41.06.01",
-"trainingAreasName": "Политические науки и регионоведение",
-"specializationID": "",
-"specializationName": "",
-"years": 3
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003216",
-"CompetitionName": "АСП_ПолитНаук_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000000933",
-"name": "Специальность",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014448",
-"facultyId": "000000026",
-"facultyName": "Аспирантура",
-"trainingForm": "Заочная",
-"trainingAreasId": "00000557",
-"trainingCode": "41.06.01",
-"trainingAreasName": "Политические науки и регионоведение",
-"specializationID": "",
-"specializationName": "",
-"years": 4
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003216",
-"CompetitionName": "АСП_ПолитНаук_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000000933",
-"name": "Специальность",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014449",
-"facultyId": "000000026",
-"facultyName": "Аспирантура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000561",
-"trainingCode": "42.06.01",
-"trainingAreasName": "Средства массовой информации и информационно-библиотечное дело",
-"specializationID": "",
-"specializationName": "",
-"years": 3
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003217",
-"CompetitionName": "АСП_СмиИбд_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000000933",
-"name": "Специальность",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014450",
-"facultyId": "000000026",
-"facultyName": "Аспирантура",
-"trainingForm": "Заочная",
-"trainingAreasId": "00000561",
-"trainingCode": "42.06.01",
-"trainingAreasName": "Средства массовой информации и информационно-библиотечное дело",
-"specializationID": "",
-"specializationName": "",
-"years": 4
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003217",
-"CompetitionName": "АСП_СмиИбд_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000000933",
-"name": "Специальность",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014451",
-"facultyId": "000000026",
-"facultyName": "Аспирантура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000558",
-"trainingCode": "44.06.01",
-"trainingAreasName": "Образование и педагогические науки",
-"specializationID": "",
-"specializationName": "",
-"years": 3
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003218",
-"CompetitionName": "АСП_ОбрПедНаук_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 2
-},
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-},
-{
-"IdBasis": "000000001",
-"Basis": "Целевой прием",
-"value": 0
-}
-],
-"freeSeatsNumber": 2,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000000933",
-"name": "Специальность",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014452",
-"facultyId": "000000026",
-"facultyName": "Аспирантура",
-"trainingForm": "Заочная",
-"trainingAreasId": "00000558",
-"trainingCode": "44.06.01",
-"trainingAreasName": "Образование и педагогические науки",
-"specializationID": "",
-"specializationName": "",
-"years": 4
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003218",
-"CompetitionName": "АСП_ОбрПедНаук_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000000933",
-"name": "Специальность",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014453",
-"facultyId": "000000026",
-"facultyName": "Аспирантура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000562",
-"trainingCode": "45.06.01",
-"trainingAreasName": "Языкознание и литературоведение",
-"specializationID": "",
-"specializationName": "",
-"years": 3
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003219",
-"CompetitionName": "АСП_ЯзыкЛитер_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 4
-},
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 2
-}
-],
-"freeSeatsNumber": 4,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000000933",
-"name": "Специальность",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014454",
-"facultyId": "000000026",
-"facultyName": "Аспирантура",
-"trainingForm": "Заочная",
-"trainingAreasId": "00000562",
-"trainingCode": "45.06.01",
-"trainingAreasName": "Языкознание и литературоведение",
-"specializationID": "0000000159",
-"specializationName": "Германские языки",
-"years": 4
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003219",
-"CompetitionName": "АСП_ЯзыкЛитер_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 2
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000000933",
-"name": "Специальность",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014455",
-"facultyId": "000000026",
-"facultyName": "Аспирантура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000559",
-"trainingCode": "46.06.01",
-"trainingAreasName": "Исторические науки и археология",
-"specializationID": "",
-"specializationName": "",
-"years": 3
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003220",
-"CompetitionName": "АСП_ИстНаукАрх_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 1
-},
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-}
-],
-"freeSeatsNumber": 1,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000000933",
-"name": "Специальность",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014456",
-"facultyId": "000000026",
-"facultyName": "Аспирантура",
-"trainingForm": "Заочная",
-"trainingAreasId": "00000559",
-"trainingCode": "46.06.01",
-"trainingAreasName": "Исторические науки и археология",
-"specializationID": "0000000160",
-"specializationName": "Отечественная история",
-"years": 4
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003220",
-"CompetitionName": "АСП_ИстНаукАрх_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000000933",
-"name": "Специальность",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014457",
-"facultyId": "000000026",
-"facultyName": "Аспирантура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000564",
-"trainingCode": "47.06.01",
-"trainingAreasName": "Философия, этика и религиоведение",
-"specializationID": "",
-"specializationName": "",
-"years": 3
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003221",
-"CompetitionName": "АСП_ФилЭтикРелиг_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 1
-},
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-}
-],
-"freeSeatsNumber": 1,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000000933",
-"name": "Специальность",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014458",
-"facultyId": "000000026",
-"facultyName": "Аспирантура",
-"trainingForm": "Заочная",
-"trainingAreasId": "00000564",
-"trainingCode": "47.06.01",
-"trainingAreasName": "Философия, этика и религиоведение",
-"specializationID": "",
-"specializationName": "",
-"years": 4
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003221",
-"CompetitionName": "АСП_ФилЭтикРелиг_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000000933",
-"name": "Специальность",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014459",
-"facultyId": "000000026",
-"facultyName": "Аспирантура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000563",
-"trainingCode": "51.06.01",
-"trainingAreasName": "Культурология",
-"specializationID": "",
-"specializationName": "",
-"years": 3
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003222",
-"CompetitionName": "АСП_Культ_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 2
-},
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-}
-],
-"freeSeatsNumber": 2,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000000933",
-"name": "Специальность",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014460",
-"facultyId": "000000026",
-"facultyName": "Аспирантура",
-"trainingForm": "Заочная",
-"trainingAreasId": "00000563",
-"trainingCode": "51.06.01",
-"trainingAreasName": "Культурология",
-"specializationID": "",
-"specializationName": "",
-"years": 4
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003222",
-"CompetitionName": "АСП_Культ_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000000933",
-"name": "Специальность",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014461",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000566",
-"trainingCode": "31.08.01",
-"trainingAreasName": "Акушерство и гинекология",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003223",
-"CompetitionName": "Орд_АкушИГен_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 4
-},
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 10
-},
-{
-"IdBasis": "000000001",
-"Basis": "Целевой прием",
-"value": 0
-}
-],
-"freeSeatsNumber": 4,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014461",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000566",
-"trainingCode": "31.08.01",
-"trainingAreasName": "Акушерство и гинекология",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": true,
-"CompetitionId": "000003557",
-"CompetitionName": "Орд_АкушИГен_ин"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014462",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000567",
-"trainingCode": "31.08.02",
-"trainingAreasName": "Анестезиология-реаниматология",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003224",
-"CompetitionName": "Орд_АнестРеанимат_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 8
-},
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 6
-},
-{
-"IdBasis": "000000001",
-"Basis": "Целевой прием",
-"value": 0
-}
-],
-"freeSeatsNumber": 8,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014462",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000567",
-"trainingCode": "31.08.02",
-"trainingAreasName": "Анестезиология-реаниматология",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": true,
-"CompetitionId": "000003558",
-"CompetitionName": "Орд_АнестРеанимат_ин"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014463",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000585",
-"trainingCode": "31.08.07",
-"trainingAreasName": "Патологическая анатомия",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003225",
-"CompetitionName": "Орд_ПатАнатом_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 2
-},
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 2
-},
-{
-"IdBasis": "000000001",
-"Basis": "Целевой прием",
-"value": 0
-}
-],
-"freeSeatsNumber": 2,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014463",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000585",
-"trainingCode": "31.08.07",
-"trainingAreasName": "Патологическая анатомия",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": true,
-"CompetitionId": "000003560",
-"CompetitionName": "Орд_ПатАнатом_ин"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014464",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000586",
-"trainingCode": "31.08.09",
-"trainingAreasName": "Рентгенология",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003226",
-"CompetitionName": "Орд_Рентг_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 4
-},
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 3
-},
-{
-"IdBasis": "000000001",
-"Basis": "Целевой прием",
-"value": 0
-}
-],
-"freeSeatsNumber": 4,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014464",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000586",
-"trainingCode": "31.08.09",
-"trainingAreasName": "Рентгенология",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": true,
-"CompetitionId": "000003561",
-"CompetitionName": "Орд_Рентг_ин"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014465",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000568",
-"trainingCode": "31.08.10",
-"trainingAreasName": "Судебно-медицинская экспертиза",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003227",
-"CompetitionName": "Орд_СудМедЭксп_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 2
-},
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 3
-},
-{
-"IdBasis": "000000001",
-"Basis": "Целевой прием",
-"value": 0
-}
-],
-"freeSeatsNumber": 2,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014465",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000568",
-"trainingCode": "31.08.10",
-"trainingAreasName": "Судебно-медицинская экспертиза",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": true,
-"CompetitionId": "000003562",
-"CompetitionName": "Орд_СудМедЭксп_ин"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014466",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000587",
-"trainingCode": "31.08.11",
-"trainingAreasName": "Ультразвуковая диагностика",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003228",
-"CompetitionName": "Орд_Ультр_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 3
-},
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 8
-},
-{
-"IdBasis": "000000001",
-"Basis": "Целевой прием",
-"value": 0
-}
-],
-"freeSeatsNumber": 3,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014466",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000587",
-"trainingCode": "31.08.11",
-"trainingAreasName": "Ультразвуковая диагностика",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": true,
-"CompetitionId": "000003563",
-"CompetitionName": "Орд_Ультр_ин"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014467",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000569",
-"trainingCode": "31.08.12",
-"trainingAreasName": "Функциональная диагностика",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003229",
-"CompetitionName": "Орд_ФункцДиагн_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 3
-},
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 2
-}
-],
-"freeSeatsNumber": 3,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014467",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000569",
-"trainingCode": "31.08.12",
-"trainingAreasName": "Функциональная диагностика",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": true,
-"CompetitionId": "000003564",
-"CompetitionName": "Орд_ФункцДиагн_ин"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014468",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000588",
-"trainingCode": "31.08.16",
-"trainingAreasName": "Детская хирургия",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003230",
-"CompetitionName": "Орд_ДетХирург_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 2
-},
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-},
-{
-"IdBasis": "000000001",
-"Basis": "Целевой прием",
-"value": 0
-}
-],
-"freeSeatsNumber": 2,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014468",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000588",
-"trainingCode": "31.08.16",
-"trainingAreasName": "Детская хирургия",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": true,
-"CompetitionId": "000003559",
-"CompetitionName": "Орд_ДетХирург_ин"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014469",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000570",
-"trainingCode": "31.08.18",
-"trainingAreasName": "Неонатология",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003231",
-"CompetitionName": "Орд_Неонат_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 3
-},
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 2
-},
-{
-"IdBasis": "000000001",
-"Basis": "Целевой прием",
-"value": 0
-}
-],
-"freeSeatsNumber": 3,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014469",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000570",
-"trainingCode": "31.08.18",
-"trainingAreasName": "Неонатология",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": true,
-"CompetitionId": "000003565",
-"CompetitionName": "Орд_Неонат_ин"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014470",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000571",
-"trainingCode": "31.08.19",
-"trainingAreasName": "Педиатрия",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003232",
-"CompetitionName": "Орд_Пед_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 10
-},
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 2
-},
-{
-"IdBasis": "000000001",
-"Basis": "Целевой прием",
-"value": 0
-}
-],
-"freeSeatsNumber": 10,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014470",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000571",
-"trainingCode": "31.08.19",
-"trainingAreasName": "Педиатрия",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": true,
-"CompetitionId": "000003566",
-"CompetitionName": "Орд_Пед_ин"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014471",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000589",
-"trainingCode": "31.08.20",
-"trainingAreasName": "Психиатрия",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003233",
-"CompetitionName": "Орд_Псих_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 3
-},
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 5
-},
-{
-"IdBasis": "000000001",
-"Basis": "Целевой прием",
-"value": 0
-}
-],
-"freeSeatsNumber": 3,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014471",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000589",
-"trainingCode": "31.08.20",
-"trainingAreasName": "Психиатрия",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": true,
-"CompetitionId": "000003567",
-"CompetitionName": "Орд_Псих_ин"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014472",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000590",
-"trainingCode": "31.08.26",
-"trainingAreasName": "Аллергология и иммунология",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003234",
-"CompetitionName": "Орд_Аллерг_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 2
-},
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-},
-{
-"IdBasis": "000000001",
-"Basis": "Целевой прием",
-"value": 0
-}
-],
-"freeSeatsNumber": 2,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014472",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000590",
-"trainingCode": "31.08.26",
-"trainingAreasName": "Аллергология и иммунология",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": true,
-"CompetitionId": "000003568",
-"CompetitionName": "Орд_Аллерг_ин"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014473",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000572",
-"trainingCode": "31.08.28",
-"trainingAreasName": "Гастроэнтерология",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003235",
-"CompetitionName": "Орд_Гастроэн_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 2
-},
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 2
-},
-{
-"IdBasis": "000000001",
-"Basis": "Целевой прием",
-"value": 0
-}
-],
-"freeSeatsNumber": 2,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014473",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000572",
-"trainingCode": "31.08.28",
-"trainingAreasName": "Гастроэнтерология",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": true,
-"CompetitionId": "000003569",
-"CompetitionName": "Орд_Гастроэн_ин"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014474",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000573",
-"trainingCode": "31.08.32",
-"trainingAreasName": "Дерматовенерология",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003236",
-"CompetitionName": "Орд_Дермат_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 2
-},
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 10
-},
-{
-"IdBasis": "000000001",
-"Basis": "Целевой прием",
-"value": 0
-}
-],
-"freeSeatsNumber": 2,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014474",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000573",
-"trainingCode": "31.08.32",
-"trainingAreasName": "Дерматовенерология",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": true,
-"CompetitionId": "000003570",
-"CompetitionName": "Орд_Дермат_ин"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014475",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000591",
-"trainingCode": "31.08.35",
-"trainingAreasName": "Инфекционные болезни",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003237",
-"CompetitionName": "Орд_Инфекц_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 4
-},
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 2
-},
-{
-"IdBasis": "000000001",
-"Basis": "Целевой прием",
-"value": 0
-}
-],
-"freeSeatsNumber": 4,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014475",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000591",
-"trainingCode": "31.08.35",
-"trainingAreasName": "Инфекционные болезни",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": true,
-"CompetitionId": "000003571",
-"CompetitionName": "Орд_Инфекц_ин"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014476",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000574",
-"trainingCode": "31.08.36",
-"trainingAreasName": "Кардиология",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003238",
-"CompetitionName": "Орд_Кардиол_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 3
-},
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 6
-},
-{
-"IdBasis": "000000001",
-"Basis": "Целевой прием",
-"value": 0
-}
-],
-"freeSeatsNumber": 3,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014476",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000574",
-"trainingCode": "31.08.36",
-"trainingAreasName": "Кардиология",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": true,
-"CompetitionId": "000003572",
-"CompetitionName": "Орд_Кардиол_ин"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014477",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000592",
-"trainingCode": "31.08.37",
-"trainingAreasName": "Клиническая фармакология",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003239",
-"CompetitionName": "Орд_КлиничФарм_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014477",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000592",
-"trainingCode": "31.08.37",
-"trainingAreasName": "Клиническая фармакология",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": true,
-"CompetitionId": "000003573",
-"CompetitionName": "Орд_КлиничФарм_ин"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014478",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000593",
-"trainingCode": "31.08.39",
-"trainingAreasName": "Лечебная физкультура и спортивная медицина",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003240",
-"CompetitionName": "Орд_ЛечФизИСпротМед_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 2
-},
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-},
-{
-"IdBasis": "000000001",
-"Basis": "Целевой прием",
-"value": 0
-}
-],
-"freeSeatsNumber": 2,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014478",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000593",
-"trainingCode": "31.08.39",
-"trainingAreasName": "Лечебная физкультура и спортивная медицина",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": true,
-"CompetitionId": "000003574",
-"CompetitionName": "Орд_ЛечФизИСпротМед_ин"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014479",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000575",
-"trainingCode": "31.08.42",
-"trainingAreasName": "Неврология",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003241",
-"CompetitionName": "Орд_Невр_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 3
-},
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 7
-},
-{
-"IdBasis": "000000001",
-"Basis": "Целевой прием",
-"value": 0
-}
-],
-"freeSeatsNumber": 3,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014479",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000575",
-"trainingCode": "31.08.42",
-"trainingAreasName": "Неврология",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": true,
-"CompetitionId": "000003575",
-"CompetitionName": "Орд_Невр_ин"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014480",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000594",
-"trainingCode": "31.08.45",
-"trainingAreasName": "Пульмонология",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003242",
-"CompetitionName": "Орд_Пульмон_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 2
-},
-{
-"IdBasis": "000000001",
-"Basis": "Целевой прием",
-"value": 0
-}
-],
-"freeSeatsNumber": 2,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014480",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000594",
-"trainingCode": "31.08.45",
-"trainingAreasName": "Пульмонология",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": true,
-"CompetitionId": "000003576",
-"CompetitionName": "Орд_Пульмон_ин"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014481",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000595",
-"trainingCode": "31.08.46",
-"trainingAreasName": "Ревматология",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003243",
-"CompetitionName": "Орд_Ревмат_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 2
-},
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-},
-{
-"IdBasis": "000000001",
-"Basis": "Целевой прием",
-"value": 0
-}
-],
-"freeSeatsNumber": 2,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014481",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000595",
-"trainingCode": "31.08.46",
-"trainingAreasName": "Ревматология",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": true,
-"CompetitionId": "000003577",
-"CompetitionName": "Орд_Ревмат_ин"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014482",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000596",
-"trainingCode": "31.08.48",
-"trainingAreasName": "Скорая медицинская помощь",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003244",
-"CompetitionName": "Орд_СкорПомощь_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 6
-},
-{
-"IdBasis": "000000001",
-"Basis": "Целевой прием",
-"value": 0
-}
-],
-"freeSeatsNumber": 6,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014482",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000596",
-"trainingCode": "31.08.48",
-"trainingAreasName": "Скорая медицинская помощь",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": true,
-"CompetitionId": "000003578",
-"CompetitionName": "Орд_СкорПомощь_ин"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014483",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000576",
-"trainingCode": "31.08.49",
-"trainingAreasName": "Терапия",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003245",
-"CompetitionName": "Орд_Терапия_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 13
-},
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 9
-},
-{
-"IdBasis": "000000006",
-"Basis": "Бюджет субъекта РФ",
-"value": 1
-}
-],
-"freeSeatsNumber": 13,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014483",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000576",
-"trainingCode": "31.08.49",
-"trainingAreasName": "Терапия",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": true,
-"CompetitionId": "000003579",
-"CompetitionName": "Орд_Терапия_ин"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014484",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000597",
-"trainingCode": "31.08.51",
-"trainingAreasName": "Фтизиатрия",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003246",
-"CompetitionName": "Орд_Фтизи_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 4
-},
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-},
-{
-"IdBasis": "000000001",
-"Basis": "Целевой прием",
-"value": 0
-}
-],
-"freeSeatsNumber": 4,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014484",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000597",
-"trainingCode": "31.08.51",
-"trainingAreasName": "Фтизиатрия",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": true,
-"CompetitionId": "000003580",
-"CompetitionName": "Орд_Фтизи_ин"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014485",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000598",
-"trainingCode": "31.08.53",
-"trainingAreasName": "Эндокринология",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003247",
-"CompetitionName": "Орд_Эндокр_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 2
-},
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 2
-},
-{
-"IdBasis": "000000001",
-"Basis": "Целевой прием",
-"value": 0
-}
-],
-"freeSeatsNumber": 2,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014485",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000598",
-"trainingCode": "31.08.53",
-"trainingAreasName": "Эндокринология",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": true,
-"CompetitionId": "000003581",
-"CompetitionName": "Орд_Эндокр_ин"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014486",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000577",
-"trainingCode": "31.08.54",
-"trainingAreasName": "Общая врачебная практика (семейная медицина)",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003248",
-"CompetitionName": "Орд_ВрачПракт_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 3
-},
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-},
-{
-"IdBasis": "000000001",
-"Basis": "Целевой прием",
-"value": 0
-}
-],
-"freeSeatsNumber": 3,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014486",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000577",
-"trainingCode": "31.08.54",
-"trainingAreasName": "Общая врачебная практика (семейная медицина)",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": true,
-"CompetitionId": "000003582",
-"CompetitionName": "Орд_ВрачПракт_ин"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014487",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000578",
-"trainingCode": "31.08.56",
-"trainingAreasName": "Нейрохирургия",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003249",
-"CompetitionName": "Орд_Нейрохир_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 2
-},
-{
-"IdBasis": "000000001",
-"Basis": "Целевой прием",
-"value": 0
-}
-],
-"freeSeatsNumber": 2,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014487",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000578",
-"trainingCode": "31.08.56",
-"trainingAreasName": "Нейрохирургия",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": true,
-"CompetitionId": "000003583",
-"CompetitionName": "Орд_Нейрохир_ин"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014488",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000579",
-"trainingCode": "31.08.57",
-"trainingAreasName": "Онкология",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003250",
-"CompetitionName": "Орд_Онколог_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 5
-},
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 5
-},
-{
-"IdBasis": "000000001",
-"Basis": "Целевой прием",
-"value": 0
-},
-{
-"IdBasis": "000000006",
-"Basis": "Бюджет субъекта РФ",
-"value": 1
-}
-],
-"freeSeatsNumber": 5,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014488",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000579",
-"trainingCode": "31.08.57",
-"trainingAreasName": "Онкология",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": true,
-"CompetitionId": "000003584",
-"CompetitionName": "Орд_Онколог_ин"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014489",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000599",
-"trainingCode": "31.08.58",
-"trainingAreasName": "Оториноларингология",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003251",
-"CompetitionName": "Орд_Оторинола_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 4
-},
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 3
-},
-{
-"IdBasis": "000000001",
-"Basis": "Целевой прием",
-"value": 0
-},
-{
-"IdBasis": "000000006",
-"Basis": "Бюджет субъекта РФ",
-"value": 1
-}
-],
-"freeSeatsNumber": 4,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014489",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000599",
-"trainingCode": "31.08.58",
-"trainingAreasName": "Оториноларингология",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": true,
-"CompetitionId": "000003585",
-"CompetitionName": "Орд_Оторинола_ин"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014490",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000580",
-"trainingCode": "31.08.59",
-"trainingAreasName": "Офтальмология",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003252",
-"CompetitionName": "Орд_Офтальм_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 4
-},
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 6
-},
-{
-"IdBasis": "000000001",
-"Basis": "Целевой прием",
-"value": 0
-}
-],
-"freeSeatsNumber": 4,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014490",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000580",
-"trainingCode": "31.08.59",
-"trainingAreasName": "Офтальмология",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": true,
-"CompetitionId": "000003586",
-"CompetitionName": "Орд_Офтальм_ин"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
+"subjects": []
 },
 {
 "Plan": {
-"planId": "000014491",
+"planId": "000016868",
 "facultyId": "000000027",
 "facultyName": "Ординатура",
 "trainingForm": "Очная",
@@ -5870,7 +3827,7 @@
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003253",
+"CompetitionId": "000004064",
 "CompetitionName": "Орд_Торакальн_1"
 },
 "Prices": [
@@ -5885,11 +3842,6 @@
 ],
 "admissionBasis": [
 {
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 2
-},
-{
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
 "value": 1
@@ -5897,26 +3849,20 @@
 {
 "IdBasis": "000000001",
 "Basis": "Целевой прием",
+"value": 1
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
 "value": 0
 }
 ],
-"freeSeatsNumber": 2,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
+"freeSeatsNumber": 1,
+"subjects": []
 },
 {
 "Plan": {
-"planId": "000014491",
+"planId": "000016868",
 "facultyId": "000000027",
 "facultyName": "Ординатура",
 "trainingForm": "Очная",
@@ -5929,7 +3875,7 @@
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003587",
+"CompetitionId": "000004099",
 "CompetitionName": "Орд_Торакальн_ин"
 },
 "Prices": [
@@ -5950,95 +3896,25 @@
 }
 ],
 "freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
+"subjects": []
 },
 {
 "Plan": {
-"planId": "000014492",
+"planId": "000016864",
 "facultyId": "000000027",
 "facultyName": "Ординатура",
 "trainingForm": "Очная",
-"trainingAreasId": "00000581",
-"trainingCode": "31.08.66",
-"trainingAreasName": "Травматология и ортопедия",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003254",
-"CompetitionName": "Орд_ТравмИОртоп_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 4
-},
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 4
-},
-{
-"IdBasis": "000000001",
-"Basis": "Целевой прием",
-"value": 0
-}
-],
-"freeSeatsNumber": 4,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
-},
-{
-"Plan": {
-"planId": "000014492",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000581",
-"trainingCode": "31.08.66",
-"trainingAreasName": "Травматология и ортопедия",
+"trainingAreasId": "00000578",
+"trainingCode": "31.08.56",
+"trainingAreasName": "Нейрохирургия",
 "specializationID": "",
 "specializationName": "",
 "years": 2
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003588",
-"CompetitionName": "Орд_ТравмИОртоп_ин"
+"CompetitionId": "000004095",
+"CompetitionName": "Орд_Нейрохир_ин"
 },
 "Prices": [
 {
@@ -6058,36 +3934,25 @@
 }
 ],
 "freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
+"subjects": []
 },
 {
 "Plan": {
-"planId": "000014493",
+"planId": "000016864",
 "facultyId": "000000027",
 "facultyName": "Ординатура",
 "trainingForm": "Очная",
-"trainingAreasId": "00000582",
-"trainingCode": "31.08.67",
-"trainingAreasName": "Хирургия",
+"trainingAreasId": "00000578",
+"trainingCode": "31.08.56",
+"trainingAreasName": "Нейрохирургия",
 "specializationID": "",
 "specializationName": "",
 "years": 2
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003255",
-"CompetitionName": "Орд_Хирург_1"
+"CompetitionId": "000004060",
+"CompetitionName": "Орд_Нейрохир_1"
 },
 "Prices": [
 {
@@ -6101,52 +3966,208 @@
 ],
 "admissionBasis": [
 {
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 2
+},
+{
+"IdBasis": "000000001",
+"Basis": "Целевой прием",
+"value": 1
+},
+{
 "IdBasis": "000000003",
 "Basis": "Бюджетная основа",
-"value": 5
+"value": 0
+}
+],
+"freeSeatsNumber": 1,
+"subjects": []
 },
+{
+"Plan": {
+"planId": "000016846",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000570",
+"trainingCode": "31.08.18",
+"trainingAreasName": "Неонатология",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004042",
+"CompetitionName": "Орд_Неонат_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 2
+},
+{
+"IdBasis": "000000001",
+"Basis": "Целевой прием",
+"value": 3
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 0
+}
+],
+"freeSeatsNumber": 3,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016846",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000570",
+"trainingCode": "31.08.18",
+"trainingAreasName": "Неонатология",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": true,
+"CompetitionId": "000004077",
+"CompetitionName": "Орд_Неонат_ин"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 1
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016821",
+"facultyId": "000000026",
+"facultyName": "Аспирантура",
+"trainingForm": "Заочная",
+"trainingAreasId": "00000556",
+"trainingCode": "39.06.01",
+"trainingAreasName": "Социологические науки",
+"specializationID": "",
+"specializationName": "",
+"years": 4
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004025",
+"CompetitionName": "АСП_СоцНаук_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 1
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016809",
+"facultyId": "000000026",
+"facultyName": "Аспирантура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000545",
+"trainingCode": "31.06.01",
+"trainingAreasName": "Клиническая медицина",
+"specializationID": "",
+"specializationName": "",
+"years": 3
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004019",
+"CompetitionName": "АСП_КлинМед_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
 {
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
 "value": 6
 },
 {
-"IdBasis": "000000001",
-"Basis": "Целевой прием",
-"value": 0
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 9
 }
 ],
-"freeSeatsNumber": 5,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
+"freeSeatsNumber": 9,
+"subjects": []
 },
 {
 "Plan": {
-"planId": "000014493",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000582",
-"trainingCode": "31.08.67",
-"trainingAreasName": "Хирургия",
+"planId": "000016810",
+"facultyId": "000000026",
+"facultyName": "Аспирантура",
+"trainingForm": "Заочная",
+"trainingAreasId": "00000545",
+"trainingCode": "31.06.01",
+"trainingAreasName": "Клиническая медицина",
 "specializationID": "",
 "specializationName": "",
-"years": 2
+"years": 4
 },
 "Competition": {
-"foreigner": true,
-"CompetitionId": "000003589",
-"CompetitionName": "Орд_Хирург_ин"
+"foreigner": false,
+"CompetitionId": "000004019",
+"CompetitionName": "АСП_КлинМед_1"
 },
 "Prices": [
 {
@@ -6166,36 +4187,25 @@
 }
 ],
 "freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
+"subjects": []
 },
 {
 "Plan": {
-"planId": "000014494",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
+"planId": "000016814",
+"facultyId": "000000026",
+"facultyName": "Аспирантура",
 "trainingForm": "Очная",
-"trainingAreasId": "00000583",
-"trainingCode": "31.08.68",
-"trainingAreasName": "Урология",
+"trainingAreasId": "00000554",
+"trainingCode": "36.06.01",
+"trainingAreasName": "Ветеринария и зоотехния",
 "specializationID": "",
 "specializationName": "",
-"years": 2
+"years": 3
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003256",
-"CompetitionName": "Орд_Урол_1"
+"CompetitionId": "000004022",
+"CompetitionName": "АСП_ВетЗоо_1"
 },
 "Prices": [
 {
@@ -6211,50 +4221,39 @@
 {
 "IdBasis": "000000003",
 "Basis": "Бюджетная основа",
-"value": 2
+"value": 6
 },
 {
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
-"value": 4
+"value": 1
 },
 {
 "IdBasis": "000000001",
 "Basis": "Целевой прием",
-"value": 0
+"value": 1
 }
 ],
-"freeSeatsNumber": 2,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
+"freeSeatsNumber": 7,
+"subjects": []
 },
 {
 "Plan": {
-"planId": "000014494",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
-"trainingForm": "Очная",
-"trainingAreasId": "00000583",
-"trainingCode": "31.08.68",
-"trainingAreasName": "Урология",
+"planId": "000016837",
+"facultyId": "000000026",
+"facultyName": "Аспирантура",
+"trainingForm": "Заочная",
+"trainingAreasId": "00000563",
+"trainingCode": "51.06.01",
+"trainingAreasName": "Культурология",
 "specializationID": "",
 "specializationName": "",
-"years": 2
+"years": 4
 },
 "Competition": {
-"foreigner": true,
-"CompetitionId": "000003590",
-"CompetitionName": "Орд_Урол_ин"
+"foreigner": false,
+"CompetitionId": "000004033",
+"CompetitionName": "АСП_Культ_1"
 },
 "Prices": [
 {
@@ -6274,36 +4273,111 @@
 }
 ],
 "freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
+"subjects": []
 },
 {
 "Plan": {
-"planId": "000014495",
+"planId": "000016841",
 "facultyId": "000000027",
 "facultyName": "Ординатура",
 "trainingForm": "Очная",
-"trainingAreasId": "00000601",
-"trainingCode": "31.08.70",
-"trainingAreasName": "Эндоскопия",
+"trainingAreasId": "00000586",
+"trainingCode": "31.08.09",
+"trainingAreasName": "Рентгенология",
 "specializationID": "",
 "specializationName": "",
 "years": 2
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003257",
-"CompetitionName": "Орд_Эндоскоп_1"
+"CompetitionId": "000004037",
+"CompetitionName": "Орд_Рентг_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 3
+},
+{
+"IdBasis": "000000001",
+"Basis": "Целевой прием",
+"value": 3
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 0
+}
+],
+"freeSeatsNumber": 3,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016841",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000586",
+"trainingCode": "31.08.09",
+"trainingAreasName": "Рентгенология",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": true,
+"CompetitionId": "000004073",
+"CompetitionName": "Орд_Рентг_ин"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 2
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016855",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000593",
+"trainingCode": "31.08.39",
+"trainingAreasName": "Лечебная физкультура и спортивная медицина",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004051",
+"CompetitionName": "Орд_ЛечФизИСпротМед_1"
 },
 "Prices": [
 {
@@ -6319,7 +4393,7 @@
 {
 "IdBasis": "000000003",
 "Basis": "Бюджетная основа",
-"value": 2
+"value": 1
 },
 {
 "IdBasis": "000000002",
@@ -6329,40 +4403,29 @@
 {
 "IdBasis": "000000001",
 "Basis": "Целевой прием",
-"value": 0
+"value": 1
 }
 ],
 "freeSeatsNumber": 2,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-},
-{
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
-}
-]
+"subjects": []
 },
 {
 "Plan": {
-"planId": "000014495",
-"facultyId": "000000027",
-"facultyName": "Ординатура",
+"planId": "000016794",
+"facultyId": "000000026",
+"facultyName": "Аспирантура",
 "trainingForm": "Очная",
-"trainingAreasId": "00000601",
-"trainingCode": "31.08.70",
-"trainingAreasName": "Эндоскопия",
+"trainingAreasId": "00000541",
+"trainingCode": "04.06.01",
+"trainingAreasName": "Химические науки",
 "specializationID": "",
 "specializationName": "",
-"years": 2
+"years": 4
 },
 "Competition": {
-"foreigner": true,
-"CompetitionId": "000003591",
-"CompetitionName": "Орд_Эндоскоп_ин"
+"foreigner": false,
+"CompetitionId": "000004011",
+"CompetitionName": "АСП_ХимНаук_1"
 },
 "Prices": [
 {
@@ -6382,18 +4445,787 @@
 }
 ],
 "freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
+"subjects": []
 },
 {
-"subjectId": "000009138",
-"name": "Тестирование",
-"minScore": 70
+"Plan": {
+"planId": "000016802",
+"facultyId": "000000026",
+"facultyName": "Аспирантура",
+"trainingForm": "Заочная",
+"trainingAreasId": "00000552",
+"trainingCode": "09.06.01",
+"trainingAreasName": "Информатика и вычислительная техника",
+"specializationID": "",
+"specializationName": "",
+"years": 5
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004015",
+"CompetitionName": "АСП_ИИВТ_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
 }
-]
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 1
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016793",
+"facultyId": "000000026",
+"facultyName": "Аспирантура",
+"trainingForm": "Заочная",
+"trainingAreasId": "00000540",
+"trainingCode": "03.06.01",
+"trainingAreasName": "Физика и астрономия",
+"specializationID": "",
+"specializationName": "",
+"years": 5
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004010",
+"CompetitionName": "АСП_ФИЗиАС_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 1
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016790",
+"facultyId": "000000026",
+"facultyName": "Аспирантура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000539",
+"trainingCode": "01.06.01",
+"trainingAreasName": "Математика и механика",
+"specializationID": "",
+"specializationName": "",
+"years": 4
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004009",
+"CompetitionName": "АСП_МатМех_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 1
+},
+{
+"IdBasis": "000000001",
+"Basis": "Целевой прием",
+"value": 1
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 0
+}
+],
+"freeSeatsNumber": 1,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016815",
+"facultyId": "000000026",
+"facultyName": "Аспирантура",
+"trainingForm": "Заочная",
+"trainingAreasId": "00000554",
+"trainingCode": "36.06.01",
+"trainingAreasName": "Ветеринария и зоотехния",
+"specializationID": "",
+"specializationName": "",
+"years": 4
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004022",
+"CompetitionName": "АСП_ВетЗоо_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 1
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016813",
+"facultyId": "000000026",
+"facultyName": "Аспирантура",
+"trainingForm": "Заочная",
+"trainingAreasId": "00000549",
+"trainingCode": "35.06.04",
+"trainingAreasName": "Технологии, средства механизации и энергетическое оборудование в сельском, лесном и рыбном хозяйстве",
+"specializationID": "",
+"specializationName": "",
+"years": 4
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004021",
+"CompetitionName": "АСП_ТехСредМех_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 2
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016808",
+"facultyId": "000000026",
+"facultyName": "Аспирантура",
+"trainingForm": "Заочная",
+"trainingAreasId": "00000544",
+"trainingCode": "30.06.01",
+"trainingAreasName": "Фундаментальная медицина",
+"specializationID": "",
+"specializationName": "",
+"years": 4
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004018",
+"CompetitionName": "АСП_ФунМед_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 1
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016851",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000573",
+"trainingCode": "31.08.32",
+"trainingAreasName": "Дерматовенерология",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004047",
+"CompetitionName": "Орд_Дермат_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000001",
+"Basis": "Целевой прием",
+"value": 2
+},
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 10
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 0
+}
+],
+"freeSeatsNumber": 2,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016851",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000573",
+"trainingCode": "31.08.32",
+"trainingAreasName": "Дерматовенерология",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": true,
+"CompetitionId": "000004082",
+"CompetitionName": "Орд_Дермат_ин"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 2
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016795",
+"facultyId": "000000026",
+"facultyName": "Аспирантура",
+"trainingForm": "Заочная",
+"trainingAreasId": "00000541",
+"trainingCode": "04.06.01",
+"trainingAreasName": "Химические науки",
+"specializationID": "",
+"specializationName": "",
+"years": 5
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004011",
+"CompetitionName": "АСП_ХимНаук_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 1
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000017713",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000645",
+"trainingCode": "31.08.74",
+"trainingAreasName": "Стоматология хирургическая",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004136",
+"CompetitionName": "Орд_СтомХ_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 8
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000017713",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000645",
+"trainingCode": "31.08.74",
+"trainingAreasName": "Стоматология хирургическая",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": true,
+"CompetitionId": "000004140",
+"CompetitionName": "Орд_СтомХ_1_ин"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 2
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000017712",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000644",
+"trainingCode": "31.08.73",
+"trainingAreasName": "Стоматология терапевтическая",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004135",
+"CompetitionName": "Орд_СтомТ_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 8
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000017712",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000644",
+"trainingCode": "31.08.73",
+"trainingAreasName": "Стоматология терапевтическая",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": true,
+"CompetitionId": "000004139",
+"CompetitionName": "Орд_СтомТ_1_ин"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 3
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016854",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000592",
+"trainingCode": "31.08.37",
+"trainingAreasName": "Клиническая фармакология",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004050",
+"CompetitionName": "Орд_КлиничФарм_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 1
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000017714",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000646",
+"trainingCode": "31.08.75",
+"trainingAreasName": "Стоматология ортопедическая",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004137",
+"CompetitionName": "Орд_СтомО_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 8
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000017714",
+"facultyId": "000000027",
+"facultyName": "Ординатура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000646",
+"trainingCode": "31.08.75",
+"trainingAreasName": "Стоматология ортопедическая",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": true,
+"CompetitionId": "000004142",
+"CompetitionName": "Орд_СтомОрт_1_ин"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 3
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016826",
+"facultyId": "000000026",
+"facultyName": "Аспирантура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000561",
+"trainingCode": "42.06.01",
+"trainingAreasName": "Средства массовой информации и информационно-библиотечное дело",
+"specializationID": "",
+"specializationName": "",
+"years": 3
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004028",
+"CompetitionName": "АСП_СмиИбд_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 1
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016835",
+"facultyId": "000000026",
+"facultyName": "Аспирантура",
+"trainingForm": "Заочная",
+"trainingAreasId": "00000564",
+"trainingCode": "47.06.01",
+"trainingAreasName": "Философия, этика и религиоведение",
+"specializationID": "",
+"specializationName": "",
+"years": 4
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004032",
+"CompetitionName": "АСП_ФилЭтикРелиг_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 1
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016806",
+"facultyId": "000000026",
+"facultyName": "Аспирантура",
+"trainingForm": "Заочная",
+"trainingAreasId": "00000548",
+"trainingCode": "20.06.01",
+"trainingAreasName": "Техносферная безопасность",
+"specializationID": "",
+"specializationName": "",
+"years": 5
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004017",
+"CompetitionName": "АСП_ТехБез_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 1
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
+},
+{
+"Plan": {
+"planId": "000016824",
+"facultyId": "000000026",
+"facultyName": "Аспирантура",
+"trainingForm": "Очная",
+"trainingAreasId": "00000557",
+"trainingCode": "41.06.01",
+"trainingAreasName": "Политические науки и регионоведение",
+"specializationID": "",
+"specializationName": "",
+"years": 3
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004027",
+"CompetitionName": "АСП_ПолитНаук_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 1
+}
+],
+"freeSeatsNumber": 0,
+"subjects": []
 }
 ]
 }

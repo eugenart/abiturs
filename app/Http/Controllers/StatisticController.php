@@ -51,8 +51,8 @@ class StatisticController extends Controller
 
         //получим все названия файлов xls
         $files_xls = array();
-        $notification_files="";
-        if ($dir = scandir(storage_path('app/public/files-xls-stat/bach'))){
+        $notification_files = "";
+        if ($dir = scandir(storage_path('app/public/files-xls-stat/bach'))) {
             $files_xls = array();
             foreach ($dir as $file) {
                 if ($file == "." || $file == "..")
@@ -60,7 +60,7 @@ class StatisticController extends Controller
                 $files_xls[] = $file;
             }
             arsort($files_xls);
-        }else{
+        } else {
             $notification_files = "Не удалось открыть директорию с файлами";
         }
 
@@ -75,16 +75,28 @@ class StatisticController extends Controller
             if ($studyForms->count() != 0) {
                 return view('pages.stat', ['studyForms' => $studyForms, 'faculties' => $faculties,
                     'studyFormsForInputs' => $studyFormsForInputs, 'actual_link' => $actual_link, 'date_update' => $date_update,
-                    'files_xls'=>$files_xls, 'notification_files' => $notification_files]);
+                    'files_xls' => $files_xls, 'notification_files' => $notification_files]);
             } else {
                 $notification = "По Вашему запросу ничего не найдено";
                 return view('pages.stat', ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs, 'notification' => $notification]);
             }
         } else {
-            if (isset($notification)) {
-                return view('pages.stat', ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs, 'notification' => $notification]);
-            } else {
-                return view('pages.stat', compact('faculties'), compact('studyFormsForInputs'));
+            if (isset($faculties) && isset($studyFormsForInputs)) {
+                if(($faculties->count() != 0) && ($studyFormsForInputs->count() != 0)) {
+                    if (isset($notification)) {
+                        return view('pages.stat', ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs, 'notification' => $notification]);
+                    } else {
+                        return view('pages.stat', compact('faculties'), compact('studyFormsForInputs'));
+                    }
+                }else{
+                    $faculties = collect(new Faculty);
+                    $studyFormsForInputs = collect(new StudyForm);
+                    return view('pages.stat', ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs, 'notification' => 'Списки на данный момент не доступны']);
+                }
+            }else{
+                $faculties = collect(new Faculty);
+                $studyFormsForInputs = collect(new StudyForm);
+                return view('pages.stat', ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs, 'notification' => 'Списки на данный момент не доступны']);
             }
         }
 
