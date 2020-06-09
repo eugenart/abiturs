@@ -77,11 +77,22 @@ class StatisticMasterController extends Controller
                 return view('pages.statmaster', ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs, 'notification' => $notification]);
             }
         } else {
-            if(isset($notification)){
-                return view('pages.statmaster', ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs, 'notification' => $notification]);
-            }
-            else{
-                return view('pages.statmaster', compact('faculties'), compact('studyFormsForInputs'));
+            if (isset($faculties) && isset($studyFormsForInputs)) {
+                if (($faculties->count() != 0) && ($studyFormsForInputs->count() != 0)) {
+                    if (isset($notification)) {
+                        return view('pages.statmaster', ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs, 'notification' => $notification]);
+                    } else {
+                        return view('pages.statmaster', compact('faculties'), compact('studyFormsForInputs'));
+                    }
+                } else {
+                    $faculties = collect(new Faculty);
+                    $studyFormsForInputs = collect(new StudyForm);
+                    return view('pages.statmaster', ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs, 'notification' => 'Списки на данный момент не доступны']);
+                }
+            }else{
+                $faculties = collect(new Faculty);
+                $studyFormsForInputs = collect(new StudyForm);
+                return view('pages.statmaster', ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs, 'notification' => 'Списки на данный момент не доступны']);
             }
         }
 

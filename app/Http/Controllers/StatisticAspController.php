@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\DB;
 class StatisticAspController extends Controller
 {
     use XlsMakerTrait;
+
     public function index(Request $request)
     {
 
@@ -48,8 +49,8 @@ class StatisticAspController extends Controller
 
         //получим все названия файлов xls
         $files_xls = array();
-        $notification_files="";
-        if ($dir = scandir(storage_path('app/public/files-xls-stat/asp'))){
+        $notification_files = "";
+        if ($dir = scandir(storage_path('app/public/files-xls-stat/asp'))) {
             $files_xls = array();
             foreach ($dir as $file) {
                 if ($file == "." || $file == "..")
@@ -57,7 +58,7 @@ class StatisticAspController extends Controller
                 $files_xls[] = $file;
             }
             arsort($files_xls);
-        }else{
+        } else {
             $notification_files = "Не удалось открыть директорию с файлами";
         }
 
@@ -67,21 +68,32 @@ class StatisticAspController extends Controller
         $studyFormsForInputs = DB::table('study_forms')->join('statistic_asps', 'study_forms.id', '=', 'statistic_asps.id_studyForm')->groupBy('study_forms.id')->select('study_forms.*')->get();;
         if (isset($studyForms)) {
             $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-            if($studyForms->count()!=0){
+            if ($studyForms->count() != 0) {
                 return view('pages.statasp', ['studyForms' => $studyForms, 'faculties' => $faculties,
                     'studyFormsForInputs' => $studyFormsForInputs, 'actual_link' => $actual_link, 'date_update' => $date_update,
-                    'files_xls'=>$files_xls, 'notification_files' => $notification_files]);
-            }
-            else{
+                    'files_xls' => $files_xls, 'notification_files' => $notification_files]);
+            } else {
                 $notification = "По Вашему запросу ничего не найдено";
                 return view('pages.statasp', ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs, 'notification' => $notification]);
             }
         } else {
-            if(isset($notification)){
-                return view('pages.statasp', ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs, 'notification' => $notification]);
-            }
-            else{
-                return view('pages.statasp', compact('faculties'), compact('studyFormsForInputs'));
+            if (isset($faculties) && isset($studyFormsForInputs)) {
+                if (($faculties->count() != 0) && ($studyFormsForInputs->count() != 0)) {
+
+                    if (isset($notification)) {
+                        return view('pages.statasp', ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs, 'notification' => $notification]);
+                    } else {
+                        return view('pages.statasp', compact('faculties'), compact('studyFormsForInputs'));
+                    }
+                } else {
+                    $faculties = collect(new Faculty);
+                    $studyFormsForInputs = collect(new StudyForm);
+                    return view('pages.statasp', ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs, 'notification' => 'Списки на данный момент не доступны']);
+                }
+            } else {
+                $faculties = collect(new Faculty);
+                $studyFormsForInputs = collect(new StudyForm);
+                return view('pages.statasp', ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs, 'notification' => 'Списки на данный момент не доступны']);
             }
         }
 
@@ -169,10 +181,10 @@ class StatisticAspController extends Controller
                                     $idPlan = PlanAsp::where('id_speciality', '=', $speciality->id)
                                         ->where('id_studyForm', '=', $studyForm->id)
                                         ->first();
-                                    if(!empty($idPlan)) {
+                                    if (!empty($idPlan)) {
 //                                        $freeSeatsNumber = PlanCompetition::where('id_plan', '=', intval($idPlan->id))->first();
                                         $id_plan_comps = PlanCompetitionAsp::where('id_plan', '=', intval($idPlan->id))->first();
-                                        if(!empty($id_plan_comps)){
+                                        if (!empty($id_plan_comps)) {
                                             $freeSeatsNumber = Freeseats_basesAsp::where('id_plan_comp', '=', intval($id_plan_comps->id))->
                                             where('id_admissionBasis', '=', intval($admissionBasis->id))->first();
                                         }
@@ -237,11 +249,11 @@ class StatisticAspController extends Controller
                 ->get();
 
 
-            if($id_students->count() > 9){
+            if ($id_students->count() > 9) {
                 $notification = 'По вашему запросу найдено слишком много совпадений. Пожалуйста, уточните запрос.';
                 return;
             }
-            if($id_students->count() == 0){
+            if ($id_students->count() == 0) {
                 $notification = 'По вашему запросу ничего не найдено.';
                 return;
             }
@@ -313,7 +325,7 @@ class StatisticAspController extends Controller
                                     $idPlan = PlanAsp::where('id_speciality', '=', $speciality->id)
                                         ->where('id_studyForm', '=', $studyForm->id)
                                         ->first();
-                                    if(!empty($idPlan)) {
+                                    if (!empty($idPlan)) {
                                         $freeSeatsNumber = PlanCompetitionAsp::where('id_plan', '=', intval($idPlan->id))->first();
                                     }
 //                                    $freeSeatsNumber = TrainingArea::where('id_speciality', '=', $speciality->id)
