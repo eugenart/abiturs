@@ -2,129 +2,21 @@
 "data": [
 {
 "Plan": {
-"planId": "000014099",
-"facultyId": "000000003",
-"facultyName": "Аграрный институт",
-"trainingForm": "Очная",
-"trainingAreasId": "00000124",
-"trainingCode": "35.04.04",
-"trainingAreasName": "Агрономия",
-"specializationID": "0000000354",
-"specializationName": "Адаптивные системы земледелия",
-"years": 2
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003073",
-"CompetitionName": "АГР_АГР_М_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 10
-},
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-},
-{
-"IdBasis": "000000001",
-"Basis": "Целевой прием",
-"value": 0
-}
-],
-"freeSeatsNumber": 10,
-"subjects": [
-{
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
-"minScore": 70
-},
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-}
-]
-},
-{
-"Plan": {
-"planId": "000014099",
-"facultyId": "000000003",
-"facultyName": "Аграрный институт",
-"trainingForm": "Очная",
-"trainingAreasId": "00000124",
-"trainingCode": "35.04.04",
-"trainingAreasName": "Агрономия",
-"specializationID": "0000000354",
-"specializationName": "Адаптивные системы земледелия",
-"years": 2
-},
-"Competition": {
-"foreigner": true,
-"CompetitionId": "000003075",
-"CompetitionName": "АГР_АГР_М_ин"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 2
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
-"minScore": 70
-},
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-}
-]
-},
-{
-"Plan": {
-"planId": "000014100",
-"facultyId": "000000003",
-"facultyName": "Аграрный институт",
+"planId": "000017706",
+"facultyId": "000000011",
+"facultyName": "Географический факультет",
 "trainingForm": "Заочная",
-"trainingAreasId": "00000124",
-"trainingCode": "35.04.04",
-"trainingAreasName": "Агрономия",
+"trainingAreasId": "00000649",
+"trainingCode": "05.04.03",
+"trainingAreasName": "Картография и геоинформатика",
 "specializationID": "",
 "specializationName": "",
 "years": 3
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003073",
-"CompetitionName": "АГР_АГР_М_1"
+"CompetitionId": "000004120",
+"CompetitionName": "ГЕО_КиГ_М_1"
 },
 "Prices": [
 {
@@ -146,9 +38,9 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
-"minScore": 70
+"subjectId": "000012389",
+"name": "Междисциплинарный экзамен по программе Картография и геоинформатика",
+"minScore": 60
 },
 {
 "subjectId": "000000015",
@@ -159,21 +51,21 @@
 },
 {
 "Plan": {
-"planId": "000014100",
-"facultyId": "000000003",
-"facultyName": "Аграрный институт",
+"planId": "000017706",
+"facultyId": "000000011",
+"facultyName": "Географический факультет",
 "trainingForm": "Заочная",
-"trainingAreasId": "00000124",
-"trainingCode": "35.04.04",
-"trainingAreasName": "Агрономия",
+"trainingAreasId": "00000649",
+"trainingCode": "05.04.03",
+"trainingAreasName": "Картография и геоинформатика",
 "specializationID": "",
 "specializationName": "",
 "years": 3
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003075",
-"CompetitionName": "АГР_АГР_М_ин"
+"CompetitionId": "000004121",
+"CompetitionName": "ГЕО_КиГ_М_ин"
 },
 "Prices": [
 {
@@ -195,9 +87,9 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
-"minScore": 70
+"subjectId": "000012389",
+"name": "Междисциплинарный экзамен по программе Картография и геоинформатика",
+"minScore": 60
 },
 {
 "subjectId": "000000015",
@@ -208,21 +100,21 @@
 },
 {
 "Plan": {
-"planId": "000014101",
-"facultyId": "000000003",
-"facultyName": "Аграрный институт",
+"planId": "000017710",
+"facultyId": "000000016",
+"facultyName": "Экономический факультет",
 "trainingForm": "Очная",
-"trainingAreasId": "00000128",
-"trainingCode": "36.04.02",
-"trainingAreasName": "Зоотехния",
+"trainingAreasId": "00000527",
+"trainingCode": "38.04.01",
+"trainingAreasName": "Экономика",
 "specializationID": "",
 "specializationName": "",
 "years": 2
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003074",
-"CompetitionName": "АГР_ЗОО_М_1"
+"CompetitionId": "000003969",
+"CompetitionName": "ЭКО_ЭКО_М_1"
 },
 "Prices": [
 {
@@ -236,26 +128,85 @@
 ],
 "admissionBasis": [
 {
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 5
-},
-{
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
-"value": 7
+"value": 9
 },
 {
 "IdBasis": "000000001",
 "Basis": "Целевой прием",
-"value": 0
+"value": 1
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 4
 }
 ],
 "freeSeatsNumber": 5,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012170",
+"name": "Междисциплинарный экзамен по программе Экономика",
+"minScore": 51
+},
+{
+"subjectId": "000000015",
+"name": "Индивидуальное достижение",
+"minScore": 0
+}
+]
+},
+{
+"Plan": {
+"planId": "000016234",
+"facultyId": "000000003",
+"facultyName": "Аграрный институт",
+"trainingForm": "Очная",
+"trainingAreasId": "00000124",
+"trainingCode": "35.04.04",
+"trainingAreasName": "Агрономия",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000003871",
+"CompetitionName": "АГР_АГР_М_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 5
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 7
+},
+{
+"IdBasis": "000000001",
+"Basis": "Целевой прием",
+"value": 2
+}
+],
+"freeSeatsNumber": 9,
+"subjects": [
+{
+"subjectId": "000012128",
+"name": "Междисциплинарный экзамен по программе Агрономия",
 "minScore": 70
 },
 {
@@ -267,21 +218,21 @@
 },
 {
 "Plan": {
-"planId": "000014101",
+"planId": "000016234",
 "facultyId": "000000003",
 "facultyName": "Аграрный институт",
 "trainingForm": "Очная",
-"trainingAreasId": "00000128",
-"trainingCode": "36.04.02",
-"trainingAreasName": "Зоотехния",
+"trainingAreasId": "00000124",
+"trainingCode": "35.04.04",
+"trainingAreasName": "Агрономия",
 "specializationID": "",
 "specializationName": "",
 "years": 2
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003076",
-"CompetitionName": "АГР_ЗОО_М_ин"
+"CompetitionId": "000003873",
+"CompetitionName": "АГР_АГР_М_ин"
 },
 "Prices": [
 {
@@ -303,8 +254,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012128",
+"name": "Междисциплинарный экзамен по программе Агрономия",
 "minScore": 70
 },
 {
@@ -316,20 +267,20 @@
 },
 {
 "Plan": {
-"planId": "000014102",
+"planId": "000016236",
 "facultyId": "000000003",
 "facultyName": "Аграрный институт",
-"trainingForm": "Заочная",
+"trainingForm": "Очная",
 "trainingAreasId": "00000128",
 "trainingCode": "36.04.02",
 "trainingAreasName": "Зоотехния",
-"specializationID": "0000000355",
-"specializationName": "Кормление и разведение животных",
-"years": 3
+"specializationID": "",
+"specializationName": "",
+"years": 2
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003074",
+"CompetitionId": "000003872",
 "CompetitionName": "АГР_ЗОО_М_1"
 },
 "Prices": [
@@ -346,24 +297,14 @@
 {
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
-"value": 1
-},
-{
-"IdBasis": "000000001",
-"Basis": "Целевой прием",
-"value": 0
-},
-{
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 7
+"value": 10
 }
 ],
-"freeSeatsNumber": 7,
+"freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012129",
+"name": "Междисциплинарный экзамен по программе Зоотехния",
 "minScore": 70
 },
 {
@@ -375,20 +316,20 @@
 },
 {
 "Plan": {
-"planId": "000014102",
+"planId": "000016236",
 "facultyId": "000000003",
 "facultyName": "Аграрный институт",
-"trainingForm": "Заочная",
+"trainingForm": "Очная",
 "trainingAreasId": "00000128",
 "trainingCode": "36.04.02",
 "trainingAreasName": "Зоотехния",
-"specializationID": "0000000355",
-"specializationName": "Кормление и разведение животных",
-"years": 3
+"specializationID": "",
+"specializationName": "",
+"years": 2
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003076",
+"CompetitionId": "000003874",
 "CompetitionName": "АГР_ЗОО_М_ин"
 },
 "Prices": [
@@ -411,8 +352,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012129",
+"name": "Междисциплинарный экзамен по программе Зоотехния",
 "minScore": 70
 },
 {
@@ -424,7 +365,115 @@
 },
 {
 "Plan": {
-"planId": "000014103",
+"planId": "000016237",
+"facultyId": "000000003",
+"facultyName": "Аграрный институт",
+"trainingForm": "Заочная",
+"trainingAreasId": "00000128",
+"trainingCode": "36.04.02",
+"trainingAreasName": "Зоотехния",
+"specializationID": "",
+"specializationName": "",
+"years": 3
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000003872",
+"CompetitionName": "АГР_ЗОО_М_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 7
+},
+{
+"IdBasis": "000000001",
+"Basis": "Целевой прием",
+"value": 1
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 6
+}
+],
+"freeSeatsNumber": 7,
+"subjects": [
+{
+"subjectId": "000012129",
+"name": "Междисциплинарный экзамен по программе Зоотехния",
+"minScore": 70
+},
+{
+"subjectId": "000000015",
+"name": "Индивидуальное достижение",
+"minScore": 0
+}
+]
+},
+{
+"Plan": {
+"planId": "000016237",
+"facultyId": "000000003",
+"facultyName": "Аграрный институт",
+"trainingForm": "Заочная",
+"trainingAreasId": "00000128",
+"trainingCode": "36.04.02",
+"trainingAreasName": "Зоотехния",
+"specializationID": "",
+"specializationName": "",
+"years": 3
+},
+"Competition": {
+"foreigner": true,
+"CompetitionId": "000003874",
+"CompetitionName": "АГР_ЗОО_М_ин"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 2
+}
+],
+"freeSeatsNumber": 0,
+"subjects": [
+{
+"subjectId": "000012129",
+"name": "Междисциплинарный экзамен по программе Зоотехния",
+"minScore": 70
+},
+{
+"subjectId": "000000015",
+"name": "Индивидуальное достижение",
+"minScore": 0
+}
+]
+},
+{
+"Plan": {
+"planId": "000016238",
 "facultyId": "000000009",
 "facultyName": "Архитектурно-строительный факультет",
 "trainingForm": "Очная",
@@ -437,7 +486,7 @@
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003077",
+"CompetitionId": "000003875",
 "CompetitionName": "АСФ_СТР:ТСМИК_М_1"
 },
 "Prices": [
@@ -451,11 +500,6 @@
 }
 ],
 "admissionBasis": [
-{
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 7
-},
 {
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
@@ -464,14 +508,19 @@
 {
 "IdBasis": "000000001",
 "Basis": "Целевой прием",
-"value": 0
+"value": 2
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 6
 }
 ],
-"freeSeatsNumber": 7,
+"freeSeatsNumber": 8,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012130",
+"name": "Междисциплинарный экзамен по программе Строительство",
 "minScore": 40
 },
 {
@@ -483,69 +532,20 @@
 },
 {
 "Plan": {
-"planId": "000014104",
+"planId": "000016238",
 "facultyId": "000000009",
 "facultyName": "Архитектурно-строительный факультет",
-"trainingForm": "Заочная",
+"trainingForm": "Очная",
 "trainingAreasId": "00000112",
 "trainingCode": "08.04.01",
 "trainingAreasName": "Строительство",
 "specializationID": "0000000215",
 "specializationName": "Технология строительных материалов, изделий и конструкций",
-"years": 3
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003077",
-"CompetitionName": "АСФ_СТР:ТСМИК_М_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 7
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
-"minScore": 40
-},
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-}
-]
-},
-{
-"Plan": {
-"planId": "000014104",
-"facultyId": "000000009",
-"facultyName": "Архитектурно-строительный факультет",
-"trainingForm": "Заочная",
-"trainingAreasId": "00000112",
-"trainingCode": "08.04.01",
-"trainingAreasName": "Строительство",
-"specializationID": "0000000215",
-"specializationName": "Технология строительных материалов, изделий и конструкций",
-"years": 3
+"years": 2
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003086",
+"CompetitionId": "000004107",
 "CompetitionName": "АСФ_СТР:ТСМИК_М_ин"
 },
 "Prices": [
@@ -562,14 +562,14 @@
 {
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
-"value": 1
+"value": 2
 }
 ],
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012130",
+"name": "Междисциплинарный экзамен по программе Строительство",
 "minScore": 40
 },
 {
@@ -581,7 +581,105 @@
 },
 {
 "Plan": {
-"planId": "000014105",
+"planId": "000016239",
+"facultyId": "000000009",
+"facultyName": "Архитектурно-строительный факультет",
+"trainingForm": "Заочная",
+"trainingAreasId": "00000112",
+"trainingCode": "08.04.01",
+"trainingAreasName": "Строительство",
+"specializationID": "0000000215",
+"specializationName": "Технология строительных материалов, изделий и конструкций",
+"years": 3
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000003875",
+"CompetitionName": "АСФ_СТР:ТСМИК_М_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 14
+}
+],
+"freeSeatsNumber": 0,
+"subjects": [
+{
+"subjectId": "000012130",
+"name": "Междисциплинарный экзамен по программе Строительство",
+"minScore": 40
+},
+{
+"subjectId": "000000015",
+"name": "Индивидуальное достижение",
+"minScore": 0
+}
+]
+},
+{
+"Plan": {
+"planId": "000016239",
+"facultyId": "000000009",
+"facultyName": "Архитектурно-строительный факультет",
+"trainingForm": "Заочная",
+"trainingAreasId": "00000112",
+"trainingCode": "08.04.01",
+"trainingAreasName": "Строительство",
+"specializationID": "0000000215",
+"specializationName": "Технология строительных материалов, изделий и конструкций",
+"years": 3
+},
+"Competition": {
+"foreigner": true,
+"CompetitionId": "000004108",
+"CompetitionName": "АСФ_СТР:ТСМИК_М_ин"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 2
+}
+],
+"freeSeatsNumber": 0,
+"subjects": [
+{
+"subjectId": "000012130",
+"name": "Междисциплинарный экзамен по программе Строительство",
+"minScore": 40
+},
+{
+"subjectId": "000000015",
+"name": "Индивидуальное достижение",
+"minScore": 0
+}
+]
+},
+{
+"Plan": {
+"planId": "000016240",
 "facultyId": "000000009",
 "facultyName": "Архитектурно-строительный факультет",
 "trainingForm": "Очная",
@@ -594,7 +692,7 @@
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003078",
+"CompetitionId": "000003876",
 "CompetitionName": "АСФ_СТР:ТПЗС_М_1"
 },
 "Prices": [
@@ -609,26 +707,26 @@
 ],
 "admissionBasis": [
 {
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 6
-},
-{
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
-"value": 2
+"value": 3
 },
 {
 "IdBasis": "000000001",
 "Basis": "Целевой прием",
-"value": 0
+"value": 1
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 6
 }
 ],
-"freeSeatsNumber": 6,
+"freeSeatsNumber": 7,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012130",
+"name": "Междисциплинарный экзамен по программе Строительство",
 "minScore": 40
 },
 {
@@ -640,7 +738,7 @@
 },
 {
 "Plan": {
-"planId": "000014105",
+"planId": "000016240",
 "facultyId": "000000009",
 "facultyName": "Архитектурно-строительный факультет",
 "trainingForm": "Очная",
@@ -653,7 +751,7 @@
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003087",
+"CompetitionId": "000003885",
 "CompetitionName": "АСФ_СТР:ТПЗС_М_ин"
 },
 "Prices": [
@@ -676,8 +774,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012130",
+"name": "Междисциплинарный экзамен по программе Строительство",
 "minScore": 40
 },
 {
@@ -689,56 +787,7 @@
 },
 {
 "Plan": {
-"planId": "000014106",
-"facultyId": "000000009",
-"facultyName": "Архитектурно-строительный факультет",
-"trainingForm": "Заочная",
-"trainingAreasId": "00000112",
-"trainingCode": "08.04.01",
-"trainingAreasName": "Строительство",
-"specializationID": "0000000270",
-"specializationName": "Теория и проектирование зданий и сооружений ",
-"years": 3
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003078",
-"CompetitionName": "АСФ_СТР:ТПЗС_М_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 7
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
-"minScore": 40
-},
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-}
-]
-},
-{
-"Plan": {
-"planId": "000014107",
+"planId": "000016242",
 "facultyId": "000000009",
 "facultyName": "Архитектурно-строительный факультет",
 "trainingForm": "Очная",
@@ -751,7 +800,7 @@
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003079",
+"CompetitionId": "000003877",
 "CompetitionName": "АСФ_СТР:ФОППН_М_1"
 },
 "Prices": [
@@ -766,26 +815,26 @@
 ],
 "admissionBasis": [
 {
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 3
+},
+{
 "IdBasis": "000000003",
 "Basis": "Бюджетная основа",
 "value": 6
 },
 {
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 2
-},
-{
 "IdBasis": "000000001",
 "Basis": "Целевой прием",
-"value": 0
+"value": 1
 }
 ],
-"freeSeatsNumber": 6,
+"freeSeatsNumber": 7,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012130",
+"name": "Междисциплинарный экзамен по программе Строительство",
 "minScore": 40
 },
 {
@@ -797,7 +846,7 @@
 },
 {
 "Plan": {
-"planId": "000014107",
+"planId": "000016242",
 "facultyId": "000000009",
 "facultyName": "Архитектурно-строительный факультет",
 "trainingForm": "Очная",
@@ -810,7 +859,7 @@
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003089",
+"CompetitionId": "000003887",
 "CompetitionName": "АСФ_СТР:ФОППН_М_ин"
 },
 "Prices": [
@@ -827,14 +876,14 @@
 {
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
-"value": 1
+"value": 2
 }
 ],
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012130",
+"name": "Междисциплинарный экзамен по программе Строительство",
 "minScore": 40
 },
 {
@@ -846,56 +895,7 @@
 },
 {
 "Plan": {
-"planId": "000014108",
-"facultyId": "000000009",
-"facultyName": "Архитектурно-строительный факультет",
-"trainingForm": "Заочная",
-"trainingAreasId": "00000112",
-"trainingCode": "08.04.01",
-"trainingAreasName": "Строительство",
-"specializationID": "0000000032",
-"specializationName": "Фундаментальные основы прогнозирования и повышения надежности, долговечности строительных материалов, конструкций и сооружений",
-"years": 2
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003079",
-"CompetitionName": "АСФ_СТР:ФОППН_М_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 7
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
-"minScore": 40
-},
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-}
-]
-},
-{
-"Plan": {
-"planId": "000014109",
+"planId": "000016244",
 "facultyId": "000000009",
 "facultyName": "Архитектурно-строительный факультет",
 "trainingForm": "Очная",
@@ -908,7 +908,7 @@
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003080",
+"CompetitionId": "000003878",
 "CompetitionName": "АСФ_СТР:АСМ_М_1"
 },
 "Prices": [
@@ -923,26 +923,26 @@
 ],
 "admissionBasis": [
 {
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 3
+},
+{
 "IdBasis": "000000003",
 "Basis": "Бюджетная основа",
 "value": 6
 },
 {
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 2
-},
-{
 "IdBasis": "000000001",
 "Basis": "Целевой прием",
-"value": 0
+"value": 1
 }
 ],
-"freeSeatsNumber": 6,
+"freeSeatsNumber": 7,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012130",
+"name": "Междисциплинарный экзамен по программе Строительство",
 "minScore": 40
 },
 {
@@ -954,7 +954,7 @@
 },
 {
 "Plan": {
-"planId": "000014109",
+"planId": "000016244",
 "facultyId": "000000009",
 "facultyName": "Архитектурно-строительный факультет",
 "trainingForm": "Очная",
@@ -967,7 +967,7 @@
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003090",
+"CompetitionId": "000003888",
 "CompetitionName": "АСФ_СТР:АСМ_М_ин"
 },
 "Prices": [
@@ -990,8 +990,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012130",
+"name": "Междисциплинарный экзамен по программе Строительство",
 "minScore": 40
 },
 {
@@ -1003,7 +1003,7 @@
 },
 {
 "Plan": {
-"planId": "000014110",
+"planId": "000016245",
 "facultyId": "000000009",
 "facultyName": "Архитектурно-строительный факультет",
 "trainingForm": "Очная",
@@ -1015,106 +1015,8 @@
 "years": 2
 },
 "Competition": {
-"foreigner": false,
-"CompetitionId": "000003081",
-"CompetitionName": "АСФ_СТР:РЭСМИК_М_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 7
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
-"minScore": 40
-},
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-}
-]
-},
-{
-"Plan": {
-"planId": "000014111",
-"facultyId": "000000009",
-"facultyName": "Архитектурно-строительный факультет",
-"trainingForm": "Заочная",
-"trainingAreasId": "00000112",
-"trainingCode": "08.04.01",
-"trainingAreasName": "Строительство",
-"specializationID": "0000000258",
-"specializationName": "Ресурсосбережение и экология строительных материалов, изделий и конструкций",
-"years": 3
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003081",
-"CompetitionName": "АСФ_СТР:РЭСМИК_М_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 7
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
-"minScore": 40
-},
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-}
-]
-},
-{
-"Plan": {
-"planId": "000014111",
-"facultyId": "000000009",
-"facultyName": "Архитектурно-строительный факультет",
-"trainingForm": "Заочная",
-"trainingAreasId": "00000112",
-"trainingCode": "08.04.01",
-"trainingAreasName": "Строительство",
-"specializationID": "0000000258",
-"specializationName": "Ресурсосбережение и экология строительных материалов, изделий и конструкций",
-"years": 3
-},
-"Competition": {
 "foreigner": true,
-"CompetitionId": "000003091",
+"CompetitionId": "000004124",
 "CompetitionName": "АСФ_СТР:РЭСМИК_М_ин"
 },
 "Prices": [
@@ -1131,171 +1033,14 @@
 {
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
-"value": 1
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
-"minScore": 40
-},
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-}
-]
-},
-{
-"Plan": {
-"planId": "000014112",
-"facultyId": "000000009",
-"facultyName": "Архитектурно-строительный факультет",
-"trainingForm": "Заочная",
-"trainingAreasId": "00000112",
-"trainingCode": "08.04.01",
-"trainingAreasName": "Строительство",
-"specializationID": "0000000259",
-"specializationName": "Архитектурно-строительное материаловедение",
-"years": 3
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003080",
-"CompetitionName": "АСФ_СТР:АСМ_М_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 7
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
-"minScore": 40
-},
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-}
-]
-},
-{
-"Plan": {
-"planId": "000014112",
-"facultyId": "000000009",
-"facultyName": "Архитектурно-строительный факультет",
-"trainingForm": "Заочная",
-"trainingAreasId": "00000112",
-"trainingCode": "08.04.01",
-"trainingAreasName": "Строительство",
-"specializationID": "0000000259",
-"specializationName": "Архитектурно-строительное материаловедение",
-"years": 3
-},
-"Competition": {
-"foreigner": true,
-"CompetitionId": "000003090",
-"CompetitionName": "АСФ_СТР:АСМ_М_ин"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
-"minScore": 40
-},
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-}
-]
-},
-{
-"Plan": {
-"planId": "000014113",
-"facultyId": "000000009",
-"facultyName": "Архитектурно-строительный факультет",
-"trainingForm": "Очная",
-"trainingAreasId": "00000112",
-"trainingCode": "08.04.01",
-"trainingAreasName": "Строительство",
-"specializationID": "0000000274",
-"specializationName": "Биоповреждения и биозащита зданий и сооружений ",
-"years": 2
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003082",
-"CompetitionName": "АСФ_СТР:ББЗС_М_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 6
-},
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
 "value": 2
-},
-{
-"IdBasis": "000000001",
-"Basis": "Целевой прием",
-"value": 0
 }
 ],
-"freeSeatsNumber": 6,
+"freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012130",
+"name": "Междисциплинарный экзамен по программе Строительство",
 "minScore": 40
 },
 {
@@ -1307,21 +1052,21 @@
 },
 {
 "Plan": {
-"planId": "000014113",
+"planId": "000016245",
 "facultyId": "000000009",
 "facultyName": "Архитектурно-строительный факультет",
 "trainingForm": "Очная",
 "trainingAreasId": "00000112",
 "trainingCode": "08.04.01",
 "trainingAreasName": "Строительство",
-"specializationID": "0000000274",
-"specializationName": "Биоповреждения и биозащита зданий и сооружений ",
+"specializationID": "0000000258",
+"specializationName": "Ресурсосбережение и экология строительных материалов, изделий и конструкций",
 "years": 2
 },
 "Competition": {
-"foreigner": true,
-"CompetitionId": "000003088",
-"CompetitionName": "АСФ_СТР:ББЗС_М_ин"
+"foreigner": false,
+"CompetitionId": "000003879",
+"CompetitionName": "АСФ_СТР:РЭСМИК_М_1"
 },
 "Prices": [
 {
@@ -1337,14 +1082,14 @@
 {
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
-"value": 1
+"value": 7
 }
 ],
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012130",
+"name": "Междисциплинарный экзамен по программе Строительство",
 "minScore": 40
 },
 {
@@ -1356,20 +1101,20 @@
 },
 {
 "Plan": {
-"planId": "000014114",
+"planId": "000016248",
 "facultyId": "000000009",
 "facultyName": "Архитектурно-строительный факультет",
-"trainingForm": "Заочная",
+"trainingForm": "Очная",
 "trainingAreasId": "00000112",
 "trainingCode": "08.04.01",
 "trainingAreasName": "Строительство",
 "specializationID": "0000000274",
 "specializationName": "Биоповреждения и биозащита зданий и сооружений ",
-"years": 3
+"years": 2
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003082",
+"CompetitionId": "000003880",
 "CompetitionName": "АСФ_СТР:ББЗС_М_1"
 },
 "Prices": [
@@ -1392,8 +1137,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012130",
+"name": "Междисциплинарный экзамен по программе Строительство",
 "minScore": 40
 },
 {
@@ -1405,20 +1150,20 @@
 },
 {
 "Plan": {
-"planId": "000014114",
+"planId": "000016248",
 "facultyId": "000000009",
 "facultyName": "Архитектурно-строительный факультет",
-"trainingForm": "Заочная",
+"trainingForm": "Очная",
 "trainingAreasId": "00000112",
 "trainingCode": "08.04.01",
 "trainingAreasName": "Строительство",
 "specializationID": "0000000274",
 "specializationName": "Биоповреждения и биозащита зданий и сооружений ",
-"years": 3
+"years": 2
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003088",
+"CompetitionId": "000003886",
 "CompetitionName": "АСФ_СТР:ББЗС_М_ин"
 },
 "Prices": [
@@ -1441,8 +1186,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012130",
+"name": "Междисциплинарный экзамен по программе Строительство",
 "minScore": 40
 },
 {
@@ -1454,7 +1199,7 @@
 },
 {
 "Plan": {
-"planId": "000014115",
+"planId": "000016250",
 "facultyId": "000000009",
 "facultyName": "Архитектурно-строительный факультет",
 "trainingForm": "Очная",
@@ -1467,7 +1212,7 @@
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003083",
+"CompetitionId": "000003881",
 "CompetitionName": "АСФ_СТР:БВС_М_1"
 },
 "Prices": [
@@ -1482,26 +1227,16 @@
 ],
 "admissionBasis": [
 {
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 6
-},
-{
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
-"value": 2
-},
-{
-"IdBasis": "000000001",
-"Basis": "Целевой прием",
-"value": 0
+"value": 7
 }
 ],
-"freeSeatsNumber": 6,
+"freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012130",
+"name": "Междисциплинарный экзамен по программе Строительство",
 "minScore": 40
 },
 {
@@ -1513,7 +1248,7 @@
 },
 {
 "Plan": {
-"planId": "000014115",
+"planId": "000016250",
 "facultyId": "000000009",
 "facultyName": "Архитектурно-строительный факультет",
 "trainingForm": "Очная",
@@ -1526,7 +1261,7 @@
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003092",
+"CompetitionId": "000003890",
 "CompetitionName": "АСФ_СТР:БВС_М_ин"
 },
 "Prices": [
@@ -1549,8 +1284,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012130",
+"name": "Междисциплинарный экзамен по программе Строительство",
 "minScore": 40
 },
 {
@@ -1562,56 +1297,7 @@
 },
 {
 "Plan": {
-"planId": "000014116",
-"facultyId": "000000009",
-"facultyName": "Архитектурно-строительный факультет",
-"trainingForm": "Заочная",
-"trainingAreasId": "00000112",
-"trainingCode": "08.04.01",
-"trainingAreasName": "Строительство",
-"specializationID": "0000000372",
-"specializationName": "Биотехнологии в строительстве",
-"years": 3
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003083",
-"CompetitionName": "АСФ_СТР:БВС_М_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 7
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
-"minScore": 40
-},
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-}
-]
-},
-{
-"Plan": {
-"planId": "000014117",
+"planId": "000016252",
 "facultyId": "000000009",
 "facultyName": "Архитектурно-строительный факультет",
 "trainingForm": "Очная",
@@ -1624,7 +1310,7 @@
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003084",
+"CompetitionId": "000003882",
 "CompetitionName": "АСФ_СТР:ИПИМЗИС_М_1"
 },
 "Prices": [
@@ -1639,26 +1325,26 @@
 ],
 "admissionBasis": [
 {
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 6
-},
-{
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
-"value": 2
+"value": 3
 },
 {
 "IdBasis": "000000001",
 "Basis": "Целевой прием",
-"value": 0
+"value": 1
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 6
 }
 ],
-"freeSeatsNumber": 6,
+"freeSeatsNumber": 7,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012130",
+"name": "Междисциплинарный экзамен по программе Строительство",
 "minScore": 40
 },
 {
@@ -1670,7 +1356,7 @@
 },
 {
 "Plan": {
-"planId": "000014117",
+"planId": "000016252",
 "facultyId": "000000009",
 "facultyName": "Архитектурно-строительный факультет",
 "trainingForm": "Очная",
@@ -1683,7 +1369,7 @@
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003093",
+"CompetitionId": "000003891",
 "CompetitionName": "АСФ_СТР:ИПИМЗИС_М_ин"
 },
 "Prices": [
@@ -1706,8 +1392,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012130",
+"name": "Междисциплинарный экзамен по программе Строительство",
 "minScore": 40
 },
 {
@@ -1719,56 +1405,7 @@
 },
 {
 "Plan": {
-"planId": "000014118",
-"facultyId": "000000009",
-"facultyName": "Архитектурно-строительный факультет",
-"trainingForm": "Заочная",
-"trainingAreasId": "00000112",
-"trainingCode": "08.04.01",
-"trainingAreasName": "Строительство",
-"specializationID": "0000000373",
-"specializationName": "Информационное проектирование и моделирование зданий и сооружений",
-"years": 3
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003084",
-"CompetitionName": "АСФ_СТР:ИПИМЗИС_М_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 7
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
-"minScore": 40
-},
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-}
-]
-},
-{
-"Plan": {
-"planId": "000014119",
+"planId": "000016254",
 "facultyId": "000000009",
 "facultyName": "Архитектурно-строительный факультет",
 "trainingForm": "Очная",
@@ -1781,7 +1418,7 @@
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003085",
+"CompetitionId": "000003883",
 "CompetitionName": "АСФ_СТР:ЗС_М_1"
 },
 "Prices": [
@@ -1796,26 +1433,26 @@
 ],
 "admissionBasis": [
 {
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 7
-},
-{
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
-"value": 2
+"value": 3
 },
 {
 "IdBasis": "000000001",
 "Basis": "Целевой прием",
-"value": 0
+"value": 1
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 6
 }
 ],
 "freeSeatsNumber": 7,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012130",
+"name": "Междисциплинарный экзамен по программе Строительство",
 "minScore": 40
 },
 {
@@ -1827,7 +1464,7 @@
 },
 {
 "Plan": {
-"planId": "000014119",
+"planId": "000016254",
 "facultyId": "000000009",
 "facultyName": "Архитектурно-строительный факультет",
 "trainingForm": "Очная",
@@ -1840,7 +1477,7 @@
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003094",
+"CompetitionId": "000003892",
 "CompetitionName": "АСФ_СТР:ЗС_М_ин"
 },
 "Prices": [
@@ -1863,8 +1500,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012130",
+"name": "Междисциплинарный экзамен по программе Строительство",
 "minScore": 40
 },
 {
@@ -1876,21 +1513,21 @@
 },
 {
 "Plan": {
-"planId": "000014120",
-"facultyId": "000000009",
-"facultyName": "Архитектурно-строительный факультет",
-"trainingForm": "Заочная",
-"trainingAreasId": "00000112",
-"trainingCode": "08.04.01",
-"trainingAreasName": "Строительство",
-"specializationID": "0000000374",
-"specializationName": "Зеленое строительство",
-"years": 3
+"planId": "000016256",
+"facultyId": "000000011",
+"facultyName": "Географический факультет",
+"trainingForm": "Очная",
+"trainingAreasId": "00000114",
+"trainingCode": "05.04.06",
+"trainingAreasName": "Экология и природопользование",
+"specializationID": "",
+"specializationName": "",
+"years": 2
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003085",
-"CompetitionName": "АСФ_СТР:ЗС_М_1"
+"CompetitionId": "000003893",
+"CompetitionName": "ГЕО_ЭиП_М_1"
 },
 "Prices": [
 {
@@ -1907,72 +1544,23 @@
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
 "value": 7
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
-"minScore": 40
 },
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-}
-]
-},
-{
-"Plan": {
-"planId": "000014121",
-"facultyId": "000000011",
-"facultyName": "Географический факультет",
-"trainingForm": "Очная",
-"trainingAreasId": "00000114",
-"trainingCode": "05.04.06",
-"trainingAreasName": "Экология и природопользование",
-"specializationID": "0000000300",
-"specializationName": "Управление природопользованием",
-"years": 2
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003095",
-"CompetitionName": "ГЕО_ЭиП_М_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
 {
 "IdBasis": "000000003",
 "Basis": "Бюджетная основа",
-"value": 13
-},
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 1
+"value": 10
 },
 {
 "IdBasis": "000000001",
 "Basis": "Целевой прием",
-"value": 0
+"value": 2
 }
 ],
-"freeSeatsNumber": 13,
+"freeSeatsNumber": 12,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012131",
+"name": "Междисциплинарный экзамен по программе Экология и проиродопользование",
 "minScore": 60
 },
 {
@@ -1984,20 +1572,20 @@
 },
 {
 "Plan": {
-"planId": "000014121",
+"planId": "000016256",
 "facultyId": "000000011",
 "facultyName": "Географический факультет",
 "trainingForm": "Очная",
 "trainingAreasId": "00000114",
 "trainingCode": "05.04.06",
 "trainingAreasName": "Экология и природопользование",
-"specializationID": "0000000300",
-"specializationName": "Управление природопользованием",
+"specializationID": "",
+"specializationName": "",
 "years": 2
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003099",
+"CompetitionId": "000003897",
 "CompetitionName": "ГЕО_ЭиП_М_ин"
 },
 "Prices": [
@@ -2020,8 +1608,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012131",
+"name": "Междисциплинарный экзамен по программе Экология и проиродопользование",
 "minScore": 60
 },
 {
@@ -2033,7 +1621,7 @@
 },
 {
 "Plan": {
-"planId": "000014122",
+"planId": "000016257",
 "facultyId": "000000011",
 "facultyName": "Географический факультет",
 "trainingForm": "Очная",
@@ -2046,7 +1634,7 @@
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003096",
+"CompetitionId": "000003894",
 "CompetitionName": "ГЕО_ГЕО_М_1"
 },
 "Prices": [
@@ -2061,26 +1649,26 @@
 ],
 "admissionBasis": [
 {
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 7
-},
-{
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
-"value": 7
+"value": 2
 },
 {
 "IdBasis": "000000001",
 "Basis": "Целевой прием",
-"value": 0
+"value": 1
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 6
 }
 ],
 "freeSeatsNumber": 7,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012132",
+"name": "Междисциплинарный экзамен по программе География",
 "minScore": 60
 },
 {
@@ -2092,7 +1680,7 @@
 },
 {
 "Plan": {
-"planId": "000014122",
+"planId": "000016257",
 "facultyId": "000000011",
 "facultyName": "Географический факультет",
 "trainingForm": "Очная",
@@ -2105,7 +1693,7 @@
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003100",
+"CompetitionId": "000003898",
 "CompetitionName": "ГЕО_ГЕО_М_1_ин"
 },
 "Prices": [
@@ -2128,8 +1716,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012132",
+"name": "Междисциплинарный экзамен по программе География",
 "minScore": 60
 },
 {
@@ -2141,20 +1729,20 @@
 },
 {
 "Plan": {
-"planId": "000014123",
+"planId": "000016258",
 "facultyId": "000000011",
 "facultyName": "Географический факультет",
 "trainingForm": "Заочная",
 "trainingAreasId": "00000632",
 "trainingCode": "05.04.02",
 "trainingAreasName": "География",
-"specializationID": "0000000418",
-"specializationName": "Социально-экономическая диагностика и территориальное планирование",
+"specializationID": "",
+"specializationName": "",
 "years": 3
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003096",
+"CompetitionId": "000003894",
 "CompetitionName": "ГЕО_ГЕО_М_1"
 },
 "Prices": [
@@ -2171,24 +1759,24 @@
 {
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
-"value": 1
+"value": 2
 },
 {
 "IdBasis": "000000001",
 "Basis": "Целевой прием",
-"value": 0
+"value": 2
 },
 {
 "IdBasis": "000000003",
 "Basis": "Бюджетная основа",
-"value": 10
+"value": 7
 }
 ],
-"freeSeatsNumber": 10,
+"freeSeatsNumber": 9,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012132",
+"name": "Междисциплинарный экзамен по программе География",
 "minScore": 60
 },
 {
@@ -2200,20 +1788,20 @@
 },
 {
 "Plan": {
-"planId": "000014123",
+"planId": "000016258",
 "facultyId": "000000011",
 "facultyName": "Географический факультет",
 "trainingForm": "Заочная",
 "trainingAreasId": "00000632",
 "trainingCode": "05.04.02",
 "trainingAreasName": "География",
-"specializationID": "0000000418",
-"specializationName": "Социально-экономическая диагностика и территориальное планирование",
+"specializationID": "",
+"specializationName": "",
 "years": 3
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003100",
+"CompetitionId": "000003898",
 "CompetitionName": "ГЕО_ГЕО_М_1_ин"
 },
 "Prices": [
@@ -2236,8 +1824,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012132",
+"name": "Междисциплинарный экзамен по программе География",
 "minScore": 60
 },
 {
@@ -2249,7 +1837,7 @@
 },
 {
 "Plan": {
-"planId": "000014124",
+"planId": "000016259",
 "facultyId": "000000011",
 "facultyName": "Географический факультет",
 "trainingForm": "Очная",
@@ -2262,7 +1850,7 @@
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003097",
+"CompetitionId": "000003895",
 "CompetitionName": "ГЕО_ЗиК_М_1"
 },
 "Prices": [
@@ -2277,26 +1865,26 @@
 ],
 "admissionBasis": [
 {
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 9
-},
-{
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
-"value": 1
+"value": 8
 },
 {
 "IdBasis": "000000001",
 "Basis": "Целевой прием",
-"value": 0
+"value": 1
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 5
 }
 ],
-"freeSeatsNumber": 9,
+"freeSeatsNumber": 6,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012133",
+"name": "Междисциплинарный экзамен по программе Землеустройство и кадастры",
 "minScore": 60
 },
 {
@@ -2308,7 +1896,7 @@
 },
 {
 "Plan": {
-"planId": "000014124",
+"planId": "000016259",
 "facultyId": "000000011",
 "facultyName": "Географический факультет",
 "trainingForm": "Очная",
@@ -2321,7 +1909,7 @@
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003101",
+"CompetitionId": "000003899",
 "CompetitionName": "ГЕО_ЗиК_М_1_ин"
 },
 "Prices": [
@@ -2344,8 +1932,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012133",
+"name": "Междисциплинарный экзамен по программе Землеустройство и кадастры",
 "minScore": 60
 },
 {
@@ -2357,20 +1945,20 @@
 },
 {
 "Plan": {
-"planId": "000014125",
+"planId": "000016260",
 "facultyId": "000000011",
 "facultyName": "Географический факультет",
 "trainingForm": "Заочная",
 "trainingAreasId": "00000626",
 "trainingCode": "21.04.02",
 "trainingAreasName": "Землеустройство и кадастры",
-"specializationID": "0000000419",
-"specializationName": "Управление недвижимостью",
+"specializationID": "",
+"specializationName": "",
 "years": 3
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003097",
+"CompetitionId": "000003895",
 "CompetitionName": "ГЕО_ЗиК_М_1"
 },
 "Prices": [
@@ -2392,19 +1980,19 @@
 {
 "IdBasis": "000000001",
 "Basis": "Целевой прием",
-"value": 0
+"value": 2
 },
 {
 "IdBasis": "000000003",
 "Basis": "Бюджетная основа",
-"value": 8
+"value": 6
 }
 ],
 "freeSeatsNumber": 8,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012133",
+"name": "Междисциплинарный экзамен по программе Землеустройство и кадастры",
 "minScore": 60
 },
 {
@@ -2416,20 +2004,20 @@
 },
 {
 "Plan": {
-"planId": "000014125",
+"planId": "000016260",
 "facultyId": "000000011",
 "facultyName": "Географический факультет",
 "trainingForm": "Заочная",
 "trainingAreasId": "00000626",
 "trainingCode": "21.04.02",
 "trainingAreasName": "Землеустройство и кадастры",
-"specializationID": "0000000419",
-"specializationName": "Управление недвижимостью",
+"specializationID": "",
+"specializationName": "",
 "years": 3
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003101",
+"CompetitionId": "000003899",
 "CompetitionName": "ГЕО_ЗиК_М_1_ин"
 },
 "Prices": [
@@ -2452,8 +2040,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012133",
+"name": "Междисциплинарный экзамен по программе Землеустройство и кадастры",
 "minScore": 60
 },
 {
@@ -2465,7 +2053,7 @@
 },
 {
 "Plan": {
-"planId": "000014126",
+"planId": "000016261",
 "facultyId": "000000011",
 "facultyName": "Географический факультет",
 "trainingForm": "Заочная",
@@ -2478,7 +2066,7 @@
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003098",
+"CompetitionId": "000003896",
 "CompetitionName": "ГЕО_ТУР_М_1"
 },
 "Prices": [
@@ -2496,13 +2084,18 @@
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
 "value": 7
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 7
 }
 ],
-"freeSeatsNumber": 0,
+"freeSeatsNumber": 7,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012134",
+"name": "Междисциплинарный экзамен по программе Туризм",
 "minScore": 60
 },
 {
@@ -2514,7 +2107,7 @@
 },
 {
 "Plan": {
-"planId": "000014126",
+"planId": "000016261",
 "facultyId": "000000011",
 "facultyName": "Географический факультет",
 "trainingForm": "Заочная",
@@ -2527,7 +2120,7 @@
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003102",
+"CompetitionId": "000003900",
 "CompetitionName": "ГЕО_ТУР_М_1_ин"
 },
 "Prices": [
@@ -2550,8 +2143,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012134",
+"name": "Междисциплинарный экзамен по программе Туризм",
 "minScore": 60
 },
 {
@@ -2563,7 +2156,7 @@
 },
 {
 "Plan": {
-"planId": "000014127",
+"planId": "000016262",
 "facultyId": "000000006",
 "facultyName": "Институт механики и энергетики",
 "trainingForm": "Очная",
@@ -2576,7 +2169,7 @@
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003103",
+"CompetitionId": "000003901",
 "CompetitionName": "ИМЭ_ТЭТТ_М_1"
 },
 "Prices": [
@@ -2591,26 +2184,26 @@
 ],
 "admissionBasis": [
 {
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 14
-},
-{
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
 "value": 10
 },
 {
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 8
+},
+{
 "IdBasis": "000000001",
 "Basis": "Целевой прием",
-"value": 0
+"value": 2
 }
 ],
-"freeSeatsNumber": 14,
+"freeSeatsNumber": 10,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012135",
+"name": "Междисциплинарный экзамен по программе Теплоэнергетика и теплотехника",
 "minScore": 40
 },
 {
@@ -2622,7 +2215,7 @@
 },
 {
 "Plan": {
-"planId": "000014127",
+"planId": "000016262",
 "facultyId": "000000006",
 "facultyName": "Институт механики и энергетики",
 "trainingForm": "Очная",
@@ -2635,7 +2228,7 @@
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003108",
+"CompetitionId": "000003906",
 "CompetitionName": "ИМЭ_ТЭТТ_М_ин"
 },
 "Prices": [
@@ -2658,8 +2251,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012135",
+"name": "Междисциплинарный экзамен по программе Теплоэнергетика и теплотехника",
 "minScore": 40
 },
 {
@@ -2671,7 +2264,7 @@
 },
 {
 "Plan": {
-"planId": "000014128",
+"planId": "000016263",
 "facultyId": "000000006",
 "facultyName": "Институт механики и энергетики",
 "trainingForm": "Заочная",
@@ -2684,7 +2277,7 @@
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003103",
+"CompetitionId": "000003901",
 "CompetitionName": "ИМЭ_ТЭТТ_М_1"
 },
 "Prices": [
@@ -2701,14 +2294,14 @@
 {
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
-"value": 10
+"value": 15
 }
 ],
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012135",
+"name": "Междисциплинарный экзамен по программе Теплоэнергетика и теплотехника",
 "minScore": 40
 },
 {
@@ -2720,7 +2313,7 @@
 },
 {
 "Plan": {
-"planId": "000014128",
+"planId": "000016263",
 "facultyId": "000000006",
 "facultyName": "Институт механики и энергетики",
 "trainingForm": "Заочная",
@@ -2733,7 +2326,7 @@
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003108",
+"CompetitionId": "000003906",
 "CompetitionName": "ИМЭ_ТЭТТ_М_ин"
 },
 "Prices": [
@@ -2756,8 +2349,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012135",
+"name": "Междисциплинарный экзамен по программе Теплоэнергетика и теплотехника",
 "minScore": 40
 },
 {
@@ -2769,20 +2362,20 @@
 },
 {
 "Plan": {
-"planId": "000014129",
+"planId": "000016264",
 "facultyId": "000000006",
 "facultyName": "Институт механики и энергетики",
 "trainingForm": "Очная",
 "trainingAreasId": "00000517",
 "trainingCode": "13.04.02",
 "trainingAreasName": "Электроэнергетика и электротехника",
-"specializationID": "0000000187",
-"specializationName": "Электроэнергетические системы и сети ",
+"specializationID": "0000000188",
+"specializationName": "Электроэнергетические системы и сети",
 "years": 2
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003104",
+"CompetitionId": "000003902",
 "CompetitionName": "ИМЭ_ЭЭЭТ_М_1"
 },
 "Prices": [
@@ -2797,26 +2390,26 @@
 ],
 "admissionBasis": [
 {
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 14
-},
-{
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
-"value": 10
+"value": 5
 },
 {
 "IdBasis": "000000001",
 "Basis": "Целевой прием",
-"value": 0
+"value": 2
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 8
 }
 ],
-"freeSeatsNumber": 14,
+"freeSeatsNumber": 10,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012136",
+"name": "Междисциплинарный экзамен по программе Электроэнергетика и электротехника",
 "minScore": 40
 },
 {
@@ -2828,20 +2421,20 @@
 },
 {
 "Plan": {
-"planId": "000014129",
+"planId": "000016264",
 "facultyId": "000000006",
 "facultyName": "Институт механики и энергетики",
 "trainingForm": "Очная",
 "trainingAreasId": "00000517",
 "trainingCode": "13.04.02",
 "trainingAreasName": "Электроэнергетика и электротехника",
-"specializationID": "0000000187",
-"specializationName": "Электроэнергетические системы и сети ",
+"specializationID": "0000000188",
+"specializationName": "Электроэнергетические системы и сети",
 "years": 2
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003109",
+"CompetitionId": "000003907",
 "CompetitionName": "ИМЭ_ЭЭЭТ_М_ин"
 },
 "Prices": [
@@ -2864,8 +2457,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012136",
+"name": "Междисциплинарный экзамен по программе Электроэнергетика и электротехника",
 "minScore": 40
 },
 {
@@ -2877,20 +2470,20 @@
 },
 {
 "Plan": {
-"planId": "000014130",
+"planId": "000016265",
 "facultyId": "000000006",
 "facultyName": "Институт механики и энергетики",
 "trainingForm": "Заочная",
 "trainingAreasId": "00000517",
 "trainingCode": "13.04.02",
 "trainingAreasName": "Электроэнергетика и электротехника",
-"specializationID": "0000000187",
-"specializationName": "Электроэнергетические системы и сети ",
+"specializationID": "0000000188",
+"specializationName": "Электроэнергетические системы и сети",
 "years": 3
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003104",
+"CompetitionId": "000003902",
 "CompetitionName": "ИМЭ_ЭЭЭТ_М_1"
 },
 "Prices": [
@@ -2907,14 +2500,24 @@
 {
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
-"value": 10
+"value": 15
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 7
+},
+{
+"IdBasis": "000000001",
+"Basis": "Целевой прием",
+"value": 2
 }
 ],
-"freeSeatsNumber": 0,
+"freeSeatsNumber": 9,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012136",
+"name": "Междисциплинарный экзамен по программе Электроэнергетика и электротехника",
 "minScore": 40
 },
 {
@@ -2926,20 +2529,20 @@
 },
 {
 "Plan": {
-"planId": "000014130",
+"planId": "000016265",
 "facultyId": "000000006",
 "facultyName": "Институт механики и энергетики",
 "trainingForm": "Заочная",
 "trainingAreasId": "00000517",
 "trainingCode": "13.04.02",
 "trainingAreasName": "Электроэнергетика и электротехника",
-"specializationID": "0000000187",
-"specializationName": "Электроэнергетические системы и сети ",
+"specializationID": "0000000188",
+"specializationName": "Электроэнергетические системы и сети",
 "years": 3
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003109",
+"CompetitionId": "000003907",
 "CompetitionName": "ИМЭ_ЭЭЭТ_М_ин"
 },
 "Prices": [
@@ -2962,8 +2565,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012136",
+"name": "Междисциплинарный экзамен по программе Электроэнергетика и электротехника",
 "minScore": 40
 },
 {
@@ -2975,7 +2578,7 @@
 },
 {
 "Plan": {
-"planId": "000014131",
+"planId": "000016266",
 "facultyId": "000000006",
 "facultyName": "Институт механики и энергетики",
 "trainingForm": "Очная",
@@ -2988,7 +2591,7 @@
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003105",
+"CompetitionId": "000003903",
 "CompetitionName": "ИМЭ_ТСБ_М_1"
 },
 "Prices": [
@@ -3003,26 +2606,26 @@
 ],
 "admissionBasis": [
 {
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 8
-},
-{
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
-"value": 10
+"value": 5
 },
 {
 "IdBasis": "000000001",
 "Basis": "Целевой прием",
-"value": 1
+"value": 2
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 7
 }
 ],
 "freeSeatsNumber": 9,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012137",
+"name": "Междисциплинарный экзамен по программе Техносферная безопасность",
 "minScore": 40
 },
 {
@@ -3034,7 +2637,7 @@
 },
 {
 "Plan": {
-"planId": "000014131",
+"planId": "000016266",
 "facultyId": "000000006",
 "facultyName": "Институт механики и энергетики",
 "trainingForm": "Очная",
@@ -3047,7 +2650,7 @@
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003112",
+"CompetitionId": "000003910",
 "CompetitionName": "ИМЭ_ТСБ_М_ин"
 },
 "Prices": [
@@ -3070,8 +2673,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012137",
+"name": "Междисциплинарный экзамен по программе Техносферная безопасность",
 "minScore": 40
 },
 {
@@ -3083,7 +2686,7 @@
 },
 {
 "Plan": {
-"planId": "000014132",
+"planId": "000016267",
 "facultyId": "000000006",
 "facultyName": "Институт механики и энергетики",
 "trainingForm": "Заочная",
@@ -3096,7 +2699,7 @@
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003105",
+"CompetitionId": "000003903",
 "CompetitionName": "ИМЭ_ТСБ_М_1"
 },
 "Prices": [
@@ -3113,24 +2716,24 @@
 {
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
-"value": 10
+"value": 8
 },
 {
 "IdBasis": "000000001",
 "Basis": "Целевой прием",
-"value": 0
+"value": 1
 },
 {
 "IdBasis": "000000003",
 "Basis": "Бюджетная основа",
-"value": 7
+"value": 6
 }
 ],
 "freeSeatsNumber": 7,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012137",
+"name": "Междисциплинарный экзамен по программе Техносферная безопасность",
 "minScore": 40
 },
 {
@@ -3142,7 +2745,7 @@
 },
 {
 "Plan": {
-"planId": "000014132",
+"planId": "000016267",
 "facultyId": "000000006",
 "facultyName": "Институт механики и энергетики",
 "trainingForm": "Заочная",
@@ -3155,7 +2758,7 @@
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003112",
+"CompetitionId": "000003910",
 "CompetitionName": "ИМЭ_ТСБ_М_ин"
 },
 "Prices": [
@@ -3178,8 +2781,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012137",
+"name": "Междисциплинарный экзамен по программе Техносферная безопасность",
 "minScore": 40
 },
 {
@@ -3191,7 +2794,7 @@
 },
 {
 "Plan": {
-"planId": "000014133",
+"planId": "000016268",
 "facultyId": "000000006",
 "facultyName": "Институт механики и энергетики",
 "trainingForm": "Очная",
@@ -3204,7 +2807,7 @@
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003106",
+"CompetitionId": "000003904",
 "CompetitionName": "ИМЭ_ЭТТМК_М_1"
 },
 "Prices": [
@@ -3219,26 +2822,26 @@
 ],
 "admissionBasis": [
 {
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
 "value": 7
 },
 {
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 10
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 6
 },
 {
 "IdBasis": "000000001",
 "Basis": "Целевой прием",
-"value": 0
+"value": 1
 }
 ],
 "freeSeatsNumber": 7,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012138",
+"name": "Междисциплинарный экзамен по программе Эксплуатация транспортно-технологических машин и комплексов",
 "minScore": 40
 },
 {
@@ -3250,7 +2853,7 @@
 },
 {
 "Plan": {
-"planId": "000014133",
+"planId": "000016268",
 "facultyId": "000000006",
 "facultyName": "Институт механики и энергетики",
 "trainingForm": "Очная",
@@ -3263,7 +2866,7 @@
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003110",
+"CompetitionId": "000003908",
 "CompetitionName": "ИМЭ_ЭТТМК_М_ин"
 },
 "Prices": [
@@ -3286,8 +2889,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012138",
+"name": "Междисциплинарный экзамен по программе Эксплуатация транспортно-технологических машин и комплексов",
 "minScore": 40
 },
 {
@@ -3299,7 +2902,7 @@
 },
 {
 "Plan": {
-"planId": "000014134",
+"planId": "000016269",
 "facultyId": "000000006",
 "facultyName": "Институт механики и энергетики",
 "trainingForm": "Заочная",
@@ -3312,7 +2915,7 @@
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003106",
+"CompetitionId": "000003904",
 "CompetitionName": "ИМЭ_ЭТТМК_М_1"
 },
 "Prices": [
@@ -3330,13 +2933,23 @@
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
 "value": 10
+},
+{
+"IdBasis": "000000001",
+"Basis": "Целевой прием",
+"value": 2
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 7
 }
 ],
-"freeSeatsNumber": 0,
+"freeSeatsNumber": 9,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012138",
+"name": "Междисциплинарный экзамен по программе Эксплуатация транспортно-технологических машин и комплексов",
 "minScore": 40
 },
 {
@@ -3348,7 +2961,7 @@
 },
 {
 "Plan": {
-"planId": "000014134",
+"planId": "000016269",
 "facultyId": "000000006",
 "facultyName": "Институт механики и энергетики",
 "trainingForm": "Заочная",
@@ -3361,7 +2974,7 @@
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003110",
+"CompetitionId": "000003908",
 "CompetitionName": "ИМЭ_ЭТТМК_М_ин"
 },
 "Prices": [
@@ -3384,8 +2997,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012138",
+"name": "Междисциплинарный экзамен по программе Эксплуатация транспортно-технологических машин и комплексов",
 "minScore": 40
 },
 {
@@ -3397,7 +3010,7 @@
 },
 {
 "Plan": {
-"planId": "000014135",
+"planId": "000016270",
 "facultyId": "000000006",
 "facultyName": "Институт механики и энергетики",
 "trainingForm": "Очная",
@@ -3410,7 +3023,7 @@
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003107",
+"CompetitionId": "000003905",
 "CompetitionName": "ИМЭ_АГР_М_1"
 },
 "Prices": [
@@ -3425,26 +3038,26 @@
 ],
 "admissionBasis": [
 {
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 31
-},
-{
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
-"value": 15
+"value": 5
 },
 {
 "IdBasis": "000000001",
 "Basis": "Целевой прием",
-"value": 0
+"value": 5
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 19
 }
 ],
-"freeSeatsNumber": 31,
+"freeSeatsNumber": 24,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012139",
+"name": "Междисциплинарный экзамен по программе Агроинженерия",
 "minScore": 40
 },
 {
@@ -3456,7 +3069,7 @@
 },
 {
 "Plan": {
-"planId": "000014135",
+"planId": "000016270",
 "facultyId": "000000006",
 "facultyName": "Институт механики и энергетики",
 "trainingForm": "Очная",
@@ -3469,7 +3082,7 @@
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003111",
+"CompetitionId": "000003909",
 "CompetitionName": "ИМЭ_АГР_М_ин"
 },
 "Prices": [
@@ -3492,8 +3105,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012139",
+"name": "Междисциплинарный экзамен по программе Агроинженерия",
 "minScore": 40
 },
 {
@@ -3505,7 +3118,7 @@
 },
 {
 "Plan": {
-"planId": "000014136",
+"planId": "000016271",
 "facultyId": "000000006",
 "facultyName": "Институт механики и энергетики",
 "trainingForm": "Заочная",
@@ -3518,7 +3131,7 @@
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003107",
+"CompetitionId": "000003905",
 "CompetitionName": "ИМЭ_АГР_М_1"
 },
 "Prices": [
@@ -3535,24 +3148,24 @@
 {
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
-"value": 15
+"value": 5
 },
 {
 "IdBasis": "000000001",
 "Basis": "Целевой прием",
-"value": 0
+"value": 2
 },
 {
 "IdBasis": "000000003",
 "Basis": "Бюджетная основа",
-"value": 10
+"value": 8
 }
 ],
 "freeSeatsNumber": 10,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012139",
+"name": "Междисциплинарный экзамен по программе Агроинженерия",
 "minScore": 40
 },
 {
@@ -3564,7 +3177,7 @@
 },
 {
 "Plan": {
-"planId": "000014136",
+"planId": "000016271",
 "facultyId": "000000006",
 "facultyName": "Институт механики и энергетики",
 "trainingForm": "Заочная",
@@ -3577,7 +3190,7 @@
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003111",
+"CompetitionId": "000003909",
 "CompetitionName": "ИМЭ_АГР_М_ин"
 },
 "Prices": [
@@ -3600,8 +3213,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012139",
+"name": "Междисциплинарный экзамен по программе Агроинженерия",
 "minScore": 40
 },
 {
@@ -3613,7 +3226,7 @@
 },
 {
 "Plan": {
-"planId": "000014137",
+"planId": "000016272",
 "facultyId": "000000008",
 "facultyName": "Институт национальной культуры",
 "trainingForm": "Очная",
@@ -3626,7 +3239,7 @@
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003113",
+"CompetitionId": "000003911",
 "CompetitionName": "ИНК_КУЛЬТ_М_1"
 },
 "Prices": [
@@ -3644,13 +3257,18 @@
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
 "value": 7
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 7
 }
 ],
-"freeSeatsNumber": 0,
+"freeSeatsNumber": 7,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012140",
+"name": "Междисциплинарный экзамен по программе Культурология",
 "minScore": 70
 },
 {
@@ -3662,7 +3280,7 @@
 },
 {
 "Plan": {
-"planId": "000014137",
+"planId": "000016272",
 "facultyId": "000000008",
 "facultyName": "Институт национальной культуры",
 "trainingForm": "Очная",
@@ -3675,7 +3293,7 @@
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003114",
+"CompetitionId": "000003912",
 "CompetitionName": "ИНК_КУЛЬТ_М_ин"
 },
 "Prices": [
@@ -3698,8 +3316,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012140",
+"name": "Междисциплинарный экзамен по программе Культурология",
 "minScore": 70
 },
 {
@@ -3711,7 +3329,7 @@
 },
 {
 "Plan": {
-"planId": "000014138",
+"planId": "000016273",
 "facultyId": "000000008",
 "facultyName": "Институт национальной культуры",
 "trainingForm": "Очная",
@@ -3724,7 +3342,7 @@
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003115",
+"CompetitionId": "000003913",
 "CompetitionName": "ИНК_РиСО_М_1"
 },
 "Prices": [
@@ -3747,8 +3365,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012141",
+"name": "Междисциплинарный экзамен по программе Реклама и связи с общественностью",
 "minScore": 70
 },
 {
@@ -3760,7 +3378,7 @@
 },
 {
 "Plan": {
-"planId": "000014138",
+"planId": "000016273",
 "facultyId": "000000008",
 "facultyName": "Институт национальной культуры",
 "trainingForm": "Очная",
@@ -3773,7 +3391,7 @@
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003116",
+"CompetitionId": "000003914",
 "CompetitionName": "ИНК_РиСО_М_ин"
 },
 "Prices": [
@@ -3796,8 +3414,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012141",
+"name": "Междисциплинарный экзамен по программе Реклама и связи с общественностью",
 "minScore": 70
 },
 {
@@ -3809,7 +3427,7 @@
 },
 {
 "Plan": {
-"planId": "000014139",
+"planId": "000016274",
 "facultyId": "000000005",
 "facultyName": "Институт физики и химии",
 "trainingForm": "Очная",
@@ -3822,7 +3440,7 @@
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003117",
+"CompetitionId": "000003915",
 "CompetitionName": "ИФХ_ФИЗ_М_1"
 },
 "Prices": [
@@ -3837,26 +3455,26 @@
 ],
 "admissionBasis": [
 {
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 12
-},
-{
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
-"value": 2
+"value": 4
 },
 {
 "IdBasis": "000000001",
 "Basis": "Целевой прием",
-"value": 0
+"value": 2
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 9
 }
 ],
-"freeSeatsNumber": 12,
+"freeSeatsNumber": 11,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012142",
+"name": "Междисциплинарный экзамен по программе Физика",
 "minScore": 60
 },
 {
@@ -3868,7 +3486,7 @@
 },
 {
 "Plan": {
-"planId": "000014139",
+"planId": "000016274",
 "facultyId": "000000005",
 "facultyName": "Институт физики и химии",
 "trainingForm": "Очная",
@@ -3881,7 +3499,7 @@
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003119",
+"CompetitionId": "000003917",
 "CompetitionName": "ИФХ_ФИЗ_М_ин"
 },
 "Prices": [
@@ -3904,8 +3522,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012142",
+"name": "Междисциплинарный экзамен по программе Физика",
 "minScore": 60
 },
 {
@@ -3917,7 +3535,7 @@
 },
 {
 "Plan": {
-"planId": "000014140",
+"planId": "000016275",
 "facultyId": "000000005",
 "facultyName": "Институт физики и химии",
 "trainingForm": "Очная",
@@ -3930,7 +3548,7 @@
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003118",
+"CompetitionId": "000003916",
 "CompetitionName": "ИФХ_ХИМ_М_1"
 },
 "Prices": [
@@ -3945,26 +3563,26 @@
 ],
 "admissionBasis": [
 {
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 12
-},
-{
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
-"value": 2
+"value": 4
 },
 {
 "IdBasis": "000000001",
 "Basis": "Целевой прием",
-"value": 0
+"value": 1
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 10
 }
 ],
-"freeSeatsNumber": 12,
+"freeSeatsNumber": 11,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012143",
+"name": "Междисциплинарный экзамен по программе Химия",
 "minScore": 60
 },
 {
@@ -3976,7 +3594,7 @@
 },
 {
 "Plan": {
-"planId": "000014140",
+"planId": "000016275",
 "facultyId": "000000005",
 "facultyName": "Институт физики и химии",
 "trainingForm": "Очная",
@@ -3989,7 +3607,7 @@
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003120",
+"CompetitionId": "000003918",
 "CompetitionName": "ИФХ_ХИМ_М_ин"
 },
 "Prices": [
@@ -4012,8 +3630,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012143",
+"name": "Междисциплинарный экзамен по программе Химия",
 "minScore": 60
 },
 {
@@ -4025,7 +3643,7 @@
 },
 {
 "Plan": {
-"planId": "000014141",
+"planId": "000016276",
 "facultyId": "000000166",
 "facultyName": "Институт электроники и светотехники",
 "trainingForm": "Очная",
@@ -4038,7 +3656,7 @@
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003121",
+"CompetitionId": "000003919",
 "CompetitionName": "ИЭС_ЭиН:ТиС_М_1"
 },
 "Prices": [
@@ -4053,11 +3671,6 @@
 ],
 "admissionBasis": [
 {
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 30
-},
-{
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
 "value": 5
@@ -4065,14 +3678,19 @@
 {
 "IdBasis": "000000001",
 "Basis": "Целевой прием",
-"value": 0
+"value": 5
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 20
 }
 ],
-"freeSeatsNumber": 30,
+"freeSeatsNumber": 25,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012144",
+"name": "Междисциплинарный экзамен по программе Электроника и наноэлектроника",
 "minScore": 60
 },
 {
@@ -4084,7 +3702,7 @@
 },
 {
 "Plan": {
-"planId": "000014141",
+"planId": "000016276",
 "facultyId": "000000166",
 "facultyName": "Институт электроники и светотехники",
 "trainingForm": "Очная",
@@ -4097,7 +3715,7 @@
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003130",
+"CompetitionId": "000003928",
 "CompetitionName": "ИЭС_ЭиН:ТиС_М_ин"
 },
 "Prices": [
@@ -4120,8 +3738,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012144",
+"name": "Междисциплинарный экзамен по программе Электроника и наноэлектроника",
 "minScore": 60
 },
 {
@@ -4133,7 +3751,7 @@
 },
 {
 "Plan": {
-"planId": "000014142",
+"planId": "000016277",
 "facultyId": "000000166",
 "facultyName": "Институт электроники и светотехники",
 "trainingForm": "Очная",
@@ -4146,7 +3764,7 @@
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003122",
+"CompetitionId": "000003920",
 "CompetitionName": "ИЭС_СиМ_М_1"
 },
 "Prices": [
@@ -4161,26 +3779,26 @@
 ],
 "admissionBasis": [
 {
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
 "value": 7
 },
 {
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 5
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 6
 },
 {
 "IdBasis": "000000001",
 "Basis": "Целевой прием",
-"value": 0
+"value": 1
 }
 ],
 "freeSeatsNumber": 7,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012145",
+"name": "Междисциплинарный экзамен по программе Стандартизация и метрология",
 "minScore": 60
 },
 {
@@ -4192,7 +3810,7 @@
 },
 {
 "Plan": {
-"planId": "000014142",
+"planId": "000016277",
 "facultyId": "000000166",
 "facultyName": "Институт электроники и светотехники",
 "trainingForm": "Очная",
@@ -4205,7 +3823,7 @@
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003133",
+"CompetitionId": "000003931",
 "CompetitionName": "ИЭС_СиМ_М_ин"
 },
 "Prices": [
@@ -4228,8 +3846,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012145",
+"name": "Междисциплинарный экзамен по программе Стандартизация и метрология",
 "minScore": 60
 },
 {
@@ -4241,20 +3859,20 @@
 },
 {
 "Plan": {
-"planId": "000014143",
+"planId": "000016278",
 "facultyId": "000000166",
 "facultyName": "Институт электроники и светотехники",
 "trainingForm": "Очная",
 "trainingAreasId": "00000611",
 "trainingCode": "09.04.01",
 "trainingAreasName": "Информатика и вычислительная техника",
-"specializationID": "0000000230",
-"specializationName": "Автоматизированные системы обработки информации и управления",
+"specializationID": "",
+"specializationName": "",
 "years": 2
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003123",
+"CompetitionId": "000003921",
 "CompetitionName": "ИЭС_ИВТ_М_1"
 },
 "Prices": [
@@ -4269,26 +3887,16 @@
 ],
 "admissionBasis": [
 {
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 7
-},
-{
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
 "value": 7
-},
-{
-"IdBasis": "000000001",
-"Basis": "Целевой прием",
-"value": 0
 }
 ],
-"freeSeatsNumber": 7,
+"freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012146",
+"name": "Междисциплинарный экзамен по программе Информатика и вычислительная техника",
 "minScore": 60
 },
 {
@@ -4300,20 +3908,20 @@
 },
 {
 "Plan": {
-"planId": "000014143",
+"planId": "000016278",
 "facultyId": "000000166",
 "facultyName": "Институт электроники и светотехники",
 "trainingForm": "Очная",
 "trainingAreasId": "00000611",
 "trainingCode": "09.04.01",
 "trainingAreasName": "Информатика и вычислительная техника",
-"specializationID": "0000000230",
-"specializationName": "Автоматизированные системы обработки информации и управления",
+"specializationID": "",
+"specializationName": "",
 "years": 2
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003128",
+"CompetitionId": "000003926",
 "CompetitionName": "ИЭС_ИВТ_М_ин"
 },
 "Prices": [
@@ -4336,8 +3944,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012146",
+"name": "Междисциплинарный экзамен по программе Информатика и вычислительная техника",
 "minScore": 60
 },
 {
@@ -4349,20 +3957,20 @@
 },
 {
 "Plan": {
-"planId": "000014144",
+"planId": "000016279",
 "facultyId": "000000166",
 "facultyName": "Институт электроники и светотехники",
 "trainingForm": "Очная",
 "trainingAreasId": "00000526",
 "trainingCode": "11.04.02",
 "trainingAreasName": "Инфокоммуникационные технологии и системы связи",
-"specializationID": "0000000229",
-"specializationName": "Сети, системы и устройства телекоммуникаций",
+"specializationID": "",
+"specializationName": "",
 "years": 2
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003124",
+"CompetitionId": "000003922",
 "CompetitionName": "ИЭС_ИТСС_М_1"
 },
 "Prices": [
@@ -4377,26 +3985,26 @@
 ],
 "admissionBasis": [
 {
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 17
-},
-{
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
-"value": 7
+"value": 4
 },
 {
 "IdBasis": "000000001",
 "Basis": "Целевой прием",
-"value": 0
+"value": 2
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 10
 }
 ],
-"freeSeatsNumber": 17,
+"freeSeatsNumber": 12,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012147",
+"name": "Междисциплинарный экзамен по программе Инфокоммуникационные технологии и системы связи",
 "minScore": 60
 },
 {
@@ -4408,20 +4016,20 @@
 },
 {
 "Plan": {
-"planId": "000014144",
+"planId": "000016279",
 "facultyId": "000000166",
 "facultyName": "Институт электроники и светотехники",
 "trainingForm": "Очная",
 "trainingAreasId": "00000526",
 "trainingCode": "11.04.02",
 "trainingAreasName": "Инфокоммуникационные технологии и системы связи",
-"specializationID": "0000000229",
-"specializationName": "Сети, системы и устройства телекоммуникаций",
+"specializationID": "",
+"specializationName": "",
 "years": 2
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003129",
+"CompetitionId": "000003927",
 "CompetitionName": "ИЭС_ИТСС_М_ин"
 },
 "Prices": [
@@ -4444,8 +4052,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012147",
+"name": "Междисциплинарный экзамен по программе Инфокоммуникационные технологии и системы связи",
 "minScore": 60
 },
 {
@@ -4457,7 +4065,7 @@
 },
 {
 "Plan": {
-"planId": "000014145",
+"planId": "000016280",
 "facultyId": "000000166",
 "facultyName": "Институт электроники и светотехники",
 "trainingForm": "Очная",
@@ -4470,7 +4078,7 @@
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003125",
+"CompetitionId": "000003923",
 "CompetitionName": "ИЭС_ЭиЭ_М_1"
 },
 "Prices": [
@@ -4485,26 +4093,26 @@
 ],
 "admissionBasis": [
 {
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 14
-},
-{
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
-"value": 3
+"value": 4
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 10
 },
 {
 "IdBasis": "000000001",
 "Basis": "Целевой прием",
-"value": 1
+"value": 2
 }
 ],
-"freeSeatsNumber": 15,
+"freeSeatsNumber": 12,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012136",
+"name": "Междисциплинарный экзамен по программе Электроэнергетика и электротехника",
 "minScore": 60
 },
 {
@@ -4516,7 +4124,7 @@
 },
 {
 "Plan": {
-"planId": "000014145",
+"planId": "000016280",
 "facultyId": "000000166",
 "facultyName": "Институт электроники и светотехники",
 "trainingForm": "Очная",
@@ -4529,7 +4137,7 @@
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003132",
+"CompetitionId": "000003930",
 "CompetitionName": "ИЭС_ЭиЭ_М_ин"
 },
 "Prices": [
@@ -4552,8 +4160,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012136",
+"name": "Междисциплинарный экзамен по программе Электроэнергетика и электротехника",
 "minScore": 60
 },
 {
@@ -4565,7 +4173,7 @@
 },
 {
 "Plan": {
-"planId": "000014146",
+"planId": "000016281",
 "facultyId": "000000166",
 "facultyName": "Институт электроники и светотехники",
 "trainingForm": "Очная",
@@ -4578,7 +4186,7 @@
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003126",
+"CompetitionId": "000003924",
 "CompetitionName": "ИЭС_ЭиН:КТПЭ_М_1"
 },
 "Prices": [
@@ -4593,26 +4201,26 @@
 ],
 "admissionBasis": [
 {
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 14
-},
-{
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
-"value": 8
+"value": 7
 },
 {
 "IdBasis": "000000001",
 "Basis": "Целевой прием",
-"value": 0
+"value": 3
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 11
 }
 ],
 "freeSeatsNumber": 14,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012144",
+"name": "Междисциплинарный экзамен по программе Электроника и наноэлектроника",
 "minScore": 60
 },
 {
@@ -4624,7 +4232,7 @@
 },
 {
 "Plan": {
-"planId": "000014146",
+"planId": "000016281",
 "facultyId": "000000166",
 "facultyName": "Институт электроники и светотехники",
 "trainingForm": "Очная",
@@ -4637,7 +4245,7 @@
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003131",
+"CompetitionId": "000003929",
 "CompetitionName": "ИЭС_ЭиН:КТПЭ_М_ин"
 },
 "Prices": [
@@ -4660,8 +4268,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012144",
+"name": "Междисциплинарный экзамен по программе Электроника и наноэлектроника",
 "minScore": 60
 },
 {
@@ -4673,7 +4281,7 @@
 },
 {
 "Plan": {
-"planId": "000014147",
+"planId": "000016282",
 "facultyId": "000000166",
 "facultyName": "Институт электроники и светотехники",
 "trainingForm": "Очная",
@@ -4686,7 +4294,7 @@
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003127",
+"CompetitionId": "000003925",
 "CompetitionName": "ИЭС_СЕР_М_1"
 },
 "Prices": [
@@ -4704,13 +4312,18 @@
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
 "value": 7
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 7
 }
 ],
-"freeSeatsNumber": 0,
+"freeSeatsNumber": 7,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012148",
+"name": "Междисциплинарный экзамен по программе Сервис",
 "minScore": 60
 },
 {
@@ -4722,7 +4335,7 @@
 },
 {
 "Plan": {
-"planId": "000014147",
+"planId": "000016282",
 "facultyId": "000000166",
 "facultyName": "Институт электроники и светотехники",
 "trainingForm": "Очная",
@@ -4735,7 +4348,7 @@
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003134",
+"CompetitionId": "000003932",
 "CompetitionName": "ИЭС_СЕР_М_ин"
 },
 "Prices": [
@@ -4758,8 +4371,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012148",
+"name": "Междисциплинарный экзамен по программе Сервис",
 "minScore": 60
 },
 {
@@ -4771,7 +4384,7 @@
 },
 {
 "Plan": {
-"planId": "000014148",
+"planId": "000016283",
 "facultyId": "000000004",
 "facultyName": "Историко-социологический институт",
 "trainingForm": "Очная",
@@ -4784,7 +4397,7 @@
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003135",
+"CompetitionId": "000003933",
 "CompetitionName": "ИСИ_ПСИХОЛ_М_1"
 },
 "Prices": [
@@ -4799,27 +4412,22 @@
 ],
 "admissionBasis": [
 {
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 9
+},
+{
 "IdBasis": "000000003",
 "Basis": "Бюджетная основа",
 "value": 5
-},
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 7
-},
-{
-"IdBasis": "000000001",
-"Basis": "Целевой прием",
-"value": 0
 }
 ],
 "freeSeatsNumber": 5,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
-"minScore": 71
+"subjectId": "000012156",
+"name": "Междисциплинарный экзамен по программе Психология",
+"minScore": 60
 },
 {
 "subjectId": "000000015",
@@ -4830,7 +4438,7 @@
 },
 {
 "Plan": {
-"planId": "000014148",
+"planId": "000016283",
 "facultyId": "000000004",
 "facultyName": "Историко-социологический институт",
 "trainingForm": "Очная",
@@ -4843,7 +4451,7 @@
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003141",
+"CompetitionId": "000003939",
 "CompetitionName": "ИСИ_ПСИХОЛ_М_ин"
 },
 "Prices": [
@@ -4866,8 +4474,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012156",
+"name": "Междисциплинарный экзамен по программе Психология",
 "minScore": 71
 },
 {
@@ -4879,7 +4487,7 @@
 },
 {
 "Plan": {
-"planId": "000014149",
+"planId": "000016284",
 "facultyId": "000000004",
 "facultyName": "Историко-социологический институт",
 "trainingForm": "Заочная",
@@ -4892,7 +4500,7 @@
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003135",
+"CompetitionId": "000003933",
 "CompetitionName": "ИСИ_ПСИХОЛ_М_1"
 },
 "Prices": [
@@ -4915,9 +4523,9 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
-"minScore": 71
+"subjectId": "000012156",
+"name": "Междисциплинарный экзамен по программе Психология",
+"minScore": 60
 },
 {
 "subjectId": "000000015",
@@ -4928,7 +4536,7 @@
 },
 {
 "Plan": {
-"planId": "000014150",
+"planId": "000016285",
 "facultyId": "000000004",
 "facultyName": "Историко-социологический институт",
 "trainingForm": "Очная",
@@ -4941,7 +4549,7 @@
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003136",
+"CompetitionId": "000003934",
 "CompetitionName": "ИСИ_СОЦ_М_1"
 },
 "Prices": [
@@ -4956,26 +4564,26 @@
 ],
 "admissionBasis": [
 {
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 10
-},
-{
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
 "value": 5
 },
 {
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 8
+},
+{
 "IdBasis": "000000001",
 "Basis": "Целевой прием",
-"value": 0
+"value": 2
 }
 ],
 "freeSeatsNumber": 10,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012157",
+"name": "Междисциплинарный экзамен по программе Социология",
 "minScore": 71
 },
 {
@@ -4987,7 +4595,7 @@
 },
 {
 "Plan": {
-"planId": "000014150",
+"planId": "000016285",
 "facultyId": "000000004",
 "facultyName": "Историко-социологический институт",
 "trainingForm": "Очная",
@@ -5000,7 +4608,7 @@
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003142",
+"CompetitionId": "000003940",
 "CompetitionName": "ИСИ_СОЦ_М_ин"
 },
 "Prices": [
@@ -5023,8 +4631,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012157",
+"name": "Междисциплинарный экзамен по программе Социология",
 "minScore": 71
 },
 {
@@ -5036,7 +4644,7 @@
 },
 {
 "Plan": {
-"planId": "000014151",
+"planId": "000016286",
 "facultyId": "000000004",
 "facultyName": "Историко-социологический институт",
 "trainingForm": "Очная",
@@ -5049,7 +4657,7 @@
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003137",
+"CompetitionId": "000003935",
 "CompetitionName": "ИСИ_СОЦРАБ_М_1"
 },
 "Prices": [
@@ -5064,26 +4672,26 @@
 ],
 "admissionBasis": [
 {
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 9
-},
-{
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
-"value": 5
+"value": 4
 },
 {
 "IdBasis": "000000001",
 "Basis": "Целевой прием",
-"value": 0
+"value": 2
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 8
 }
 ],
-"freeSeatsNumber": 9,
+"freeSeatsNumber": 10,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012158",
+"name": "Междисциплинарный экзамен по программе Социальная работа",
 "minScore": 71
 },
 {
@@ -5095,7 +4703,7 @@
 },
 {
 "Plan": {
-"planId": "000014151",
+"planId": "000016286",
 "facultyId": "000000004",
 "facultyName": "Историко-социологический институт",
 "trainingForm": "Очная",
@@ -5108,7 +4716,7 @@
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003146",
+"CompetitionId": "000003944",
 "CompetitionName": "ИСИ_СОЦРАБ_М_ин"
 },
 "Prices": [
@@ -5131,8 +4739,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012158",
+"name": "Междисциплинарный экзамен по программе Социальная работа",
 "minScore": 71
 },
 {
@@ -5144,213 +4752,7 @@
 },
 {
 "Plan": {
-"planId": "000014152",
-"facultyId": "000000004",
-"facultyName": "Историко-социологический институт",
-"trainingForm": "Заочная",
-"trainingAreasId": "00000042",
-"trainingCode": "39.04.02",
-"trainingAreasName": "Социальная работа",
-"specializationID": "",
-"specializationName": "",
-"years": 3
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003137",
-"CompetitionName": "ИСИ_СОЦРАБ_М_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 5
-},
-{
-"IdBasis": "000000001",
-"Basis": "Целевой прием",
-"value": 0
-},
-{
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 7
-}
-],
-"freeSeatsNumber": 7,
-"subjects": [
-{
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
-"minScore": 71
-},
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-}
-]
-},
-{
-"Plan": {
-"planId": "000014152",
-"facultyId": "000000004",
-"facultyName": "Историко-социологический институт",
-"trainingForm": "Заочная",
-"trainingAreasId": "00000042",
-"trainingCode": "39.04.02",
-"trainingAreasName": "Социальная работа",
-"specializationID": "",
-"specializationName": "",
-"years": 3
-},
-"Competition": {
-"foreigner": true,
-"CompetitionId": "000003146",
-"CompetitionName": "ИСИ_СОЦРАБ_М_ин"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 2
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
-"minScore": 71
-},
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-}
-]
-},
-{
-"Plan": {
-"planId": "000014153",
-"facultyId": "000000004",
-"facultyName": "Историко-социологический институт",
-"trainingForm": "Очная",
-"trainingAreasId": "00000103",
-"trainingCode": "41.04.02",
-"trainingAreasName": "Регионоведение России",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003138",
-"CompetitionName": "ИСИ_РЕГИОРОС_М_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 7
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
-"minScore": 71
-},
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-}
-]
-},
-{
-"Plan": {
-"planId": "000014153",
-"facultyId": "000000004",
-"facultyName": "Историко-социологический институт",
-"trainingForm": "Очная",
-"trainingAreasId": "00000103",
-"trainingCode": "41.04.02",
-"trainingAreasName": "Регионоведение России",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": true,
-"CompetitionId": "000003143",
-"CompetitionName": "ИСИ_РЕГИОРОС_М_ин"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 3
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
-"minScore": 71
-},
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-}
-]
-},
-{
-"Plan": {
-"planId": "000014154",
+"planId": "000016289",
 "facultyId": "000000004",
 "facultyName": "Историко-социологический институт",
 "trainingForm": "Очная",
@@ -5363,7 +4765,7 @@
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003139",
+"CompetitionId": "000003937",
 "CompetitionName": "ИСИ_ПОЛИТ_М_1"
 },
 "Prices": [
@@ -5378,21 +4780,21 @@
 ],
 "admissionBasis": [
 {
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 4
+},
+{
 "IdBasis": "000000003",
 "Basis": "Бюджетная основа",
 "value": 10
-},
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 5
 }
 ],
 "freeSeatsNumber": 10,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012160",
+"name": "Междисциплинарный экзамен по программе Политология",
 "minScore": 71
 },
 {
@@ -5404,7 +4806,7 @@
 },
 {
 "Plan": {
-"planId": "000014154",
+"planId": "000016289",
 "facultyId": "000000004",
 "facultyName": "Историко-социологический институт",
 "trainingForm": "Очная",
@@ -5417,7 +4819,7 @@
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003144",
+"CompetitionId": "000003942",
 "CompetitionName": "ИСИ_ПОЛИТ_М_ин"
 },
 "Prices": [
@@ -5440,8 +4842,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012160",
+"name": "Междисциплинарный экзамен по программе Политология",
 "minScore": 71
 },
 {
@@ -5453,7 +4855,7 @@
 },
 {
 "Plan": {
-"planId": "000014155",
+"planId": "000016290",
 "facultyId": "000000004",
 "facultyName": "Историко-социологический институт",
 "trainingForm": "Очная",
@@ -5466,7 +4868,7 @@
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003140",
+"CompetitionId": "000003938",
 "CompetitionName": "ИСИ_ИСТОР_М_1"
 },
 "Prices": [
@@ -5481,21 +4883,21 @@
 ],
 "admissionBasis": [
 {
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 9
-},
-{
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
 "value": 5
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 7
 }
 ],
-"freeSeatsNumber": 9,
+"freeSeatsNumber": 7,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012161",
+"name": "Междисциплинарный экзамен по программе История",
 "minScore": 71
 },
 {
@@ -5507,7 +4909,7 @@
 },
 {
 "Plan": {
-"planId": "000014155",
+"planId": "000016290",
 "facultyId": "000000004",
 "facultyName": "Историко-социологический институт",
 "trainingForm": "Очная",
@@ -5520,7 +4922,7 @@
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003145",
+"CompetitionId": "000003943",
 "CompetitionName": "ИСИ_ИСТОР_М_ин"
 },
 "Prices": [
@@ -5543,8 +4945,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012161",
+"name": "Междисциплинарный экзамен по программе История",
 "minScore": 71
 },
 {
@@ -5556,7 +4958,7 @@
 },
 {
 "Plan": {
-"planId": "000014156",
+"planId": "000016291",
 "facultyId": "000000004",
 "facultyName": "Историко-социологический институт",
 "trainingForm": "Заочная",
@@ -5569,7 +4971,7 @@
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003140",
+"CompetitionId": "000003938",
 "CompetitionName": "ИСИ_ИСТОР_М_1"
 },
 "Prices": [
@@ -5584,21 +4986,21 @@
 ],
 "admissionBasis": [
 {
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 9
-},
-{
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
 "value": 5
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 9
 }
 ],
 "freeSeatsNumber": 9,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012161",
+"name": "Междисциплинарный экзамен по программе История",
 "minScore": 71
 },
 {
@@ -5610,7 +5012,7 @@
 },
 {
 "Plan": {
-"planId": "000014156",
+"planId": "000016291",
 "facultyId": "000000004",
 "facultyName": "Историко-социологический институт",
 "trainingForm": "Заочная",
@@ -5623,7 +5025,7 @@
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003145",
+"CompetitionId": "000003943",
 "CompetitionName": "ИСИ_ИСТОР_М_ин"
 },
 "Prices": [
@@ -5646,8 +5048,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012161",
+"name": "Междисциплинарный экзамен по программе История",
 "minScore": 71
 },
 {
@@ -5659,7 +5061,7 @@
 },
 {
 "Plan": {
-"planId": "000014157",
+"planId": "000016292",
 "facultyId": "000000010",
 "facultyName": "Факультет биотехнологии и биологии",
 "trainingForm": "Очная",
@@ -5672,7 +5074,7 @@
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003147",
+"CompetitionId": "000003945",
 "CompetitionName": "БИО_БИО_М_1"
 },
 "Prices": [
@@ -5687,26 +5089,26 @@
 ],
 "admissionBasis": [
 {
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 15
-},
-{
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
-"value": 1
+"value": 6
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 12
 },
 {
 "IdBasis": "000000001",
 "Basis": "Целевой прием",
-"value": 0
+"value": 3
 }
 ],
 "freeSeatsNumber": 15,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012162",
+"name": "Междисциплинарный экзамен по программе Биология",
 "minScore": 50
 },
 {
@@ -5718,7 +5120,7 @@
 },
 {
 "Plan": {
-"planId": "000014157",
+"planId": "000016292",
 "facultyId": "000000010",
 "facultyName": "Факультет биотехнологии и биологии",
 "trainingForm": "Очная",
@@ -5731,7 +5133,7 @@
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003149",
+"CompetitionId": "000003947",
 "CompetitionName": "БИО_БИО_М_ин"
 },
 "Prices": [
@@ -5754,8 +5156,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012162",
+"name": "Междисциплинарный экзамен по программе Биология",
 "minScore": 50
 },
 {
@@ -5767,7 +5169,7 @@
 },
 {
 "Plan": {
-"planId": "000014158",
+"planId": "000016293",
 "facultyId": "000000010",
 "facultyName": "Факультет биотехнологии и биологии",
 "trainingForm": "Очная",
@@ -5780,7 +5182,7 @@
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003148",
+"CompetitionId": "000003946",
 "CompetitionName": "БИО_БИОТЕХ_М_1"
 },
 "Prices": [
@@ -5795,21 +5197,26 @@
 ],
 "admissionBasis": [
 {
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 9
-},
-{
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
-"value": 1
+"value": 5
+},
+{
+"IdBasis": "000000001",
+"Basis": "Целевой прием",
+"value": 2
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 7
 }
 ],
 "freeSeatsNumber": 9,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012163",
+"name": "Междисциплинарный экзамен по программе Биотехнология",
 "minScore": 50
 },
 {
@@ -5821,7 +5228,7 @@
 },
 {
 "Plan": {
-"planId": "000014158",
+"planId": "000016293",
 "facultyId": "000000010",
 "facultyName": "Факультет биотехнологии и биологии",
 "trainingForm": "Очная",
@@ -5834,7 +5241,7 @@
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003150",
+"CompetitionId": "000003948",
 "CompetitionName": "БИО_БИОТЕХ_М_ин"
 },
 "Prices": [
@@ -5857,8 +5264,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012163",
+"name": "Междисциплинарный экзамен по программе Биотехнология",
 "minScore": 50
 },
 {
@@ -5870,20 +5277,20 @@
 },
 {
 "Plan": {
-"planId": "000014159",
+"planId": "000016294",
 "facultyId": "000000015",
 "facultyName": "Факультет иностранных языков",
 "trainingForm": "Очная",
 "trainingAreasId": "00000118",
 "trainingCode": "45.04.01",
 "trainingAreasName": "Филология",
-"specializationID": "0000000175",
-"specializationName": "Переводоведение и практика перевода (романо-германские языки)",
+"specializationID": "",
+"specializationName": "",
 "years": 2
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003151",
+"CompetitionId": "000003949",
 "CompetitionName": "ФИЯ_ФИЛОЛ_М_1"
 },
 "Prices": [
@@ -5898,21 +5305,21 @@
 ],
 "admissionBasis": [
 {
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 5
+},
+{
 "IdBasis": "000000003",
 "Basis": "Бюджетная основа",
 "value": 9
-},
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 10
 }
 ],
 "freeSeatsNumber": 9,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012164",
+"name": "Междисциплинарный экзамен по программе Филология",
 "minScore": 65
 },
 {
@@ -5924,20 +5331,20 @@
 },
 {
 "Plan": {
-"planId": "000014159",
+"planId": "000016294",
 "facultyId": "000000015",
 "facultyName": "Факультет иностранных языков",
 "trainingForm": "Очная",
 "trainingAreasId": "00000118",
 "trainingCode": "45.04.01",
 "trainingAreasName": "Филология",
-"specializationID": "0000000175",
-"specializationName": "Переводоведение и практика перевода (романо-германские языки)",
+"specializationID": "",
+"specializationName": "",
 "years": 2
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003152",
+"CompetitionId": "000003950",
 "CompetitionName": "ФИЯ_ФИЛОЛ_М_ин"
 },
 "Prices": [
@@ -5960,8 +5367,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012164",
+"name": "Междисциплинарный экзамен по программе Филология",
 "minScore": 65
 },
 {
@@ -5973,20 +5380,20 @@
 },
 {
 "Plan": {
-"planId": "000014160",
+"planId": "000016295",
 "facultyId": "000000015",
 "facultyName": "Факультет иностранных языков",
 "trainingForm": "Заочная",
 "trainingAreasId": "00000118",
 "trainingCode": "45.04.01",
 "trainingAreasName": "Филология",
-"specializationID": "0000000171",
-"specializationName": "Иностранные языки (языковое обеспечение культурно-массовых и спортивных мероприятий)",
+"specializationID": "",
+"specializationName": "",
 "years": 3
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003151",
+"CompetitionId": "000003949",
 "CompetitionName": "ФИЯ_ФИЛОЛ_М_1"
 },
 "Prices": [
@@ -6003,14 +5410,19 @@
 {
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
-"value": 7
+"value": 12
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 9
 }
 ],
-"freeSeatsNumber": 0,
+"freeSeatsNumber": 9,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012164",
+"name": "Междисциплинарный экзамен по программе Филология",
 "minScore": 65
 },
 {
@@ -6022,20 +5434,20 @@
 },
 {
 "Plan": {
-"planId": "000014160",
+"planId": "000016295",
 "facultyId": "000000015",
 "facultyName": "Факультет иностранных языков",
 "trainingForm": "Заочная",
 "trainingAreasId": "00000118",
 "trainingCode": "45.04.01",
 "trainingAreasName": "Филология",
-"specializationID": "0000000171",
-"specializationName": "Иностранные языки (языковое обеспечение культурно-массовых и спортивных мероприятий)",
+"specializationID": "",
+"specializationName": "",
 "years": 3
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003152",
+"CompetitionId": "000003950",
 "CompetitionName": "ФИЯ_ФИЛОЛ_М_ин"
 },
 "Prices": [
@@ -6058,8 +5470,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012164",
+"name": "Междисциплинарный экзамен по программе Филология",
 "minScore": 65
 },
 {
@@ -6071,20 +5483,20 @@
 },
 {
 "Plan": {
-"planId": "000014161",
+"planId": "000016296",
 "facultyId": "000000012",
 "facultyName": "Факультет математики и информационных технологий",
 "trainingForm": "Очная",
 "trainingAreasId": "00000115",
 "trainingCode": "01.04.02",
 "trainingAreasName": "Прикладная математика и информатика",
-"specializationID": "0000000221",
-"specializationName": "Математическое моделирование",
+"specializationID": "",
+"specializationName": "",
 "years": 2
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003153",
+"CompetitionId": "000003951",
 "CompetitionName": "МАТ_ПМиИ_М_1"
 },
 "Prices": [
@@ -6099,21 +5511,26 @@
 ],
 "admissionBasis": [
 {
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 14
-},
-{
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
 "value": 3
+},
+{
+"IdBasis": "000000001",
+"Basis": "Целевой прием",
+"value": 3
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 12
 }
 ],
-"freeSeatsNumber": 14,
+"freeSeatsNumber": 15,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012165",
+"name": "Междисциплинарный экзамен по программе Прикладная математика и информатика",
 "minScore": 51
 },
 {
@@ -6125,20 +5542,20 @@
 },
 {
 "Plan": {
-"planId": "000014161",
+"planId": "000016296",
 "facultyId": "000000012",
 "facultyName": "Факультет математики и информационных технологий",
 "trainingForm": "Очная",
 "trainingAreasId": "00000115",
 "trainingCode": "01.04.02",
 "trainingAreasName": "Прикладная математика и информатика",
-"specializationID": "0000000221",
-"specializationName": "Математическое моделирование",
+"specializationID": "",
+"specializationName": "",
 "years": 2
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003157",
+"CompetitionId": "000003955",
 "CompetitionName": "МАТ_ПМиИ_М_ин"
 },
 "Prices": [
@@ -6161,8 +5578,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012165",
+"name": "Междисциплинарный экзамен по программе Прикладная математика и информатика",
 "minScore": 51
 },
 {
@@ -6174,7 +5591,7 @@
 },
 {
 "Plan": {
-"planId": "000014162",
+"planId": "000016297",
 "facultyId": "000000012",
 "facultyName": "Факультет математики и информационных технологий",
 "trainingForm": "Очная",
@@ -6187,7 +5604,7 @@
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003154",
+"CompetitionId": "000003952",
 "CompetitionName": "МАТ_ФИиИТ_М_1"
 },
 "Prices": [
@@ -6202,21 +5619,26 @@
 ],
 "admissionBasis": [
 {
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 14
-},
-{
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
+"value": 2
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 11
+},
+{
+"IdBasis": "000000001",
+"Basis": "Целевой прием",
 "value": 3
 }
 ],
 "freeSeatsNumber": 14,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012166",
+"name": "Междисциплинарный экзамен по программе Фундаментальная информатика и информационные технологии",
 "minScore": 51
 },
 {
@@ -6228,7 +5650,7 @@
 },
 {
 "Plan": {
-"planId": "000014162",
+"planId": "000016297",
 "facultyId": "000000012",
 "facultyName": "Факультет математики и информационных технологий",
 "trainingForm": "Очная",
@@ -6241,7 +5663,7 @@
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003158",
+"CompetitionId": "000003956",
 "CompetitionName": "МАТ_ФИиИТ_М_ин"
 },
 "Prices": [
@@ -6264,8 +5686,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012166",
+"name": "Междисциплинарный экзамен по программе Фундаментальная информатика и информационные технологии",
 "minScore": 51
 },
 {
@@ -6277,7 +5699,7 @@
 },
 {
 "Plan": {
-"planId": "000014163",
+"planId": "000016298",
 "facultyId": "000000012",
 "facultyName": "Факультет математики и информационных технологий",
 "trainingForm": "Очная",
@@ -6290,7 +5712,7 @@
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003155",
+"CompetitionId": "000003953",
 "CompetitionName": "МАТ_ПИ_М_1"
 },
 "Prices": [
@@ -6305,21 +5727,26 @@
 ],
 "admissionBasis": [
 {
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 5
+},
+{
+"IdBasis": "000000001",
+"Basis": "Целевой прием",
 "value": 2
 },
 {
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 8
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 7
 }
 ],
-"freeSeatsNumber": 2,
+"freeSeatsNumber": 9,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012167",
+"name": "Междисциплинарный экзамен по программе Программная инженерия",
 "minScore": 51
 },
 {
@@ -6331,7 +5758,7 @@
 },
 {
 "Plan": {
-"planId": "000014163",
+"planId": "000016298",
 "facultyId": "000000012",
 "facultyName": "Факультет математики и информационных технологий",
 "trainingForm": "Очная",
@@ -6344,7 +5771,7 @@
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003159",
+"CompetitionId": "000003957",
 "CompetitionName": "МАТ_ПИ_М_ин"
 },
 "Prices": [
@@ -6367,8 +5794,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012167",
+"name": "Междисциплинарный экзамен по программе Программная инженерия",
 "minScore": 51
 },
 {
@@ -6380,70 +5807,21 @@
 },
 {
 "Plan": {
-"planId": "000014164",
-"facultyId": "000000012",
-"facultyName": "Факультет математики и информационных технологий",
-"trainingForm": "Очно-заочная ",
-"trainingAreasId": "00000115",
-"trainingCode": "01.04.02",
-"trainingAreasName": "Прикладная математика и информатика",
-"specializationID": "",
-"specializationName": "",
-"years": 3
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003153",
-"CompetitionName": "МАТ_ПМиИ_М_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 7
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
-"minScore": 51
-},
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-}
-]
-},
-{
-"Plan": {
-"planId": "000014164",
-"facultyId": "000000012",
-"facultyName": "Факультет математики и информационных технологий",
-"trainingForm": "Очно-заочная ",
-"trainingAreasId": "00000115",
-"trainingCode": "01.04.02",
-"trainingAreasName": "Прикладная математика и информатика",
-"specializationID": "",
-"specializationName": "",
-"years": 3
+"planId": "000016300",
+"facultyId": "000000014",
+"facultyName": "Филологический факультет",
+"trainingForm": "Очная",
+"trainingAreasId": "00000117",
+"trainingCode": "42.04.02",
+"trainingAreasName": "Журналистика",
+"specializationID": "0000000332",
+"specializationName": "Теория и методика журналистского творчества",
+"years": 2
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003156",
-"CompetitionName": "МАТ_ПМиИ_М_1_ин"
+"CompetitionId": "000004125",
+"CompetitionName": "ФИЛ_ЖУР:ТиМЖТ_М_ин"
 },
 "Prices": [
 {
@@ -6459,15 +5837,15 @@
 {
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
-"value": 1
+"value": 2
 }
 ],
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
-"minScore": 51
+"subjectId": "000012168",
+"name": "Междисциплинарный экзамен по программе Журналистика",
+"minScore": 60
 },
 {
 "subjectId": "000000015",
@@ -6478,7 +5856,7 @@
 },
 {
 "Plan": {
-"planId": "000014165",
+"planId": "000016300",
 "facultyId": "000000014",
 "facultyName": "Филологический факультет",
 "trainingForm": "Очная",
@@ -6491,61 +5869,7 @@
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003160",
-"CompetitionName": "ФИЛ_ЖУР:ИОЖ_М_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 5
-},
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 7
-}
-],
-"freeSeatsNumber": 5,
-"subjects": [
-{
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
-"minScore": 60
-},
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-}
-]
-},
-{
-"Plan": {
-"planId": "000014166",
-"facultyId": "000000014",
-"facultyName": "Филологический факультет",
-"trainingForm": "Заочная",
-"trainingAreasId": "00000117",
-"trainingCode": "42.04.02",
-"trainingAreasName": "Журналистика",
-"specializationID": "0000000332",
-"specializationName": "Теория и методика журналистского творчества",
-"years": 3
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003161",
+"CompetitionId": "000003959",
 "CompetitionName": "ФИЛ_ЖУР:ТиМЖТ_М_1"
 },
 "Prices": [
@@ -6563,67 +5887,18 @@
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
 "value": 7
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
-"minScore": 60
 },
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-}
-]
-},
-{
-"Plan": {
-"planId": "000014167",
-"facultyId": "000000014",
-"facultyName": "Филологический факультет",
-"trainingForm": "Очная",
-"trainingAreasId": "00000118",
-"trainingCode": "45.04.01",
-"trainingAreasName": "Филология",
-"specializationID": "0000000280",
-"specializationName": "Финно-угорский историко-литературный процесс в этнокультурном пространстве России ",
-"years": 2
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003162",
-"CompetitionName": "ФИЛ_ФФУИЛПЭПР_М_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
 {
 "IdBasis": "000000003",
 "Basis": "Бюджетная основа",
-"value": 3
-},
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 4
+"value": 5
 }
 ],
-"freeSeatsNumber": 3,
+"freeSeatsNumber": 5,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012168",
+"name": "Междисциплинарный экзамен по программе Журналистика",
 "minScore": 60
 },
 {
@@ -6635,70 +5910,21 @@
 },
 {
 "Plan": {
-"planId": "000014167",
-"facultyId": "000000014",
-"facultyName": "Филологический факультет",
-"trainingForm": "Очная",
-"trainingAreasId": "00000118",
-"trainingCode": "45.04.01",
-"trainingAreasName": "Филология",
-"specializationID": "0000000280",
-"specializationName": "Финно-угорский историко-литературный процесс в этнокультурном пространстве России ",
-"years": 2
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003166",
-"CompetitionName": "ФИЛ_ФФУИЛПЭПР_М_ин_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 2
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
-"minScore": 60
-},
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-}
-]
-},
-{
-"Plan": {
-"planId": "000014168",
+"planId": "000016301",
 "facultyId": "000000014",
 "facultyName": "Филологический факультет",
 "trainingForm": "Заочная",
-"trainingAreasId": "00000118",
-"trainingCode": "45.04.01",
-"trainingAreasName": "Филология",
-"specializationID": "0000000050",
-"specializationName": "Языки народов России: мокшанский язык",
+"trainingAreasId": "00000117",
+"trainingCode": "42.04.02",
+"trainingAreasName": "Журналистика",
+"specializationID": "0000000332",
+"specializationName": "Теория и методика журналистского творчества",
 "years": 3
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003163",
-"CompetitionName": "ФИЛ_ФРУСЛИТ_М_1"
+"CompetitionId": "000003959",
+"CompetitionName": "ФИЛ_ЖУР:ТиМЖТ_М_1"
 },
 "Prices": [
 {
@@ -6715,116 +5941,18 @@
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
 "value": 7
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
-"minScore": 60
 },
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-}
-]
-},
-{
-"Plan": {
-"planId": "000014168",
-"facultyId": "000000014",
-"facultyName": "Филологический факультет",
-"trainingForm": "Заочная",
-"trainingAreasId": "00000118",
-"trainingCode": "45.04.01",
-"trainingAreasName": "Филология",
-"specializationID": "0000000050",
-"specializationName": "Языки народов России: мокшанский язык",
-"years": 3
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003167",
-"CompetitionName": "ФИЛ_ФРУСЛИТ_М_ин_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 2
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
-"minScore": 60
-},
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-}
-]
-},
-{
-"Plan": {
-"planId": "000014169",
-"facultyId": "000000014",
-"facultyName": "Филологический факультет",
-"trainingForm": "Очная",
-"trainingAreasId": "00000118",
-"trainingCode": "45.04.01",
-"trainingAreasName": "Филология",
-"specializationID": "0000000044",
-"specializationName": "Русская литература",
-"years": 2
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003163",
-"CompetitionName": "ФИЛ_ФРУСЛИТ_М_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
 {
 "IdBasis": "000000003",
 "Basis": "Бюджетная основа",
 "value": 6
-},
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 7
 }
 ],
 "freeSeatsNumber": 6,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012168",
+"name": "Междисциплинарный экзамен по программе Журналистика",
 "minScore": 60
 },
 {
@@ -6836,21 +5964,21 @@
 },
 {
 "Plan": {
-"planId": "000014169",
+"planId": "000016301",
 "facultyId": "000000014",
 "facultyName": "Филологический факультет",
-"trainingForm": "Очная",
-"trainingAreasId": "00000118",
-"trainingCode": "45.04.01",
-"trainingAreasName": "Филология",
-"specializationID": "0000000044",
-"specializationName": "Русская литература",
-"years": 2
+"trainingForm": "Заочная",
+"trainingAreasId": "00000117",
+"trainingCode": "42.04.02",
+"trainingAreasName": "Журналистика",
+"specializationID": "0000000332",
+"specializationName": "Теория и методика журналистского творчества",
+"years": 3
 },
 "Competition": {
-"foreigner": false,
-"CompetitionId": "000003167",
-"CompetitionName": "ФИЛ_ФРУСЛИТ_М_ин_1"
+"foreigner": true,
+"CompetitionId": "000004126",
+"CompetitionName": "ФИЛ_ЖУР:ТиМЖТ_М_ин"
 },
 "Prices": [
 {
@@ -6872,8 +6000,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012168",
+"name": "Междисциплинарный экзамен по программе Журналистика",
 "minScore": 60
 },
 {
@@ -6885,7 +6013,213 @@
 },
 {
 "Plan": {
-"planId": "000014170",
+"planId": "000016303",
+"facultyId": "000000014",
+"facultyName": "Филологический факультет",
+"trainingForm": "Заочная",
+"trainingAreasId": "00000118",
+"trainingCode": "45.04.01",
+"trainingAreasName": "Филология",
+"specializationID": "0000000050",
+"specializationName": "Языки народов России: мокшанский язык",
+"years": 3
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004127",
+"CompetitionName": "ФИЛ_ЯНР_МЯ_М_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 2
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 9
+}
+],
+"freeSeatsNumber": 9,
+"subjects": [
+{
+"subjectId": "000012164",
+"name": "Междисциплинарный экзамен по программе Филология",
+"minScore": 60
+},
+{
+"subjectId": "000000015",
+"name": "Индивидуальное достижение",
+"minScore": 0
+}
+]
+},
+{
+"Plan": {
+"planId": "000016303",
+"facultyId": "000000014",
+"facultyName": "Филологический факультет",
+"trainingForm": "Заочная",
+"trainingAreasId": "00000118",
+"trainingCode": "45.04.01",
+"trainingAreasName": "Филология",
+"specializationID": "0000000050",
+"specializationName": "Языки народов России: мокшанский язык",
+"years": 3
+},
+"Competition": {
+"foreigner": true,
+"CompetitionId": "000004128",
+"CompetitionName": "ФИЛ_ЯНР_МЯ_М_ин"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 2
+}
+],
+"freeSeatsNumber": 0,
+"subjects": [
+{
+"subjectId": "000012164",
+"name": "Междисциплинарный экзамен по программе Филология",
+"minScore": 60
+},
+{
+"subjectId": "000000015",
+"name": "Индивидуальное достижение",
+"minScore": 0
+}
+]
+},
+{
+"Plan": {
+"planId": "000016304",
+"facultyId": "000000014",
+"facultyName": "Филологический факультет",
+"trainingForm": "Очная",
+"trainingAreasId": "00000118",
+"trainingCode": "45.04.01",
+"trainingAreasName": "Филология",
+"specializationID": "0000000044",
+"specializationName": "Русская литература",
+"years": 2
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000003961",
+"CompetitionName": "ФИЛ_ФРУСЛИТ_М_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 2
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 10
+}
+],
+"freeSeatsNumber": 10,
+"subjects": [
+{
+"subjectId": "000012164",
+"name": "Междисциплинарный экзамен по программе Филология",
+"minScore": 60
+},
+{
+"subjectId": "000000015",
+"name": "Индивидуальное достижение",
+"minScore": 0
+}
+]
+},
+{
+"Plan": {
+"planId": "000016304",
+"facultyId": "000000014",
+"facultyName": "Филологический факультет",
+"trainingForm": "Очная",
+"trainingAreasId": "00000118",
+"trainingCode": "45.04.01",
+"trainingAreasName": "Филология",
+"specializationID": "0000000044",
+"specializationName": "Русская литература",
+"years": 2
+},
+"Competition": {
+"foreigner": true,
+"CompetitionId": "000004129",
+"CompetitionName": "ФИЛ_ФРУСЛИТ_М_ин"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 2
+}
+],
+"freeSeatsNumber": 0,
+"subjects": [
+{
+"subjectId": "000012164",
+"name": "Междисциплинарный экзамен по программе Филология",
+"minScore": 60
+},
+{
+"subjectId": "000000015",
+"name": "Индивидуальное достижение",
+"minScore": 0
+}
+]
+},
+{
+"Plan": {
+"planId": "000016305",
 "facultyId": "000000014",
 "facultyName": "Филологический факультет",
 "trainingForm": "Заочная",
@@ -6898,7 +6232,7 @@
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003164",
+"CompetitionId": "000003962",
 "CompetitionName": "ФИЛ_ФППП_М_1"
 },
 "Prices": [
@@ -6921,8 +6255,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012164",
+"name": "Междисциплинарный экзамен по программе Филология",
 "minScore": 60
 },
 {
@@ -6934,7 +6268,7 @@
 },
 {
 "Plan": {
-"planId": "000014170",
+"planId": "000016305",
 "facultyId": "000000014",
 "facultyName": "Филологический факультет",
 "trainingForm": "Заочная",
@@ -6947,7 +6281,7 @@
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003168",
+"CompetitionId": "000003966",
 "CompetitionName": "ФИЛ_ФППП_М_ин_1"
 },
 "Prices": [
@@ -6970,8 +6304,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012164",
+"name": "Междисциплинарный экзамен по программе Филология",
 "minScore": 60
 },
 {
@@ -6983,7 +6317,7 @@
 },
 {
 "Plan": {
-"planId": "000014171",
+"planId": "000016306",
 "facultyId": "000000014",
 "facultyName": "Филологический факультет",
 "trainingForm": "Заочная",
@@ -6996,7 +6330,7 @@
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003165",
+"CompetitionId": "000003963",
 "CompetitionName": "ФИЛ_ФМОР_М_1"
 },
 "Prices": [
@@ -7019,8 +6353,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012164",
+"name": "Междисциплинарный экзамен по программе Филология",
 "minScore": 60
 },
 {
@@ -7032,7 +6366,7 @@
 },
 {
 "Plan": {
-"planId": "000014171",
+"planId": "000016306",
 "facultyId": "000000014",
 "facultyName": "Филологический факультет",
 "trainingForm": "Заочная",
@@ -7045,7 +6379,7 @@
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003169",
+"CompetitionId": "000003967",
 "CompetitionName": "ФИЛ_ФМОР_М_ин_1"
 },
 "Prices": [
@@ -7068,8 +6402,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012164",
+"name": "Междисциплинарный экзамен по программе Филология",
 "minScore": 60
 },
 {
@@ -7081,20 +6415,20 @@
 },
 {
 "Plan": {
-"planId": "000014172",
+"planId": "000016307",
 "facultyId": "000000016",
 "facultyName": "Экономический факультет",
 "trainingForm": "Очная",
 "trainingAreasId": "00000529",
 "trainingCode": "27.04.02",
 "trainingAreasName": "Управление качеством",
-"specializationID": "0000000199",
-"specializationName": "Интегрированные системы менеджмента",
+"specializationID": "",
+"specializationName": "",
 "years": 2
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003170",
+"CompetitionId": "000003968",
 "CompetitionName": "ЭКО_УК_М_1"
 },
 "Prices": [
@@ -7109,22 +6443,27 @@
 ],
 "admissionBasis": [
 {
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 8
-},
-{
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
-"value": 4
+"value": 6
+},
+{
+"IdBasis": "000000001",
+"Basis": "Целевой прием",
+"value": 2
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 6
 }
 ],
 "freeSeatsNumber": 8,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
-"minScore": 51
+"subjectId": "000012169",
+"name": "Междисциплинарный экзамен по программе Управление качеством",
+"minScore": 50
 },
 {
 "subjectId": "000000015",
@@ -7135,20 +6474,20 @@
 },
 {
 "Plan": {
-"planId": "000014172",
+"planId": "000016307",
 "facultyId": "000000016",
 "facultyName": "Экономический факультет",
 "trainingForm": "Очная",
 "trainingAreasId": "00000529",
 "trainingCode": "27.04.02",
 "trainingAreasName": "Управление качеством",
-"specializationID": "0000000199",
-"specializationName": "Интегрированные системы менеджмента",
+"specializationID": "",
+"specializationName": "",
 "years": 2
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003177",
+"CompetitionId": "000003975",
 "CompetitionName": "ЭКО_УК_М_ин"
 },
 "Prices": [
@@ -7171,8 +6510,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012169",
+"name": "Междисциплинарный экзамен по программе Управление качеством",
 "minScore": 51
 },
 {
@@ -7184,20 +6523,20 @@
 },
 {
 "Plan": {
-"planId": "000014173",
+"planId": "000016308",
 "facultyId": "000000016",
 "facultyName": "Экономический факультет",
 "trainingForm": "Заочная",
 "trainingAreasId": "00000529",
 "trainingCode": "27.04.02",
 "trainingAreasName": "Управление качеством",
-"specializationID": "0000000199",
-"specializationName": "Интегрированные системы менеджмента",
+"specializationID": "",
+"specializationName": "",
 "years": 3
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003170",
+"CompetitionId": "000003968",
 "CompetitionName": "ЭКО_УК_М_1"
 },
 "Prices": [
@@ -7220,9 +6559,9 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
-"minScore": 51
+"subjectId": "000012169",
+"name": "Междисциплинарный экзамен по программе Управление качеством",
+"minScore": 50
 },
 {
 "subjectId": "000000015",
@@ -7233,20 +6572,20 @@
 },
 {
 "Plan": {
-"planId": "000014173",
+"planId": "000016308",
 "facultyId": "000000016",
 "facultyName": "Экономический факультет",
 "trainingForm": "Заочная",
 "trainingAreasId": "00000529",
 "trainingCode": "27.04.02",
 "trainingAreasName": "Управление качеством",
-"specializationID": "0000000199",
-"specializationName": "Интегрированные системы менеджмента",
+"specializationID": "",
+"specializationName": "",
 "years": 3
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003177",
+"CompetitionId": "000003975",
 "CompetitionName": "ЭКО_УК_М_ин"
 },
 "Prices": [
@@ -7269,8 +6608,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012169",
+"name": "Междисциплинарный экзамен по программе Управление качеством",
 "minScore": 51
 },
 {
@@ -7282,123 +6621,20 @@
 },
 {
 "Plan": {
-"planId": "000014174",
-"facultyId": "000000016",
-"facultyName": "Экономический факультет",
-"trainingForm": "Очная",
-"trainingAreasId": "00000527",
-"trainingCode": "38.04.01",
-"trainingAreasName": "Экономика",
-"specializationID": "0000000249",
-"specializationName": "Государственные и муниципальные финансы",
-"years": 2
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003171",
-"CompetitionName": "ЭКО_ЭКО_М_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 5
-},
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 5
-}
-],
-"freeSeatsNumber": 5,
-"subjects": [
-{
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
-"minScore": 51
-},
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-}
-]
-},
-{
-"Plan": {
-"planId": "000014174",
-"facultyId": "000000016",
-"facultyName": "Экономический факультет",
-"trainingForm": "Очная",
-"trainingAreasId": "00000527",
-"trainingCode": "38.04.01",
-"trainingAreasName": "Экономика",
-"specializationID": "0000000249",
-"specializationName": "Государственные и муниципальные финансы",
-"years": 2
-},
-"Competition": {
-"foreigner": true,
-"CompetitionId": "000003178",
-"CompetitionName": "ЭКО_ЭКО_М_ин"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 5
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
-"minScore": 51
-},
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-}
-]
-},
-{
-"Plan": {
-"planId": "000014175",
+"planId": "000016310",
 "facultyId": "000000016",
 "facultyName": "Экономический факультет",
 "trainingForm": "Заочная",
 "trainingAreasId": "00000527",
 "trainingCode": "38.04.01",
 "trainingAreasName": "Экономика",
-"specializationID": "0000000205",
-"specializationName": "Экономика предприятий и организаций",
+"specializationID": "",
+"specializationName": "",
 "years": 3
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003171",
+"CompetitionId": "000003969",
 "CompetitionName": "ЭКО_ЭКО_М_1"
 },
 "Prices": [
@@ -7415,14 +6651,14 @@
 {
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
-"value": 40
+"value": 28
 }
 ],
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012170",
+"name": "Междисциплинарный экзамен по программе Экономика",
 "minScore": 51
 },
 {
@@ -7434,20 +6670,20 @@
 },
 {
 "Plan": {
-"planId": "000014175",
+"planId": "000016310",
 "facultyId": "000000016",
 "facultyName": "Экономический факультет",
 "trainingForm": "Заочная",
 "trainingAreasId": "00000527",
 "trainingCode": "38.04.01",
 "trainingAreasName": "Экономика",
-"specializationID": "0000000205",
-"specializationName": "Экономика предприятий и организаций",
+"specializationID": "",
+"specializationName": "",
 "years": 3
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003178",
+"CompetitionId": "000003976",
 "CompetitionName": "ЭКО_ЭКО_М_ин"
 },
 "Prices": [
@@ -7470,8 +6706,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012170",
+"name": "Междисциплинарный экзамен по программе Экономика",
 "minScore": 51
 },
 {
@@ -7483,20 +6719,20 @@
 },
 {
 "Plan": {
-"planId": "000014176",
+"planId": "000016311",
 "facultyId": "000000016",
 "facultyName": "Экономический факультет",
 "trainingForm": "Очная",
 "trainingAreasId": "00000122",
 "trainingCode": "38.04.02",
 "trainingAreasName": "Менеджмент",
-"specializationID": "0000000337",
-"specializationName": "Предпринимательство для устойчивого развития",
+"specializationID": "",
+"specializationName": "",
 "years": 2
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003172",
+"CompetitionId": "000003970",
 "CompetitionName": "ЭКО_МЕН_М_1"
 },
 "Prices": [
@@ -7511,19 +6747,14 @@
 ],
 "admissionBasis": [
 {
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 4
-},
-{
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
-"value": 4
+"value": 8
 },
 {
-"IdBasis": "000000006",
-"Basis": "Бюджет субъекта РФ",
-"value": 1
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 5
 },
 {
 "IdBasis": "000000001",
@@ -7531,11 +6762,11 @@
 "value": 1
 }
 ],
-"freeSeatsNumber": 5,
+"freeSeatsNumber": 6,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012171",
+"name": "Междисциплинарный экзамен по программе Менеджмент",
 "minScore": 51
 },
 {
@@ -7547,20 +6778,20 @@
 },
 {
 "Plan": {
-"planId": "000014176",
+"planId": "000016311",
 "facultyId": "000000016",
 "facultyName": "Экономический факультет",
 "trainingForm": "Очная",
 "trainingAreasId": "00000122",
 "trainingCode": "38.04.02",
 "trainingAreasName": "Менеджмент",
-"specializationID": "0000000337",
-"specializationName": "Предпринимательство для устойчивого развития",
+"specializationID": "",
+"specializationName": "",
 "years": 2
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003179",
+"CompetitionId": "000003977",
 "CompetitionName": "ЭКО_МЕН_М_ин"
 },
 "Prices": [
@@ -7583,8 +6814,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012171",
+"name": "Междисциплинарный экзамен по программе Менеджмент",
 "minScore": 51
 },
 {
@@ -7596,20 +6827,20 @@
 },
 {
 "Plan": {
-"planId": "000014177",
+"planId": "000016312",
 "facultyId": "000000016",
 "facultyName": "Экономический факультет",
 "trainingForm": "Заочная",
 "trainingAreasId": "00000122",
 "trainingCode": "38.04.02",
 "trainingAreasName": "Менеджмент",
-"specializationID": "0000000053",
-"specializationName": "Стратегическое управление",
+"specializationID": "",
+"specializationName": "",
 "years": 3
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003172",
+"CompetitionId": "000003970",
 "CompetitionName": "ЭКО_МЕН_М_1"
 },
 "Prices": [
@@ -7626,14 +6857,14 @@
 {
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
-"value": 10
+"value": 21
 }
 ],
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012171",
+"name": "Междисциплинарный экзамен по программе Менеджмент",
 "minScore": 51
 },
 {
@@ -7645,20 +6876,20 @@
 },
 {
 "Plan": {
-"planId": "000014177",
+"planId": "000016312",
 "facultyId": "000000016",
 "facultyName": "Экономический факультет",
 "trainingForm": "Заочная",
 "trainingAreasId": "00000122",
 "trainingCode": "38.04.02",
 "trainingAreasName": "Менеджмент",
-"specializationID": "0000000053",
-"specializationName": "Стратегическое управление",
+"specializationID": "",
+"specializationName": "",
 "years": 3
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003179",
+"CompetitionId": "000003977",
 "CompetitionName": "ЭКО_МЕН_М_ин"
 },
 "Prices": [
@@ -7681,8 +6912,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012171",
+"name": "Междисциплинарный экзамен по программе Менеджмент",
 "minScore": 51
 },
 {
@@ -7694,7 +6925,7 @@
 },
 {
 "Plan": {
-"planId": "000014178",
+"planId": "000016313",
 "facultyId": "000000016",
 "facultyName": "Экономический факультет",
 "trainingForm": "Очная",
@@ -7707,7 +6938,7 @@
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003173",
+"CompetitionId": "000003971",
 "CompetitionName": "ЭКО_ГМУ_М_1"
 },
 "Prices": [
@@ -7730,8 +6961,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012172",
+"name": "Междисциплинарный экзамен по программе Государственное и муниципальное управление",
 "minScore": 51
 },
 {
@@ -7743,7 +6974,7 @@
 },
 {
 "Plan": {
-"planId": "000014178",
+"planId": "000016313",
 "facultyId": "000000016",
 "facultyName": "Экономический факультет",
 "trainingForm": "Очная",
@@ -7756,7 +6987,7 @@
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003183",
+"CompetitionId": "000003981",
 "CompetitionName": "ЭКО_ГМУ_М_1_ин"
 },
 "Prices": [
@@ -7779,8 +7010,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012172",
+"name": "Междисциплинарный экзамен по программе Государственное и муниципальное управление",
 "minScore": 51
 },
 {
@@ -7792,20 +7023,20 @@
 },
 {
 "Plan": {
-"planId": "000014179",
+"planId": "000016314",
 "facultyId": "000000016",
 "facultyName": "Экономический факультет",
 "trainingForm": "Заочная",
 "trainingAreasId": "00000126",
 "trainingCode": "38.04.04",
 "trainingAreasName": "Государственное и муниципальное управление",
-"specializationID": "0000000029",
-"specializationName": "Механизмы и технологии государственного и муниципального управления",
+"specializationID": "",
+"specializationName": "",
 "years": 3
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003173",
+"CompetitionId": "000003971",
 "CompetitionName": "ЭКО_ГМУ_М_1"
 },
 "Prices": [
@@ -7822,24 +7053,14 @@
 {
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
-"value": 5
-},
-{
-"IdBasis": "000000001",
-"Basis": "Целевой прием",
-"value": 0
-},
-{
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 7
+"value": 21
 }
 ],
-"freeSeatsNumber": 7,
+"freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012172",
+"name": "Междисциплинарный экзамен по программе Государственное и муниципальное управление",
 "minScore": 51
 },
 {
@@ -7851,20 +7072,20 @@
 },
 {
 "Plan": {
-"planId": "000014179",
+"planId": "000016314",
 "facultyId": "000000016",
 "facultyName": "Экономический факультет",
 "trainingForm": "Заочная",
 "trainingAreasId": "00000126",
 "trainingCode": "38.04.04",
 "trainingAreasName": "Государственное и муниципальное управление",
-"specializationID": "0000000029",
-"specializationName": "Механизмы и технологии государственного и муниципального управления",
+"specializationID": "",
+"specializationName": "",
 "years": 3
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003183",
+"CompetitionId": "000003981",
 "CompetitionName": "ЭКО_ГМУ_М_1_ин"
 },
 "Prices": [
@@ -7887,8 +7108,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012172",
+"name": "Междисциплинарный экзамен по программе Государственное и муниципальное управление",
 "minScore": 51
 },
 {
@@ -7900,7 +7121,7 @@
 },
 {
 "Plan": {
-"planId": "000014180",
+"planId": "000016315",
 "facultyId": "000000016",
 "facultyName": "Экономический факультет",
 "trainingForm": "Очная",
@@ -7913,7 +7134,7 @@
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003174",
+"CompetitionId": "000003972",
 "CompetitionName": "ЭКО_БИ_М_1"
 },
 "Prices": [
@@ -7936,8 +7157,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012173",
+"name": "Междисциплинарный экзамен по программе Бизнес-информатика",
 "minScore": 51
 },
 {
@@ -7949,7 +7170,7 @@
 },
 {
 "Plan": {
-"planId": "000014180",
+"planId": "000016315",
 "facultyId": "000000016",
 "facultyName": "Экономический факультет",
 "trainingForm": "Очная",
@@ -7962,7 +7183,7 @@
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003180",
+"CompetitionId": "000003978",
 "CompetitionName": "ЭКО_БИ_М_ин"
 },
 "Prices": [
@@ -7985,8 +7206,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012173",
+"name": "Междисциплинарный экзамен по программе Бизнес-информатика",
 "minScore": 51
 },
 {
@@ -7998,7 +7219,7 @@
 },
 {
 "Plan": {
-"planId": "000014181",
+"planId": "000016316",
 "facultyId": "000000016",
 "facultyName": "Экономический факультет",
 "trainingForm": "Очно-заочная ",
@@ -8011,7 +7232,7 @@
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003174",
+"CompetitionId": "000003972",
 "CompetitionName": "ЭКО_БИ_М_1"
 },
 "Prices": [
@@ -8026,26 +7247,16 @@
 ],
 "admissionBasis": [
 {
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 7
-},
-{
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
 "value": 7
-},
-{
-"IdBasis": "000000001",
-"Basis": "Целевой прием",
-"value": 0
 }
 ],
-"freeSeatsNumber": 7,
+"freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012173",
+"name": "Междисциплинарный экзамен по программе Бизнес-информатика",
 "minScore": 51
 },
 {
@@ -8057,7 +7268,7 @@
 },
 {
 "Plan": {
-"planId": "000014181",
+"planId": "000016316",
 "facultyId": "000000016",
 "facultyName": "Экономический факультет",
 "trainingForm": "Очно-заочная ",
@@ -8070,7 +7281,7 @@
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003180",
+"CompetitionId": "000003978",
 "CompetitionName": "ЭКО_БИ_М_ин"
 },
 "Prices": [
@@ -8093,8 +7304,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012173",
+"name": "Междисциплинарный экзамен по программе Бизнес-информатика",
 "minScore": 51
 },
 {
@@ -8106,7 +7317,7 @@
 },
 {
 "Plan": {
-"planId": "000014183",
+"planId": "000016317",
 "facultyId": "000000016",
 "facultyName": "Экономический факультет",
 "trainingForm": "Очная",
@@ -8119,7 +7330,7 @@
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003175",
+"CompetitionId": "000003973",
 "CompetitionName": "ЭКО_ФиК_М_1"
 },
 "Prices": [
@@ -8142,8 +7353,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012174",
+"name": "Междисциплинарный экзамен по программе Финансы и кредит",
 "minScore": 51
 },
 {
@@ -8155,7 +7366,7 @@
 },
 {
 "Plan": {
-"planId": "000014183",
+"planId": "000016317",
 "facultyId": "000000016",
 "facultyName": "Экономический факультет",
 "trainingForm": "Очная",
@@ -8168,7 +7379,7 @@
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003181",
+"CompetitionId": "000003979",
 "CompetitionName": "ЭКО_ФиК_М_ин"
 },
 "Prices": [
@@ -8191,8 +7402,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012174",
+"name": "Междисциплинарный экзамен по программе Финансы и кредит",
 "minScore": 51
 },
 {
@@ -8204,20 +7415,20 @@
 },
 {
 "Plan": {
-"planId": "000014184",
+"planId": "000016318",
 "facultyId": "000000016",
 "facultyName": "Экономический факультет",
 "trainingForm": "Заочная",
 "trainingAreasId": "00000531",
 "trainingCode": "38.04.08",
 "trainingAreasName": "Финансы и кредит",
-"specializationID": "0000000054",
-"specializationName": "Банковское дело",
+"specializationID": "",
+"specializationName": "",
 "years": 3
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003175",
+"CompetitionId": "000003973",
 "CompetitionName": "ЭКО_ФиК_М_1"
 },
 "Prices": [
@@ -8234,14 +7445,14 @@
 {
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
-"value": 15
+"value": 21
 }
 ],
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012174",
+"name": "Междисциплинарный экзамен по программе Финансы и кредит",
 "minScore": 51
 },
 {
@@ -8253,20 +7464,20 @@
 },
 {
 "Plan": {
-"planId": "000014184",
+"planId": "000016318",
 "facultyId": "000000016",
 "facultyName": "Экономический факультет",
 "trainingForm": "Заочная",
 "trainingAreasId": "00000531",
 "trainingCode": "38.04.08",
 "trainingAreasName": "Финансы и кредит",
-"specializationID": "0000000054",
-"specializationName": "Банковское дело",
+"specializationID": "",
+"specializationName": "",
 "years": 3
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003181",
+"CompetitionId": "000003979",
 "CompetitionName": "ЭКО_ФиК_М_ин"
 },
 "Prices": [
@@ -8289,8 +7500,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012174",
+"name": "Междисциплинарный экзамен по программе Финансы и кредит",
 "minScore": 51
 },
 {
@@ -8302,216 +7513,20 @@
 },
 {
 "Plan": {
-"planId": "000014185",
-"facultyId": "000000016",
-"facultyName": "Экономический факультет",
-"trainingForm": "Очная",
-"trainingAreasId": "00000609",
-"trainingCode": "38.04.06",
-"trainingAreasName": "Торговое дело",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003176",
-"CompetitionName": "ЭКО_ТД_М_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 7
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
-"minScore": 51
-},
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-}
-]
-},
-{
-"Plan": {
-"planId": "000014185",
-"facultyId": "000000016",
-"facultyName": "Экономический факультет",
-"trainingForm": "Очная",
-"trainingAreasId": "00000609",
-"trainingCode": "38.04.06",
-"trainingAreasName": "Торговое дело",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": true,
-"CompetitionId": "000003182",
-"CompetitionName": "ЭКО_ТД_М_ин"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 2
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
-"minScore": 51
-},
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-}
-]
-},
-{
-"Plan": {
-"planId": "000014186",
-"facultyId": "000000016",
-"facultyName": "Экономический факультет",
-"trainingForm": "Очно-заочная ",
-"trainingAreasId": "00000609",
-"trainingCode": "38.04.06",
-"trainingAreasName": "Торговое дело",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": false,
-"CompetitionId": "000003176",
-"CompetitionName": "ЭКО_ТД_М_1"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 7
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
-"minScore": 51
-},
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-}
-]
-},
-{
-"Plan": {
-"planId": "000014186",
-"facultyId": "000000016",
-"facultyName": "Экономический факультет",
-"trainingForm": "Очно-заочная ",
-"trainingAreasId": "00000609",
-"trainingCode": "38.04.06",
-"trainingAreasName": "Торговое дело",
-"specializationID": "",
-"specializationName": "",
-"years": 2
-},
-"Competition": {
-"foreigner": true,
-"CompetitionId": "000003182",
-"CompetitionName": "ЭКО_ТД_М_ин"
-},
-"Prices": [
-{
-"Price": 0,
-"info": "Основная"
-},
-{
-"Price": 0,
-"info": "Соотечественники"
-}
-],
-"admissionBasis": [
-{
-"IdBasis": "000000002",
-"Basis": "Полное возмещение затрат",
-"value": 2
-}
-],
-"freeSeatsNumber": 0,
-"subjects": [
-{
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
-"minScore": 51
-},
-{
-"subjectId": "000000015",
-"name": "Индивидуальное достижение",
-"minScore": 0
-}
-]
-},
-{
-"Plan": {
-"planId": "000014187",
+"planId": "000016321",
 "facultyId": "000000018",
 "facultyName": "Юридический факультет",
 "trainingForm": "Очная",
 "trainingAreasId": "00000123",
 "trainingCode": "40.04.01",
 "trainingAreasName": "Юриспруденция",
-"specializationID": "0000000321",
-"specializationName": "Теория и история государства и права; история правовых учений",
+"specializationID": "",
+"specializationName": "",
 "years": 2
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003184",
+"CompetitionId": "000003982",
 "CompetitionName": "ЮРИ_ЮРИ_М_1"
 },
 "Prices": [
@@ -8526,26 +7541,26 @@
 ],
 "admissionBasis": [
 {
-"IdBasis": "000000003",
-"Basis": "Бюджетная основа",
-"value": 10
-},
-{
 "IdBasis": "000000002",
 "Basis": "Полное возмещение затрат",
 "value": 20
 },
 {
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 9
+},
+{
 "IdBasis": "000000001",
 "Basis": "Целевой прием",
-"value": 0
+"value": 2
 }
 ],
-"freeSeatsNumber": 10,
+"freeSeatsNumber": 11,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012176",
+"name": "Междисциплинарный экзамен по программе Юриспруденция",
 "minScore": 60
 },
 {
@@ -8557,20 +7572,20 @@
 },
 {
 "Plan": {
-"planId": "000014187",
+"planId": "000016321",
 "facultyId": "000000018",
 "facultyName": "Юридический факультет",
 "trainingForm": "Очная",
 "trainingAreasId": "00000123",
 "trainingCode": "40.04.01",
 "trainingAreasName": "Юриспруденция",
-"specializationID": "0000000321",
-"specializationName": "Теория и история государства и права; история правовых учений",
+"specializationID": "",
+"specializationName": "",
 "years": 2
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003185",
+"CompetitionId": "000003983",
 "CompetitionName": "ЮРИ_ЮРИ_М_ин"
 },
 "Prices": [
@@ -8593,8 +7608,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012176",
+"name": "Междисциплинарный экзамен по программе Юриспруденция",
 "minScore": 60
 },
 {
@@ -8606,7 +7621,7 @@
 },
 {
 "Plan": {
-"planId": "000014188",
+"planId": "000016322",
 "facultyId": "000000018",
 "facultyName": "Юридический факультет",
 "trainingForm": "Заочная",
@@ -8619,7 +7634,7 @@
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003184",
+"CompetitionId": "000003982",
 "CompetitionName": "ЮРИ_ЮРИ_М_1"
 },
 "Prices": [
@@ -8641,19 +7656,19 @@
 {
 "IdBasis": "000000001",
 "Basis": "Целевой прием",
-"value": 0
+"value": 6
 },
 {
 "IdBasis": "000000003",
 "Basis": "Бюджетная основа",
-"value": 30
+"value": 21
 }
 ],
-"freeSeatsNumber": 30,
+"freeSeatsNumber": 27,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012176",
+"name": "Междисциплинарный экзамен по программе Юриспруденция",
 "minScore": 60
 },
 {
@@ -8665,7 +7680,7 @@
 },
 {
 "Plan": {
-"planId": "000014188",
+"planId": "000016322",
 "facultyId": "000000018",
 "facultyName": "Юридический факультет",
 "trainingForm": "Заочная",
@@ -8678,7 +7693,7 @@
 },
 "Competition": {
 "foreigner": true,
-"CompetitionId": "000003185",
+"CompetitionId": "000003983",
 "CompetitionName": "ЮРИ_ЮРИ_М_ин"
 },
 "Prices": [
@@ -8701,8 +7716,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012176",
+"name": "Междисциплинарный экзамен по программе Юриспруденция",
 "minScore": 60
 },
 {
@@ -8714,21 +7729,830 @@
 },
 {
 "Plan": {
-"planId": "000015626",
+"planId": "000016323",
 "facultyId": "000000016",
 "facultyName": "Экономический факультет",
 "trainingForm": "Заочная",
 "trainingAreasId": "00000528",
 "trainingCode": "38.04.05",
 "trainingAreasName": "Бизнес-информатика",
-"specializationID": "0000000200",
-"specializationName": "Архитектура предприятия",
+"specializationID": "",
+"specializationName": "",
 "years": 3
 },
 "Competition": {
 "foreigner": false,
-"CompetitionId": "000003174",
+"CompetitionId": "000003972",
 "CompetitionName": "ЭКО_БИ_М_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 7
+}
+],
+"freeSeatsNumber": 0,
+"subjects": [
+{
+"subjectId": "000012173",
+"name": "Междисциплинарный экзамен по программе Бизнес-информатика",
+"minScore": 51
+},
+{
+"subjectId": "000000015",
+"name": "Индивидуальное достижение",
+"minScore": 0
+}
+]
+},
+{
+"Plan": {
+"planId": "000016900",
+"facultyId": "000000004",
+"facultyName": "Историко-социологический институт",
+"trainingForm": "Заочная",
+"trainingAreasId": "00000043",
+"trainingCode": "39.04.01",
+"trainingAreasName": "Социология",
+"specializationID": "",
+"specializationName": "",
+"years": 3
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000003934",
+"CompetitionName": "ИСИ_СОЦ_М_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 7
+},
+{
+"IdBasis": "000000001",
+"Basis": "Целевой прием",
+"value": 1
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 6
+}
+],
+"freeSeatsNumber": 7,
+"subjects": [
+{
+"subjectId": "000012157",
+"name": "Междисциплинарный экзамен по программе Социология",
+"minScore": 71
+},
+{
+"subjectId": "000000015",
+"name": "Индивидуальное достижение",
+"minScore": 0
+}
+]
+},
+{
+"Plan": {
+"planId": "000016900",
+"facultyId": "000000004",
+"facultyName": "Историко-социологический институт",
+"trainingForm": "Заочная",
+"trainingAreasId": "00000043",
+"trainingCode": "39.04.01",
+"trainingAreasName": "Социология",
+"specializationID": "",
+"specializationName": "",
+"years": 3
+},
+"Competition": {
+"foreigner": true,
+"CompetitionId": "000003940",
+"CompetitionName": "ИСИ_СОЦ_М_ин"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 1
+}
+],
+"freeSeatsNumber": 0,
+"subjects": [
+{
+"subjectId": "000012157",
+"name": "Междисциплинарный экзамен по программе Социология",
+"minScore": 71
+},
+{
+"subjectId": "000000015",
+"name": "Индивидуальное достижение",
+"minScore": 0
+}
+]
+},
+{
+"Plan": {
+"planId": "000017612",
+"facultyId": "000000009",
+"facultyName": "Архитектурно-строительный факультет",
+"trainingForm": "Очная",
+"trainingAreasId": "00000112",
+"trainingCode": "08.04.01",
+"trainingAreasName": "Строительство",
+"specializationID": "0000000428",
+"specializationName": "Основание и фундаменты зданий и сооружений",
+"years": 2
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004104",
+"CompetitionName": "АСФ_СТР:ОФЗС_М_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 3
+},
+{
+"IdBasis": "000000001",
+"Basis": "Целевой прием",
+"value": 1
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 6
+}
+],
+"freeSeatsNumber": 7,
+"subjects": [
+{
+"subjectId": "000012130",
+"name": "Междисциплинарный экзамен по программе Строительство",
+"minScore": 40
+},
+{
+"subjectId": "000000015",
+"name": "Индивидуальное достижение",
+"minScore": 0
+}
+]
+},
+{
+"Plan": {
+"planId": "000017612",
+"facultyId": "000000009",
+"facultyName": "Архитектурно-строительный факультет",
+"trainingForm": "Очная",
+"trainingAreasId": "00000112",
+"trainingCode": "08.04.01",
+"trainingAreasName": "Строительство",
+"specializationID": "0000000428",
+"specializationName": "Основание и фундаменты зданий и сооружений",
+"years": 2
+},
+"Competition": {
+"foreigner": true,
+"CompetitionId": "000004105",
+"CompetitionName": "АСФ_СТР:ОФЗС_М_ин"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 2
+}
+],
+"freeSeatsNumber": 0,
+"subjects": [
+{
+"subjectId": "000012130",
+"name": "Междисциплинарный экзамен по программе Строительство",
+"minScore": 40
+},
+{
+"subjectId": "000000015",
+"name": "Индивидуальное достижение",
+"minScore": 0
+}
+]
+},
+{
+"Plan": {
+"planId": "000017614",
+"facultyId": "000000011",
+"facultyName": "Географический факультет",
+"trainingForm": "Заочная",
+"trainingAreasId": "00000114",
+"trainingCode": "05.04.06",
+"trainingAreasName": "Экология и природопользование",
+"specializationID": "",
+"specializationName": "",
+"years": 3
+},
+"Competition": {
+"foreigner": true,
+"CompetitionId": "000004110",
+"CompetitionName": "ГЕО_ЭиП_М_ин"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 2
+}
+],
+"freeSeatsNumber": 0,
+"subjects": [
+{
+"subjectId": "000012133",
+"name": "Междисциплинарный экзамен по программе Землеустройство и кадастры",
+"minScore": 60
+},
+{
+"subjectId": "000000015",
+"name": "Индивидуальное достижение",
+"minScore": 0
+}
+]
+},
+{
+"Plan": {
+"planId": "000017614",
+"facultyId": "000000011",
+"facultyName": "Географический факультет",
+"trainingForm": "Заочная",
+"trainingAreasId": "00000114",
+"trainingCode": "05.04.06",
+"trainingAreasName": "Экология и природопользование",
+"specializationID": "",
+"specializationName": "",
+"years": 3
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004109",
+"CompetitionName": "ГЕО_ЭиП_М_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 9
+}
+],
+"freeSeatsNumber": 0,
+"subjects": [
+{
+"subjectId": "000012133",
+"name": "Междисциплинарный экзамен по программе Землеустройство и кадастры",
+"minScore": 60
+},
+{
+"subjectId": "000000015",
+"name": "Индивидуальное достижение",
+"minScore": 0
+}
+]
+},
+{
+"Plan": {
+"planId": "000017615",
+"facultyId": "000000011",
+"facultyName": "Географический факультет",
+"trainingForm": "Очная",
+"trainingAreasId": "00000634",
+"trainingCode": "43.04.02",
+"trainingAreasName": "Туризм",
+"specializationID": "",
+"specializationName": "",
+"years": 3
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000003896",
+"CompetitionName": "ГЕО_ТУР_М_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 7
+},
+{
+"IdBasis": "000000003",
+"Basis": "Бюджетная основа",
+"value": 7
+}
+],
+"freeSeatsNumber": 7,
+"subjects": [
+{
+"subjectId": "000012134",
+"name": "Междисциплинарный экзамен по программе Туризм",
+"minScore": 60
+},
+{
+"subjectId": "000000015",
+"name": "Индивидуальное достижение",
+"minScore": 0
+}
+]
+},
+{
+"Plan": {
+"planId": "000017615",
+"facultyId": "000000011",
+"facultyName": "Географический факультет",
+"trainingForm": "Очная",
+"trainingAreasId": "00000634",
+"trainingCode": "43.04.02",
+"trainingAreasName": "Туризм",
+"specializationID": "",
+"specializationName": "",
+"years": 3
+},
+"Competition": {
+"foreigner": true,
+"CompetitionId": "000004111",
+"CompetitionName": "ГЕО_ТУР_М_ин"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 2
+}
+],
+"freeSeatsNumber": 0,
+"subjects": [
+{
+"subjectId": "000012134",
+"name": "Междисциплинарный экзамен по программе Туризм",
+"minScore": 60
+},
+{
+"subjectId": "000000015",
+"name": "Индивидуальное достижение",
+"minScore": 0
+}
+]
+},
+{
+"Plan": {
+"planId": "000017616",
+"facultyId": "000000014",
+"facultyName": "Филологический факультет",
+"trainingForm": "Заочная",
+"trainingAreasId": "00000118",
+"trainingCode": "45.04.01",
+"trainingAreasName": "Филология",
+"specializationID": "0000000280",
+"specializationName": "Финно-угорский историко-литературный процесс в этнокультурном пространстве России ",
+"years": 2
+},
+"Competition": {
+"foreigner": true,
+"CompetitionId": "000004130",
+"CompetitionName": "ФИЛ_ФФУИЛПЭПР_М_ин"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 2
+}
+],
+"freeSeatsNumber": 0,
+"subjects": [
+{
+"subjectId": "000012164",
+"name": "Междисциплинарный экзамен по программе Филология",
+"minScore": 60
+},
+{
+"subjectId": "000000015",
+"name": "Индивидуальное достижение",
+"minScore": 0
+}
+]
+},
+{
+"Plan": {
+"planId": "000017616",
+"facultyId": "000000014",
+"facultyName": "Филологический факультет",
+"trainingForm": "Заочная",
+"trainingAreasId": "00000118",
+"trainingCode": "45.04.01",
+"trainingAreasName": "Филология",
+"specializationID": "0000000280",
+"specializationName": "Финно-угорский историко-литературный процесс в этнокультурном пространстве России ",
+"years": 2
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000003960",
+"CompetitionName": "ФИЛ_ФФУИЛПЭПР_М_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 7
+}
+],
+"freeSeatsNumber": 0,
+"subjects": [
+{
+"subjectId": "000012164",
+"name": "Междисциплинарный экзамен по программе Филология",
+"minScore": 60
+},
+{
+"subjectId": "000000015",
+"name": "Индивидуальное достижение",
+"minScore": 0
+}
+]
+},
+{
+"Plan": {
+"planId": "000017617",
+"facultyId": "000000014",
+"facultyName": "Филологический факультет",
+"trainingForm": "Заочная",
+"trainingAreasId": "00000118",
+"trainingCode": "45.04.01",
+"trainingAreasName": "Филология",
+"specializationID": "0000000040",
+"specializationName": "Русский язык как иностранный",
+"years": 3
+},
+"Competition": {
+"foreigner": true,
+"CompetitionId": "000004113",
+"CompetitionName": "ФИЛ_РкИ_М_ин"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 2
+}
+],
+"freeSeatsNumber": 0,
+"subjects": [
+{
+"subjectId": "000012164",
+"name": "Междисциплинарный экзамен по программе Филология",
+"minScore": 60
+},
+{
+"subjectId": "000000015",
+"name": "Индивидуальное достижение",
+"minScore": 0
+}
+]
+},
+{
+"Plan": {
+"planId": "000017617",
+"facultyId": "000000014",
+"facultyName": "Филологический факультет",
+"trainingForm": "Заочная",
+"trainingAreasId": "00000118",
+"trainingCode": "45.04.01",
+"trainingAreasName": "Филология",
+"specializationID": "0000000040",
+"specializationName": "Русский язык как иностранный",
+"years": 3
+},
+"Competition": {
+"foreigner": false,
+"CompetitionId": "000004112",
+"CompetitionName": "ФИЛ_РкИ_М_1"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 7
+}
+],
+"freeSeatsNumber": 0,
+"subjects": [
+{
+"subjectId": "000012164",
+"name": "Междисциплинарный экзамен по программе Филология",
+"minScore": 60
+},
+{
+"subjectId": "000000015",
+"name": "Индивидуальное достижение",
+"minScore": 0
+}
+]
+},
+{
+"Plan": {
+"planId": "000017709",
+"facultyId": "000000004",
+"facultyName": "Историко-социологический институт",
+"trainingForm": "Заочная",
+"trainingAreasId": "00000196",
+"trainingCode": "37.04.01",
+"trainingAreasName": "Психология",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": true,
+"CompetitionId": "000003939",
+"CompetitionName": "ИСИ_ПСИХОЛ_М_ин"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 2
+}
+],
+"freeSeatsNumber": 0,
+"subjects": [
+{
+"subjectId": "000012156",
+"name": "Междисциплинарный экзамен по программе Психология",
+"minScore": 71
+},
+{
+"subjectId": "000000015",
+"name": "Индивидуальное достижение",
+"minScore": 0
+}
+]
+},
+{
+"Plan": {
+"planId": "000017613",
+"facultyId": "000000009",
+"facultyName": "Архитектурно-строительный факультет",
+"trainingForm": "Очная",
+"trainingAreasId": "00000112",
+"trainingCode": "08.04.01",
+"trainingAreasName": "Строительство",
+"specializationID": "0000000429",
+"specializationName": "Civil  Enginiering.Biological damages and biosafety of building and constructions",
+"years": 2
+},
+"Competition": {
+"foreigner": true,
+"CompetitionId": "000004106",
+"CompetitionName": "АСФ_СТР:BDBofBC_М_ин"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 7
+}
+],
+"freeSeatsNumber": 0,
+"subjects": [
+{
+"subjectId": "000012130",
+"name": "Междисциплинарный экзамен по программе Строительство",
+"minScore": 40
+},
+{
+"subjectId": "000000015",
+"name": "Индивидуальное достижение",
+"minScore": 0
+}
+]
+},
+{
+"Plan": {
+"planId": "000017618",
+"facultyId": "000000016",
+"facultyName": "Экономический факультет",
+"trainingForm": "Заочная",
+"trainingAreasId": "00000528",
+"trainingCode": "38.04.05",
+"trainingAreasName": "Бизнес-информатика",
+"specializationID": "",
+"specializationName": "",
+"years": 3
+},
+"Competition": {
+"foreigner": true,
+"CompetitionId": "000004114",
+"CompetitionName": "ЭКО_БИ_М_ин"
+},
+"Prices": [
+{
+"Price": 0,
+"info": "Основная"
+},
+{
+"Price": 0,
+"info": "Соотечественники"
+}
+],
+"admissionBasis": [
+{
+"IdBasis": "000000002",
+"Basis": "Полное возмещение затрат",
+"value": 2
+}
+],
+"freeSeatsNumber": 0,
+"subjects": [
+{
+"subjectId": "000012173",
+"name": "Междисциплинарный экзамен по программе Бизнес-информатика",
+"minScore": 51
+},
+{
+"subjectId": "000000015",
+"name": "Индивидуальное достижение",
+"minScore": 0
+}
+]
+},
+{
+"Plan": {
+"planId": "000016309",
+"facultyId": "000000016",
+"facultyName": "Экономический факультет",
+"trainingForm": "Очная",
+"trainingAreasId": "00000527",
+"trainingCode": "38.04.01",
+"trainingAreasName": "Экономика",
+"specializationID": "",
+"specializationName": "",
+"years": 2
+},
+"Competition": {
+"foreigner": true,
+"CompetitionId": "000003976",
+"CompetitionName": "ЭКО_ЭКО_М_ин"
 },
 "Prices": [
 {
@@ -8750,8 +8574,8 @@
 "freeSeatsNumber": 0,
 "subjects": [
 {
-"subjectId": "000000023",
-"name": "Междисциплинарный экзамен по программе соответствующего бакалавриата",
+"subjectId": "000012170",
+"name": "Междисциплинарный экзамен по программе Экономика",
 "minScore": 51
 },
 {

@@ -53,6 +53,7 @@ use Exception;
 trait ParserJsonTrait
 {
     use XlsMakerTrait;
+
 //------------------------НАЧАЛО парсинг статистики Бакалавры--------------------------------
     public function parseCatalogs($file)
     {
@@ -183,18 +184,50 @@ trait ParserJsonTrait
                             'acceptCount' => $student['acceptСount']
                         );
                         $studentsStat[] = $stat;
+                    } else {
+                        $mes = 'Не найден параметр.';
+                        if (empty($idPlan)) {
+                            $mes .= ' idPlan = ' . $fac_stat['planId'] . ',';
+                        }
+                        if (empty($idFaculty)) {
+                            $mes .= ' idFaculty = ' . $fac_stat['facultyId'] . ',';
+                        }
+                        if (empty($idSpeciality)) {
+                            $mes .= ' $idSpeciality = ' . $fac_stat['trainingAreasId'] . ',';
+                        }
+                        if (empty($idCompetition)) {
+                            $mes .= ' $idCompetition = ' . $fac_stat['CompetitionId'] . ',';
+                        }
+                        if (empty($idAdmissionBasis)) {
+                            $mes .= ' $idAdmissionBasis = ' . $fac_stat['IdBasis'] . ',';
+                        }
+                        if (empty($idStudyForm)) {
+                            $mes .= ' $idStudyForm = ' . $fac_stat['trainingForm'] . ',';
+                        }
+                        if (empty($idCategory)) {
+                            $mes .= ' $idCategory = ' . $student['category'] . ',';
+                        }
+                        if (empty($idPreparationLevel)) {
+                            $mes .= ' $idPreparationLevel = ' . $student['preparationLevel'] . ',';
+                        }
+                        throw new ErrorException($mes);
                     }
 
                     //теперь оценки
                     foreach ($student['score'] as $score_item) {
                         $idSubject = Subject::where('subjectId', '=', $score_item['subjectId'])->first();
-                        $score = array(
-                            'id_statistic' => count($studentsStat),
-                            'id_subject' => intval($idSubject->id),
-                            'score' => $score_item['subjectScore'],
-                            'priority' => $score_item['Priority']
-                        );
-                        $scores[] = $score;
+                        if (!empty($idSubject)) {
+                            $score = array(
+                                'id_statistic' => count($studentsStat),
+                                'id_subject' => intval($idSubject->id),
+                                'score' => $score_item['subjectScore'],
+                                'priority' => $score_item['Priority']
+                            );
+                            $scores[] = $score;
+                        } else {
+                            $mes = 'Не найден параметр. ' . ' idSubject = ' . $score_item['subjectId'];
+                            throw new ErrorException($mes);
+                        }
                     }
                 }
                 //Записываем в БД студентов для этой специализации
@@ -225,7 +258,7 @@ trait ParserJsonTrait
         set_time_limit(1200);
         $this->parseCatalogs("stat_bach.json");
         $this->parseStatBach();
-        $this->XlsBach();
+         $this->XlsBach();
 
         return 'Информация об абитуриентах (бакалавриат,специалитет) успешно выгружена!';
     }
@@ -358,18 +391,50 @@ trait ParserJsonTrait
                             'acceptCount' => $student['acceptСount']
                         );
                         $studentsStat[] = $stat;
+                    } else {
+                        $mes = 'Не найден параметр.';
+                        if (empty($idPlan)) {
+                            $mes .= ' idPlan = ' . $fac_stat['planId'] . ',';
+                        }
+                        if (empty($idFaculty)) {
+                            $mes .= ' idFaculty = ' . $fac_stat['facultyId'] . ',';
+                        }
+                        if (empty($idSpeciality)) {
+                            $mes .= ' $idSpeciality = ' . $fac_stat['trainingAreasId'] . ',';
+                        }
+                        if (empty($idCompetition)) {
+                            $mes .= ' $idCompetition = ' . $fac_stat['CompetitionId'] . ',';
+                        }
+                        if (empty($idAdmissionBasis)) {
+                            $mes .= ' $idAdmissionBasis = ' . $fac_stat['IdBasis'] . ',';
+                        }
+                        if (empty($idStudyForm)) {
+                            $mes .= ' $idStudyForm = ' . $fac_stat['trainingForm'] . ',';
+                        }
+                        if (empty($idCategory)) {
+                            $mes .= ' $idCategory = ' . $student['category'] . ',';
+                        }
+                        if (empty($idPreparationLevel)) {
+                            $mes .= ' $idPreparationLevel = ' . $student['preparationLevel'] . ',';
+                        }
+                        throw new ErrorException($mes);
                     }
 
                     //теперь оценки
                     foreach ($student['score'] as $score_item) {
                         $idSubject = Subject::where('subjectId', '=', $score_item['subjectId'])->first();
-                        $score = array(
-                            'id_statistic' => count($studentsStat),
-                            'id_subject' => intval($idSubject->id),
-                            'score' => $score_item['subjectScore'],
-                            'priority' => $score_item['Priority']
-                        );
-                        $scores[] = $score;
+                        if (!empty($idSubject)) {
+                            $score = array(
+                                'id_statistic' => count($studentsStat),
+                                'id_subject' => intval($idSubject->id),
+                                'score' => $score_item['subjectScore'],
+                                'priority' => $score_item['Priority']
+                            );
+                            $scores[] = $score;
+                        } else {
+                            $mes = 'Не найден параметр. ' . ' idSubject = ' . $score_item['subjectId'];
+                            throw new ErrorException($mes);
+                        }
                     }
                 }
 
@@ -536,18 +601,50 @@ trait ParserJsonTrait
                             'acceptCount' => $student['acceptСount']
                         );
                         $studentsStat[] = $stat;
+                    } else {
+                        $mes = 'Не найден параметр.';
+                        if (empty($idPlan)) {
+                            $mes .= ' idPlan = ' . $fac_stat['planId'] . ',';
+                        }
+                        if (empty($idFaculty)) {
+                            $mes .= ' idFaculty = ' . $fac_stat['facultyId'] . ',';
+                        }
+                        if (empty($idSpeciality)) {
+                            $mes .= ' $idSpeciality = ' . $fac_stat['trainingAreasId'] . ',';
+                        }
+                        if (empty($idCompetition)) {
+                            $mes .= ' $idCompetition = ' . $fac_stat['CompetitionId'] . ',';
+                        }
+                        if (empty($idAdmissionBasis)) {
+                            $mes .= ' $idAdmissionBasis = ' . $fac_stat['IdBasis'] . ',';
+                        }
+                        if (empty($idStudyForm)) {
+                            $mes .= ' $idStudyForm = ' . $fac_stat['trainingForm'] . ',';
+                        }
+                        if (empty($idCategory)) {
+                            $mes .= ' $idCategory = ' . $student['category'] . ',';
+                        }
+                        if (empty($idPreparationLevel)) {
+                            $mes .= ' $idPreparationLevel = ' . $student['preparationLevel'] . ',';
+                        }
+                        throw new ErrorException($mes);
                     }
 
                     //теперь оценки
                     foreach ($student['score'] as $score_item) {
                         $idSubject = Subject::where('subjectId', '=', $score_item['subjectId'])->first();
-                        $score = array(
-                            'id_statistic' => count($studentsStat),
-                            'id_subject' => intval($idSubject->id),
-                            'score' => $score_item['subjectScore'],
-                            'priority' => $score_item['Priority']
-                        );
-                        $scores[] = $score;
+                        if (!empty($idSubject)) {
+                            $score = array(
+                                'id_statistic' => count($studentsStat),
+                                'id_subject' => intval($idSubject->id),
+                                'score' => $score_item['subjectScore'],
+                                'priority' => $score_item['Priority']
+                            );
+                            $scores[] = $score;
+                        } else {
+                            $mes = 'Не найден параметр. ' . ' idSubject = ' . $score_item['subjectId'];
+                            throw new ErrorException($mes);
+                        }
                     }
                 }
 
@@ -712,18 +809,50 @@ trait ParserJsonTrait
                             'acceptCount' => $student['acceptСount']
                         );
                         $studentsStat[] = $stat;
+                    } else {
+                        $mes = 'Не найден параметр.';
+                        if (empty($idPlan)) {
+                            $mes .= ' idPlan = ' . $fac_stat['planId'] . ',';
+                        }
+                        if (empty($idFaculty)) {
+                            $mes .= ' idFaculty = ' . $fac_stat['facultyId'] . ',';
+                        }
+                        if (empty($idSpeciality)) {
+                            $mes .= ' $idSpeciality = ' . $fac_stat['trainingAreasId'] . ',';
+                        }
+                        if (empty($idCompetition)) {
+                            $mes .= ' $idCompetition = ' . $fac_stat['CompetitionId'] . ',';
+                        }
+                        if (empty($idAdmissionBasis)) {
+                            $mes .= ' $idAdmissionBasis = ' . $fac_stat['IdBasis'] . ',';
+                        }
+                        if (empty($idStudyForm)) {
+                            $mes .= ' $idStudyForm = ' . $fac_stat['trainingForm'] . ',';
+                        }
+                        if (empty($idCategory)) {
+                            $mes .= ' $idCategory = ' . $student['category'] . ',';
+                        }
+                        if (empty($idPreparationLevel)) {
+                            $mes .= ' $idPreparationLevel = ' . $student['preparationLevel'] . ',';
+                        }
+                        throw new ErrorException($mes);
                     }
 
                     //теперь оценки
                     foreach ($student['score'] as $score_item) {
                         $idSubject = Subject::where('subjectId', '=', $score_item['subjectId'])->first();
-                        $score = array(
-                            'id_statistic' => count($studentsStat),
-                            'id_subject' => intval($idSubject->id),
-                            'score' => $score_item['subjectScore'],
-                            'priority' => $score_item['Priority']
-                        );
-                        $scores[] = $score;
+                        if (!empty($idSubject)) {
+                            $score = array(
+                                'id_statistic' => count($studentsStat),
+                                'id_subject' => intval($idSubject->id),
+                                'score' => $score_item['subjectScore'],
+                                'priority' => $score_item['Priority']
+                            );
+                            $scores[] = $score;
+                        } else {
+                            $mes = 'Не найден параметр. ' . ' idSubject = ' . $score_item['subjectId'];
+                            throw new ErrorException($mes);
+                        }
                     }
                 }
 
@@ -791,15 +920,30 @@ trait ParserJsonTrait
                     $id_specialization = Specialization::where('specializationId', '=', $element['Plan']['specializationID'])->first();
 
                     //заполним массив планов
-                    $plan = array(
-                        'planId' => $element['Plan']['planId'],
-                        'id_faculty' => intval($id_faculty->id),
-                        'id_studyForm' => intval($id_studyForm->id),
-                        'id_speciality' => intval($id_speciality->id),
-                        'id_specialization' => $id_specialization ? intval($id_specialization->id) : null,
-                        'years' => intval($element['Plan']['years'])
+                    if (!empty($id_faculty) && !empty($id_studyForm) && !empty($id_speciality)) {
+                        $plan = array(
+                            'planId' => $element['Plan']['planId'],
+                            'id_faculty' => intval($id_faculty->id),
+                            'id_studyForm' => intval($id_studyForm->id),
+                            'id_speciality' => intval($id_speciality->id),
+                            'id_specialization' => $id_specialization ? intval($id_specialization->id) : null,
+                            'years' => intval($element['Plan']['years'])
 
-                    );
+                        );
+                    } else {
+                        $mes = 'Не найден параметр.';
+                        if (empty($id_faculty)) {
+                            $mes .= ' id_faculty' . $element['Plan']['facultyId'] . ',';
+                        }
+                        if (empty($id_studyForm)) {
+                            $mes .= ' $id_studyForm' . $element['Plan']['trainingForm'] . ',';
+                        }
+                        if (empty($id_speciality)) {
+                            $mes .= ' $id_speciality = ' . $element['Plan']['trainingAreasId'] . ',';
+                        }
+
+                        throw new ErrorException($mes);
+                    }
                     //заполним массив испытаний
                     $competition = array(
                         'competitionId' => $element['Competition']['CompetitionId'],
@@ -822,13 +966,17 @@ trait ParserJsonTrait
                     //связь предметов-оценок с объедением плана-исптания
                     foreach ($element['subjects'] as $subjectItem) {
                         $id_subject = Subject::where('subjectId', '=', $subjectItem['subjectId'])->first();
-
-                        $subject = array(
-                            'id_plan_comp' => $count_plan, // так же если не делать уникальной таблицу планов
-                            'id_subject' => intval($id_subject->id),
-                            'minScore' => $subjectItem['minScore']
-                        );
-                        $arr_plan_comp_score[] = $subject;
+                        if (!empty($id_subject)) {
+                            $subject = array(
+                                'id_plan_comp' => $count_plan, // так же если не делать уникальной таблицу планов
+                                'id_subject' => intval($id_subject->id),
+                                'minScore' => $subjectItem['minScore']
+                            );
+                            $arr_plan_comp_score[] = $subject;
+                        } else {
+                            $mes = 'Не найден параметр.' . ' id_subject = ' . $subjectItem['subjectId'];
+                            throw new ErrorException($mes);
+                        }
                     }
 
                     foreach ($element['Prices'] as $priceItem) {
@@ -842,13 +990,17 @@ trait ParserJsonTrait
 
                     foreach ($element['admissionBasis'] as $basisItem) {
                         $id_admissionBasis = AdmissionBasis::where('baseId', '=', $basisItem['IdBasis'])->first();
-
-                        $freeseat = array(
-                            'id_plan_comp' => $count_plan, // так же если не делать уникальной таблицу планов
-                            'id_admissionBasis' => intval($id_admissionBasis->id),
-                            'value' => $basisItem['value']
-                        );
-                        $arr_freeseats[] = $freeseat;
+                        if (!empty($id_admissionBasis)) {
+                            $freeseat = array(
+                                'id_plan_comp' => $count_plan, // так же если не делать уникальной таблицу планов
+                                'id_admissionBasis' => intval($id_admissionBasis->id),
+                                'value' => $basisItem['value']
+                            );
+                            $arr_freeseats[] = $freeseat;
+                        } else {
+                            $mes = 'Не найден параметр.' . 'id_admissionBasis = ' . $basisItem['IdBasis'];
+                            throw new ErrorException($mes);
+                        }
                     }
                 }
             }
@@ -900,15 +1052,31 @@ trait ParserJsonTrait
                     $id_specialization = Specialization::where('specializationId', '=', $element['Plan']['specializationID'])->first();
 
                     //заполним массив планов
-                    $plan = array(
-                        'planId' => $element['Plan']['planId'],
-                        'id_faculty' => intval($id_faculty->id),
-                        'id_studyForm' => intval($id_studyForm->id),
-                        'id_speciality' => intval($id_speciality->id),
-                        'id_specialization' => $id_specialization ? intval($id_specialization->id) : null,
-                        'years' => intval($element['Plan']['years'])
+                    if (!empty($id_faculty) && !empty($id_studyForm) && !empty($id_speciality)) {
 
-                    );
+                        $plan = array(
+                            'planId' => $element['Plan']['planId'],
+                            'id_faculty' => intval($id_faculty->id),
+                            'id_studyForm' => intval($id_studyForm->id),
+                            'id_speciality' => intval($id_speciality->id),
+                            'id_specialization' => $id_specialization ? intval($id_specialization->id) : null,
+                            'years' => intval($element['Plan']['years'])
+
+                        );
+                    } else {
+                        $mes = 'Не найден параметр.';
+                        if (empty($id_faculty)) {
+                            $mes .= ' id_faculty' . $element['Plan']['facultyId'] . ',';
+                        }
+                        if (empty($id_studyForm)) {
+                            $mes .= ' $id_studyForm' . $element['Plan']['trainingForm'] . ',';
+                        }
+                        if (empty($id_speciality)) {
+                            $mes .= ' $id_speciality = ' . $element['Plan']['trainingAreasId'] . ',';
+                        }
+
+                        throw new ErrorException($mes);
+                    }
                     //заполним массив испытаний
                     $competition = array(
                         'competitionId' => $element['Competition']['CompetitionId'],
@@ -931,13 +1099,17 @@ trait ParserJsonTrait
                     //связь предметов-оценок с объедением плана-исптания
                     foreach ($element['subjects'] as $subjectItem) {
                         $id_subject = Subject::where('subjectId', '=', $subjectItem['subjectId'])->first();
-
-                        $subject = array(
-                            'id_plan_comp' => $count_plan, // так же если не делать уникальной таблицу планов
-                            'id_subject' => intval($id_subject->id),
-                            'minScore' => $subjectItem['minScore']
-                        );
-                        $arr_plan_comp_score[] = $subject;
+                        if (!empty($id_subject)) {
+                            $subject = array(
+                                'id_plan_comp' => $count_plan, // так же если не делать уникальной таблицу планов
+                                'id_subject' => intval($id_subject->id),
+                                'minScore' => $subjectItem['minScore']
+                            );
+                            $arr_plan_comp_score[] = $subject;
+                        } else {
+                            $mes = 'Не найден параметр.' . ' id_subject = ' . $subjectItem['subjectId'];
+                            throw new ErrorException($mes);
+                        }
                     }
 
                     foreach ($element['Prices'] as $priceItem) {
@@ -951,13 +1123,17 @@ trait ParserJsonTrait
 
                     foreach ($element['admissionBasis'] as $basisItem) {
                         $id_admissionBasis = AdmissionBasis::where('baseId', '=', $basisItem['IdBasis'])->first();
-
-                        $freeseat = array(
-                            'id_plan_comp' => $count_plan, // так же если не делать уникальной таблицу планов
-                            'id_admissionBasis' => intval($id_admissionBasis->id),
-                            'value' => $basisItem['value']
-                        );
-                        $arr_freeseats[] = $freeseat;
+                        if (!empty($id_admissionBasis)) {
+                            $freeseat = array(
+                                'id_plan_comp' => $count_plan, // так же если не делать уникальной таблицу планов
+                                'id_admissionBasis' => intval($id_admissionBasis->id),
+                                'value' => $basisItem['value']
+                            );
+                            $arr_freeseats[] = $freeseat;
+                        } else {
+                            $mes = 'Не найден параметр.' . 'id_admissionBasis = ' . $basisItem['IdBasis'];
+                            throw new ErrorException($mes);
+                        }
                     }
                 }
             }
@@ -1014,15 +1190,30 @@ trait ParserJsonTrait
                     $id_specialization = Specialization::where('specializationId', '=', $element['Plan']['specializationID'])->first();
 
                     //заполним массив планов
-                    $plan = array(
-                        'planId' => $element['Plan']['planId'],
-                        'id_faculty' => intval($id_faculty->id),
-                        'id_studyForm' => intval($id_studyForm->id),
-                        'id_speciality' => intval($id_speciality->id),
-                        'id_specialization' => $id_specialization ? intval($id_specialization->id) : null,
-                        'years' => intval($element['Plan']['years'])
+                    if (!empty($id_faculty) && !empty($id_studyForm) && !empty($id_speciality)) {
+                        $plan = array(
+                            'planId' => $element['Plan']['planId'],
+                            'id_faculty' => intval($id_faculty->id),
+                            'id_studyForm' => intval($id_studyForm->id),
+                            'id_speciality' => intval($id_speciality->id),
+                            'id_specialization' => $id_specialization ? intval($id_specialization->id) : null,
+                            'years' => intval($element['Plan']['years'])
 
-                    );
+                        );
+                    } else {
+                        $mes = 'Не найден параметр.';
+                        if (empty($id_faculty)) {
+                            $mes .= ' id_faculty' . $element['Plan']['facultyId'] . ',';
+                        }
+                        if (empty($id_studyForm)) {
+                            $mes .= ' $id_studyForm' . $element['Plan']['trainingForm'] . ',';
+                        }
+                        if (empty($id_speciality)) {
+                            $mes .= ' $id_speciality = ' . $element['Plan']['trainingAreasId'] . ',';
+                        }
+
+                        throw new ErrorException($mes);
+                    }
                     //заполним массив испытаний
                     $competition = array(
                         'competitionId' => $element['Competition']['CompetitionId'],
@@ -1045,13 +1236,17 @@ trait ParserJsonTrait
                     //связь предметов-оценок с объедением плана-исптания
                     foreach ($element['subjects'] as $subjectItem) {
                         $id_subject = Subject::where('subjectId', '=', $subjectItem['subjectId'])->first();
-
-                        $subject = array(
-                            'id_plan_comp' => $count_plan, // так же если не делать уникальной таблицу планов
-                            'id_subject' => intval($id_subject->id),
-                            'minScore' => $subjectItem['minScore']
-                        );
-                        $arr_plan_comp_score[] = $subject;
+                        if (!empty($id_subject)) {
+                            $subject = array(
+                                'id_plan_comp' => $count_plan, // так же если не делать уникальной таблицу планов
+                                'id_subject' => intval($id_subject->id),
+                                'minScore' => $subjectItem['minScore']
+                            );
+                            $arr_plan_comp_score[] = $subject;
+                        } else {
+                            $mes = 'Не найден параметр.' . ' id_subject = ' . $subjectItem['subjectId'];
+                            throw new ErrorException($mes);
+                        }
                     }
 
                     foreach ($element['Prices'] as $priceItem) {
@@ -1065,13 +1260,17 @@ trait ParserJsonTrait
 
                     foreach ($element['admissionBasis'] as $basisItem) {
                         $id_admissionBasis = AdmissionBasis::where('baseId', '=', $basisItem['IdBasis'])->first();
-
-                        $freeseat = array(
-                            'id_plan_comp' => $count_plan, // так же если не делать уникальной таблицу планов
-                            'id_admissionBasis' => intval($id_admissionBasis->id),
-                            'value' => $basisItem['value']
-                        );
-                        $arr_freeseats[] = $freeseat;
+                        if (!empty($id_admissionBasis)) {
+                            $freeseat = array(
+                                'id_plan_comp' => $count_plan, // так же если не делать уникальной таблицу планов
+                                'id_admissionBasis' => intval($id_admissionBasis->id),
+                                'value' => $basisItem['value']
+                            );
+                            $arr_freeseats[] = $freeseat;
+                        } else {
+                            $mes = 'Не найден параметр.' . 'id_admissionBasis = ' . $basisItem['IdBasis'];
+                            throw new ErrorException($mes);
+                        }
                     }
                 }
             }
@@ -1125,15 +1324,30 @@ trait ParserJsonTrait
                     $id_specialization = Specialization::where('specializationId', '=', $element['Plan']['specializationID'])->first();
 
                     //заполним массив планов
-                    $plan = array(
-                        'planId' => $element['Plan']['planId'],
-                        'id_faculty' => intval($id_faculty->id),
-                        'id_studyForm' => intval($id_studyForm->id),
-                        'id_speciality' => intval($id_speciality->id),
-                        'id_specialization' => $id_specialization ? intval($id_specialization->id) : null,
-                        'years' => intval($element['Plan']['years'])
+                    if (!empty($id_faculty) && !empty($id_studyForm) && !empty($id_speciality)) {
+                        $plan = array(
+                            'planId' => $element['Plan']['planId'],
+                            'id_faculty' => intval($id_faculty->id),
+                            'id_studyForm' => intval($id_studyForm->id),
+                            'id_speciality' => intval($id_speciality->id),
+                            'id_specialization' => $id_specialization ? intval($id_specialization->id) : null,
+                            'years' => intval($element['Plan']['years'])
 
-                    );
+                        );
+                    } else {
+                        $mes = 'Не найден параметр.';
+                        if (empty($id_faculty)) {
+                            $mes .= ' id_faculty' . $element['Plan']['facultyId'] . ',';
+                        }
+                        if (empty($id_studyForm)) {
+                            $mes .= ' $id_studyForm' . $element['Plan']['trainingForm'] . ',';
+                        }
+                        if (empty($id_speciality)) {
+                            $mes .= ' $id_speciality = ' . $element['Plan']['trainingAreasId'] . ',';
+                        }
+
+                        throw new ErrorException($mes);
+                    }
                     //заполним массив испытаний
                     $competition = array(
                         'competitionId' => $element['Competition']['CompetitionId'],
@@ -1156,13 +1370,17 @@ trait ParserJsonTrait
                     //связь предметов-оценок с объедением плана-исптания
                     foreach ($element['subjects'] as $subjectItem) {
                         $id_subject = Subject::where('subjectId', '=', $subjectItem['subjectId'])->first();
-
-                        $subject = array(
-                            'id_plan_comp' => $count_plan, // так же если не делать уникальной таблицу планов
-                            'id_subject' => intval($id_subject->id),
-                            'minScore' => $subjectItem['minScore']
-                        );
-                        $arr_plan_comp_score[] = $subject;
+                        if (!empty($id_subject)) {
+                            $subject = array(
+                                'id_plan_comp' => $count_plan, // так же если не делать уникальной таблицу планов
+                                'id_subject' => intval($id_subject->id),
+                                'minScore' => $subjectItem['minScore']
+                            );
+                            $arr_plan_comp_score[] = $subject;
+                        } else {
+                            $mes = 'Не найден параметр.' . ' id_subject = ' . $subjectItem['subjectId'];
+                            throw new ErrorException($mes);
+                        }
                     }
 
                     foreach ($element['Prices'] as $priceItem) {
@@ -1176,13 +1394,17 @@ trait ParserJsonTrait
 
                     foreach ($element['admissionBasis'] as $basisItem) {
                         $id_admissionBasis = AdmissionBasis::where('baseId', '=', $basisItem['IdBasis'])->first();
-
-                        $freeseat = array(
-                            'id_plan_comp' => $count_plan, // так же если не делать уникальной таблицу планов
-                            'id_admissionBasis' => intval($id_admissionBasis->id),
-                            'value' => $basisItem['value']
-                        );
-                        $arr_freeseats[] = $freeseat;
+                        if (!empty($id_admissionBasis)) {
+                            $freeseat = array(
+                                'id_plan_comp' => $count_plan, // так же если не делать уникальной таблицу планов
+                                'id_admissionBasis' => intval($id_admissionBasis->id),
+                                'value' => $basisItem['value']
+                            );
+                            $arr_freeseats[] = $freeseat;
+                        } else {
+                            $mes = 'Не найден параметр.' . 'id_admissionBasis = ' . $basisItem['IdBasis'];
+                            throw new ErrorException($mes);
+                        }
                     }
                 }
             }
@@ -1239,15 +1461,29 @@ trait ParserJsonTrait
                     $id_specialization = Specialization::where('specializationId', '=', $element['Plan']['specializationID'])->first();
 
                     //заполним массив планов
-                    $plan = array(
-                        'planId' => $element['Plan']['planId'],
-                        'id_faculty' => intval($id_faculty->id),
-                        'id_studyForm' => intval($id_studyForm->id),
-                        'id_speciality' => intval($id_speciality->id),
-                        'id_specialization' => $id_specialization ? intval($id_specialization->id) : null,
-                        'years' => intval($element['Plan']['years'])
+                    if (!empty($id_faculty) && !empty($id_studyForm) && !empty($id_speciality)) {
+                        $plan = array(
+                            'planId' => $element['Plan']['planId'],
+                            'id_faculty' => intval($id_faculty->id),
+                            'id_studyForm' => intval($id_studyForm->id),
+                            'id_speciality' => intval($id_speciality->id),
+                            'id_specialization' => $id_specialization ? intval($id_specialization->id) : null,
+                            'years' => intval($element['Plan']['years'])
 
-                    );
+                        );
+                    } else {
+                        $mes = 'Не найден параметр.';
+                        if (empty($id_faculty)) {
+                            $mes .= ' id_faculty' . $element['Plan']['facultyId'] . ',';
+                        }
+                        if (empty($id_studyForm)) {
+                            $mes .= ' $id_studyForm' . $element['Plan']['trainingForm'] . ',';
+                        }
+                        if (empty($id_speciality)) {
+                            $mes .= ' $id_speciality = ' . $element['Plan']['trainingAreasId'] . ',';
+                        }
+                        throw new ErrorException($mes);
+                    }
                     //заполним массив испытаний
                     $competition = array(
                         'competitionId' => $element['Competition']['CompetitionId'],
@@ -1270,13 +1506,17 @@ trait ParserJsonTrait
                     //связь предметов-оценок с объедением плана-исптания
                     foreach ($element['subjects'] as $subjectItem) {
                         $id_subject = Subject::where('subjectId', '=', $subjectItem['subjectId'])->first();
-
-                        $subject = array(
-                            'id_plan_comp' => $count_plan, // так же если не делать уникальной таблицу планов
-                            'id_subject' => intval($id_subject->id),
-                            'minScore' => $subjectItem['minScore']
-                        );
-                        $arr_plan_comp_score[] = $subject;
+                        if (!empty($id_subject)) {
+                            $subject = array(
+                                'id_plan_comp' => $count_plan, // так же если не делать уникальной таблицу планов
+                                'id_subject' => intval($id_subject->id),
+                                'minScore' => $subjectItem['minScore']
+                            );
+                            $arr_plan_comp_score[] = $subject;
+                        } else {
+                            $mes = 'Не найден параметр.' . ' id_subject = ' . $subjectItem['subjectId'];
+                            throw new ErrorException($mes);
+                        }
                     }
 
                     foreach ($element['Prices'] as $priceItem) {
@@ -1290,13 +1530,17 @@ trait ParserJsonTrait
 
                     foreach ($element['admissionBasis'] as $basisItem) {
                         $id_admissionBasis = AdmissionBasis::where('baseId', '=', $basisItem['IdBasis'])->first();
-
-                        $freeseat = array(
-                            'id_plan_comp' => $count_plan, // так же если не делать уникальной таблицу планов
-                            'id_admissionBasis' => intval($id_admissionBasis->id),
-                            'value' => $basisItem['value']
-                        );
-                        $arr_freeseats[] = $freeseat;
+                        if (!empty($id_admissionBasis)) {
+                            $freeseat = array(
+                                'id_plan_comp' => $count_plan, // так же если не делать уникальной таблицу планов
+                                'id_admissionBasis' => intval($id_admissionBasis->id),
+                                'value' => $basisItem['value']
+                            );
+                            $arr_freeseats[] = $freeseat;
+                        } else {
+                            $mes = 'Не найден параметр.' . 'id_admissionBasis = ' . $basisItem['IdBasis'];
+                            throw new ErrorException($mes);
+                        }
                     }
                 }
             }
@@ -1358,15 +1602,30 @@ trait ParserJsonTrait
                     $id_specialization = Specialization::where('specializationId', '=', $element['Plan']['specializationID'])->first();
 
                     //заполним массив планов
-                    $plan = array(
-                        'planId' => $element['Plan']['planId'],
-                        'id_faculty' => intval($id_faculty->id),
-                        'id_studyForm' => intval($id_studyForm->id),
-                        'id_speciality' => intval($id_speciality->id),
-                        'id_specialization' => $id_specialization ? intval($id_specialization->id) : null,
-                        'years' => intval($element['Plan']['years'])
+                    if (!empty($id_faculty) && !empty($id_studyForm) && !empty($id_speciality)) {
+                        $plan = array(
+                            'planId' => $element['Plan']['planId'],
+                            'id_faculty' => intval($id_faculty->id),
+                            'id_studyForm' => intval($id_studyForm->id),
+                            'id_speciality' => intval($id_speciality->id),
+                            'id_specialization' => $id_specialization ? intval($id_specialization->id) : null,
+                            'years' => intval($element['Plan']['years'])
 
-                    );
+                        );
+                    } else {
+                        $mes = 'Не найден параметр.';
+                        if (empty($id_faculty)) {
+                            $mes .= ' id_faculty' . $element['Plan']['facultyId'] . ',';
+                        }
+                        if (empty($id_studyForm)) {
+                            $mes .= ' $id_studyForm' . $element['Plan']['trainingForm'] . ',';
+                        }
+                        if (empty($id_speciality)) {
+                            $mes .= ' $id_speciality = ' . $element['Plan']['trainingAreasId'] . ',';
+                        }
+
+                        throw new ErrorException($mes);
+                    }
                     //заполним массив испытаний
                     $competition = array(
                         'competitionId' => $element['Competition']['CompetitionId'],
@@ -1389,13 +1648,17 @@ trait ParserJsonTrait
                     //связь предметов-оценок с объедением плана-исптания
                     foreach ($element['subjects'] as $subjectItem) {
                         $id_subject = Subject::where('subjectId', '=', $subjectItem['subjectId'])->first();
-
-                        $subject = array(
-                            'id_plan_comp' => $count_plan, // так же если не делать уникальной таблицу планов
-                            'id_subject' => intval($id_subject->id),
-                            'minScore' => $subjectItem['minScore']
-                        );
-                        $arr_plan_comp_score[] = $subject;
+                        if (!empty($id_subject)) {
+                            $subject = array(
+                                'id_plan_comp' => $count_plan, // так же если не делать уникальной таблицу планов
+                                'id_subject' => intval($id_subject->id),
+                                'minScore' => $subjectItem['minScore']
+                            );
+                            $arr_plan_comp_score[] = $subject;
+                        } else {
+                            $mes = 'Не найден параметр.' . ' id_subject = ' . $subjectItem['subjectId'];
+                            throw new ErrorException($mes);
+                        }
                     }
 
                     foreach ($element['Prices'] as $priceItem) {
@@ -1409,13 +1672,17 @@ trait ParserJsonTrait
 
                     foreach ($element['admissionBasis'] as $basisItem) {
                         $id_admissionBasis = AdmissionBasis::where('baseId', '=', $basisItem['IdBasis'])->first();
-
-                        $freeseat = array(
-                            'id_plan_comp' => $count_plan, // так же если не делать уникальной таблицу планов
-                            'id_admissionBasis' => intval($id_admissionBasis->id),
-                            'value' => $basisItem['value']
-                        );
-                        $arr_freeseats[] = $freeseat;
+                        if (!empty($id_admissionBasis)) {
+                            $freeseat = array(
+                                'id_plan_comp' => $count_plan, // так же если не делать уникальной таблицу планов
+                                'id_admissionBasis' => intval($id_admissionBasis->id),
+                                'value' => $basisItem['value']
+                            );
+                            $arr_freeseats[] = $freeseat;
+                        } else {
+                            $mes = 'Не найден параметр.' . 'id_admissionBasis = ' . $basisItem['IdBasis'];
+                            throw new ErrorException($mes);
+                        }
                     }
                 }
             }
@@ -1468,15 +1735,31 @@ trait ParserJsonTrait
                     $id_specialization = Specialization::where('specializationId', '=', $element['Plan']['specializationID'])->first();
 
                     //заполним массив планов
-                    $plan = array(
-                        'planId' => $element['Plan']['planId'],
-                        'id_faculty' => intval($id_faculty->id),
-                        'id_studyForm' => intval($id_studyForm->id),
-                        'id_speciality' => intval($id_speciality->id),
-                        'id_specialization' => $id_specialization ? intval($id_specialization->id) : null,
-                        'years' => intval($element['Plan']['years'])
+                    if (!empty($id_faculty) && !empty($id_studyForm) && !empty($id_speciality)) {
 
-                    );
+                        $plan = array(
+                            'planId' => $element['Plan']['planId'],
+                            'id_faculty' => intval($id_faculty->id),
+                            'id_studyForm' => intval($id_studyForm->id),
+                            'id_speciality' => intval($id_speciality->id),
+                            'id_specialization' => $id_specialization ? intval($id_specialization->id) : null,
+                            'years' => intval($element['Plan']['years'])
+
+                        );
+                    } else {
+                        $mes = 'Не найден параметр.';
+                        if (empty($id_faculty)) {
+                            $mes .= ' id_faculty' . $element['Plan']['facultyId'] . ',';
+                        }
+                        if (empty($id_studyForm)) {
+                            $mes .= ' $id_studyForm' . $element['Plan']['trainingForm'] . ',';
+                        }
+                        if (empty($id_speciality)) {
+                            $mes .= ' $id_speciality = ' . $element['Plan']['trainingAreasId'] . ',';
+                        }
+
+                        throw new ErrorException($mes);
+                    }
                     //заполним массив испытаний
                     $competition = array(
                         'competitionId' => $element['Competition']['CompetitionId'],
@@ -1499,13 +1782,17 @@ trait ParserJsonTrait
                     //связь предметов-оценок с объедением плана-исптания
                     foreach ($element['subjects'] as $subjectItem) {
                         $id_subject = Subject::where('subjectId', '=', $subjectItem['subjectId'])->first();
-
-                        $subject = array(
-                            'id_plan_comp' => $count_plan, // так же если не делать уникальной таблицу планов
-                            'id_subject' => intval($id_subject->id),
-                            'minScore' => $subjectItem['minScore']
-                        );
-                        $arr_plan_comp_score[] = $subject;
+                        if (!empty($id_subject)) {
+                            $subject = array(
+                                'id_plan_comp' => $count_plan, // так же если не делать уникальной таблицу планов
+                                'id_subject' => intval($id_subject->id),
+                                'minScore' => $subjectItem['minScore']
+                            );
+                            $arr_plan_comp_score[] = $subject;
+                        } else {
+                            $mes = 'Не найден параметр.' . ' id_subject = ' . $subjectItem['subjectId'];
+                            throw new ErrorException($mes);
+                        }
                     }
 
                     foreach ($element['Prices'] as $priceItem) {
@@ -1519,13 +1806,17 @@ trait ParserJsonTrait
 
                     foreach ($element['admissionBasis'] as $basisItem) {
                         $id_admissionBasis = AdmissionBasis::where('baseId', '=', $basisItem['IdBasis'])->first();
-
-                        $freeseat = array(
-                            'id_plan_comp' => $count_plan, // так же если не делать уникальной таблицу планов
-                            'id_admissionBasis' => intval($id_admissionBasis->id),
-                            'value' => $basisItem['value']
-                        );
-                        $arr_freeseats[] = $freeseat;
+                        if (!empty($id_admissionBasis)) {
+                            $freeseat = array(
+                                'id_plan_comp' => $count_plan, // так же если не делать уникальной таблицу планов
+                                'id_admissionBasis' => intval($id_admissionBasis->id),
+                                'value' => $basisItem['value']
+                            );
+                            $arr_freeseats[] = $freeseat;
+                        } else {
+                            $mes = 'Не найден параметр.' . 'id_admissionBasis = ' . $basisItem['IdBasis'];
+                            throw new ErrorException($mes);
+                        }
                     }
                 }
             }
@@ -1571,15 +1862,30 @@ trait ParserJsonTrait
                     $id_specialization = Specialization::where('specializationId', '=', $element['Plan']['specializationID'])->first();
 
                     //заполним массив планов
-                    $plan = array(
-                        'planId' => $element['Plan']['planId'],
-                        'id_faculty' => intval($id_faculty->id),
-                        'id_studyForm' => intval($id_studyForm->id),
-                        'id_speciality' => intval($id_speciality->id),
-                        'id_specialization' => $id_specialization ? intval($id_specialization->id) : null,
-                        'years' => intval($element['Plan']['years'])
+                    if (!empty($id_faculty) && !empty($id_studyForm) && !empty($id_speciality)) {
+                        $plan = array(
+                            'planId' => $element['Plan']['planId'],
+                            'id_faculty' => intval($id_faculty->id),
+                            'id_studyForm' => intval($id_studyForm->id),
+                            'id_speciality' => intval($id_speciality->id),
+                            'id_specialization' => $id_specialization ? intval($id_specialization->id) : null,
+                            'years' => intval($element['Plan']['years'])
 
-                    );
+                        );
+                    } else {
+                        $mes = 'Не найден параметр.';
+                        if (empty($id_faculty)) {
+                            $mes .= ' id_faculty' . $element['Plan']['facultyId'] . ',';
+                        }
+                        if (empty($id_studyForm)) {
+                            $mes .= ' $id_studyForm' . $element['Plan']['trainingForm'] . ',';
+                        }
+                        if (empty($id_speciality)) {
+                            $mes .= ' $id_speciality = ' . $element['Plan']['trainingAreasId'] . ',';
+                        }
+
+                        throw new ErrorException($mes);
+                    }
                     //заполним массив испытаний
                     $competition = array(
                         'competitionId' => $element['Competition']['CompetitionId'],
@@ -1602,13 +1908,17 @@ trait ParserJsonTrait
                     //связь предметов-оценок с объедением плана-исптания
                     foreach ($element['subjects'] as $subjectItem) {
                         $id_subject = Subject::where('subjectId', '=', $subjectItem['subjectId'])->first();
-
-                        $subject = array(
-                            'id_plan_comp' => $count_plan, // так же если не делать уникальной таблицу планов
-                            'id_subject' => intval($id_subject->id),
-                            'minScore' => $subjectItem['minScore']
-                        );
-                        $arr_plan_comp_score[] = $subject;
+                        if (!empty($id_subject)) {
+                            $subject = array(
+                                'id_plan_comp' => $count_plan, // так же если не делать уникальной таблицу планов
+                                'id_subject' => intval($id_subject->id),
+                                'minScore' => $subjectItem['minScore']
+                            );
+                            $arr_plan_comp_score[] = $subject;
+                        } else {
+                            $mes = 'Не найден параметр.' . ' id_subject = ' . $subjectItem['subjectId'];
+                            throw new ErrorException($mes);
+                        }
                     }
 
                     foreach ($element['Prices'] as $priceItem) {
@@ -1622,13 +1932,17 @@ trait ParserJsonTrait
 
                     foreach ($element['admissionBasis'] as $basisItem) {
                         $id_admissionBasis = AdmissionBasis::where('baseId', '=', $basisItem['IdBasis'])->first();
-
-                        $freeseat = array(
-                            'id_plan_comp' => $count_plan, // так же если не делать уникальной таблицу планов
-                            'id_admissionBasis' => intval($id_admissionBasis->id),
-                            'value' => $basisItem['value']
-                        );
-                        $arr_freeseats[] = $freeseat;
+                        if (!empty($id_admissionBasis)) {
+                            $freeseat = array(
+                                'id_plan_comp' => $count_plan, // так же если не делать уникальной таблицу планов
+                                'id_admissionBasis' => intval($id_admissionBasis->id),
+                                'value' => $basisItem['value']
+                            );
+                            $arr_freeseats[] = $freeseat;
+                        } else {
+                            $mes = 'Не найден параметр.' . 'id_admissionBasis = ' . $basisItem['IdBasis'];
+                            throw new ErrorException($mes);
+                        }
                     }
                 }
             }
@@ -1684,16 +1998,32 @@ trait ParserJsonTrait
                 $id_admissionBasis = AdmissionBasis::where('baseId', '=', $element['IdBasis'])->first();
                 $id_speciality = Speciality::where('specialityId', '=', $element['trainingAreasId'])->first();
 
+                if (!empty($id_studyForm) && !empty($id_admissionBasis)) {
+                    if(!empty($id_speciality)) {
+                        $contest = array(
+                            'id_studyForm' => intval($id_studyForm->id),
+                            'id_admissionBasis' => intval($id_admissionBasis->id),
+                            'id_speciality' => intval($id_speciality->id),
+                            'year' => $element['year'],
+                            'minScore' => $element['value']
+                        );
 
-                $contest = array(
-                    'id_studyForm' => intval($id_studyForm->id),
-                    'id_admissionBasis' => intval($id_admissionBasis->id),
-                    'id_speciality' => intval($id_speciality->id),
-                    'year' => $element['year'],
-                    'minScore' => $element['value']
-                );
+                        $arr_contests[] = $contest;
+                    }
+                } else {
+                    $mes = 'Не найден параметр.';
+                    if (empty($id_admissionBasis)) {
+                        $mes .= ' id_admissionBasis' . $element['IdBasis'] . ',';
+                    }
+                    if (empty($id_studyForm)) {
+                        $mes .= ' $id_studyForm' . $element['trainingForm'] . ',';
+                    }
+                    if (empty($id_speciality)) {
+                        $mes .= ' $id_speciality = ' . $element['trainingAreasId'] . ',';
+                    }
 
-                $arr_contests[] = $contest;
+                    throw new ErrorException($mes);
+                }
             }
             PastContests::truncate();
             PastContests::insert($arr_contests);
