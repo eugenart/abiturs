@@ -80,7 +80,6 @@ class SelectionController extends Controller
                     }
                     $plan->studyForm = $arr_studyForm;
 
-
                     $plan->plan_comp = $plan->plan_comps()->first(); //связь с компетишн
                     $id_ind = Subject::where('name', 'LIKE', '%Индивидуальное достижение%')->get();
                     $arr_id_ind = array();

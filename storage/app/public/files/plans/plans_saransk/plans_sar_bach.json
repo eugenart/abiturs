@@ -12375,8 +12375,8 @@
 "trainingAreasId": "00000063",
 "trainingCode": "38.03.01",
 "trainingAreasName": "Экономика",
-"specializationID": "",
-"specializationName": "",
+"specializationID": "0000000251",
+"specializationName": "Бухгалтерский учет, анализ и аудит",
 "years": 4
 },
 "Competition": {
@@ -12434,8 +12434,8 @@
 "trainingAreasId": "00000063",
 "trainingCode": "38.03.01",
 "trainingAreasName": "Экономика",
-"specializationID": "",
-"specializationName": "",
+"specializationID": "0000000251",
+"specializationName": "Бухгалтерский учет, анализ и аудит",
 "years": 4
 },
 "Competition": {
@@ -12488,8 +12488,8 @@
 "trainingAreasId": "00000063",
 "trainingCode": "38.03.01",
 "trainingAreasName": "Экономика",
-"specializationID": "",
-"specializationName": "",
+"specializationID": "0000000254",
+"specializationName": "Финансы и кредит",
 "years": 4
 },
 "Competition": {
@@ -12542,8 +12542,8 @@
 "trainingAreasId": "00000063",
 "trainingCode": "38.03.01",
 "trainingAreasName": "Экономика",
-"specializationID": "",
-"specializationName": "",
+"specializationID": "0000000254",
+"specializationName": "Финансы и кредит",
 "years": 4
 },
 "Competition": {
@@ -12601,8 +12601,8 @@
 "trainingAreasId": "00000063",
 "trainingCode": "38.03.01",
 "trainingAreasName": "Экономика",
-"specializationID": "",
-"specializationName": "",
+"specializationID": "0000000324",
+"specializationName": "Экономика предприятий и организаций",
 "years": 4
 },
 "Competition": {
@@ -12660,8 +12660,8 @@
 "trainingAreasId": "00000063",
 "trainingCode": "38.03.01",
 "trainingAreasName": "Экономика",
-"specializationID": "",
-"specializationName": "",
+"specializationID": "0000000324",
+"specializationName": "Экономика предприятий и организаций",
 "years": 4
 },
 "Competition": {
@@ -12714,8 +12714,8 @@
 "trainingAreasId": "00000063",
 "trainingCode": "38.03.01",
 "trainingAreasName": "Экономика",
-"specializationID": "",
-"specializationName": "",
+"specializationID": "0000000251",
+"specializationName": "Бухгалтерский учет, анализ и аудит",
 "years": 5
 },
 "Competition": {
@@ -12773,8 +12773,8 @@
 "trainingAreasId": "00000063",
 "trainingCode": "38.03.01",
 "trainingAreasName": "Экономика",
-"specializationID": "",
-"specializationName": "",
+"specializationID": "0000000251",
+"specializationName": "Бухгалтерский учет, анализ и аудит",
 "years": 5
 },
 "Competition": {
@@ -12827,8 +12827,8 @@
 "trainingAreasId": "00000063",
 "trainingCode": "38.03.01",
 "trainingAreasName": "Экономика",
-"specializationID": "",
-"specializationName": "",
+"specializationID": "0000000254",
+"specializationName": "Финансы и кредит",
 "years": 5
 },
 "Competition": {
@@ -12881,8 +12881,8 @@
 "trainingAreasId": "00000063",
 "trainingCode": "38.03.01",
 "trainingAreasName": "Экономика",
-"specializationID": "",
-"specializationName": "",
+"specializationID": "0000000254",
+"specializationName": "Финансы и кредит",
 "years": 5
 },
 "Competition": {
@@ -12940,8 +12940,8 @@
 "trainingAreasId": "00000063",
 "trainingCode": "38.03.01",
 "trainingAreasName": "Экономика",
-"specializationID": "",
-"specializationName": "",
+"specializationID": "0000000324",
+"specializationName": "Экономика предприятий и организаций",
 "years": 5
 },
 "Competition": {
@@ -12999,8 +12999,8 @@
 "trainingAreasId": "00000063",
 "trainingCode": "38.03.01",
 "trainingAreasName": "Экономика",
-"specializationID": "",
-"specializationName": "",
+"specializationID": "0000000324",
+"specializationName": "Экономика предприятий и организаций",
 "years": 5
 },
 "Competition": {
