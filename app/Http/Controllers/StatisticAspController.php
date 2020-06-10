@@ -73,8 +73,24 @@ class StatisticAspController extends Controller
                     'studyFormsForInputs' => $studyFormsForInputs, 'actual_link' => $actual_link, 'date_update' => $date_update,
                     'files_xls' => $files_xls, 'notification_files' => $notification_files]);
             } else {
-                $notification = "По Вашему запросу ничего не найдено";
-                return view('pages.statasp', ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs, 'notification' => $notification]);
+                if (isset($faculties) && isset($studyFormsForInputs)) {
+                    if (($faculties->count() != 0) && ($studyFormsForInputs->count() != 0)) {
+                        $notification = "По Вашему запросу ничего не найдено";
+                        return view('pages.statasp', ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs, 'notification' => $notification]);
+                    } else {
+                        $faculties = collect(new Faculty);
+                        $studyFormsForInputs = collect(new StudyForm);
+                        $notification = "Прием документов начнется после 20 июня";
+                        return view('pages.statasp', ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs,
+                            'notification_green' => $notification]);
+                    }
+                } else {
+                    $faculties = collect(new Faculty);
+                    $studyFormsForInputs = collect(new StudyForm);
+                    $notification = "Прием документов начнется после 20 июня";
+                    return view('pages.statasp', ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs,
+                        'notification_green' => $notification]);
+                }
             }
         } else {
             if (isset($faculties) && isset($studyFormsForInputs)) {
