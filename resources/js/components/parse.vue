@@ -271,7 +271,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card mt-3 mb-3">
+            <div class="card mt-3">
                 <div class="card-header font-weight-bold">Статистика предыдущих лет</div>
                 <div class="card-body">
                     <div class="row">
@@ -288,6 +288,27 @@
                                 <div></div>
                             </div>
                             <p v-else>{{parseContestsStatus}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mt-3 mb-3">
+                <div class="card-header font-weight-bold">Статистика приема</div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-4">
+                            <button class="btn btn-sm btn-success w-100"
+                                    @click="this.parseStat">Выгрузить статистику приема документов
+                            </button>
+                        </div>
+                        <div class="col-8 text-center d-flex justify-content-center align-items-center">
+                            <div v-if="loadingparseStatStatus" class="lds-ring">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                            <p v-else>{{parseStatStatus}}</p>
                         </div>
                     </div>
                 </div>
@@ -318,6 +339,7 @@
 
 
                 parseContestsStatus: null,
+                parseStatStatus: null,
 
 
                 loadingparseSpecialitiesStatus: false,
@@ -336,6 +358,8 @@
                 loadingparseStudentsSpoStatus: null,
 
                 loadingparseContestsStatus: false,
+
+                loadingparseStatStatus: false,
             }
         },
         computed: {},
@@ -434,6 +458,7 @@
                         this.parseStudentsStatus = response.data
                     })
             },
+
             parseStudentsMaster: function () {
                 this.loadingparseStudentsMasterStatus = true;
                 let data = axios.post('/admin/download', {'param': 'stat_master'})
@@ -442,6 +467,7 @@
                         this.parseStudentsMasterStatus = response.data
                     })
             },
+
             parseStudentsAsp: function () {
                 this.loadingparseStudentsAspStatus = true;
                 let data = axios.post('/admin/download', {'param': 'stat_asp'})
@@ -450,6 +476,7 @@
                         this.parseStudentsAspStatus = response.data
                     })
             },
+
             parseStudentsSpo: function () {
                 this.loadingparseStudentsSpoStatus = true;
                 let data = axios.post('/admin/download', {'param': 'stat_spo'})
@@ -465,6 +492,15 @@
                     .then(response => {
                         this.loadingparseContestsStatus = false;
                         this.parseContestsStatus = response.data
+                    })
+            },
+
+            parseStat: function () {
+                this.loadingparseStatStatus = true;
+                let data = axios.get('/admin/download-stat-priem')
+                    .then(response => {
+                        this.loadingparseStatStatus = false;
+                        this.parseStatStatus = response.data
                     })
             }
         },
