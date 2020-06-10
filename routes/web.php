@@ -83,6 +83,9 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
     Route::get('/parse-contests', 'ParserJsonController@parsePastContestsLocal')->name('parse.parsePastContests');
 
+    Route::get('/download-stat-priem', 'TotalStatController@download_all_files')->name('totalstat.download');
+
+
 
 
 

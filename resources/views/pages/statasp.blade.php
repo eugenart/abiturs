@@ -238,6 +238,9 @@
                 @if(isset($notification))
                     <div class="text-center m-4 h4">{{$notification}}</div>
                 @endif
+                @if(isset($notification_green))
+                    <div class="text-center m-4 h4 text-success">{{$notification_green}}</div>
+                @endif
                 @if(isset($studyForms))
                     @foreach($studyForms as $studyForm)
                         @if(isset($studyForm->stat ))
@@ -531,9 +534,11 @@
                     @endforeach
 
                 @else
-                    <div class="text-center m-4 h4">Введите <b>ФИО</b> или выберите <b>факультет/институт</b> для
-                        вывода списков поступающих
-                    </div>
+                    @if(!isset($notification_green))
+                        <div class="text-center m-4 h4">Введите <b>ФИО</b> или выберите <b>факультет/институт</b> для
+                            вывода списков поступающих
+                        </div>
+                    @endif
                 @endif
             </div>
         </div>

@@ -2,11 +2,176 @@
 
 @section('page')
     <div class="container">
-        <div class="container-fluid pr-5 pl-5 pb-5 pt-0">
-            <div class="row mt-lg-5 mt-xl-5 mt-md-3 mt-sm-3 mt-3">
-                <div class="col-12 m-auto">
-                    <h3 class="text-center h1-mrsu main-color m-0">Статистика приема</h3>
+        <div class="row mt-lg-5 mt-xl-5 mt-md-3 mt-sm-3 mt-3">
+            <div class="col-12">
+                <h3 class="text-center h1-mrsu main-color m-0">Статистика приема</h3>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="container pt-0 padding-0 mt-lg-4 mt-xl-4 mt-md-3 mt-sm-3 mt-3">
+            <div class="col-12 ">
 
+                @if(empty($files_bach) && empty($files_master) && empty($files_asp) && empty($files_spo))
+                    <h5 class="text-center mrsu-uppertext pt-3 text-primary  main-color">
+                       Статистика приема на данный момент не доступна
+                    </h5>
+                    @endif
+
+                @if(!empty($files_bach))
+                    <h5 class="mrsu-uppertext pt-3 text-primary  main-color">
+                        Статистика приема документов на программы бакалавриата и специалитета
+                    </h5>
+                    <hr class="mrsu-bg p-0 m-0">
+                    <ul class="files-list col-12">
+                        @foreach($files_bach as $file_xls_stat)
+                            <li>
+                                <div>
+                                    @if(file_exists($_SERVER['DOCUMENT_ROOT'] . '/storage/file-types/' . substr($file_xls_stat, -3) . '.png'))
+                                        <img
+                                            src="{{ asset('storage/file-types/' . substr($file_xls_stat, -3) . '.png' )}}"
+                                            alt="">
+                                    @else
+                                        <img
+                                            src="{{ asset('storage/file-types/nofile.jpg' )}}"
+                                            alt="">
+                                    @endif
+                                </div>
+                                <div class="file-link-div ">
+                                    <a href="{{ asset('/storage/statistic_priem/bach/' . $file_xls_stat) }}"
+                                       target="_blank">
+                                        {{substr($file_xls_stat, 0, -4)}}
+                                    </a>
+                                    <br>
+                                    <span>{{round(stat($_SERVER['DOCUMENT_ROOT'] . '/storage/statistic_priem/bach/' . $file_xls_stat)[7] / 1024 /1024, 2)}} MB</span>
+                                </div>
+                            </li>
+                        @endforeach
+                    </ul>
+                @else
+{{--                    <div class="m-2 text-center">--}}
+{{--                        Файлы отсутствуют--}}
+{{--                    </div>--}}
+                @endif
+                <div>
+                    {{$notif_bach}}
+                </div>
+
+                @if(!empty($files_master))
+                    <h5 class="mrsu-uppertext pt-3 text-primary main-color ">
+                        Статистика приема документов на программы магистратуры
+                    </h5>
+                    <hr class="mrsu-bg p-0 m-0">
+                    <ul class="files-list col-12">
+                        @foreach($files_master as $file_xls_stat)
+                            <li>
+                                <div>
+                                    @if(file_exists($_SERVER['DOCUMENT_ROOT'] . '/storage/file-types/' . substr($file_xls_stat, -3) . '.png'))
+                                        <img
+                                            src="{{ asset('storage/file-types/' . substr($file_xls_stat, -3) . '.png' )}}"
+                                            alt="">
+                                    @else
+                                        <img
+                                            src="{{ asset('storage/file-types/nofile.jpg' )}}"
+                                            alt="">
+                                    @endif
+                                </div>
+                                <div class="file-link-div ">
+                                    <a href="{{ asset('/storage/statistic_priem/master/' . $file_xls_stat) }}"
+                                       target="_blank">
+                                        {{substr($file_xls_stat, 0, -4)}}
+                                    </a>
+                                    <br>
+                                    <span>{{round(stat($_SERVER['DOCUMENT_ROOT'] . '/storage/statistic_priem/master/' . $file_xls_stat)[7] / 1024 /1024, 2)}} MB</span>
+                                </div>
+                            </li>
+                        @endforeach
+                    </ul>
+                @else
+{{--                    <div class="m-2 text-center">--}}
+{{--                        Файлы отсутствуют--}}
+{{--                    </div>--}}
+                @endif
+                <div>
+                    {{$notif_master}}
+                </div>
+
+                @if(!empty($files_asp))
+                    <h5 class="mrsu-uppertext pt-3 text-primary main-color ">
+                        Статистика приема документов на программы аспирантуры
+                    </h5>
+                    <hr class="mrsu-bg p-0 m-0">
+                    <ul class="files-list col-12">
+                        @foreach($files_asp as $file_xls_stat)
+                            <li>
+                                <div>
+                                    @if(file_exists($_SERVER['DOCUMENT_ROOT'] . '/storage/file-types/' . substr($file_xls_stat, -3) . '.png'))
+                                        <img
+                                            src="{{ asset('storage/file-types/' . substr($file_xls_stat, -3) . '.png' )}}"
+                                            alt="">
+                                    @else
+                                        <img
+                                            src="{{ asset('storage/file-types/nofile.jpg' )}}"
+                                            alt="">
+                                    @endif
+                                </div>
+                                <div class="file-link-div ">
+                                    <a href="{{ asset('/storage/statistic_priem/asp/' . $file_xls_stat) }}"
+                                       target="_blank">
+                                        {{substr($file_xls_stat, 0, -4)}}
+                                    </a>
+                                    <br>
+                                    <span>{{round(stat($_SERVER['DOCUMENT_ROOT'] . '/storage/statistic_priem/asp/' . $file_xls_stat)[7] / 1024 /1024, 2)}} MB</span>
+                                </div>
+                            </li>
+                        @endforeach
+                    </ul>
+                @else
+{{--                    <div class="m-2 text-center">--}}
+{{--                        Файлы отсутствуют--}}
+{{--                    </div>--}}
+                @endif
+                <div>
+                    {{$notif_asp}}
+                </div>
+
+                @if(!empty($files_spo))
+                    <h5 class="mrsu-uppertext pt-3 text-primary main-color ">
+                        Статистика приема документов на программы СПО
+                    </h5>
+                    <hr class="mrsu-bg p-0 m-0">
+                    <ul class="files-list col-12">
+                        @foreach($files_spo as $file_xls_stat)
+                            <li>
+                                <div>
+                                    @if(file_exists($_SERVER['DOCUMENT_ROOT'] . '/storage/file-types/' . substr($file_xls_stat, -3) . '.png'))
+                                        <img
+                                            src="{{ asset('storage/file-types/' . substr($file_xls_stat, -3) . '.png' )}}"
+                                            alt="">
+                                    @else
+                                        <img
+                                            src="{{ asset('storage/file-types/nofile.jpg' )}}"
+                                            alt="">
+                                    @endif
+                                </div>
+                                <div class="file-link-div ">
+                                    <a href="{{ asset('/storage/statistic_priem/spo/' . $file_xls_stat) }}"
+                                       target="_blank">
+                                        {{substr($file_xls_stat, 0, -4)}}
+                                    </a>
+                                    <br>
+                                    <span>{{round(stat($_SERVER['DOCUMENT_ROOT'] . '/storage/statistic_priem/spo/' . $file_xls_stat)[7] / 1024 /1024, 2)}} MB</span>
+                                </div>
+                            </li>
+                        @endforeach
+                    </ul>
+                @else
+{{--                    <div class="m-2 text-center">--}}
+{{--                        Файлы отсутствуют--}}
+{{--                    </div>--}}
+                @endif
+                <div>
+                    {{$notif_spo}}
                 </div>
             </div>
         </div>
