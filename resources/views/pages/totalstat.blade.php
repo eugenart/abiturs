@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row mt-lg-5 mt-xl-5 mt-md-3 mt-sm-3 mt-3">
             <div class="col-12">
-                <h3 class="text-center h1-mrsu main-color m-0">Статистика приема</h3>
+                <h3 class="text-center h1-mrsu main-color m-0">Статистика приёма</h3>
             </div>
         </div>
     </div>
@@ -20,7 +20,7 @@
 
                 @if(!empty($files_bach))
                     <h5 class="mrsu-uppertext pt-3 text-primary  main-color">
-                        Статистика приема документов на программы бакалавриата и специалитета
+                        Бакалавриат и специалитет
                     </h5>
                     <hr class="mrsu-bg p-0 m-0">
                     <ul class="files-list col-12">
@@ -59,7 +59,7 @@
 
                 @if(!empty($files_master))
                     <h5 class="mrsu-uppertext pt-3 text-primary main-color ">
-                        Статистика приема документов на программы магистратуры
+                        Магистратура
                     </h5>
                     <hr class="mrsu-bg p-0 m-0">
                     <ul class="files-list col-12">
@@ -98,7 +98,7 @@
 
                 @if(!empty($files_asp))
                     <h5 class="mrsu-uppertext pt-3 text-primary main-color ">
-                        Статистика приема документов на программы аспирантуры
+                        Аспирантура
                     </h5>
                     <hr class="mrsu-bg p-0 m-0">
                     <ul class="files-list col-12">
@@ -137,7 +137,7 @@
 
                 @if(!empty($files_spo))
                     <h5 class="mrsu-uppertext pt-3 text-primary main-color ">
-                        Статистика приема документов на программы СПО
+                        Среднее профессиональное образование
                     </h5>
                     <hr class="mrsu-bg p-0 m-0">
                     <ul class="files-list col-12">
