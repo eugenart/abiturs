@@ -130,12 +130,13 @@ trait ParserJsonTrait
                 $idPlan = Plan::where('planId', '=', $fac_stat['planId'])->first();
                 $idFaculty = Faculty::where('facultyId', '=', $fac_stat['facultyId'])->first();
                 $idSpeciality = Speciality::where('specialityId', '=', $fac_stat['trainingAreasId'])->first();
-                $idSpecialization = Specialization::where('specializationId', '=', $fac_stat['specializationID'])->first();
+                $idSpecialization = Specialization::where('specializationId', '=', $fac_stat['specializationID'])
+                    ->orWhere('name', '=', $fac_stat['specializationName'])->first();
                 $idCompetition = Competition::where('competitionId', '=', $fac_stat['CompetitionId'])->first();
                 $idAdmissionBasis = AdmissionBasis::where('baseId', '=', $fac_stat['IdBasis'])->first();
                 $idStudyForm = StudyForm::where('name', '=', $fac_stat['trainingForm'])->first();
 
-                //если все данные нашлись в бд
+                //если все данные нашлись в бдspecializationName
 
                 foreach ($fac_stat['List'] as $student) {
                     //находим id студента в предыдущих специальностях
@@ -337,7 +338,8 @@ trait ParserJsonTrait
                 $idPlan = PlanMaster::where('planId', '=', $fac_stat['planId'])->first();
                 $idFaculty = Faculty::where('facultyId', '=', $fac_stat['facultyId'])->first();
                 $idSpeciality = Speciality::where('specialityId', '=', $fac_stat['trainingAreasId'])->first();
-                $idSpecialization = Specialization::where('specializationId', '=', $fac_stat['specializationID'])->first();
+                $idSpecialization = Specialization::where('specializationId', '=', $fac_stat['specializationID'])
+                    ->orWhere('name', '=', $fac_stat['specializationName'])->first();
                 $idCompetition = CompetitionMaster::where('competitionId', '=', $fac_stat['CompetitionId'])->first();
                 $idAdmissionBasis = AdmissionBasis::where('baseId', '=', $fac_stat['IdBasis'])->first();
                 $idStudyForm = StudyForm::where('name', '=', $fac_stat['trainingForm'])->first();
@@ -547,7 +549,8 @@ trait ParserJsonTrait
                 $idPlan = PlanAsp::where('planId', '=', $fac_stat['planId'])->first();
                 $idFaculty = Faculty::where('facultyId', '=', $fac_stat['facultyId'])->first();
                 $idSpeciality = Speciality::where('specialityId', '=', $fac_stat['trainingAreasId'])->first();
-                $idSpecialization = Specialization::where('specializationId', '=', $fac_stat['specializationID'])->first();
+                $idSpecialization = Specialization::where('specializationId', '=', $fac_stat['specializationID'])
+                    ->orWhere('name', '=', $fac_stat['specializationName'])->first();
                 $idCompetition = CompetitionAsp::where('competitionId', '=', $fac_stat['CompetitionId'])->first();
                 $idAdmissionBasis = AdmissionBasis::where('baseId', '=', $fac_stat['IdBasis'])->first();
                 $idStudyForm = StudyForm::where('name', '=', $fac_stat['trainingForm'])->first();
@@ -755,7 +758,8 @@ trait ParserJsonTrait
                 $idPlan = PlanSpo::where('planId', '=', $fac_stat['planId'])->first();
                 $idFaculty = Faculty::where('facultyId', '=', $fac_stat['facultyId'])->first();
                 $idSpeciality = Speciality::where('specialityId', '=', $fac_stat['trainingAreasId'])->first();
-                $idSpecialization = Specialization::where('specializationId', '=', $fac_stat['specializationID'])->first();
+                $idSpecialization = Specialization::where('specializationId', '=', $fac_stat['specializationID'])
+                    ->orWhere('name', '=', $fac_stat['specializationName'])->first();
                 $idCompetition = CompetitionSpo::where('competitionId', '=', $fac_stat['CompetitionId'])->first();
                 $idAdmissionBasis = AdmissionBasis::where('baseId', '=', $fac_stat['IdBasis'])->first();
                 $idStudyForm = StudyForm::where('name', '=', $fac_stat['trainingForm'])->first();
@@ -917,7 +921,8 @@ trait ParserJsonTrait
                     $id_faculty = Faculty::where('facultyId', '=', $element['Plan']['facultyId'])->first();
                     $id_studyForm = StudyForm::where('name', '=', $element['Plan']['trainingForm'])->first();
                     $id_speciality = Speciality::where('specialityId', '=', $element['Plan']['trainingAreasId'])->first();
-                    $id_specialization = Specialization::where('specializationId', '=', $element['Plan']['specializationID'])->first();
+                    $id_specialization = Specialization::where('specializationId', '=', $element['Plan']['specializationID'])
+                        ->Orwhere('name', '=', $element['Plan']['specializationName'])->first();
 
                     //заполним массив планов
                     if (!empty($id_faculty) && !empty($id_studyForm) && !empty($id_speciality)) {
@@ -1049,7 +1054,8 @@ trait ParserJsonTrait
                     $id_faculty = Faculty::where('facultyId', '=', $element['Plan']['facultyId'])->first();
                     $id_studyForm = StudyForm::where('name', '=', $element['Plan']['trainingForm'])->first();
                     $id_speciality = Speciality::where('specialityId', '=', $element['Plan']['trainingAreasId'])->first();
-                    $id_specialization = Specialization::where('specializationId', '=', $element['Plan']['specializationID'])->first();
+                    $id_specialization = Specialization::where('specializationId', '=', $element['Plan']['specializationID'])
+                        ->Orwhere('name', '=', $element['Plan']['specializationName'])->first();
 
                     //заполним массив планов
                     if (!empty($id_faculty) && !empty($id_studyForm) && !empty($id_speciality)) {
@@ -1187,7 +1193,8 @@ trait ParserJsonTrait
                     $id_faculty = Faculty::where('facultyId', '=', $element['Plan']['facultyId'])->first();
                     $id_studyForm = StudyForm::where('name', '=', $element['Plan']['trainingForm'])->first();
                     $id_speciality = Speciality::where('specialityId', '=', $element['Plan']['trainingAreasId'])->first();
-                    $id_specialization = Specialization::where('specializationId', '=', $element['Plan']['specializationID'])->first();
+                    $id_specialization = Specialization::where('specializationId', '=', $element['Plan']['specializationID'])
+                        ->Orwhere('name', '=', $element['Plan']['specializationName'])->first();
 
                     //заполним массив планов
                     if (!empty($id_faculty) && !empty($id_studyForm) && !empty($id_speciality)) {
@@ -1321,7 +1328,8 @@ trait ParserJsonTrait
                     $id_faculty = Faculty::where('facultyId', '=', $element['Plan']['facultyId'])->first();
                     $id_studyForm = StudyForm::where('name', '=', $element['Plan']['trainingForm'])->first();
                     $id_speciality = Speciality::where('specialityId', '=', $element['Plan']['trainingAreasId'])->first();
-                    $id_specialization = Specialization::where('specializationId', '=', $element['Plan']['specializationID'])->first();
+                    $id_specialization = Specialization::where('specializationId', '=', $element['Plan']['specializationID'])
+                        ->Orwhere('name', '=', $element['Plan']['specializationName'])->first();
 
                     //заполним массив планов
                     if (!empty($id_faculty) && !empty($id_studyForm) && !empty($id_speciality)) {
@@ -1458,7 +1466,8 @@ trait ParserJsonTrait
                     $id_faculty = Faculty::where('facultyId', '=', $element['Plan']['facultyId'])->first();
                     $id_studyForm = StudyForm::where('name', '=', $element['Plan']['trainingForm'])->first();
                     $id_speciality = Speciality::where('specialityId', '=', $element['Plan']['trainingAreasId'])->first();
-                    $id_specialization = Specialization::where('specializationId', '=', $element['Plan']['specializationID'])->first();
+                    $id_specialization = Specialization::where('specializationId', '=', $element['Plan']['specializationID'])
+                        ->Orwhere('name', '=', $element['Plan']['specializationName'])->first();
 
                     //заполним массив планов
                     if (!empty($id_faculty) && !empty($id_studyForm) && !empty($id_speciality)) {
@@ -1599,7 +1608,8 @@ trait ParserJsonTrait
                     $id_faculty = Faculty::where('facultyId', '=', $element['Plan']['facultyId'])->first();
                     $id_studyForm = StudyForm::where('name', '=', $element['Plan']['trainingForm'])->first();
                     $id_speciality = Speciality::where('specialityId', '=', $element['Plan']['trainingAreasId'])->first();
-                    $id_specialization = Specialization::where('specializationId', '=', $element['Plan']['specializationID'])->first();
+                    $id_specialization = Specialization::where('specializationId', '=', $element['Plan']['specializationID'])
+                        ->Orwhere('name', '=', $element['Plan']['specializationName'])->first();
 
                     //заполним массив планов
                     if (!empty($id_faculty) && !empty($id_studyForm) && !empty($id_speciality)) {
@@ -1732,7 +1742,8 @@ trait ParserJsonTrait
                     $id_faculty = Faculty::where('facultyId', '=', $element['Plan']['facultyId'])->first();
                     $id_studyForm = StudyForm::where('name', '=', $element['Plan']['trainingForm'])->first();
                     $id_speciality = Speciality::where('specialityId', '=', $element['Plan']['trainingAreasId'])->first();
-                    $id_specialization = Specialization::where('specializationId', '=', $element['Plan']['specializationID'])->first();
+                    $id_specialization = Specialization::where('specializationId', '=', $element['Plan']['specializationID'])
+                        ->Orwhere('name', '=', $element['Plan']['specializationName'])->first();
 
                     //заполним массив планов
                     if (!empty($id_faculty) && !empty($id_studyForm) && !empty($id_speciality)) {
@@ -1859,7 +1870,8 @@ trait ParserJsonTrait
                     $id_faculty = Faculty::where('facultyId', '=', $element['Plan']['facultyId'])->first();
                     $id_studyForm = StudyForm::where('name', '=', $element['Plan']['trainingForm'])->first();
                     $id_speciality = Speciality::where('specialityId', '=', $element['Plan']['trainingAreasId'])->first();
-                    $id_specialization = Specialization::where('specializationId', '=', $element['Plan']['specializationID'])->first();
+                    $id_specialization = Specialization::where('specializationId', '=', $element['Plan']['specializationID'])
+                        ->Orwhere('name', '=', $element['Plan']['specializationName'])->first();
 
                     //заполним массив планов
                     if (!empty($id_faculty) && !empty($id_studyForm) && !empty($id_speciality)) {
