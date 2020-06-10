@@ -64,17 +64,20 @@
 
             {{-- Версия для иностранцев--}}
 
-{{--            <a href="" class="ml-3 mr-4 foreign-link ">En </a>--}}
+            {{--            <a href="" class="ml-3 mr-4 foreign-link ">En </a>--}}
 
 
 
             {{--            <img src="{{asset('storage/images/eye-white.png')}}" class="ml-2 mr-4 d-lg-none d-md-block" width="35" height="auto" alt="">--}}
             <a href="{{route('ses.toOvzVer')}}"><img id="ovz_version" src="{{asset('storage/images/eye-blue.png')}}"
-                            class="ml-2 mr-4 d-lg-block d-md-none d-sm-none mrsu-eye-blue" width="35" height="auto"
-                            alt=""> </a>
-            <a href="{{route('ses.backToMainVer')}}"><img id="main_version" src="{{asset('storage/images/eye-black.png')}}"
-                            class="ml-2 mr-4 d-lg-block d-md-none d-sm-none mrsu-eye-black" width="35" height="auto"
-                            alt=""></a>
+                                                     class="ml-2 mr-4 d-lg-block d-md-none d-sm-none mrsu-eye-blue"
+                                                     width="35" height="auto"
+                                                     alt=""> </a>
+            <a href="{{route('ses.backToMainVer')}}"><img id="main_version"
+                                                          src="{{asset('storage/images/eye-black.png')}}"
+                                                          class="ml-2 mr-4 d-lg-block d-md-none d-sm-none mrsu-eye-black"
+                                                          width="35" height="auto"
+                                                          alt=""></a>
             <button class="hamburger hamburger--collapse  d-lg-none d-md-block" type="button" data-toggle="collapse"
                     data-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -97,8 +100,17 @@
                         Уровни подготовки
                     </a>
                     <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                        @php
+                            use Carbon\Carbon;
+                            $date_now = Carbon::today();
+                            $date_now = $date_now->toDateString();
+                        @endphp
                         @foreach($pages->sortByDesc('menuPriority') as $page)
-                            <a class="nav-link text-white" href="{{url($page->url)}}">{{ $page->name }}</a>
+                            @if ((($date_now > $page->activityFrom || $date_now == $page->activityFrom) &&
+                            ($date_now < $page->activityTo || $date_now == $page->activityTo))
+                            || (is_null($page->activityFrom) && is_null($page->activityTo)))
+                                <a class="nav-link text-white" href="{{url($page->url)}}">{{ $page->name }}</a>
+                            @endif
                         @endforeach
                     </div>
                 </li>

@@ -91,12 +91,16 @@ class StatisticController extends Controller
                 }else{
                     $faculties = collect(new Faculty);
                     $studyFormsForInputs = collect(new StudyForm);
-                    return view('pages.stat', ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs, 'notification' => 'Списки на данный момент не доступны']);
+                    $notification = "Прием документов начнется после 20 июня";
+                    return view('pages.stat', ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs,
+                        'notification_green' => $notification]);
                 }
             }else{
                 $faculties = collect(new Faculty);
                 $studyFormsForInputs = collect(new StudyForm);
-                return view('pages.stat', ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs, 'notification' => 'Списки на данный момент не доступны']);
+                $notification = "Прием документов начнется после 20 июня";
+                return view('pages.stat', ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs,
+                    'notification_green' => $notification]);
             }
         }
 
@@ -169,26 +173,6 @@ class StatisticController extends Controller
                             $faculties = Faculty::whereIn('id', $search_faculties)->get();
 
                             foreach ($faculties as $k1 => $faculty) {
-//                                if (!empty($search_specialities_arr)) {
-//                                    $specialities_id = DB::table('statistics')
-//                                        ->where('id_faculty', '=', $faculty->id)
-//                                        ->whereIn('id_speciality', $search_specialities_arr)
-//                                       // ->whereIn('id', $id_spec_arr) //кажется в этом нет смысла
-//                                        ->select('statistics.id_speciality')
-//                                        ->distinct()
-//                                        ->get();
-//                                } else {
-//                                    $specialities_id = DB::table('statistics')
-//                                        ->where('id_faculty', '=', $faculty->id)
-//                                        ->select('statistics.id_speciality')
-//                                        ->distinct()
-//                                        ->get();
-//                                }
-//                                $id_spec_arr = array();
-//                                foreach ($specialities_id as $item) {
-//                                    $id_spec_arr[] = $item->id_speciality;
-//                                }
-
                                 //для выбора названий специальностей
                                 $specialities = Speciality::whereIn('id', $id_spec_arr)->get();
                                 foreach ($specialities as $k0 => $speciality) {

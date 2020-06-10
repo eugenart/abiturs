@@ -16,6 +16,7 @@ class PageController extends Controller
         $slider = Slider::where('activity', true)->get();
         $date_now = Carbon::today();
         $date_now = $date_now->toDateString();
+
 //        return view('pages.home', compact('infoblocks', 'slider'));
         return view('pages.home', ['infoblocks' => $infoblocks, 'slider' => $slider, 'date_now' => $date_now]);
 

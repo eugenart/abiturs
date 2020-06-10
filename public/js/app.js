@@ -4344,6 +4344,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "parse",
   data: function data() {
@@ -4361,6 +4382,7 @@ __webpack_require__.r(__webpack_exports__);
       parseStudentsAspStatus: null,
       parseStudentsSpoStatus: null,
       parseContestsStatus: null,
+      parseStatStatus: null,
       loadingparseSpecialitiesStatus: false,
       loadingparseSubStatus: false,
       loadingparseAdmissionBasis: false,
@@ -4373,7 +4395,8 @@ __webpack_require__.r(__webpack_exports__);
       loadingparseStudentsMasterStatus: null,
       loadingparseStudentsAspStatus: null,
       loadingparseStudentsSpoStatus: null,
-      loadingparseContestsStatus: false
+      loadingparseContestsStatus: false,
+      loadingparseStatStatus: false
     };
   },
   computed: {},
@@ -4529,6 +4552,15 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (response) {
         _this13.loadingparseContestsStatus = false;
         _this13.parseContestsStatus = response.data;
+      });
+    },
+    parseStat: function parseStat() {
+      var _this14 = this;
+
+      this.loadingparseStatStatus = true;
+      var data = axios.get('/admin/download-stat-priem').then(function (response) {
+        _this14.loadingparseStatStatus = false;
+        _this14.parseStatStatus = response.data;
       });
     }
   }
@@ -92857,7 +92889,7 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "card mt-3 mb-3" }, [
+      _c("div", { staticClass: "card mt-3" }, [
         _c("div", { staticClass: "card-header font-weight-bold" }, [
           _vm._v("Статистика предыдущих лет")
         ]),
@@ -92897,6 +92929,52 @@ var render = function() {
                       _c("div")
                     ])
                   : _c("p", [_vm._v(_vm._s(_vm.parseContestsStatus))])
+              ]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "card mt-3 mb-3" }, [
+        _c("div", { staticClass: "card-header font-weight-bold" }, [
+          _vm._v("Статистика приема")
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body" }, [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-4" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-sm btn-success w-100",
+                  on: { click: this.parseStat }
+                },
+                [
+                  _vm._v(
+                    "Выгрузить статистику приема документов\n                        "
+                  )
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "col-8 text-center d-flex justify-content-center align-items-center"
+              },
+              [
+                _vm.loadingparseStatStatus
+                  ? _c("div", { staticClass: "lds-ring" }, [
+                      _c("div"),
+                      _vm._v(" "),
+                      _c("div"),
+                      _vm._v(" "),
+                      _c("div"),
+                      _vm._v(" "),
+                      _c("div")
+                    ])
+                  : _c("p", [_vm._v(_vm._s(_vm.parseStatStatus))])
               ]
             )
           ])
@@ -113460,8 +113538,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! E:\Open Server 5.3.5\OSPanel\domains\abiturs\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! E:\Open Server 5.3.5\OSPanel\domains\abiturs\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Applications/MAMP/htdocs/abiturs/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/abiturs/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

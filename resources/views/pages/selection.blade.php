@@ -289,7 +289,7 @@
 
                             </div>
                             <div class="col-12 col-xl-3 col-lg-12 col-sm-12">
-                                <h4 class="mb-3 text-xl-left text-lg-center text-md-center text-sm-center main-color text-md-center text-center">Мои вступительные испытания</h4>
+                                <h4 class="mb-3 text-xl-left text-lg-center text-md-center text-sm-center main-color text-md-center text-center">Мои ЕГЭ</h4>
                                 <div class="row text-uppercase mb-5">
                                     @foreach($subjects as $subject)
                                         <div class="col-12 col-xl-12 col-lg-4 col-md-4 col-sm-4">
@@ -671,7 +671,7 @@
                 let number = v.years.toString().slice(-1)
                 let year = years[number];
                 let templateRecipient =
-                    "<div class='row d-flex justify-content-cetner'>" +
+                    "<div class=''>" +
                     "<div class='row d-flex justify-content-cetner'>" +
                     "<div class='col-12 d-flex align-items-center justify-content-center flex-column'>" +
                     "<h5><strong>" + v.name + " форма, " + v.years + " " + year +  "</strong></h5>" +
