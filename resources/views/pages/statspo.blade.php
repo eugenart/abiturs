@@ -54,7 +54,8 @@
                                         </div>
                                     </li>
                                 </ul>
-                                <h5 class="m-0 text-center">Полные списки поступающих. Среднее профессиональное образование</h5>
+                                <h5 class="m-0 text-center">Полные списки поступающих. Среднее профессиональное
+                                    образование</h5>
                                 <ul class="files-list">
 
                                     @if(!empty($files_xls))
@@ -237,6 +238,9 @@
             <div class="col-12">
                 @if(isset($notification))
                     <div class="text-center m-4 h4">{{$notification}}</div>
+                @endif
+                @if(isset($notification_green))
+                    <div class="text-center m-4 h4 text-success">{{$notification_green}}</div>
                 @endif
                 @if(isset($studyForms))
                     @foreach($studyForms as $studyForm)
@@ -531,9 +535,11 @@
                     @endforeach
 
                 @else
-                    <div class="text-center m-4 h4">Введите <b>ФИО</b> или выберите <b>факультет/институт</b> для
-                        вывода списков поступающих
-                    </div>
+                    @if(!isset($notification_green))
+                        <div class="text-center m-4 h4">Введите <b>ФИО</b> или выберите <b>факультет/институт</b> для
+                            вывода списков поступающих
+                        </div>
+                    @endif
                 @endif
             </div>
         </div>

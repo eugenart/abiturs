@@ -91,12 +91,16 @@ class StatisticController extends Controller
                 }else{
                     $faculties = collect(new Faculty);
                     $studyFormsForInputs = collect(new StudyForm);
-                    return view('pages.stat', ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs, 'notification' => 'Списки на данный момент не доступны']);
+                    $notification = "Прием документов начнется после 20 июня";
+                    return view('pages.stat', ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs,
+                        'notification_green' => $notification]);
                 }
             }else{
                 $faculties = collect(new Faculty);
                 $studyFormsForInputs = collect(new StudyForm);
-                return view('pages.stat', ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs, 'notification' => 'Списки на данный момент не доступны']);
+                $notification = "Прием документов начнется после 20 июня";
+                return view('pages.stat', ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs,
+                    'notification_green' => $notification]);
             }
         }
 
