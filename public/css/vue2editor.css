@@ -376,7 +376,9 @@
 
 .ql-editor .ql-video {
     display: block;
-    max-width: 100%
+    max-width: 100%;
+    min-width: 80%;
+    margin: auto;
 }
 
 .ql-editor .ql-video.ql-align-center {
@@ -468,7 +470,7 @@
     text-align: inherit
 }
 
-.ql-editor .ql-align-center {
+.ql-editor .ql-ql-videonter {
     text-align: center
 }
 
