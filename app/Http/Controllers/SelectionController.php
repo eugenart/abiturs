@@ -63,20 +63,44 @@ class SelectionController extends Controller
 
                             $past_contests = PastContests::where('id_speciality', '=', $plan->id_speciality)
                                 ->where('id_studyForm', '=', $form->id_studyForm)
-                                ->where('id_admissionBasis', '=', $value->id_admissionBasis)
+                                ->where('id_admissionBasis', '=', 3)
                                 ->select('year', 'minScore')
                                 ->get();
-
-
                             $value->pastContests = $past_contests;
-
+//                            foreach ($past_contests as $ps){
+//
+//                            }
                         }
                         $form_temp->prices = $plan_comp_form->prices()->get();
-
-
                         $arr_studyForm[] = $form_temp;
                     }
-                    $plan->studyForm = $arr_studyForm;
+                   //сорировка форм обучения
+                    $temp_item_o = null;
+                    $temp_item_z= null;
+                    $temp_item_oz = null;
+                    foreach ($arr_studyForm as $st){
+                        if($st->name == "Очная"){
+                            $temp_item_o = $st;
+                        }
+                        if($st->name == "Заочная"){
+                            $temp_item_z = $st;
+                        }
+                        if($st->name == "Очно-заочная "){
+                            $temp_item_oz = $st;
+                        }
+                    }
+                    $arr_studyForm_sort = array();
+                    if(!is_null($temp_item_o)){
+                        $arr_studyForm_sort[] = $temp_item_o;
+                    }
+                    if(!is_null($temp_item_oz)){
+                        $arr_studyForm_sort[] = $temp_item_oz;
+                    }
+                    if(!is_null($temp_item_z)){
+                        $arr_studyForm_sort[] = $temp_item_z;
+                    }
+//                    $plan->studyForm = $arr_studyForm;
+                    $plan->studyForm = $arr_studyForm_sort;
 
                     $plan->plan_comp = $plan->plan_comps()->first(); //связь с компетишн
                     $id_ind = Subject::where('name', 'LIKE', '%Индивидуальное достижение%')->get();
