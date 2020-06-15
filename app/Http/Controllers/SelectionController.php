@@ -63,13 +63,13 @@ class SelectionController extends Controller
 
                             $past_contests = PastContests::where('id_speciality', '=', $plan->id_speciality)
                                 ->where('id_studyForm', '=', $form->id_studyForm)
-                                ->where('id_admissionBasis', '=', $value->id_admissionBasis)
+                                ->where('id_admissionBasis', '=', 3)
                                 ->select('year', 'minScore')
                                 ->get();
-
-
                             $value->pastContests = $past_contests;
-
+//                            foreach ($past_contests as $ps){
+//
+//                            }
                         }
                         $form_temp->prices = $plan_comp_form->prices()->get();
                         $arr_studyForm[] = $form_temp;
