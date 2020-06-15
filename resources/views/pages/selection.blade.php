@@ -695,13 +695,14 @@
             let sortedForms = [];
 
             $.each(recipient.studyForm, (k, v) => {
-                if (v.name === "Очная") {
+                console.log(v)
+                if (v.name.trim() === "Очная") {
                     temp_item_o = v
                 }
-                if (v.name === "Очно-заочная") {
+                if (v.name.trim() === "Очно-заочная") {
                     temp_item_oz = v
                 }
-                if (v.name === "Заочная") {
+                if (v.name.trim() === "Заочная") {
                     temp_item_z = v
                 }
             })
@@ -715,7 +716,7 @@
             if (temp_item_z) {
                 sortedForms.push(temp_item_z)
             }
-
+            console.log(recipient.studyForm, sortedForms)
             $.each(sortedForms, (k, v) => {
                 let number = v.years.toString().slice(-1)
                 let year = years[number];
