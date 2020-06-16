@@ -73,8 +73,8 @@
                             @if((($date_now > $section->activityFrom || $date_now == $section->activityFrom) &&
                             ($date_now < $section->activityTo || $date_now == $section->activityTo))
                             || (is_null($section->activityFrom) && is_null($section->activityTo)))
-                                <li class="mrsu-uppertext link-section"><a class="text-white"
-                                                                           href="{{ $section->url }}">{{ $section->name }}</a>
+                                <li class="mrsu-uppertext link-section">
+                                    <a class="text-white link-block" href="{{ $section->url }}">{{ $section->name }}</a>
                                 </li>
                             @endif
                         @endforeach

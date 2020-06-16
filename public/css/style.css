@@ -61,7 +61,9 @@ body {
 .mrsu-logo-img-ovz {
     width: 0;
 }
-
+.link-block{
+    display:block;
+}
 #main_version {
     display: none !important;
 }
