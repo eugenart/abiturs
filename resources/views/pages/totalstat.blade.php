@@ -27,9 +27,9 @@
                         @foreach($files_bach as $file_xls_stat)
                             <li>
                                 <div>
-                                    @if(file_exists($_SERVER['DOCUMENT_ROOT'] . '/storage/file-types/' . substr($file_xls_stat, -3) . '.png'))
+                                    @if(file_exists($_SERVER['DOCUMENT_ROOT'] . '/storage/file-types/' . substr($file_xls_stat, strrpos($file_xls_stat, '.') + 1) . '.png'))
                                         <img
-                                            src="{{ asset('storage/file-types/' . substr($file_xls_stat, -3) . '.png' )}}"
+                                            src="{{ asset('storage/file-types/' . substr($file_xls_stat, strrpos($file_xls_stat, '.') + 1) . '.png' )}}"
                                             alt="">
                                     @else
                                         <img
@@ -64,11 +64,12 @@
                     <hr class="mrsu-bg p-0 m-0">
                     <ul class="files-list col-12">
                         @foreach($files_master as $file_xls_stat)
+
                             <li>
                                 <div>
-                                    @if(file_exists($_SERVER['DOCUMENT_ROOT'] . '/storage/file-types/' . substr($file_xls_stat, -3) . '.png'))
+                                    @if(file_exists($_SERVER['DOCUMENT_ROOT'] . '/storage/file-types/' . substr($file_xls_stat, strrpos($file_xls_stat, '.') + 1) . '.png'))
                                         <img
-                                            src="{{ asset('storage/file-types/' . substr($file_xls_stat, -3) . '.png' )}}"
+                                            src="{{ asset('storage/file-types/' . substr($file_xls_stat, strrpos($file_xls_stat, '.') + 1) . '.png' )}}"
                                             alt="">
                                     @else
                                         <img
@@ -105,9 +106,9 @@
                         @foreach($files_asp as $file_xls_stat)
                             <li>
                                 <div>
-                                    @if(file_exists($_SERVER['DOCUMENT_ROOT'] . '/storage/file-types/' . substr($file_xls_stat, -3) . '.png'))
+                                    @if(file_exists($_SERVER['DOCUMENT_ROOT'] . '/storage/file-types/' . substr($file_xls_stat, strrpos($file_xls_stat, '.') + 1) . '.png'))
                                         <img
-                                            src="{{ asset('storage/file-types/' . substr($file_xls_stat, -3) . '.png' )}}"
+                                            src="{{ asset('storage/file-types/' . substr($file_xls_stat, strrpos($file_xls_stat, '.') + 1) . '.png' )}}"
                                             alt="">
                                     @else
                                         <img
@@ -144,9 +145,9 @@
                         @foreach($files_spo as $file_xls_stat)
                             <li>
                                 <div>
-                                    @if(file_exists($_SERVER['DOCUMENT_ROOT'] . '/storage/file-types/' . substr($file_xls_stat, -3) . '.png'))
+                                    @if(file_exists($_SERVER['DOCUMENT_ROOT'] . '/storage/file-types/' .substr($file_xls_stat, strrpos($file_xls_stat, '.') + 1) . '.png'))
                                         <img
-                                            src="{{ asset('storage/file-types/' . substr($file_xls_stat, -3) . '.png' )}}"
+                                            src="{{ asset('storage/file-types/' . substr($file_xls_stat, strrpos($file_xls_stat, '.') + 1) . '.png' )}}"
                                             alt="">
                                     @else
                                         <img
