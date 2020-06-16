@@ -17,7 +17,7 @@ class SelectionController extends Controller
     {
         //$subjects = Subject::all();
         $subjects = DB::table('subjects')->join('plan_comp_scores', 'subjects.id', '=', 'plan_comp_scores.id_subject')
-            ->groupBy('subjects.id')->select('subjects.*')->get();
+            ->groupBy('subjects.id')->select('subjects.*')->orderBy('name', 'asc')->get();
         foreach ($subjects as $k => $subject) {
             if (strpos($subject->name, 'испытание') or strpos($subject->name, 'достижение')) {
                 unset($subjects[$k]);
