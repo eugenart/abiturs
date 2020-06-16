@@ -19,7 +19,7 @@
                     @endif
 
                 @if(!empty($files_bach))
-                    <h5 class="mrsu-uppertext pt-3 text-primary  main-color">
+                    <h5 class="mrsu-uppertext text-primary  main-color">
                         Бакалавриат и специалитет
                     </h5>
                     <hr class="mrsu-bg p-0 m-0">
@@ -58,7 +58,7 @@
                 </div>
 
                 @if(!empty($files_master))
-                    <h5 class="mrsu-uppertext pt-3 text-primary main-color ">
+                    <h5 class="mrsu-uppertext  text-primary main-color ">
                         Магистратура
                     </h5>
                     <hr class="mrsu-bg p-0 m-0">
@@ -97,7 +97,7 @@
                 </div>
 
                 @if(!empty($files_asp))
-                    <h5 class="mrsu-uppertext pt-3 text-primary main-color ">
+                    <h5 class="mrsu-uppertext  text-primary main-color ">
                         Аспирантура
                     </h5>
                     <hr class="mrsu-bg p-0 m-0">
@@ -136,7 +136,7 @@
                 </div>
 
                 @if(!empty($files_spo))
-                    <h5 class="mrsu-uppertext pt-3 text-primary main-color ">
+                    <h5 class="mrsu-uppertext  text-primary main-color ">
                         Среднее профессиональное образование
                     </h5>
                     <hr class="mrsu-bg p-0 m-0">
