@@ -55,7 +55,9 @@ body {
 .faculty-head {
     color: #2366a5;
 }
-
+.link-block{
+    display:block;
+}
 .main-nav button span {
     color: white;
 }
