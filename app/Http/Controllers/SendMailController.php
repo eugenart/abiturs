@@ -20,7 +20,7 @@ class SendMailController extends Controller
         $header .= "Reply-To: =?UTF-8?B?" . base64_encode('Приёмная кампания 2020') . "?= <abiturs@mrsu.ru>\r\n";
         $header .= "X-Priority: 3 (Normal)\r\n";
         $header .= "Message-ID: <172562218." . date("YmjHis") . "@abiturs.mrsu.ru>\r\n";
-        $header .= "To: =?UTF-8?B?" . base64_encode('Ответственный за проведение приемной кампании') . "?= <test@mrsu.ru>\r\n";
+        $header .= "To: =?UTF-8?B?" . base64_encode('Петрова Елена Сергеевна') . "?= <entrance-exam@adm.mrsu.ru>\r\n";
         $header .= "Subject: =?UTF-8?B?" . base64_encode('Вопрос от абитуриента') . "?=\r\n";
         $header .= "MIME-Version: 1.0\r\n";
         $header .= "Content-Type: text/plain; charset=utf-8\r\n";
@@ -31,7 +31,7 @@ class SendMailController extends Controller
         $text .= "Текст вопроса: " . $request->question . ".\r\n";
 
 
-        $result = $mailSMTP->send('artashkinep@mrsu.ru', 'Вопрос от абитуриента', $text, $header); // отправляем письмо
+        $result = $mailSMTP->send('entrance-exam@adm.mrsu.ru', 'Вопрос от абитуриента', $text, $header); // отправляем письмо
 
         if ($result) {
             $answer[0] = "<i class=\"fa fa-check\"></i>
