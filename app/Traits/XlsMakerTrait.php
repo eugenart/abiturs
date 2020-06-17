@@ -72,7 +72,8 @@ trait XlsMakerTrait
             $sheet->getColumnDimension("A")->setWidth(8);
             $sheet->getColumnDimension("B")->setWidth(33);
             $sheet->getColumnDimension("C")->setWidth(15);
-            $sheet->getColumnDimension("D")->setWidth(13);
+//            $sheet->getColumnDimension("D")->setWidth(13);
+            $sheet->getColumnDimension("D")->setWidth(0); //убрать при возвращении сранного оригинала
             $sheet->getColumnDimension("E")->setWidth(17);
             $sheet->getColumnDimension("F")->setWidth(17);
             $sheet->getColumnDimension("G")->setWidth(17);
@@ -178,8 +179,9 @@ trait XlsMakerTrait
                                                             $sheet->mergeCellsByColumnAndRow(1, $c, 1, $c + 1);
                                                             $sheet->setCellValueByColumnAndRow(2, $c, "Согласие на зачисление");
                                                             $sheet->mergeCellsByColumnAndRow(2, $c, 2, $c + 1);
-                                                            $sheet->setCellValueByColumnAndRow(3, $c, "Оригинал. Копия");
-                                                            $sheet->mergeCellsByColumnAndRow(3, $c, 3, $c + 1);
+                                                            $sheet->mergeCellsByColumnAndRow(2, $c, 3, $c); //убрать при возвращении сранного оригинала
+//                                                            $sheet->setCellValueByColumnAndRow(3, $c, "Оригинал. Копия");
+//                                                            $sheet->mergeCellsByColumnAndRow(3, $c, 3, $c + 1);
                                                             $sheet->setCellValueByColumnAndRow(4, $c, "Баллы по предметам");
 
 //
@@ -224,11 +226,12 @@ trait XlsMakerTrait
                                                                         $sheet->getStyleByColumnAndRow(2, $c)->applyFromArray($bg_red);
                                                                     }
                                                                 }
-                                                                if ($abitur->original) {
-                                                                    $sheet->setCellValueByColumnAndRow(3, $c, "Оригинал");
-                                                                } else {
-                                                                    $sheet->setCellValueByColumnAndRow(3, $c, "Копия");
-                                                                }
+                                                                $sheet->mergeCellsByColumnAndRow(2, $c, 3, $c); //убрать при возвращении сранного оригинала
+//                                                                if ($abitur->original) {
+//                                                                    $sheet->setCellValueByColumnAndRow(3, $c, "Оригинал");
+//                                                                } else {
+//                                                                    $sheet->setCellValueByColumnAndRow(3, $c, "Копия");
+//                                                                }
 
                                                                 $kolvoSub = 0;
                                                                 foreach ($abitur->score as $o => $ab_sc) {
