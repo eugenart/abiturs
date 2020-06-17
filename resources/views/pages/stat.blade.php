@@ -132,7 +132,7 @@
                                 </div>
                                 <div
                                     class="d-xl-none d-lg-flex d-md-flex d-sm-flex flex-column">
-                                    <span class="d-inline-block w-100"><b>О</b> - оригинал диплома</span>
+{{--                                    <span class="d-inline-block w-100"><b>О</b> - оригинал диплома</span>--}}
                                     <span class="d-inline-block w-100"><b>C</b> - согласие на зачисление:</span>
                                     <ol class="d-inline-block w-100 mb-0 list-unstyled pl-2">
                                         <li><span><i class="fa fa-check-circle "
@@ -397,12 +397,12 @@
                                                                                 <span
                                                                                     class="d-xl-none d-lg-table-cell d-lg-table-cell">ФИО</span>
                                                                             </th>
-                                                                            <th rowspan="2" class="text-center">
-                                                                                <span
-                                                                                    class="d-xl-inline d-lg-none d-none">Оригинал</span>
-                                                                                <span
-                                                                                    class="d-xl-none d-lg-inline d-inline">O</span>
-                                                                            </th>
+{{--                                                                            <th rowspan="2" class="text-center">--}}
+{{--                                                                                <span--}}
+{{--                                                                                    class="d-xl-inline d-lg-none d-none">Оригинал</span>--}}
+{{--                                                                                <span--}}
+{{--                                                                                    class="d-xl-none d-lg-inline d-inline">O</span>--}}
+{{--                                                                            </th>--}}
                                                                             <th rowspan="2" class="text-center">
                                                                                 <span
                                                                                     class="d-xl-inline d-lg-none d-none">Согласие</span>
@@ -475,12 +475,12 @@
                                                                                     <td class="text-center">{{$k + 1}}</td>
                                                                                     <td class="text-left"
                                                                                         id="stud-{{$abitur->student->id}}-{{$abitur->id_speciality}}">{{$abitur->student->fio}}</td>
-                                                                                    <td>
-                                                                                        @if($abitur->original)
-                                                                                            <i class="fa fa-check-circle"
-                                                                                               style="color: rgba(0,128,0,0.51)"></i>
-                                                                                        @endif
-                                                                                    </td>
+{{--                                                                                    <td>--}}
+{{--                                                                                        @if($abitur->original)--}}
+{{--                                                                                            <i class="fa fa-check-circle"--}}
+{{--                                                                                               style="color: rgba(0,128,0,0.51)"></i>--}}
+{{--                                                                                        @endif--}}
+{{--                                                                                    </td>--}}
                                                                                     <td>
                                                                                         @if($abitur->accept)
                                                                                             <i class="fa fa-check-circle"
