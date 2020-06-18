@@ -15,7 +15,7 @@ class SectionContentController extends Controller
 
         $section = Section::find($id);
         if ($section) {
-            $link = $section->url;
+            $link = $section->real_link;
         } else {
             $link = "";
         }
