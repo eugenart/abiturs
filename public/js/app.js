@@ -2600,7 +2600,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         activityTo: null,
         sectionID: null,
         infoblockID: null,
-        isFolder: false
+        isFolder: false,
+        realLink: null
       },
       isSectionUpdate: false,
       currentSection: {},
@@ -2710,6 +2711,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.section.url = this.section.name.split('').map(function (_char) {
         return a[_char] || _char.match(letters);
       }).join("");
+      this.section.realLink = this.section.block_name.split('').map(function (_char2) {
+        return a[_char2] || _char2.match(letters);
+      }).join("");
+      this.section.realLink += '-' + this.section.url;
     },
     addSection: function addSection() {
       this.isSectionUpdate = false;
@@ -4689,7 +4694,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
 //
 //
 //
@@ -113224,7 +113228,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   activityFrom: payload.activityFrom,
                   activityTo: payload.activityTo,
                   activity: payload.activity,
-                  isFolder: payload.isFolder
+                  isFolder: payload.isFolder,
+                  realLink: payload.realLink
                 });
 
               case 2:
@@ -113258,7 +113263,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         activityFrom: payload.activityFrom,
         activityTo: payload.activityTo,
         activity: payload.activity,
-        isFolder: payload.isFolder
+        isFolder: payload.isFolder,
+        realLink: payload.realLink
       });
       context.commit('EDIT_SECTION', payload);
     },

@@ -1,7 +1,6 @@
 <template>
     <div>
         <div class="row">
-
             <div class="col-12">
                 <div class="row mt-4">
                     <div class="col-9">

@@ -62,7 +62,8 @@ export default {
                 activityFrom: payload.activityFrom,
                 activityTo: payload.activityTo,
                 activity: payload.activity,
-                isFolder: payload.isFolder
+                isFolder: payload.isFolder,
+                realLink: payload.realLink
             });
             context.commit('ADD_SECTION', data.section)
         },
@@ -79,7 +80,8 @@ export default {
                 activityFrom: payload.activityFrom,
                 activityTo: payload.activityTo,
                 activity: payload.activity,
-                isFolder: payload.isFolder
+                isFolder: payload.isFolder,
+                realLink: payload.realLink
             });
             context.commit('EDIT_SECTION', payload)
         },

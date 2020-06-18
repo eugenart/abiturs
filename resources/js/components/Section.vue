@@ -273,7 +273,8 @@
                     activityTo: null,
                     sectionID: null,
                     infoblockID: null,
-                    isFolder: false
+                    isFolder: false,
+                    realLink: null
                 },
                 isSectionUpdate: false,
                 currentSection: {},
@@ -393,6 +394,10 @@
                 this.section.url = this.section.name.split('').map(function (char) {
                     return a[char] || char.match(letters);
                 }).join("");
+                this.section.realLink = this.section.block_name.split('').map(function (char) {
+                    return a[char] || char.match(letters);
+                }).join("");
+                this.section.realLink += '-' + this.section.url;
             },
 
             addSection() {

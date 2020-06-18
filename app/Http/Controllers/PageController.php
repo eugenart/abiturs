@@ -26,7 +26,7 @@ class PageController extends Controller
     {
         if ($route) {
             $infoblock = Infoblock::where('url', $route)->first();
-            $section = Section::where('url', $route)->where('activity', true)->first();
+            $section = Section::where('real_link', $route)->where('activity', true)->first();
             $date_now = Carbon::today();
             $date_now = $date_now->toDateString();
             if ($section || $infoblock) {
