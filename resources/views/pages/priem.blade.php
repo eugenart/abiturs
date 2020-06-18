@@ -69,7 +69,7 @@
                     <p class="w-100 mrsu-uppertext title-text text-center p-1 main-color">
                         <b>{{ $block->infoblock->name }}</b></p>
                     <ul class="list-unstyled p-3 list-sections main-color">
-                        @foreach($block->infoblock->sections->where('activity', true) as $section)
+                        @foreach($block->infoblock->sections->where('activity', true)->sortByDesc('startPagePriority') as $section)
                             @if((($date_now > $section->activityFrom || $date_now == $section->activityFrom) &&
                             ($date_now < $section->activityTo || $date_now == $section->activityTo))
                             || (is_null($section->activityFrom) && is_null($section->activityTo)))
