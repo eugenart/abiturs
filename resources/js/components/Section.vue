@@ -138,7 +138,7 @@
                                                         <i style="font-size: 20px; cursor: pointer"
                                                            class="fas fa-file-medical"
                                                            v-b-tooltip.hover title="Добавить элемент"
-                                                           @click="changeParents(block.id, null, false)">
+                                                           @click="changeParents(block.name, block.id, null, false)">
                                                         </i>
                                                     </p>
                                                 </div>
@@ -176,73 +176,73 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div v-else>
-                                                    <div class="row">
-                                                        <div class="col-9">
-                                                            <p>
-                                                                <i class="far fa-folder"></i>
-                                                                <span>{{sec.name}}</span>
-                                                            </p>
-                                                        </div>
-                                                        <div class="col-3">
-                                                            <p>
-                                                    <span class="float-right">
-                                                        <i
-                                                            style="font-size: 20px; cursor: pointer"
-                                                            class="fas fa-file-medical"
-                                                            v-b-tooltip.hover title="Добавить элемент"
-                                                            @click="changeParents(section.id, sec.id, false)">
-                                                                                                                </i>
+<!--                                                <div v-else>-->
+<!--                                                    <div class="row">-->
+<!--                                                        <div class="col-9">-->
+<!--                                                            <p>-->
+<!--                                                                <i class="far fa-folder"></i>-->
+<!--                                                                <span>{{sec.name}}</span>-->
+<!--                                                            </p>-->
+<!--                                                        </div>-->
+<!--                                                        <div class="col-3">-->
+<!--                                                            <p>-->
+<!--                                                    <span class="float-right">-->
+<!--                                                        <i-->
+<!--                                                            style="font-size: 20px; cursor: pointer"-->
+<!--                                                            class="fas fa-file-medical"-->
+<!--                                                            v-b-tooltip.hover title="Добавить элемент"-->
+<!--                                                            @click="changeParents(block, section.id, sec.id, false)">-->
+<!--                                                                                                                </i>-->
 
-                                                        <i class="far fa-eye" v-if="sec.activity"
-                                                           style="cursor: pointer"
-                                                           @click="changeActivity(sec)"></i>
-                                                        <i class="far fa-eye-slash"
-                                                           style="cursor: pointer"
-                                                           v-else
-                                                           @click="changeActivity(sec)"></i>
-                                                        &nbsp;
-                                                        <i class="fas fa-pen" style="cursor: pointer"
-                                                           @click="changeSection(sec)"></i>
-                                                         &nbsp;
-                                                        <i class="fas fa-trash-alt" style="cursor: pointer; color:red;"
-                                                           @click="removeSection(sec.id, sec.infoblockID, sec.sectionID)"></i>
-                                                    </span>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="" v-for="f in sec.folder">
-                                                        <div class="row">
-                                                            <div class="col-8 offset-1">
-                                                                <p>
-                                                                    <i class="far fa-file-alt"></i>
-                                                                    <a
-                                                                        :href="'/admin/section-content/' + f.id"><span>{{f.name}}</span></a>
-                                                                </p>
-                                                            </div>
-                                                            <div class="col-3">
-                                                                <p>
-                                                                    <span class="float-right">
-                                                                        <i class="far fa-eye" v-if="f.activity"
-                                                                           style="cursor: pointer"
-                                                                           @click="changeActivity(f)"></i>
-                                                                        <i class="far fa-eye-slash"
-                                                                           style="cursor: pointer"
-                                                                           v-else
-                                                                           @click="changeActivity(f)"></i>
-                                                                        &nbsp;
-                                                                        <i class="fas fa-pen" style="cursor: pointer"
-                                                                           @click="changeSection(f)"></i>
-                                                                         &nbsp;
-                                                                        <i class="fas fa-trash-alt"
-                                                                           style="cursor: pointer; color:red;"
-                                                                           @click="removeSection(f.id, sec.infoblockID, f.sectionID)"></i>
-                                                                    </span>
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+<!--                                                        <i class="far fa-eye" v-if="sec.activity"-->
+<!--                                                           style="cursor: pointer"-->
+<!--                                                           @click="changeActivity(sec)"></i>-->
+<!--                                                        <i class="far fa-eye-slash"-->
+<!--                                                           style="cursor: pointer"-->
+<!--                                                           v-else-->
+<!--                                                           @click="changeActivity(sec)"></i>-->
+<!--                                                        &nbsp;-->
+<!--                                                        <i class="fas fa-pen" style="cursor: pointer"-->
+<!--                                                           @click="changeSection(sec)"></i>-->
+<!--                                                         &nbsp;-->
+<!--                                                        <i class="fas fa-trash-alt" style="cursor: pointer; color:red;"-->
+<!--                                                           @click="removeSection(sec.id, sec.infoblockID, sec.sectionID)"></i>-->
+<!--                                                    </span>-->
+<!--                                                            </p>-->
+<!--                                                        </div>-->
+<!--                                                    </div>-->
+<!--                                                    <div class="" v-for="f in sec.folder">-->
+<!--                                                        <div class="row">-->
+<!--                                                            <div class="col-8 offset-1">-->
+<!--                                                                <p>-->
+<!--                                                                    <i class="far fa-file-alt"></i>-->
+<!--                                                                    <a-->
+<!--                                                                        :href="'/admin/section-content/' + f.id"><span>{{f.name}}</span></a>-->
+<!--                                                                </p>-->
+<!--                                                            </div>-->
+<!--                                                            <div class="col-3">-->
+<!--                                                                <p>-->
+<!--                                                                    <span class="float-right">-->
+<!--                                                                        <i class="far fa-eye" v-if="f.activity"-->
+<!--                                                                           style="cursor: pointer"-->
+<!--                                                                           @click="changeActivity(f)"></i>-->
+<!--                                                                        <i class="far fa-eye-slash"-->
+<!--                                                                           style="cursor: pointer"-->
+<!--                                                                           v-else-->
+<!--                                                                           @click="changeActivity(f)"></i>-->
+<!--                                                                        &nbsp;-->
+<!--                                                                        <i class="fas fa-pen" style="cursor: pointer"-->
+<!--                                                                           @click="changeSection(f)"></i>-->
+<!--                                                                         &nbsp;-->
+<!--                                                                        <i class="fas fa-trash-alt"-->
+<!--                                                                           style="cursor: pointer; color:red;"-->
+<!--                                                                           @click="removeSection(f.id, sec.infoblockID, f.sectionID)"></i>-->
+<!--                                                                    </span>-->
+<!--                                                                </p>-->
+<!--                                                            </div>-->
+<!--                                                        </div>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
                                                 <hr>
                                             </div>
                                         </div>
@@ -273,7 +273,8 @@
                     activityTo: null,
                     sectionID: null,
                     infoblockID: null,
-                    isFolder: false
+                    isFolder: false,
+                    realLink: null
                 },
                 isSectionUpdate: false,
                 currentSection: {},
@@ -311,7 +312,7 @@
                 this.updateSection()
             },
 
-            changeParents(block, section, folder) {
+            changeParents(block_name, block, section, folder) {
                 $('#infoblockForm').show()
                 this.isFolder = folder
                 this.isSectionUpdate = false;
@@ -319,6 +320,8 @@
                 this.section.isFolder = folder;
                 this.section.infoblockID = block;
                 this.section.sectionID = section;
+                this.section.block_name = block_name;
+                console.log(block_name)
             },
 
             transliterate() {
@@ -393,6 +396,10 @@
                 this.section.url = this.section.name.split('').map(function (char) {
                     return a[char] || char.match(letters);
                 }).join("");
+                this.section.realLink = this.section.block_name.split('').map(function (char) {
+                    return a[char] || char.match(letters);
+                }).join("");
+                this.section.realLink += '-' + this.section.url;
             },
 
             addSection() {

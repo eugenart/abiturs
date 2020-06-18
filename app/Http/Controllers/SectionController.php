@@ -12,6 +12,9 @@ class SectionController extends Controller
     public function index(Request $request)
     {
         $sections = Section::all();
+        foreach ($sections as $section) {
+            $section->block_name = Infoblock::findOrFail($section->infoblockID)->name;
+        }
         if ($request->ajax()) {
             return response()->json($sections, 200);
         }
@@ -34,6 +37,7 @@ class SectionController extends Controller
                 'sectionID' => $request->sectionID,
                 'infoblockID' => $request->infoblockID,
                 'isFolder' => $request->isFolder ? 1 : 0,
+                'real_link' => $request->realLink
             ]);
             return response()->json([
                 'message' => "Section was created",
@@ -56,6 +60,7 @@ class SectionController extends Controller
                 'activity' => $request->activity ? 1 : 0,
                 'activityFrom' => $request->activityFrom,
                 'activityTo' => $request->activityTo,
+                'real_link' => $request->realLink
             ]);
             return response()->json([
                 'message' => "Section was updated"
