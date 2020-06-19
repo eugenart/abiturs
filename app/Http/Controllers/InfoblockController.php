@@ -32,7 +32,7 @@ class InfoblockController extends Controller
                 $fileName = $date->format('Ymd_His') . '_' . $original;
                 $request->image->storeAs('public/preview', $fileName);
             }
-            $check = Infoblock::where('name', '=', $request->name)->findOrFail();
+            $check = Infoblock::where('name', '=', $request->name)->first();
             if (!isset($check)) {
                 $infoblock = Infoblock::create([
                     'name' => $request->name,
@@ -69,19 +69,41 @@ class InfoblockController extends Controller
                 $request->image->storeAs('public/preview', $fileName);
             }
             $infoblock = Infoblock::findOrFail($id);
-            $infoblock->update([
-                'name' => $request->name,
-                'url' => $request->url,
-                'menu' => in_array($request->menu, ['true', 1]) ? 1 : 0,
-                'menuPriority' => $request->menuPriority,
-                'startPage' => in_array($request->startPage, ['true', 1]) ? 1 : 0,
-                'startPagePriority' => $request->startPagePriority,
-                'activity' => in_array($request->activity, ['true', 1]) ? 1 : 0,
-                'activityFrom' => $request->activityFrom,
-                'activityTo' => $request->activityTo,
-                'image' => $fileName ? $fileName : null,
-                'news' => $request->news ? $request->news : array()
-            ]);
+            $check = Infoblock::where('name', '=', $request->name)->where('id', '<>', $id)->first();
+            if (!isset($check)) {
+                $old_url = $infoblock->url;
+                $infoblock->update([
+                    'name' => $request->name, //
+                    'url' => $request->url,
+                    'menu' => in_array($request->menu, ['true', 1]) ? 1 : 0,
+                    'menuPriority' => $request->menuPriority,
+                    'startPage' => in_array($request->startPage, ['true', 1]) ? 1 : 0,
+                    'startPagePriority' => $request->startPagePriority,
+                    'activity' => in_array($request->activity, ['true', 1]) ? 1 : 0,
+                    'activityFrom' => $request->activityFrom,
+                    'activityTo' => $request->activityTo,
+                    'image' => $fileName ? $fileName : null,
+                    'news' => $request->news ? $request->news : array()
+                ]);
+
+                if($old_url != $infoblock->url){
+                    $sections = Section::where('infoblockID', '=', $id)->get();
+                    foreach ($sections as $section){
+                        $new_link = $infoblock->url . '-'. $section->url;
+                        $section->update([
+                            'real_link' => $new_link
+                        ]);
+                    }
+                }
+
+
+
+
+                return response()->json([
+                    'message' => "Infoblock was updated",
+                    'infoblock' => $infoblock
+                ], 200);
+            }
             return response()->json([
                 'message' => "Infoblock was updated",
                 'infoblock' => $infoblock

@@ -1,8 +1,5 @@
 <template>
     <div>
-        <div v-for="section in sections">
-            <span>{{section.name}} {{section.real_link}}</span>
-        </div>
         <div class="row">
             <div class="col-12">
                 <form @submit.prevent="!isSectionUpdate? addSection() : updateSection()" class="col-12 p-0"
@@ -399,10 +396,10 @@
                 this.section.url = this.section.name.split('').map(function (char) {
                     return a[char] || char.match(letters);
                 }).join("");
-                this.section.realLink = this.section.block_name.split('').map(function (char) {
+                this.section.real_link = this.section.block_name.split('').map(function (char) {
                     return a[char] || char.match(letters);
                 }).join("");
-                this.section.realLink += '-' + this.section.url;
+                this.section.real_link += '-' + this.section.url;
             },
 
             addSection() {
