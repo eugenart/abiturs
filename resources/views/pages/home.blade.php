@@ -18,7 +18,7 @@
                             @endforeach
                         </ol>
                         <div class="carousel-inner">
-{{--                            @foreach($slider->sortByDesc('startPagePriority') as $slide)--}}
+                            {{--                            @foreach($slider->sortByDesc('startPagePriority') as $slide)--}}
                             @foreach($slider as $slide)
                                 @if ($loop->index == 0)
                                     <div class="carousel-item active">
@@ -56,7 +56,7 @@
             </div>
         @endif
         <div class="row mb-30px">
-{{--            @foreach($infoblocks->sortByDesc('startPagePriority') as $infoblock)--}}
+            {{--            @foreach($infoblocks->sortByDesc('startPagePriority') as $infoblock)--}}
             @foreach($infoblocks as $infoblock)
                 @if((($date_now > $infoblock->activityFrom || $date_now == $infoblock->activityFrom) &&
                     ($date_now < $infoblock->activityTo || $date_now == $infoblock->activityTo))
@@ -65,7 +65,15 @@
                         <div class="card infoblock-card">
                             <a href="{{ $infoblock->url }}">
                                 <div class="card-body mrsu-bg">
-                                    <img src="storage/preview/{{ $infoblock->image }}" class="w-100" alt="">
+                                    @if(!is_null($infoblock->image))
+                                        @if(file_exists($_SERVER['DOCUMENT_ROOT'] .'/storage/preview-files/' . $infoblock->image))
+                                            <img src="storage/preview/{{ $infoblock->image }}" class="w-100" alt="">
+                                        @else
+                                            <img src="storage/preview/default.jpg" class="w-100" alt="">
+                                        @endif
+                                    @else
+                                        <img src="storage/preview/default.jpg" class="w-100" alt="">
+                                    @endif
                                     <p class="text-center m-0 pt-2 mrsu-uppertext">{{ $infoblock->name }}</p>
                                 </div>
                             </a>
