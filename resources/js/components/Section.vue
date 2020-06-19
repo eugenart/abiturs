@@ -1,5 +1,8 @@
 <template>
     <div>
+        <div v-for="section in sections">
+            <span>{{section.name}} {{section.real_link}}</span>
+        </div>
         <div class="row">
             <div class="col-12">
                 <form @submit.prevent="!isSectionUpdate? addSection() : updateSection()" class="col-12 p-0"
@@ -274,7 +277,7 @@
                     sectionID: null,
                     infoblockID: null,
                     isFolder: false,
-                    realLink: null
+                    real_link: null
                 },
                 isSectionUpdate: false,
                 currentSection: {},
