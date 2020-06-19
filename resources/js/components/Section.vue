@@ -274,7 +274,7 @@
                     sectionID: null,
                     infoblockID: null,
                     isFolder: false,
-                    realLink: null
+                    real_link: null
                 },
                 isSectionUpdate: false,
                 currentSection: {},
@@ -396,10 +396,10 @@
                 this.section.url = this.section.name.split('').map(function (char) {
                     return a[char] || char.match(letters);
                 }).join("");
-                this.section.realLink = this.section.block_name.split('').map(function (char) {
+                this.section.real_link = this.section.block_name.split('').map(function (char) {
                     return a[char] || char.match(letters);
                 }).join("");
-                this.section.realLink += '-' + this.section.url;
+                this.section.real_link += '-' + this.section.url;
             },
 
             addSection() {

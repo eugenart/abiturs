@@ -25,24 +25,27 @@ class SectionController extends Controller
     public function store(Request $request)
     {
         if ($request->ajax()) {
-            $section = Section::create([
-                'name' => $request->name,
-                'url' => $request->url,
-                'description' => $request->description,
-                'startPage' => $request->startPage ? 1 : 0,
-                'startPagePriority' => $request->startPagePriority,
-                'activity' => $request->activity ? 1 : 0,
-                'activityFrom' => $request->activityFrom,
-                'activityTo' => $request->activityTo,
-                'sectionID' => $request->sectionID,
-                'infoblockID' => $request->infoblockID,
-                'isFolder' => $request->isFolder ? 1 : 0,
-                'real_link' => $request->realLink
-            ]);
-            return response()->json([
-                'message' => "Section was created",
-                'section' => $section
-            ], 200);
+            $check = Section::where('name', '=', $request->name)->where('infoblockID', '=', $request->infoblockID)->first();
+            if (!isset($check)) {
+                $section = Section::create([
+                    'name' => $request->name,
+                    'url' => $request->url,
+                    'description' => $request->description,
+                    'startPage' => $request->startPage ? 1 : 0,
+                    'startPagePriority' => $request->startPagePriority,
+                    'activity' => $request->activity ? 1 : 0,
+                    'activityFrom' => $request->activityFrom,
+                    'activityTo' => $request->activityTo,
+                    'sectionID' => $request->sectionID,
+                    'infoblockID' => $request->infoblockID,
+                    'isFolder' => $request->isFolder ? 1 : 0,
+                    'real_link' => $request->real_link
+                ]);
+                return response()->json([
+                    'message' => "Section was created",
+                    'section' => $section
+                ], 200);
+            }
         }
 
         return response()->json(['message' => 'Oops'], 404);
@@ -51,19 +54,27 @@ class SectionController extends Controller
     public function update(Request $request, $id)
     {
         if ($request->ajax()) {
-            Section::findOrFail($id)->update([
-                'name' => $request->name,
-                'url' => $request->url,
-                'description' => $request->description,
-                'startPage' => $request->startPage ? 1 : 0,
-                'startPagePriority' => $request->startPagePriority,
-                'activity' => $request->activity ? 1 : 0,
-                'activityFrom' => $request->activityFrom,
-                'activityTo' => $request->activityTo,
-                'real_link' => $request->realLink
-            ]);
+            $section = Section::findOrFail($id);
+            $check = Section::where('name', '=', $request->name)->where('id', '<>', $id)->where('infoblockID', '=', $section->infoblockID)->first();
+            if (!isset($check)) {
+                $section->update([
+                    'name' => $request->name,
+                    'url' => $request->url,
+                    'description' => $request->description,
+                    'startPage' => $request->startPage ? 1 : 0,
+                    'startPagePriority' => $request->startPagePriority,
+                    'activity' => $request->activity ? 1 : 0,
+                    'activityFrom' => $request->activityFrom,
+                    'activityTo' => $request->activityTo,
+                    'real_link' => $request->real_link
+                ]);
+                return response()->json([
+                    'message' => "Section was updated"
+                ], 200);
+            }
             return response()->json([
-                'message' => "Section was updated"
+                'message' => "Section was created",
+                'section' => $section
             ], 200);
         }
 

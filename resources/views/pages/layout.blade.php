@@ -105,7 +105,7 @@
                             $date_now = Carbon::today();
                             $date_now = $date_now->toDateString();
                         @endphp
-                        @foreach($pages->sortByDesc('menuPriority') as $page)
+                        @foreach($pages as $page)
                             @if ((($date_now > $page->activityFrom || $date_now == $page->activityFrom) &&
                             ($date_now < $page->activityTo || $date_now == $page->activityTo))
                             || (is_null($page->activityFrom) && is_null($page->activityTo)))
