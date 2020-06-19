@@ -39,13 +39,32 @@
         $stylesh .= '.css';
     @endphp
     <link href="{{asset( $stylesh )}}" rel="stylesheet" type="text/css">
-
-    {{--    <link rel="stylesheet" href="{{asset('css/style.css')}}">--}}
-    {{--    <link rel="stylesheet" href="{{asset('css/ovz.css')}}">--}}
     <link rel="stylesheet" href="{{asset('css/hamburgers.css')}}" id="ovzCSSLink">
+
     @section('style')
     @show
     <title>Приемная кампания 2020</title>
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function (m, e, t, r, i, k, a) {
+            m[i] = m[i] || function () {
+                (m[i].a = m[i].a || []).push(arguments)
+            };
+            m[i].l = 1 * new Date();
+            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+        })
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(65004307, "init", {
+            clickmap: true,
+            trackLinks: true,
+            accurateTrackBounce: true
+        });
+    </script>
+    <noscript>
+        <div><img src="https://mc.yandex.ru/watch/65004307" style="position:absolute; left:-9999px;" alt=""/></div>
+    </noscript>
+    <!-- /Yandex.Metrika counter -->
 </head>
 <body>
 <div class="container cont-w-100" style="z-index: 500 !important;">
@@ -136,10 +155,10 @@
                     <a class="nav-link" href="{{route('contact.index')}}">Контакты <span
                             class="sr-only">(current)</span></a>
                 </li>
-{{--                <li class="nav-item active d-flex align-items-center justify-content-center">--}}
-{{--                    <a class="nav-link" target="_blank" href="http://abitportal.mrsu.ru">подача документов<span--}}
-{{--                            class="sr-only">(current)</span></a>--}}
-{{--                </li>--}}
+                {{--                <li class="nav-item active d-flex align-items-center justify-content-center">--}}
+                {{--                    <a class="nav-link" target="_blank" href="http://abitportal.mrsu.ru">подача документов<span--}}
+                {{--                            class="sr-only">(current)</span></a>--}}
+                {{--                </li>--}}
             </ul>
         </div>
     </div>
