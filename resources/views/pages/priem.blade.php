@@ -33,30 +33,36 @@
                             @else
                                 <h5 class="ml-0 font-weight-bolder"><b>{{ $content->name }}</b></h5>
                                 <ul class="files-list">
-                                    @foreach($content->childrenFiles->sortBy('position') as $file)
-                                        <li>
-                                            <div>
-                                                @if(file_exists($_SERVER['DOCUMENT_ROOT'] . '/storage/file-types/' . $file->ext_file . '.png'))
-                                                    <img
-                                                        src="{{ asset('storage/file-types/' . $file->ext_file . '.png' )}}"
-                                                        alt="">
-                                                @else
-                                                    <img
-                                                        src="{{ asset('storage/file-types/nofile.jpg' )}}"
-                                                        alt="">
-                                                @endif
+                                    @if(isset($content->childrenFiles))
+                                        @foreach($content->childrenFiles->sortBy('position') as $file)
+                                            @if(!is_null($file->file_name))
+                                                @if(file_exists($_SERVER['DOCUMENT_ROOT'] .'/storage/section-files/' . $file->file_name))
+                                                    <li>
+                                                        <div>
+                                                            @if(file_exists($_SERVER['DOCUMENT_ROOT'] . '/storage/file-types/' . $file->ext_file . '.png'))
+                                                                <img
+                                                                    src="{{ asset('storage/file-types/' . $file->ext_file . '.png' )}}"
+                                                                    alt="">
+                                                            @else
+                                                                <img
+                                                                    src="{{ asset('storage/file-types/nofile.jpg' )}}"
+                                                                    alt="">
+                                                            @endif
 
-                                                {{--                                                {{ filesize(asset('storage/section-files/' . $file->file_name))}}--}}
-                                            </div>
-                                            <div class="file-link-div">
-                                                <a href="{{ asset('storage/section-files/' . $file->file_name) }}"
-                                                   target="_blank">{{ $file->name }}</a>
-                                                <br>
-                                                <span>{{round(stat($_SERVER['DOCUMENT_ROOT'] . '/storage/section-files/' . $file->file_name)[7] / 1024 /1024, 2)}} MB</span>
-                                                {{--                                                <span class="badge">{{ $file->updated_at }}</span>--}}
-                                            </div>
-                                        </li>
-                                    @endforeach
+                                                            {{--                                                {{ filesize(asset('storage/section-files/' . $file->file_name))}}--}}
+                                                        </div>
+                                                        <div class="file-link-div">
+                                                            <a href="{{ asset('storage/section-files/' . $file->file_name) }}"
+                                                               target="_blank">{{ $file->name }}</a>
+                                                            <br>
+                                                            <span>{{round(stat($_SERVER['DOCUMENT_ROOT'] . '/storage/section-files/' . $file->file_name)[7] / 1024 /1024, 2)}} MB</span>
+                                                            {{--                                                <span class="badge">{{ $file->updated_at }}</span>--}}
+                                                        </div>
+                                                    </li>
+                                                @endif
+                                            @endif
+                                        @endforeach
+                                    @endif
                                 </ul>
                             @endif
                             <hr>
@@ -69,13 +75,14 @@
                     <p class="w-100 mrsu-uppertext title-text text-center p-1 main-color">
                         <b>{{ $block->infoblock->name }}</b></p>
                     <ul class="list-unstyled p-3 list-sections main-color">
-{{--                        @foreach($block->infoblock->sections->where('activity', true)->sortByDesc('startPagePriority') as $section)--}}
+                        {{--                        @foreach($block->infoblock->sections->where('activity', true)->sortByDesc('startPagePriority') as $section)--}}
                         @foreach($menuSections as $section)
                             @if((($date_now > $section->activityFrom || $date_now == $section->activityFrom) &&
                             ($date_now < $section->activityTo || $date_now == $section->activityTo))
                             || (is_null($section->activityFrom) && is_null($section->activityTo)))
                                 <li class="mrsu-uppertext link-section">
-                                    <a class="text-white link-block" href="{{ $section->real_link }}">{{ $section->name }}</a>
+                                    <a class="text-white link-block"
+                                       href="{{ $section->real_link }}">{{ $section->name }}</a>
                                 </li>
                             @endif
                         @endforeach
