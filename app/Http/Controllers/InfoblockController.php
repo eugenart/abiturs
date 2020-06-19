@@ -86,17 +86,15 @@ class InfoblockController extends Controller
                     'news' => $request->news ? $request->news : array()
                 ]);
 
-                if($old_url != $infoblock->url){
+                if ($old_url != $infoblock->url) {
                     $sections = Section::where('infoblockID', '=', $id)->get();
-                    foreach ($sections as $section){
-                        $new_link = $infoblock->url . '-'. $section->url;
+                    foreach ($sections as $section) {
+                        $new_link = $infoblock->url . '-' . $section->url;
                         $section->update([
                             'real_link' => $new_link
                         ]);
                     }
                 }
-
-
 
 
                 return response()->json([
@@ -148,6 +146,14 @@ class InfoblockController extends Controller
 
         $new_name = $infoblock_orig->name . '_copy_' . $rand;
         $new_url = $infoblock_orig->url . '_copy_' . $rand;
+
+        $original_img_name = $infoblock_orig->image;
+        $date = new \DateTime();
+        $fileName = $date->format('Ymd_His') . '_' .substr(strval(base_convert((mt_rand() / mt_getrandmax()), 10, 36)), 0, 3) . substr(strval(base_convert((mt_rand() / mt_getrandmax()), 10, 36)), 0, 3).substr($original_img_name, -10);
+        $path_or_img = $_SERVER['DOCUMENT_ROOT'] .'/storage/preview/' . $infoblock_orig->image;
+        $path_new_img = $_SERVER['DOCUMENT_ROOT'] .'/storage/preview/' . $fileName;
+        copy($path_or_img, $path_new_img);
+
         $new_infoblock = Infoblock::create([
             'name' => $new_name,
             'url' => $new_url,
@@ -158,7 +164,7 @@ class InfoblockController extends Controller
             'activity' => 0,
             'activityFrom' => $infoblock_orig->activityFrom,
             'activityTo' => $infoblock_orig->activityTo,
-            'image' => $infoblock_orig->image,
+            'image' => $fileName,
             'news' => $infoblock_orig->news
         ]);
 
@@ -195,9 +201,23 @@ class InfoblockController extends Controller
                             $sub_files = SectionsContent::where('parent_id', '=', $content_orig->id)->get();
                             if (isset($sub_files)) {
                                 foreach ($sub_files as $file_orig) {
+
+                                    $new_file_name = null;
+                                    if(!is_null($file_orig->file_name)) {
+                                        if(file_exists($_SERVER['DOCUMENT_ROOT'] . '/storage/section-files/' . $file_orig->file_name)) {
+                                            $original_file_name = $file_orig->file_name;
+                                            $date = new \DateTime();
+                                            $new_file_name = $date->format('Ymd_His') . '_' . substr(strval(base_convert((mt_rand() / mt_getrandmax()), 10, 36)), 0, 3) . substr(strval(base_convert((mt_rand() / mt_getrandmax()), 10, 36)), 0, 3) . substr($original_file_name, -10);
+                                            $path_or_img = $_SERVER['DOCUMENT_ROOT'] . '/storage/section-files/' . $file_orig->file_name;
+                                            $path_new_img = $_SERVER['DOCUMENT_ROOT'] . '/storage/section-files/' . $new_file_name;
+                                            copy($path_or_img, $path_new_img);
+                                        }
+                                    }
+
                                     SectionsContent::create([
                                         'name' => $file_orig->name,
-                                        'file_name' => $file_orig->file_name,
+//                                        'file_name' => $file_orig->file_name,
+                                        'file_name' => $new_file_name,
                                         'position' => $file_orig->position,
                                         'content' => $file_orig->content,
                                         'type' => $file_orig->type,
@@ -208,9 +228,21 @@ class InfoblockController extends Controller
                                 }
                             }
                         } else {
+                            $new_file_name = null;
+                            if(!is_null($content_orig->fileName)) {
+                                if(file_exists($_SERVER['DOCUMENT_ROOT'] . '/storage/section-files/' . $content_orig->fileName)) {
+                                    $original_file_name = $content_orig->fileName;
+                                    $date = new \DateTime();
+                                    $new_file_name = $date->format('Ymd_His') . '_' . substr(strval(base_convert((mt_rand() / mt_getrandmax()), 10, 36)), 0, 3) . substr(strval(base_convert((mt_rand() / mt_getrandmax()), 10, 36)), 0, 3) . substr($original_file_name, -10);
+                                    $path_or_img = $_SERVER['DOCUMENT_ROOT'] . '/storage/section-files/' . $original_file_name;
+                                    $path_new_img = $_SERVER['DOCUMENT_ROOT'] . '/storage/section-files/' . $new_file_name;
+                                    copy($path_or_img, $path_new_img);
+                                }
+                            }
                             SectionsContent::create([
                                 'name' => $content_orig->name,
-                                'file_name' => $content_orig->fileName,
+//                                'file_name' => $content_orig->fileName,
+                                'file_name' => $new_file_name,
                                 'position' => $content_orig->position,
                                 'content' => $content_orig->content,
                                 'type' => $content_orig->type,
