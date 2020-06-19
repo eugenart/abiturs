@@ -2586,6 +2586,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Section',
   data: function data() {
@@ -2601,7 +2604,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         sectionID: null,
         infoblockID: null,
         isFolder: false,
-        realLink: null
+        real_link: null
       },
       isSectionUpdate: false,
       currentSection: {},
@@ -88617,154 +88620,296 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-12" }, [
-        _c(
-          "form",
-          {
-            staticClass: "col-12 p-0",
-            attrs: { enctype: "multipart/form-data", id: "infoblockForm" },
-            on: {
-              submit: function($event) {
-                $event.preventDefault()
-                !_vm.isSectionUpdate ? _vm.addSection() : _vm.updateSection()
+  return _c(
+    "div",
+    [
+      _vm._l(_vm.sections, function(section) {
+        return _c("div", [
+          _c("span", [
+            _vm._v(_vm._s(section.name) + " " + _vm._s(section.real_link))
+          ])
+        ])
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-12" }, [
+          _c(
+            "form",
+            {
+              staticClass: "col-12 p-0",
+              attrs: { enctype: "multipart/form-data", id: "infoblockForm" },
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  !_vm.isSectionUpdate ? _vm.addSection() : _vm.updateSection()
+                }
               }
-            }
-          },
-          [
-            _c("div", { staticClass: "card" }, [
-              _vm._m(0),
-              _vm._v(" "),
-              _c("div", { staticClass: "card-body" }, [
-                _c("div", { staticClass: "row" }, [
-                  _c(
-                    "div",
-                    { staticClass: "col-12" },
-                    [
-                      _c(
-                        "b-tabs",
-                        { attrs: { "content-class": "mt-3" } },
-                        [
-                          _c(
-                            "b-tab",
-                            { attrs: { title: "Основные", active: "" } },
-                            [
-                              _c("div", { staticClass: "row" }, [
-                                _c("div", { staticClass: "form-group col-6" }, [
-                                  _c("label", { staticClass: "badge" }, [
-                                    _vm._v("Название подраздела")
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.section.name,
-                                        expression: "section.name"
-                                      }
-                                    ],
-                                    staticClass: "form-control form-control-sm",
-                                    attrs: { type: "text", required: "" },
-                                    domProps: { value: _vm.section.name },
-                                    on: {
-                                      keyup: _vm.transliterate,
-                                      input: function($event) {
-                                        if ($event.target.composing) {
-                                          return
+            },
+            [
+              _c("div", { staticClass: "card" }, [
+                _vm._m(0),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-body" }, [
+                  _c("div", { staticClass: "row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-12" },
+                      [
+                        _c(
+                          "b-tabs",
+                          { attrs: { "content-class": "mt-3" } },
+                          [
+                            _c(
+                              "b-tab",
+                              { attrs: { title: "Основные", active: "" } },
+                              [
+                                _c("div", { staticClass: "row" }, [
+                                  _c(
+                                    "div",
+                                    { staticClass: "form-group col-6" },
+                                    [
+                                      _c("label", { staticClass: "badge" }, [
+                                        _vm._v("Название подраздела")
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.section.name,
+                                            expression: "section.name"
+                                          }
+                                        ],
+                                        staticClass:
+                                          "form-control form-control-sm",
+                                        attrs: { type: "text", required: "" },
+                                        domProps: { value: _vm.section.name },
+                                        on: {
+                                          keyup: _vm.transliterate,
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.$set(
+                                              _vm.section,
+                                              "name",
+                                              $event.target.value
+                                            )
+                                          }
                                         }
-                                        _vm.$set(
-                                          _vm.section,
-                                          "name",
-                                          $event.target.value
-                                        )
-                                      }
-                                    }
-                                  })
-                                ]),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  {
-                                    directives: [
-                                      {
-                                        name: "show",
-                                        rawName: "v-show",
-                                        value: !_vm.isFolder,
-                                        expression: "!isFolder"
-                                      }
-                                    ],
-                                    staticClass: "form-group col-6"
-                                  },
-                                  [
-                                    _c("label", { staticClass: "badge" }, [
-                                      _vm._v("Ссылка на подраздел")
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("input", {
+                                      })
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
                                       directives: [
                                         {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value: _vm.section.url,
-                                          expression: "section.url"
+                                          name: "show",
+                                          rawName: "v-show",
+                                          value: !_vm.isFolder,
+                                          expression: "!isFolder"
                                         }
                                       ],
-                                      staticClass:
-                                        "form-control form-control-sm",
-                                      attrs: { type: "text", required: "" },
-                                      domProps: { value: _vm.section.url },
-                                      on: {
-                                        keyup: _vm.transliterate,
-                                        input: function($event) {
-                                          if ($event.target.composing) {
-                                            return
+                                      staticClass: "form-group col-6"
+                                    },
+                                    [
+                                      _c("label", { staticClass: "badge" }, [
+                                        _vm._v("Ссылка на подраздел")
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.section.url,
+                                            expression: "section.url"
                                           }
-                                          _vm.$set(
-                                            _vm.section,
-                                            "url",
-                                            $event.target.value
-                                          )
+                                        ],
+                                        staticClass:
+                                          "form-control form-control-sm",
+                                        attrs: { type: "text", required: "" },
+                                        domProps: { value: _vm.section.url },
+                                        on: {
+                                          keyup: _vm.transliterate,
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.$set(
+                                              _vm.section,
+                                              "url",
+                                              $event.target.value
+                                            )
+                                          }
                                         }
-                                      }
-                                    })
-                                  ]
-                                )
-                              ])
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "b-tab",
-                            { attrs: { title: "Отображение и приоритет" } },
-                            [
+                                      })
+                                    ]
+                                  )
+                                ])
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "b-tab",
+                              { attrs: { title: "Отображение и приоритет" } },
+                              [
+                                _c("div", { staticClass: "row" }, [
+                                  _c(
+                                    "div",
+                                    { staticClass: "form-group col-6" },
+                                    [
+                                      _c("div", { staticClass: "form-check" }, [
+                                        _c("input", {
+                                          directives: [
+                                            {
+                                              name: "model",
+                                              rawName: "v-model",
+                                              value: _vm.section.startPage,
+                                              expression: "section.startPage"
+                                            }
+                                          ],
+                                          attrs: { type: "checkbox" },
+                                          domProps: {
+                                            checked: Array.isArray(
+                                              _vm.section.startPage
+                                            )
+                                              ? _vm._i(
+                                                  _vm.section.startPage,
+                                                  null
+                                                ) > -1
+                                              : _vm.section.startPage
+                                          },
+                                          on: {
+                                            change: function($event) {
+                                              var $$a = _vm.section.startPage,
+                                                $$el = $event.target,
+                                                $$c = $$el.checked
+                                                  ? true
+                                                  : false
+                                              if (Array.isArray($$a)) {
+                                                var $$v = null,
+                                                  $$i = _vm._i($$a, $$v)
+                                                if ($$el.checked) {
+                                                  $$i < 0 &&
+                                                    _vm.$set(
+                                                      _vm.section,
+                                                      "startPage",
+                                                      $$a.concat([$$v])
+                                                    )
+                                                } else {
+                                                  $$i > -1 &&
+                                                    _vm.$set(
+                                                      _vm.section,
+                                                      "startPage",
+                                                      $$a
+                                                        .slice(0, $$i)
+                                                        .concat(
+                                                          $$a.slice($$i + 1)
+                                                        )
+                                                    )
+                                                }
+                                              } else {
+                                                _vm.$set(
+                                                  _vm.section,
+                                                  "startPage",
+                                                  $$c
+                                                )
+                                              }
+                                            }
+                                          }
+                                        }),
+                                        _vm._v(" "),
+                                        _c("label", [
+                                          _vm._v(
+                                            "Отображать на главной\n                                                            странице"
+                                          )
+                                        ])
+                                      ])
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "col-6" }, [
+                                    _c("div", { staticClass: "row" }, [
+                                      _c("div", { staticClass: "col-6" }, [
+                                        _c("label", { staticClass: "badge" }, [
+                                          _vm._v(
+                                            "Приоритет на главной странице"
+                                          )
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("input", {
+                                          directives: [
+                                            {
+                                              name: "model",
+                                              rawName: "v-model",
+                                              value:
+                                                _vm.section.startPagePriority,
+                                              expression:
+                                                "section.startPagePriority"
+                                            }
+                                          ],
+                                          staticClass:
+                                            "form-control form-control-sm",
+                                          attrs: {
+                                            required: "",
+                                            type: "number"
+                                          },
+                                          domProps: {
+                                            value: _vm.section.startPagePriority
+                                          },
+                                          on: {
+                                            input: function($event) {
+                                              if ($event.target.composing) {
+                                                return
+                                              }
+                                              _vm.$set(
+                                                _vm.section,
+                                                "startPagePriority",
+                                                $event.target.value
+                                              )
+                                            }
+                                          }
+                                        })
+                                      ])
+                                    ])
+                                  ])
+                                ])
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c("b-tab", { attrs: { title: "Активность" } }, [
                               _c("div", { staticClass: "row" }, [
-                                _c("div", { staticClass: "form-group col-6" }, [
+                                _c("div", { staticClass: "col-4" }, [
+                                  _c("label", { staticClass: "badge" }, [
+                                    _vm._v("Активность подраздела")
+                                  ]),
+                                  _vm._v(" "),
                                   _c("div", { staticClass: "form-check" }, [
                                     _c("input", {
                                       directives: [
                                         {
                                           name: "model",
                                           rawName: "v-model",
-                                          value: _vm.section.startPage,
-                                          expression: "section.startPage"
+                                          value: _vm.section.activity,
+                                          expression: "section.activity"
                                         }
                                       ],
                                       attrs: { type: "checkbox" },
                                       domProps: {
                                         checked: Array.isArray(
-                                          _vm.section.startPage
+                                          _vm.section.activity
                                         )
-                                          ? _vm._i(
-                                              _vm.section.startPage,
-                                              null
-                                            ) > -1
-                                          : _vm.section.startPage
+                                          ? _vm._i(_vm.section.activity, null) >
+                                            -1
+                                          : _vm.section.activity
                                       },
                                       on: {
                                         change: function($event) {
-                                          var $$a = _vm.section.startPage,
+                                          var $$a = _vm.section.activity,
                                             $$el = $event.target,
                                             $$c = $$el.checked ? true : false
                                           if (Array.isArray($$a)) {
@@ -88774,14 +88919,14 @@ var render = function() {
                                               $$i < 0 &&
                                                 _vm.$set(
                                                   _vm.section,
-                                                  "startPage",
+                                                  "activity",
                                                   $$a.concat([$$v])
                                                 )
                                             } else {
                                               $$i > -1 &&
                                                 _vm.$set(
                                                   _vm.section,
-                                                  "startPage",
+                                                  "activity",
                                                   $$a
                                                     .slice(0, $$i)
                                                     .concat($$a.slice($$i + 1))
@@ -88790,7 +88935,7 @@ var render = function() {
                                           } else {
                                             _vm.$set(
                                               _vm.section,
-                                              "startPage",
+                                              "activity",
                                               $$c
                                             )
                                           }
@@ -88798,448 +88943,345 @@ var render = function() {
                                       }
                                     }),
                                     _vm._v(" "),
-                                    _c("label", [
-                                      _vm._v(
-                                        "Отображать на главной\n                                                            странице"
-                                      )
-                                    ])
+                                    _c("label", [_vm._v("Активность")])
                                   ])
                                 ]),
                                 _vm._v(" "),
-                                _c("div", { staticClass: "col-6" }, [
-                                  _c("div", { staticClass: "row" }, [
-                                    _c("div", { staticClass: "col-6" }, [
-                                      _c("label", { staticClass: "badge" }, [
-                                        _vm._v("Приоритет на главной странице")
-                                      ]),
-                                      _vm._v(" "),
-                                      _c("input", {
-                                        directives: [
-                                          {
-                                            name: "model",
-                                            rawName: "v-model",
-                                            value:
-                                              _vm.section.startPagePriority,
-                                            expression:
-                                              "section.startPagePriority"
-                                          }
-                                        ],
-                                        staticClass:
-                                          "form-control form-control-sm",
-                                        attrs: { required: "", type: "number" },
-                                        domProps: {
-                                          value: _vm.section.startPagePriority
-                                        },
-                                        on: {
-                                          input: function($event) {
-                                            if ($event.target.composing) {
-                                              return
-                                            }
-                                            _vm.$set(
-                                              _vm.section,
-                                              "startPagePriority",
-                                              $event.target.value
-                                            )
-                                          }
+                                _c("div", { staticClass: "col-4" }, [
+                                  _c("div", { staticClass: "form-group" }, [
+                                    _c("label", { staticClass: "badge" }, [
+                                      _vm._v("Дата начала активности")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.section.activityFrom,
+                                          expression: "section.activityFrom"
                                         }
-                                      })
-                                    ])
+                                      ],
+                                      staticClass:
+                                        "form-control form-control-sm",
+                                      attrs: { type: "date" },
+                                      domProps: {
+                                        value: _vm.section.activityFrom
+                                      },
+                                      on: {
+                                        input: function($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.$set(
+                                            _vm.section,
+                                            "activityFrom",
+                                            $event.target.value
+                                          )
+                                        }
+                                      }
+                                    })
                                   ])
-                                ])
-                              ])
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c("b-tab", { attrs: { title: "Активность" } }, [
-                            _c("div", { staticClass: "row" }, [
-                              _c("div", { staticClass: "col-4" }, [
-                                _c("label", { staticClass: "badge" }, [
-                                  _vm._v("Активность подраздела")
                                 ]),
                                 _vm._v(" "),
-                                _c("div", { staticClass: "form-check" }, [
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.section.activity,
-                                        expression: "section.activity"
-                                      }
-                                    ],
-                                    attrs: { type: "checkbox" },
-                                    domProps: {
-                                      checked: Array.isArray(
-                                        _vm.section.activity
-                                      )
-                                        ? _vm._i(_vm.section.activity, null) >
-                                          -1
-                                        : _vm.section.activity
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        var $$a = _vm.section.activity,
-                                          $$el = $event.target,
-                                          $$c = $$el.checked ? true : false
-                                        if (Array.isArray($$a)) {
-                                          var $$v = null,
-                                            $$i = _vm._i($$a, $$v)
-                                          if ($$el.checked) {
-                                            $$i < 0 &&
-                                              _vm.$set(
-                                                _vm.section,
-                                                "activity",
-                                                $$a.concat([$$v])
-                                              )
-                                          } else {
-                                            $$i > -1 &&
-                                              _vm.$set(
-                                                _vm.section,
-                                                "activity",
-                                                $$a
-                                                  .slice(0, $$i)
-                                                  .concat($$a.slice($$i + 1))
-                                              )
+                                _c("div", { staticClass: "col-4" }, [
+                                  _c("div", { staticClass: "form-group" }, [
+                                    _c("label", { staticClass: "badge" }, [
+                                      _vm._v("Дата конца активности")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.section.activityTo,
+                                          expression: "section.activityTo"
+                                        }
+                                      ],
+                                      staticClass:
+                                        "form-control form-control-sm",
+                                      attrs: { type: "date" },
+                                      domProps: {
+                                        value: _vm.section.activityTo
+                                      },
+                                      on: {
+                                        input: function($event) {
+                                          if ($event.target.composing) {
+                                            return
                                           }
-                                        } else {
-                                          _vm.$set(_vm.section, "activity", $$c)
+                                          _vm.$set(
+                                            _vm.section,
+                                            "activityTo",
+                                            $event.target.value
+                                          )
                                         }
                                       }
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("label", [_vm._v("Активность")])
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "col-4" }, [
-                                _c("div", { staticClass: "form-group" }, [
-                                  _c("label", { staticClass: "badge" }, [
-                                    _vm._v("Дата начала активности")
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.section.activityFrom,
-                                        expression: "section.activityFrom"
-                                      }
-                                    ],
-                                    staticClass: "form-control form-control-sm",
-                                    attrs: { type: "date" },
-                                    domProps: {
-                                      value: _vm.section.activityFrom
-                                    },
-                                    on: {
-                                      input: function($event) {
-                                        if ($event.target.composing) {
-                                          return
-                                        }
-                                        _vm.$set(
-                                          _vm.section,
-                                          "activityFrom",
-                                          $event.target.value
-                                        )
-                                      }
-                                    }
-                                  })
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "col-4" }, [
-                                _c("div", { staticClass: "form-group" }, [
-                                  _c("label", { staticClass: "badge" }, [
-                                    _vm._v("Дата конца активности")
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.section.activityTo,
-                                        expression: "section.activityTo"
-                                      }
-                                    ],
-                                    staticClass: "form-control form-control-sm",
-                                    attrs: { type: "date" },
-                                    domProps: { value: _vm.section.activityTo },
-                                    on: {
-                                      input: function($event) {
-                                        if ($event.target.composing) {
-                                          return
-                                        }
-                                        _vm.$set(
-                                          _vm.section,
-                                          "activityTo",
-                                          $event.target.value
-                                        )
-                                      }
-                                    }
-                                  })
+                                    })
+                                  ])
                                 ])
                               ])
                             ])
-                          ])
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "card-footer" }, [
-                _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "col-6" }, [
-                    _c(
-                      "button",
-                      {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value: !_vm.isSectionUpdate,
-                            expression: "!isSectionUpdate"
-                          }
-                        ],
-                        staticClass: "btn col-12 btn-primary",
-                        attrs: {
-                          type: "submit",
-                          onclick: "$('#infoblockForm').hide()"
-                        }
-                      },
-                      [
-                        _vm._v(
-                          "\n                                        Создать\n                                    "
+                          ],
+                          1
                         )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value: _vm.isSectionUpdate,
-                            expression: "isSectionUpdate"
-                          }
-                        ],
-                        staticClass: "btn col-12 btn-success",
-                        attrs: {
-                          type: "submit",
-                          onclick: "$('#infoblockForm').hide()"
-                        }
-                      },
-                      [
-                        _vm._v(
-                          "\n                                        Сохранить изменения\n                                    "
-                        )
-                      ]
+                      ],
+                      1
                     )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-6" })
-                ])
-              ])
-            ])
-          ]
-        )
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "row mt-4" }, [
-      _c("div", { staticClass: "col-12" }, [
-        _c("div", { staticClass: "card" }, [
-          _vm._m(1),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _c("div", { staticClass: "col-12" }, [
-              _c(
-                "div",
-                { staticClass: "row" },
-                _vm._l(_vm.blocks, function(block) {
-                  return _c("div", { staticClass: "col-6" }, [
-                    _c("div", { staticClass: "card" }, [
-                      _c("div", { staticClass: "card-header" }, [
-                        _c("div", { staticClass: "row" }, [
-                          _c("div", { staticClass: "col-6" }, [
-                            _vm._v(
-                              "\n                                                    " +
-                                _vm._s(block.name) +
-                                "\n                                                "
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "col-6 float-right" }, [
-                            _c("p", { staticClass: "text-right m-0" }, [
-                              _c("i", {
-                                directives: [
-                                  {
-                                    name: "b-tooltip",
-                                    rawName: "v-b-tooltip.hover",
-                                    modifiers: { hover: true }
-                                  }
-                                ],
-                                staticClass: "fas fa-file-medical",
-                                staticStyle: {
-                                  "font-size": "20px",
-                                  cursor: "pointer"
-                                },
-                                attrs: { title: "Добавить элемент" },
-                                on: {
-                                  click: function($event) {
-                                    return _vm.changeParents(
-                                      block.name,
-                                      block.id,
-                                      null,
-                                      false
-                                    )
-                                  }
-                                }
-                              })
-                            ])
-                          ])
-                        ])
-                      ]),
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-footer" }, [
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "col-6" }, [
+                      _c(
+                        "button",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: !_vm.isSectionUpdate,
+                              expression: "!isSectionUpdate"
+                            }
+                          ],
+                          staticClass: "btn col-12 btn-primary",
+                          attrs: {
+                            type: "submit",
+                            onclick: "$('#infoblockForm').hide()"
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                        Создать\n                                    "
+                          )
+                        ]
+                      ),
                       _vm._v(" "),
                       _c(
-                        "div",
-                        { staticClass: "card-body" },
-                        _vm._l(_vm.sections, function(sec) {
-                          return sec.infoblockID === block.id
-                            ? _c("div", [
-                                !sec.isFolder
-                                  ? _c("div", [
-                                      _c("div", { staticClass: "row" }, [
-                                        _c("div", { staticClass: "col-9" }, [
-                                          _c("p", [
-                                            _c("i", {
-                                              staticClass: "far fa-file-alt"
-                                            }),
-                                            _vm._v(" "),
-                                            _c(
-                                              "a",
-                                              {
-                                                attrs: {
-                                                  href:
-                                                    "/admin/section-content/" +
-                                                    sec.id
-                                                }
-                                              },
-                                              [
-                                                _c("span", [
-                                                  _vm._v(_vm._s(sec.name))
-                                                ])
-                                              ]
-                                            )
-                                          ])
-                                        ]),
-                                        _vm._v(" "),
-                                        _c("div", { staticClass: "col-3" }, [
-                                          _c("p", [
-                                            _c(
-                                              "span",
-                                              { staticClass: "float-right" },
-                                              [
-                                                sec.activity
-                                                  ? _c("i", {
-                                                      staticClass: "far fa-eye",
-                                                      staticStyle: {
-                                                        cursor: "pointer"
-                                                      },
-                                                      on: {
-                                                        click: function(
-                                                          $event
-                                                        ) {
-                                                          return _vm.changeActivity(
-                                                            sec
-                                                          )
-                                                        }
-                                                      }
-                                                    })
-                                                  : _c("i", {
-                                                      staticClass:
-                                                        "far fa-eye-slash",
-                                                      staticStyle: {
-                                                        cursor: "pointer"
-                                                      },
-                                                      on: {
-                                                        click: function(
-                                                          $event
-                                                        ) {
-                                                          return _vm.changeActivity(
-                                                            sec
-                                                          )
-                                                        }
-                                                      }
-                                                    }),
-                                                _vm._v(
-                                                  "\n                                                         \n                                                        "
-                                                ),
-                                                _c("i", {
-                                                  staticClass: "fas fa-pen",
-                                                  staticStyle: {
-                                                    cursor: "pointer"
-                                                  },
-                                                  on: {
-                                                    click: function($event) {
-                                                      return _vm.changeSection(
-                                                        sec
-                                                      )
-                                                    }
+                        "button",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.isSectionUpdate,
+                              expression: "isSectionUpdate"
+                            }
+                          ],
+                          staticClass: "btn col-12 btn-success",
+                          attrs: {
+                            type: "submit",
+                            onclick: "$('#infoblockForm').hide()"
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                        Сохранить изменения\n                                    "
+                          )
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-6" })
+                  ])
+                ])
+              ])
+            ]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-4" }, [
+        _c("div", { staticClass: "col-12" }, [
+          _c("div", { staticClass: "card" }, [
+            _vm._m(1),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body" }, [
+              _c("div", { staticClass: "col-12" }, [
+                _c(
+                  "div",
+                  { staticClass: "row" },
+                  _vm._l(_vm.blocks, function(block) {
+                    return _c("div", { staticClass: "col-6" }, [
+                      _c("div", { staticClass: "card" }, [
+                        _c("div", { staticClass: "card-header" }, [
+                          _c("div", { staticClass: "row" }, [
+                            _c("div", { staticClass: "col-6" }, [
+                              _vm._v(
+                                "\n                                                    " +
+                                  _vm._s(block.name) +
+                                  "\n                                                "
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "col-6 float-right" }, [
+                              _c("p", { staticClass: "text-right m-0" }, [
+                                _c("i", {
+                                  directives: [
+                                    {
+                                      name: "b-tooltip",
+                                      rawName: "v-b-tooltip.hover",
+                                      modifiers: { hover: true }
+                                    }
+                                  ],
+                                  staticClass: "fas fa-file-medical",
+                                  staticStyle: {
+                                    "font-size": "20px",
+                                    cursor: "pointer"
+                                  },
+                                  attrs: { title: "Добавить элемент" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.changeParents(
+                                        block.name,
+                                        block.id,
+                                        null,
+                                        false
+                                      )
+                                    }
+                                  }
+                                })
+                              ])
+                            ])
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "card-body" },
+                          _vm._l(_vm.sections, function(sec) {
+                            return sec.infoblockID === block.id
+                              ? _c("div", [
+                                  !sec.isFolder
+                                    ? _c("div", [
+                                        _c("div", { staticClass: "row" }, [
+                                          _c("div", { staticClass: "col-9" }, [
+                                            _c("p", [
+                                              _c("i", {
+                                                staticClass: "far fa-file-alt"
+                                              }),
+                                              _vm._v(" "),
+                                              _c(
+                                                "a",
+                                                {
+                                                  attrs: {
+                                                    href:
+                                                      "/admin/section-content/" +
+                                                      sec.id
                                                   }
-                                                }),
-                                                _vm._v(
-                                                  "\n                                                          \n                                                        "
-                                                ),
-                                                _c("i", {
-                                                  staticClass:
-                                                    "fas fa-trash-alt",
-                                                  staticStyle: {
-                                                    cursor: "pointer",
-                                                    color: "red"
-                                                  },
-                                                  on: {
-                                                    click: function($event) {
-                                                      return _vm.removeSection(
-                                                        sec.id,
-                                                        sec.infoblockID,
-                                                        sec.sectionID
-                                                      )
+                                                },
+                                                [
+                                                  _c("span", [
+                                                    _vm._v(_vm._s(sec.name))
+                                                  ])
+                                                ]
+                                              )
+                                            ])
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("div", { staticClass: "col-3" }, [
+                                            _c("p", [
+                                              _c(
+                                                "span",
+                                                { staticClass: "float-right" },
+                                                [
+                                                  sec.activity
+                                                    ? _c("i", {
+                                                        staticClass:
+                                                          "far fa-eye",
+                                                        staticStyle: {
+                                                          cursor: "pointer"
+                                                        },
+                                                        on: {
+                                                          click: function(
+                                                            $event
+                                                          ) {
+                                                            return _vm.changeActivity(
+                                                              sec
+                                                            )
+                                                          }
+                                                        }
+                                                      })
+                                                    : _c("i", {
+                                                        staticClass:
+                                                          "far fa-eye-slash",
+                                                        staticStyle: {
+                                                          cursor: "pointer"
+                                                        },
+                                                        on: {
+                                                          click: function(
+                                                            $event
+                                                          ) {
+                                                            return _vm.changeActivity(
+                                                              sec
+                                                            )
+                                                          }
+                                                        }
+                                                      }),
+                                                  _vm._v(
+                                                    "\n                                                         \n                                                        "
+                                                  ),
+                                                  _c("i", {
+                                                    staticClass: "fas fa-pen",
+                                                    staticStyle: {
+                                                      cursor: "pointer"
+                                                    },
+                                                    on: {
+                                                      click: function($event) {
+                                                        return _vm.changeSection(
+                                                          sec
+                                                        )
+                                                      }
                                                     }
-                                                  }
-                                                })
-                                              ]
-                                            )
+                                                  }),
+                                                  _vm._v(
+                                                    "\n                                                          \n                                                        "
+                                                  ),
+                                                  _c("i", {
+                                                    staticClass:
+                                                      "fas fa-trash-alt",
+                                                    staticStyle: {
+                                                      cursor: "pointer",
+                                                      color: "red"
+                                                    },
+                                                    on: {
+                                                      click: function($event) {
+                                                        return _vm.removeSection(
+                                                          sec.id,
+                                                          sec.infoblockID,
+                                                          sec.sectionID
+                                                        )
+                                                      }
+                                                    }
+                                                  })
+                                                ]
+                                              )
+                                            ])
                                           ])
                                         ])
                                       ])
-                                    ])
-                                  : _vm._e(),
-                                _vm._v(" "),
-                                _c("hr")
-                              ])
-                            : _vm._e()
-                        }),
-                        0
-                      )
+                                    : _vm._e(),
+                                  _vm._v(" "),
+                                  _c("hr")
+                                ])
+                              : _vm._e()
+                          }),
+                          0
+                        )
+                      ])
                     ])
-                  ])
-                }),
-                0
-              )
+                  }),
+                  0
+                )
+              ])
             ])
           ])
         ])
       ])
-    ])
-  ])
+    ],
+    2
+  )
 }
 var staticRenderFns = [
   function() {
@@ -112972,7 +113014,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   activityTo: payload.activityTo,
                   activity: payload.activity,
                   isFolder: payload.isFolder,
-                  realLink: payload.realLink
+                  real_link: payload.real_link
                 });
 
               case 2:
@@ -113007,7 +113049,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         activityTo: payload.activityTo,
         activity: payload.activity,
         isFolder: payload.isFolder,
-        realLink: payload.realLink
+        real_link: payload.real_link
       });
       context.commit('EDIT_SECTION', payload);
     },
