@@ -77,7 +77,7 @@
                 <div class="card infoblock-card">
                     <a href="{{route('foreign.index')}}">
                         <div class="card-body mrsu-bg">
-                            <img src="{{asset('storage/images/6.jpg')}}" class="w-100" alt="">
+                            <img src="{{asset('storage/images/923.jpg')}}"  class="w-100" alt="">
                             <p class="text-center m-0 pt-2 mrsu-uppertext">Foreign students</p>
                         </div>
                     </a>
