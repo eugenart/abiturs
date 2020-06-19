@@ -61,9 +61,11 @@ body {
 .mrsu-logo-img-ovz {
     width: 0;
 }
-.link-block{
-    display:block;
+
+.link-block {
+    display: block;
 }
+
 #main_version {
     display: none !important;
 }
@@ -806,6 +808,15 @@ marquee {
 @media screen and (max-width: 990px) {
     .header {
         background-color: #2366a5;
+    }
+
+    /* #184d80 */
+    .navbar .container {
+        max-width: 100% !important;
+    }
+
+    .navbar-nav .nav-item .dropdown-menu {
+        background-color: #184d80 !important;
     }
 }
 
