@@ -71,8 +71,9 @@ class InfoblockController extends Controller
             $infoblock = Infoblock::findOrFail($id);
             $check = Infoblock::where('name', '=', $request->name)->where('id', '<>', $id)->first();
             if (!isset($check)) {
+
                 $infoblock->update([
-                    'name' => $request->name,
+                    'name' => $request->name, //
                     'url' => $request->url,
                     'menu' => in_array($request->menu, ['true', 1]) ? 1 : 0,
                     'menuPriority' => $request->menuPriority,
@@ -89,6 +90,10 @@ class InfoblockController extends Controller
                     'infoblock' => $infoblock
                 ], 200);
             }
+            return response()->json([
+                'message' => "Infoblock was updated",
+                'infoblock' => $infoblock
+            ], 200);
         }
 
         return response()->json(['message' => 'Oops'], 404);

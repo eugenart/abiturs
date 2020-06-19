@@ -18,7 +18,8 @@
                             @endforeach
                         </ol>
                         <div class="carousel-inner">
-                            @foreach($slider->sortByDesc('startPagePriority') as $slide)
+{{--                            @foreach($slider->sortByDesc('startPagePriority') as $slide)--}}
+                            @foreach($slider as $slide)
                                 @if ($loop->index == 0)
                                     <div class="carousel-item active">
                                         @if ($slide->url != null)
@@ -55,7 +56,8 @@
             </div>
         @endif
         <div class="row mb-30px">
-            @foreach($infoblocks->sortByDesc('startPagePriority') as $infoblock)
+{{--            @foreach($infoblocks->sortByDesc('startPagePriority') as $infoblock)--}}
+            @foreach($infoblocks as $infoblock)
                 @if((($date_now > $infoblock->activityFrom || $date_now == $infoblock->activityFrom) &&
                     ($date_now < $infoblock->activityTo || $date_now == $infoblock->activityTo))
                     ||(is_null($infoblock->activityFrom) && is_null($infoblock->activityTo)))
