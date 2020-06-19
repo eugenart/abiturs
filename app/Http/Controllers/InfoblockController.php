@@ -71,7 +71,7 @@ class InfoblockController extends Controller
             $infoblock = Infoblock::findOrFail($id);
             $check = Infoblock::where('name', '=', $request->name)->where('id', '<>', $id)->first();
             if (!isset($check)) {
-
+                $old_url = $infoblock->url;
                 $infoblock->update([
                     'name' => $request->name, //
                     'url' => $request->url,
@@ -85,6 +85,20 @@ class InfoblockController extends Controller
                     'image' => $fileName ? $fileName : null,
                     'news' => $request->news ? $request->news : array()
                 ]);
+
+                if($old_url != $infoblock->url){
+                    $sections = Section::where('infoblockID', '=', $id)->get();
+                    foreach ($sections as $section){
+                        $new_link = $infoblock->url . '-'. $section->url;
+                        $section->update([
+                            'real_link' => $new_link
+                        ]);
+                    }
+                }
+
+
+
+
                 return response()->json([
                     'message' => "Infoblock was updated",
                     'infoblock' => $infoblock
