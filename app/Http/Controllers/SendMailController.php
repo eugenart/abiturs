@@ -30,23 +30,27 @@ class SendMailController extends Controller
         $text .= "Номер телефона: " . $request->phone . "\r\n";
         $text .= "Текст вопроса: " . $request->question . ".\r\n";
 
+        if ($request->fio && $request->email && $request->phone && $request->question) {
 
-        $result = $mailSMTP->send('entrance-exam@adm.mrsu.ru', 'Вопрос от абитуриента', $text, $header); // отправляем письмо
+            $result = $mailSMTP->send('entrance-exam@adm.mrsu.ru', 'Вопрос от абитуриента', $text, $header); // отправляем письмо
 
-        if ($result) {
-            $answer[0] = "<i class=\"fa fa-check\"></i>
+            if ($result) {
+                $answer[0] = "<i class=\"fa fa-check\"></i>
                 <br>
                 <span>Вопрос успешно отправлен! <br> Мы свяжемся с Вами в ближайшее время.</span>
                 <br>
                 <a href=\"/\">Вернуться на главную</a>";
-        } else {
-            $answer[0] = "<i class=\"fa fa-times\"></i>
+            } else {
+                $answer[0] = "<i class=\"fa fa-times\"></i>
                 <br>
                 <span>Письмо не может быть отправлено. <br> Очередь писем переполненна. Пожалуйста, попробуйте еще раз позже.</span>
                 <br>
                 <a href=\"/\">Вернуться на главную</a>";
+            }
+            return json_encode($answer);
+        }else{
+            return;
         }
-        return json_encode($answer);
 
     }
 
