@@ -155,10 +155,10 @@
                     <a class="nav-link" href="{{route('contact.index')}}">Контакты <span
                             class="sr-only">(current)</span></a>
                 </li>
-                {{--                <li class="nav-item active d-flex align-items-center justify-content-center">--}}
-                {{--                    <a class="nav-link" target="_blank" href="http://abitportal.mrsu.ru">подача документов<span--}}
-                {{--                            class="sr-only">(current)</span></a>--}}
-                {{--                </li>--}}
+                <li class="nav-item active d-flex align-items-center justify-content-center">
+                    <a class="nav-link" target="_blank" href="https://p.mrsu.ru/Account/Register">подача документов<span
+                            class="sr-only">(current)</span></a>
+                </li>
             </ul>
         </div>
     </div>
