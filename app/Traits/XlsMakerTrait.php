@@ -19,6 +19,7 @@ use App\PlanMaster;
 use App\PlanSpo;
 use App\PreparationLevel;
 use App\Speciality;
+use App\Specialization;
 use App\Statistic;
 use App\StatisticAsp;
 use App\StatisticMaster;
@@ -35,13 +36,13 @@ use PHPExcel_Writer_Excel5;
 
 trait XlsMakerTrait
 {
-    public function createXls($studyForms, $stat = false, $file_name_stat = "", $directory="")
+    public function createXls($studyForms, $stat = false, $file_name_stat = "", $directory = "")
     {
         if (isset($studyForms)) {
 
 
-            require_once (__DIR__.'/../Http/Controllers/Classes/PHPExcel.php');
-            require_once(__DIR__.'/../Http/Controllers/Classes/PHPExcel/Writer/Excel5.php');
+            require_once(__DIR__ . '/../Http/Controllers/Classes/PHPExcel.php');
+            require_once(__DIR__ . '/../Http/Controllers/Classes/PHPExcel/Writer/Excel5.php');
 
             // Создаем объект класса PHPExcel
             $xls = new PHPExcel();
@@ -123,156 +124,165 @@ trait XlsMakerTrait
                                             foreach ($preparationLevel->faculties as $faculty) {
                                                 if (isset($faculty->specialities)) {
                                                     foreach ($faculty->specialities as $k0 => $speciality) {
+                                                        if (isset($speciality->specializations)) {
+                                                            foreach ($speciality->specializations as $specialization) {
+                                                                //значение
+                                                                $sheet->setCellValueByColumnAndRow(0, $c, "Факультет / институт:");
+                                                                $sheet->setCellValueByColumnAndRow(0, $c + 1, "Направление подготовки / специальность:");
+                                                                $sheet->setCellValueByColumnAndRow(0, $c + 2, "Уровень подготовки:");
+                                                                //объединение
+                                                                $sheet->mergeCellsByColumnAndRow(0, $c, 3, $c);
+                                                                $sheet->mergeCellsByColumnAndRow(0, $c + 1, 3, $c + 1);
+                                                                $sheet->mergeCellsByColumnAndRow(0, $c + 2, 3, $c + 2);
+                                                                //
+                                                                $sheet->setCellValueByColumnAndRow(4, $c, $faculty->name);
+                                                                if ($specialization->name == '') {
+                                                                    $spec_string = $speciality->name;
+                                                                } else {
+                                                                    $spec_string = $speciality->name . '(' . $specialization->name . ')';
+                                                                }
 
-                                                        //значение
-                                                        $sheet->setCellValueByColumnAndRow(0, $c, "Факультет / институт:");
-                                                        $sheet->setCellValueByColumnAndRow(0, $c + 1, "Направление подготовки / специальность:");
-                                                        $sheet->setCellValueByColumnAndRow(0, $c + 2, "Уровень подготовки:");
-                                                        //объединение
-                                                        $sheet->mergeCellsByColumnAndRow(0, $c, 3, $c);
-                                                        $sheet->mergeCellsByColumnAndRow(0, $c + 1, 3, $c + 1);
-                                                        $sheet->mergeCellsByColumnAndRow(0, $c + 2, 3, $c + 2);
-                                                        //
-                                                        $sheet->setCellValueByColumnAndRow(4, $c, $faculty->name);
-                                                        $sheet->setCellValueByColumnAndRow(4, $c + 1, $speciality->name);
-                                                        $sheet->setCellValueByColumnAndRow(4, $c + 2, $preparationLevel->name);
-                                                        //жирность
-                                                        $sheet->getStyleByColumnAndRow(4, $c)->getFont()->setBold(true);
-                                                        $sheet->getStyleByColumnAndRow(4, $c + 1)->getFont()->setBold(true);
-                                                        $sheet->getStyleByColumnAndRow(4, $c + 2)->getFont()->setBold(true);
+                                                                $sheet->setCellValueByColumnAndRow(4, $c + 1, $spec_string);
+                                                                $sheet->setCellValueByColumnAndRow(4, $c + 2, $preparationLevel->name);
+                                                                //жирность
+                                                                $sheet->getStyleByColumnAndRow(4, $c)->getFont()->setBold(true);
+                                                                $sheet->getStyleByColumnAndRow(4, $c + 1)->getFont()->setBold(true);
+                                                                $sheet->getStyleByColumnAndRow(4, $c + 2)->getFont()->setBold(true);
 
-                                                        $sheet->mergeCellsByColumnAndRow(4, $c, 6, $c);
-                                                        $sheet->mergeCellsByColumnAndRow(4, $c + 1, 6, $c + 1);
-                                                        $sheet->mergeCellsByColumnAndRow(4, $c + 2, 6, $c + 2);
+                                                                $sheet->mergeCellsByColumnAndRow(4, $c, 6, $c);
+                                                                $sheet->mergeCellsByColumnAndRow(4, $c + 1, 6, $c + 1);
+                                                                $sheet->mergeCellsByColumnAndRow(4, $c + 2, 6, $c + 2);
 
-                                                        $sheet->setCellValueByColumnAndRow(7, $c, "Основание для поступления:");
-                                                        $sheet->setCellValueByColumnAndRow(7, $c + 1, "Форма обучения:");
-                                                        $sheet->setCellValueByColumnAndRow(7, $c + 2, "Категория приема:");
+                                                                $sheet->setCellValueByColumnAndRow(7, $c, "Основание для поступления:");
+                                                                $sheet->setCellValueByColumnAndRow(7, $c + 1, "Форма обучения:");
+                                                                $sheet->setCellValueByColumnAndRow(7, $c + 2, "Категория приема:");
 
-                                                        $sheet->mergeCellsByColumnAndRow(7, $c, 8, $c);
-                                                        $sheet->mergeCellsByColumnAndRow(7, $c + 1, 8, $c + 1);
-                                                        $sheet->mergeCellsByColumnAndRow(7, $c + 2, 8, $c + 2);
+                                                                $sheet->mergeCellsByColumnAndRow(7, $c, 8, $c);
+                                                                $sheet->mergeCellsByColumnAndRow(7, $c + 1, 8, $c + 1);
+                                                                $sheet->mergeCellsByColumnAndRow(7, $c + 2, 8, $c + 2);
 
-                                                        $sheet->setCellValueByColumnAndRow(9, $c, $admissionBasis->name);
-                                                        $sheet->setCellValueByColumnAndRow(9, $c + 1, $studyForm->name);
-                                                        $sheet->setCellValueByColumnAndRow(9, $c + 2, $category->name);
+                                                                $sheet->setCellValueByColumnAndRow(9, $c, $admissionBasis->name);
+                                                                $sheet->setCellValueByColumnAndRow(9, $c + 1, $studyForm->name);
+                                                                $sheet->setCellValueByColumnAndRow(9, $c + 2, $category->name);
 
-                                                        $sheet->getStyleByColumnAndRow(9, $c)->getFont()->setBold(true);
-                                                        $sheet->getStyleByColumnAndRow(9, $c + 1)->getFont()->setBold(true);
-                                                        $sheet->getStyleByColumnAndRow(9, $c + 2)->getFont()->setBold(true);
+                                                                $sheet->getStyleByColumnAndRow(9, $c)->getFont()->setBold(true);
+                                                                $sheet->getStyleByColumnAndRow(9, $c + 1)->getFont()->setBold(true);
+                                                                $sheet->getStyleByColumnAndRow(9, $c + 2)->getFont()->setBold(true);
 
 
-                                                        $sheet->mergeCellsByColumnAndRow(9, $c, 12, $c);
-                                                        $sheet->mergeCellsByColumnAndRow(9, $c + 1, 12, $c + 1);
-                                                        $sheet->mergeCellsByColumnAndRow(9, $c + 2, 12, $c + 2);
+                                                                $sheet->mergeCellsByColumnAndRow(9, $c, 12, $c);
+                                                                $sheet->mergeCellsByColumnAndRow(9, $c + 1, 12, $c + 1);
+                                                                $sheet->mergeCellsByColumnAndRow(9, $c + 2, 12, $c + 2);
 
-                                                        $sheet->setCellValueByColumnAndRow(0, $c + 4, "Кол-во мест:");
-                                                        $sheet->setCellValueByColumnAndRow(4, $c + 4, $speciality->freeSeatsNumber);
+                                                                $sheet->setCellValueByColumnAndRow(0, $c + 4, "Кол-во мест:");
+                                                                $sheet->setCellValueByColumnAndRow(4, $c + 4, $specialization->freeSeatsNumber);
 
-                                                        $c = $c + 6;
+                                                                $c = $c + 6;
 
-                                                        if (isset($speciality->abiturs)) {
-                                                            //шапка таблицы
-                                                            $sheet->setCellValueByColumnAndRow(0, $c, "№ п/п");
-                                                            $sheet->mergeCellsByColumnAndRow(0, $c, 0, $c + 1);
-                                                            $sheet->setCellValueByColumnAndRow(1, $c, "Фамилия, имя, отчество");
-                                                            $sheet->mergeCellsByColumnAndRow(1, $c, 1, $c + 1);
-                                                            $sheet->setCellValueByColumnAndRow(2, $c, "Согласие на зачисление");
-                                                            $sheet->mergeCellsByColumnAndRow(2, $c, 2, $c + 1);
-                                                            $sheet->mergeCellsByColumnAndRow(2, $c, 3, $c); //убрать при возвращении сранного оригинала
+                                                                if (isset($specialization->abiturs)) {
+                                                                    //шапка таблицы
+                                                                    $sheet->setCellValueByColumnAndRow(0, $c, "№ п/п");
+                                                                    $sheet->mergeCellsByColumnAndRow(0, $c, 0, $c + 1);
+                                                                    $sheet->setCellValueByColumnAndRow(1, $c, "Фамилия, имя, отчество");
+                                                                    $sheet->mergeCellsByColumnAndRow(1, $c, 1, $c + 1);
+                                                                    $sheet->setCellValueByColumnAndRow(2, $c, "Согласие на зачисление");
+                                                                    $sheet->mergeCellsByColumnAndRow(2, $c, 2, $c + 1);
+                                                                    $sheet->mergeCellsByColumnAndRow(2, $c, 3, $c); //убрать при возвращении сранного оригинала
 //                                                            $sheet->setCellValueByColumnAndRow(3, $c, "Оригинал. Копия");
 //                                                            $sheet->mergeCellsByColumnAndRow(3, $c, 3, $c + 1);
-                                                            $sheet->setCellValueByColumnAndRow(4, $c, "Баллы по предметам");
+                                                                    $sheet->setCellValueByColumnAndRow(4, $c, "Баллы по предметам");
 
 //
-                                                            $kolvoSub = 0;
-                                                            foreach ($speciality->abiturs->first()->score as $i => $sc) {
-                                                                $sheet->setCellValueByColumnAndRow($i + 4, $c + 1, $sc->subject->name);
-                                                                $kolvoSub++;
-                                                            }
-                                                            $sheet->mergeCellsByColumnAndRow(4, $c, 3+$kolvoSub, $c);
-                                                            $sheet->setCellValueByColumnAndRow(4 + $kolvoSub, $c, "Сумма баллов за ЕГЭ/ВИ");
-                                                            $sheet->mergeCellsByColumnAndRow(4 + $kolvoSub, $c, 4 + $kolvoSub, $c + 1);
-                                                            $sheet->setCellValueByColumnAndRow(5 + $kolvoSub, $c, "Сумма баллов за Индивидуальные Достижения");
-                                                            $sheet->mergeCellsByColumnAndRow(5 + $kolvoSub, $c, 5 + $kolvoSub, $c + 1);
-                                                            $sheet->setCellValueByColumnAndRow(6 + $kolvoSub, $c, "Сумма конкурсных баллов");
-                                                            $sheet->mergeCellsByColumnAndRow(6 + $kolvoSub, $c, 6 + $kolvoSub, $c + 1);
-                                                            $sheet->setCellValueByColumnAndRow(7 + $kolvoSub, $c, "Нуждаемость в общежитии");
-                                                            $sheet->mergeCellsByColumnAndRow(7 + $kolvoSub, $c, 7 + $kolvoSub, $c + 1);
-                                                            $sheet->setCellValueByColumnAndRow(8 + $kolvoSub, $c, "Примечание 1");
-                                                            $sheet->mergeCellsByColumnAndRow(8 + $kolvoSub, $c, 8 + $kolvoSub, $c + 1);
-                                                            $sheet->setCellValueByColumnAndRow(9 + $kolvoSub, $c, "Примечание 2");
-                                                            $sheet->mergeCellsByColumnAndRow(9 + $kolvoSub, $c, 9 + $kolvoSub, $c + 1);
-
-
-                                                            $sheet->getStyleByColumnAndRow(0, $c, 9 + $kolvoSub, $c + 1)->applyFromArray($border);
-                                                            for ($i = 0; $i < 2; $i++) {
-                                                                $sheet->getRowDimension($c + $i)->setRowHeight(45);
-                                                                for ($j = 0; $j < 10 + $kolvoSub; $j++) {
-                                                                    $sheet->getStyleByColumnAndRow($j, $c + $i)->getAlignment()->setWrapText(true);
-                                                                    $sheet->getStyleByColumnAndRow($j, $c + $i)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-                                                                    $sheet->getStyleByColumnAndRow($j, $c + $i)->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
-                                                                }
-                                                            }
-                                                            $c = $c + 2;
-                                                            //основная часть таблицы
-                                                            foreach ($speciality->abiturs as $k => $abitur) {
-                                                                $sheet->setCellValueByColumnAndRow(0, $c, $k + 1);
-                                                                $sheet->setCellValueByColumnAndRow(1, $c, $abitur->student->fio);
-                                                                if ($abitur->accept) {
-                                                                    $sheet->setCellValueByColumnAndRow(2, $c, "✔");
-                                                                    $sheet->getStyleByColumnAndRow(2, $c)->applyFromArray($bg_green);
-                                                                    if ($abitur->acceptCount > 0) {
-                                                                        $sheet->getStyleByColumnAndRow(2, $c)->applyFromArray($bg_red);
+                                                                    $kolvoSub = 0;
+                                                                    foreach ($specialization->abiturs->first()->score as $i => $sc) {
+                                                                        $sheet->setCellValueByColumnAndRow($i + 4, $c + 1, $sc->subject->name);
+                                                                        $kolvoSub++;
                                                                     }
-                                                                }
-                                                                $sheet->mergeCellsByColumnAndRow(2, $c, 3, $c); //убрать при возвращении сранного оригинала
+                                                                    $sheet->mergeCellsByColumnAndRow(4, $c, 3 + $kolvoSub, $c);
+                                                                    $sheet->setCellValueByColumnAndRow(4 + $kolvoSub, $c, "Сумма баллов за ЕГЭ/ВИ");
+                                                                    $sheet->mergeCellsByColumnAndRow(4 + $kolvoSub, $c, 4 + $kolvoSub, $c + 1);
+                                                                    $sheet->setCellValueByColumnAndRow(5 + $kolvoSub, $c, "Сумма баллов за Индивидуальные Достижения");
+                                                                    $sheet->mergeCellsByColumnAndRow(5 + $kolvoSub, $c, 5 + $kolvoSub, $c + 1);
+                                                                    $sheet->setCellValueByColumnAndRow(6 + $kolvoSub, $c, "Сумма конкурсных баллов");
+                                                                    $sheet->mergeCellsByColumnAndRow(6 + $kolvoSub, $c, 6 + $kolvoSub, $c + 1);
+                                                                    $sheet->setCellValueByColumnAndRow(7 + $kolvoSub, $c, "Нуждаемость в общежитии");
+                                                                    $sheet->mergeCellsByColumnAndRow(7 + $kolvoSub, $c, 7 + $kolvoSub, $c + 1);
+                                                                    $sheet->setCellValueByColumnAndRow(8 + $kolvoSub, $c, "Примечание 1");
+                                                                    $sheet->mergeCellsByColumnAndRow(8 + $kolvoSub, $c, 8 + $kolvoSub, $c + 1);
+                                                                    $sheet->setCellValueByColumnAndRow(9 + $kolvoSub, $c, "Примечание 2");
+                                                                    $sheet->mergeCellsByColumnAndRow(9 + $kolvoSub, $c, 9 + $kolvoSub, $c + 1);
+
+
+                                                                    $sheet->getStyleByColumnAndRow(0, $c, 9 + $kolvoSub, $c + 1)->applyFromArray($border);
+                                                                    for ($i = 0; $i < 2; $i++) {
+                                                                        $sheet->getRowDimension($c + $i)->setRowHeight(45);
+                                                                        for ($j = 0; $j < 10 + $kolvoSub; $j++) {
+                                                                            $sheet->getStyleByColumnAndRow($j, $c + $i)->getAlignment()->setWrapText(true);
+                                                                            $sheet->getStyleByColumnAndRow($j, $c + $i)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+                                                                            $sheet->getStyleByColumnAndRow($j, $c + $i)->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
+                                                                        }
+                                                                    }
+                                                                    $c = $c + 2;
+                                                                    //основная часть таблицы
+                                                                    foreach ($specialization->abiturs as $k => $abitur) {
+                                                                        $sheet->setCellValueByColumnAndRow(0, $c, $k + 1);
+                                                                        $sheet->setCellValueByColumnAndRow(1, $c, $abitur->student->fio);
+                                                                        if ($abitur->accept) {
+                                                                            $sheet->setCellValueByColumnAndRow(2, $c, "✔");
+                                                                            $sheet->getStyleByColumnAndRow(2, $c)->applyFromArray($bg_green);
+                                                                            if ($abitur->acceptCount > 0) {
+                                                                                $sheet->getStyleByColumnAndRow(2, $c)->applyFromArray($bg_red);
+                                                                            }
+                                                                        }
+                                                                        $sheet->mergeCellsByColumnAndRow(2, $c, 3, $c); //убрать при возвращении сранного оригинала
 //                                                                if ($abitur->original) {
 //                                                                    $sheet->setCellValueByColumnAndRow(3, $c, "Оригинал");
 //                                                                } else {
 //                                                                    $sheet->setCellValueByColumnAndRow(3, $c, "Копия");
 //                                                                }
 
-                                                                $kolvoSub = 0;
-                                                                foreach ($abitur->score as $o => $ab_sc) {
-                                                                    if ($ab_sc->score != 0)
-                                                                        $sheet->setCellValueByColumnAndRow($o + 4, $c, $ab_sc->score);
-                                                                    $kolvoSub++;
-                                                                }
-                                                                if ($abitur->summ != 0) {
-                                                                    $sheet->setCellValueByColumnAndRow(4 + $kolvoSub, $c, $abitur->summ);
-                                                                }
-                                                                if ($abitur->indAchievement != 0) {
-                                                                    $sheet->setCellValueByColumnAndRow(5 + $kolvoSub, $c, $abitur->indAchievement);
-                                                                }
-                                                                if ($abitur->summContest != 0) {
-                                                                    $sheet->setCellValueByColumnAndRow(6 + $kolvoSub, $c, $abitur->summContest);
-                                                                }
-                                                                if ($abitur->needHostel) {
-                                                                    $sheet->setCellValueByColumnAndRow(7 + $kolvoSub, $c, "Да");
-                                                                } else {
-                                                                    $sheet->setCellValueByColumnAndRow(7 + $kolvoSub, $c, "Нет");
-                                                                }
-                                                                $sheet->setCellValueByColumnAndRow(8 + $kolvoSub, $c, $abitur->notice1);
-                                                                $sheet->setCellValueByColumnAndRow(9 + $kolvoSub, $c, $abitur->notice2);
+                                                                        $kolvoSub = 0;
+                                                                        foreach ($abitur->score as $o => $ab_sc) {
+                                                                            if ($ab_sc->score != 0)
+                                                                                $sheet->setCellValueByColumnAndRow($o + 4, $c, $ab_sc->score);
+                                                                            $kolvoSub++;
+                                                                        }
+                                                                        if ($abitur->summ != 0) {
+                                                                            $sheet->setCellValueByColumnAndRow(4 + $kolvoSub, $c, $abitur->summ);
+                                                                        }
+                                                                        if ($abitur->indAchievement != 0) {
+                                                                            $sheet->setCellValueByColumnAndRow(5 + $kolvoSub, $c, $abitur->indAchievement);
+                                                                        }
+                                                                        if ($abitur->summContest != 0) {
+                                                                            $sheet->setCellValueByColumnAndRow(6 + $kolvoSub, $c, $abitur->summContest);
+                                                                        }
+                                                                        if ($abitur->needHostel) {
+                                                                            $sheet->setCellValueByColumnAndRow(7 + $kolvoSub, $c, "Да");
+                                                                        } else {
+                                                                            $sheet->setCellValueByColumnAndRow(7 + $kolvoSub, $c, "Нет");
+                                                                        }
+                                                                        $sheet->setCellValueByColumnAndRow(8 + $kolvoSub, $c, $abitur->notice1);
+                                                                        $sheet->setCellValueByColumnAndRow(9 + $kolvoSub, $c, $abitur->notice2);
 
-                                                                $sheet->getStyleByColumnAndRow(0, $c, 9 + $kolvoSub, $c)->applyFromArray($border);
+                                                                        $sheet->getStyleByColumnAndRow(0, $c, 9 + $kolvoSub, $c)->applyFromArray($border);
 
-                                                                if($abitur->yellowline) {
-                                                                    $sheet->getStyleByColumnAndRow(0, $c, 9 + $kolvoSub, $c)->applyFromArray($border_yellow);
-                                                                }
+                                                                        if ($abitur->yellowline) {
+                                                                            $sheet->getStyleByColumnAndRow(0, $c, 9 + $kolvoSub, $c)->applyFromArray($border_yellow);
+                                                                        }
 
-                                                                for ($j = 0; $j < 8 + $kolvoSub; $j++) {
-                                                                    if ($j != 1) {
-                                                                        $sheet->getStyleByColumnAndRow($j, $c)->getAlignment()->setWrapText(true);
-                                                                        $sheet->getStyleByColumnAndRow($j, $c)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-                                                                        $sheet->getStyleByColumnAndRow($j, $c)->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_TOP);
+                                                                        for ($j = 0; $j < 8 + $kolvoSub; $j++) {
+                                                                            if ($j != 1) {
+                                                                                $sheet->getStyleByColumnAndRow($j, $c)->getAlignment()->setWrapText(true);
+                                                                                $sheet->getStyleByColumnAndRow($j, $c)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+                                                                                $sheet->getStyleByColumnAndRow($j, $c)->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_TOP);
+                                                                            }
+                                                                        }
+
+                                                                        $c++;
                                                                     }
+                                                                    $c = $c + 2;
                                                                 }
-
-                                                                $c++;
                                                             }
-                                                            $c = $c + 2;
                                                         }
                                                     }
                                                 }
@@ -283,104 +293,139 @@ trait XlsMakerTrait
                             }
                         }
                     }
+                }
+            }
 
+            $objWriter = new PHPExcel_Writer_Excel5($xls);
+            if ($file_name_stat == "") {
+                $file_name = mt_rand() / mt_getrandmax();
+                $file_name = base_convert($file_name, 10, 36);
+                $file_name2 = mt_rand() / mt_getrandmax();
+                $file_name .= base_convert($file_name2, 10, 36);
+                $file_name3 = mt_rand() / mt_getrandmax();
+                $file_name .= base_convert($file_name3, 10, 36);
+            } else {
+                $file_name = $file_name_stat;
+            }
 
-                    $objWriter = new PHPExcel_Writer_Excel5($xls);
-                    if($file_name_stat=="") {
-                        $file_name = mt_rand() / mt_getrandmax();
-                        $file_name = base_convert($file_name, 10, 36);
-                        $file_name2 = mt_rand() / mt_getrandmax();
-                        $file_name .= base_convert($file_name2, 10, 36);
-                        $file_name3 = mt_rand() / mt_getrandmax();
-                        $file_name .= base_convert($file_name3, 10, 36);
-                    }
-                    else{
-                        $file_name=$file_name_stat;
-                    }
-
-                    try {
+            try {
 //                        if($stat === true){
 //                            $objWriter->save('E:\Open Server 5.3.5\OSPanel\domains\abiturs\storage\app\public\files-xls-stat\\' . $file_name . '.xls');
 //                        }else{
 //                            $objWriter->save('E:\Open Server 5.3.5\OSPanel\domains\abiturs\storage\app\public\files-xls\\' . $file_name . '.xls');
 //                        }
-                        if($stat === true && $directory!=""){
-                            $objWriter->save(storage_path('app/public/files-xls-stat/').$directory .'/' . $file_name . '.xls');
-                        }else{
-                            $objWriter->save(storage_path('app/public/files-xls/') . $file_name . '.xls');
-                        }
-                    } catch (ErrorException $e) {
-                        echo $e;
-                    }
-                    return $file_name;
+                if ($stat === true && $directory != "") {
+                    $objWriter->save(storage_path('app/public/files-xls-stat/') . $directory . '/' . $file_name . '.xls');
+                } else {
+                    $objWriter->save(storage_path('app/public/files-xls/') . $file_name . '.xls');
                 }
+            } catch (ErrorException $e) {
+                echo $e;
             }
+            return $file_name;
         }
     }
 
-    public function queryXlsBach($q_category, $q_adm, $q_studyForm, $file_name_stat = ""){
+
+    public function queryXlsBach($q_category, $q_adm, $q_studyForm, $file_name_stat = "")
+    {
         ini_set('memory_limit', '1024M');
         set_time_limit(1200);
 
         //если запросили по факультетам или спец
 //        if (!empty($search_faculties)) {
-            $info_faculties = Statistic::select('id_studyForm', 'id_category', 'id_admissionBasis', 'id_preparationLevel', 'id_speciality')
-                ->distinct()
-                ->get();
+        $info_faculties = Statistic::select('id_studyForm', 'id_category', 'id_admissionBasis', 'id_preparationLevel', 'id_speciality')
+            ->distinct()
+            ->get();
 
-            $id_forms_arr = array();
-            $id_cat_arr = array();
-            $id_adm_arr = array();
-            $id_prep_arr = array();
-            $id_spec_arr = array();
-            foreach ($info_faculties as $stat) {
-                $id_forms_arr[] = $stat->id_studyForm;
-                $id_cat_arr[] = $stat->id_category;
-                $id_adm_arr[] = $stat->id_admissionBasis;
-                $id_prep_arr[] = $stat->id_preparationLevel;
-                $id_spec_arr[] = $stat->id_speciality;
-            }
-            $id_forms_arr = array_unique($id_forms_arr, SORT_REGULAR);
-            $id_cat_arr = array_unique($id_cat_arr, SORT_REGULAR);
-            $id_adm_arr = array_unique($id_adm_arr, SORT_REGULAR);
-            $id_prep_arr = array_unique($id_prep_arr, SORT_REGULAR);
+        $id_forms_arr = array();
+        $id_cat_arr = array();
+        $id_adm_arr = array();
+        $id_prep_arr = array();
+        $id_spec_arr = array();
+        foreach ($info_faculties as $stat) {
+            $id_forms_arr[] = $stat->id_studyForm;
+            $id_cat_arr[] = $stat->id_category;
+            $id_adm_arr[] = $stat->id_admissionBasis;
+            $id_prep_arr[] = $stat->id_preparationLevel;
+            $id_spec_arr[] = $stat->id_speciality;
+        }
+        $id_forms_arr = array_unique($id_forms_arr, SORT_REGULAR);
+        $id_cat_arr = array_unique($id_cat_arr, SORT_REGULAR);
+        $id_adm_arr = array_unique($id_adm_arr, SORT_REGULAR);
+        $id_prep_arr = array_unique($id_prep_arr, SORT_REGULAR);
 
 //            if (!empty($search_specialities_arr)) {
 //                $id_spec_arr = array_intersect($id_spec_arr, $search_specialities_arr);
 //            }
-            $id_spec_arr = array_unique($id_spec_arr, SORT_REGULAR);
-            //var_dump($id_spec_arr);
+        $id_spec_arr = array_unique($id_spec_arr, SORT_REGULAR);
+        //var_dump($id_spec_arr);
 
-            if (!empty($q_studyForm)) {
-                $studyForms = StudyForm::where('id', '=', $q_studyForm)
-                    ->whereIn('id', $id_forms_arr)
-                    ->get();
+        if (!empty($q_studyForm)) {
+            $studyForms = StudyForm::where('id', '=', $q_studyForm)
+                ->whereIn('id', $id_forms_arr)
+                ->get();
 
-            } else {
-                $studyForms = StudyForm::whereIn('id', $id_forms_arr)->get();
-            }
+        } else {
+            $studyForms = StudyForm::whereIn('id', $id_forms_arr)->get();
+        }
 
-            foreach ($studyForms as $k5 => $studyForm) {
+        foreach ($studyForms as $k5 => $studyForm) {
 //                $categories = Category::whereIn('id', $id_cat_arr)->get();
-                $categories = Category::whereIn('id', $q_category)->get();
+            $categories = Category::whereIn('id', $q_category)->get();
 
-                foreach ($categories as $k4 => $category) {
+            foreach ($categories as $k4 => $category) {
 //                    $admissionBases = AdmissionBasis::whereIn('id', $id_adm_arr)->get();
-                    $admissionBases = AdmissionBasis::whereIn('id', $q_adm)->get();
-                    foreach ($admissionBases as $k3 => $admissionBasis) {
-                        $preparationLevels = PreparationLevel::whereIn('id', $id_prep_arr)->get();
+                $admissionBases = AdmissionBasis::whereIn('id', $q_adm)->get();
+                foreach ($admissionBases as $k3 => $admissionBasis) {
+                    $preparationLevels = PreparationLevel::whereIn('id', $id_prep_arr)->get();
 
-                        foreach ($preparationLevels as $k2 => $preparationLevel) {
-                            //находим нужные нам факультеты их имена
-                            $faculties = Faculty::all();
+                    foreach ($preparationLevels as $k2 => $preparationLevel) {
+                        //находим нужные нам факультеты их имена
+                        $faculties = Faculty::all();
 
-                            foreach ($faculties as $k1 => $faculty) {
+                        foreach ($faculties as $k1 => $faculty) {
 
-                                //для выбора названий специальностей
-                                $specialities = Speciality::whereIn('id', $id_spec_arr)->get();
-                                foreach ($specialities as $k0 => $speciality) {
+                            //для выбора названий специальностей
+                            $specialities = Speciality::whereIn('id', $id_spec_arr)->get();
+                            foreach ($specialities as $k0 => $speciality) {
+
+                                $specializations = Specialization::where('id_speciality', '=', $speciality->id)->get();
+
+                                if ($specializations->count() == 0) {
+                                    $specializations = collect(new Specialization);
+                                    //добавить в коллеекцию элемент
+
+                                    $element = Specialization::where('id', '=', 1)->first();
+                                    $element->id = 0;
+                                    $element->specializationId = '0';
+                                    $element->id_speciality = '0';
+                                    $element->name = '';
+
+                                    $specializations->push($element);
+//                                        return $specializations;
+                                } else {
+
+                                    $element = Specialization::where('id', '=', 1)->first();
+                                    $element->id = 0;
+                                    $element->specializationId = '0';
+                                    $element->id_speciality = '0';
+                                    $element->name = '';
+
+                                    $specializations->push($element);
+//                                        return $specializations;
+                                }
+
+                                foreach ($specializations as $kend => $specialization) {
+                                    if ($specialization->id == 0) {
+                                        $spez_id = null;
+                                    } else {
+                                        $spez_id = $specialization->id;
+                                    }
+
                                     $temp = Statistic::where('id_studyForm', '=', $studyForm->id)
                                         ->where('id_speciality', '=', $speciality->id)
+                                        ->where('id_specialization', '=', $spez_id)
                                         ->where('id_preparationLevel', '=', $preparationLevel->id)
                                         ->where('id_admissionBasis', '=', $admissionBasis->id)
                                         ->where('id_category', '=', $category->id)
@@ -389,6 +434,7 @@ trait XlsMakerTrait
 
                                     $idPlan = Plan::where('id_speciality', '=', $speciality->id)
                                         ->where('id_studyForm', '=', $studyForm->id)
+                                        ->where('id_specialization', '=', $spez_id)
                                         ->first();
                                     if (!empty($idPlan)) {
                                         $id_plan_comps = PlanCompetition::where('id_plan', '=', intval($idPlan->id))->first();
@@ -399,7 +445,7 @@ trait XlsMakerTrait
                                     }
 
                                     if ($temp->count()) {
-                                        $speciality->abiturs = $temp; //добавляем запись
+                                        $specialization->abiturs = $temp; //добавляем запись
 
                                         $originalsCount = 0;
                                         foreach ($temp as $student) {
@@ -408,53 +454,59 @@ trait XlsMakerTrait
                                             }
                                         }
                                         if (!empty($freeSeatsNumber)) {
-                                            $speciality->freeSeatsNumber = $freeSeatsNumber->value;
+                                            $specialization->freeSeatsNumber = $freeSeatsNumber->value;
                                             if ($freeSeatsNumber->value != 0) {
-                                                $speciality->originalsCount = round(floatval($originalsCount) / $freeSeatsNumber->value, 2);
+                                                $specialization->originalsCount = round(floatval($originalsCount) / $freeSeatsNumber->value, 2);
                                             }
                                         } else {
-                                            $speciality->originalsCount = null;
-                                            $speciality->freeSeatsNumber = null;
+                                            $specialization->originalsCount = null;
+                                            $specialization->freeSeatsNumber = null;
                                         }
                                     } else {
-                                        $speciality->abiturs = null;
+                                        $specialization->abiturs = null;
                                     }
-                                    if (empty($speciality->abiturs)) {
-                                        unset($specialities[$k0]);
+                                    if (empty($specialization->abiturs)) {
+                                        unset($specializations[$kend]);
                                     }
                                 }
-                                $specialities->count() ? $faculty->specialities = $specialities : null; //В любом случае не пустые
-                                if (empty($faculty->specialities)) {
-                                    unset($faculties[$k1]);
+                                $specializations->count() ? $speciality->specializations = $specializations : null; //В любом случае не пустые
+                                if (empty($speciality->specializations)) {
+                                    unset($specialities[$k0]);
                                 }
                             }
-                            $faculties->count() ? $preparationLevel->faculties = $faculties : null;
-                            if (empty($preparationLevel->faculties)) {
-                                unset($preparationLevels[$k2]);
+                            $specialities->count() ? $faculty->specialities = $specialities : null; //В любом случае не пустые
+                            if (empty($faculty->specialities)) {
+                                unset($faculties[$k1]);
                             }
                         }
-                        $preparationLevels->count() ? $admissionBasis->preparationLevels = $preparationLevels : null;
-                        if (empty($admissionBasis->preparationLevels)) {
-                            unset($admissionBases[$k3]);
+                        $faculties->count() ? $preparationLevel->faculties = $faculties : null;
+                        if (empty($preparationLevel->faculties)) {
+                            unset($preparationLevels[$k2]);
                         }
                     }
-                    $admissionBases->count() ? $category->admissionBases = $admissionBases : null;
-                    if (empty($category->admissionBases)) {
-                        unset($categories[$k4]);
+                    $preparationLevels->count() ? $admissionBasis->preparationLevels = $preparationLevels : null;
+                    if (empty($admissionBasis->preparationLevels)) {
+                        unset($admissionBases[$k3]);
                     }
                 }
-                $categories->count() ? $studyForm->stat = $categories : null;
-                if (empty($studyForm->stat)) {
-                    unset($studyForms[$k5]);
+                $admissionBases->count() ? $category->admissionBases = $admissionBases : null;
+                if (empty($category->admissionBases)) {
+                    unset($categories[$k4]);
                 }
             }
+            $categories->count() ? $studyForm->stat = $categories : null;
+            if (empty($studyForm->stat)) {
+                unset($studyForms[$k5]);
+            }
+        }
 //        }
 //        return $studyForms;
 //        echo "query ".$q_category. " ". $q_adm. " ". $q_studyForm;
         $this->createXls($studyForms, true, $file_name_stat, "bach");
     }
 
-    public function queryXlsMaster($q_category, $q_adm, $q_studyForm, $file_name_stat = ""){
+    public function queryXlsMaster($q_category, $q_adm, $q_studyForm, $file_name_stat = "")
+    {
         ini_set('memory_limit', '1024M');
         set_time_limit(1200);
 
@@ -515,47 +567,87 @@ trait XlsMakerTrait
                             //для выбора названий специальностей
                             $specialities = Speciality::whereIn('id', $id_spec_arr)->get();
                             foreach ($specialities as $k0 => $speciality) {
-                                $temp = StatisticMaster::where('id_studyForm', '=', $studyForm->id)
-                                    ->where('id_speciality', '=', $speciality->id)
-                                    ->where('id_preparationLevel', '=', $preparationLevel->id)
-                                    ->where('id_admissionBasis', '=', $admissionBasis->id)
-                                    ->where('id_category', '=', $category->id)
-                                    ->where('id_faculty', '=', $faculty->id)
-                                    ->get();
+                                $specializations = Specialization::where('id_speciality', '=', $speciality->id)->get();
 
-                                $idPlan = PlanMaster::where('id_speciality', '=', $speciality->id)
-                                    ->where('id_studyForm', '=', $studyForm->id)
-                                    ->first();
-                                if (!empty($idPlan)) {
-                                    $id_plan_comps = PlanCompetitionMaster::where('id_plan', '=', intval($idPlan->id))->first();
-                                    if (!empty($id_plan_comps)) {
-                                        $freeSeatsNumber = Freeseats_basesMaster::where('id_plan_comp', '=', intval($id_plan_comps->id))->
-                                        where('id_admissionBasis', '=', intval($admissionBasis->id))->first();
-                                    }
+                                if ($specializations->count() == 0) {
+                                    $specializations = collect(new Specialization);
+                                    //добавить в коллеекцию элемент
+
+                                    $element = Specialization::where('id', '=', 1)->first();
+                                    $element->id = 0;
+                                    $element->specializationId = '0';
+                                    $element->id_speciality = '0';
+                                    $element->name = '';
+
+                                    $specializations->push($element);
+//                                        return $specializations;
+                                } else {
+
+                                    $element = Specialization::where('id', '=', 1)->first();
+                                    $element->id = 0;
+                                    $element->specializationId = '0';
+                                    $element->id_speciality = '0';
+                                    $element->name = '';
+
+                                    $specializations->push($element);
+//                                        return $specializations;
                                 }
 
-                                if ($temp->count()) {
-                                    $speciality->abiturs = $temp; //добавляем запись
+                                foreach ($specializations as $kend => $specialization) {
+                                    if ($specialization->id == 0) {
+                                        $spez_id = null;
+                                    } else {
+                                        $spez_id = $specialization->id;
+                                    }
 
-                                    $originalsCount = 0;
-                                    foreach ($temp as $student) {
-                                        if ($student->original == true) {
-                                            $originalsCount += 1;
+                                    $temp = StatisticMaster::where('id_studyForm', '=', $studyForm->id)
+                                        ->where('id_speciality', '=', $speciality->id)
+                                        ->where('id_specialization', '=', $spez_id)
+                                        ->where('id_preparationLevel', '=', $preparationLevel->id)
+                                        ->where('id_admissionBasis', '=', $admissionBasis->id)
+                                        ->where('id_category', '=', $category->id)
+                                        ->where('id_faculty', '=', $faculty->id)
+                                        ->get();
+
+                                    $idPlan = PlanMaster::where('id_speciality', '=', $speciality->id)
+                                        ->where('id_studyForm', '=', $studyForm->id)
+                                        ->where('id_specialization', '=', $spez_id)
+                                        ->first();
+                                    if (!empty($idPlan)) {
+                                        $id_plan_comps = PlanCompetitionMaster::where('id_plan', '=', intval($idPlan->id))->first();
+                                        if (!empty($id_plan_comps)) {
+                                            $freeSeatsNumber = Freeseats_basesMaster::where('id_plan_comp', '=', intval($id_plan_comps->id))->
+                                            where('id_admissionBasis', '=', intval($admissionBasis->id))->first();
                                         }
                                     }
-                                    if (!empty($freeSeatsNumber)) {
-                                        $speciality->freeSeatsNumber = $freeSeatsNumber->value;
-                                        if ($freeSeatsNumber->value != 0) {
-                                            $speciality->originalsCount = round(floatval($originalsCount) / $freeSeatsNumber->value, 2);
+
+                                    if ($temp->count()) {
+                                        $specialization->abiturs = $temp; //добавляем запись
+
+                                        $originalsCount = 0;
+                                        foreach ($temp as $student) {
+                                            if ($student->original == true) {
+                                                $originalsCount += 1;
+                                            }
+                                        }
+                                        if (!empty($freeSeatsNumber)) {
+                                            $specialization->freeSeatsNumber = $freeSeatsNumber->value;
+                                            if ($freeSeatsNumber->value != 0) {
+                                                $specialization->originalsCount = round(floatval($originalsCount) / $freeSeatsNumber->value, 2);
+                                            }
+                                        } else {
+                                            $specialization->originalsCount = null;
+                                            $specialization->freeSeatsNumber = null;
                                         }
                                     } else {
-                                        $speciality->originalsCount = null;
-                                        $speciality->freeSeatsNumber = null;
+                                        $specialization->abiturs = null;
                                     }
-                                } else {
-                                    $speciality->abiturs = null;
+                                    if (empty($specialization->abiturs)) {
+                                        unset($specializations[$kend]);
+                                    }
                                 }
-                                if (empty($speciality->abiturs)) {
+                                $specializations->count() ? $speciality->specializations = $specializations : null; //В любом случае не пустые
+                                if (empty($speciality->specializations)) {
                                     unset($specialities[$k0]);
                                 }
                             }
@@ -590,7 +682,8 @@ trait XlsMakerTrait
     }
 
     //запрос к аспирантам
-    public function queryXlsAsp($q_category, $q_adm, $q_studyForm, $q_prepLevel, $file_name_stat = ""){
+    public function queryXlsAsp($q_category, $q_adm, $q_studyForm, $q_prepLevel, $file_name_stat = "")
+    {
         ini_set('memory_limit', '1024M');
         set_time_limit(1200);
 
@@ -651,47 +744,87 @@ trait XlsMakerTrait
                             //для выбора названий специальностей
                             $specialities = Speciality::whereIn('id', $id_spec_arr)->get();
                             foreach ($specialities as $k0 => $speciality) {
-                                $temp = StatisticAsp::where('id_studyForm', '=', $studyForm->id)
-                                    ->where('id_speciality', '=', $speciality->id)
-                                    ->where('id_preparationLevel', '=', $preparationLevel->id)
-                                    ->where('id_admissionBasis', '=', $admissionBasis->id)
-                                    ->where('id_category', '=', $category->id)
-                                    ->where('id_faculty', '=', $faculty->id)
-                                    ->get();
+                                $specializations = Specialization::where('id_speciality', '=', $speciality->id)->get();
 
-                                $idPlan = PlanAsp::where('id_speciality', '=', $speciality->id)
-                                    ->where('id_studyForm', '=', $studyForm->id)
-                                    ->first();
-                                if (!empty($idPlan)) {
-                                    $id_plan_comps = PlanCompetitionAsp::where('id_plan', '=', intval($idPlan->id))->first();
-                                    if (!empty($id_plan_comps)) {
-                                        $freeSeatsNumber = Freeseats_basesAsp::where('id_plan_comp', '=', intval($id_plan_comps->id))->
-                                        where('id_admissionBasis', '=', intval($admissionBasis->id))->first();
-                                    }
+                                if ($specializations->count() == 0) {
+                                    $specializations = collect(new Specialization);
+                                    //добавить в коллеекцию элемент
+
+                                    $element = Specialization::where('id', '=', 1)->first();
+                                    $element->id = 0;
+                                    $element->specializationId = '0';
+                                    $element->id_speciality = '0';
+                                    $element->name = '';
+
+                                    $specializations->push($element);
+//                                        return $specializations;
+                                } else {
+
+                                    $element = Specialization::where('id', '=', 1)->first();
+                                    $element->id = 0;
+                                    $element->specializationId = '0';
+                                    $element->id_speciality = '0';
+                                    $element->name = '';
+
+                                    $specializations->push($element);
+//                                        return $specializations;
                                 }
 
-                                if ($temp->count()) {
-                                    $speciality->abiturs = $temp; //добавляем запись
+                                foreach ($specializations as $kend => $specialization) {
+                                    if ($specialization->id == 0) {
+                                        $spez_id = null;
+                                    } else {
+                                        $spez_id = $specialization->id;
+                                    }
 
-                                    $originalsCount = 0;
-                                    foreach ($temp as $student) {
-                                        if ($student->original == true) {
-                                            $originalsCount += 1;
+                                    $temp = StatisticAsp::where('id_studyForm', '=', $studyForm->id)
+                                        ->where('id_speciality', '=', $speciality->id)
+                                        ->where('id_specialization', '=', $spez_id)
+                                        ->where('id_preparationLevel', '=', $preparationLevel->id)
+                                        ->where('id_admissionBasis', '=', $admissionBasis->id)
+                                        ->where('id_category', '=', $category->id)
+                                        ->where('id_faculty', '=', $faculty->id)
+                                        ->get();
+
+                                    $idPlan = PlanAsp::where('id_speciality', '=', $speciality->id)
+                                        ->where('id_studyForm', '=', $studyForm->id)
+                                        ->where('id_specialization', '=', $spez_id)
+                                        ->first();
+                                    if (!empty($idPlan)) {
+                                        $id_plan_comps = PlanCompetitionAsp::where('id_plan', '=', intval($idPlan->id))->first();
+                                        if (!empty($id_plan_comps)) {
+                                            $freeSeatsNumber = Freeseats_basesAsp::where('id_plan_comp', '=', intval($id_plan_comps->id))->
+                                            where('id_admissionBasis', '=', intval($admissionBasis->id))->first();
                                         }
                                     }
-                                    if (!empty($freeSeatsNumber)) {
-                                        $speciality->freeSeatsNumber = $freeSeatsNumber->value;
-                                        if ($freeSeatsNumber->value != 0) {
-                                            $speciality->originalsCount = round(floatval($originalsCount) / $freeSeatsNumber->value, 2);
+
+                                    if ($temp->count()) {
+                                        $specialization->abiturs = $temp; //добавляем запись
+
+                                        $originalsCount = 0;
+                                        foreach ($temp as $student) {
+                                            if ($student->original == true) {
+                                                $originalsCount += 1;
+                                            }
+                                        }
+                                        if (!empty($freeSeatsNumber)) {
+                                            $specialization->freeSeatsNumber = $freeSeatsNumber->value;
+                                            if ($freeSeatsNumber->value != 0) {
+                                                $specialization->originalsCount = round(floatval($originalsCount) / $freeSeatsNumber->value, 2);
+                                            }
+                                        } else {
+                                            $specialization->originalsCount = null;
+                                            $specialization->freeSeatsNumber = null;
                                         }
                                     } else {
-                                        $speciality->originalsCount = null;
-                                        $speciality->freeSeatsNumber = null;
+                                        $specialization->abiturs = null;
                                     }
-                                } else {
-                                    $speciality->abiturs = null;
+                                    if (empty($specialization->abiturs)) {
+                                        unset($specializations[$kend]);
+                                    }
                                 }
-                                if (empty($speciality->abiturs)) {
+                                $specializations->count() ? $speciality->specializations = $specializations : null; //В любом случае не пустые
+                                if (empty($speciality->specializations)) {
                                     unset($specialities[$k0]);
                                 }
                             }
@@ -724,8 +857,10 @@ trait XlsMakerTrait
 //        return $studyForms;
         $this->createXls($studyForms, true, $file_name_stat, "asp");
     }
+
     //запрос к СПО
-    public function queryXlsSpo($q_category, $q_adm, $q_studyForm, $file_name_stat = ""){
+    public function queryXlsSpo($q_category, $q_adm, $q_studyForm, $file_name_stat = "")
+    {
         ini_set('memory_limit', '1024M');
         set_time_limit(1200);
 
@@ -786,47 +921,87 @@ trait XlsMakerTrait
                             //для выбора названий специальностей
                             $specialities = Speciality::whereIn('id', $id_spec_arr)->get();
                             foreach ($specialities as $k0 => $speciality) {
-                                $temp = StatisticSpo::where('id_studyForm', '=', $studyForm->id)
-                                    ->where('id_speciality', '=', $speciality->id)
-                                    ->where('id_preparationLevel', '=', $preparationLevel->id)
-                                    ->where('id_admissionBasis', '=', $admissionBasis->id)
-                                    ->where('id_category', '=', $category->id)
-                                    ->where('id_faculty', '=', $faculty->id)
-                                    ->get();
+                                $specializations = Specialization::where('id_speciality', '=', $speciality->id)->get();
 
-                                $idPlan = PlanSpo::where('id_speciality', '=', $speciality->id)
-                                    ->where('id_studyForm', '=', $studyForm->id)
-                                    ->first();
-                                if (!empty($idPlan)) {
-                                    $id_plan_comps = PlanCompetitionSpo::where('id_plan', '=', intval($idPlan->id))->first();
-                                    if (!empty($id_plan_comps)) {
-                                        $freeSeatsNumber = Freeseats_basesSpo::where('id_plan_comp', '=', intval($id_plan_comps->id))->
-                                        where('id_admissionBasis', '=', intval($admissionBasis->id))->first();
-                                    }
+                                if ($specializations->count() == 0) {
+                                    $specializations = collect(new Specialization);
+                                    //добавить в коллеекцию элемент
+
+                                    $element = Specialization::where('id', '=', 1)->first();
+                                    $element->id = 0;
+                                    $element->specializationId = '0';
+                                    $element->id_speciality = '0';
+                                    $element->name = '';
+
+                                    $specializations->push($element);
+//                                        return $specializations;
+                                } else {
+
+                                    $element = Specialization::where('id', '=', 1)->first();
+                                    $element->id = 0;
+                                    $element->specializationId = '0';
+                                    $element->id_speciality = '0';
+                                    $element->name = '';
+
+                                    $specializations->push($element);
+//                                        return $specializations;
                                 }
 
-                                if ($temp->count()) {
-                                    $speciality->abiturs = $temp; //добавляем запись
+                                foreach ($specializations as $kend => $specialization) {
+                                    if ($specialization->id == 0) {
+                                        $spez_id = null;
+                                    } else {
+                                        $spez_id = $specialization->id;
+                                    }
 
-                                    $originalsCount = 0;
-                                    foreach ($temp as $student) {
-                                        if ($student->original == true) {
-                                            $originalsCount += 1;
+                                    $temp = StatisticSpo::where('id_studyForm', '=', $studyForm->id)
+                                        ->where('id_speciality', '=', $speciality->id)
+                                        ->where('id_specialization', '=', $spez_id)
+                                        ->where('id_preparationLevel', '=', $preparationLevel->id)
+                                        ->where('id_admissionBasis', '=', $admissionBasis->id)
+                                        ->where('id_category', '=', $category->id)
+                                        ->where('id_faculty', '=', $faculty->id)
+                                        ->get();
+
+                                    $idPlan = PlanSpo::where('id_speciality', '=', $speciality->id)
+                                        ->where('id_studyForm', '=', $studyForm->id)
+                                        ->where('id_specialization', '=', $spez_id)
+                                        ->first();
+                                    if (!empty($idPlan)) {
+                                        $id_plan_comps = PlanCompetitionSpo::where('id_plan', '=', intval($idPlan->id))->first();
+                                        if (!empty($id_plan_comps)) {
+                                            $freeSeatsNumber = Freeseats_basesSpo::where('id_plan_comp', '=', intval($id_plan_comps->id))->
+                                            where('id_admissionBasis', '=', intval($admissionBasis->id))->first();
                                         }
                                     }
-                                    if (!empty($freeSeatsNumber)) {
-                                        $speciality->freeSeatsNumber = $freeSeatsNumber->value;
-                                        if ($freeSeatsNumber->value != 0) {
-                                            $speciality->originalsCount = round(floatval($originalsCount) / $freeSeatsNumber->value, 2);
+
+                                    if ($temp->count()) {
+                                        $specialization->abiturs = $temp; //добавляем запись
+
+                                        $originalsCount = 0;
+                                        foreach ($temp as $student) {
+                                            if ($student->original == true) {
+                                                $originalsCount += 1;
+                                            }
+                                        }
+                                        if (!empty($freeSeatsNumber)) {
+                                            $specialization->freeSeatsNumber = $freeSeatsNumber->value;
+                                            if ($freeSeatsNumber->value != 0) {
+                                                $specialization->originalsCount = round(floatval($originalsCount) / $freeSeatsNumber->value, 2);
+                                            }
+                                        } else {
+                                            $specialization->originalsCount = null;
+                                            $specialization->freeSeatsNumber = null;
                                         }
                                     } else {
-                                        $speciality->originalsCount = null;
-                                        $speciality->freeSeatsNumber = null;
+                                        $specialization->abiturs = null;
                                     }
-                                } else {
-                                    $speciality->abiturs = null;
+                                    if (empty($specialization->abiturs)) {
+                                        unset($specializations[$kend]);
+                                    }
                                 }
-                                if (empty($speciality->abiturs)) {
+                                $specializations->count() ? $speciality->specializations = $specializations : null; //В любом случае не пустые
+                                if (empty($speciality->specializations)) {
                                     unset($specialities[$k0]);
                                 }
                             }
@@ -860,7 +1035,8 @@ trait XlsMakerTrait
         $this->createXls($studyForms, true, $file_name_stat, "spo");
     }
 
-    public function XlsBach(){
+    public function XlsBach()
+    {
         $this->queryXlsBach([1], [3], 1, "Очная форма, бюджет");
         $this->queryXlsBach([1], [6], 1, "Очная форма, особое право");
         $this->queryXlsBach([1], [8, 9, 10], 1, "Очная форма, целевое обучение");
@@ -873,17 +1049,22 @@ trait XlsMakerTrait
         $this->queryXlsBach([1], [6], 2, "Очно-заочная форма, особое право");
     }
 
-    public function XlsMaster(){
+    public function XlsMaster()
+    {
         $this->queryXlsMaster([1], [3], 1, "Очная форма, бюджет");
         $this->queryXlsMaster([1], [8, 9, 10], 1, "Очная форма, целевое обучение");
         $this->queryXlsMaster([1], [3], 3, "Заочная форма, бюджет");
         $this->queryXlsMaster([1], [3], 2, "Очно-заочная форма, бюджет");
     }
-    public function XlsAsp(){
-        $this->queryXlsAsp([1], [3], 1, [6],"Очная форма, бюджет, аспирантура");
-        $this->queryXlsAsp([1], [3], 1, [7],"Очная форма, бюджет, ординатура");
+
+    public function XlsAsp()
+    {
+        $this->queryXlsAsp([1], [3], 1, [6], "Очная форма, бюджет, аспирантура");
+        $this->queryXlsAsp([1], [3], 1, [7], "Очная форма, бюджет, ординатура");
     }
-    public function XlsSpo(){
+
+    public function XlsSpo()
+    {
         $this->queryXlsSpo([1, 2], [3], 1, "Очная форма, бюджет");
     }
 }

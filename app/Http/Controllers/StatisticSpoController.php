@@ -14,6 +14,7 @@ use App\PlanCompetitionSpo;
 use App\PlanSpo;
 use App\PreparationLevel;
 use App\Speciality;
+use App\Specialization;
 use App\StatisticAsp;
 use App\StatisticSpo;
 use App\StudentAsp;
@@ -195,48 +196,87 @@ class StatisticSpoController extends Controller
                                 //для выбора названий специальностей
                                 $specialities = Speciality::whereIn('id', $id_spec_arr)->get();
                                 foreach ($specialities as $k0 => $speciality) {
-                                    $temp = StatisticSpo::where('id_studyForm', '=', $studyForm->id)
-                                        ->where('id_speciality', '=', $speciality->id)
-                                        ->where('id_preparationLevel', '=', $preparationLevel->id)
-                                        ->where('id_admissionBasis', '=', $admissionBasis->id)
-                                        ->where('id_category', '=', $category->id)
-                                        ->where('id_faculty', '=', $faculty->id)
-                                        ->get();
+                                    $specializations = Specialization::where('id_speciality', '=', $speciality->id)->get();
 
-                                    $idPlan = PlanSpo::where('id_speciality', '=', $speciality->id)
-                                        ->where('id_studyForm', '=', $studyForm->id)
-                                        ->first();
-                                    if (!empty($idPlan)) {
-//                                        $freeSeatsNumber = PlanCompetition::where('id_plan', '=', intval($idPlan->id))->first();
-                                        $id_plan_comps = PlanCompetitionSpo::where('id_plan', '=', intval($idPlan->id))->first();
-                                        if (!empty($id_plan_comps)) {
-                                            $freeSeatsNumber = Freeseats_basesSpo::where('id_plan_comp', '=', intval($id_plan_comps->id))->
-                                            where('id_admissionBasis', '=', intval($admissionBasis->id))->first();
-                                        }
+                                    if ($specializations->count() == 0) {
+                                        $specializations = collect(new Specialization);
+                                        //добавить в коллеекцию элемент
+
+                                        $element = Specialization::where('id', '=', 1)->first();
+                                        $element->id = 0;
+                                        $element->specializationId = '0';
+                                        $element->id_speciality = '0';
+                                        $element->name = '';
+
+                                        $specializations->push($element);
+//                                        return $specializations;
+                                    } else {
+
+                                        $element = Specialization::where('id', '=', 1)->first();
+                                        $element->id = 0;
+                                        $element->specializationId = '0';
+                                        $element->id_speciality = '0';
+                                        $element->name = '';
+
+                                        $specializations->push($element);
+//                                        return $specializations;
                                     }
 
-                                    if ($temp->count()) {
-                                        $speciality->abiturs = $temp; //добавляем запись
+                                    foreach ($specializations as $kend => $specialization) {
+                                        if ($specialization->id == 0) {
+                                            $spez_id = null;
+                                        } else {
+                                            $spez_id = $specialization->id;
+                                        }
+                                        $temp = StatisticSpo::where('id_studyForm', '=', $studyForm->id)
+                                                ->where('id_speciality', '=', $speciality->id)
+                                            > where('id_specialization', '=', $spez_id)
+                                                ->where('id_preparationLevel', '=', $preparationLevel->id)
+                                                ->where('id_admissionBasis', '=', $admissionBasis->id)
+                                                ->where('id_category', '=', $category->id)
+                                                ->where('id_faculty', '=', $faculty->id)
+                                                ->get();
 
-                                        $originalsCount = 0;
-                                        foreach ($temp as $student) {
-                                            if ($student->original == true) {
-                                                $originalsCount += 1;
+                                        $idPlan = PlanSpo::where('id_speciality', '=', $speciality->id)
+                                                ->where('id_studyForm', '=', $studyForm->id)
+                                            > where('id_specialization', '=', $spez_id)
+                                                ->first();
+                                        if (!empty($idPlan)) {
+//                                        $freeSeatsNumber = PlanCompetition::where('id_plan', '=', intval($idPlan->id))->first();
+                                            $id_plan_comps = PlanCompetitionSpo::where('id_plan', '=', intval($idPlan->id))->first();
+                                            if (!empty($id_plan_comps)) {
+                                                $freeSeatsNumber = Freeseats_basesSpo::where('id_plan_comp', '=', intval($id_plan_comps->id))->
+                                                where('id_admissionBasis', '=', intval($admissionBasis->id))->first();
                                             }
                                         }
-                                        if (!empty($freeSeatsNumber)) {
-                                            $speciality->freeSeatsNumber = $freeSeatsNumber->value;
-                                            if ($freeSeatsNumber->value != 0) {
-                                                $speciality->originalsCount = round(floatval($originalsCount) / $freeSeatsNumber->value, 2);
+
+                                        if ($temp->count()) {
+                                            $specialization->abiturs = $temp; //добавляем запись
+
+                                            $originalsCount = 0;
+                                            foreach ($temp as $student) {
+                                                if ($student->original == true) {
+                                                    $originalsCount += 1;
+                                                }
+                                            }
+                                            if (!empty($freeSeatsNumber)) {
+                                                $specialization->freeSeatsNumber = $freeSeatsNumber->value;
+                                                if ($freeSeatsNumber->value != 0) {
+                                                    $specialization->originalsCount = round(floatval($originalsCount) / $freeSeatsNumber->value, 2);
+                                                }
+                                            } else {
+                                                $specialization->originalsCount = null;
+                                                $specialization->freeSeatsNumber = null;
                                             }
                                         } else {
-                                            $speciality->originalsCount = null;
-                                            $speciality->freeSeatsNumber = null;
+                                            $specialization->abiturs = null;
                                         }
-                                    } else {
-                                        $speciality->abiturs = null;
+                                        if (empty($specialization->abiturs)) {
+                                            unset($specializations[$kend]);
+                                        }
                                     }
-                                    if (empty($speciality->abiturs)) {
+                                    $specializations->count() ? $speciality->specializations = $specializations : null; //В любом случае не пустые
+                                    if (empty($speciality->specializations)) {
                                         unset($specialities[$k0]);
                                     }
                                 }
@@ -334,71 +374,111 @@ class StatisticSpoController extends Controller
                                 //выберем имена и коды специальностей
                                 $specialities = Speciality::whereIn('id', $id_spec_arr)->get();
                                 foreach ($specialities as $k0 => $speciality) {
-                                    $temp = StatisticSpo::where('id_studyForm', '=', $studyForm->id)
-                                        ->where('id_preparationLevel', '=', $preparationLevel->id)
-                                        ->where('id_admissionBasis', '=', $admissionBasis->id)
-                                        ->where('id_category', '=', $category->id)
-                                        ->where('id_faculty', '=', $faculty->id)
-                                        ->where('id_speciality', '=', $speciality->id)
-                                        ->get();
-                                    $temp2 = $temp->intersect($statistic_for_people);
+                                    $specializations = Specialization::where('id_speciality', '=', $speciality->id)->get();
+
+                                    if ($specializations->count() == 0) {
+                                        $specializations = collect(new Specialization);
+                                        //добавить в коллеекцию элемент
+
+                                        $element = Specialization::where('id', '=', 1)->first();
+                                        $element->id = 0;
+                                        $element->specializationId = '0';
+                                        $element->id_speciality = '0';
+                                        $element->name = '';
+
+                                        $specializations->push($element);
+//                                        return $specializations;
+                                    } else {
+
+                                        $element = Specialization::where('id', '=', 1)->first();
+                                        $element->id = 0;
+                                        $element->specializationId = '0';
+                                        $element->id_speciality = '0';
+                                        $element->name = '';
+
+                                        $specializations->push($element);
+//                                        return $specializations;
+                                    }
+
+                                    foreach ($specializations as $kend => $specialization) {
+                                        if ($specialization->id == 0) {
+                                            $spez_id = null;
+                                        } else {
+                                            $spez_id = $specialization->id;
+                                        }
+
+                                        $temp = StatisticSpo::where('id_studyForm', '=', $studyForm->id)
+                                            ->where('id_preparationLevel', '=', $preparationLevel->id)
+                                            ->where('id_admissionBasis', '=', $admissionBasis->id)
+                                            ->where('id_category', '=', $category->id)
+                                            ->where('id_faculty', '=', $faculty->id)
+                                            ->where('id_speciality', '=', $speciality->id)
+                                            ->where('id_specialization', '=', $spez_id)
+                                            ->get();
+                                        $temp2 = $temp->intersect($statistic_for_people);
 //                                    if(!$temp2->isEmpty()) {
 //
 //                                    }
-                                    //нужно проверить содержит ли полученная коллекция нужных студентов
-                                    //выбираем свободные места на этой специальности
-                                    $idPlan = PlanSpo::where('id_speciality', '=', $speciality->id)
-                                        ->where('id_studyForm', '=', $studyForm->id)
-                                        ->first();
-                                    if (!empty($idPlan)) {
-                                        $freeSeatsNumber = PlanCompetitionSpo::where('id_plan', '=', intval($idPlan->id))->first();
-                                    }
+                                        //нужно проверить содержит ли полученная коллекция нужных студентов
+                                        //выбираем свободные места на этой специальности
+                                        $idPlan = PlanSpo::where('id_speciality', '=', $speciality->id)
+                                            ->where('id_studyForm', '=', $studyForm->id)
+                                            ->where('id_specialization', '=', $spez_id)
+                                            ->first();
+                                        if (!empty($idPlan)) {
+                                            $freeSeatsNumber = PlanCompetitionSpo::where('id_plan', '=', intval($idPlan->id))->first();
+                                        }
 //                                    $freeSeatsNumber = TrainingArea::where('id_speciality', '=', $speciality->id)
 //                                        ->where('id_studyForm', '=', $studyForm->id)
 //                                        ->first();
-                                    //обозначаем выбранного студента цветом
-                                    if ($temp->count() && !$temp2->isEmpty()) {
-                                        $speciality->abiturs = $temp; //записываем статистику в специальность
-                                        $chosenStudents = collect(new StudentSpo
-                                        );
-                                        foreach ($id_stud_arr as $id) {
-                                            $serialNumSpec = 0;
-                                            foreach ($temp as $student) {
-                                                $serialNumSpec++;
-                                                if ($student->id_student === $id) {
-                                                    $student->is_chosen = true;
-                                                    $chosenStudents->push($student->student);
-                                                    $chosenStudent_last = $chosenStudents->last();
-                                                    $chosenStudent_last->serialNum = $serialNumSpec;
-                                                } else {
-                                                    continue;
+                                        //обозначаем выбранного студента цветом
+                                        if ($temp->count() && !$temp2->isEmpty()) {
+                                            $specialization->abiturs = $temp; //записываем статистику в специальность
+                                            $chosenStudents = collect(new StudentSpo
+                                            );
+                                            foreach ($id_stud_arr as $id) {
+                                                $serialNumSpec = 0;
+                                                foreach ($temp as $student) {
+                                                    $serialNumSpec++;
+                                                    if ($student->id_student === $id) {
+                                                        $student->is_chosen = true;
+                                                        $chosenStudents->push($student->student);
+                                                        $chosenStudent_last = $chosenStudents->last();
+                                                        $chosenStudent_last->serialNum = $serialNumSpec;
+                                                    } else {
+                                                        continue;
+                                                    }
                                                 }
                                             }
-                                        }
-                                        $chosenStudents = $chosenStudents->sortBy('serialNum');
-                                        //запишем выбранных студентов в специальность
-                                        $speciality->chosenStudents = $chosenStudents;
-                                        //считаем оригиналы
-                                        $originalsCount = 0;
-                                        foreach ($temp as $student) {
-                                            if ($student->original == true) {
-                                                $originalsCount += 1;
+                                            $chosenStudents = $chosenStudents->sortBy('serialNum');
+                                            //запишем выбранных студентов в специальность
+                                            $specialization->chosenStudents = $chosenStudents;
+                                            //считаем оригиналы
+                                            $originalsCount = 0;
+                                            foreach ($temp as $student) {
+                                                if ($student->original == true) {
+                                                    $originalsCount += 1;
+                                                }
                                             }
-                                        }
-                                        //считаем колво человек на место
-                                        if (!empty($freeSeatsNumber)) {
-                                            $speciality->freeSeatsNumber = $freeSeatsNumber->freeSeatsNumber;
-                                            if ($freeSeatsNumber->freeSeatsNumber != 0) {
-                                                $speciality->originalsCount = round(floatval($originalsCount) / $freeSeatsNumber->freeSeatsNumber, 2);
+                                            //считаем колво человек на место
+                                            if (!empty($freeSeatsNumber)) {
+                                                $specialization->freeSeatsNumber = $freeSeatsNumber->freeSeatsNumber;
+                                                if ($freeSeatsNumber->freeSeatsNumber != 0) {
+                                                    $specialization->originalsCount = round(floatval($originalsCount) / $freeSeatsNumber->freeSeatsNumber, 2);
+                                                }
+                                            } else {
+                                                $specialization->originalsCount = null;
+                                                $specialization->freeSeatsNumber = null;
                                             }
                                         } else {
-                                            $speciality->originalsCount = null;
-                                            $speciality->freeSeatsNumber = null;
+                                            $specialization->abiturs = null; //если статистики для специальности нет то не записываем
                                         }
-                                    } else {
-                                        $speciality->abiturs = null; //если статистики для специальности нет то не записываем
+                                        if (empty($specialization->abiturs)) { //если не записали, удаляем специальность из списка
+                                            unset($specializations[$kend]);
+                                        }
                                     }
-                                    if (empty($speciality->abiturs)) { //если не записали, удаляем специальность из списка
+                                    $specializations->count() ? $speciality->specializations = $specializations : null; //В любом случае не пустые
+                                    if (empty($speciality->specializations)) {
                                         unset($specialities[$k0]);
                                     }
                                 }
