@@ -564,12 +564,12 @@
                                                                                 @php
                                                                                     $counter++;
                                                                                 @endphp
-                                                                                @if(!$fs->pastContests->contains('year', strval(date ( 'Y' ) - 2)))
+                                                                                @if(!$fs->pastContests->contains('year', strval(date ( 'Y' ) - 3)))
                                                                                     <span>-</span>
                                                                                     <br>
                                                                                 @endif
                                                                                 @foreach($fs->pastContests as $pc)
-                                                                                    @if($pc->year === strval(date ( 'Y' ) - 2))
+                                                                                    @if($pc->year === strval(date ( 'Y' ) - 3))
                                                                                         <span>{{$pc->minScore}}</span>
                                                                                         <br>
                                                                                     @endif
@@ -579,12 +579,12 @@
                                                                             @php
                                                                                 $counter++;
                                                                             @endphp
-                                                                            @if(!$fs->pastContests->contains('year', strval(date ( 'Y' ) - 2)))
+                                                                            @if(!$fs->pastContests->contains('year', strval(date ( 'Y' ) - 3)))
                                                                                 <span>-</span>
                                                                                 <br>
                                                                             @endif
                                                                             @foreach($fs->pastContests as $pc)
-                                                                                @if($pc->year === strval(date ( 'Y' ) - 2))
+                                                                                @if($pc->year === strval(date ( 'Y' ) - 3))
                                                                                     <span>{{$pc->minScore}}</span>
                                                                                     <br>
                                                                                 @endif
