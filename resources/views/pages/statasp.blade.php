@@ -268,7 +268,7 @@
                                                                                                 class="row d-flex align-items-center justify-content-center h-100">
                                                                                                 <div class="col-12">
                                                                                                     <p class="m-0 text-uppercase font-weight-bold">{{$faculty->name}}</p>
-                                                                                                    <p class="m-0 font-weight-bold">{{$speciality->name}}</p>
+                                                                                                    <p class="m-0">{{$speciality->code}} <span class=" font-weight-bold">{{$speciality->name}}</span></p>
                                                                                                     <p class="m-0">{{$specialization->name}}</p>
                                                                                                     <p class="m-0">
                                                                                                         Количество
