@@ -257,7 +257,7 @@ trait ParserJsonTrait
     public function parseStatBachAll()
     {
         set_time_limit(1200);
-        $this->parseCatalogs("stat_bach.json");
+//        $this->parseCatalogs("stat_bach.json");
         $this->parseStatBach();
          $this->XlsBach();
 
