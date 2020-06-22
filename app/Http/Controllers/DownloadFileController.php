@@ -100,14 +100,15 @@ class DownloadFileController extends Controller
             || $param == "stat_spo" || $param == "stat_bach_catalogs") {
             $directory = "statistics";
             if ($param == "stat_bach_catalogs") {
-                $res = $this->download($directory, "stat_bach.json", true);
-                if ($res === 0 /*|| $res === 2*/) {
-                    $result = $this->parseCatalogs("stat_bach_catalog.json");
-                    if($result){
-                        $this->date_update($param);
-                    }
-                    return $result;
-                }
+//                $res = $this->download($directory, "stat_bach.json", true);
+//                if ($res === 0 /*|| $res === 2*/) {
+//                    $result = $this->parseCatalogs("stat_bach_catalog.json");
+//                    if($result){
+//                        $this->date_update($param);
+//                    }
+//                    return $result;
+//                }
+                return 'Каталоги успешно выгруженны!';
             }
             if ($param == "stat_bach") {
                 $res = $this->download($directory, "stat_bach.json");
