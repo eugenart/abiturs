@@ -419,7 +419,11 @@ class StatisticMasterController extends Controller
                                             ->where('id_specialization', '=', $spez_id)
                                             ->first();
                                         if (!empty($idPlan)) {
-                                            $freeSeatsNumber = PlanCompetitionMaster::where('id_plan', '=', intval($idPlan->id))->first();
+                                            $id_plan_comps = PlanCompetitionMaster::where('id_plan', '=', intval($idPlan->id))->first();
+                                            if (!empty($id_plan_comps)) {
+                                                $freeSeatsNumber = Freeseats_basesMaster::where('id_plan_comp', '=', intval($id_plan_comps->id))->
+                                                where('id_admissionBasis', '=', intval($admissionBasis->id))->first();
+                                            }
                                         }
 //                                    $freeSeatsNumber = TrainingArea::where('id_speciality', '=', $speciality->id)
 //                                        ->where('id_studyForm', '=', $studyForm->id)
@@ -455,9 +459,9 @@ class StatisticMasterController extends Controller
                                             }
                                             //считаем колво человек на место
                                             if (!empty($freeSeatsNumber)) {
-                                                $specialization->freeSeatsNumber = $freeSeatsNumber->freeSeatsNumber;
-                                                if ($freeSeatsNumber->freeSeatsNumber != 0) {
-                                                    $specialization->originalsCount = round(floatval($originalsCount) / $freeSeatsNumber->freeSeatsNumber, 2);
+                                                $specialization->freeSeatsNumber = $freeSeatsNumber->value;
+                                                if ($freeSeatsNumber->value != 0) {
+                                                    $specialization->originalsCount = round(floatval($originalsCount) / $freeSeatsNumber->value, 2);
                                                 }
                                             } else {
                                                 $specialization->originalsCount = null;
