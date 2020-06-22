@@ -87,7 +87,7 @@ class TotalStatController extends Controller
             $files[] = $file;
         }
 
-        if ($dir_delete = scandir(storage_path('app/public/statistic_priem/'. $directory))) {
+        if ($dir_delete = scandir(storage_path('app/public/statistic_priem/' . $directory))) {
             $files_delete = array();
             foreach ($dir_delete as $file_delete) {
                 if ($file_delete == "." || $file_delete == "..")
@@ -95,11 +95,11 @@ class TotalStatController extends Controller
                 $files_delete[] = $file_delete;
             }
 
-            if(count($files_delete)>0) {
+            if (count($files_delete) > 0) {
                 foreach ($files_delete as $file_name) {
-                    try{
-                        unlink(storage_path('app/public/statistic_priem/'. $directory .'/'. $file_name));
-                    }catch (ErrorException $e){
+                    try {
+                        unlink(storage_path('app/public/statistic_priem/' . $directory . '/' . $file_name));
+                    } catch (ErrorException $e) {
                         echo $e;
                         return;
                     }
@@ -118,45 +118,66 @@ class TotalStatController extends Controller
         foreach ($files as $file) {
 
             $remote_file_path = "ssh2.sftp://{$stream}/{$remoteDir}/{$file}";
-            $local_file = $file;
-            $local_file_path = $localDir . '/' . $local_file;
+            $arr_names = [
+                'distance' => 'Заочно ',
+                'evening' => 'Очно-заочно ',
+                'full-time' => 'Очно ',
+                'budget' => 'Бюджет',
+                'paid' => 'Платно'
+            ];
+            $new_name = '';
+            foreach ($arr_names as $k => $name) {
+                $pos1 = stripos($file, $k);
+                if ($pos1 !== false) {
+                    $new_name .= $name;
+                }
+            }
+            if ($new_name != '') {
+                $new_name .= '.pdf';
 
-                    if (!$remote = @fopen("ssh2.sftp://{$stream}/{$remoteDir}/{$file}", 'r')) {
-                        echo "Невозможно открыть файл на удаленном сервере: $file\n";
-                        continue;
-                    }
 
-                    if (!$local = @fopen($localDir . '/' . $local_file, 'w')) {
+                $local_file = $new_name;
+                $local_file_path = $localDir . '/' . $local_file;
+
+                if (!$remote = @fopen("ssh2.sftp://{$stream}/{$remoteDir}/{$file}", 'r')) {
+                    echo "Невозможно открыть файл на удаленном сервере: $file\n";
+                    continue;
+                }
+
+                if (!$local = @fopen($localDir . '/' . $local_file, 'w')) {
+                    fclose($remote);
+                    echo "Невозможно создать файл на локальном сервере: $local_file\n";
+                    continue;
+                }
+                $read = 0;
+
+                $filesize = filesize("ssh2.sftp://{$stream}/{$remoteDir}/{$file}");
+                while ($read < $filesize && ($buffer = fread($remote, $filesize - $read))) {
+                    $read += strlen($buffer);
+                    if (fwrite($local, $buffer) === FALSE) {
+                        echo "Невозможно записать локальный файл: $local_file\n";
+                        fclose($local);
                         fclose($remote);
-                        echo "Невозможно создать файл на локальном сервере: $file\n";
-                        continue;
+                        break;
                     }
-                    $read = 0;
-
-                    $filesize = filesize("ssh2.sftp://{$stream}/{$remoteDir}/{$file}");
-                    while ($read < $filesize && ($buffer = fread($remote, $filesize - $read))) {
-                        $read += strlen($buffer);
-                        if (fwrite($local, $buffer) === FALSE) {
-                            echo "Невозможно записать локальный файл: $file\n";
-                            fclose($local);
-                            fclose($remote);
-                            break;
-                        }
-                    }
-                    //Проверка
-                    if (file_exists($remote_file_path) && file_exists($local_file_path)) {
-                        if (filesize($remote_file_path) == filesize($local_file_path)
-                            && md5_file($remote_file_path) == md5_file($local_file_path)) {
-                            echo "Файл " . $file . " успешно загружен.\n";
-                            fclose($local);
-                            fclose($remote);
+                }
+                //Проверка
+                if (file_exists($remote_file_path) && file_exists($local_file_path)) {
+                    if (filesize($remote_file_path) == filesize($local_file_path)
+                        && md5_file($remote_file_path) == md5_file($local_file_path)) {
+                        echo "Файл " . $local_file . " успешно загружен.\n";
+                        fclose($local);
+                        fclose($remote);
 //                            return 0;
-                        } else {
-                            fclose($local);
-                            fclose($remote);
+                    } else {
+                        fclose($local);
+                        fclose($remote);
 //                            return 1;
-                        }
                     }
+                }
+            }else{
+                echo "Файл " . $file . " имеет неверное имя.\n";
+            }
         }
     }
 }
