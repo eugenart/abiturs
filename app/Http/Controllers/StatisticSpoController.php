@@ -230,7 +230,7 @@ class StatisticSpoController extends Controller
                                         }
                                         $temp = StatisticSpo::where('id_studyForm', '=', $studyForm->id)
                                                 ->where('id_speciality', '=', $speciality->id)
-                                            > where('id_specialization', '=', $spez_id)
+                                            -> where('id_specialization', '=', $spez_id)
                                                 ->where('id_preparationLevel', '=', $preparationLevel->id)
                                                 ->where('id_admissionBasis', '=', $admissionBasis->id)
                                                 ->where('id_category', '=', $category->id)
@@ -239,7 +239,7 @@ class StatisticSpoController extends Controller
 
                                         $idPlan = PlanSpo::where('id_speciality', '=', $speciality->id)
                                                 ->where('id_studyForm', '=', $studyForm->id)
-                                            > where('id_specialization', '=', $spez_id)
+                                            -> where('id_specialization', '=', $spez_id)
                                                 ->first();
                                         if (!empty($idPlan)) {
 //                                        $freeSeatsNumber = PlanCompetition::where('id_plan', '=', intval($idPlan->id))->first();
