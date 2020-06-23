@@ -136,7 +136,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white" href="" id="navbarDropdown" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Списки абитуриентов
+                        Списки поступающих
                     </a>
                     <div class="dropdown-menu main-color" aria-labelledby="navbarDropdown">
                         <a class="nav-link text-white" href="{{route('stat.index')}}">Бакалавриат и специалитет</a>
