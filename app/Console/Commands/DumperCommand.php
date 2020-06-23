@@ -46,11 +46,11 @@ class DumperCommand extends Command
         $path = 'backups/' . $file_name;
         File::put($path, '');
         MySql::create()
-            ->setDbName(env('DB_DATABASE'))
-            ->setUserName(env('DB_USERNAME'))
-            ->setPassword(env('DB_PASSWORD'))
-            ->setHost(env('DB_HOST'))
-            ->setPort(env('DB_PORT'))
+            ->setDbName(getenv('DB_DATABASE'))
+            ->setUserName(getenv('DB_USERNAME'))
+            ->setPassword(getenv('DB_PASSWORD'))
+            ->setHost(getenv('DB_HOST'))
+            ->setPort(getenv('DB_PORT'))
             ->dumpToFile(base_path($path));
     }
 }
