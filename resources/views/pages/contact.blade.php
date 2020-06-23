@@ -18,6 +18,13 @@
                             <tbody>
                             <tr>
                                 <th scope="row" class="text-right"><span
+                                        class="font-weight-bold main-color">Телефоны:</span></th>
+                                <td>+7 (8342) 24-79-51 - для иностранных граждан
+                                    <br>
+                                    8 (8345) 34-29-10 - Ковылкинский филиал</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="text-right"><span
                                         class="font-weight-bold main-color">Адрес:</span></th>
                                 <td>г. Саранск, ул. Полежаева, д. 44/3. <br> Учебный корпус № 28</td>
                             </tr>
