@@ -39,11 +39,34 @@ class TotalStatController extends Controller
                     continue;
                 $files[] = $file;
             }
-            arsort($files);
+//            asort($files);
+
+            $sort_files = array();
+            foreach ($files as $file) {
+                $pos1 = stripos($file, 'Очная форма ');
+                $pos2 = stripos($file, 'Очно-заочная форма ');
+                $pos3 = stripos($file, 'Заочная форма ');
+                $pos4 = stripos($file, 'Платная основа');
+
+                if ($pos1 !== false) {
+                    $sort_files[0] = $file;
+                }
+                if ($pos2 !== false) {
+                    $sort_files[1] = $file;
+                }
+                if ($pos3 !== false) {
+                    $sort_files[2] = $file;
+                }
+                if ($pos4 !== false) {
+                    $sort_files[3] = $file;
+                }
+            }
+            ksort($sort_files);
         } else {
             $notif = "Не удалось открыть директорию с файлами";
         }
-        return $files;
+//        var_dump($sort_files);
+        return $sort_files;
     }
 
     public function download_all_files()
@@ -119,11 +142,11 @@ class TotalStatController extends Controller
 
             $remote_file_path = "ssh2.sftp://{$stream}/{$remoteDir}/{$file}";
             $arr_names = [
-                'distance' => 'Заочно ',
-                'evening' => 'Очно-заочно ',
-                'full-time' => 'Очно ',
-                'budget' => 'Бюджет',
-                'paid' => 'Платно'
+                'distance' => 'Заочная форма ',
+                'evening' => 'Очно-заочная форма ',
+                'full-time' => 'Очная форма ',
+                'budget' => 'бюджетная основа',
+                'paid' => 'Платная основа'
             ];
             $new_name = '';
             foreach ($arr_names as $k => $name) {
