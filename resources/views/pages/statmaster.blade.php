@@ -449,7 +449,7 @@
                                                                                     <th class="text-center d-xl-table-cell d-lg-none d-none"
                                                                                         rowspan="2">Сумма
                                                                                         баллов<br/> за
-                                                                                        ЕГЭ/ВИ
+                                                                                        ВИ
                                                                                     </th>
                                                                                     <th class="text-center" rowspan="2">
                                                                                 <span
@@ -516,7 +516,7 @@
                                                                                             <td class="d-xl-table-cell d-lg-none d-none">{{$abitur->summ}}</td>
                                                                                             <td>{{$abitur->summContest}}</td>
                                                                                             <td class="d-xl-table-cell d-lg-none d-none">
-                                                                                                ЕГЭ
+                                                                                                ВИ
                                                                                             </td>
                                                                                             <td class="d-xl-table-cell d-lg-none d-none">{{$abitur->notice1}}</td>
                                                                                             <td class="d-xl-table-cell d-lg-none d-none">
