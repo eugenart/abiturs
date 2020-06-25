@@ -8,6 +8,11 @@
     display: none !important
 }
 
+.selectpicker .dropdown-menu {
+    min-width: 0 !important;
+    max-width: 100vw !important;
+}
+
 .bootstrap-select {
     width: 220px \0;
     vertical-align: middle

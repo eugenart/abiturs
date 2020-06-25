@@ -832,14 +832,18 @@
                 "auto" === this.options.dropdownAlignRight && this.$menu.toggleClass(j.MENURIGHT, this.sizeInfo.selectOffsetLeft > this.sizeInfo.selectOffsetRight && this.sizeInfo.selectOffsetRight < this.sizeInfo.totalMenuWidth - a), this.$menu.css({
                     "max-height": o + "px",
                     overflow: "hidden",
-                    "min-height": s + "px"
+                    "min-height": s + "px",
+                    "min-width": 0,
+                    "max-width": '100vw'
                 }), this.$menuInner.css({
                     "max-height": t + "px",
                     "overflow-y": "auto",
-                    "min-height": l + "px"
+                    "min-height": l + "px",
+                    "min-width": 0,
+                    "max-width": '100vw'
                 }), this.sizeInfo.menuInnerHeight = Math.max(t, 1), this.selectpicker.current.data.length && this.selectpicker.current.data[this.selectpicker.current.data.length - 1].position > this.sizeInfo.menuInnerHeight && (this.sizeInfo.hasScrollBar = !0, this.sizeInfo.totalMenuWidth = this.sizeInfo.menuWidth + this.sizeInfo.scrollBarWidth, this.$menu.css({
-                    "min-width": '0',
-                    'max-width': '100vw'
+                    "min-width": 0,
+                    "max-width": '100vw'
                 })), this.dropdown && this.dropdown._popper && this.dropdown._popper.update()
             }, setSize: function (e) {
                 if (this.liHeight(e), this.options.header && this.$menu.css("padding-top", 0), !1 !== this.options.size) {
