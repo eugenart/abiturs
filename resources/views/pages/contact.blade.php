@@ -21,7 +21,10 @@
                                         class="font-weight-bold main-color">Телефоны:</span></th>
                                 <td><a class= 'main-color' href="tel:+78342247951"> +7 (8342) 24-79-51 </a> - для иностранных граждан
                                     <br>
-                                    <a class= 'main-color' href="tel:88345342910">8 (8345) 34-29-10</a> - Ковылкинский филиал</td>
+                                    <a class= 'main-color' href="tel:88345342910">8 (8345) 34-29-10</a> - Ковылкинский филиал
+                                    <br>
+                                    <a class= 'main-color' href="tel:88342244804">8 (8342) 24-48-04</a> - Консультация по заключению платных договоров и оплате обучения
+                                </td>
                             </tr>
                             <tr>
                                 <th scope="row" class="text-right"><span
