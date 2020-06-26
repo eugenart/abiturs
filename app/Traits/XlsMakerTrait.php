@@ -435,6 +435,7 @@ trait XlsMakerTrait
                                     $idPlan = Plan::where('id_speciality', '=', $speciality->id)
                                         ->where('id_studyForm', '=', $studyForm->id)
                                         ->where('id_specialization', '=', $spez_id)
+                                        ->where('id_faculty', '=', $faculty->id)
                                         ->first();
                                     if (!empty($idPlan)) {
                                         $id_plan_comps = PlanCompetition::where('id_plan', '=', intval($idPlan->id))->first();

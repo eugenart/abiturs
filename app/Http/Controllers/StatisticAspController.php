@@ -238,6 +238,7 @@ class StatisticAspController extends Controller
                                         $idPlan = PlanAsp::where('id_speciality', '=', $speciality->id)
                                             ->where('id_studyForm', '=', $studyForm->id)
                                             ->where('id_specialization', '=', $spez_id)
+                                            ->where('id_faculty', '=', $faculty->id)
                                             ->first();
                                         if (!empty($idPlan)) {
 //                                        $freeSeatsNumber = PlanCompetition::where('id_plan', '=', intval($idPlan->id))->first();
@@ -424,6 +425,7 @@ class StatisticAspController extends Controller
                                         $idPlan = PlanAsp::where('id_speciality', '=', $speciality->id)
                                             ->where('id_studyForm', '=', $studyForm->id)
                                             ->where('id_specialization', '=', $spez_id)
+                                            ->where('id_faculty', '=', $faculty->id)
                                             ->first();
                                         if (!empty($idPlan)) {
                                             $id_plan_comps = PlanCompetitionAsp::where('id_plan', '=', intval($idPlan->id))->first();

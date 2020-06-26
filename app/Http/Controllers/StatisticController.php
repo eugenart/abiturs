@@ -211,7 +211,7 @@ class StatisticController extends Controller
 
                                         $specializations->push($element);
 //                                        return $specializations;
-                                    }else{
+                                    } else {
 
                                         $element = Specialization::where('id', '=', 1)->first();
                                         $element->id = 0;
@@ -224,10 +224,10 @@ class StatisticController extends Controller
                                     }
 
                                     foreach ($specializations as $kend => $specialization) {
-                                        if($specialization->id == 0){
+                                        if ($specialization->id == 0) {
                                             $spez_id = null;
-                                        }else{
-                                            $spez_id =$specialization->id;
+                                        } else {
+                                            $spez_id = $specialization->id;
                                         }
                                         $temp = Statistic::where('id_studyForm', '=', $studyForm->id)
                                             ->where('id_speciality', '=', $speciality->id)
@@ -241,6 +241,7 @@ class StatisticController extends Controller
                                         $idPlan = Plan::where('id_speciality', '=', $speciality->id)
                                             ->where('id_studyForm', '=', $studyForm->id)
                                             ->where('id_specialization', '=', $spez_id)
+                                            ->where('id_faculty', '=', $faculty->id)
                                             ->first();
 
                                         if (!empty($idPlan)) {
@@ -391,7 +392,7 @@ class StatisticController extends Controller
 
                                         $specializations->push($element);
 //                                        return $specializations;
-                                    }else{
+                                    } else {
 
                                         $element = Specialization::where('id', '=', 1)->first();
                                         $element->id = 0;
@@ -404,10 +405,10 @@ class StatisticController extends Controller
                                     }
 
                                     foreach ($specializations as $kend => $specialization) {
-                                        if($specialization->id == 0){
+                                        if ($specialization->id == 0) {
                                             $spez_id = null;
-                                        }else{
-                                            $spez_id =$specialization->id;
+                                        } else {
+                                            $spez_id = $specialization->id;
                                         }
 
                                         $temp = Statistic::where('id_studyForm', '=', $studyForm->id)
@@ -427,6 +428,7 @@ class StatisticController extends Controller
                                         $idPlan = Plan::where('id_speciality', '=', $speciality->id)
                                             ->where('id_studyForm', '=', $studyForm->id)
                                             ->where('id_specialization', '=', $spez_id)
+                                            ->where('id_faculty', '=', $faculty->id)
                                             ->first();
                                         if (!empty($idPlan)) {
                                             $id_plan_comps = PlanCompetition::where('id_plan', '=', intval($idPlan->id))->first();
@@ -566,5 +568,4 @@ class StatisticController extends Controller
         return $faculties;
         // return view('pages.stat');
     }
-
 }
