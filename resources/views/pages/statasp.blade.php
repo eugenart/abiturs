@@ -458,10 +458,10 @@
                                                                                         <span
                                                                                             class="d-xl-none d-lg-inline d-inline">СКБ</span>
                                                                                     </th>
-                                                                                    <th class="text-center d-xl-table-cell d-lg-none d-none"
-                                                                                        rowspan="2">Тип
-                                                                                        экзамена
-                                                                                    </th>
+{{--                                                                                    <th class="text-center d-xl-table-cell d-lg-none d-none"--}}
+{{--                                                                                        rowspan="2">Тип--}}
+{{--                                                                                        экзамена--}}
+{{--                                                                                    </th>--}}
                                                                                     <th class="text-center d-xl-table-cell d-lg-none d-none"
                                                                                         rowspan="2">Статус
                                                                                         проверки

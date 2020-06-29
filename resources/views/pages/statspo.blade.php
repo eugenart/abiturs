@@ -458,10 +458,10 @@
                                                                                         <span
                                                                                             class="d-xl-none d-lg-inline d-inline">СКБ</span>
                                                                                     </th>
-                                                                                    <th class="text-center d-xl-table-cell d-lg-none d-none"
-                                                                                        rowspan="2">Тип
-                                                                                        экзамена
-                                                                                    </th>
+{{--                                                                                    <th class="text-center d-xl-table-cell d-lg-none d-none"--}}
+{{--                                                                                        rowspan="2">Тип--}}
+{{--                                                                                        экзамена--}}
+{{--                                                                                    </th>--}}
                                                                                     <th class="text-center d-xl-table-cell d-lg-none d-none"
                                                                                         rowspan="2">Статус
                                                                                         проверки
@@ -515,9 +515,9 @@
                                                                                             <td class="d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none">{{$abitur->indAchievement}}</td>
                                                                                             <td class="d-xl-table-cell d-lg-none d-none">{{$abitur->summ}}</td>
                                                                                             <td>{{$abitur->summContest}}</td>
-                                                                                            <td class="d-xl-table-cell d-lg-none d-none">
-                                                                                                Конкурс аттестатов
-                                                                                            </td>
+{{--                                                                                            <td class="d-xl-table-cell d-lg-none d-none">--}}
+{{--                                                                                                Конкурс аттестатов--}}
+{{--                                                                                            </td>--}}
                                                                                             <td class="d-xl-table-cell d-lg-none d-none">{{$abitur->notice1}}</td>
                                                                                             <td class="d-xl-table-cell d-lg-none d-none">
                                                                                                 @if($abitur->needHostel)
