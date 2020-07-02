@@ -245,16 +245,18 @@
                     @foreach($studyForms as $studyForm)
                         @if(isset($studyForm->stat ))
                             @foreach($studyForm->stat as $category)
-                                @if(isset($category->admissionBases))
-                                    @foreach($category->admissionBases as $admissionBasis)
-                                        @if(isset($admissionBasis->preparationLevels))
-                                            @foreach($admissionBasis->preparationLevels as $preparationLevel)
-                                                @if(isset($preparationLevel->faculties))
-                                                    @foreach($preparationLevel->faculties as $faculty)
-                                                        @if(isset($faculty->specialities))
-                                                            @foreach($faculty->specialities as $speciality)
-                                                                @if(isset($speciality->specializations))
-                                                                    @foreach($speciality->specializations as $specialization)
+                                @if(isset($category->preparationLevels))
+                                    @foreach($category->preparationLevels as $preparationLevel)
+                                        {{--                                        @if(isset($admissionBasis->preparationLevels))--}}
+                                        {{--                                            @foreach($admissionBasis->preparationLevels as $preparationLevel)--}}
+                                        @if(isset($preparationLevel->faculties))
+                                            @foreach($preparationLevel->faculties as $faculty)
+                                                @if(isset($faculty->specialities))
+                                                    @foreach($faculty->specialities as $speciality)
+                                                        @if(isset($speciality->specializations))
+                                                            @foreach($speciality->specializations as $specialization)
+                                                                @if(isset($specialization->admissionBases))
+                                                                    @foreach($specialization->admissionBases as $admissionBasis)
                                                                         <div class="row mt-1 justify-content-start">
                                                                             <div
                                                                                 class="col-xl-8 col-lg-8 col-md-12 col-12">
@@ -268,16 +270,19 @@
                                                                                                 class="row d-flex align-items-center justify-content-center h-100">
                                                                                                 <div class="col-12">
                                                                                                     <p class="m-0 text-uppercase font-weight-bold">{{$faculty->name}}</p>
-                                                                                                    <p class="m-0">{{$speciality->code}} <span class=" font-weight-bold">{{$speciality->name}}</span></p>
+                                                                                                    <p class="m-0">{{$speciality->code}}
+                                                                                                        <span
+                                                                                                            class=" font-weight-bold">{{$speciality->name}}</span>
+                                                                                                    </p>
                                                                                                     <p class="m-0">{{$specialization->name}}</p>
                                                                                                     <p class="m-0">
                                                                                                         Количество
                                                                                                         мест: <span
-                                                                                                            class="font-weight-bold">{{$specialization->freeSeatsNumber}}</span>
+                                                                                                            class="font-weight-bold">{{$admissionBasis->freeSeatsNumber}}</span>
                                                                                                     </p>
                                                                                                     <p class="m-0">
                                                                                                         Конкурс: <span
-                                                                                                            class="font-weight-bold">{{$specialization->originalsCount}}</span>
+                                                                                                            class="font-weight-bold">{{$admissionBasis->originalsCount}}</span>
                                                                                                         чел.
                                                                                                         / место
                                                                                                     </p>
@@ -375,9 +380,9 @@
                                                                             </div>
 
                                                                         </div>
-                                                                        @if(isset($specialization->chosenStudents))
+                                                                        @if(isset($admissionBasis->chosenStudents))
                                                                             <div class="chosen-student-ovz">
-                                                                                @foreach($specialization->chosenStudents as $chosenStudent)
+                                                                                @foreach($admissionBasis->chosenStudents as $chosenStudent)
                                                                                     <div class="main-color h6">
                                                                                 <span
                                                                                     class="font-weight-bold">{{$chosenStudent->fio}} </span>
@@ -390,7 +395,7 @@
                                                                                 @endforeach
                                                                             </div>
                                                                         @endif
-                                                                        @if(isset($specialization->abiturs))
+                                                                        @if(isset($admissionBasis->abiturs))
                                                                             <div class="row p-0 m-0">
                                                                                 <div
                                                                                     class="col-12 d-flex justify-content-end">
@@ -428,9 +433,9 @@
                                                                                             class="d-xl-none d-lg-inline d-inline">С</span>
                                                                                     </th>
                                                                                     <th class="d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none"
-                                                                                        colspan="{{count($specialization->abiturs->first()->score) + 1}}">
-                                                                                        @foreach($specialization->abiturs->first()->score as $i => $sc)
-                                                                                            @if($i < count($specialization->abiturs->first()->score) -1)
+                                                                                        colspan="{{count($admissionBasis->abiturs->first()->score) + 1}}">
+                                                                                        @foreach($admissionBasis->abiturs->first()->score as $i => $sc)
+                                                                                            @if($i < count($admissionBasis->abiturs->first()->score) -1)
                                                                                                 <p class="m-0"> {{$sc->priority}}
                                                                                                     ) {{$sc->subject->name}}</p>
                                                                                             @else
@@ -458,10 +463,10 @@
                                                                                         <span
                                                                                             class="d-xl-none d-lg-inline d-inline">СКБ</span>
                                                                                     </th>
-{{--                                                                                    <th class="text-center d-xl-table-cell d-lg-none d-none"--}}
-{{--                                                                                        rowspan="2">Тип--}}
-{{--                                                                                        экзамена--}}
-{{--                                                                                    </th>--}}
+                                                                                    {{--                                                                                    <th class="text-center d-xl-table-cell d-lg-none d-none"--}}
+                                                                                    {{--                                                                                        rowspan="2">Тип--}}
+                                                                                    {{--                                                                                        экзамена--}}
+                                                                                    {{--                                                                                    </th>--}}
                                                                                     <th class="text-center d-xl-table-cell d-lg-none d-none"
                                                                                         rowspan="2">Статус
                                                                                         проверки
@@ -473,8 +478,8 @@
                                                                                     </th>
                                                                                 </tr>
                                                                                 <tr class="text-center d-lg-table-row d-xl-table-row d-md-table-row d-sm-table-row d-none">
-                                                                                    @foreach($specialization->abiturs->first()->score as $i => $sc)
-                                                                                        @if($i < count($specialization->abiturs->first()->score) -1)
+                                                                                    @foreach($admissionBasis->abiturs->first()->score as $i => $sc)
+                                                                                        @if($i < count($admissionBasis->abiturs->first()->score) -1)
                                                                                             <th>{{$sc->priority}}</th>
                                                                                         @else
                                                                                             <th>{{$sc->priority}}</th>
@@ -484,7 +489,7 @@
                                                                                 </tr>
                                                                                 </thead>
                                                                                 <tbody>
-                                                                                @foreach($specialization->abiturs as $k => $abitur)
+                                                                                @foreach($admissionBasis->abiturs as $k => $abitur)
                                                                                     @if($abitur->is_chosen)
                                                                                         <tr class="text-center chosen-student">
                                                                                     @else
@@ -515,9 +520,9 @@
                                                                                             <td class="d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none">{{$abitur->indAchievement}}</td>
                                                                                             <td class="d-xl-table-cell d-lg-none d-none">{{$abitur->summ}}</td>
                                                                                             <td>{{$abitur->summContest}}</td>
-{{--                                                                                            <td class="d-xl-table-cell d-lg-none d-none">--}}
-{{--                                                                                                ВИ--}}
-{{--                                                                                            </td>--}}
+                                                                                            {{--                                                                                            <td class="d-xl-table-cell d-lg-none d-none">--}}
+                                                                                            {{--                                                                                                ВИ--}}
+                                                                                            {{--                                                                                            </td>--}}
                                                                                             <td class="d-xl-table-cell d-lg-none d-none">{{$abitur->notice1}}</td>
                                                                                             <td class="d-xl-table-cell d-lg-none d-none">
                                                                                                 @if($abitur->needHostel)
