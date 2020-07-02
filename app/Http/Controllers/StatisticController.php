@@ -184,78 +184,80 @@ class StatisticController extends Controller
                 $categories = Category::whereIn('id', $id_cat_arr)->get();
 
                 foreach ($categories as $k4 => $category) {
-                    $admissionBases = AdmissionBasis::whereIn('id', $id_adm_arr)->get();
-                    //самая костыльная сортировка на свете
-                    $newadm = collect(new AdmissionBasis);
-                    foreach ($admissionBases as $k3 => $admissionBasis) {
-                        if($admissionBasis->name == "Особое право"){
-                            $element0 = AdmissionBasis::where('name', '=', "Особое право")->first();
-                        }
-                        if($admissionBasis->name == "Целевой прием"){
-                            $element1 = AdmissionBasis::where('name', '=', "Целевой прием")->first();
-                        }
-                        if($admissionBasis->name == "Бюджетная основа"){
-                            $element2 = AdmissionBasis::where('name', '=', "Бюджетная основа")->first();
-                        }
-                        if($admissionBasis->name == "Полное возмещение затрат"){
-                            $element3 = AdmissionBasis::where('name', '=', "Полное возмещение затрат")->first();
-                        }
-                    }
 
-                    if(isset($element0)){
-                        $newadm->push($element0);
-                    }
-                    if(isset($element1)){
-                        $newadm->push($element1);
-                    }
-                    if(isset($element2)){
-                        $newadm->push($element2);
-                    }
-                    if(isset($element3)){
-                        $newadm->push($element3);
-                    }
+                    $preparationLevels = PreparationLevel::whereIn('id', $id_prep_arr)->get();
+                    foreach ($preparationLevels as $k2 => $preparationLevel) {
+                        //находим нужные нам факультеты их имена
+                        $faculties = Faculty::whereIn('id', $search_faculties)->get();
 
-                    $admissionBases = $newadm;
+                        foreach ($faculties as $k1 => $faculty) {
+                            //для выбора названий специальностей
+                            $specialities = Speciality::whereIn('id', $id_spec_arr)->get();
 
-                    foreach ($admissionBases as $k3 => $admissionBasis) {
-                        $preparationLevels = PreparationLevel::whereIn('id', $id_prep_arr)->get();
-                        foreach ($preparationLevels as $k2 => $preparationLevel) {
-                            //находим нужные нам факультеты их имена
-                            $faculties = Faculty::whereIn('id', $search_faculties)->get();
+                            foreach ($specialities as $k0 => $speciality) {
 
-                            foreach ($faculties as $k1 => $faculty) {
-                                //для выбора названий специальностей
-                                $specialities = Speciality::whereIn('id', $id_spec_arr)->get();
+                                $specializations = Specialization::where('id_speciality', '=', $speciality->id)->get();
 
-                                foreach ($specialities as $k0 => $speciality) {
+                                if ($specializations->count() == 0) {
+                                    $specializations = collect(new Specialization);
+                                    //добавить в коллеекцию элемент
 
-                                    $specializations = Specialization::where('id_speciality', '=', $speciality->id)->get();
+                                    $element = Specialization::where('id', '=', 1)->first();
+                                    $element->id = 0;
+                                    $element->specializationId = '0';
+                                    $element->id_speciality = '0';
+                                    $element->name = '';
 
-                                    if ($specializations->count() == 0) {
-                                        $specializations = collect(new Specialization);
-                                        //добавить в коллеекцию элемент
-
-                                        $element = Specialization::where('id', '=', 1)->first();
-                                        $element->id = 0;
-                                        $element->specializationId = '0';
-                                        $element->id_speciality = '0';
-                                        $element->name = '';
-
-                                        $specializations->push($element);
+                                    $specializations->push($element);
 //                                        return $specializations;
-                                    } else {
+                                } else {
 
-                                        $element = Specialization::where('id', '=', 1)->first();
-                                        $element->id = 0;
-                                        $element->specializationId = '0';
-                                        $element->id_speciality = '0';
-                                        $element->name = '';
+                                    $element = Specialization::where('id', '=', 1)->first();
+                                    $element->id = 0;
+                                    $element->specializationId = '0';
+                                    $element->id_speciality = '0';
+                                    $element->name = '';
 
-                                        $specializations->push($element);
+                                    $specializations->push($element);
 //                                        return $specializations;
+                                }
+
+                                foreach ($specializations as $kend => $specialization) {
+                                    $admissionBases = AdmissionBasis::whereIn('id', $id_adm_arr)->get();
+                                    //самая костыльная сортировка на свете
+                                    $newadm = collect(new AdmissionBasis);
+                                    foreach ($admissionBases as $k3 => $admissionBasis) {
+                                        if ($admissionBasis->name == "Особое право") {
+                                            $element0 = AdmissionBasis::where('name', '=', "Особое право")->first();
+                                        }
+                                        if ($admissionBasis->name == "Целевой прием") {
+                                            $element1 = AdmissionBasis::where('name', '=', "Целевой прием")->first();
+                                        }
+                                        if ($admissionBasis->name == "Бюджетная основа") {
+                                            $element2 = AdmissionBasis::where('name', '=', "Бюджетная основа")->first();
+                                        }
+                                        if ($admissionBasis->name == "Полное возмещение затрат") {
+                                            $element3 = AdmissionBasis::where('name', '=', "Полное возмещение затрат")->first();
+                                        }
                                     }
 
-                                    foreach ($specializations as $kend => $specialization) {
+                                    if (isset($element0)) {
+                                        $newadm->push($element0);
+                                    }
+                                    if (isset($element1)) {
+                                        $newadm->push($element1);
+                                    }
+                                    if (isset($element2)) {
+                                        $newadm->push($element2);
+                                    }
+                                    if (isset($element3)) {
+                                        $newadm->push($element3);
+                                    }
+
+                                    $admissionBases = $newadm;
+
+                                    foreach ($admissionBases as $k3 => $admissionBasis) {
+
                                         if ($specialization->id == 0) {
                                             $spez_id = null;
                                         } else {
@@ -285,7 +287,7 @@ class StatisticController extends Controller
                                             }
                                         }
                                         if ($temp->count()) {
-                                            $specialization->abiturs = $temp; //добавляем запись
+                                            $admissionBasis->abiturs = $temp; //добавляем запись
 
                                             $originalsCount = 0;
                                             foreach ($temp as $student) {
@@ -294,47 +296,48 @@ class StatisticController extends Controller
                                                 }
                                             }
                                             if (!empty($freeSeatsNumber)) {
-                                                $specialization->freeSeatsNumber = $freeSeatsNumber->value;
+                                                $admissionBasis->freeSeatsNumber = $freeSeatsNumber->value;
                                                 if ($freeSeatsNumber->value != 0) {
-                                                    $specialization->originalsCount = round(floatval($originalsCount) / $freeSeatsNumber->value, 2);
+                                                    $admissionBasis->originalsCount = round(floatval($originalsCount) / $freeSeatsNumber->value, 2);
                                                 }
                                             } else {
-                                                $specialization->originalsCount = null;
-                                                $specialization->freeSeatsNumber = null;
+                                                $admissionBasis->originalsCount = null;
+                                                $admissionBasis->freeSeatsNumber = null;
                                             }
                                         } else {
-                                            $specialization->abiturs = null;
+                                            $admissionBasis->abiturs = null;
                                         }
-                                        if (empty($specialization->abiturs)) {
-                                            unset($specializations[$kend]);
+                                        if (empty($admissionBasis->abiturs)) {
+                                            unset($admissionBases[$k3]);
                                         }
                                     }
-
-                                    $specializations->count() ? $speciality->specializations = $specializations : null; //В любом случае не пустые
-                                    if (empty($speciality->specializations)) {
-                                        unset($specialities[$k0]);
+                                    $admissionBases->count() ? $specialization->admissionBases = $admissionBases : null;
+                                    if (empty($specialization->admissionBases)) {
+                                        unset($specializations[$kend]);
                                     }
                                 }
-                                $specialities->count() ? $faculty->specialities = $specialities : null; //В любом случае не пустые
-                                if (empty($faculty->specialities)) {
-                                    unset($faculties[$k1]);
+
+                                $specializations->count() ? $speciality->specializations = $specializations : null; //В любом случае не пустые
+                                if (empty($speciality->specializations)) {
+                                    unset($specialities[$k0]);
                                 }
                             }
-                            $faculties->count() ? $preparationLevel->faculties = $faculties : null;
-                            if (empty($preparationLevel->faculties)) {
-                                unset($preparationLevels[$k2]);
+                            $specialities->count() ? $faculty->specialities = $specialities : null; //В любом случае не пустые
+                            if (empty($faculty->specialities)) {
+                                unset($faculties[$k1]);
                             }
                         }
-                        $preparationLevels->count() ? $admissionBasis->preparationLevels = $preparationLevels : null;
-                        if (empty($admissionBasis->preparationLevels)) {
-                            unset($admissionBases[$k3]);
+                        $faculties->count() ? $preparationLevel->faculties = $faculties : null;
+                        if (empty($preparationLevel->faculties)) {
+                            unset($preparationLevels[$k2]);
                         }
                     }
-                    $admissionBases->count() ? $category->admissionBases = $admissionBases : null;
-                    if (empty($category->admissionBases)) {
+                    $preparationLevels->count() ? $category->preparationLevels = $preparationLevels : null;
+                    if (empty($category->preparationLevels)) {
                         unset($categories[$k4]);
                     }
                 }
+
                 $categories->count() ? $studyForm->stat = $categories : null;
                 if (empty($studyForm->stat)) {
                     unset($studyForms[$k5]);
@@ -400,75 +403,77 @@ class StatisticController extends Controller
             foreach ($studyForms as $k5 => $studyForm) {
                 $categories = Category::whereIn('id', $id_cat_arr)->get();
                 foreach ($categories as $k4 => $category) {
-                    $admissionBases = AdmissionBasis::whereIn('id', $id_adm_arr)->get();
-                    //самая костыльная сортировка на свете
-                    $newadm = collect(new AdmissionBasis);
-                    foreach ($admissionBases as $k3 => $admissionBasis) {
-                        if($admissionBasis->name == "Особое право"){
-                            $element0 = AdmissionBasis::where('name', '=', "Особое право")->first();
-                        }
-                        if($admissionBasis->name == "Целевой прием"){
-                            $element1 = AdmissionBasis::where('name', '=', "Целевой прием")->first();
-                        }
-                        if($admissionBasis->name == "Бюджетная основа"){
-                            $element2 = AdmissionBasis::where('name', '=', "Бюджетная основа")->first();
-                        }
-                        if($admissionBasis->name == "Полное возмещение затрат"){
-                            $element3 = AdmissionBasis::where('name', '=', "Полное возмещение затрат")->first();
-                        }
-                    }
 
-                    if(isset($element0)){
-                        $newadm->push($element0);
-                    }
-                    if(isset($element1)){
-                        $newadm->push($element1);
-                    }
-                    if(isset($element2)){
-                        $newadm->push($element2);
-                    }
-                    if(isset($element3)){
-                        $newadm->push($element3);
-                    }
+                    $preparationLevels = PreparationLevel::whereIn('id', $id_prep_arr)->get();
+                    foreach ($preparationLevels as $k2 => $preparationLevel) {
+                        $faculties = Faculty::whereIn('id', $id_fac_arr)->get();
+                        foreach ($faculties as $k1 => $faculty) {
+                            //выберем имена и коды специальностей
+                            $specialities = Speciality::whereIn('id', $id_spec_arr)->get();
+                            foreach ($specialities as $k0 => $speciality) {
 
-                    $admissionBases = $newadm;
+                                $specializations = Specialization::where('id_speciality', '=', $speciality->id)->get();
 
-                    foreach ($admissionBases as $k3 => $admissionBasis) {
-                        $preparationLevels = PreparationLevel::whereIn('id', $id_prep_arr)->get();
-                        foreach ($preparationLevels as $k2 => $preparationLevel) {
-                            $faculties = Faculty::whereIn('id', $id_fac_arr)->get();
-                            foreach ($faculties as $k1 => $faculty) {
-                                //выберем имена и коды специальностей
-                                $specialities = Speciality::whereIn('id', $id_spec_arr)->get();
-                                foreach ($specialities as $k0 => $speciality) {
+                                if ($specializations->count() == 0) {
+                                    $specializations = collect(new Specialization);
+                                    //добавить в коллеекцию элемент
 
-                                    $specializations = Specialization::where('id_speciality', '=', $speciality->id)->get();
+                                    $element = Specialization::where('id', '=', 1)->first();
+                                    $element->id = 0;
+                                    $element->specializationId = '0';
+                                    $element->id_speciality = '0';
+                                    $element->name = '';
 
-                                    if ($specializations->count() == 0) {
-                                        $specializations = collect(new Specialization);
-                                        //добавить в коллеекцию элемент
-
-                                        $element = Specialization::where('id', '=', 1)->first();
-                                        $element->id = 0;
-                                        $element->specializationId = '0';
-                                        $element->id_speciality = '0';
-                                        $element->name = '';
-
-                                        $specializations->push($element);
+                                    $specializations->push($element);
 //                                        return $specializations;
-                                    } else {
+                                } else {
 
-                                        $element = Specialization::where('id', '=', 1)->first();
-                                        $element->id = 0;
-                                        $element->specializationId = '0';
-                                        $element->id_speciality = '0';
-                                        $element->name = '';
+                                    $element = Specialization::where('id', '=', 1)->first();
+                                    $element->id = 0;
+                                    $element->specializationId = '0';
+                                    $element->id_speciality = '0';
+                                    $element->name = '';
 
-                                        $specializations->push($element);
+                                    $specializations->push($element);
 //                                        return $specializations;
+                                }
+
+                                foreach ($specializations as $kend => $specialization) {
+
+                                    $admissionBases = AdmissionBasis::whereIn('id', $id_adm_arr)->get();
+                                    //самая костыльная сортировка на свете
+                                    $newadm = collect(new AdmissionBasis);
+                                    foreach ($admissionBases as $k3 => $admissionBasis) {
+                                        if ($admissionBasis->name == "Особое право") {
+                                            $element0 = AdmissionBasis::where('name', '=', "Особое право")->first();
+                                        }
+                                        if ($admissionBasis->name == "Целевой прием") {
+                                            $element1 = AdmissionBasis::where('name', '=', "Целевой прием")->first();
+                                        }
+                                        if ($admissionBasis->name == "Бюджетная основа") {
+                                            $element2 = AdmissionBasis::where('name', '=', "Бюджетная основа")->first();
+                                        }
+                                        if ($admissionBasis->name == "Полное возмещение затрат") {
+                                            $element3 = AdmissionBasis::where('name', '=', "Полное возмещение затрат")->first();
+                                        }
                                     }
 
-                                    foreach ($specializations as $kend => $specialization) {
+                                    if (isset($element0)) {
+                                        $newadm->push($element0);
+                                    }
+                                    if (isset($element1)) {
+                                        $newadm->push($element1);
+                                    }
+                                    if (isset($element2)) {
+                                        $newadm->push($element2);
+                                    }
+                                    if (isset($element3)) {
+                                        $newadm->push($element3);
+                                    }
+
+                                    $admissionBases = $newadm;
+                                    foreach ($admissionBases as $k3 => $admissionBasis) {
+
                                         if ($specialization->id == 0) {
                                             $spez_id = null;
                                         } else {
@@ -506,7 +511,7 @@ class StatisticController extends Controller
 //                                        ->first();
                                         //обозначаем выбранного студента цветом
                                         if ($temp->count() && !$temp2->isEmpty()) {
-                                            $specialization->abiturs = $temp; //записываем статистику в специальность
+                                            $admissionBasis->abiturs = $temp; //записываем статистику в специальность
                                             $chosenStudents = collect(new Student);
                                             foreach ($id_stud_arr as $id) {
                                                 $serialNumSpec = 0;
@@ -524,7 +529,7 @@ class StatisticController extends Controller
                                             }
                                             $chosenStudents = $chosenStudents->sortBy('serialNum');
                                             //запишем выбранных студентов в специальность
-                                            $specialization->chosenStudents = $chosenStudents;
+                                            $admissionBasis->chosenStudents = $chosenStudents;
                                             //считаем оригиналы
                                             $originalsCount = 0;
                                             foreach ($temp as $student) {
@@ -534,43 +539,43 @@ class StatisticController extends Controller
                                             }
                                             //считаем колво человек на место
                                             if (!empty($freeSeatsNumber)) {
-                                                $specialization->freeSeatsNumber = $freeSeatsNumber->value;
+                                                $admissionBasis->freeSeatsNumber = $freeSeatsNumber->value;
                                                 if ($freeSeatsNumber->value != 0) {
-                                                    $specialization->originalsCount = round(floatval($originalsCount) / $freeSeatsNumber->value, 2);
+                                                    $admissionBasis->originalsCount = round(floatval($originalsCount) / $freeSeatsNumber->value, 2);
                                                 }
                                             } else {
-                                                $specialization->originalsCount = null;
-                                                $specialization->freeSeatsNumber = null;
+                                                $admissionBasis->originalsCount = null;
+                                                $admissionBasis->freeSeatsNumber = null;
                                             }
                                         } else {
-                                            $specialization->abiturs = null; //если статистики для специальности нет то не записываем
+                                            $admissionBasis->abiturs = null; //если статистики для специальности нет то не записываем
                                         }
-                                        if (empty($specialization->abiturs)) { //если не записали, удаляем специальность из списка
-                                            unset($specializations[$kend]);
+                                        if (empty($admissionBasis->abiturs)) { //если не записали, удаляем специальность из списка
+                                            unset($admissionBases[$k3]);
                                         }
                                     }
-                                    $specializations->count() ? $speciality->specializations = $specializations : null; //В любом случае не пустые
-                                    if (empty($speciality->specializations)) {
-                                        unset($specialities[$k0]);
+                                    $admissionBases->count() ? $specialization->admissionBases = $admissionBases : null;
+                                    if (empty($specialization->admissionBases)) {
+                                        unset($specializations[$kend]);
                                     }
                                 }
-                                $specialities->count() ? $faculty->specialities = $specialities : null;
-                                if (empty($faculty->specialities)) {
-                                    unset($faculties[$k1]);
+                                $specializations->count() ? $speciality->specializations = $specializations : null; //В любом случае не пустые
+                                if (empty($speciality->specializations)) {
+                                    unset($specialities[$k0]);
                                 }
                             }
-                            $faculties->count() ? $preparationLevel->faculties = $faculties : null;
-                            if (empty($preparationLevel->faculties)) {
-                                unset($preparationLevels[$k2]);
+                            $specialities->count() ? $faculty->specialities = $specialities : null;
+                            if (empty($faculty->specialities)) {
+                                unset($faculties[$k1]);
                             }
                         }
-                        $preparationLevels->count() ? $admissionBasis->preparationLevels = $preparationLevels : null;
-                        if (empty($admissionBasis->preparationLevels)) {
-                            unset($admissionBases[$k3]);
+                        $faculties->count() ? $preparationLevel->faculties = $faculties : null;
+                        if (empty($preparationLevel->faculties)) {
+                            unset($preparationLevels[$k2]);
                         }
                     }
-                    $admissionBases->count() ? $category->admissionBases = $admissionBases : null;
-                    if (empty($category->admissionBases)) {
+                    $preparationLevels->count() ? $category->preparationLevels = $preparationLevels : null;
+                    if (empty($category->preparationLevels)) {
                         unset($categories[$k4]);
                     }
                 }
