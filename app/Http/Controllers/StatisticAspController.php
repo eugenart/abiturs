@@ -180,6 +180,37 @@ class StatisticAspController extends Controller
 
                 foreach ($categories as $k4 => $category) {
                     $admissionBases = AdmissionBasis::whereIn('id', $id_adm_arr)->get();
+                    //самая костыльная сортировка на свете
+                    $newadm = collect(new AdmissionBasis);
+                    foreach ($admissionBases as $k3 => $admissionBasis) {
+                        if($admissionBasis->name == "Особое право"){
+                            $element0 = AdmissionBasis::where('name', '=', "Особое право")->first();
+                        }
+                        if($admissionBasis->name == "Целевой прием"){
+                            $element1 = AdmissionBasis::where('name', '=', "Целевой прием")->first();
+                        }
+                        if($admissionBasis->name == "Бюджетная основа"){
+                            $element2 = AdmissionBasis::where('name', '=', "Бюджетная основа")->first();
+                        }
+                        if($admissionBasis->name == "Полное возмещение затрат"){
+                            $element3 = AdmissionBasis::where('name', '=', "Полное возмещение затрат")->first();
+                        }
+                    }
+
+                    if(isset($element0)){
+                        $newadm->push($element0);
+                    }
+                    if(isset($element1)){
+                        $newadm->push($element1);
+                    }
+                    if(isset($element2)){
+                        $newadm->push($element2);
+                    }
+                    if(isset($element3)){
+                        $newadm->push($element3);
+                    }
+
+                    $admissionBases = $newadm;
                     foreach ($admissionBases as $k3 => $admissionBasis) {
                         $preparationLevels = PreparationLevel::whereIn('id', $id_prep_arr)->get();
                         foreach ($preparationLevels as $k2 => $preparationLevel) {
@@ -365,6 +396,37 @@ class StatisticAspController extends Controller
                 $categories = Category::whereIn('id', $id_cat_arr)->get();
                 foreach ($categories as $k4 => $category) {
                     $admissionBases = AdmissionBasis::whereIn('id', $id_adm_arr)->get();
+                    //самая костыльная сортировка на свете
+                    $newadm = collect(new AdmissionBasis);
+                    foreach ($admissionBases as $k3 => $admissionBasis) {
+                        if($admissionBasis->name == "Особое право"){
+                            $element0 = AdmissionBasis::where('name', '=', "Особое право")->first();
+                        }
+                        if($admissionBasis->name == "Целевой прием"){
+                            $element1 = AdmissionBasis::where('name', '=', "Целевой прием")->first();
+                        }
+                        if($admissionBasis->name == "Бюджетная основа"){
+                            $element2 = AdmissionBasis::where('name', '=', "Бюджетная основа")->first();
+                        }
+                        if($admissionBasis->name == "Полное возмещение затрат"){
+                            $element3 = AdmissionBasis::where('name', '=', "Полное возмещение затрат")->first();
+                        }
+                    }
+
+                    if(isset($element0)){
+                        $newadm->push($element0);
+                    }
+                    if(isset($element1)){
+                        $newadm->push($element1);
+                    }
+                    if(isset($element2)){
+                        $newadm->push($element2);
+                    }
+                    if(isset($element3)){
+                        $newadm->push($element3);
+                    }
+
+                    $admissionBases = $newadm;
                     foreach ($admissionBases as $k3 => $admissionBasis) {
                         $preparationLevels = PreparationLevel::whereIn('id', $id_prep_arr)->get();
                         foreach ($preparationLevels as $k2 => $preparationLevel) {
