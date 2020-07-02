@@ -144,15 +144,15 @@
                         <a class="nav-link text-white" href="{{route('statasp.index')}}">Аспирантура и ординатура</a>
                         <a class="nav-link text-white" href="{{route('statspo.index')}}">Среднее профессиональное
                             образование</a>
-                        <a class="nav-link dropdown-toggle text-white" href="" id="navbarDropdown1" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Иностранные абитуриенты
-                        </a>
-                        <div class="dropdown-menu main-color-dropdown" aria-labelledby="navbarDropdown1 ">
-                            <a class="nav-link text-white" href="{{route('stat.index')}}">Бакалавриат и специалитет</a>
-                            <a class="nav-link text-white" href="{{route('statmaster.index')}}">Магистратура</a>
-                            <a class="nav-link text-white" href="{{route('statasp.index')}}">Аспирантура и ординатура</a>
-                        </div>
+{{--                        <a class="nav-link dropdown-toggle text-white" href="" id="navbarDropdown1" role="button"--}}
+{{--                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+{{--                            Иностранные абитуриенты--}}
+{{--                        </a>--}}
+{{--                        <div class="dropdown-menu main-color-dropdown" aria-labelledby="navbarDropdown1 ">--}}
+{{--                            <a class="nav-link text-white" href="{{route('stat.index')}}">Бакалавриат и специалитет</a>--}}
+{{--                            <a class="nav-link text-white" href="{{route('statmaster.index')}}">Магистратура</a>--}}
+{{--                            <a class="nav-link text-white" href="{{route('statasp.index')}}">Аспирантура и ординатура</a>--}}
+{{--                        </div>--}}
                         <a class="nav-link text-white" href="{{route('total.index')}}">Статистика приема</a>
                     </div>
                 </li>
@@ -166,6 +166,10 @@
                 </li>
                 <li class="nav-item active d-flex align-items-center justify-content-center">
                     <a class="nav-link" target="_blank" href="https://p.mrsu.ru/Account/Register">подача документов<span
+                            class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active d-flex align-items-center justify-content-center">
+                    <a class="nav-link" target="_blank" href="https://mrsu.ru/ru/abit/entry.php">архив<span
                             class="sr-only">(current)</span></a>
                 </li>
             </ul>
