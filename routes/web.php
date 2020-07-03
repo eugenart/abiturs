@@ -103,6 +103,10 @@ Route::get('/statistic/aspirant', 'StatisticAspController@index')->name('statasp
 Route::get('/statistic/spo', 'StatisticSpoController@index')->name('statspo.index');
 Route::get('/statistic/total', 'TotalStatController@index')->name('total.index');
 
+Route::get('/statistic-foreigner/bachelor', 'StatisticForeignerController@index')->name('statforeigner.index');
+Route::get('/statistic-foreigner/asp', 'StatisticAspForeignerController@index')->name('stataspforeigner.index');
+Route::get('/statistic-foreigner/master', 'StatisticMasterForeignerController@index')->name('statmasterforeigner.index');
+
 Route::get('/toOvzVer', 'SessionController@toOvzVer')->name('ses.toOvzVer');
 Route::get('/backToMainVer', 'SessionController@backToMainVer')->name('ses.backToMainVer');
 
