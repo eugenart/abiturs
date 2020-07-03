@@ -6,11 +6,13 @@ use App\AdmissionBasis;
 use App\Category;
 use App\Competition;
 use App\CompetitionAsp;
+use App\CompetitionForeigner;
 use App\CompetitionMaster;
 use App\CompetitionSpo;
 use App\Faculty;
 use App\Freeseats_bases;
 use App\Freeseats_basesAsp;
+use App\Freeseats_basesForeigner;
 use App\Freeseats_basesMaster;
 use App\Freeseats_basesSpo;
 use App\PastContests;
@@ -18,17 +20,21 @@ use App\Plan;
 use App\PlanAsp;
 use App\PlanCompetition;
 use App\PlanCompetitionAsp;
+use App\PlanCompetitionForeigner;
 use App\PlanCompetitionMaster;
 use App\PlanCompetitionSpo;
 use App\PlanCompScore;
 use App\PlanCompScoreAsp;
+use App\PlanCompScoreForeigner;
 use App\PlanCompScoreMaster;
 use App\PlanCompScoreSpo;
+use App\PlanForeigner;
 use App\PlanMaster;
 use App\PlanSpo;
 use App\PreparationLevel;
 use App\Price;
 use App\PriceAsp;
+use App\PriceForeigner;
 use App\PriceMaster;
 use App\PriceSpo;
 use App\Score;
@@ -125,115 +131,117 @@ trait ParserJsonTrait
             $studentsStat = array();
             $count_idStudent = 0;
             foreach ($json_data as $k => $fac_stat) {
-                $students = array(); //чистим массив студетов
-                //выбираем из базы нужные айдишники
-                $idPlan = Plan::where('planId', '=', $fac_stat['planId'])->first();
-                $idFaculty = Faculty::where('facultyId', '=', $fac_stat['facultyId'])->first();
-                $idSpeciality = Speciality::where('specialityId', '=', $fac_stat['trainingAreasId'])->first();
-                $idSpecialization = Specialization::where('specializationId', '=', $fac_stat['specializationID'])
-                    ->orWhere('name', '=', $fac_stat['specializationName'])->first();
-                $idCompetition = Competition::where('competitionId', '=', $fac_stat['CompetitionId'])->first();
-                $idAdmissionBasis = AdmissionBasis::where('baseId', '=', $fac_stat['IdBasis'])->first();
-                $idStudyForm = StudyForm::where('name', '=', $fac_stat['trainingForm'])->first();
+                if (!$fac_stat['foreigner']) {
+                    $students = array(); //чистим массив студетов
+                    //выбираем из базы нужные айдишники
+                    $idPlan = Plan::where('planId', '=', $fac_stat['planId'])->first();
+                    $idFaculty = Faculty::where('facultyId', '=', $fac_stat['facultyId'])->first();
+                    $idSpeciality = Speciality::where('specialityId', '=', $fac_stat['trainingAreasId'])->first();
+                    $idSpecialization = Specialization::where('specializationId', '=', $fac_stat['specializationID'])
+                        ->orWhere('name', '=', $fac_stat['specializationName'])->first();
+                    $idCompetition = Competition::where('competitionId', '=', $fac_stat['CompetitionId'])->first();
+                    $idAdmissionBasis = AdmissionBasis::where('baseId', '=', $fac_stat['IdBasis'])->first();
+                    $idStudyForm = StudyForm::where('name', '=', $fac_stat['trainingForm'])->first();
 
-                //если все данные нашлись в бдspecializationName
+                    //если все данные нашлись в бдspecializationName
 
-                foreach ($fac_stat['List'] as $student) {
-                    //находим id студента в предыдущих специальностях
-                    $idStudent = Student::where('studentId', '=', $student['studentId'])->first();
-                    if (empty($idStudent)) { //студента в базе нет - записываем
-                        $stud = array(
-                            'studentId' => $student['studentId'],
-                            'fio' => $student['fio'],
-                        );
-                        $students[] = $stud;
-                        $count_idStudent++;
-                        $id_stud = $count_idStudent; //id студента равен счетчику записи в базу
-                    } else { //студент в БД есть  - не записываем, берем его id из БД
-                        $id_stud = intval($idStudent->id); //id студента равен найденному в БД значению
-                    }
-                    //выбираем из БД остальные айдишники
-                    $idCategory = Category::where('name', '=', $student['category'])->first();
-                    $idPreparationLevel = PreparationLevel::where('name', '=', $student['preparationLevel'])->first();
-
-
-                    if (!empty($idPlan) && !empty($idFaculty) && !empty($idSpeciality) && !empty($idCompetition)
-                        && !empty($idAdmissionBasis) && !empty($idStudyForm) && !empty($idCategory) && !empty($idPreparationLevel)) {
-                        //создаем запись в массиве статистики
-                        $stat = array(
-                            'id_student' => $id_stud,
-                            'id_faculty' => intval($idFaculty->id),
-                            'id_speciality' => intval($idSpeciality->id),
-                            'id_specialization' => $idSpecialization ? intval($idSpecialization->id) : null,
-                            'id_preparationLevel' => intval($idPreparationLevel->id),
-                            'id_admissionBasis' => intval($idAdmissionBasis->id),
-                            'id_studyForm' => intval($idStudyForm->id),
-                            'id_category' => intval($idCategory->id),
-                            'accept' => $student['accept'],
-                            'original' => $student['original'],
-                            'summ' => $student['summ'],
-                            'indAchievement' => $student['indAchievement'],
-                            'summContest' => $student['summContest'],
-                            'needHostel' => $student['needHostel'],
-                            'notice1' => $student['notice1'],
-                            'notice2' => $student['notice2'],
-                            'is_chosen' => false,
-                            'id_plan' => intval($idPlan->id),
-                            'id_competition' => intval($idCompetition->id),
-                            'foreigner' => $fac_stat['foreigner'],
-                            'yellowline' => isset($student['yelloyline']) ? true : false,
-                            'acceptCount' => $student['acceptСount']
-                        );
-                        $studentsStat[] = $stat;
-                    } else {
-                        $mes = 'Не найден параметр.';
-                        if (empty($idPlan)) {
-                            $mes .= ' idPlan = ' . $fac_stat['planId'] . ',';
-                        }
-                        if (empty($idFaculty)) {
-                            $mes .= ' idFaculty = ' . $fac_stat['facultyId'] . ',';
-                        }
-                        if (empty($idSpeciality)) {
-                            $mes .= ' $idSpeciality = ' . $fac_stat['trainingAreasId'] . ',';
-                        }
-                        if (empty($idCompetition)) {
-                            $mes .= ' $idCompetition = ' . $fac_stat['CompetitionId'] . ',';
-                        }
-                        if (empty($idAdmissionBasis)) {
-                            $mes .= ' $idAdmissionBasis = ' . $fac_stat['IdBasis'] . ',';
-                        }
-                        if (empty($idStudyForm)) {
-                            $mes .= ' $idStudyForm = ' . $fac_stat['trainingForm'] . ',';
-                        }
-                        if (empty($idCategory)) {
-                            $mes .= ' $idCategory = ' . $student['category'] . ',';
-                        }
-                        if (empty($idPreparationLevel)) {
-                            $mes .= ' $idPreparationLevel = ' . $student['preparationLevel'] . ',';
-                        }
-                        throw new ErrorException($mes);
-                    }
-
-                    //теперь оценки
-                    foreach ($student['score'] as $score_item) {
-                        $idSubject = Subject::where('subjectId', '=', $score_item['subjectId'])->first();
-                        if (!empty($idSubject)) {
-                            $score = array(
-                                'id_statistic' => count($studentsStat),
-                                'id_subject' => intval($idSubject->id),
-                                'score' => $score_item['subjectScore'],
-                                'priority' => $score_item['Priority']
+                    foreach ($fac_stat['List'] as $student) {
+                        //находим id студента в предыдущих специальностях
+                        $idStudent = Student::where('studentId', '=', $student['studentId'])->first();
+                        if (empty($idStudent)) { //студента в базе нет - записываем
+                            $stud = array(
+                                'studentId' => $student['studentId'],
+                                'fio' => $student['fio'],
                             );
-                            $scores[] = $score;
+                            $students[] = $stud;
+                            $count_idStudent++;
+                            $id_stud = $count_idStudent; //id студента равен счетчику записи в базу
+                        } else { //студент в БД есть  - не записываем, берем его id из БД
+                            $id_stud = intval($idStudent->id); //id студента равен найденному в БД значению
+                        }
+                        //выбираем из БД остальные айдишники
+                        $idCategory = Category::where('name', '=', $student['category'])->first();
+                        $idPreparationLevel = PreparationLevel::where('name', '=', $student['preparationLevel'])->first();
+
+
+                        if (!empty($idPlan) && !empty($idFaculty) && !empty($idSpeciality) && !empty($idCompetition)
+                            && !empty($idAdmissionBasis) && !empty($idStudyForm) && !empty($idCategory) && !empty($idPreparationLevel)) {
+                            //создаем запись в массиве статистики
+                            $stat = array(
+                                'id_student' => $id_stud,
+                                'id_faculty' => intval($idFaculty->id),
+                                'id_speciality' => intval($idSpeciality->id),
+                                'id_specialization' => $idSpecialization ? intval($idSpecialization->id) : null,
+                                'id_preparationLevel' => intval($idPreparationLevel->id),
+                                'id_admissionBasis' => intval($idAdmissionBasis->id),
+                                'id_studyForm' => intval($idStudyForm->id),
+                                'id_category' => intval($idCategory->id),
+                                'accept' => $student['accept'],
+                                'original' => $student['original'],
+                                'summ' => $student['summ'],
+                                'indAchievement' => $student['indAchievement'],
+                                'summContest' => $student['summContest'],
+                                'needHostel' => $student['needHostel'],
+                                'notice1' => $student['notice1'],
+                                'notice2' => $student['notice2'],
+                                'is_chosen' => false,
+                                'id_plan' => intval($idPlan->id),
+                                'id_competition' => intval($idCompetition->id),
+                                'foreigner' => $fac_stat['foreigner'],
+                                'yellowline' => isset($student['yelloyline']) ? true : false,
+                                'acceptCount' => $student['acceptСount']
+                            );
+                            $studentsStat[] = $stat;
                         } else {
-                            $mes = 'Не найден параметр. ' . ' idSubject = ' . $score_item['subjectId'];
+                            $mes = 'Не найден параметр.';
+                            if (empty($idPlan)) {
+                                $mes .= ' idPlan = ' . $fac_stat['planId'] . ',';
+                            }
+                            if (empty($idFaculty)) {
+                                $mes .= ' idFaculty = ' . $fac_stat['facultyId'] . ',';
+                            }
+                            if (empty($idSpeciality)) {
+                                $mes .= ' $idSpeciality = ' . $fac_stat['trainingAreasId'] . ',';
+                            }
+                            if (empty($idCompetition)) {
+                                $mes .= ' $idCompetition = ' . $fac_stat['CompetitionId'] . ',';
+                            }
+                            if (empty($idAdmissionBasis)) {
+                                $mes .= ' $idAdmissionBasis = ' . $fac_stat['IdBasis'] . ',';
+                            }
+                            if (empty($idStudyForm)) {
+                                $mes .= ' $idStudyForm = ' . $fac_stat['trainingForm'] . ',';
+                            }
+                            if (empty($idCategory)) {
+                                $mes .= ' $idCategory = ' . $student['category'] . ',';
+                            }
+                            if (empty($idPreparationLevel)) {
+                                $mes .= ' $idPreparationLevel = ' . $student['preparationLevel'] . ',';
+                            }
                             throw new ErrorException($mes);
                         }
+
+                        //теперь оценки
+                        foreach ($student['score'] as $score_item) {
+                            $idSubject = Subject::where('subjectId', '=', $score_item['subjectId'])->first();
+                            if (!empty($idSubject)) {
+                                $score = array(
+                                    'id_statistic' => count($studentsStat),
+                                    'id_subject' => intval($idSubject->id),
+                                    'score' => $score_item['subjectScore'],
+                                    'priority' => $score_item['Priority']
+                                );
+                                $scores[] = $score;
+                            } else {
+                                $mes = 'Не найден параметр. ' . ' idSubject = ' . $score_item['subjectId'];
+                                throw new ErrorException($mes);
+                            }
+                        }
                     }
+                    //Записываем в БД студентов для этой специализации
+                    $students = array_unique($students, SORT_REGULAR);
+                    Student::insert($students);
                 }
-                //Записываем в БД студентов для этой специализации
-                $students = array_unique($students, SORT_REGULAR);
-                Student::insert($students);
             }
 
             $chunks = array_chunk($studentsStat, 2000);
@@ -259,7 +267,7 @@ trait ParserJsonTrait
         set_time_limit(1200);
 //        $this->parseCatalogs("stat_bach.json");
         $this->parseStatBach();
-         $this->XlsBach();
+        $this->XlsBach();
 
         return 'Информация об абитуриентах (бакалавриат,специалитет) успешно выгружена!';
     }
@@ -333,116 +341,118 @@ trait ParserJsonTrait
             $studentsStat = array();
             $count_idStudent = 0;
             foreach ($json_data as $k => $fac_stat) {
-                $students = array(); //чистим массив студетов
-                //выбираем из базы нужные айдишники
-                $idPlan = PlanMaster::where('planId', '=', $fac_stat['planId'])->first();
-                $idFaculty = Faculty::where('facultyId', '=', $fac_stat['facultyId'])->first();
-                $idSpeciality = Speciality::where('specialityId', '=', $fac_stat['trainingAreasId'])->first();
-                $idSpecialization = Specialization::where('specializationId', '=', $fac_stat['specializationID'])
-                    ->orWhere('name', '=', $fac_stat['specializationName'])->first();
-                $idCompetition = CompetitionMaster::where('competitionId', '=', $fac_stat['CompetitionId'])->first();
-                $idAdmissionBasis = AdmissionBasis::where('baseId', '=', $fac_stat['IdBasis'])->first();
-                $idStudyForm = StudyForm::where('name', '=', $fac_stat['trainingForm'])->first();
+                if (!$fac_stat['foreigner']) {
+                    $students = array(); //чистим массив студетов
+                    //выбираем из базы нужные айдишники
+                    $idPlan = PlanMaster::where('planId', '=', $fac_stat['planId'])->first();
+                    $idFaculty = Faculty::where('facultyId', '=', $fac_stat['facultyId'])->first();
+                    $idSpeciality = Speciality::where('specialityId', '=', $fac_stat['trainingAreasId'])->first();
+                    $idSpecialization = Specialization::where('specializationId', '=', $fac_stat['specializationID'])
+                        ->orWhere('name', '=', $fac_stat['specializationName'])->first();
+                    $idCompetition = CompetitionMaster::where('competitionId', '=', $fac_stat['CompetitionId'])->first();
+                    $idAdmissionBasis = AdmissionBasis::where('baseId', '=', $fac_stat['IdBasis'])->first();
+                    $idStudyForm = StudyForm::where('name', '=', $fac_stat['trainingForm'])->first();
 
-                //если все данные нашлись в бд
+                    //если все данные нашлись в бд
 
-                foreach ($fac_stat['List'] as $student) {
-                    //находим id студента в предыдущих специальностях
-                    $idStudent = StudentMaster::where('studentId', '=', $student['studentId'])->first();
-                    if (empty($idStudent)) { //студента в базе нет - записываем
-                        $stud = array(
-                            'studentId' => $student['studentId'],
-                            'fio' => $student['fio'],
-                        );
-                        $students[] = $stud;
-                        $count_idStudent++;
-                        $id_stud = $count_idStudent; //id студента равен счетчику записи в базу
-                    } else { //студент в БД есть  - не записываем, берем его id из БД
-                        $id_stud = intval($idStudent->id); //id студента равен найденному в БД значению
-                    }
-                    //выбираем из БД остальные айдишники
-                    $idCategory = Category::where('name', '=', $student['category'])->first();
-                    $idPreparationLevel = PreparationLevel::where('name', '=', $student['preparationLevel'])->first();
-
-
-                    if (!empty($idPlan) && !empty($idFaculty) && !empty($idSpeciality) && !empty($idCompetition)
-                        && !empty($idAdmissionBasis) && !empty($idStudyForm) && !empty($idCategory) && !empty($idPreparationLevel)) {
-                        //создаем запись в массиве статистики
-                        $stat = array(
-                            'id_student' => $id_stud,
-                            'id_faculty' => intval($idFaculty->id),
-                            'id_speciality' => intval($idSpeciality->id),
-                            'id_specialization' => $idSpecialization ? intval($idSpecialization->id) : null,
-                            'id_preparationLevel' => intval($idPreparationLevel->id),
-                            'id_admissionBasis' => intval($idAdmissionBasis->id),
-                            'id_studyForm' => intval($idStudyForm->id),
-                            'id_category' => intval($idCategory->id),
-                            'accept' => $student['accept'],
-                            'original' => $student['original'],
-                            'summ' => $student['summ'],
-                            'indAchievement' => $student['indAchievement'],
-                            'summContest' => $student['summContest'],
-                            'needHostel' => $student['needHostel'],
-                            'notice1' => $student['notice1'],
-                            'notice2' => $student['notice2'],
-                            'is_chosen' => false,
-                            'id_plan' => intval($idPlan->id),
-                            'id_competition' => intval($idCompetition->id),
-                            'foreigner' => $fac_stat['foreigner'],
-                            'yellowline' => isset($student['yelloyline']) ? true : false,
-                            'acceptCount' => $student['acceptСount']
-                        );
-                        $studentsStat[] = $stat;
-                    } else {
-                        $mes = 'Не найден параметр.';
-                        if (empty($idPlan)) {
-                            $mes .= ' idPlan = ' . $fac_stat['planId'] . ',';
-                        }
-                        if (empty($idFaculty)) {
-                            $mes .= ' idFaculty = ' . $fac_stat['facultyId'] . ',';
-                        }
-                        if (empty($idSpeciality)) {
-                            $mes .= ' $idSpeciality = ' . $fac_stat['trainingAreasId'] . ',';
-                        }
-                        if (empty($idCompetition)) {
-                            $mes .= ' $idCompetition = ' . $fac_stat['CompetitionId'] . ',';
-                        }
-                        if (empty($idAdmissionBasis)) {
-                            $mes .= ' $idAdmissionBasis = ' . $fac_stat['IdBasis'] . ',';
-                        }
-                        if (empty($idStudyForm)) {
-                            $mes .= ' $idStudyForm = ' . $fac_stat['trainingForm'] . ',';
-                        }
-                        if (empty($idCategory)) {
-                            $mes .= ' $idCategory = ' . $student['category'] . ',';
-                        }
-                        if (empty($idPreparationLevel)) {
-                            $mes .= ' $idPreparationLevel = ' . $student['preparationLevel'] . ',';
-                        }
-                        throw new ErrorException($mes);
-                    }
-
-                    //теперь оценки
-                    foreach ($student['score'] as $score_item) {
-                        $idSubject = Subject::where('subjectId', '=', $score_item['subjectId'])->first();
-                        if (!empty($idSubject)) {
-                            $score = array(
-                                'id_statistic' => count($studentsStat),
-                                'id_subject' => intval($idSubject->id),
-                                'score' => $score_item['subjectScore'],
-                                'priority' => $score_item['Priority']
+                    foreach ($fac_stat['List'] as $student) {
+                        //находим id студента в предыдущих специальностях
+                        $idStudent = StudentMaster::where('studentId', '=', $student['studentId'])->first();
+                        if (empty($idStudent)) { //студента в базе нет - записываем
+                            $stud = array(
+                                'studentId' => $student['studentId'],
+                                'fio' => $student['fio'],
                             );
-                            $scores[] = $score;
+                            $students[] = $stud;
+                            $count_idStudent++;
+                            $id_stud = $count_idStudent; //id студента равен счетчику записи в базу
+                        } else { //студент в БД есть  - не записываем, берем его id из БД
+                            $id_stud = intval($idStudent->id); //id студента равен найденному в БД значению
+                        }
+                        //выбираем из БД остальные айдишники
+                        $idCategory = Category::where('name', '=', $student['category'])->first();
+                        $idPreparationLevel = PreparationLevel::where('name', '=', $student['preparationLevel'])->first();
+
+
+                        if (!empty($idPlan) && !empty($idFaculty) && !empty($idSpeciality) && !empty($idCompetition)
+                            && !empty($idAdmissionBasis) && !empty($idStudyForm) && !empty($idCategory) && !empty($idPreparationLevel)) {
+                            //создаем запись в массиве статистики
+                            $stat = array(
+                                'id_student' => $id_stud,
+                                'id_faculty' => intval($idFaculty->id),
+                                'id_speciality' => intval($idSpeciality->id),
+                                'id_specialization' => $idSpecialization ? intval($idSpecialization->id) : null,
+                                'id_preparationLevel' => intval($idPreparationLevel->id),
+                                'id_admissionBasis' => intval($idAdmissionBasis->id),
+                                'id_studyForm' => intval($idStudyForm->id),
+                                'id_category' => intval($idCategory->id),
+                                'accept' => $student['accept'],
+                                'original' => $student['original'],
+                                'summ' => $student['summ'],
+                                'indAchievement' => $student['indAchievement'],
+                                'summContest' => $student['summContest'],
+                                'needHostel' => $student['needHostel'],
+                                'notice1' => $student['notice1'],
+                                'notice2' => $student['notice2'],
+                                'is_chosen' => false,
+                                'id_plan' => intval($idPlan->id),
+                                'id_competition' => intval($idCompetition->id),
+                                'foreigner' => $fac_stat['foreigner'],
+                                'yellowline' => isset($student['yelloyline']) ? true : false,
+                                'acceptCount' => $student['acceptСount']
+                            );
+                            $studentsStat[] = $stat;
                         } else {
-                            $mes = 'Не найден параметр. ' . ' idSubject = ' . $score_item['subjectId'];
+                            $mes = 'Не найден параметр.';
+                            if (empty($idPlan)) {
+                                $mes .= ' idPlan = ' . $fac_stat['planId'] . ',';
+                            }
+                            if (empty($idFaculty)) {
+                                $mes .= ' idFaculty = ' . $fac_stat['facultyId'] . ',';
+                            }
+                            if (empty($idSpeciality)) {
+                                $mes .= ' $idSpeciality = ' . $fac_stat['trainingAreasId'] . ',';
+                            }
+                            if (empty($idCompetition)) {
+                                $mes .= ' $idCompetition = ' . $fac_stat['CompetitionId'] . ',';
+                            }
+                            if (empty($idAdmissionBasis)) {
+                                $mes .= ' $idAdmissionBasis = ' . $fac_stat['IdBasis'] . ',';
+                            }
+                            if (empty($idStudyForm)) {
+                                $mes .= ' $idStudyForm = ' . $fac_stat['trainingForm'] . ',';
+                            }
+                            if (empty($idCategory)) {
+                                $mes .= ' $idCategory = ' . $student['category'] . ',';
+                            }
+                            if (empty($idPreparationLevel)) {
+                                $mes .= ' $idPreparationLevel = ' . $student['preparationLevel'] . ',';
+                            }
                             throw new ErrorException($mes);
                         }
-                    }
-                }
 
-                //Записываем в БД студентов для этой специализации
-                $students = array_unique($students, SORT_REGULAR);
-                StudentMaster::insert($students);
+                        //теперь оценки
+                        foreach ($student['score'] as $score_item) {
+                            $idSubject = Subject::where('subjectId', '=', $score_item['subjectId'])->first();
+                            if (!empty($idSubject)) {
+                                $score = array(
+                                    'id_statistic' => count($studentsStat),
+                                    'id_subject' => intval($idSubject->id),
+                                    'score' => $score_item['subjectScore'],
+                                    'priority' => $score_item['Priority']
+                                );
+                                $scores[] = $score;
+                            } else {
+                                $mes = 'Не найден параметр. ' . ' idSubject = ' . $score_item['subjectId'];
+                                throw new ErrorException($mes);
+                            }
+                        }
+                    }
+
+                    //Записываем в БД студентов для этой специализации
+                    $students = array_unique($students, SORT_REGULAR);
+                    StudentMaster::insert($students);
+                }
             }
 
 
@@ -544,116 +554,118 @@ trait ParserJsonTrait
             $studentsStat = array();
             $count_idStudent = 0;
             foreach ($json_data as $k => $fac_stat) {
-                $students = array(); //чистим массив студетов
-                //выбираем из базы нужные айдишники
-                $idPlan = PlanAsp::where('planId', '=', $fac_stat['planId'])->first();
-                $idFaculty = Faculty::where('facultyId', '=', $fac_stat['facultyId'])->first();
-                $idSpeciality = Speciality::where('specialityId', '=', $fac_stat['trainingAreasId'])->first();
-                $idSpecialization = Specialization::where('specializationId', '=', $fac_stat['specializationID'])
-                    ->orWhere('name', '=', $fac_stat['specializationName'])->first();
-                $idCompetition = CompetitionAsp::where('competitionId', '=', $fac_stat['CompetitionId'])->first();
-                $idAdmissionBasis = AdmissionBasis::where('baseId', '=', $fac_stat['IdBasis'])->first();
-                $idStudyForm = StudyForm::where('name', '=', $fac_stat['trainingForm'])->first();
+                if (!$fac_stat['foreigner']) {
+                    $students = array(); //чистим массив студетов
+                    //выбираем из базы нужные айдишники
+                    $idPlan = PlanAsp::where('planId', '=', $fac_stat['planId'])->first();
+                    $idFaculty = Faculty::where('facultyId', '=', $fac_stat['facultyId'])->first();
+                    $idSpeciality = Speciality::where('specialityId', '=', $fac_stat['trainingAreasId'])->first();
+                    $idSpecialization = Specialization::where('specializationId', '=', $fac_stat['specializationID'])
+                        ->orWhere('name', '=', $fac_stat['specializationName'])->first();
+                    $idCompetition = CompetitionAsp::where('competitionId', '=', $fac_stat['CompetitionId'])->first();
+                    $idAdmissionBasis = AdmissionBasis::where('baseId', '=', $fac_stat['IdBasis'])->first();
+                    $idStudyForm = StudyForm::where('name', '=', $fac_stat['trainingForm'])->first();
 
-                //если все данные нашлись в бд
+                    //если все данные нашлись в бд
 
-                foreach ($fac_stat['List'] as $student) {
-                    //находим id студента в предыдущих специальностях
-                    $idStudent = StudentAsp::where('studentId', '=', $student['studentId'])->first();
-                    if (empty($idStudent)) { //студента в базе нет - записываем
-                        $stud = array(
-                            'studentId' => $student['studentId'],
-                            'fio' => $student['fio'],
-                        );
-                        $students[] = $stud;
-                        $count_idStudent++;
-                        $id_stud = $count_idStudent; //id студента равен счетчику записи в базу
-                    } else { //студент в БД есть  - не записываем, берем его id из БД
-                        $id_stud = intval($idStudent->id); //id студента равен найденному в БД значению
-                    }
-                    //выбираем из БД остальные айдишники
-                    $idCategory = Category::where('name', '=', $student['category'])->first();
-                    $idPreparationLevel = PreparationLevel::where('name', '=', $student['preparationLevel'])->first();
-
-
-                    if (!empty($idPlan) && !empty($idFaculty) && !empty($idSpeciality) && !empty($idCompetition)
-                        && !empty($idAdmissionBasis) && !empty($idStudyForm) && !empty($idCategory) && !empty($idPreparationLevel)) {
-                        //создаем запись в массиве статистики
-                        $stat = array(
-                            'id_student' => $id_stud,
-                            'id_faculty' => intval($idFaculty->id),
-                            'id_speciality' => intval($idSpeciality->id),
-                            'id_specialization' => $idSpecialization ? intval($idSpecialization->id) : null,
-                            'id_preparationLevel' => intval($idPreparationLevel->id),
-                            'id_admissionBasis' => intval($idAdmissionBasis->id),
-                            'id_studyForm' => intval($idStudyForm->id),
-                            'id_category' => intval($idCategory->id),
-                            'accept' => $student['accept'],
-                            'original' => $student['original'],
-                            'summ' => $student['summ'],
-                            'indAchievement' => $student['indAchievement'],
-                            'summContest' => $student['summContest'],
-                            'needHostel' => $student['needHostel'],
-                            'notice1' => $student['notice1'],
-                            'notice2' => $student['notice2'],
-                            'is_chosen' => false,
-                            'id_plan' => intval($idPlan->id),
-                            'id_competition' => intval($idCompetition->id),
-                            'foreigner' => $fac_stat['foreigner'],
-                            'yellowline' => isset($student['yelloyline']) ? true : false,
-                            'acceptCount' => $student['acceptСount']
-                        );
-                        $studentsStat[] = $stat;
-                    } else {
-                        $mes = 'Не найден параметр.';
-                        if (empty($idPlan)) {
-                            $mes .= ' idPlan = ' . $fac_stat['planId'] . ',';
-                        }
-                        if (empty($idFaculty)) {
-                            $mes .= ' idFaculty = ' . $fac_stat['facultyId'] . ',';
-                        }
-                        if (empty($idSpeciality)) {
-                            $mes .= ' $idSpeciality = ' . $fac_stat['trainingAreasId'] . ',';
-                        }
-                        if (empty($idCompetition)) {
-                            $mes .= ' $idCompetition = ' . $fac_stat['CompetitionId'] . ',';
-                        }
-                        if (empty($idAdmissionBasis)) {
-                            $mes .= ' $idAdmissionBasis = ' . $fac_stat['IdBasis'] . ',';
-                        }
-                        if (empty($idStudyForm)) {
-                            $mes .= ' $idStudyForm = ' . $fac_stat['trainingForm'] . ',';
-                        }
-                        if (empty($idCategory)) {
-                            $mes .= ' $idCategory = ' . $student['category'] . ',';
-                        }
-                        if (empty($idPreparationLevel)) {
-                            $mes .= ' $idPreparationLevel = ' . $student['preparationLevel'] . ',';
-                        }
-                        throw new ErrorException($mes);
-                    }
-
-                    //теперь оценки
-                    foreach ($student['score'] as $score_item) {
-                        $idSubject = Subject::where('subjectId', '=', $score_item['subjectId'])->first();
-                        if (!empty($idSubject)) {
-                            $score = array(
-                                'id_statistic' => count($studentsStat),
-                                'id_subject' => intval($idSubject->id),
-                                'score' => $score_item['subjectScore'],
-                                'priority' => $score_item['Priority']
+                    foreach ($fac_stat['List'] as $student) {
+                        //находим id студента в предыдущих специальностях
+                        $idStudent = StudentAsp::where('studentId', '=', $student['studentId'])->first();
+                        if (empty($idStudent)) { //студента в базе нет - записываем
+                            $stud = array(
+                                'studentId' => $student['studentId'],
+                                'fio' => $student['fio'],
                             );
-                            $scores[] = $score;
+                            $students[] = $stud;
+                            $count_idStudent++;
+                            $id_stud = $count_idStudent; //id студента равен счетчику записи в базу
+                        } else { //студент в БД есть  - не записываем, берем его id из БД
+                            $id_stud = intval($idStudent->id); //id студента равен найденному в БД значению
+                        }
+                        //выбираем из БД остальные айдишники
+                        $idCategory = Category::where('name', '=', $student['category'])->first();
+                        $idPreparationLevel = PreparationLevel::where('name', '=', $student['preparationLevel'])->first();
+
+
+                        if (!empty($idPlan) && !empty($idFaculty) && !empty($idSpeciality) && !empty($idCompetition)
+                            && !empty($idAdmissionBasis) && !empty($idStudyForm) && !empty($idCategory) && !empty($idPreparationLevel)) {
+                            //создаем запись в массиве статистики
+                            $stat = array(
+                                'id_student' => $id_stud,
+                                'id_faculty' => intval($idFaculty->id),
+                                'id_speciality' => intval($idSpeciality->id),
+                                'id_specialization' => $idSpecialization ? intval($idSpecialization->id) : null,
+                                'id_preparationLevel' => intval($idPreparationLevel->id),
+                                'id_admissionBasis' => intval($idAdmissionBasis->id),
+                                'id_studyForm' => intval($idStudyForm->id),
+                                'id_category' => intval($idCategory->id),
+                                'accept' => $student['accept'],
+                                'original' => $student['original'],
+                                'summ' => $student['summ'],
+                                'indAchievement' => $student['indAchievement'],
+                                'summContest' => $student['summContest'],
+                                'needHostel' => $student['needHostel'],
+                                'notice1' => $student['notice1'],
+                                'notice2' => $student['notice2'],
+                                'is_chosen' => false,
+                                'id_plan' => intval($idPlan->id),
+                                'id_competition' => intval($idCompetition->id),
+                                'foreigner' => $fac_stat['foreigner'],
+                                'yellowline' => isset($student['yelloyline']) ? true : false,
+                                'acceptCount' => $student['acceptСount']
+                            );
+                            $studentsStat[] = $stat;
                         } else {
-                            $mes = 'Не найден параметр. ' . ' idSubject = ' . $score_item['subjectId'];
+                            $mes = 'Не найден параметр.';
+                            if (empty($idPlan)) {
+                                $mes .= ' idPlan = ' . $fac_stat['planId'] . ',';
+                            }
+                            if (empty($idFaculty)) {
+                                $mes .= ' idFaculty = ' . $fac_stat['facultyId'] . ',';
+                            }
+                            if (empty($idSpeciality)) {
+                                $mes .= ' $idSpeciality = ' . $fac_stat['trainingAreasId'] . ',';
+                            }
+                            if (empty($idCompetition)) {
+                                $mes .= ' $idCompetition = ' . $fac_stat['CompetitionId'] . ',';
+                            }
+                            if (empty($idAdmissionBasis)) {
+                                $mes .= ' $idAdmissionBasis = ' . $fac_stat['IdBasis'] . ',';
+                            }
+                            if (empty($idStudyForm)) {
+                                $mes .= ' $idStudyForm = ' . $fac_stat['trainingForm'] . ',';
+                            }
+                            if (empty($idCategory)) {
+                                $mes .= ' $idCategory = ' . $student['category'] . ',';
+                            }
+                            if (empty($idPreparationLevel)) {
+                                $mes .= ' $idPreparationLevel = ' . $student['preparationLevel'] . ',';
+                            }
                             throw new ErrorException($mes);
                         }
-                    }
-                }
 
-                //Записываем в БД студентов для этой специализации
-                $students = array_unique($students, SORT_REGULAR);
-                StudentAsp::insert($students);
+                        //теперь оценки
+                        foreach ($student['score'] as $score_item) {
+                            $idSubject = Subject::where('subjectId', '=', $score_item['subjectId'])->first();
+                            if (!empty($idSubject)) {
+                                $score = array(
+                                    'id_statistic' => count($studentsStat),
+                                    'id_subject' => intval($idSubject->id),
+                                    'score' => $score_item['subjectScore'],
+                                    'priority' => $score_item['Priority']
+                                );
+                                $scores[] = $score;
+                            } else {
+                                $mes = 'Не найден параметр. ' . ' idSubject = ' . $score_item['subjectId'];
+                                throw new ErrorException($mes);
+                            }
+                        }
+                    }
+
+                    //Записываем в БД студентов для этой специализации
+                    $students = array_unique($students, SORT_REGULAR);
+                    StudentAsp::insert($students);
+                }
             }
 
             $chunks = array_chunk($studentsStat, 2000);
@@ -753,116 +765,118 @@ trait ParserJsonTrait
             $studentsStat = array();
             $count_idStudent = 0;
             foreach ($json_data as $k => $fac_stat) {
-                $students = array(); //чистим массив студетов
-                //выбираем из базы нужные айдишники
-                $idPlan = PlanSpo::where('planId', '=', $fac_stat['planId'])->first();
-                $idFaculty = Faculty::where('facultyId', '=', $fac_stat['facultyId'])->first();
-                $idSpeciality = Speciality::where('specialityId', '=', $fac_stat['trainingAreasId'])->first();
-                $idSpecialization = Specialization::where('specializationId', '=', $fac_stat['specializationID'])
-                    ->orWhere('name', '=', $fac_stat['specializationName'])->first();
-                $idCompetition = CompetitionSpo::where('competitionId', '=', $fac_stat['CompetitionId'])->first();
-                $idAdmissionBasis = AdmissionBasis::where('baseId', '=', $fac_stat['IdBasis'])->first();
-                $idStudyForm = StudyForm::where('name', '=', $fac_stat['trainingForm'])->first();
+                if (!$fac_stat['foreigner']) {
+                    $students = array(); //чистим массив студетов
+                    //выбираем из базы нужные айдишники
+                    $idPlan = PlanSpo::where('planId', '=', $fac_stat['planId'])->first();
+                    $idFaculty = Faculty::where('facultyId', '=', $fac_stat['facultyId'])->first();
+                    $idSpeciality = Speciality::where('specialityId', '=', $fac_stat['trainingAreasId'])->first();
+                    $idSpecialization = Specialization::where('specializationId', '=', $fac_stat['specializationID'])
+                        ->orWhere('name', '=', $fac_stat['specializationName'])->first();
+                    $idCompetition = CompetitionSpo::where('competitionId', '=', $fac_stat['CompetitionId'])->first();
+                    $idAdmissionBasis = AdmissionBasis::where('baseId', '=', $fac_stat['IdBasis'])->first();
+                    $idStudyForm = StudyForm::where('name', '=', $fac_stat['trainingForm'])->first();
 
-                //если все данные нашлись в бд
+                    //если все данные нашлись в бд
 
-                foreach ($fac_stat['List'] as $student) {
-                    //находим id студента в предыдущих специальностях
-                    $idStudent = StudentSpo::where('studentId', '=', $student['studentId'])->first();
-                    if (empty($idStudent)) { //студента в базе нет - записываем
-                        $stud = array(
-                            'studentId' => $student['studentId'],
-                            'fio' => $student['fio'],
-                        );
-                        $students[] = $stud;
-                        $count_idStudent++;
-                        $id_stud = $count_idStudent; //id студента равен счетчику записи в базу
-                    } else { //студент в БД есть  - не записываем, берем его id из БД
-                        $id_stud = intval($idStudent->id); //id студента равен найденному в БД значению
-                    }
-                    //выбираем из БД остальные айдишники
-                    $idCategory = Category::where('name', '=', $student['category'])->first();
-                    $idPreparationLevel = PreparationLevel::where('name', '=', $student['preparationLevel'])->first();
-
-
-                    if (!empty($idPlan) && !empty($idFaculty) && !empty($idSpeciality) && !empty($idCompetition)
-                        && !empty($idAdmissionBasis) && !empty($idStudyForm) && !empty($idCategory) && !empty($idPreparationLevel)) {
-                        //создаем запись в массиве статистики
-                        $stat = array(
-                            'id_student' => $id_stud,
-                            'id_faculty' => intval($idFaculty->id),
-                            'id_speciality' => intval($idSpeciality->id),
-                            'id_specialization' => $idSpecialization ? intval($idSpecialization->id) : null,
-                            'id_preparationLevel' => intval($idPreparationLevel->id),
-                            'id_admissionBasis' => intval($idAdmissionBasis->id),
-                            'id_studyForm' => intval($idStudyForm->id),
-                            'id_category' => intval($idCategory->id),
-                            'accept' => $student['accept'],
-                            'original' => $student['original'],
-                            'summ' => $student['summ'],
-                            'indAchievement' => $student['indAchievement'],
-                            'summContest' => $student['summContest'],
-                            'needHostel' => $student['needHostel'],
-                            'notice1' => $student['notice1'],
-                            'notice2' => $student['notice2'],
-                            'is_chosen' => false,
-                            'id_plan' => intval($idPlan->id),
-                            'id_competition' => intval($idCompetition->id),
-                            'foreigner' => $fac_stat['foreigner'],
-                            'yellowline' => isset($student['yelloyline']) ? true : false,
-                            'acceptCount' => $student['acceptСount']
-                        );
-                        $studentsStat[] = $stat;
-                    } else {
-                        $mes = 'Не найден параметр.';
-                        if (empty($idPlan)) {
-                            $mes .= ' idPlan = ' . $fac_stat['planId'] . ',';
-                        }
-                        if (empty($idFaculty)) {
-                            $mes .= ' idFaculty = ' . $fac_stat['facultyId'] . ',';
-                        }
-                        if (empty($idSpeciality)) {
-                            $mes .= ' $idSpeciality = ' . $fac_stat['trainingAreasId'] . ',';
-                        }
-                        if (empty($idCompetition)) {
-                            $mes .= ' $idCompetition = ' . $fac_stat['CompetitionId'] . ',';
-                        }
-                        if (empty($idAdmissionBasis)) {
-                            $mes .= ' $idAdmissionBasis = ' . $fac_stat['IdBasis'] . ',';
-                        }
-                        if (empty($idStudyForm)) {
-                            $mes .= ' $idStudyForm = ' . $fac_stat['trainingForm'] . ',';
-                        }
-                        if (empty($idCategory)) {
-                            $mes .= ' $idCategory = ' . $student['category'] . ',';
-                        }
-                        if (empty($idPreparationLevel)) {
-                            $mes .= ' $idPreparationLevel = ' . $student['preparationLevel'] . ',';
-                        }
-                        throw new ErrorException($mes);
-                    }
-
-                    //теперь оценки
-                    foreach ($student['score'] as $score_item) {
-                        $idSubject = Subject::where('subjectId', '=', $score_item['subjectId'])->first();
-                        if (!empty($idSubject)) {
-                            $score = array(
-                                'id_statistic' => count($studentsStat),
-                                'id_subject' => intval($idSubject->id),
-                                'score' => $score_item['subjectScore'],
-                                'priority' => $score_item['Priority']
+                    foreach ($fac_stat['List'] as $student) {
+                        //находим id студента в предыдущих специальностях
+                        $idStudent = StudentSpo::where('studentId', '=', $student['studentId'])->first();
+                        if (empty($idStudent)) { //студента в базе нет - записываем
+                            $stud = array(
+                                'studentId' => $student['studentId'],
+                                'fio' => $student['fio'],
                             );
-                            $scores[] = $score;
+                            $students[] = $stud;
+                            $count_idStudent++;
+                            $id_stud = $count_idStudent; //id студента равен счетчику записи в базу
+                        } else { //студент в БД есть  - не записываем, берем его id из БД
+                            $id_stud = intval($idStudent->id); //id студента равен найденному в БД значению
+                        }
+                        //выбираем из БД остальные айдишники
+                        $idCategory = Category::where('name', '=', $student['category'])->first();
+                        $idPreparationLevel = PreparationLevel::where('name', '=', $student['preparationLevel'])->first();
+
+
+                        if (!empty($idPlan) && !empty($idFaculty) && !empty($idSpeciality) && !empty($idCompetition)
+                            && !empty($idAdmissionBasis) && !empty($idStudyForm) && !empty($idCategory) && !empty($idPreparationLevel)) {
+                            //создаем запись в массиве статистики
+                            $stat = array(
+                                'id_student' => $id_stud,
+                                'id_faculty' => intval($idFaculty->id),
+                                'id_speciality' => intval($idSpeciality->id),
+                                'id_specialization' => $idSpecialization ? intval($idSpecialization->id) : null,
+                                'id_preparationLevel' => intval($idPreparationLevel->id),
+                                'id_admissionBasis' => intval($idAdmissionBasis->id),
+                                'id_studyForm' => intval($idStudyForm->id),
+                                'id_category' => intval($idCategory->id),
+                                'accept' => $student['accept'],
+                                'original' => $student['original'],
+                                'summ' => $student['summ'],
+                                'indAchievement' => $student['indAchievement'],
+                                'summContest' => $student['summContest'],
+                                'needHostel' => $student['needHostel'],
+                                'notice1' => $student['notice1'],
+                                'notice2' => $student['notice2'],
+                                'is_chosen' => false,
+                                'id_plan' => intval($idPlan->id),
+                                'id_competition' => intval($idCompetition->id),
+                                'foreigner' => $fac_stat['foreigner'],
+                                'yellowline' => isset($student['yelloyline']) ? true : false,
+                                'acceptCount' => $student['acceptСount']
+                            );
+                            $studentsStat[] = $stat;
                         } else {
-                            $mes = 'Не найден параметр. ' . ' idSubject = ' . $score_item['subjectId'];
+                            $mes = 'Не найден параметр.';
+                            if (empty($idPlan)) {
+                                $mes .= ' idPlan = ' . $fac_stat['planId'] . ',';
+                            }
+                            if (empty($idFaculty)) {
+                                $mes .= ' idFaculty = ' . $fac_stat['facultyId'] . ',';
+                            }
+                            if (empty($idSpeciality)) {
+                                $mes .= ' $idSpeciality = ' . $fac_stat['trainingAreasId'] . ',';
+                            }
+                            if (empty($idCompetition)) {
+                                $mes .= ' $idCompetition = ' . $fac_stat['CompetitionId'] . ',';
+                            }
+                            if (empty($idAdmissionBasis)) {
+                                $mes .= ' $idAdmissionBasis = ' . $fac_stat['IdBasis'] . ',';
+                            }
+                            if (empty($idStudyForm)) {
+                                $mes .= ' $idStudyForm = ' . $fac_stat['trainingForm'] . ',';
+                            }
+                            if (empty($idCategory)) {
+                                $mes .= ' $idCategory = ' . $student['category'] . ',';
+                            }
+                            if (empty($idPreparationLevel)) {
+                                $mes .= ' $idPreparationLevel = ' . $student['preparationLevel'] . ',';
+                            }
                             throw new ErrorException($mes);
                         }
-                    }
-                }
 
-                //Записываем в БД студентов для этой специализации
-                $students = array_unique($students, SORT_REGULAR);
-                StudentSpo::insert($students);
+                        //теперь оценки
+                        foreach ($student['score'] as $score_item) {
+                            $idSubject = Subject::where('subjectId', '=', $score_item['subjectId'])->first();
+                            if (!empty($idSubject)) {
+                                $score = array(
+                                    'id_statistic' => count($studentsStat),
+                                    'id_subject' => intval($idSubject->id),
+                                    'score' => $score_item['subjectScore'],
+                                    'priority' => $score_item['Priority']
+                                );
+                                $scores[] = $score;
+                            } else {
+                                $mes = 'Не найден параметр. ' . ' idSubject = ' . $score_item['subjectId'];
+                                throw new ErrorException($mes);
+                            }
+                        }
+                    }
+
+                    //Записываем в БД студентов для этой специализации
+                    $students = array_unique($students, SORT_REGULAR);
+                    StudentSpo::insert($students);
+                }
             }
 
             $chunks = array_chunk($studentsStat, 2000);
@@ -915,6 +929,14 @@ trait ParserJsonTrait
             $arr_freeseats = array();
             $count_plan = 0;
 
+            $arr_plan_f = array();
+            $arr_competition_f = array();
+            $arr_plan_comp_f = array();
+            $arr_plan_comp_score_f = array();
+            $arr_prices_f = array();
+            $arr_freeseats_f = array();
+            $count_plan_f = 0;
+
 
             foreach ($json_data as $k => $element) {
                 if (!$element['Competition']['foreigner']) {
@@ -922,10 +944,9 @@ trait ParserJsonTrait
                     $id_studyForm = StudyForm::where('name', '=', $element['Plan']['trainingForm'])->first();
                     $id_speciality = Speciality::where('specialityId', '=', $element['Plan']['trainingAreasId'])->first();
                     $id_specialization = Specialization::where('specializationId', '=', $element['Plan']['specializationID'])->first();
-                    if(!isset($id_specialization)){
+                    if (!isset($id_specialization)) {
                         $id_specialization = Specialization::where('name', '=', $element['Plan']['specializationName'])->first();
                     }
-
 
                     //заполним массив планов
                     if (!empty($id_faculty) && !empty($id_studyForm) && !empty($id_speciality)) {
@@ -986,14 +1007,15 @@ trait ParserJsonTrait
                             throw new ErrorException($mes);
                         }
                     }
-
-                    foreach ($element['Prices'] as $priceItem) {
-                        $price = array(
-                            'id_plan_comp' => $count_plan, // так же если не делать уникальной таблицу планов
-                            'price' => $priceItem['Price'],
-                            'info' => $priceItem['info']
-                        );
-                        $arr_prices[] = $price;
+                    if (isset($element['Prices'])) {
+                        foreach ($element['Prices'] as $priceItem) {
+                            $price = array(
+                                'id_plan_comp' => $count_plan, // так же если не делать уникальной таблицу планов
+                                'price' => $priceItem['Price'],
+                                'info' => $priceItem['info']
+                            );
+                            $arr_prices[] = $price;
+                        }
                     }
 
                     foreach ($element['admissionBasis'] as $basisItem) {
@@ -1005,6 +1027,98 @@ trait ParserJsonTrait
                                 'value' => $basisItem['value']
                             );
                             $arr_freeseats[] = $freeseat;
+                        } else {
+                            $mes = 'Не найден параметр.' . 'id_admissionBasis = ' . $basisItem['IdBasis'];
+                            throw new ErrorException($mes);
+                        }
+                    }
+                } else {
+                    $id_faculty = Faculty::where('facultyId', '=', $element['Plan']['facultyId'])->first();
+                    $id_studyForm = StudyForm::where('name', '=', $element['Plan']['trainingForm'])->first();
+                    $id_speciality = Speciality::where('specialityId', '=', $element['Plan']['trainingAreasId'])->first();
+                    $id_specialization = Specialization::where('specializationId', '=', $element['Plan']['specializationID'])->first();
+                    if (!isset($id_specialization)) {
+                        $id_specialization = Specialization::where('name', '=', $element['Plan']['specializationName'])->first();
+                    }
+
+                    //заполним массив планов
+                    if (!empty($id_faculty) && !empty($id_studyForm) && !empty($id_speciality)) {
+                        $plan_f = array(
+                            'planId' => $element['Plan']['planId'],
+                            'id_faculty' => intval($id_faculty->id),
+                            'id_studyForm' => intval($id_studyForm->id),
+                            'id_speciality' => intval($id_speciality->id),
+                            'id_specialization' => $id_specialization ? intval($id_specialization->id) : null,
+                            'years' => intval($element['Plan']['years'])
+
+                        );
+                    } else {
+                        $mes = 'Не найден параметр.';
+                        if (empty($id_faculty)) {
+                            $mes .= ' id_faculty' . $element['Plan']['facultyId'] . ',';
+                        }
+                        if (empty($id_studyForm)) {
+                            $mes .= ' $id_studyForm' . $element['Plan']['trainingForm'] . ',';
+                        }
+                        if (empty($id_speciality)) {
+                            $mes .= ' $id_speciality = ' . $element['Plan']['trainingAreasId'] . ',';
+                        }
+
+                        throw new ErrorException($mes);
+                    }
+                    //заполним массив испытаний
+                    $competition_f = array(
+                        'competitionId' => $element['Competition']['CompetitionId'],
+                        'competitionName' => $element['Competition']['CompetitionName']
+                    );
+
+
+                    $arr_plan_f[] = $plan_f;
+                    $arr_competition_f[] = $competition_f;
+                    $count_plan_f++; //если не делать юник для планов которые повторяются то id плана и компетишина равны
+                    //массив связей плана и испытания
+                    $plan_comp_f = array(
+                        'id_plan' => $count_plan_f,
+                        'id_competition' => $count_plan_f,
+                        'freeSeatsNumber' => $element['freeSeatsNumber']
+                    );
+
+                    $arr_plan_comp_f[] = $plan_comp_f;
+
+                    //связь предметов-оценок с объедением плана-исптания
+                    foreach ($element['subjects'] as $subjectItem) {
+                        $id_subject = Subject::where('subjectId', '=', $subjectItem['subjectId'])->first();
+                        if (!empty($id_subject)) {
+                            $subject_f = array(
+                                'id_plan_comp' => $count_plan_f, // так же если не делать уникальной таблицу планов
+                                'id_subject' => intval($id_subject->id),
+                                'minScore' => $subjectItem['minScore']
+                            );
+                            $arr_plan_comp_score_f[] = $subject_f;
+                        } else {
+                            $mes = 'Не найден параметр.' . ' id_subject = ' . $subjectItem['subjectId'];
+                            throw new ErrorException($mes);
+                        }
+                    }
+
+                    foreach ($element['Prices'] as $priceItem) {
+                        $price_f = array(
+                            'id_plan_comp' => $count_plan_f, // так же если не делать уникальной таблицу планов
+                            'price' => $priceItem['Price'],
+                            'info' => $priceItem['info']
+                        );
+                        $arr_prices_f[] = $price_f;
+                    }
+
+                    foreach ($element['admissionBasis'] as $basisItem) {
+                        $id_admissionBasis = AdmissionBasis::where('baseId', '=', $basisItem['IdBasis'])->first();
+                        if (!empty($id_admissionBasis)) {
+                            $freeseat_f = array(
+                                'id_plan_comp' => $count_plan_f, // так же если не делать уникальной таблицу планов
+                                'id_admissionBasis' => intval($id_admissionBasis->id),
+                                'value' => $basisItem['value']
+                            );
+                            $arr_freeseats_f[] = $freeseat_f;
                         } else {
                             $mes = 'Не найден параметр.' . 'id_admissionBasis = ' . $basisItem['IdBasis'];
                             throw new ErrorException($mes);
@@ -1024,6 +1138,20 @@ trait ParserJsonTrait
             PlanCompScore::insert($arr_plan_comp_score);
             Price::insert($arr_prices);
             Freeseats_bases::insert($arr_freeseats);
+
+            PlanForeigner::truncate();
+            CompetitionForeigner::truncate();
+            PlanCompetitionForeigner::truncate();
+            PlanCompScoreForeigner::truncate();
+            PriceForeigner::truncate();
+            Freeseats_basesForeigner::truncate();
+            PlanForeigner::insert($arr_plan_f);
+            CompetitionForeigner::insert($arr_competition_f);
+            PlanCompetitionForeigner::insert($arr_plan_comp_f);
+            PlanCompScoreForeigner::insert($arr_plan_comp_score_f);
+            PriceForeigner::insert($arr_prices_f);
+            Freeseats_basesForeigner::insert($arr_freeseats_f);
+
             return 1;
         } catch (ErrorException $e) {
             echo "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: ";
@@ -1052,15 +1180,25 @@ trait ParserJsonTrait
             $count_plan_db = Plan::count();
             $count_plan = intval($count_plan_db);
 
+            $arr_plan_f = array();
+            $arr_competition_f = array();
+            $arr_plan_comp_f = array();
+            $arr_plan_comp_score_f = array();
+            $arr_prices_f = array();
+            $arr_freeseats_f = array();
+
+            $count_plan_db_f = PlanForeigner::count();
+            $count_plan_f = intval($count_plan_db_f);
+
             foreach ($json_data as $k => $element) {
                 if (!$element['Competition']['foreigner']) {
                     $id_faculty = Faculty::where('facultyId', '=', $element['Plan']['facultyId'])->first();
                     $id_studyForm = StudyForm::where('name', '=', $element['Plan']['trainingForm'])->first();
                     $id_speciality = Speciality::where('specialityId', '=', $element['Plan']['trainingAreasId'])->first();
                     $id_specialization = Specialization::where('specializationId', '=', $element['Plan']['specializationID'])->first();
-                     if(!isset($id_specialization)){
-                         $id_specialization = Specialization::where('name', '=', $element['Plan']['specializationName'])->first();
-                     }
+                    if (!isset($id_specialization)) {
+                        $id_specialization = Specialization::where('name', '=', $element['Plan']['specializationName'])->first();
+                    }
 
                     //заполним массив планов
                     if (!empty($id_faculty) && !empty($id_studyForm) && !empty($id_speciality)) {
@@ -1146,6 +1284,99 @@ trait ParserJsonTrait
                             throw new ErrorException($mes);
                         }
                     }
+                } else {
+                    $id_faculty = Faculty::where('facultyId', '=', $element['Plan']['facultyId'])->first();
+                    $id_studyForm = StudyForm::where('name', '=', $element['Plan']['trainingForm'])->first();
+                    $id_speciality = Speciality::where('specialityId', '=', $element['Plan']['trainingAreasId'])->first();
+                    $id_specialization = Specialization::where('specializationId', '=', $element['Plan']['specializationID'])->first();
+                    if (!isset($id_specialization)) {
+                        $id_specialization = Specialization::where('name', '=', $element['Plan']['specializationName'])->first();
+                    }
+
+                    //заполним массив планов
+                    if (!empty($id_faculty) && !empty($id_studyForm) && !empty($id_speciality)) {
+
+                        $plan_f = array(
+                            'planId' => $element['Plan']['planId'],
+                            'id_faculty' => intval($id_faculty->id),
+                            'id_studyForm' => intval($id_studyForm->id),
+                            'id_speciality' => intval($id_speciality->id),
+                            'id_specialization' => $id_specialization ? intval($id_specialization->id) : null,
+                            'years' => intval($element['Plan']['years'])
+
+                        );
+                    } else {
+                        $mes = 'Не найден параметр.';
+                        if (empty($id_faculty)) {
+                            $mes .= ' id_faculty' . $element['Plan']['facultyId'] . ',';
+                        }
+                        if (empty($id_studyForm)) {
+                            $mes .= ' $id_studyForm' . $element['Plan']['trainingForm'] . ',';
+                        }
+                        if (empty($id_speciality)) {
+                            $mes .= ' $id_speciality = ' . $element['Plan']['trainingAreasId'] . ',';
+                        }
+
+                        throw new ErrorException($mes);
+                    }
+                    //заполним массив испытаний
+                    $competition_f = array(
+                        'competitionId' => $element['Competition']['CompetitionId'],
+                        'competitionName' => $element['Competition']['CompetitionName']
+                    );
+
+
+                    $arr_plan_f[] = $plan_f;
+                    $arr_competition_f[] = $competition_f;
+                    $count_plan_f++; //если не делать юник для планов которые повторяются то id плана и компетишина равны
+                    //массив связей плана и испытания
+                    $plan_comp_f = array(
+                        'id_plan' => $count_plan_f,
+                        'id_competition' => $count_plan_f,
+                        'freeSeatsNumber' => $element['freeSeatsNumber']
+                    );
+
+                    $arr_plan_comp_f[] = $plan_comp_f;
+
+                    //связь предметов-оценок с объедением плана-исптания
+                    foreach ($element['subjects'] as $subjectItem) {
+                        $id_subject = Subject::where('subjectId', '=', $subjectItem['subjectId'])->first();
+                        if (!empty($id_subject)) {
+                            $subject_f = array(
+                                'id_plan_comp' => $count_plan_f, // так же если не делать уникальной таблицу планов
+                                'id_subject' => intval($id_subject->id),
+                                'minScore' => $subjectItem['minScore']
+                            );
+                            $arr_plan_comp_score_f[] = $subject_f;
+                        } else {
+                            $mes = 'Не найден параметр.' . ' id_subject = ' . $subjectItem['subjectId'];
+                            throw new ErrorException($mes);
+                        }
+                    }
+
+                    foreach ($element['Prices'] as $priceItem) {
+                        $price_f = array(
+                            'id_plan_comp' => $count_plan_f, // так же если не делать уникальной таблицу планов
+                            'price' => $priceItem['Price'],
+                            'info' => $priceItem['info']
+                        );
+                        $arr_prices_f[] = $price_f;
+                    }
+
+                    foreach ($element['admissionBasis'] as $basisItem) {
+                        $id_admissionBasis = AdmissionBasis::where('baseId', '=', $basisItem['IdBasis'])->first();
+                        if (!empty($id_admissionBasis)) {
+                            $freeseat_f = array(
+                                'id_plan_comp' => $count_plan_f, // так же если не делать уникальной таблицу планов
+                                'id_admissionBasis' => intval($id_admissionBasis->id),
+                                'value' => $basisItem['value']
+                            );
+                            $arr_freeseats_f[] = $freeseat_f;
+                        } else {
+                            $mes = 'Не найден параметр.' . 'id_admissionBasis = ' . $basisItem['IdBasis'];
+                            throw new ErrorException($mes);
+                        }
+                    }
                 }
             }
 
@@ -1155,6 +1386,13 @@ trait ParserJsonTrait
             PlanCompScore::insert($arr_plan_comp_score);
             Price::insert($arr_prices);
             Freeseats_bases::insert($arr_freeseats);
+
+            PlanForeigner::insert($arr_plan_f);
+            CompetitionForeigner::insert($arr_competition_f);
+            PlanCompetitionForeigner::insert($arr_plan_comp_f);
+            PlanCompScoreForeigner::insert($arr_plan_comp_score_f);
+            PriceForeigner::insert($arr_prices_f);
+            Freeseats_basesForeigner::insert($arr_freeseats_f);
         } catch (ErrorException $e) {
             echo "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: ";
             echo $e->getMessage();
@@ -1199,7 +1437,7 @@ trait ParserJsonTrait
                     $id_studyForm = StudyForm::where('name', '=', $element['Plan']['trainingForm'])->first();
                     $id_speciality = Speciality::where('specialityId', '=', $element['Plan']['trainingAreasId'])->first();
                     $id_specialization = Specialization::where('specializationId', '=', $element['Plan']['specializationID'])->first();
-                    if(!isset($id_specialization)){
+                    if (!isset($id_specialization)) {
                         $id_specialization = Specialization::where('name', '=', $element['Plan']['specializationName'])->first();
                     }
 
@@ -1336,7 +1574,7 @@ trait ParserJsonTrait
                     $id_studyForm = StudyForm::where('name', '=', $element['Plan']['trainingForm'])->first();
                     $id_speciality = Speciality::where('specialityId', '=', $element['Plan']['trainingAreasId'])->first();
                     $id_specialization = Specialization::where('specializationId', '=', $element['Plan']['specializationID'])->first();
-                    if(!isset($id_specialization)){
+                    if (!isset($id_specialization)) {
                         $id_specialization = Specialization::where('name', '=', $element['Plan']['specializationName'])->first();
                     }
 
@@ -1476,7 +1714,7 @@ trait ParserJsonTrait
                     $id_studyForm = StudyForm::where('name', '=', $element['Plan']['trainingForm'])->first();
                     $id_speciality = Speciality::where('specialityId', '=', $element['Plan']['trainingAreasId'])->first();
                     $id_specialization = Specialization::where('specializationId', '=', $element['Plan']['specializationID'])->first();
-                    if(!isset($id_specialization)){
+                    if (!isset($id_specialization)) {
                         $id_specialization = Specialization::where('name', '=', $element['Plan']['specializationName'])->first();
                     }
 
@@ -1620,7 +1858,7 @@ trait ParserJsonTrait
                     $id_studyForm = StudyForm::where('name', '=', $element['Plan']['trainingForm'])->first();
                     $id_speciality = Speciality::where('specialityId', '=', $element['Plan']['trainingAreasId'])->first();
                     $id_specialization = Specialization::where('specializationId', '=', $element['Plan']['specializationID'])->first();
-                    if(!isset($id_specialization)){
+                    if (!isset($id_specialization)) {
                         $id_specialization = Specialization::where('name', '=', $element['Plan']['specializationName'])->first();
                     }
 
@@ -1756,7 +1994,7 @@ trait ParserJsonTrait
                     $id_studyForm = StudyForm::where('name', '=', $element['Plan']['trainingForm'])->first();
                     $id_speciality = Speciality::where('specialityId', '=', $element['Plan']['trainingAreasId'])->first();
                     $id_specialization = Specialization::where('specializationId', '=', $element['Plan']['specializationID'])->first();
-                    if(!isset($id_specialization)){
+                    if (!isset($id_specialization)) {
                         $id_specialization = Specialization::where('name', '=', $element['Plan']['specializationName'])->first();
                     }
 
@@ -1886,7 +2124,7 @@ trait ParserJsonTrait
                     $id_studyForm = StudyForm::where('name', '=', $element['Plan']['trainingForm'])->first();
                     $id_speciality = Speciality::where('specialityId', '=', $element['Plan']['trainingAreasId'])->first();
                     $id_specialization = Specialization::where('specializationId', '=', $element['Plan']['specializationID'])->first();
-                    if(!isset($id_specialization)){
+                    if (!isset($id_specialization)) {
                         $id_specialization = Specialization::where('name', '=', $element['Plan']['specializationName'])->first();
                     }
 
@@ -2028,7 +2266,7 @@ trait ParserJsonTrait
                 $id_speciality = Speciality::where('specialityId', '=', $element['trainingAreasId'])->first();
 
                 if (!empty($id_studyForm) && !empty($id_admissionBasis)) {
-                    if(!empty($id_speciality)) {
+                    if (!empty($id_speciality)) {
                         $contest = array(
                             'id_studyForm' => intval($id_studyForm->id),
                             'id_admissionBasis' => intval($id_admissionBasis->id),

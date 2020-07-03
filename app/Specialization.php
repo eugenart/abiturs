@@ -20,4 +20,8 @@ class Specialization extends Model
     {
         return $this->hasMany(Plan::class, 'id_specialization');
     }
+    public function plan_foreigner()
+    {
+        return $this->hasMany(PlanForeigner::class, 'id_specialization');
+    }
 }

@@ -14,6 +14,9 @@ class AdmissionBasis extends Model
     public function freeseats() {
         return $this->hasMany(Freeseats_bases::class, 'id_admissionBasis');
     }
+    public function freeseats_foreigner() {
+        return $this->hasMany(Freeseats_basesForeigner::class, 'id_admissionBasis');
+    }
 
     public function pastContests()
     {
