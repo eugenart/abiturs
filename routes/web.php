@@ -95,7 +95,8 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 Route::get('/send_mail', 'SendMailController@index');
 
 Route::get('/contact', 'ContactController@index')->name('contact.index');
-Route::get('/select', 'SelectionController@index')->name('selection.index');
+Route::get('/select/bachelor', 'SelectionController@index')->name('selection.index');
+Route::get('/select/foreigner', 'SelectionForeignerController@index')->name('selectionf.index');
 Route::get('/statistic/bachelor', 'StatisticController@index')->name('stat.index');
 Route::get('/statistic/master', 'StatisticMasterController@index')->name('statmaster.index');
 Route::get('/statistic/aspirant', 'StatisticAspController@index')->name('statasp.index');
@@ -105,7 +106,7 @@ Route::get('/statistic/total', 'TotalStatController@index')->name('total.index')
 Route::get('/toOvzVer', 'SessionController@toOvzVer')->name('ses.toOvzVer');
 Route::get('/backToMainVer', 'SessionController@backToMainVer')->name('ses.backToMainVer');
 
-//Route::get('/test', 'DownloadFileController@index')->name('file.index');
+//Route::get('/test', 'StatisticController@test')->name('test.index');
 
 //Route::post('/test', 'DownloadFileController@index')->name('file.download');
 Route::get('/foreign', 'ForeignController@index')->name('foreign.index');

@@ -30,6 +30,9 @@ class Faculty extends Model
     public function plansSpo() {
         return $this->hasMany(PlanSpo::class, 'id_faculty');
     }
+    public function plans_foreigner() {
+        return $this->hasMany(PlanForeigner::class, 'id_faculty');
+    }
 
 
     public static function facultyJoinStat() {
