@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row mt-lg-5 mt-xl-5 mt-md-3 mt-sm-3 mt-3">
             <div class="col-12">
-                <h3 class="text-center main-color m-0">Иностранные студенты</h3>
+                <h3 class="text-center main-color m-0">Иностранные абитуриенты</h3>
                 <h3 class="text-center h1-mrsu main-color m-0">Бакалавриат и специалитет</h3>
             </div>
         </div>
