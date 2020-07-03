@@ -156,9 +156,15 @@
                         <a class="nav-link text-white" href="{{route('total.index')}}">Статистика приема</a>
                     </div>
                 </li>
-                <li class="nav-item active d-flex align-items-center justify-content-center">
-                    <a class="nav-link" href="{{route('selection.index')}}">Подбор направления<span
-                            class="sr-only">(current)</span></a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Подбор направления
+                    </a>
+                    <div class="dropdown-menu main-color" aria-labelledby="navbarDropdown">
+                        <a class="nav-link text-white" href="{{route('selection.index')}}">Бакалавриат и специалитет</a>
+                        <a class="nav-link text-white" href="{{route('selectionf.index')}}">Иностранные абитуриенты</a>
+                    </div>
                 </li>
                 <li class="nav-item active d-flex align-items-center justify-content-center">
                     <a class="nav-link" href="{{route('contact.index')}}">Контакты <span
