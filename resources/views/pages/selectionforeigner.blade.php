@@ -45,11 +45,11 @@
 
 
     <div class="container-fluid pr-5 pl-5 pb-5 pt-0">
-        <div class="row mt-lg-5 mt-xl-5 mt-md-3 mt-sm-3 mt-3 mb-5">
+        <div class="row mt-lg-5 mt-xl-5 mt-md-3 mt-sm-3 mt-3">
             <div class="col-12 m-auto">
-                <h3 class="text-center h1-mrsu main-color m-0">Подбор образовательных программ </h3>
+                <h3 class="text-center h1-mrsu main-color">Подбор образовательных программ </h3>
 
-                <h4 class="text-center main-color">для иностранных абитуриентов, поступающих по договору</h4>
+                <h4 class="text-center main-color mt-lg-3 mt-xl-3 mt-md-2 mt-sm-2 mb-2 mb-lg-5 mb-xl-5 mb-md-3 mb-sm-3 mb-3">для иностранных абитуриентов, поступающих по договору</h4>
             </div>
         </div>
 
