@@ -113,6 +113,7 @@ body {
     width: 300px !important;
     top: 46px !important;
     border-radius: 0 !important;
+    border: 0;
 }
 
 .main-color > .main-color-dropdown {
