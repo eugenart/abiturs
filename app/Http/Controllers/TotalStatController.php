@@ -11,16 +11,16 @@ class TotalStatController extends Controller
     {
         //получим все файлы бакалавров
         $notif_bach = '';
-        $files_bach = $this->get_files('bach', $notif_bach);
+        $files_bach = $this->get_files('statistic_priem/bach', $notif_bach);
 
         $notif_master = '';
-        $files_master = $this->get_files('master', $notif_master);
+        $files_master = $this->get_files('statistic_priem/master', $notif_master);
 
         $notif_asp = '';
-        $files_asp = $this->get_files('asp', $notif_asp);
+        $files_asp = $this->get_files('statistic_priem/asp', $notif_asp);
 
         $notif_spo = '';
-        $files_spo = $this->get_files('spo', $notif_spo);
+        $files_spo = $this->get_files('statistic_priem/spo', $notif_spo);
 
         return view('pages.totalstat', ['files_bach' => $files_bach, 'notif_bach' => $notif_bach,
             'files_master' => $files_master, 'notif_master' => $notif_master,
@@ -28,11 +28,30 @@ class TotalStatController extends Controller
             'files_spo' => $files_spo, 'notif_spo' => $notif_spo]);
     }
 
+    public function index_foreigner()
+    {
+        //получим все файлы бакалавров
+        $notif_bach = '';
+        $files_bach = $this->get_files('statistic_priem_foreigner/bach', $notif_bach);
+
+        $notif_master = '';
+        $files_master = $this->get_files('statistic_priem_foreigner/master', $notif_master);
+
+        $notif_asp = '';
+        $files_asp = $this->get_files('statistic_priem_foreigner/asp', $notif_asp);
+
+
+        return view('pages.totalstatf', ['files_bach' => $files_bach, 'notif_bach' => $notif_bach,
+            'files_master' => $files_master, 'notif_master' => $notif_master,
+            'files_asp' => $files_asp, 'notif_asp' => $notif_asp]);
+    }
+
+
     public function get_files($directory, &$notif)
     {
         $files = array();
         $notif = "";
-        if ($dir = scandir(storage_path('app/public/statistic_priem/' . $directory))) {
+        if ($dir = scandir(storage_path('app/public/' . $directory))) {
             $files = array();
             foreach ($dir as $file) {
                 if ($file == "." || $file == "..")
@@ -71,11 +90,14 @@ class TotalStatController extends Controller
 
     public function download_all_files()
     {
-        $this->download('bach');
-        $this->download('master');
-        $this->download('asp');
-        $this->download('spo');
+        $this->download('statistic_priem/bach');
+        $this->download('statistic_priem/master');
+        $this->download('statistic_priem/asp');
+        $this->download('statistic_priem/spo');
 
+        $this->download('statistic_priem_foreigner/bach');
+        $this->download('statistic_priem_foreigner/master');
+        $this->download('statistic_priem_foreigner/asp');
     }
 
     public function download($directory)
@@ -85,8 +107,8 @@ class TotalStatController extends Controller
         $username = 'icmrsu';
         $password = 'KUGyjk76$$q@';
 
-        $remoteDir = '/home/icmrsu/statistic_priem/' . $directory;
-        $localDir = storage_path('app/public/statistic_priem/') . $directory;
+        $remoteDir = '/home/icmrsu/' . $directory;
+        $localDir = storage_path('app/public/') . $directory;
 
         if (!function_exists("ssh2_connect"))
             die('Функция ssh2_connect не найдена');
@@ -110,7 +132,7 @@ class TotalStatController extends Controller
             $files[] = $file;
         }
 
-        if ($dir_delete = scandir(storage_path('app/public/statistic_priem/' . $directory))) {
+        if ($dir_delete = scandir(storage_path('app/public/' . $directory))) {
             $files_delete = array();
             foreach ($dir_delete as $file_delete) {
                 if ($file_delete == "." || $file_delete == "..")
@@ -121,7 +143,7 @@ class TotalStatController extends Controller
             if (count($files_delete) > 0) {
                 foreach ($files_delete as $file_name) {
                     try {
-                        unlink(storage_path('app/public/statistic_priem/' . $directory . '/' . $file_name));
+                        unlink(storage_path('app/public/' . $directory . '/' . $file_name));
                     } catch (ErrorException $e) {
                         echo $e;
                         return;

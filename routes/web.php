@@ -102,6 +102,7 @@ Route::get('/statistic/master', 'StatisticMasterController@index')->name('statma
 Route::get('/statistic/aspirant', 'StatisticAspController@index')->name('statasp.index');
 Route::get('/statistic/spo', 'StatisticSpoController@index')->name('statspo.index');
 Route::get('/statistic/total', 'TotalStatController@index')->name('total.index');
+//Route::get('/statistic/total_foreigner', 'TotalStatController@index_foreigner')->name('totalf.index');
 
 Route::get('/statistic-foreigner/bachelor', 'StatisticForeignerController@index')->name('statforeigner.index');
 Route::get('/statistic-foreigner/asp', 'StatisticAspForeignerController@index')->name('stataspforeigner.index');

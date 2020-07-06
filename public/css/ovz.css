@@ -830,17 +830,18 @@ marquee {
     }
 
     .main-nav ul li:hover {
-        background-color: #ffff;
-        border-right: 1px solid black;
-        border-left: 1px solid black;
+        background-color: #bdbdbd;
+        /*border-right: 1px solid black;*/
+        /*border-left: 1px solid black;*/
     }
+
 
     .navbar .dropdown-menu {
         z-index: 100;
         background-color: #ffffff !important;
         color: black !important;
         width: 300px !important;
-        top: 46px !important;
+        top: 55px !important;
         border-radius: 0 !important;
         border: 1px solid black !important;
 
