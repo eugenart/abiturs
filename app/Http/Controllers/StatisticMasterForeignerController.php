@@ -50,7 +50,7 @@ class StatisticMasterForeignerController extends Controller
         //получим все названия файлов xls
         $files_xls = array();
         $notification_files = "";
-        if ($dir = scandir(storage_path('app/public/files-xls-stat/bach'))) {
+        if ($dir = scandir(storage_path('app/public/files-xls-stat/masterf'))) {
             $files_xls = array();
             foreach ($dir as $file) {
                 if ($file == "." || $file == "..")
@@ -63,7 +63,7 @@ class StatisticMasterForeignerController extends Controller
         }
 
 
-        $date_update = DateUpdate::where('name_file', '=', 'stat_bach')->first();
+        $date_update = DateUpdate::where('name_file', '=', 'stat_master')->first();
         $faculties = $this->fetchFaculties();
         $studyFormsForInputs = DB::table('study_forms')->join('statistic_master_foreigners', 'study_forms.id', '=', 'statistic_master_foreigners.id_studyForm')
             ->groupBy('study_forms.id')->select('study_forms.*')->get();;
