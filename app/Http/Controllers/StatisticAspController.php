@@ -81,14 +81,14 @@ class StatisticAspController extends Controller
                     } else {
                         $faculties = collect(new Faculty);
                         $studyFormsForInputs = collect(new StudyForm);
-                        $notification = "Прием документов начнется после 20 июня";
+                        $notification = "Прием документов ведется в электронной форме";
                         return view('pages.statasp', ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs,
                             'notification_green' => $notification]);
                     }
                 } else {
                     $faculties = collect(new Faculty);
                     $studyFormsForInputs = collect(new StudyForm);
-                    $notification = "Прием документов начнется после 20 июня";
+                    $notification = "Прием документов ведется в электронной форме";
                     return view('pages.statasp', ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs,
                         'notification_green' => $notification]);
                 }
@@ -105,14 +105,14 @@ class StatisticAspController extends Controller
                 } else {
                     $faculties = collect(new Faculty);
                     $studyFormsForInputs = collect(new StudyForm);
-                    $notification = "Прием документов начнется после 20 июня";
+                    $notification = "Прием документов ведется в электронной форме";
                     return view('pages.statasp', ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs,
                         'notification_green' => $notification]);
                 }
             } else {
                 $faculties = collect(new Faculty);
                 $studyFormsForInputs = collect(new StudyForm);
-                $notification = "Прием документов начнется после 20 июня";
+                $notification = "Прием документов ведется в электронной форме";
                 return view('pages.statasp', ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs,
                     'notification_green' => $notification]);
             }
