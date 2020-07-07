@@ -74,12 +74,12 @@
                                                 </div>
                                                 <div class="file-link-div ">
 
-                                                    <a href="{{ asset('storage/files-xls-stat/master/' . $file_xls_stat) }}"
+                                                    <a href="{{ asset('storage/files-xls-stat/masterf/' . $file_xls_stat) }}"
                                                        target="_blank">
                                                         {{substr($file_xls_stat, 0, -4)}}
                                                     </a>
                                                     <br>
-                                                    <span>{{round(stat($_SERVER['DOCUMENT_ROOT'] . '/storage/files-xls-stat/master/' . $file_xls_stat)[7] / 1024 /1024, 2)}} MB</span>
+                                                    <span>{{round(stat($_SERVER['DOCUMENT_ROOT'] . '/storage/files-xls-stat/masterf/' . $file_xls_stat)[7] / 1024 /1024, 2)}} MB</span>
                                                 </div>
                                             </li>
                                         @endforeach
