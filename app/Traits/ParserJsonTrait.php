@@ -419,7 +419,7 @@ trait ParserJsonTrait
         set_time_limit(1200);
 //        $this->parseCatalogs("stat_bach.json");
         $this->parseStatBach();
-//        $this->XlsBach();
+        $this->XlsBach();
         $this->XlsBachForeigner();
 
         return 'Информация об абитуриентах (бакалавриат,специалитет) успешно выгружена!';
