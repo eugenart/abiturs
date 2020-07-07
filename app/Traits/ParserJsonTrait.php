@@ -366,7 +366,7 @@ trait ParserJsonTrait
                             $idSubject = Subject::where('subjectId', '=', $score_item['subjectId'])->first();
                             if (!empty($idSubject)) {
                                 $score_f = array(
-                                    'id_statistic' => count($studentsStat),
+                                    'id_statistic' => count($studentsStat_f),
                                     'id_subject' => intval($idSubject->id),
                                     'score' => $score_item['subjectScore'],
                                     'priority' => $score_item['Priority']
@@ -419,7 +419,7 @@ trait ParserJsonTrait
         set_time_limit(1200);
 //        $this->parseCatalogs("stat_bach.json");
         $this->parseStatBach();
-        $this->XlsBach();
+//        $this->XlsBach();
         $this->XlsBachForeigner();
 
         return 'Информация об абитуриентах (бакалавриат,специалитет) успешно выгружена!';
@@ -707,7 +707,7 @@ trait ParserJsonTrait
                             $idSubject = Subject::where('subjectId', '=', $score_item['subjectId'])->first();
                             if (!empty($idSubject)) {
                                 $score_f = array(
-                                    'id_statistic' => count($studentsStat),
+                                    'id_statistic' => count($studentsStat_f),
                                     'id_subject' => intval($idSubject->id),
                                     'score' => $score_item['subjectScore'],
                                     'priority' => $score_item['Priority']
@@ -1051,7 +1051,7 @@ trait ParserJsonTrait
                             $idSubject = Subject::where('subjectId', '=', $score_item['subjectId'])->first();
                             if (!empty($idSubject)) {
                                 $score_f = array(
-                                    'id_statistic' => count($studentsStat),
+                                    'id_statistic' => count($studentsStat_f),
                                     'id_subject' => intval($idSubject->id),
                                     'score' => $score_item['subjectScore'],
                                     'priority' => $score_item['Priority']
