@@ -22,30 +22,27 @@ class TotalStatController extends Controller
         $notif_spo = '';
         $files_spo = $this->get_files('statistic_priem/spo', $notif_spo);
 
-        return view('pages.totalstat', ['files_bach' => $files_bach, 'notif_bach' => $notif_bach,
+        //иностранцы
+        $notif_bach_f = '';
+        $files_bach_f = $this->get_files('statistic_priem_foreigner/bach', $notif_bach_f);
+
+        $notif_master_f = '';
+        $files_master_f = $this->get_files('statistic_priem_foreigner/master', $notif_master_f);
+
+        $notif_asp_f = '';
+        $files_asp_f = $this->get_files('statistic_priem_foreigner/asp', $notif_asp_f);
+
+
+        return view('pages.totalstat',
+            ['files_bach' => $files_bach, 'notif_bach' => $notif_bach,
             'files_master' => $files_master, 'notif_master' => $notif_master,
             'files_asp' => $files_asp, 'notif_asp' => $notif_asp,
-            'files_spo' => $files_spo, 'notif_spo' => $notif_spo]);
+            'files_spo' => $files_spo, 'notif_spo' => $notif_spo,
+            'files_bach_f' => $files_bach_f, 'notif_bach_f' => $notif_bach_f,
+            'files_master_f' => $files_master_f, 'notif_master_f' => $notif_master_f,
+            'files_asp_f' => $files_asp_f, 'notif_asp_f' => $notif_asp_f
+            ]);
     }
-
-    public function index_foreigner()
-    {
-        //получим все файлы бакалавров
-        $notif_bach = '';
-        $files_bach = $this->get_files('statistic_priem_foreigner/bach', $notif_bach);
-
-        $notif_master = '';
-        $files_master = $this->get_files('statistic_priem_foreigner/master', $notif_master);
-
-        $notif_asp = '';
-        $files_asp = $this->get_files('statistic_priem_foreigner/asp', $notif_asp);
-
-
-        return view('pages.totalstatf', ['files_bach' => $files_bach, 'notif_bach' => $notif_bach,
-            'files_master' => $files_master, 'notif_master' => $notif_master,
-            'files_asp' => $files_asp, 'notif_asp' => $notif_asp]);
-    }
-
 
     public function get_files($directory, &$notif)
     {
