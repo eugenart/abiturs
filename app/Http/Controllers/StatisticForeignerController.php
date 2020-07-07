@@ -52,7 +52,7 @@ class StatisticForeignerController extends Controller
         //получим все названия файлов xls
         $files_xls = array();
         $notification_files = "";
-        if ($dir = scandir(storage_path('app/public/files-xls-stat/bach'))) {
+        if ($dir = scandir(storage_path('app/public/files-xls-stat/bachf'))) {
             $files_xls = array();
             foreach ($dir as $file) {
                 if ($file == "." || $file == "..")
