@@ -17,11 +17,42 @@ use App\StatisticMasterForeigner;
 use App\Student;
 use App\StudentMasterForeigner;
 use App\StudyForm;
+use App\Traits\XlsMakerTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class StatisticMasterForeignerController extends Controller
 {
+    use XlsMakerTrait;
+    function sortByPredefinedOrder($leftItem, $rightItem){
+        $order = array(
+            "Очная форма, особое право",
+            "Очная форма, целевое обучение",
+            "Очная форма, бюджет",
+            "Очная форма, полное возмещение затрат",
+
+            "Очно-заочная форма, особое право",
+            "Очно-заочная форма, целевое обучение",
+            "Очно-заочная форма, бюджет",
+            "Очно-заочная форма, полное возмещение затрат",
+
+            "Заочная форма, особое право",
+            "Заочная форма, целевое обучение",
+            "Заочная форма, бюджет",
+            "Заочная форма, полное возмещение затрат"
+        );
+
+        $flipped = array_flip($order);
+
+        $leftItem = stristr($leftItem, '.', true);
+        $rightItem = stristr($rightItem, '.', true);
+
+        $leftPos = $flipped[$leftItem];
+        $rightPos = $flipped[$rightItem];
+
+        return $leftPos >= $rightPos;
+    }
+
     public function index(Request $request)
     {
 
@@ -57,7 +88,8 @@ class StatisticMasterForeignerController extends Controller
                     continue;
                 $files_xls[] = $file;
             }
-            arsort($files_xls);
+//            arsort($files_xls);
+            usort($files_xls, array($this, 'sortByPredefinedOrder'));
         } else {
             $notification_files = "Не удалось открыть директорию с файлами";
         }
