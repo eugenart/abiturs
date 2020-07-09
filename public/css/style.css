@@ -256,7 +256,7 @@ body {
     border-top-left-radius: 2px;
     border-bottom-left-radius: 2px;
     width: inherit;
-    min-height: inherit;
+    min-height: 100%;
 }
 
 .examInfo-bottom {
