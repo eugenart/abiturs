@@ -235,7 +235,7 @@ body {
     border-top-left-radius: 2px;
     border-bottom-left-radius: 2px;
     width: inherit;
-    min-height: inherit;
+    min-height: 100%;
 }
 
 .examInfo-bottom {
@@ -523,28 +523,24 @@ marquee {
 .contact-div{
     /*font-size: 1.2em;*/
 }
-
 .spec-ovz-link{
     text-decoration: underline;
-    color: #000000 !important;
+    color: #2366a5 !important;
 }
 
 .spec-ovz-link a{
-    color: #000000 !important;
+    color: #2366a5 !important;
 }
 
+
 .legend{
-    color: #000000;
+    color: #2366a5;
     font-size: 1.5em;
     text-decoration: underline
 }
-.legend:hover {
-    color: #000000;
-    font-size: 1.5em;
-    text-decoration: underline
-}
+
 .topline-stat{
-    color: #000000;
+    color: #2366a5;
     height: 75px;
 }
 .modal-stat h5{
@@ -553,9 +549,7 @@ marquee {
 .ql-editor{
     height:fit-content !important;
 }
-.modal-stat{
-    border: 4px #000000 solid !important;
-}
+
 
 .input-mistake {
     background-color: rgba(255, 0, 0, 0.05);
@@ -665,6 +659,14 @@ marquee {
         font-weight: bold;
         color: black;
     }
+    .spec-ovz-link{
+        text-decoration: underline;
+        color: #000000 !important;
+    }
+
+    .spec-ovz-link a{
+        color: #000000 !important;
+    }
 
     .mrsu-bg {
         background-color: #000000;
@@ -715,7 +717,23 @@ marquee {
     .ovz-form {
         font-size: 20px;
     }
-
+    .legend{
+        color: #000000;
+        font-size: 1.5em;
+        text-decoration: underline
+    }
+    .legend:hover {
+        color: #000000;
+        font-size: 1.5em;
+        text-decoration: underline
+    }
+    .topline-stat{
+        color: #000000;
+        height: 75px;
+    }
+    .modal-stat{
+        border: 4px #000000 solid !important;
+    }
     .ovz-form .filter-option-inner-inner {
         /*font-size:20px;*/
         font-weight: bold;
@@ -918,7 +936,7 @@ marquee {
         border-top-left-radius: 2px;
         border-bottom-left-radius: 2px;
         width: inherit;
-        min-height: inherit;
+        min-height: 100%;
         border: 2px solid black;
     }
 
