@@ -1839,27 +1839,20 @@ trait XlsMakerTrait
     //иностранцы
     public function XlsBachForeigner()
     {
-        $this->queryXlsBachForeign([1], [3], 1, "Очная форма, бюджет");
-//        $this->queryXlsBachForeign([1], [6], 1, "Очная форма, особое право");
-//        $this->queryXlsBachForeign([1], [8, 9, 10], 1, "Очная форма, целевое обучение");
-//
-//        $this->queryXlsBachForeign([1], [3], 3, "Заочная форма, бюджет");
-//        $this->queryXlsBachForeign([1], [6], 3, "Заочная форма, особое право");
-//        $this->queryXlsBachForeign([1], [8, 9, 10], 3, "Заочная форма, целевое обучение");
-//
-//        $this->queryXlsBachForeign([1], [3], 2, "Очно-заочная форма, бюджет");
-//        $this->queryXlsBachForeign([1], [6], 2, "Очно-заочная форма, особое право");
+        $this->queryXlsBachForeign([1], [7], 1, "Очная форма, полное возмещение затрат");
+        $this->queryXlsBachForeign([1], [7], 3, "Заочная форма, полное возмещение затрат");
+        $this->queryXlsBachForeign([1], [7], 2, "Очно-заочная форма, полное возмещение затрат");
+
     }
     public function XlsMasterForeigner()
     {
-        $this->queryXlsMasterForeigner([1], [3], 1, "Очная форма, бюджет");
-//        $this->queryXlsMasterForeigner([1], [8, 9, 10], 1, "Очная форма, целевое обучение");
-//        $this->queryXlsMasterForeigner([1], [3], 3, "Заочная форма, бюджет");
-//        $this->queryXlsMasterForeigner([1], [3], 2, "Очно-заочная форма, бюджет");
+        $this->queryXlsMasterForeigner([1], [7], 1, "Очная форма, полное возмещение затрат");
+        $this->queryXlsMasterForeigner([1], [7], 3, "Заочная форма, полное возмещение затрат");
+        $this->queryXlsMasterForeigner([1], [7], 2, "Очно-заочная форма, полное возмещение затрат");
     }
     public function XlsAspForeigner()
     {
-        $this->queryXlsAspForeigner([1], [3], 1, [6], "Очная форма, бюджет, аспирантура");
-        $this->queryXlsAspForeigner([1], [3], 1, [7], "Очная форма, бюджет, ординатура");
+        $this->queryXlsAspForeigner([1], [7], 1, [6], "Очная форма, полное возмещение затрат, аспирантура");
+        $this->queryXlsAspForeigner([1], [7], 1, [7], "Очная форма, полное возмещение затрат, ординатура");
     }
 }
