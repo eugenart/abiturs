@@ -466,10 +466,10 @@
                                                                                     {{--                                                                                        rowspan="2">Тип--}}
                                                                                     {{--                                                                                        экзамена--}}
                                                                                     {{--                                                                                    </th>--}}
-                                                                                    <th class="text-center d-xl-table-cell d-lg-none d-none"
-                                                                                        rowspan="2">Статус
-                                                                                        проверки
-                                                                                    </th>
+{{--                                                                                    <th class="text-center d-xl-table-cell d-lg-none d-none"--}}
+{{--                                                                                        rowspan="2">Статус--}}
+{{--                                                                                        проверки--}}
+{{--                                                                                    </th>--}}
                                                                                     <th class="text-center d-xl-table-cell d-lg-none d-none"
                                                                                         rowspan="2">
                                                                                         Нуждаемость <br> в
@@ -547,7 +547,7 @@
 {{--                                                                                                    Тестирование--}}
 {{--                                                                                                @endif--}}
 {{--                                                                                            </td>--}}
-                                                                                            <td class="d-xl-table-cell d-lg-none d-none">{{$abitur->notice1}}</td>
+{{--                                                                                            <td class="d-xl-table-cell d-lg-none d-none">{{$abitur->notice1}}</td>--}}
                                                                                             <td class="d-xl-table-cell d-lg-none d-none">
                                                                                                 @if($abitur->needHostel)
                                                                                                     <i class="fa fa-check-circle"
