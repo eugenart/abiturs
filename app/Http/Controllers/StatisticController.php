@@ -25,7 +25,8 @@ class StatisticController extends Controller
 {
     use XlsMakerTrait;
 
-    function sortByPredefinedOrder($leftItem, $rightItem){
+    function sortByPredefinedOrder($leftItem, $rightItem)
+    {
         $order = array(
             "Очная форма, особое право",
             "Очная форма, целевое обучение",
@@ -89,7 +90,7 @@ class StatisticController extends Controller
                     continue;
                 $files_xls[] = $file;
             }
-           // arsort($files_xls);
+            // arsort($files_xls);
             usort($files_xls, array($this, 'sortByPredefinedOrder'));
         } else {
             $notification_files = "Не удалось открыть директорию с файлами";
@@ -308,10 +309,21 @@ class StatisticController extends Controller
                                             ->where('id_faculty', '=', $faculty->id)
                                             ->first();
 
+                                        if (empty($idPlan)) {
+                                            $idPlan = Plan::where('id_speciality', '=', $speciality->id)
+                                                ->where('id_studyForm', '=', $studyForm->id)
+//                                                ->where('id_specialization', '=', $spez_id)
+                                                ->where('id_faculty', '=', $faculty->id)
+                                                ->first();
+                                        }
+
+
                                         if (!empty($idPlan)) {
+//                                            $admissionBasis->idplan = $idPlan->id;
 //                                        $freeSeatsNumber = PlanCompetition::where('id_plan', '=', intval($idPlan->id))->first();
                                             $id_plan_comps = PlanCompetition::where('id_plan', '=', intval($idPlan->id))->first();
                                             if (!empty($id_plan_comps)) {
+//                                                $admissionBasis->idplancomp = $id_plan_comps->id;
                                                 $freeSeatsNumber = Freeseats_bases::where('id_plan_comp', '=', intval($id_plan_comps->id))->
                                                 where('id_admissionBasis', '=', intval($admissionBasis->id))->first();
                                             }
