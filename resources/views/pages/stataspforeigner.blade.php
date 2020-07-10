@@ -513,11 +513,31 @@
                                                                                                     @endif
                                                                                                 @endif
                                                                                             </td>
+                                                                                            @php
+                                                                                                $indAchVis = 0;
+                                                                                            @endphp
                                                                                             @foreach($abitur->score as $ab_sc)
                                                                                                 <td class="d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none">{{$ab_sc->score}}</td>
+                                                                                                @if($ab_sc->score != 0)
+                                                                                                    @php
+                                                                                                        $indAchVis++;
+                                                                                                    @endphp
+                                                                                                @endif
                                                                                             @endforeach
-                                                                                            <td class="d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none">{{$abitur->indAchievement}}</td>
-                                                                                            <td class="d-xl-table-cell d-lg-none d-none">{{$abitur->summ}}</td>
+                                                                                            <td class="d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none">
+                                                                                                @if($indAchVis !=0)
+                                                                                                    {{$abitur->indAchievement}}
+                                                                                                @else
+                                                                                                    0
+                                                                                                @endif
+                                                                                            </td>
+                                                                                            <td class="d-xl-table-cell d-lg-none d-none">
+                                                                                                @if($indAchVis !=0)
+                                                                                                    {{$abitur->summContest}}
+                                                                                                @else
+                                                                                                    0
+                                                                                                @endif
+                                                                                            </td>
                                                                                             <td>{{$abitur->summContest}}</td>
 {{--                                                                                            <td class="d-xl-table-cell d-lg-none d-none">--}}
 {{--                                                                                                @if($faculty->name == 'Аспирантура')--}}
