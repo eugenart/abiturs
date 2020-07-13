@@ -47,9 +47,9 @@
     <div class="container-fluid pr-5 pl-5 pb-5 pt-0">
         <div class="row mt-lg-5 mt-xl-5 mt-md-3 mt-sm-3 mt-3">
             <div class="col-12 m-auto">
-                <h3 class="text-center h1-mrsu main-color">Подбор образовательных программ </h3>
+                <h3 class="text-center h1-mrsu main-color">{{ trans('selection.main_title') }}</h3>
 
-                <h4 class="text-center main-color mt-lg-3 mt-xl-3 mt-md-2 mt-sm-2 mb-2 mb-lg-5 mb-xl-5 mb-md-3 mb-sm-3 mb-3">для иностранных абитуриентов, поступающих по договору</h4>
+                <h4 class="text-center main-color mt-lg-3 mt-xl-3 mt-md-2 mt-sm-2 mb-2 mb-lg-5 mb-xl-5 mb-md-3 mb-sm-3 mb-3">{{ trans('selection.title') }}</h4>
             </div>
         </div>
 
@@ -328,7 +328,7 @@
                             </div>
                             <div class="col-12 col-xl-3 col-lg-12 col-sm-12">
                                 <h4 class="mb-3 text-xl-left text-lg-center text-md-center text-sm-center text-md-center main-color text-center">
-                                    Факультеты и институты</h4>
+                                    {{ trans('selection.faculties') }}</h4>
                                 <div class="row text-uppercase mb-5">
                                     @foreach($faculties as $faculty)
                                         @if(count($faculty->plan))
