@@ -173,11 +173,11 @@
                         <select
                             {{--                            style="font-size: 16px !important;"--}}
                             class="selectpicker form-control-sm col-lg-3 col-xl-3 col-md-3 col-12" multiple
-                            title="Факультет / Институт" name="faculties[]" id="allfaculties">
+                            title="Аспирантура / Ординатура" name="faculties[]" id="allfaculties">
                         </select>
                         <select class="selectpicker form-control-sm col-lg-3 col-xl-3 col-md-3 col-12"
                                 data-live-search="true" multiple
-                                title="Направление / Специальность"
+                                title="Направление"
                                 name="specialities[]" id="specialities">
                         </select>
 
