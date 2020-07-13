@@ -132,6 +132,10 @@ trait XlsMakerTrait
                             foreach ($category->preparationLevels as $preparationLevel) {
                                 if (isset($preparationLevel->faculties)) {
                                     foreach ($preparationLevel->faculties as $faculty) {
+                                        $is_asp = false;
+                                        if ($faculty->name == 'Аспирантура' || $faculty->name == 'Ординатура') {
+                                            $is_asp = true;
+                                        }
                                         if (isset($faculty->specialities)) {
                                             foreach ($faculty->specialities as $k0 => $speciality) {
                                                 if (isset($speciality->specializations)) {
@@ -254,19 +258,34 @@ trait XlsMakerTrait
 //                                                                }
 
                                                                         $kolvoSub = 0;
+                                                                        $indAchVis = 0;
                                                                         foreach ($abitur->score as $o => $ab_sc) {
-                                                                            if ($ab_sc->score != 0)
+                                                                            if ($ab_sc->score != 0) {
+                                                                                $indAchVis++;
                                                                                 $sheet->setCellValueByColumnAndRow($o + 4, $c, $ab_sc->score);
+                                                                            }
                                                                             $kolvoSub++;
                                                                         }
                                                                         if ($abitur->summ != 0) {
                                                                             $sheet->setCellValueByColumnAndRow(4 + $kolvoSub, $c, $abitur->summ);
                                                                         }
                                                                         if ($abitur->indAchievement != 0) {
-                                                                            $sheet->setCellValueByColumnAndRow(5 + $kolvoSub, $c, $abitur->indAchievement);
+                                                                            if ($is_asp) {
+                                                                                if ($indAchVis != 0) {
+                                                                                    $sheet->setCellValueByColumnAndRow(5 + $kolvoSub, $c, $abitur->indAchievement);
+                                                                                }
+                                                                            } else {
+                                                                                $sheet->setCellValueByColumnAndRow(5 + $kolvoSub, $c, $abitur->indAchievement);
+                                                                            }
                                                                         }
                                                                         if ($abitur->summContest != 0) {
-                                                                            $sheet->setCellValueByColumnAndRow(6 + $kolvoSub, $c, $abitur->summContest);
+                                                                            if ($is_asp) {
+                                                                                if ($indAchVis != 0) {
+                                                                                    $sheet->setCellValueByColumnAndRow(6 + $kolvoSub, $c, $abitur->summContest);
+                                                                                }
+                                                                            } else {
+                                                                                $sheet->setCellValueByColumnAndRow(6 + $kolvoSub, $c, $abitur->summContest);
+                                                                            }
                                                                         }
                                                                         if ($abitur->needHostel) {
                                                                             $sheet->setCellValueByColumnAndRow(7 + $kolvoSub, $c, "Да");
@@ -1178,7 +1197,6 @@ trait XlsMakerTrait
     }
 
 
-
     public function XlsBach()
     {
         $this->queryXlsBach([1], [3], 1, "Очная форма, бюджет");
@@ -1844,12 +1862,14 @@ trait XlsMakerTrait
         $this->queryXlsBachForeign([1], [7], 2, "Очно-заочная форма, полное возмещение затрат");
 
     }
+
     public function XlsMasterForeigner()
     {
         $this->queryXlsMasterForeigner([1], [7], 1, "Очная форма, полное возмещение затрат");
         $this->queryXlsMasterForeigner([1], [7], 3, "Заочная форма, полное возмещение затрат");
         $this->queryXlsMasterForeigner([1], [7], 2, "Очно-заочная форма, полное возмещение затрат");
     }
+
     public function XlsAspForeigner()
     {
         $this->queryXlsAspForeigner([1], [7], 1, [6], "Очная форма, полное возмещение затрат, аспирантура");

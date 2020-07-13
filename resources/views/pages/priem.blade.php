@@ -39,9 +39,9 @@
                                                 @if(file_exists($_SERVER['DOCUMENT_ROOT'] .'/storage/section-files/' . $file->file_name))
                                                     <li>
                                                         <div>
-                                                            @if(file_exists($_SERVER['DOCUMENT_ROOT'] . '/storage/file-types/' . $file->ext_file . '.png'))
+                                                            @if(file_exists($_SERVER['DOCUMENT_ROOT'] . '/storage/file-types/' . mb_strtolower($file->ext_file) . '.png'))
                                                                 <img
-                                                                    src="{{ asset('storage/file-types/' . $file->ext_file . '.png' )}}"
+                                                                    src="{{ asset('storage/file-types/' . mb_strtolower($file->ext_file) . '.png' )}}"
                                                                     alt="">
                                                             @else
                                                                 <img
