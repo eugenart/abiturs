@@ -13,12 +13,13 @@ class PageController extends Controller
     public function index(Request $request)
     {
         $infoblocks = Infoblock::where('activity', true)->where('startPage', true)->orderBy('startPagePriority', 'desc')->get();
+        $infoblocks_int = Infoblock::where('activity', true)->orderBy('startPagePriority', 'desc')->where('name', '=', 'International applicants')->get();
         $slider = Slider::where('activity', true)->orderBy('priority', 'desc')->get();
         $date_now = Carbon::today();
         $date_now = $date_now->toDateString();
 
 //        return view('pages.home', compact('infoblocks', 'slider'));
-        return view('pages.home', ['infoblocks' => $infoblocks, 'slider' => $slider, 'date_now' => $date_now]);
+        return view('pages.home', ['infoblocks' => $infoblocks, 'infoblocks_int' => $infoblocks_int, 'slider' => $slider, 'date_now' => $date_now]);
 
     }
 
