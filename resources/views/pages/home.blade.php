@@ -18,7 +18,7 @@
                             @endforeach
                         </ol>
                         <div class="carousel-inner">
-{{--                            @foreach($slider->sortByDesc('startPagePriority') as $slide)--}}
+                            {{--                            @foreach($slider->sortByDesc('startPagePriority') as $slide)--}}
                             @foreach($slider as $slide)
                                 @if ($loop->index == 0)
                                     <div class="carousel-item active">
@@ -55,34 +55,50 @@
                 </div>
             </div>
         @endif
-        <div class="row mb-30px">
-{{--            @foreach($infoblocks->sortByDesc('startPagePriority') as $infoblock)--}}
-            @foreach($infoblocks as $infoblock)
-                @if((($date_now > $infoblock->activityFrom || $date_now == $infoblock->activityFrom) &&
-                    ($date_now < $infoblock->activityTo || $date_now == $infoblock->activityTo))
-                    ||(is_null($infoblock->activityFrom) && is_null($infoblock->activityTo)))
-                    <div class="col-lg-4 col-md-6 col-sm-6 mb-4">
-                        <div class="card infoblock-card">
-                            <a href="{{ $infoblock->url }}">
-                                <div class="card-body mrsu-bg">
-                                    <img src="storage/preview/{{ $infoblock->image }}" class="w-100" alt="">
-                                    <p class="text-center m-0 pt-2 mrsu-uppertext">{{ $infoblock->name }}</p>
-                                </div>
-                            </a>
+        @if(trans('layout.lang') == 'En')
+            <div class="row mb-30px">
+                {{--            @foreach($infoblocks->sortByDesc('startPagePriority') as $infoblock)--}}
+
+                @foreach($infoblocks as $infoblock)
+                    @if((($date_now > $infoblock->activityFrom || $date_now == $infoblock->activityFrom) &&
+                        ($date_now < $infoblock->activityTo || $date_now == $infoblock->activityTo))
+                        ||(is_null($infoblock->activityFrom) && is_null($infoblock->activityTo)))
+                        <div class="col-lg-4 col-md-6 col-sm-6 mb-4">
+                            <div class="card infoblock-card">
+                                <a href="{{ $infoblock->url }}">
+                                    <div class="card-body mrsu-bg">
+                                        <img src="storage/preview/{{ $infoblock->image }}" class="w-100" alt="">
+                                        <p class="text-center m-0 pt-2 mrsu-uppertext">{{ $infoblock->name }}</p>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                @endif
-            @endforeach
-{{--            <div class="col-lg-4 col-md-6 col-sm-6 mb-4">--}}
-{{--                <div class="card infoblock-card">--}}
-{{--                    <a href="{{route('foreign.index')}}">--}}
-{{--                        <div class="card-body mrsu-bg">--}}
-{{--                            <img src="{{asset('storage/images/923.jpg')}}" class="w-100" alt="">--}}
-{{--                            <p class="text-center m-0 pt-2 mrsu-uppertext">Foreign students</p>--}}
-{{--                        </div>--}}
-{{--                    </a>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-        </div>
+                    @endif
+                @endforeach
+            </div>
+        @endif
+
+        @if(trans('layout.lang') == 'Ru')
+            <div class="row justify-content-center mb-30px">
+                @foreach($infoblocks_int as $infoblock)
+                    @if((($date_now > $infoblock->activityFrom || $date_now == $infoblock->activityFrom) &&
+                        ($date_now < $infoblock->activityTo || $date_now == $infoblock->activityTo))
+                        ||(is_null($infoblock->activityFrom) && is_null($infoblock->activityTo)))
+                        <div class="col-lg-4 col-md-6 col-sm-6 mb-4 align-self-center">
+                            <div class="card infoblock-card">
+                                <a href="{{ $infoblock->url }}">
+                                    <div class="card-body mrsu-bg">
+                                        <img src="storage/preview/{{ $infoblock->image }}" class="w-100" alt="">
+                                        <p class="text-center m-0 pt-2 mrsu-uppertext">{{ $infoblock->name }}</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    @endif
+                @endforeach
+            </div>
+        @endif
+
+
     </div>
 @endsection

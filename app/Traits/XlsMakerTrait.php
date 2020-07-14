@@ -826,7 +826,7 @@ trait XlsMakerTrait
 
             foreach ($categories as $k4 => $category) {
 
-                $preparationLevels = PreparationLevel::whereIn('id', $id_prep_arr)->get();
+                $preparationLevels = PreparationLevel::whereIn('id', $q_prepLevel)->get();
 
                 foreach ($preparationLevels as $k2 => $preparationLevel) {
                     //находим нужные нам факультеты их имена
@@ -985,6 +985,8 @@ trait XlsMakerTrait
 //        return $studyForms;
         $this->createXls($studyForms, true, $file_name_stat, "asp");
     }
+
+
 
     //запрос к СПО
     public function queryXlsSpo($q_category, $q_adm, $q_studyForm, $file_name_stat = "")
@@ -1221,8 +1223,8 @@ trait XlsMakerTrait
 
     public function XlsAsp()
     {
-        $this->queryXlsAsp([1], [3], 1, [6], "Очная форма, бюджет, аспирантура");
-        $this->queryXlsAsp([1], [3], 1, [7], "Очная форма, бюджет, ординатура");
+        $this->queryXlsAsp([1], [3], 1, [7], "Очная форма, бюджет, аспирантура");
+        $this->queryXlsAsp([1], [3], 1, [8], "Очная форма, бюджет, ординатура");
     }
 
     public function XlsSpo()
