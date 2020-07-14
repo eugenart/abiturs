@@ -64,10 +64,10 @@
                                                         <label>Отображать на главной
                                                             странице</label>
                                                     </div>
-                                                    <div class="form-check">
-                                                        <input v-model="infoblock.foreigner" type="checkbox">
-                                                        <label>Для английской версии</label>
-                                                    </div>
+<!--                                                    <div class="form-check">-->
+<!--                                                        <input v-model="infoblock.foreigner" type="checkbox">-->
+<!--                                                        <label>Для английской версии</label>-->
+<!--                                                    </div>-->
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="row">
