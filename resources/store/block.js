@@ -25,6 +25,7 @@ export default {
     },
     actions: {
         SAVE_BLOCK: async (context, payload) => {
+            console.log(payload)
             let formData = new FormData();
             formData.append('name', payload.name);
             formData.append('url', payload.url);
@@ -38,6 +39,7 @@ export default {
             $.each(payload.news, function (k, v) {
                 formData.append('news[]', v);
             })
+            formData.append('foreigner', payload.foreigner);
             formData.append('image', payload.image)
             let {data} = await axios.post('/admin/infoblock', formData, {
                 headers: {
@@ -63,6 +65,7 @@ export default {
             $.each(payload.news, function (k, v) {
                 formData.append('news[]', v);
             })
+            formData.append('foreigner', payload.foreigner);
             let {data} = await axios.post('/admin/infoblock/' + payload.id, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
