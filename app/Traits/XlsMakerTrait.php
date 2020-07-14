@@ -1696,7 +1696,7 @@ trait XlsMakerTrait
 
             foreach ($categories as $k4 => $category) {
 
-                $preparationLevels = PreparationLevel::whereIn('id', $id_prep_arr)->get();
+                $preparationLevels = PreparationLevel::whereIn('id', $q_prepLevel)->get();
 
                 foreach ($preparationLevels as $k2 => $preparationLevel) {
                     //находим нужные нам факультеты их имена
@@ -1874,7 +1874,7 @@ trait XlsMakerTrait
 
     public function XlsAspForeigner()
     {
-        $this->queryXlsAspForeigner([1], [7], 1, [6], "Очная форма, полное возмещение затрат, аспирантура");
-        $this->queryXlsAspForeigner([1], [7], 1, [7], "Очная форма, полное возмещение затрат, ординатура");
+        $this->queryXlsAspForeigner([1], [7], 1, [7], "Очная форма, полное возмещение затрат, аспирантура");
+        $this->queryXlsAspForeigner([1], [7], 1, [8], "Очная форма, полное возмещение затрат, ординатура");
     }
 }
