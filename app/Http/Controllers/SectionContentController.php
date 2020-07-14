@@ -66,7 +66,8 @@ class SectionContentController extends Controller
                         $file->update(['position' => $file->position + 1]);
 
                     } else {
-                        $section2 = SectionsContent::where('position', $section->position + 1)->where('parent_id', null)->first();
+                        $sec_id = $request->section_id;
+                        $section2 = SectionsContent::where('position', $section->position + 1)->where('parent_id', null)->where('section_id','=', $sec_id)->first();
                         $section2->update(['position' => $section->position]);
                         $section->update(['position' => $section->position + 1]);
                     }
@@ -80,7 +81,8 @@ class SectionContentController extends Controller
                         $file2->update(['position' => $file->position]);
                         $file->update(['position' => $file->position - 1]);
                     } else {
-                        $section2 = SectionsContent::where('position', $section->position - 1)->where('parent_id', null)->first();
+                        $sec_id = $request->section_id;
+                        $section2 = SectionsContent::where('position', $section->position - 1)->where('parent_id', null)->where('section_id','=', $sec_id)->first();
                         $section2->update(['position' => $section->position]);
                         $section->update(['position' => $section->position - 1]);
                     }

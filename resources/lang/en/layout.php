@@ -2,7 +2,7 @@
 return [
     'lang' => 'Ru',
     'href' => '/ru',
-    'levels' => 'preparation levels',
+    'levels' => 'For international applicants',
     'lists' => 'lists of applicants',
     'select' => 'select Educational program',
     'contacts' => 'contacts',
@@ -18,6 +18,6 @@ return [
     'for_foreigner' => 'Selection of educational programs',
 
     'stat' => 'reception statistics',
-    'main_int' => '/',
+    'main_int' => '/International-applicants',
     'main' => '/',
 ];

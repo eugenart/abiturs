@@ -29,8 +29,9 @@ class AppServiceProvider extends ServiceProvider
 
         view()->composer('pages.layout', function($view)
         {
-            $infoblocks = Infoblock::where('activity', true)->where('menu', true)->orderBy('menuPriority', 'desc')->get();
-            $view->with('pages', $infoblocks);
+            $infoblocks = Infoblock::where('activity', true)->where('menu', true)->orderBy('menuPriority', 'desc')->where('foreigner', '=', 0)->get();
+            $infoblocks_int = Infoblock::where('activity', true)->where('menu', true)->orderBy('menuPriority', 'desc')->where('foreigner', '=', 1)->get();
+            $view->with(['pages' => $infoblocks, 'infoblocks_int' => $infoblocks_int]);
         });
     }
 }

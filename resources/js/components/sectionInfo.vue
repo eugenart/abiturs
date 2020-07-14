@@ -20,15 +20,17 @@
                                                 <div class="card-header">
                                                     <div class="row">
                                                         <div class="col-8">
+
                                                             <p class="m-0">
                                                                 <i class="fas fa-arrow-up up_down_arrow"
-                                                                   @click="changePosition(input.id, '', 'down')"
+                                                                   @click="changePosition(input.section_id, input.id, null, 'down')"
                                                                    v-show="input.position !== 0"
                                                                 ></i>
                                                                 <i class="fas fa-arrow-down up_down_arrow"
-                                                                   @click="changePosition(input.id, '', 'up')"
+                                                                   @click="changePosition(input.section_id, input.id, null, 'up')"
                                                                    v-show="input.position !== inputs.length-1"></i>
                                                             </p>
+
                                                             <p class="badge m-0 p-0" v-show="input.isEdit">
                                                                 Название
                                                                 блока</p>
@@ -73,11 +75,11 @@
                                                          style="margin-bottom: 0 !important;">
                                                         <div class="col-8">
                                                             <p><i class="fas fa-arrow-up up_down_arrow"
-                                                                  @click="changePosition(input.id, null, 'down')"
+                                                                  @click="changePosition(input.section_id, input.id, null, 'down')"
                                                                   v-show="input.position !== 0"
                                                             ></i>
                                                                 <i class="fas fa-arrow-down up_down_arrow"
-                                                                   @click="changePosition(input.id, null, 'up')"
+                                                                   @click="changePosition(input.section_id, input.id, null, 'up')"
                                                                    v-show="input.position !== inputs.length-1"></i></p>
                                                             <input v-show="input.isEdit"
                                                                    type="text"
@@ -123,11 +125,11 @@
                                                             <div class="col-4">
                                                                 <p class="inline-block text-right m-0">
                                                                     <i class="fas fa-arrow-up up_down_arrow"
-                                                                       @click="changePosition(input.id, file.id, 'down')"
+                                                                       @click="changePosition(input.section_id, input.id, file.id, 'down')"
                                                                        v-show="file.position !== 0"
                                                                     ></i>
                                                                     <i class="fas fa-arrow-down up_down_arrow"
-                                                                       @click="changePosition(input.id, file.id, 'up')"
+                                                                       @click="changePosition(input.section_id, input.id, file.id, 'up')"
                                                                        v-show="file.position !== input.content.length-1"></i>
 
                                                                     <i class="fas fa-pen" style="cursor:pointer"
@@ -192,7 +194,7 @@
 </template>
 
 <script>
-    import {VueEditor} from "vue2-editor";
+    import {VueEditor, Quill} from "vue2-editor";
     import sortByPos from "../helpers/sort"
 
     export default {
@@ -229,8 +231,10 @@
 
         methods: {
 
-            changePosition(id, cId, type,) {
+            changePosition(sec_id, id, cId, type,) {
+
                 axios.post('/admin/section-content', {
+                    section_id: sec_id,
                     updown: type,
                     parent_id: id,
                     child_id: cId
@@ -295,6 +299,7 @@
                 this.input.position = this.inputs.length;
                 this.inputs.push(this.input);
                 this.clearCurrentInput()
+
             },
 
             addDocField(i) {

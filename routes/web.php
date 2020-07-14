@@ -117,7 +117,7 @@ Route::get('/backToMainVer', 'SessionController@backToMainVer')->name('ses.backT
 
 //Route::get('/en', 'SessionController@toEn')->name('ses.toEn');
 //Route::get('/ru', 'SessionController@toRu')->name('ses.toRu');
-
+//
 Route::get('/test', 'SessionController@index')->name('test.index');
 
 //Route::post('/test', 'DownloadFileController@index')->name('file.download');
