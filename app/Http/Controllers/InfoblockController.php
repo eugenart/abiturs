@@ -11,6 +11,13 @@ use Illuminate\Support\Facades\Storage;
 
 class InfoblockController extends Controller
 {
+    //Для добавления нового поля в админку и бд,
+    // 1. миграция
+    //2. модель филбл
+    //3. resources\js\components\Infoblock.vue
+    //4.resources\store\block.js
+    //5. npm run production
+    // 6. котроллер
     public function index(Request $request)
     {
         $infoblocks = Infoblock::all();
@@ -25,6 +32,7 @@ class InfoblockController extends Controller
     public function store(Request $request)
     {
         if ($request->ajax()) {
+
             $fileName = 'default.jpg';
             if ($request->hasFile('image')) {
                 $original = $request->image->getClientOriginalName();
@@ -33,6 +41,7 @@ class InfoblockController extends Controller
                 $request->image->storeAs('public/preview', $fileName);
             }
             $check = Infoblock::where('name', '=', $request->name)->first();
+
             if (!isset($check)) {
                 $infoblock = Infoblock::create([
                     'name' => $request->name,
@@ -45,7 +54,8 @@ class InfoblockController extends Controller
                     'activityFrom' => $request->activityFrom,
                     'activityTo' => $request->activityTo,
                     'image' => $fileName ? $fileName : null,
-                    'news' => $request->news ? $request->news : array()
+                    'news' => $request->news ? $request->news : array(),
+                    'foreigner' => in_array($request->foreigner, ['true', 1]) ? 1 : 0,
                 ]);
                 return response()->json([
                     'message' => "Infoblock was created",
@@ -53,7 +63,6 @@ class InfoblockController extends Controller
                 ], 200);
             }
         }
-
 
         return response()->json(['message' => 'Oops'], 404);
     }
@@ -83,7 +92,9 @@ class InfoblockController extends Controller
                     'activityFrom' => $request->activityFrom,
                     'activityTo' => $request->activityTo,
                     'image' => $fileName ? $fileName : null,
-                    'news' => $request->news ? $request->news : array()
+                    'news' => $request->news ? $request->news : array(),
+                    'foreigner' => in_array($request->foreigner, ['true', 1]) ? 1 : 0,
+
                 ]);
 
                 if ($old_url != $infoblock->url) {
@@ -157,15 +168,16 @@ class InfoblockController extends Controller
         $new_infoblock = Infoblock::create([
             'name' => $new_name,
             'url' => $new_url,
-            'menu' => in_array($infoblock_orig->menu, ['true', 1]) ? 1 : 0,
+            'menu' => $infoblock_orig->menu,
             'menuPriority' => $infoblock_orig->menuPriority,
-            'startPage' => in_array($infoblock_orig->startPage, ['true', 1]) ? 1 : 0,
+            'startPage' => $infoblock_orig->startPage,
             'startPagePriority' => $infoblock_orig->startPagePriority,
             'activity' => 0,
             'activityFrom' => $infoblock_orig->activityFrom,
             'activityTo' => $infoblock_orig->activityTo,
             'image' => $fileName,
-            'news' => $infoblock_orig->news
+            'news' => $infoblock_orig->news,
+            'foreigner' => $infoblock_orig->foreigner,
         ]);
 
         if ($infoblock_orig->sections->count() !== 0) {

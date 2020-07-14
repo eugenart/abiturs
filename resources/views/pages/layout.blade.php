@@ -125,7 +125,7 @@
                         {{ trans('layout.levels') }}
                     </a>
                     <div class="dropdown-menu " aria-labelledby="navbarDropdown">
-
+                        {{--образуются в app\Providers\AppServiceProvider.php--}}
                         @foreach($pages as $page)
                             @if ((($date_now > $page->activityFrom || $date_now == $page->activityFrom) &&
                             ($date_now < $page->activityTo || $date_now == $page->activityTo))
@@ -135,6 +135,24 @@
                         @endforeach
                     </div>
                 </li>
+                @endif
+                @if(trans('layout.lang') == 'Ru')
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="" id="navbarDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ trans('layout.levels') }}
+                        </a>
+                        <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                            {{--образуются в app\Providers\AppServiceProvider.php--}}
+                            @foreach($infoblocks_int as $page)
+                                @if ((($date_now > $page->activityFrom || $date_now == $page->activityFrom) &&
+                                ($date_now < $page->activityTo || $date_now == $page->activityTo))
+                                || (is_null($page->activityFrom) && is_null($page->activityTo)))
+                                    <a class="nav-link text-white" href="{{url($page->url)}}">{{ $page->name }}</a>
+                                @endif
+                            @endforeach
+                        </div>
+                    </li>
                 @endif
                 @if(trans('layout.lang') == 'En')
                 <li class="nav-item dropdown">
@@ -176,10 +194,6 @@
                 </li>
                 @endif
                 @if(trans('layout.lang') == 'Ru')
-                    <li class="nav-item active d-flex align-items-center justify-content-center">
-                        <a class="nav-link" href="{{trans('layout.main_int')}}">INTERNATIONAL Applicants<span
-                                class="sr-only">(current)</span></a>
-                    </li>
                     <li class="nav-item active d-flex align-items-center justify-content-center">
                         <a class="nav-link" href="{{route('selectionf.index')}}">{{ trans('layout.for_foreigner') }}<span
                                 class="sr-only">(current)</span></a>
