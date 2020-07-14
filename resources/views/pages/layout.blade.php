@@ -70,12 +70,12 @@
 <div class="container cont-w-100" style="z-index: 500 !important;">
     <div class="row header p-2">
         <div class="col-6 pl-2">
-            <a href="/"><img src="{{asset('storage/images/iconka_mrsu_white.png')}}"
+            <a href="{{ trans('layout.main') }}"><img src="{{asset('storage/images/iconka_mrsu_white.png')}}"
                              class="mrsu-logo-img d-lg-none d-md-block" alt=""></a>
-            <a href="/"><img src="{{asset('storage/images/logo_mrsu.png')}}"
+            <a href="{{ trans('layout.main') }}"><img src="{{asset('storage/images/logo_mrsu.png')}}"
                              class="mrsu-logo-img mrsu-logo-blue d-lg-block d-md-none d-sm-none"
                              alt=""></a>
-            <a href="/"><img src="{{asset('storage/images/logo_mrsu-ovz.png')}}"
+            <a href="{{ trans('layout.main') }}"><img src="{{asset('storage/images/logo_mrsu-ovz.png')}}"
                              class="mrsu-logo-img-ovz mrsu-logo-blue d-lg-block d-md-none d-sm-none"
                              alt=""></a>
         </div>
@@ -83,7 +83,7 @@
 
             {{-- Версия для иностранцев--}}
 
-            {{--            <a href="" class="ml-3 mr-4 foreign-link ">En </a>--}}
+{{--                        <a href="{{ trans('layout.href') }}" class="ml-3 mr-4 foreign-link ">{{ trans('layout.lang') }}</a>--}}
 
 
 
@@ -113,17 +113,19 @@
     <div class="container">
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav d-flex justify-content-between w-100 m-auto mrsu-uppertext text-center">
+                @php
+                    use Carbon\Carbon;
+                    $date_now = Carbon::today();
+                    $date_now = $date_now->toDateString();
+                @endphp
+                @if(trans('layout.lang') == 'En')
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white" href="" id="navbarDropdown" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Уровни подготовки
+                        {{ trans('layout.levels') }}
                     </a>
                     <div class="dropdown-menu " aria-labelledby="navbarDropdown">
-                        @php
-                            use Carbon\Carbon;
-                            $date_now = Carbon::today();
-                            $date_now = $date_now->toDateString();
-                        @endphp
+
                         @foreach($pages as $page)
                             @if ((($date_now > $page->activityFrom || $date_now == $page->activityFrom) &&
                             ($date_now < $page->activityTo || $date_now == $page->activityTo))
@@ -133,52 +135,66 @@
                         @endforeach
                     </div>
                 </li>
+                @endif
+                @if(trans('layout.lang') == 'En')
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white" href="" id="navbarDropdown" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Списки поступающих
+                        {{ trans('layout.lists') }}
                     </a>
                     <div class="dropdown-menu main-color" aria-labelledby="navbarDropdown">
-                        <a class="nav-link text-white" href="{{route('stat.index')}}">Бакалавриат и специалитет</a>
-                        <a class="nav-link text-white" href="{{route('statmaster.index')}}">Магистратура</a>
-                        <a class="nav-link text-white" href="{{route('statasp.index')}}">Аспирантура и ординатура</a>
-                        <a class="nav-link text-white" href="{{route('statspo.index')}}">Среднее профессиональное
-                            образование</a>
+                        <a class="nav-link text-white" href="{{route('stat.index')}}">{{ trans('layout.bach') }}</a>
+                        <a class="nav-link text-white" href="{{route('statmaster.index')}}">{{ trans('layout.master') }}</a>
+                        <a class="nav-link text-white" href="{{route('statasp.index')}}">{{ trans('layout.asp') }}</a>
+                        <a class="nav-link text-white" href="{{route('statspo.index')}}">{{ trans('layout.spo') }}</a>
 
                         <a class="nav-link dropdown-toggle text-white" href="" id="navbarDropdown1" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Иностранные абитуриенты
+                            {{ trans('layout.foreigner') }}
                         </a>
                         <div class="dropdown-menu drop-sub main-color-dropdown" aria-labelledby="navbarDropdown1">
-                            <a class="nav-link text-white" href="{{route('statforeigner.index')}}">Бакалавриат и специалитет</a>
-                            <a class="nav-link text-white" href="{{route('statmasterforeigner.index')}}">Магистратура</a>
-                            <a class="nav-link text-white" href="{{route('stataspforeigner.index')}}">Аспирантура и ординатура</a>
+                            <a class="nav-link text-white" href="{{route('statforeigner.index')}}">{{ trans('layout.bach') }}</a>
+                            <a class="nav-link text-white" href="{{route('statmasterforeigner.index')}}">{{ trans('layout.master') }}</a>
+                            <a class="nav-link text-white" href="{{route('stataspforeigner.index')}}">{{ trans('layout.asp') }}</a>
                         </div>
 
-                        <a class="nav-link text-white" href="{{route('total.index')}}">Статистика приема</a>
+                        <a class="nav-link text-white" href="{{route('total.index')}}">{{ trans('layout.stat') }}</a>
 {{--                        <a class="nav-link text-white" href="{{route('totalf.index')}}">Статистика приема иностранных абитуриентов</a>--}}
                     </div>
                 </li>
+                @endif
+                @if(trans('layout.lang') == 'En')
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white" href="" id="navbarDropdown" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Подбор направления
+                        {{ trans('layout.select') }}
                     </a>
                     <div class="dropdown-menu main-color" aria-labelledby="navbarDropdown">
-                        <a class="nav-link text-white" href="{{route('selection.index')}}">Бакалавриат и специалитет</a>
-                        <a class="nav-link text-white" href="{{route('selectionf.index')}}">для Иностранных абитуриентов</a>
+                        <a class="nav-link text-white" href="{{route('selection.index')}}">{{ trans('layout.bach') }}</a>
+                        <a class="nav-link text-white" href="{{route('selectionf.index')}}">{{ trans('layout.for_foreigner') }}</a>
                     </div>
                 </li>
+                @endif
+                @if(trans('layout.lang') == 'Ru')
+                    <li class="nav-item active d-flex align-items-center justify-content-center">
+                        <a class="nav-link" href="{{trans('layout.main_int')}}">INTERNATIONAL Applicants<span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active d-flex align-items-center justify-content-center">
+                        <a class="nav-link" href="{{route('selectionf.index')}}">{{ trans('layout.for_foreigner') }}<span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                @endif
                 <li class="nav-item active d-flex align-items-center justify-content-center">
-                    <a class="nav-link" href="{{route('contact.index')}}">Контакты <span
+                    <a class="nav-link" href="{{route('contact.index')}}">{{ trans('layout.contacts') }}<span
                             class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active d-flex align-items-center justify-content-center">
-                    <a class="nav-link" target="_blank" href="https://p.mrsu.ru/Account/Register">подача документов<span
+                    <a class="nav-link" target="_blank" href="https://p.mrsu.ru/Account/Register">{{ trans('layout.docs') }}<span
                             class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active d-flex align-items-center justify-content-center">
-                    <a class="nav-link" target="_blank" href="https://mrsu.ru/ru/abit/entry.php">архив<span
+                    <a class="nav-link" target="_blank" href="https://mrsu.ru/ru/abit/entry.php">{{ trans('layout.archive') }}<span
                             class="sr-only">(current)</span></a>
                 </li>
             </ul>

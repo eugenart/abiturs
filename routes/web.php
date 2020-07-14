@@ -15,6 +15,11 @@ use App\Mail\WelcomeEmail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Session;
+
+
 Auth::routes(['register' => false]);
 
 Route::middleware('auth')->group(function () {
@@ -110,7 +115,10 @@ Route::get('/statistic-foreigner/master', 'StatisticMasterForeignerController@in
 Route::get('/toOvzVer', 'SessionController@toOvzVer')->name('ses.toOvzVer');
 Route::get('/backToMainVer', 'SessionController@backToMainVer')->name('ses.backToMainVer');
 
-//Route::get('/test', 'StatisticController@test')->name('test.index');
+//Route::get('/en', 'SessionController@toEn')->name('ses.toEn');
+//Route::get('/ru', 'SessionController@toRu')->name('ses.toRu');
+
+Route::get('/test', 'SessionController@index')->name('test.index');
 
 //Route::post('/test', 'DownloadFileController@index')->name('file.download');
 Route::get('/foreign', 'ForeignController@index')->name('foreign.index');
