@@ -6,6 +6,9 @@ use App\AdmissionBasis;
 use App\Category;
 use App\DateUpdate;
 use App\Faculty;
+use App\Freeseats_basesAspForeigner;
+use App\PlanAspForeigner;
+use App\PlanCompetitionAspForeigner;
 use App\PlanForeigner;
 use App\PreparationLevel;
 use App\Speciality;
@@ -646,7 +649,7 @@ class StatisticAspForeignerController extends Controller
     {
         $faculties = Faculty::orderBy('name')->get();
         foreach ($faculties as $k => $faculty) {
-            $id_specialities = StatisticForeigner::where('id_faculty', '=', $faculty->id)
+            $id_specialities = StatisticAspForeigner::where('id_faculty', '=', $faculty->id)
                 ->select('id_speciality')
                 ->get();
 
@@ -658,7 +661,7 @@ class StatisticAspForeignerController extends Controller
             $specialities = Speciality::whereIn('id', $id_spec_arr)->get();
 
             foreach ($specialities as $speciality) {
-                $id_studyForms = PlanForeigner::where('id_speciality', '=', $speciality->id)
+                $id_studyForms = PlanAspForeigner::where('id_speciality', '=', $speciality->id)
                     ->select('id_studyForm')
                     ->get();
 
