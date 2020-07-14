@@ -7,12 +7,16 @@ use App\Category;
 use App\DateUpdate;
 use App\Faculty;
 use App\Freeseats_basesForeigner;
+use App\Freeseats_basesMasterForeigner;
 use App\PlanCompetitionForeigner;
+use App\PlanCompetitionMasterForeigner;
 use App\PlanForeigner;
+use App\PlanMasterForeigner;
 use App\PreparationLevel;
 use App\Speciality;
 use App\Specialization;
 use App\StatisticForeigner;
+use App\StatisticMaster;
 use App\StatisticMasterForeigner;
 use App\Student;
 use App\StudentMasterForeigner;
@@ -300,7 +304,6 @@ class StatisticMasterForeignerController extends Controller
                                             ->where('id_category', '=', $category->id)
                                             ->where('id_faculty', '=', $faculty->id)
                                             ->get();
-
                                         $idPlan = PlanMasterForeigner::where('id_speciality', '=', $speciality->id)
                                             ->where('id_studyForm', '=', $studyForm->id)
                                             ->where('id_specialization', '=', $spez_id)
@@ -633,7 +636,7 @@ class StatisticMasterForeignerController extends Controller
     {
         $faculties = Faculty::orderBy('name')->get();
         foreach ($faculties as $k => $faculty) {
-            $id_specialities = StatisticForeigner::where('id_faculty', '=', $faculty->id)
+            $id_specialities = StatisticMasterForeigner::where('id_faculty', '=', $faculty->id)
                 ->select('id_speciality')
                 ->get();
 
@@ -645,7 +648,7 @@ class StatisticMasterForeignerController extends Controller
             $specialities = Speciality::whereIn('id', $id_spec_arr)->get();
 
             foreach ($specialities as $speciality) {
-                $id_studyForms = PlanForeigner::where('id_speciality', '=', $speciality->id)
+                $id_studyForms = PlanMasterForeigner::where('id_speciality', '=', $speciality->id)
                     ->select('id_studyForm')
                     ->get();
 
