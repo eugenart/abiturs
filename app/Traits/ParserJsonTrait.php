@@ -167,8 +167,10 @@ trait ParserJsonTrait
                     $idPlan = Plan::where('planId', '=', $fac_stat['planId'])->first();
                     $idFaculty = Faculty::where('facultyId', '=', $fac_stat['facultyId'])->first();
                     $idSpeciality = Speciality::where('specialityId', '=', $fac_stat['trainingAreasId'])->first();
-                    $idSpecialization = Specialization::where('specializationId', '=', $fac_stat['specializationID'])
-                        ->orWhere('name', '=', $fac_stat['specializationName'])->first();
+                    $idSpecialization = Specialization::where('specializationId', '=', $fac_stat['specializationID'])->first();
+                    if(empty($idSpecialization)) {
+                        $idSpecialization = Specialization::where('name', '=', $fac_stat['specializationName'])->first();
+                    }
                     $idCompetition = Competition::where('competitionId', '=', $fac_stat['CompetitionId'])->first();
                     $idAdmissionBasis = AdmissionBasis::where('baseId', '=', $fac_stat['IdBasis'])->first();
                     $idStudyForm = StudyForm::where('name', '=', $fac_stat['trainingForm'])->first();
@@ -277,8 +279,10 @@ trait ParserJsonTrait
                     $idPlan = PlanForeigner::where('planId', '=', $fac_stat['planId'])->first();
                     $idFaculty = Faculty::where('facultyId', '=', $fac_stat['facultyId'])->first();
                     $idSpeciality = Speciality::where('specialityId', '=', $fac_stat['trainingAreasId'])->first();
-                    $idSpecialization = Specialization::where('specializationId', '=', $fac_stat['specializationID'])
-                        ->orWhere('name', '=', $fac_stat['specializationName'])->first();
+                    $idSpecialization = Specialization::where('specializationId', '=', $fac_stat['specializationID'])->first();
+                    if (empty($idSpecialization)) {
+                        $idSpecialization = Specialization::where('name', '=', $fac_stat['specializationName'])->first();
+                    }
                     $idCompetition = CompetitionForeigner::where('competitionId', '=', $fac_stat['CompetitionId'])->first();
                     $idAdmissionBasis = AdmissionBasis::where('baseId', '=', $fac_stat['IdBasis'])->first();
                     $idStudyForm = StudyForm::where('name', '=', $fac_stat['trainingForm'])->first();
@@ -507,8 +511,10 @@ trait ParserJsonTrait
                     $idPlan = PlanMaster::where('planId', '=', $fac_stat['planId'])->first();
                     $idFaculty = Faculty::where('facultyId', '=', $fac_stat['facultyId'])->first();
                     $idSpeciality = Speciality::where('specialityId', '=', $fac_stat['trainingAreasId'])->first();
-                    $idSpecialization = Specialization::where('specializationId', '=', $fac_stat['specializationID'])
-                        ->orWhere('name', '=', $fac_stat['specializationName'])->first();
+                    $idSpecialization = Specialization::where('specializationId', '=', $fac_stat['specializationID'])->first();
+                    if (empty($idSpecialization)) {
+                        $idSpecialization = Specialization::where('name', '=', $fac_stat['specializationName'])->first();
+                    }
                     $idCompetition = CompetitionMaster::where('competitionId', '=', $fac_stat['CompetitionId'])->first();
                     $idAdmissionBasis = AdmissionBasis::where('baseId', '=', $fac_stat['IdBasis'])->first();
                     $idStudyForm = StudyForm::where('name', '=', $fac_stat['trainingForm'])->first();
@@ -618,8 +624,10 @@ trait ParserJsonTrait
                     $idPlan = PlanMasterForeigner::where('planId', '=', $fac_stat['planId'])->first();
                     $idFaculty = Faculty::where('facultyId', '=', $fac_stat['facultyId'])->first();
                     $idSpeciality = Speciality::where('specialityId', '=', $fac_stat['trainingAreasId'])->first();
-                    $idSpecialization = Specialization::where('specializationId', '=', $fac_stat['specializationID'])
-                        ->orWhere('name', '=', $fac_stat['specializationName'])->first();
+                    $idSpecialization = Specialization::where('specializationId', '=', $fac_stat['specializationID'])->first();
+                    if (empty($idSpecialization)) {
+                        $idSpecialization = Specialization::where('name', '=', $fac_stat['specializationName'])->first();
+                    }
                     $idCompetition = CompetitionMasterForeigner::where('competitionId', '=', $fac_stat['CompetitionId'])->first();
                     $idAdmissionBasis = AdmissionBasis::where('baseId', '=', $fac_stat['IdBasis'])->first();
                     $idStudyForm = StudyForm::where('name', '=', $fac_stat['trainingForm'])->first();
@@ -851,8 +859,10 @@ trait ParserJsonTrait
                     $idPlan = PlanAsp::where('planId', '=', $fac_stat['planId'])->first();
                     $idFaculty = Faculty::where('facultyId', '=', $fac_stat['facultyId'])->first();
                     $idSpeciality = Speciality::where('specialityId', '=', $fac_stat['trainingAreasId'])->first();
-                    $idSpecialization = Specialization::where('specializationId', '=', $fac_stat['specializationID'])
-                        ->orWhere('name', '=', $fac_stat['specializationName'])->first();
+                    $idSpecialization = Specialization::where('specializationId', '=', $fac_stat['specializationID'])->first();
+                    if (empty($idSpecialization)) {
+                        $idSpecialization = Specialization::where('name', '=', $fac_stat['specializationName'])->first();
+                    }
                     $idCompetition = CompetitionAsp::where('competitionId', '=', $fac_stat['CompetitionId'])->first();
                     $idAdmissionBasis = AdmissionBasis::where('baseId', '=', $fac_stat['IdBasis'])->first();
                     $idStudyForm = StudyForm::where('name', '=', $fac_stat['trainingForm'])->first();
@@ -962,8 +972,10 @@ trait ParserJsonTrait
                     $idPlan = PlanAspForeigner::where('planId', '=', $fac_stat['planId'])->first();
                     $idFaculty = Faculty::where('facultyId', '=', $fac_stat['facultyId'])->first();
                     $idSpeciality = Speciality::where('specialityId', '=', $fac_stat['trainingAreasId'])->first();
-                    $idSpecialization = Specialization::where('specializationId', '=', $fac_stat['specializationID'])
-                        ->orWhere('name', '=', $fac_stat['specializationName'])->first();
+                    $idSpecialization = Specialization::where('specializationId', '=', $fac_stat['specializationID'])->first();
+                    if (empty($idSpecialization)) {
+                        $idSpecialization = Specialization::where('name', '=', $fac_stat['specializationName'])->first();
+                    }
                     $idCompetition = CompetitionAspForeigner::where('competitionId', '=', $fac_stat['CompetitionId'])->first();
                     $idAdmissionBasis = AdmissionBasis::where('baseId', '=', $fac_stat['IdBasis'])->first();
                     $idStudyForm = StudyForm::where('name', '=', $fac_stat['trainingForm'])->first();
@@ -1187,8 +1199,10 @@ trait ParserJsonTrait
                     $idPlan = PlanSpo::where('planId', '=', $fac_stat['planId'])->first();
                     $idFaculty = Faculty::where('facultyId', '=', $fac_stat['facultyId'])->first();
                     $idSpeciality = Speciality::where('specialityId', '=', $fac_stat['trainingAreasId'])->first();
-                    $idSpecialization = Specialization::where('specializationId', '=', $fac_stat['specializationID'])
-                        ->orWhere('name', '=', $fac_stat['specializationName'])->first();
+                    $idSpecialization = Specialization::where('specializationId', '=', $fac_stat['specializationID'])->first();
+                    if (empty($idSpecialization)) {
+                        $idSpecialization = Specialization::where('name', '=', $fac_stat['specializationName'])->first();
+                    }
                     $idCompetition = CompetitionSpo::where('competitionId', '=', $fac_stat['CompetitionId'])->first();
                     $idAdmissionBasis = AdmissionBasis::where('baseId', '=', $fac_stat['IdBasis'])->first();
                     $idStudyForm = StudyForm::where('name', '=', $fac_stat['trainingForm'])->first();
