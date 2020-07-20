@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Specialization extends Model
 {
-    protected $fillable = ['specializationId', 'name', 'id_speciality'];
+    protected $fillable = ['specializationId', 'name', 'id_speciality', 'en_name'];
 
     public function speciality() {
         return $this->belongsTo(Speciality::class, 'id_speciality');

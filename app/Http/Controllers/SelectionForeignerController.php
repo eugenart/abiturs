@@ -49,9 +49,10 @@ class SelectionForeignerController extends Controller
                     $spec_com[] = $plan->id_speciality;
                     $spez_com[] = $plan->id_specialization;
 
-                    $plan->speciality = $plan->speciality()->select('code', 'name')->first();
+                    $plan->speciality = $plan->speciality()->select('code', 'name', 'en_name')->first();
                     $plan->sort_name = $plan->speciality()->select('name')->first();
-                    $plan->specialization = $plan->specialization()->select('name', 'id_speciality')->first();
+                    $plan->specialization = $plan->specialization()->select('name', 'id_speciality', 'en_name')->first();
+                    $plan->faculty_name = $plan->faculty()->select('name', 'en_name')->first();
 
 //                    $plan->speciality = Speciality::where('id', '=', $plan->id_speciality)->select('code', 'name')->first();
 //                    $plan->specialization = Specialization::where('id', '=', $plan->id_specialization)->select('name', 'id_speciality')->first();
@@ -65,7 +66,7 @@ class SelectionForeignerController extends Controller
                     $plan->years = null;
                     foreach ($SpecForms as $form) {
 
-                        $form_temp = StudyForm::where('id', '=', $form->id_studyForm)->select('name')->first();
+                        $form_temp = StudyForm::where('id', '=', $form->id_studyForm)->select('name', 'en_name')->first();
                         $form_temp->years = $form->years;
                         $plan_comp_form = PlanCompetitionForeigner::where('id_plan', '=', $form->id)->first();
                         $form_temp->freeseats = $plan_comp_form->freeseats()->get();

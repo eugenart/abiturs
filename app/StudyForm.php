@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class StudyForm extends Model
 {
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'en_name'];
 
     public function statistics()
     {

@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 class Speciality extends Model
 {
-    protected $fillable = ['specialityId', 'code', 'name'];
+    protected $fillable = ['specialityId', 'code', 'name', 'en_name'];
 
     public function statistics()
     {

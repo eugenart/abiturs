@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 class Faculty extends Model
 {
-    protected $fillable = ['facultyId', 'name'];
+    protected $fillable = ['facultyId', 'name', 'en_name'];
 
     public function statistics() {
         return $this->hasMany(Statistic::class, 'id_faculty');
