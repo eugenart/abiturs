@@ -60,11 +60,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
     Route::post('/download', 'DownloadFileController@index')->name('json.download');
 
-
     Route::middleware('role:admin')->group(function () {
-        Route::get('/parse', 'ParserController@index')->name('parse.index');
-    });
-    Route::middleware('role:developer')->group(function () {
         Route::get('/parse', 'ParserController@index')->name('parse.index');
     });
 
