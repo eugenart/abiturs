@@ -15,6 +15,11 @@ class DatabaseSeeder extends Seeder
 
         $this->command->info('Ссылки на факультеты выруженны!');
 
+
+        $this->call('RoleSeeder');
+        $this->call('PermissionSeeder');
+        $this->call('UserSeeder');
+        $this->call('RolePermSeeder');
         //$this->call('SubjectTableSeeder');
 
         //$this->command->info('Таблица предметов загружена данными!');

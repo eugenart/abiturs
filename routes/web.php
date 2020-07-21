@@ -35,7 +35,6 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::post('/infoblock', 'InfoblockController@store')->name('infoblock.store');
     Route::post('/infoblock/{id}', 'InfoblockController@update')->name('infoblock.update');
     Route::delete('/infoblock/{id}', 'InfoblockController@destroy')->name('infoblock.destroy');
-//    Route::get('/infoblocks/{copy_id}', 'InfoblockController@copy')->name('infoblock.copy');
     Route::post('/infoblock/copy/{copy_id}', 'InfoblockController@copy')->name('infoblock.copy');
 
 
@@ -53,49 +52,49 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::post('/slider/{id}', 'SliderController@update')->name('slider.update');
     Route::delete('/slider/{id}', 'SliderController@destroy')->name('slider.destroy');
 
-    Route::get('/subjects', 'SubjectController@index')->name('subjects.index');
-    Route::get('/speciality', 'SpecialityController@index')->name('speciality.index');
-    Route::get('/minscore', 'TrainingAreaController@index')->name('minscore.index');
-    Route::get('/price', 'TrainingAreaController@price')->name('price.index');
-
+//    Route::get('/subjects', 'SubjectController@index')->name('subjects.index');
+//    Route::get('/speciality', 'SpecialityController@index')->name('speciality.index');
+//    Route::get('/minscore', 'TrainingAreaController@index')->name('minscore.index');
+//    Route::get('/price', 'TrainingAreaController@price')->name('price.index');
 //    Route::get('/test', 'XlsMakerController@index')->name('xls.create');
+
     Route::post('/download', 'DownloadFileController@index')->name('json.download');
-//    Route::get('/download', 'DownloadFileController@stop')->name('json.download');
 
 
-    Route::get('/parse', 'ParserController@index')->name('parse.index');
-    //специальности специализации
-    Route::get('/parse-specialities', 'ParserController@parseSpecialitiesLocal')->name('parse.parseSpec');
-    //дисциплины
-    Route::get('/parse-subjects', 'ParserController@parseSubjectsLocal')->name('parse.parseSub');
-    // факультеты
-    Route::get('/parse-faculties', 'ParserController@parseFacultiesLocal')->name('parse.parseFac');
-    //бюджет не бюджет
-    Route::get('/parse-admission', 'ParserController@parseAdmissionBasesLocal')->name('parse.parseAdm');
+    Route::middleware('role:admin')->group(function () {
+        Route::get('/parse', 'ParserController@index')->name('parse.index');
+    });
+    Route::middleware('role:developer')->group(function () {
+        Route::get('/parse', 'ParserController@index')->name('parse.index');
+    });
 
-    //формы обучения, категории, уровни подготовки
-    Route::get('/parse-catalogs', 'ParserJsonController@parseCatalogsLocal')->name('parse.parseCatalogs');
-    //планы, цены, места
-    Route::get('/parse-plans-bach', 'ParserJsonController@parsePlansBachLocal')->name('parse.parsePlansBach');
-    Route::get('/parse-plans-master', 'ParserJsonController@parsePlansMasterLocal')->name('parse.parsePlansMaster');
-    Route::get('/parse-plans-asp', 'ParserJsonController@parsePlansAspMainLocal')->name('parse.parsePlansAspMain');
-    Route::get('/parse-plans-spo', 'ParserJsonController@parsePlansSpoLocal')->name('parse.parsePlansSpo');
-    //статистика приема
-    Route::get('/parse-students', 'ParserJsonController@parseStatBachAllLocal')->name('parse.parseFromJson');
-    Route::get('/parse-students-master', 'ParserJsonController@parseStatMasterAllLocal')->name('parse.parseFromJsonMaster');
-    Route::get('/parse-students-asp', 'ParserJsonController@parseStatAspAllLocal')->name('parse.parseFromJsonAsp');
-    Route::get('/parse-students-spo', 'ParserJsonController@parseStatSpoAllLocal')->name('parse.parseFromJsonSpo');
+        //специальности специализации
+        Route::get('/parse-specialities', 'ParserController@parseSpecialitiesLocal')->name('parse.parseSpec');
+        //дисциплины
+        Route::get('/parse-subjects', 'ParserController@parseSubjectsLocal')->name('parse.parseSub');
+        // факультеты
+        Route::get('/parse-faculties', 'ParserController@parseFacultiesLocal')->name('parse.parseFac');
+        //бюджет не бюджет
+        Route::get('/parse-admission', 'ParserController@parseAdmissionBasesLocal')->name('parse.parseAdm');
 
-    Route::get('/parse-contests', 'ParserJsonController@parsePastContestsLocal')->name('parse.parsePastContests');
+        //формы обучения, категории, уровни подготовки
+        Route::get('/parse-catalogs', 'ParserJsonController@parseCatalogsLocal')->name('parse.parseCatalogs');
+        //планы, цены, места
+        Route::get('/parse-plans-bach', 'ParserJsonController@parsePlansBachLocal')->name('parse.parsePlansBach');
+        Route::get('/parse-plans-master', 'ParserJsonController@parsePlansMasterLocal')->name('parse.parsePlansMaster');
+        Route::get('/parse-plans-asp', 'ParserJsonController@parsePlansAspMainLocal')->name('parse.parsePlansAspMain');
+        Route::get('/parse-plans-spo', 'ParserJsonController@parsePlansSpoLocal')->name('parse.parsePlansSpo');
+        //статистика приема
+        Route::get('/parse-students', 'ParserJsonController@parseStatBachAllLocal')->name('parse.parseFromJson');
+        Route::get('/parse-students-master', 'ParserJsonController@parseStatMasterAllLocal')->name('parse.parseFromJsonMaster');
+        Route::get('/parse-students-asp', 'ParserJsonController@parseStatAspAllLocal')->name('parse.parseFromJsonAsp');
+        Route::get('/parse-students-spo', 'ParserJsonController@parseStatSpoAllLocal')->name('parse.parseFromJsonSpo');
 
-    Route::get('/download-stat-priem', 'TotalStatController@download_all_files')->name('totalstat.download');
+        Route::get('/parse-contests', 'ParserJsonController@parsePastContestsLocal')->name('parse.parsePastContests');
 
-
-
-
+        Route::get('/download-stat-priem', 'TotalStatController@download_all_files')->name('totalstat.download');
 
 });
-//Auth::routes();
 
 Route::get('/send_mail', 'SendMailController@index');
 
@@ -115,9 +114,11 @@ Route::get('/statistic-foreigner/master', 'StatisticMasterForeignerController@in
 Route::get('/toOvzVer', 'SessionController@toOvzVer')->name('ses.toOvzVer');
 Route::get('/backToMainVer', 'SessionController@backToMainVer')->name('ses.backToMainVer');
 
-//Route::get('/en', 'SessionController@toEn')->name('ses.toEn');
-//Route::get('/ru', 'SessionController@toRu')->name('ses.toRu');
-//
+Route::middleware('role:developer')->group(function () {
+    Route::get('/en', 'SessionController@toEn')->name('ses.toEn');
+    Route::get('/ru', 'SessionController@toRu')->name('ses.toRu');
+});
+
 Route::get('/test', 'SessionController@index')->name('test.index');
 
 //Route::post('/test', 'DownloadFileController@index')->name('file.download');

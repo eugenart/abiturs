@@ -146,7 +146,7 @@ trait ParserXlsTrait
                 'en_name' => $sheetSpz[$i][2],
             ));
         }
-        Artisan::call('db:seed');
+        Artisan::call('db:seed --class=FacultyTableSeeder');
         return 'Факультеты успешно выгружены!';
     }
 
