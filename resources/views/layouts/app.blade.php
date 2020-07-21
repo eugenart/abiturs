@@ -92,36 +92,46 @@
                                 Подразделы сайта
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ Request::is('admin/speciality') ? 'active' : null }}" href="{{route('speciality.index')}}">
-                                <span data-feather="shopping-cart"></span>
-                                Направления подготовки
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ Request::is('admin/subjects') ? 'active' : null }}" href="{{route('subjects.index')}}">
-                                <span data-feather="shopping-cart"></span>
-                                Вступительные испытания
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ Request::is('admin/minscore') ? 'active' : null }}" href="{{route('minscore.index')}}">
-                                <span data-feather="users"></span>
-                                Минимальные баллы вступительных испытаний
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ Request::is('admin/price') ? 'active' : null }}" href="{{route('price.index')}}">
-                                <span data-feather="users"></span>
-                                Свободные места и стоимость обучения
-                            </a>
-                        </li>
+{{--                        <li class="nav-item">--}}
+{{--                            <a class="nav-link {{ Request::is('admin/speciality') ? 'active' : null }}" href="{{route('speciality.index')}}">--}}
+{{--                                <span data-feather="shopping-cart"></span>--}}
+{{--                                Направления подготовки--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a class="nav-link {{ Request::is('admin/subjects') ? 'active' : null }}" href="{{route('subjects.index')}}">--}}
+{{--                                <span data-feather="shopping-cart"></span>--}}
+{{--                                Вступительные испытания--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a class="nav-link {{ Request::is('admin/minscore') ? 'active' : null }}" href="{{route('minscore.index')}}">--}}
+{{--                                <span data-feather="users"></span>--}}
+{{--                                Минимальные баллы вступительных испытаний--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a class="nav-link {{ Request::is('admin/price') ? 'active' : null }}" href="{{route('price.index')}}">--}}
+{{--                                <span data-feather="users"></span>--}}
+{{--                                Свободные места и стоимость обучения--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+                        @role('admin')
                         <li class="nav-item">
                             <a class="nav-link {{ Request::is('admin/parse') ? 'active' : null }}" href="{{route('parse.index')}}">
                                 <span data-feather="users"></span>
                                 Выгрузка данных
                             </a>
                         </li>
+                        @endrole
+                        @role('developer')
+                        <li class="nav-item">
+                            <a class="nav-link {{ Request::is('admin/parse') ? 'active' : null }}" href="{{route('parse.index')}}">
+                                <span data-feather="users"></span>
+                                Выгрузка данных
+                            </a>
+                        </li>
+                        @endrole
                         <li class="nav-item">
                             <a class="nav-link {{ Request::is('admin/slider*') ? 'active' : null }}" href="{{route('slider.index')}}">
                                 <span data-feather="users"></span>

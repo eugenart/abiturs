@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class AdmissionBasis extends Model
 {
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'en_name'];
 
     public function statistics() {
         return $this->hasMany(Statistic::class, 'id_admissionBasis');

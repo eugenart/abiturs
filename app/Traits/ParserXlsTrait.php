@@ -42,7 +42,8 @@ trait ParserXlsTrait
                             Speciality::insert(array(
                                 'specialityId' => $sheetSpec[$i][2],
                                 'code' => $sheetSpec[$i][0],
-                                'name' => $sheetSpec[$i][1]
+                                'name' => $sheetSpec[$i][1],
+                                'en_name' => $sheetSpec[$i][3]
                             ));
                         }
                     }
@@ -72,7 +73,8 @@ trait ParserXlsTrait
                             Specialization::insert(array(
                                 'specializationId' => $sheetSpz[$i][4],
                                 'name' => $sheetSpz[$i][0],
-                                'id_speciality' => $id_speciality
+                                'id_speciality' => $id_speciality,
+                                'en_name' => $sheetSpz[$i][5]
 
                             ));
                         }else{
@@ -112,7 +114,8 @@ trait ParserXlsTrait
             //Добавляем записи Специализаций
             Subject::insert(array(
                 'subjectId' => $sheetSpz[$i][0],
-                'name' => $sheetSpz[$i][1]
+                'name' => $sheetSpz[$i][1],
+                'en_name' => $sheetSpz[$i][2]
             ));
         }
         return 'Дисциплины успешно выгружены!';
@@ -139,10 +142,11 @@ trait ParserXlsTrait
             Faculty::insert(array(
                 'facultyId' => $sheetSpz[$i][0],
                 'name' => $sheetSpz[$i][1],
-                'link' => ''
+                'link' => '',
+                'en_name' => $sheetSpz[$i][2],
             ));
         }
-        Artisan::call('db:seed');
+        Artisan::call('db:seed --class=FacultyTableSeeder');
         return 'Факультеты успешно выгружены!';
     }
 
@@ -174,7 +178,8 @@ trait ParserXlsTrait
             AdmissionBasis::insert(array(
                 'baseId' => $sheetSpz[$i][1],
                 'name' => $sheetSpz[$i][0],
-                'short_name' => $sheetSpz[$i][2]
+                'short_name' => $sheetSpz[$i][2],
+                'en_name' => $sheetSpz[$i][3],
             ));
         }
 

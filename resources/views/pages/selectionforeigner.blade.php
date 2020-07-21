@@ -61,43 +61,48 @@
                         <div class="row mt-2 d-flex flex-xl-row flex-column-reverse flex-sm-column-reverse">
                             <div class="col-12 col-xl-9 col-sm-12">
                                 <div class="row">
+                                    @if(trans('layout.lang') == 'En')
+                                        <span style="display:none;" id="locale" data-content="ru"></span>
+                                    @endif
+                                    @if(trans('layout.lang') == 'Ru')
+                                        <span style="display:none;" id="locale" data-content="en"></span>
+                                    @endif
                                     @foreach($faculties as $faculty)
                                         @if(count($faculty->plan))
                                             <div class="col-12 mb-5 search-div-by-faculties"
                                                  data-faculty="{{ $faculty->name }}"
                                                  data-exams="{{ implode(',', $faculty->subjects) }}">
                                                 <h4><a href="{{$faculty->link}}"
-                                                       class="faculty-head" style="text-decoration: underline"
-                                                       {{--                                                       style="color: #2366a5"--}}
-                                                       target="_blank">{{$faculty->name}}</a>
+                                                       class="faculty-head" style="text-decoration: underline" target="_blank">
+                                                       @if(trans('layout.lang') == 'En')
+                                                       {{$faculty->name}}
+                                                        @endif
+                                                        @if(trans('layout.lang') == 'Ru')
+                                                        {{$faculty->en_name}}
+                                                           @endif
+                                                        </a>
                                                 </h4>
                                                 <table
                                                     class="table table-b-border table-sm table-scores w-100 table-ovz-select">
                                                     <thead>
                                                     <tr>
                                                         <th width="40%" rowspan="3" style="vertical-align: middle">
-                                                            Направление
-                                                            подготовки / Специальность
+                                                            {{ trans('selection.speciality') }}
                                                         </th>
                                                         <th width="20%" rowspan="3" style="vertical-align: middle">
-                                                            Вступительные
-                                                            испытания в порядке
-                                                            приоритетности для
-                                                            ранжирования
+                                                            {{ trans('selection.subjects') }}
                                                         </th>
                                                         <th width="10%" rowspan="3" style="vertical-align: middle"
                                                             class="d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none">
-                                                            Минимальные
-                                                            баллы
+                                                            {{ trans('selection.score') }}
                                                         </th>
                                                         <th width="10%" rowspan="3" style="vertical-align: middle"
                                                             class="d-lg-none d-xl-none d-md-none d-sm-none d-table-cell">
-                                                            Мин. баллы
+                                                            {{ trans('selection.score_1') }}
                                                         </th>
                                                         <th width="10%"
                                                             class="d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none"
-                                                            rowspan="3" style="vertical-align: middle">Формы
-                                                            обучения
+                                                            rowspan="3" style="vertical-align: middle">{{ trans('selection.study_form') }}
                                                         </th>
 {{--                                                        <th colspan="4" width="20%"--}}
 {{--                                                            class="d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none">--}}
@@ -130,15 +135,32 @@
                                                                         data-target="#exampleModalScrollable"
                                                                         data-content="{{$item}}">
                                                                     {{$item->speciality->code}}<br>
-                                                                    <b><u>{{$item->speciality->name}}</u></b>@if($item->specialization)
-                                                                        <br>{{$item->specialization->name}}
+                                                                    <b><u>
+                                                                            @if(trans('layout.lang') == 'En')
+                                                                                {{$item->speciality->name}}
+                                                                            @else
+                                                                                {{$item->speciality->en_name}}
+                                                                            @endif
+                                                                            </u></b>
+                                                                    @if($item->specialization)
+                                                                        <br>
+                                                                        @if(trans('layout.lang') == 'En')
+                                                                            {{$item->specialization->name}}
+                                                                        @else
+                                                                            {{$item->specialization->en_name}}
+                                                                        @endif
                                                                     @endif
                                                                 </button>
                                                             </td>
                                                             @foreach($item->scores as $k => $score)
                                                                 @if (!strpos($score->subject->name, 'достижение'))
                                                                     @if($k == 0)
-                                                                        <td>{{$score->subject->name}}</td>
+                                                                        @if(trans('layout.lang') == 'En')
+                                                                            <td>{{$score->subject->name}}</td>
+                                                                        @else
+                                                                            <td>{{$score->subject->en_name}}</td>
+                                                                        @endif
+
                                                                         <td class="text-center">{{$score->minScore}}</td>
                                                                     @endif
                                                                 @endif
@@ -149,7 +171,14 @@
                                                             >
                                                                 @foreach($item->studyForm as $sf)
                                                                     <span style="white-space: nowrap"
-                                                                          class="text-center">{{$sf->name}}</span>
+                                                                          class="text-center">
+                                                                            @if(trans('layout.lang') == 'En')
+                                                                                {{$sf->name}}
+                                                                            @else
+                                                                                {{$sf->en_name}}
+                                                                            @endif
+
+                                                                    </span>
                                                                     <br>
                                                                 @endforeach
                                                             </td>
@@ -302,15 +331,23 @@
                                                                 @if($k !== 0 && $k !== (count($item->scores) - 1))
                                                                     <tr class="nps-tr search-tr-by-facluties"
                                                                         data-exams="{{ implode(',', $item->subjects) }}">
-                                                                        <td>{{$score->subject->name}}</td>
+                                                                        @if(trans('layout.lang') == 'En')
+                                                                            <td>{{$score->subject->name}}</td>
+                                                                        @else
+                                                                            <td>{{$score->subject->en_name}}</td>
+                                                                        @endif
                                                                         <td class="text-center">{{$score->minScore}}</td>
                                                                     </tr>
                                                                 @elseif ($k == (count($item->scores) - 1))
                                                                     <tr class="nps-tr search-tr-by-facluties"
                                                                         data-exams="{{ implode(',', $item->subjects) }}">
-                                                                        <td class="bold-border-imp"
-                                                                            {{--                                                                            style="border-bottom: 2px solid #2366a5 !important;"--}}
-                                                                        >{{$score->subject->name}}</td>
+                                                                        <td class="bold-border-imp">
+                                                                        @if(trans('layout.lang') == 'En')
+                                                                            {{$score->subject->name}}
+                                                                        @else
+                                                                            {{$score->subject->en_name}}
+                                                                            @endif
+                                                                        </td>
                                                                         <td
                                                                             {{--                                                                            style="border-bottom: 2px solid #2366a5 !important;;"--}}
                                                                             class="text-center bold-border-imp">{{$score->minScore}}</td>
@@ -338,7 +375,13 @@
                                                            id="optionFaculties{{ $loop->index }}"
                                                            onclick="addToChosenFaculties('{{ $faculty->name }}')">
                                                     <label class="form-check-label ml-2 underline-label"
-                                                           for="optionFaculties{{ $loop->index }}">{{ $faculty->name }}</label>
+                                                           for="optionFaculties{{ $loop->index }}">
+                                                        @if(trans('layout.lang') == 'En')
+                                                            {{$faculty->name}}
+                                                        @else
+                                                            {{$faculty->en_name}}
+                                                        @endif
+                                                    </label>
                                                 </div>
                                             </div>
                                         @endif
@@ -422,10 +465,13 @@
 
 
         $('#exampleModalScrollable').on('show.bs.modal', function (event) {
+           var locale = $('#locale').data('content');
+
             var button = $(event.relatedTarget) // Button that triggered the modal
             var recipient = button.data('content') // Extract info from data-* attributes
             // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
             // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+            // console.log(recipient)
             let years = {
                 0: 'лет',
                 1: 'год',
@@ -447,15 +493,33 @@
                 7: 'Ординатура',
                 9: 'Ассистентура'
             }
+            let en_codes = {
+                3: 'Bachelor',
+                4: 'Master',
+                5: 'Speciality',
+                2: 'Среднее профессиональное образование',
+                6: 'Аспирантура',
+                7: 'Ординатура',
+                9: 'Ассистентура'
+            }
             var modal = $(this)
             if ((recipient.faculty).length > 30) {
                 $('#facultyName').css({'font-size': '1.25rem'})
             } else {
                 $('#facultyName').css({'font-size': '1.5rem'})
             }
-            modal.find('#facultyName').empty().text(recipient.faculty)
-            modal.find('#directionName').empty().text(recipient.speciality.code + ' ' + recipient.speciality.name)
-            modal.find('#spec').empty().text((recipient.specialization !== null ? recipient.specialization.name : ''))
+            if(locale === 'ru') {
+                modal.find('#facultyName').empty().text(recipient.faculty_name.name)
+                modal.find('#directionName').empty().text(recipient.speciality.code + ' ' + recipient.speciality.name)
+                modal.find('#directionName').empty().text(recipient.speciality.code + ' ' + recipient.speciality.name)
+                modal.find('#spec').empty().text((recipient.specialization !== null ? recipient.specialization.name : ''))
+            }
+            if(locale === 'en'){
+                modal.find('#facultyName').empty().text(recipient.faculty_name.en_name)
+                modal.find('#directionName').empty().text(recipient.speciality.code + ' ' + recipient.speciality.en_name)
+                modal.find('#directionName').empty().text(recipient.speciality.code + ' ' + recipient.speciality.en_name)
+                modal.find('#spec').empty().text((recipient.specialization !== null ? recipient.specialization.en_name : ''))
+            }
             let names = ''
             $.each(recipient.subjects, function (k, v) {
                 if (k === recipient.subjects.length - 1) {
@@ -466,7 +530,12 @@
             });
             let specCode = recipient.speciality.code[4];
             modal.find('table').empty()
-            modal.find('#examsNames').empty().text(codes[specCode])
+            if(locale === 'ru') {
+                modal.find('#examsNames').empty().text(codes[specCode])
+            }
+            if(locale === 'en'){
+                modal.find('#examsNames').empty().text(en_codes[specCode])
+            }
             modal.find('#examsNames').css({'font-size': '20px', 'text-transform': 'uppercase'})
             modal.find('#forms').empty()
 
@@ -476,7 +545,7 @@
             let sortedForms = [];
 
             $.each(recipient.studyForm, (k, v) => {
-                console.log(v)
+                // console.log(v)
                 if (v.name.trim() === "Очная") {
                     temp_item_o = v
                 }
@@ -497,31 +566,57 @@
             if (temp_item_z) {
                 sortedForms.push(temp_item_z)
             }
-            console.log(recipient.studyForm, sortedForms)
+            // console.log(recipient.studyForm, sortedForms)
             $.each(sortedForms, (k, v) => {
                 let number = v.years.toString().slice(-1)
                 let year = years[number];
+                let str1;
+                let str2;
+                let str_price;
+                if(locale === 'ru') {
+                   str1 = "<h5><strong>" + v.name + " форма, " + v.years + " " + year + "</strong></h5>";
+                   str2 = "Количество мест:";
+                   str_price = " ₽/год";
+                }
+
+                if(locale === 'en'){
+                    str1 = "<h5><strong>" + v.en_name + ", " + v.years + " " + "year" + "</strong></h5>";
+                    str2 = "Number of places:";
+                    str_price = " ₽/year";
+                }
+
                 let templateRecipient =
-                    "<div class=''>" +
-                    "<div class='row d-flex justify-content-cetner'>" +
-                    "<div class='col-12 d-flex align-items-center justify-content-center flex-column'>" +
-                    "<h5><strong>" + v.name + " форма, " + v.years + " " + year + "</strong></h5>" +
-                    "</div><div class='col-12 col-lg-6 col-xl-6 col-md-6 col-sm-12 mb-2'><h5 class='text-center mb-0'><strong>Количество мест:</strong></h5>"
+                        "<div class=''>" +
+                        "<div class='row d-flex justify-content-cetner'>" +
+                        "<div class='col-12 d-flex align-items-center justify-content-center flex-column'>" +
+                        str1 +
+                        "</div><div class='col-12 col-lg-6 col-xl-6 col-md-6 col-sm-12 mb-2'><h5 class='text-center mb-0'><strong>"+str2+"</strong></h5>"
+
 
                 v.freeseats.sort((a, b) => (a.admissionBasis.name.length > b.admissionBasis.name.length) ? 1 : ((b.admissionBasis.name.length > a.admissionBasis.name.length) ? -1 : 0));
 
                 $.each(v.freeseats, (key, seat) => {
                     //templateRecipient += "<tr><td>" + seat.admissionBasis.name + "</td><td>" + seat.value + "</td></tr>"
-                    templateRecipient += "<p class='mb-0 ml-lg-5 ml-xl-5 ml-md-5 ml-sm-3 ml-lg-0 ml-md-2 ml-3 text-left'><span>" + seat.admissionBasis.name + " - </span><b>" + seat.value + "</b></p>"
+                    if(locale === 'ru') {
+                        templateRecipient += "<p class='mb-0 ml-lg-5 ml-xl-5 ml-md-5 ml-sm-3 ml-lg-0 ml-md-2 ml-3 text-left'><span>" + seat.admissionBasis.name + " - </span><b>" + seat.value + "</b></p>"
+                    }
+                    if(locale === 'en'){
+                        templateRecipient += "<p class='mb-0 ml-lg-5 ml-xl-5 ml-md-5 ml-sm-3 ml-lg-0 ml-md-2 ml-3 text-left'><span>" + seat.admissionBasis.en_name + " - </span><b>" + seat.value + "</b></p>"
+                    }
                 });
 
                 //templateRecipient += "</tbody></table></div></div>";
                 templateRecipient += "</div>";
                 templateRecipient += "<div class='col-12 col-lg-6 col-xl-6 col-md-6 col-sm-12 mb-2'>";
-                templateRecipient += "<h5 class='text-center mb-0'><strong>Cтоимость обучения:</strong></h5>"
+                if(locale === 'ru') {
+                    templateRecipient += "<h5 class='text-center mb-0'><strong>Cтоимость обучения:</strong></h5>"
+                }
+                if(locale === 'en') {
+                    templateRecipient += "<h5 class='text-center mb-0'><strong>Tuition fee:</strong></h5>"
+                }
                 $.each(v.prices, (key, price) => {
                     if (price.price !== 0) {
-                        templateRecipient += "<p class='mb-0 ml-lg-5 ml-xl-5 ml-md-5 ml-sm-3 ml-lg-0 ml-md-2 ml-3 text-left'><span>" + price.info + " - </span><b>" + price.price + " ₽/год</b></p>"
+                        templateRecipient += "<p class='mb-0 ml-lg-5 ml-xl-5 ml-md-5 ml-sm-3 ml-lg-0 ml-md-2 ml-3 text-left'><span>" + price.info + " - </span><b>" + price.price + str_price + "</b></p>"
                     }
                 })
                 templateRecipient += "</div></div><div class='col-12'><hr class='w-100 bg-white' /></div>";
