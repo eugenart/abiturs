@@ -29,20 +29,20 @@ trait ParserXlsTrait
             $sheetSpec = $sheetSpec->toArray();
 
             $preg_code = '/\d\d.\d\d.\d\d/';
-            $subject = strval($sheetSpec[1][0]);
+            $subject = strval($sheetSpec[3][0]);
             if (preg_match($preg_code, $subject)) { // хотя бы минимальная проверка на структуру файла
                 //Удаляем записи из обоих таблиц
                 Specialization::truncate();
                 Speciality::truncate();
 
                 //Добавляем записи Специальностей
-                for ($i = 1; $i < count($sheetSpec); $i++) {
+                for ($i = 3; $i < count($sheetSpec); $i++) {
                     if (!is_null($sheetSpec[$i][2]) && !is_null($sheetSpec[$i][0]) && !is_null($sheetSpec[$i][1])) {
                         if ($sheetSpec[$i][2] != '' && $sheetSpec[$i][0] != '' && $sheetSpec[$i][1] != '') {
                             Speciality::insert(array(
-                                'specialityId' => $sheetSpec[$i][2],
                                 'code' => $sheetSpec[$i][0],
                                 'name' => $sheetSpec[$i][1],
+                                'specialityId' => $sheetSpec[$i][2],
                                 'en_name' => $sheetSpec[$i][3]
                             ));
                         }
@@ -59,7 +59,7 @@ trait ParserXlsTrait
             $sheetSpz = $sheetSpz->toArray();
 
 
-            for ($i = 1; $i < count($sheetSpz); $i++) {
+            for ($i = 3; $i < count($sheetSpz); $i++) {
                 if (!is_null($sheetSpz[$i][0]) && !is_null($sheetSpz[$i][4]) /*&& !is_null($sheetSpz[$i][3]) && !is_null($sheetSpz[$i][2])*/) {
                     if ($sheetSpz[$i][0] != '' && $sheetSpz[$i][4] != '' /*&& $sheetSpz[$i][3] != '' && !$sheetSpz[$i][2]!=''*/) {
                         //получим id специальности для привязки по имени и коду
@@ -136,7 +136,7 @@ trait ParserXlsTrait
         $sheetSpz = $xlsSpz->getActiveSheet();
         $sheetSpz = $sheetSpz->toArray();
 
-        for ($i = 1; $i < count($sheetSpz); $i++) {
+        for ($i = 3; $i < count($sheetSpz); $i++) {
 
             //Добавляем записи Специализаций
             Faculty::insert(array(
@@ -172,7 +172,7 @@ trait ParserXlsTrait
         $sheetSpz = $xlsSpz->getActiveSheet();
         $sheetSpz = $sheetSpz->toArray();
 
-        for ($i = 1; $i < count($sheetSpz); $i++) {
+        for ($i = 3; $i < count($sheetSpz); $i++) {
 
             //Добавляем записи основ
             AdmissionBasis::insert(array(

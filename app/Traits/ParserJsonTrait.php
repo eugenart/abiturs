@@ -97,20 +97,23 @@ trait ParserJsonTrait
             //Заполняем справочную информацию собирая все из статистики
             foreach ($json_data as $k => $fac_stat) {
                 $stdForm = array(
-                    'name' => $fac_stat['trainingForm']
+                    'name' => $fac_stat['trainingForm'],
+                    'en_name' => $fac_stat['trainingForm_en']
                 );
                 $studyForms[] = $stdForm;
 
                 foreach ($fac_stat['List'] as $stud_element) {
 
                     $prepLevel = array(
-                        'name' => $stud_element['preparationLevel']
+                        'name' => $stud_element['preparationLevel'],
+                        'en_name' => $stud_element['preparationLevel_en']
                     );
                     $prepLevels[] = $prepLevel;
 
 
                     $category = array(
-                        'name' => $stud_element['category']
+                        'name' => $stud_element['category'],
+                        'en_name' => $stud_element['category_en']
                     );
                     $categories[] = $category;
 //
@@ -183,7 +186,7 @@ trait ParserJsonTrait
                         if (empty($idStudent)) { //студента в базе нет - записываем
                             $stud = array(
                                 'studentId' => $student['studentId'],
-                                'fio' => $student['fio'],
+                                'fio' => $student['fio']
                             );
                             $students[] = $stud;
                             $count_idStudent++;
@@ -296,6 +299,7 @@ trait ParserJsonTrait
                             $stud_f = array(
                                 'studentId' => $student['studentId'],
                                 'fio' => $student['fio'],
+                                'fio_en' => $student['fio_en']
                             );
                             $students_f[] = $stud_f;
                             $count_idStudent_f++;
@@ -423,8 +427,8 @@ trait ParserJsonTrait
         set_time_limit(1200);
 //        $this->parseCatalogs("stat_bach.json");
         $this->parseStatBach();
-        $this->XlsBach();
-        $this->XlsBachForeigner();
+//        $this->XlsBach();
+//        $this->XlsBachForeigner();
 
         return 'Информация об абитуриентах (бакалавриат,специалитет) успешно выгружена!';
     }
@@ -451,7 +455,8 @@ trait ParserJsonTrait
                     $prepLevel_db = PreparationLevel::where('name', '=', $stud_element['preparationLevel'])->first();
                     if (empty($prepLevel_db)) {
                         $prepLevel = array(
-                            'name' => $stud_element['preparationLevel']
+                            'name' => $stud_element['preparationLevel'],
+                            'en_name' => $stud_element['preparationLevel_en']
                         );
                         $prepLevels[] = $prepLevel;
                     }
@@ -459,7 +464,8 @@ trait ParserJsonTrait
                     $category_db = Category::where('name', '=', $stud_element['category'])->first();
                     if (empty($category_db)) {
                         $category = array(
-                            'name' => $stud_element['category']
+                            'name' => $stud_element['category'],
+                            'en_name' => $stud_element['category_en']
                         );
                         $categories[] = $category;
                     }
@@ -641,6 +647,7 @@ trait ParserJsonTrait
                             $stud_f = array(
                                 'studentId' => $student['studentId'],
                                 'fio' => $student['fio'],
+                                'fio_en' => $student['fio_en']
                             );
                             $students_f[] = $stud_f;
                             $count_idStudent_f++;
@@ -799,7 +806,8 @@ trait ParserJsonTrait
                     $prepLevel_db = PreparationLevel::where('name', '=', $stud_element['preparationLevel'])->first();
                     if (empty($prepLevel_db)) {
                         $prepLevel = array(
-                            'name' => $stud_element['preparationLevel']
+                            'name' => $stud_element['preparationLevel'],
+                            'en_name' => $stud_element['preparationLevel_en']
                         );
                         $prepLevels[] = $prepLevel;
                     }
@@ -807,7 +815,8 @@ trait ParserJsonTrait
                     $category_db = Category::where('name', '=', $stud_element['category'])->first();
                     if (empty($category_db)) {
                         $category = array(
-                            'name' => $stud_element['category']
+                            'name' => $stud_element['category'],
+                            'en_name' => $stud_element['category_en']
                         );
                         $categories[] = $category;
                     }
@@ -989,6 +998,7 @@ trait ParserJsonTrait
                             $stud_f = array(
                                 'studentId' => $student['studentId'],
                                 'fio' => $student['fio'],
+                                'fio_en' => $student['fio_en']
                             );
                             $students_f[] = $stud_f;
                             $count_idStudent_f++;
@@ -1535,7 +1545,8 @@ trait ParserJsonTrait
                             $price_f = array(
                                 'id_plan_comp' => $count_plan_f, // так же если не делать уникальной таблицу планов
                                 'price' => $priceItem['Price'],
-                                'info' => $priceItem['info']
+                                'info' => $priceItem['info'],
+                                'info_en' => $priceItem['info_en'],
                             );
                             $arr_prices_f[] = $price_f;
                         }
@@ -1696,7 +1707,8 @@ trait ParserJsonTrait
                             $price = array(
                                 'id_plan_comp' => $count_plan, // так же если не делать уникальной таблицу планов
                                 'price' => $priceItem['Price'],
-                                'info' => $priceItem['info']
+                                'info' => $priceItem['info'],
+
                             );
                             $arr_prices[] = $price;
                         }
@@ -1790,7 +1802,8 @@ trait ParserJsonTrait
                             $price_f = array(
                                 'id_plan_comp' => $count_plan_f, // так же если не делать уникальной таблицу планов
                                 'price' => $priceItem['Price'],
-                                'info' => $priceItem['info']
+                                'info' => $priceItem['info'],
+                                'info_en' => $priceItem['info_en'],
                             );
                             $arr_prices_f[] = $price_f;
                         }
@@ -2038,7 +2051,8 @@ trait ParserJsonTrait
                             $price_f = array(
                                 'id_plan_comp' => $count_plan_f, // так же если не делать уникальной таблицу планов
                                 'price' => $priceItem['Price'],
-                                'info' => $priceItem['info']
+                                'info' => $priceItem['info'],
+                                'info_en' => $priceItem['info_en'],
                             );
                             $arr_prices_f[] = $price_f;
                         }
@@ -2295,7 +2309,8 @@ trait ParserJsonTrait
                             $price_f = array(
                                 'id_plan_comp' => $count_plan_f, // так же если не делать уникальной таблицу планов
                                 'price' => $priceItem['Price'],
-                                'info' => $priceItem['info']
+                                'info' => $priceItem['info'],
+                                'info_en' => $priceItem['info_en'],
                             );
                             $arr_prices_f[] = $price_f;
                         }
@@ -2543,7 +2558,8 @@ trait ParserJsonTrait
                             $price_f = array(
                                 'id_plan_comp' => $count_plan_f, // так же если не делать уникальной таблицу планов
                                 'price' => $priceItem['Price'],
-                                'info' => $priceItem['info']
+                                'info' => $priceItem['info'],
+                                'info_en' => $priceItem['info_en'],
                             );
                             $arr_prices_f[] = $price_f;
                         }

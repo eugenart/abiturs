@@ -1,5 +1,6 @@
 <?php
 return [
+    'locale' => 'ru',
     'lang' => 'En',
     'href' => '/en',
     'levels' => 'уровни подготовки',

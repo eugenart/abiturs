@@ -55,7 +55,7 @@
                 </div>
             </div>
         @endif
-        @if(trans('layout.lang') == 'En')
+        @if(trans('layout.locale') == 'ru')
             @if($infoblocks->count() < 3)
                 <div class="row justify-content-center mb-30px">
                     @else
@@ -81,7 +81,7 @@
                         </div>
                     @endif
 
-                    @if(trans('layout.lang') == 'Ru')
+                    @if(trans('layout.locale') == 'en')
                         @if($infoblocks_int->count() < 3)
                             <div class="row justify-content-center mb-30px">
                                 @else

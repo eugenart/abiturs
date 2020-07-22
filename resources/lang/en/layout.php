@@ -1,5 +1,6 @@
 <?php
 return [
+    'locale' => 'en',
     'lang' => 'Ru',
     'href' => '/ru',
     'levels' => 'For international applicants',
@@ -9,12 +10,12 @@ return [
     'docs' => 'Submission of documents',
     'archive' => 'archive',
 
-    'bach' => 'BACHELOR & SPECIALTY',
-    'master' => 'MASTERS',
-    'asp' => 'Graduate and Residency',
+    'bach' => 'Bachelor\'s Degree and Speciality',
+    'master' => 'Masters\'s Degree',
+    'asp' => 'Postgraduate and residency',
     'spo' => 'Secondary vocational education',
 
-    'foreigner' => 'international applicants',
+    'foreigner' => 'lists of applicants',
     'for_foreigner' => 'Selection of educational programs',
 
     'stat' => 'reception statistics',

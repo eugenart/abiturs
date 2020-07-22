@@ -61,10 +61,10 @@
                         <div class="row mt-2 d-flex flex-xl-row flex-column-reverse flex-sm-column-reverse">
                             <div class="col-12 col-xl-9 col-sm-12">
                                 <div class="row">
-                                    @if(trans('layout.lang') == 'En')
+                                    @if(trans('layout.locale') == 'ru')
                                         <span style="display:none;" id="locale" data-content="ru"></span>
                                     @endif
-                                    @if(trans('layout.lang') == 'Ru')
+                                    @if(trans('layout.locale') == 'en')
                                         <span style="display:none;" id="locale" data-content="en"></span>
                                     @endif
                                     @foreach($faculties as $faculty)
@@ -74,10 +74,10 @@
                                                  data-exams="{{ implode(',', $faculty->subjects) }}">
                                                 <h4><a href="{{$faculty->link}}"
                                                        class="faculty-head" style="text-decoration: underline" target="_blank">
-                                                       @if(trans('layout.lang') == 'En')
+                                                       @if(trans('layout.locale') == 'ru')
                                                        {{$faculty->name}}
                                                         @endif
-                                                        @if(trans('layout.lang') == 'Ru')
+                                                        @if(trans('layout.locale') == 'en')
                                                         {{$faculty->en_name}}
                                                            @endif
                                                         </a>
@@ -136,17 +136,19 @@
                                                                         data-content="{{$item}}">
                                                                     {{$item->speciality->code}}<br>
                                                                     <b><u>
-                                                                            @if(trans('layout.lang') == 'En')
+                                                                            @if(trans('layout.locale') == 'ru')
                                                                                 {{$item->speciality->name}}
-                                                                            @else
-                                                                                {{$item->speciality->en_name}}
                                                                             @endif
+                                                                            @if(trans('layout.locale') == 'en')
+                                                                                {{$item->speciality->en_name}}
+                                                                                @endif
                                                                             </u></b>
                                                                     @if($item->specialization)
                                                                         <br>
-                                                                        @if(trans('layout.lang') == 'En')
+                                                                        @if(trans('layout.locale') == 'ru')
                                                                             {{$item->specialization->name}}
-                                                                        @else
+                                                                        @endif
+                                                                        @if(trans('layout.locale') == 'en')
                                                                             {{$item->specialization->en_name}}
                                                                         @endif
                                                                     @endif
@@ -155,9 +157,10 @@
                                                             @foreach($item->scores as $k => $score)
                                                                 @if (!strpos($score->subject->name, 'достижение'))
                                                                     @if($k == 0)
-                                                                        @if(trans('layout.lang') == 'En')
+                                                                        @if(trans('layout.locale') == 'ru')
                                                                             <td>{{$score->subject->name}}</td>
-                                                                        @else
+                                                                        @endif
+                                                                        @if(trans('layout.locale') == 'en')
                                                                             <td>{{$score->subject->en_name}}</td>
                                                                         @endif
 
@@ -172,9 +175,10 @@
                                                                 @foreach($item->studyForm as $sf)
                                                                     <span style="white-space: nowrap"
                                                                           class="text-center">
-                                                                            @if(trans('layout.lang') == 'En')
+                                                                            @if(trans('layout.locale') == 'ru')
                                                                                 {{$sf->name}}
-                                                                            @else
+                                                                        @endif
+                                                                        @if(trans('layout.locale') == 'en')
                                                                                 {{$sf->en_name}}
                                                                             @endif
 
@@ -331,9 +335,10 @@
                                                                 @if($k !== 0 && $k !== (count($item->scores) - 1))
                                                                     <tr class="nps-tr search-tr-by-facluties"
                                                                         data-exams="{{ implode(',', $item->subjects) }}">
-                                                                        @if(trans('layout.lang') == 'En')
+                                                                        @if(trans('layout.locale') == 'ru')
                                                                             <td>{{$score->subject->name}}</td>
-                                                                        @else
+                                                                        @endif
+                                                                        @if(trans('layout.locale') == 'en')
                                                                             <td>{{$score->subject->en_name}}</td>
                                                                         @endif
                                                                         <td class="text-center">{{$score->minScore}}</td>
@@ -342,9 +347,10 @@
                                                                     <tr class="nps-tr search-tr-by-facluties"
                                                                         data-exams="{{ implode(',', $item->subjects) }}">
                                                                         <td class="bold-border-imp">
-                                                                        @if(trans('layout.lang') == 'En')
+                                                                        @if(trans('layout.locale') == 'ru')
                                                                             {{$score->subject->name}}
-                                                                        @else
+                                                                        @endif
+                                                                        @if(trans('layout.locale') == 'en')
                                                                             {{$score->subject->en_name}}
                                                                             @endif
                                                                         </td>
@@ -376,9 +382,10 @@
                                                            onclick="addToChosenFaculties('{{ $faculty->name }}')">
                                                     <label class="form-check-label ml-2 underline-label"
                                                            for="optionFaculties{{ $loop->index }}">
-                                                        @if(trans('layout.lang') == 'En')
+                                                        @if(trans('layout.locale') == 'ru')
                                                             {{$faculty->name}}
-                                                        @else
+                                                        @endif
+                                                        @if(trans('layout.locale') == 'en')
                                                             {{$faculty->en_name}}
                                                         @endif
                                                     </label>
@@ -494,8 +501,8 @@
                 9: 'Ассистентура'
             }
             let en_codes = {
-                3: 'Bachelor',
-                4: 'Master',
+                3: 'Bachelor’s degree',
+                4: 'Master’s degree',
                 5: 'Speciality',
                 2: 'Среднее профессиональное образование',
                 6: 'Аспирантура',
@@ -608,15 +615,20 @@
                 //templateRecipient += "</tbody></table></div></div>";
                 templateRecipient += "</div>";
                 templateRecipient += "<div class='col-12 col-lg-6 col-xl-6 col-md-6 col-sm-12 mb-2'>";
+
                 if(locale === 'ru') {
                     templateRecipient += "<h5 class='text-center mb-0'><strong>Cтоимость обучения:</strong></h5>"
                 }
                 if(locale === 'en') {
                     templateRecipient += "<h5 class='text-center mb-0'><strong>Tuition fee:</strong></h5>"
                 }
+
                 $.each(v.prices, (key, price) => {
                     if (price.price !== 0) {
-                        templateRecipient += "<p class='mb-0 ml-lg-5 ml-xl-5 ml-md-5 ml-sm-3 ml-lg-0 ml-md-2 ml-3 text-left'><span>" + price.info + " - </span><b>" + price.price + str_price + "</b></p>"
+                        let price_info;
+                        if(locale === 'ru') {price_info = price.info;}
+                        if(locale === 'en') {price_info = price.info_en;}
+                        templateRecipient += "<p class='mb-0 ml-lg-5 ml-xl-5 ml-md-5 ml-sm-3 ml-lg-0 ml-md-2 ml-3 text-left'><span>" + price_info + " - </span><b>" + price.price + str_price + "</b></p>"
                     }
                 })
                 templateRecipient += "</div></div><div class='col-12'><hr class='w-100 bg-white' /></div>";
