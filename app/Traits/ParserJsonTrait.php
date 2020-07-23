@@ -97,20 +97,23 @@ trait ParserJsonTrait
             //Заполняем справочную информацию собирая все из статистики
             foreach ($json_data as $k => $fac_stat) {
                 $stdForm = array(
-                    'name' => $fac_stat['trainingForm']
+                    'name' => $fac_stat['trainingForm'],
+                    'en_name' => $fac_stat['trainingForm_en']
                 );
                 $studyForms[] = $stdForm;
 
                 foreach ($fac_stat['List'] as $stud_element) {
 
                     $prepLevel = array(
-                        'name' => $stud_element['preparationLevel']
+                        'name' => $stud_element['preparationLevel'],
+                        'en_name' => $stud_element['preparationLevel_en']
                     );
                     $prepLevels[] = $prepLevel;
 
 
                     $category = array(
-                        'name' => $stud_element['category']
+                        'name' => $stud_element['category'],
+                        'en_name' => $stud_element['category_en']
                     );
                     $categories[] = $category;
 //
@@ -183,7 +186,7 @@ trait ParserJsonTrait
                         if (empty($idStudent)) { //студента в базе нет - записываем
                             $stud = array(
                                 'studentId' => $student['studentId'],
-                                'fio' => $student['fio'],
+                                'fio' => mb_convert_case(mb_strtolower($student['fio']), MB_CASE_TITLE)
                             );
                             $students[] = $stud;
                             $count_idStudent++;
@@ -293,9 +296,14 @@ trait ParserJsonTrait
                         //находим id студента в предыдущих специальностях
                         $idStudent = StudentForeigner::where('studentId', '=', $student['studentId'])->first();
                         if (empty($idStudent)) { //студента в базе нет - записываем
+                            $fio_en = null;
+                            if(isset($student['fio_en'])){
+                                $fio_en = mb_convert_case(mb_strtolower($student['fio_en']), MB_CASE_TITLE);
+                            }
                             $stud_f = array(
                                 'studentId' => $student['studentId'],
-                                'fio' => $student['fio'],
+                                'fio' => mb_convert_case(mb_strtolower($student['fio']), MB_CASE_TITLE),
+                                'fio_en' => $fio_en
                             );
                             $students_f[] = $stud_f;
                             $count_idStudent_f++;
@@ -451,7 +459,8 @@ trait ParserJsonTrait
                     $prepLevel_db = PreparationLevel::where('name', '=', $stud_element['preparationLevel'])->first();
                     if (empty($prepLevel_db)) {
                         $prepLevel = array(
-                            'name' => $stud_element['preparationLevel']
+                            'name' => $stud_element['preparationLevel'],
+                            'en_name' => $stud_element['preparationLevel_en']
                         );
                         $prepLevels[] = $prepLevel;
                     }
@@ -459,7 +468,8 @@ trait ParserJsonTrait
                     $category_db = Category::where('name', '=', $stud_element['category'])->first();
                     if (empty($category_db)) {
                         $category = array(
-                            'name' => $stud_element['category']
+                            'name' => $stud_element['category'],
+                            'en_name' => $stud_element['category_en']
                         );
                         $categories[] = $category;
                     }
@@ -527,7 +537,7 @@ trait ParserJsonTrait
                         if (empty($idStudent)) { //студента в базе нет - записываем
                             $stud = array(
                                 'studentId' => $student['studentId'],
-                                'fio' => $student['fio'],
+                                'fio' => mb_convert_case(mb_strtolower($student['fio']), MB_CASE_TITLE),
                             );
                             $students[] = $stud;
                             $count_idStudent++;
@@ -638,9 +648,14 @@ trait ParserJsonTrait
                         //находим id студента в предыдущих специальностях
                         $idStudent = StudentMasterForeigner::where('studentId', '=', $student['studentId'])->first();
                         if (empty($idStudent)) { //студента в базе нет - записываем
+                            $fio_en = null;
+                            if(isset($student['fio_en'])){
+                                $fio_en = mb_convert_case(mb_strtolower($student['fio_en']), MB_CASE_TITLE);
+                            }
                             $stud_f = array(
                                 'studentId' => $student['studentId'],
-                                'fio' => $student['fio'],
+                                'fio' => mb_convert_case(mb_strtolower($student['fio']), MB_CASE_TITLE),
+                                'fio_en' => $fio_en
                             );
                             $students_f[] = $stud_f;
                             $count_idStudent_f++;
@@ -799,7 +814,8 @@ trait ParserJsonTrait
                     $prepLevel_db = PreparationLevel::where('name', '=', $stud_element['preparationLevel'])->first();
                     if (empty($prepLevel_db)) {
                         $prepLevel = array(
-                            'name' => $stud_element['preparationLevel']
+                            'name' => $stud_element['preparationLevel'],
+                            'en_name' => $stud_element['preparationLevel_en']
                         );
                         $prepLevels[] = $prepLevel;
                     }
@@ -807,7 +823,8 @@ trait ParserJsonTrait
                     $category_db = Category::where('name', '=', $stud_element['category'])->first();
                     if (empty($category_db)) {
                         $category = array(
-                            'name' => $stud_element['category']
+                            'name' => $stud_element['category'],
+                            'en_name' => $stud_element['category_en']
                         );
                         $categories[] = $category;
                     }
@@ -875,7 +892,7 @@ trait ParserJsonTrait
                         if (empty($idStudent)) { //студента в базе нет - записываем
                             $stud = array(
                                 'studentId' => $student['studentId'],
-                                'fio' => $student['fio'],
+                                'fio' => mb_convert_case(mb_strtolower($student['fio']), MB_CASE_TITLE),
                             );
                             $students[] = $stud;
                             $count_idStudent++;
@@ -986,9 +1003,14 @@ trait ParserJsonTrait
                         //находим id студента в предыдущих специальностях
                         $idStudent = StudentAspForeigner::where('studentId', '=', $student['studentId'])->first();
                         if (empty($idStudent)) { //студента в базе нет - записываем
+                            $fio_en = null;
+                            if(isset($student['fio_en'])){
+                                $fio_en = mb_convert_case(mb_strtolower($student['fio_en']), MB_CASE_TITLE);
+                            }
                             $stud_f = array(
                                 'studentId' => $student['studentId'],
-                                'fio' => $student['fio'],
+                                'fio' => mb_convert_case(mb_strtolower($student['fio']), MB_CASE_TITLE),
+                                'fio_en' => $fio_en
                             );
                             $students_f[] = $stud_f;
                             $count_idStudent_f++;
@@ -1114,6 +1136,7 @@ trait ParserJsonTrait
         }
     }
 
+
     public function parseStatAspAll()
     {
         set_time_limit(1200);
@@ -1215,7 +1238,7 @@ trait ParserJsonTrait
                         if (empty($idStudent)) { //студента в базе нет - записываем
                             $stud = array(
                                 'studentId' => $student['studentId'],
-                                'fio' => $student['fio'],
+                                'fio' => mb_convert_case(mb_strtolower($student['fio']), MB_CASE_TITLE),
                             );
                             $students[] = $stud;
                             $count_idStudent++;
@@ -1535,7 +1558,8 @@ trait ParserJsonTrait
                             $price_f = array(
                                 'id_plan_comp' => $count_plan_f, // так же если не делать уникальной таблицу планов
                                 'price' => $priceItem['Price'],
-                                'info' => $priceItem['info']
+                                'info' => $priceItem['info'],
+                                'info_en' => $priceItem['info_en'],
                             );
                             $arr_prices_f[] = $price_f;
                         }
@@ -1696,7 +1720,8 @@ trait ParserJsonTrait
                             $price = array(
                                 'id_plan_comp' => $count_plan, // так же если не делать уникальной таблицу планов
                                 'price' => $priceItem['Price'],
-                                'info' => $priceItem['info']
+                                'info' => $priceItem['info'],
+
                             );
                             $arr_prices[] = $price;
                         }
@@ -1790,7 +1815,8 @@ trait ParserJsonTrait
                             $price_f = array(
                                 'id_plan_comp' => $count_plan_f, // так же если не делать уникальной таблицу планов
                                 'price' => $priceItem['Price'],
-                                'info' => $priceItem['info']
+                                'info' => $priceItem['info'],
+                                'info_en' => $priceItem['info_en'],
                             );
                             $arr_prices_f[] = $price_f;
                         }
@@ -2038,7 +2064,8 @@ trait ParserJsonTrait
                             $price_f = array(
                                 'id_plan_comp' => $count_plan_f, // так же если не делать уникальной таблицу планов
                                 'price' => $priceItem['Price'],
-                                'info' => $priceItem['info']
+                                'info' => $priceItem['info'],
+                                'info_en' => $priceItem['info_en'],
                             );
                             $arr_prices_f[] = $price_f;
                         }
@@ -2295,7 +2322,8 @@ trait ParserJsonTrait
                             $price_f = array(
                                 'id_plan_comp' => $count_plan_f, // так же если не делать уникальной таблицу планов
                                 'price' => $priceItem['Price'],
-                                'info' => $priceItem['info']
+                                'info' => $priceItem['info'],
+                                'info_en' => $priceItem['info_en'],
                             );
                             $arr_prices_f[] = $price_f;
                         }
@@ -2543,7 +2571,8 @@ trait ParserJsonTrait
                             $price_f = array(
                                 'id_plan_comp' => $count_plan_f, // так же если не делать уникальной таблицу планов
                                 'price' => $priceItem['Price'],
-                                'info' => $priceItem['info']
+                                'info' => $priceItem['info'],
+                                'info_en' => $priceItem['info_en'],
                             );
                             $arr_prices_f[] = $price_f;
                         }
@@ -2600,11 +2629,248 @@ trait ParserJsonTrait
         }
     }
 
+    public function parsePlansOrd()
+    {
+        set_time_limit(0);
+        try {
+            $filejson = file_get_contents(storage_path('app/public/files/plans/plans_saransk/plans_sar_ord.json'));
+            $json_arr = json_decode($filejson, true);
+            $json_data = $json_arr['data'];
+
+
+            $arr_plan = array();
+            $arr_competition = array();
+            $arr_plan_comp = array();
+            $arr_plan_comp_score = array();
+            $arr_prices = array();
+            $arr_freeseats = array();
+            $count_plan = 0;
+
+            $arr_plan_f = array();
+            $arr_competition_f = array();
+            $arr_plan_comp_f = array();
+            $arr_plan_comp_score_f = array();
+            $arr_prices_f = array();
+            $arr_freeseats_f = array();
+            $count_plan_f = 0;
+
+            foreach ($json_data as $k => $element) {
+                if (!$element['Competition']['foreigner']) {
+                    $id_faculty = Faculty::where('facultyId', '=', $element['Plan']['facultyId'])->first();
+                    $id_studyForm = StudyForm::where('name', '=', $element['Plan']['trainingForm'])->first();
+                    $id_speciality = Speciality::where('specialityId', '=', $element['Plan']['trainingAreasId'])->first();
+                    $id_specialization = Specialization::where('specializationId', '=', $element['Plan']['specializationID'])->first();
+                    if (!isset($id_specialization)) {
+                        $id_specialization = Specialization::where('name', '=', $element['Plan']['specializationName'])->first();
+                    }
+
+                    //заполним массив планов
+                    if (!empty($id_faculty) && !empty($id_studyForm) && !empty($id_speciality)) {
+                        $plan = array(
+                            'planId' => $element['Plan']['planId'],
+                            'id_faculty' => intval($id_faculty->id),
+                            'id_studyForm' => intval($id_studyForm->id),
+                            'id_speciality' => intval($id_speciality->id),
+                            'id_specialization' => $id_specialization ? intval($id_specialization->id) : null,
+                            'years' => intval($element['Plan']['years'])
+
+                        );
+                    } else {
+                        $mes = 'Не найден параметр.';
+                        if (empty($id_faculty)) {
+                            $mes .= ' id_faculty' . $element['Plan']['facultyId'] . ',';
+                        }
+                        if (empty($id_studyForm)) {
+                            $mes .= ' $id_studyForm' . $element['Plan']['trainingForm'] . ',';
+                        }
+                        if (empty($id_speciality)) {
+                            $mes .= ' $id_speciality = ' . $element['Plan']['trainingAreasId'] . ',';
+                        }
+                        throw new ErrorException($mes);
+                    }
+                    //заполним массив испытаний
+                    $competition = array(
+                        'competitionId' => $element['Competition']['CompetitionId'],
+                        'competitionName' => $element['Competition']['CompetitionName']
+                    );
+
+
+                    $arr_plan[] = $plan;
+                    $arr_competition[] = $competition;
+                    $count_plan++; //если не делать юник для планов которые повторяются то id плана и компетишина равны
+                    //массив связей плана и испытания
+                    $plan_comp = array(
+                        'id_plan' => $count_plan,
+                        'id_competition' => $count_plan,
+                        'freeSeatsNumber' => $element['freeSeatsNumber']
+                    );
+
+                    $arr_plan_comp[] = $plan_comp;
+
+                    //связь предметов-оценок с объедением плана-исптания
+                    foreach ($element['subjects'] as $subjectItem) {
+                        $id_subject = Subject::where('subjectId', '=', $subjectItem['subjectId'])->first();
+                        if (!empty($id_subject)) {
+                            $subject = array(
+                                'id_plan_comp' => $count_plan, // так же если не делать уникальной таблицу планов
+                                'id_subject' => intval($id_subject->id),
+                                'minScore' => $subjectItem['minScore']
+                            );
+                            $arr_plan_comp_score[] = $subject;
+                        } else {
+                            $mes = 'Не найден параметр.' . ' id_subject = ' . $subjectItem['subjectId'];
+                            throw new ErrorException($mes);
+                        }
+                    }
+                    if (isset($element['Prices'])) {
+                        foreach ($element['Prices'] as $priceItem) {
+                            $price = array(
+                                'id_plan_comp' => $count_plan, // так же если не делать уникальной таблицу планов
+                                'price' => $priceItem['Price'],
+                                'info' => $priceItem['info']
+                            );
+                            $arr_prices[] = $price;
+                        }
+                    }
+
+                    foreach ($element['admissionBasis'] as $basisItem) {
+                        $id_admissionBasis = AdmissionBasis::where('baseId', '=', $basisItem['IdBasis'])->first();
+                        if (!empty($id_admissionBasis)) {
+                            $freeseat = array(
+                                'id_plan_comp' => $count_plan, // так же если не делать уникальной таблицу планов
+                                'id_admissionBasis' => intval($id_admissionBasis->id),
+                                'value' => $basisItem['value']
+                            );
+                            $arr_freeseats[] = $freeseat;
+                        } else {
+                            $mes = 'Не найден параметр.' . 'id_admissionBasis = ' . $basisItem['IdBasis'];
+                            throw new ErrorException($mes);
+                        }
+                    }
+                } else {
+                    $id_faculty = Faculty::where('facultyId', '=', $element['Plan']['facultyId'])->first();
+                    $id_studyForm = StudyForm::where('name', '=', $element['Plan']['trainingForm'])->first();
+                    $id_speciality = Speciality::where('specialityId', '=', $element['Plan']['trainingAreasId'])->first();
+                    $id_specialization = Specialization::where('specializationId', '=', $element['Plan']['specializationID'])->first();
+                    if (!isset($id_specialization)) {
+                        $id_specialization = Specialization::where('name', '=', $element['Plan']['specializationName'])->first();
+                    }
+
+                    //заполним массив планов
+                    if (!empty($id_faculty) && !empty($id_studyForm) && !empty($id_speciality)) {
+                        $plan_f = array(
+                            'planId' => $element['Plan']['planId'],
+                            'id_faculty' => intval($id_faculty->id),
+                            'id_studyForm' => intval($id_studyForm->id),
+                            'id_speciality' => intval($id_speciality->id),
+                            'id_specialization' => $id_specialization ? intval($id_specialization->id) : null,
+                            'years' => intval($element['Plan']['years'])
+
+                        );
+                    } else {
+                        $mes = 'Не найден параметр.';
+                        if (empty($id_faculty)) {
+                            $mes .= ' id_faculty' . $element['Plan']['facultyId'] . ',';
+                        }
+                        if (empty($id_studyForm)) {
+                            $mes .= ' $id_studyForm' . $element['Plan']['trainingForm'] . ',';
+                        }
+                        if (empty($id_speciality)) {
+                            $mes .= ' $id_speciality = ' . $element['Plan']['trainingAreasId'] . ',';
+                        }
+
+                        throw new ErrorException($mes);
+                    }
+                    //заполним массив испытаний
+                    $competition_f = array(
+                        'competitionId' => $element['Competition']['CompetitionId'],
+                        'competitionName' => $element['Competition']['CompetitionName']
+                    );
+
+
+                    $arr_plan_f[] = $plan_f;
+                    $arr_competition_f[] = $competition_f;
+                    $count_plan_f++; //если не делать юник для планов которые повторяются то id плана и компетишина равны
+                    //массив связей плана и испытания
+                    $plan_comp_f = array(
+                        'id_plan' => $count_plan_f,
+                        'id_competition' => $count_plan_f,
+                        'freeSeatsNumber' => $element['freeSeatsNumber']
+                    );
+
+                    $arr_plan_comp_f[] = $plan_comp_f;
+
+                    //связь предметов-оценок с объедением плана-исптания
+                    foreach ($element['subjects'] as $subjectItem) {
+                        $id_subject = Subject::where('subjectId', '=', $subjectItem['subjectId'])->first();
+                        if (!empty($id_subject)) {
+                            $subject_f = array(
+                                'id_plan_comp' => $count_plan_f, // так же если не делать уникальной таблицу планов
+                                'id_subject' => intval($id_subject->id),
+                                'minScore' => $subjectItem['minScore']
+                            );
+                            $arr_plan_comp_score_f[] = $subject_f;
+                        } else {
+                            $mes = 'Не найден параметр.' . ' id_subject = ' . $subjectItem['subjectId'];
+                            throw new ErrorException($mes);
+                        }
+                    }
+                    if (isset($element['Prices'])) {
+                        foreach ($element['Prices'] as $priceItem) {
+                            $price_f = array(
+                                'id_plan_comp' => $count_plan_f, // так же если не делать уникальной таблицу планов
+                                'price' => $priceItem['Price'],
+                                'info' => $priceItem['info'],
+                                'info_en' => $priceItem['info_en'],
+                            );
+                            $arr_prices_f[] = $price_f;
+                        }
+                    }
+
+                    foreach ($element['admissionBasis'] as $basisItem) {
+                        $id_admissionBasis = AdmissionBasis::where('baseId', '=', $basisItem['IdBasis'])->first();
+                        if (!empty($id_admissionBasis)) {
+                            $freeseat_f = array(
+                                'id_plan_comp' => $count_plan_f, // так же если не делать уникальной таблицу планов
+                                'id_admissionBasis' => intval($id_admissionBasis->id),
+                                'value' => $basisItem['value']
+                            );
+                            $arr_freeseats_f[] = $freeseat_f;
+                        } else {
+                            $mes = 'Не найден параметр.' . 'id_admissionBasis = ' . $basisItem['IdBasis'];
+                            throw new ErrorException($mes);
+                        }
+                    }
+                }
+            }
+
+            PlanAsp::insert($arr_plan);
+            CompetitionAsp::insert($arr_competition);
+            PlanCompetitionAsp::insert($arr_plan_comp);
+            PlanCompScoreAsp::insert($arr_plan_comp_score);
+            PriceAsp::insert($arr_prices);
+            Freeseats_basesAsp::insert($arr_freeseats);
+
+            PlanAspForeigner::insert($arr_plan_f);
+            CompetitionAspForeigner::insert($arr_competition_f);
+            PlanCompetitionAspForeigner::insert($arr_plan_comp_f);
+            PlanCompScoreAspForeigner::insert($arr_plan_comp_score_f);
+            PriceAspForeigner::insert($arr_prices_f);
+            Freeseats_basesAspForeigner::insert($arr_freeseats_f);
+
+        } catch (ErrorException $e) {
+            echo "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: ";
+            echo $e->getMessage();
+            die();
+        }
+    }
+
     public function parsePlansAspMain()
     {
         set_time_limit(1200);
 
         $this->parsePlansAsp();
+        $this->parsePlansOrd();
 
         return 'Планы, цены за обучение и количество мест аспирантуры успешно выгружены!';
     }

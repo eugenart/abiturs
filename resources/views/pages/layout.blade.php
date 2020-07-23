@@ -43,7 +43,7 @@
 
     @section('style')
     @show
-    <title>Приемная кампания 2020</title>
+    <title>Приемная кампания 2020 МГУ им. Н.П. Огарева</title>
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
         (function (m, e, t, r, i, k, a) {
@@ -71,20 +71,20 @@
     <div class="row header p-2">
         <div class="col-6 pl-2">
             <a href="{{ trans('layout.main') }}"><img src="{{asset('storage/images/iconka_mrsu_white.png')}}"
-                             class="mrsu-logo-img d-lg-none d-md-block" alt=""></a>
+                                                      class="mrsu-logo-img d-lg-none d-md-block" alt=""></a>
             <a href="{{ trans('layout.main') }}"><img src="{{asset('storage/images/logo_mrsu.png')}}"
-                             class="mrsu-logo-img mrsu-logo-blue d-lg-block d-md-none d-sm-none"
-                             alt=""></a>
+                                                      class="mrsu-logo-img mrsu-logo-blue d-lg-block d-md-none d-sm-none"
+                                                      alt=""></a>
             <a href="{{ trans('layout.main') }}"><img src="{{asset('storage/images/logo_mrsu-ovz.png')}}"
-                             class="mrsu-logo-img-ovz mrsu-logo-blue d-lg-block d-md-none d-sm-none"
-                             alt=""></a>
+                                                      class="mrsu-logo-img-ovz mrsu-logo-blue d-lg-block d-md-none d-sm-none"
+                                                      alt=""></a>
         </div>
         <div class="col-6 justify-content-end d-flex align-items-center">
 
             {{-- Версия для иностранцев--}}
-                    @role('developer')
-                        <a href="{{ trans('layout.href') }}" class="ml-3 mr-4 foreign-link ">{{ trans('layout.lang') }}</a>
-                    @endrole
+            @role('developer')
+            <a href="{{ trans('layout.href') }}" class="ml-3 mr-4 foreign-link ">{{ trans('layout.lang') }}</a>
+            @endrole
 
 
             {{--            <img src="{{asset('storage/images/eye-white.png')}}" class="ml-2 mr-4 d-lg-none d-md-block" width="35" height="auto" alt="">--}}
@@ -118,25 +118,25 @@
                     $date_now = Carbon::today();
                     $date_now = $date_now->toDateString();
                 @endphp
-                @if(trans('layout.lang') == 'En')
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-white" href="" id="navbarDropdown" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {{ trans('layout.levels') }}
-                    </a>
-                    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
-                        {{--образуются в app\Providers\AppServiceProvider.php--}}
-                        @foreach($pages as $page)
-                            @if ((($date_now > $page->activityFrom || $date_now == $page->activityFrom) &&
-                            ($date_now < $page->activityTo || $date_now == $page->activityTo))
-                            || (is_null($page->activityFrom) && is_null($page->activityTo)))
-                                <a class="nav-link text-white" href="{{url($page->url)}}">{{ $page->name }}</a>
-                            @endif
-                        @endforeach
-                    </div>
-                </li>
+                @if(trans('layout.locale') == 'ru')
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="" id="navbarDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ trans('layout.levels') }}
+                        </a>
+                        <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                            {{--образуются в app\Providers\AppServiceProvider.php--}}
+                            @foreach($pages as $page)
+                                @if ((($date_now > $page->activityFrom || $date_now == $page->activityFrom) &&
+                                ($date_now < $page->activityTo || $date_now == $page->activityTo))
+                                || (is_null($page->activityFrom) && is_null($page->activityTo)))
+                                    <a class="nav-link text-white" href="{{url($page->url)}}">{{ $page->name }}</a>
+                                @endif
+                            @endforeach
+                        </div>
+                    </li>
                 @endif
-                @if(trans('layout.lang') == 'Ru')
+                @if(trans('layout.locale') == 'en')
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-white" href="" id="navbarDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -154,48 +154,76 @@
                         </div>
                     </li>
                 @endif
-                @if(trans('layout.lang') == 'En')
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-white" href="" id="navbarDropdown" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {{ trans('layout.lists') }}
-                    </a>
-                    <div class="dropdown-menu main-color" aria-labelledby="navbarDropdown">
-                        <a class="nav-link text-white" href="{{route('stat.index')}}">{{ trans('layout.bach') }}</a>
-                        <a class="nav-link text-white" href="{{route('statmaster.index')}}">{{ trans('layout.master') }}</a>
-                        <a class="nav-link text-white" href="{{route('statasp.index')}}">{{ trans('layout.asp') }}</a>
-                        <a class="nav-link text-white" href="{{route('statspo.index')}}">{{ trans('layout.spo') }}</a>
+                @if(trans('layout.locale') == 'ru')
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="" id="navbarDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ trans('layout.lists') }}
+                        </a>
+                        <div class="dropdown-menu main-color" aria-labelledby="navbarDropdown">
+                            <a class="nav-link text-white" href="{{route('stat.index')}}">{{ trans('layout.bach') }}</a>
+                            <a class="nav-link text-white"
+                               href="{{route('statmaster.index')}}">{{ trans('layout.master') }}</a>
+                            <a class="nav-link text-white"
+                               href="{{route('statasp.index')}}">{{ trans('layout.asp') }}</a>
+                            <a class="nav-link text-white"
+                               href="{{route('statspo.index')}}">{{ trans('layout.spo') }}</a>
 
-                        <a class="nav-link dropdown-toggle text-white" href="" id="navbarDropdown1" role="button"
+                            <a class="nav-link dropdown-toggle text-white" href="" id="navbarDropdown1" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ trans('layout.foreigner') }}
+                            </a>
+                            <div class="dropdown-menu drop-sub main-color-dropdown" aria-labelledby="navbarDropdown1">
+                                <a class="nav-link text-white"
+                                   href="{{route('statforeigner.index')}}">{{ trans('layout.bach') }}</a>
+                                <a class="nav-link text-white"
+                                   href="{{route('statmasterforeigner.index')}}">{{ trans('layout.master') }}</a>
+                                <a class="nav-link text-white"
+                                   href="{{route('stataspforeigner.index')}}">{{ trans('layout.asp') }}</a>
+                            </div>
+
+                            <a class="nav-link text-white"
+                               href="{{route('total.index')}}">{{ trans('layout.stat') }}</a>
+                            {{--                        <a class="nav-link text-white" href="{{route('totalf.index')}}">Статистика приема иностранных абитуриентов</a>--}}
+                        </div>
+                    </li>
+                @endif
+                @if(trans('layout.locale') == 'en')
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="" id="navbarDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{ trans('layout.foreigner') }}
                         </a>
-                        <div class="dropdown-menu drop-sub main-color-dropdown" aria-labelledby="navbarDropdown1">
-                            <a class="nav-link text-white" href="{{route('statforeigner.index')}}">{{ trans('layout.bach') }}</a>
-                            <a class="nav-link text-white" href="{{route('statmasterforeigner.index')}}">{{ trans('layout.master') }}</a>
-                            <a class="nav-link text-white" href="{{route('stataspforeigner.index')}}">{{ trans('layout.asp') }}</a>
-                        </div>
+                        <div class="dropdown-menu main-color" aria-labelledby="navbarDropdown">
 
-                        <a class="nav-link text-white" href="{{route('total.index')}}">{{ trans('layout.stat') }}</a>
-{{--                        <a class="nav-link text-white" href="{{route('totalf.index')}}">Статистика приема иностранных абитуриентов</a>--}}
-                    </div>
-                </li>
+                            <a class="nav-link text-white"
+                               href="{{route('statforeigner.index')}}">{{ trans('layout.bach') }}</a>
+                            <a class="nav-link text-white"
+                               href="{{route('statmasterforeigner.index')}}">{{ trans('layout.master') }}</a>
+                            <a class="nav-link text-white"
+                               href="{{route('stataspforeigner.index')}}">{{ trans('layout.asp') }}</a>
+
+                        </div>
+                    </li>
                 @endif
-                @if(trans('layout.lang') == 'En')
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-white" href="" id="navbarDropdown" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {{ trans('layout.select') }}
-                    </a>
-                    <div class="dropdown-menu main-color" aria-labelledby="navbarDropdown">
-                        <a class="nav-link text-white" href="{{route('selection.index')}}">{{ trans('layout.bach') }}</a>
-                        <a class="nav-link text-white" href="{{route('selectionf.index')}}">{{ trans('layout.for_foreigner') }}</a>
-                    </div>
-                </li>
+                @if(trans('layout.locale') == 'ru')
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="" id="navbarDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ trans('layout.select') }}
+                        </a>
+                        <div class="dropdown-menu main-color" aria-labelledby="navbarDropdown">
+                            <a class="nav-link text-white"
+                               href="{{route('selection.index')}}">{{ trans('layout.bach') }}</a>
+                            <a class="nav-link text-white"
+                               href="{{route('selectionf.index')}}">{{ trans('layout.for_foreigner') }}</a>
+                        </div>
+                    </li>
                 @endif
-                @if(trans('layout.lang') == 'Ru')
+                @if(trans('layout.locale') == 'en')
                     <li class="nav-item active d-flex align-items-center justify-content-center">
-                        <a class="nav-link" href="{{route('selectionf.index')}}">{{ trans('layout.for_foreigner') }}<span
+                        <a class="nav-link" href="{{route('selectionf.index')}}">{{ trans('layout.for_foreigner') }}
+                            <span
                                 class="sr-only">(current)</span></a>
                     </li>
                 @endif
@@ -204,11 +232,13 @@
                             class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active d-flex align-items-center justify-content-center">
-                    <a class="nav-link" target="_blank" href="https://p.mrsu.ru/Account/Register">{{ trans('layout.docs') }}<span
+                    <a class="nav-link" target="_blank"
+                       href="https://p.mrsu.ru/Account/Register">{{ trans('layout.docs') }}<span
                             class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active d-flex align-items-center justify-content-center">
-                    <a class="nav-link" target="_blank" href="https://mrsu.ru/ru/abit/entry.php">{{ trans('layout.archive') }}<span
+                    <a class="nav-link" target="_blank"
+                       href="https://mrsu.ru/ru/abit/entry.php">{{ trans('layout.archive') }}<span
                             class="sr-only">(current)</span></a>
                 </li>
             </ul>

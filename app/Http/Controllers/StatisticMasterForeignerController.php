@@ -59,7 +59,7 @@ class StatisticMasterForeignerController extends Controller
 
     public function index(Request $request)
     {
-
+        $locale = $request->session()->get('locale');
         //return $request;
         $search_fio = null;
         $search_faculties = [];
@@ -79,7 +79,7 @@ class StatisticMasterForeignerController extends Controller
         }
 
         if (isset($search_fio) || !empty($search_faculties)) {
-            $studyForms = $this->search($search_fio, $search_faculties, $search_specialities, $search_studyForms, $notification);
+            $studyForms = $this->search($search_fio, $search_faculties, $search_specialities, $search_studyForms, $notification, $locale);
         }
 
         //получим все названия файлов xls
@@ -95,7 +95,12 @@ class StatisticMasterForeignerController extends Controller
 //            arsort($files_xls);
             usort($files_xls, array($this, 'sortByPredefinedOrder'));
         } else {
-            $notification_files = "Не удалось открыть директорию с файлами";
+            if($locale == 'ru' || is_null($locale)) {
+                $notification_files = "Не удалось открыть директорию с файлами";
+            }
+            if($locale == 'en'){
+                $notification_files = "Couldn't open the directory with the files";
+            }
         }
 
 
@@ -114,19 +119,34 @@ class StatisticMasterForeignerController extends Controller
             } else {
                 if (isset($faculties) && isset($studyFormsForInputs)) {
                     if (($faculties->count() != 0) && ($studyFormsForInputs->count() != 0)) {
-                        $notification = "По Вашему запросу ничего не найдено";
+                        if($locale == 'ru' || is_null($locale)) {
+                            $notification = "По Вашему запросу ничего не найдено";
+                        }
+                        if($locale == 'en'){
+                            $notification = "Nothing was found at your request";
+                        }
                         return view('pages.statmasterforeigner', ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs, 'notification' => $notification]);
                     } else {
                         $faculties = collect(new Faculty);
                         $studyFormsForInputs = collect(new StudyForm);
-                        $notification = "Прием документов ведется в электронной форме";
+                        if($locale == 'ru' || is_null($locale)) {
+                            $notification = "Прием документов ведется в электронной форме";
+                        }
+                        if($locale == 'en'){
+                            $notification = "Reception of documents is in electronic form";
+                        }
                         return view('pages.statmasterforeigner', ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs,
                             'notification_green' => $notification]);
                     }
                 } else {
                     $faculties = collect(new Faculty);
                     $studyFormsForInputs = collect(new StudyForm);
-                    $notification = "Прием документов ведется в электронной форме";
+                    if($locale == 'ru' || is_null($locale)) {
+                        $notification = "Прием документов ведется в электронной форме";
+                    }
+                    if($locale == 'en'){
+                        $notification = "Reception of documents is in electronic form";
+                    }
                     return view('pages.statmasterforeigner', ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs,
                         'notification_green' => $notification]);
                 }
@@ -143,14 +163,24 @@ class StatisticMasterForeignerController extends Controller
                 } else {
                     $faculties = collect(new Faculty);
                     $studyFormsForInputs = collect(new StudyForm);
-                    $notification = "Прием документов ведется в электронной форме";
+                    if($locale == 'ru' || is_null($locale)) {
+                        $notification = "Прием документов ведется в электронной форме";
+                    }
+                    if($locale == 'en'){
+                        $notification = "Reception of documents is in electronic form";
+                    }
                     return view('pages.statmasterforeigner', ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs,
                         'notification_green' => $notification]);
                 }
             } else {
                 $faculties = collect(new Faculty);
                 $studyFormsForInputs = collect(new StudyForm);
-                $notification = "Прием документов ведется в электронной форме";
+                if($locale == 'ru' || is_null($locale)) {
+                    $notification = "Прием документов ведется в электронной форме";
+                }
+                if($locale == 'en'){
+                    $notification = "Reception of documents is in electronic form";
+                }
                 return view('pages.statmasterforeigner', ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs,
                     'notification_green' => $notification]);
             }
@@ -160,7 +190,7 @@ class StatisticMasterForeignerController extends Controller
     }
 
 
-    public function search($search_fio, $search_faculties, $search_specialities, $search_studyForms, &$notification)
+    public function search($search_fio, $search_faculties, $search_specialities, $search_studyForms, &$notification, $locale)
     {
 //----------------поиск по категориям-------------------
         $search_specialities_arr = array();
@@ -240,7 +270,7 @@ class StatisticMasterForeignerController extends Controller
                                     $element->specializationId = '0';
                                     $element->id_speciality = '0';
                                     $element->name = '';
-
+                                    $element->en_name = '';
                                     $specializations->push($element);
 //                                        return $specializations;
                                 } else {
@@ -250,7 +280,7 @@ class StatisticMasterForeignerController extends Controller
                                     $element->specializationId = '0';
                                     $element->id_speciality = '0';
                                     $element->name = '';
-
+                                    $element->en_name = '';
                                     $specializations->push($element);
 //                                        return $specializations;
                                 }
@@ -383,13 +413,27 @@ class StatisticMasterForeignerController extends Controller
                 ->select('id', 'fio')
                 ->get();
 
-
+            if ($id_students->count() == 0) {
+                $id_students = StudentMasterForeigner::where('fio_en', 'LIKE', '%' . $search_fio . '%')
+                    ->select('id', 'fio')
+                    ->get();
+            }
             if ($id_students->count() > 9) {
-                $notification = 'По вашему запросу найдено слишком много совпадений. Пожалуйста, уточните запрос.';
+                if($locale == 'ru'  || is_null($locale)) {
+                    $notification = 'По вашему запросу найдено слишком много совпадений. Пожалуйста, уточните запрос.';
+                }
+                if($locale == 'en') {
+                    $notification = 'There were too many hits on your request. Please elaborate on your request.';
+                }
                 return;
             }
             if ($id_students->count() == 0) {
-                $notification = 'По вашему запросу ничего не найдено.';
+                if($locale == 'ru' || is_null($locale)) {
+                    $notification = 'По вашему запросу ничего не найдено.';
+                }
+                if($locale == 'en') {
+                    $notification = 'Nothing was found at your request.';
+                };
                 return;
             }
 
@@ -455,7 +499,7 @@ class StatisticMasterForeignerController extends Controller
                                     $element->specializationId = '0';
                                     $element->id_speciality = '0';
                                     $element->name = '';
-
+                                    $element->en_name = '';
                                     $specializations->push($element);
 //                                        return $specializations;
                                 } else {
@@ -465,7 +509,7 @@ class StatisticMasterForeignerController extends Controller
                                     $element->specializationId = '0';
                                     $element->id_speciality = '0';
                                     $element->name = '';
-
+                                    $element->en_name = '';
                                     $specializations->push($element);
 //                                        return $specializations;
                                 }

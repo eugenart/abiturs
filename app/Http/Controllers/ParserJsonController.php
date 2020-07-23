@@ -16,7 +16,7 @@ class ParserJsonController extends Controller
 //------------------------НАЧАЛО парсинг статистики Бакалавры--------------------------------
     public function parseCatalogsLocal()
     {
-        return $this->parseCatalogs("stat_bach_catalog.json");
+        return $this->parseCatalogs("stat_bach.json");
     }
 
     public function parseStatBachAllLocal(Request $request)

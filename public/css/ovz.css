@@ -39,7 +39,9 @@ body {
     background-color: #2366a5;
     border-color: #2366a5;
 }
-
+.h1-mrsu{
+    font-size: 28px;
+}
 .mrsu-uppertext {
     text-transform: uppercase;
 }
@@ -677,7 +679,9 @@ marquee {
         border: 1px solid #000000;
         font-size: 20px;
     }
-
+    .h1-mrsu{
+        font-size: 28px;
+    }
     .mrsu-bg-button-ovz {
         background-color: #ffffff;
         border: 1px solid #000000;
