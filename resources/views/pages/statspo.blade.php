@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row mt-lg-5 mt-xl-5 mt-md-3 mt-sm-3 mt-3">
             <div class="col-12">
-                <h3 class="text-center h1-mrsu main-color m-0">Среднее профессиональное образование</h3>
+                <h1 class="text-center h1-mrsu main-color m-0">Среднее профессиональное образование</h1>
             </div>
         </div>
     </div>

@@ -61,7 +61,9 @@ body {
 .mrsu-logo-img-ovz {
     width: 0;
 }
-
+.h1-mrsu{
+    font-size: 28px;
+}
 .link-block {
     display: block;
 }

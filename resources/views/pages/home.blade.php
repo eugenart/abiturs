@@ -55,6 +55,7 @@
                 </div>
             </div>
         @endif
+        <h1 style="display:none">Приемная кампания 2020 МГУ им. Н.П.Огарева</h1>
         @if(trans('layout.locale') == 'ru')
             @if($infoblocks->count() < 3)
                 <div class="row justify-content-center mb-30px">

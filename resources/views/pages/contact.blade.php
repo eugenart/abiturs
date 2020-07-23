@@ -6,7 +6,7 @@
             <div class="col-12 mt-lg-5 mt-xl-5 mt-md-3 mt-sm-3 mt-3 contact-us-div">
                 <div class="row">
                     <div class="col-lg-6 col-md-12 d-flex align-items-center flex-column contact-div pt-0">
-                        <h3 class="text-center main-color h1-mrsu mb-0">{{ trans('contacts.contacts') }}</h3>
+                        <h1 class="text-center main-color h1-mrsu mb-0">{{ trans('contacts.contacts') }}</h1>
                         <div class="mt-lg-4 mt-xl-4 mt-md-3 mt-sm-3 mt-3">
                             <h3 class="mb-0 text-center main-color contact-main-tel text-decoration-none"><a
                                     href="tel:8 800 222 13 77">8 800 222 13 77</a></h3>

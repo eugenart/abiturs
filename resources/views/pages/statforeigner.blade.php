@@ -6,8 +6,8 @@
     <div class="container">
         <div class="row mt-lg-5 mt-xl-5 mt-md-3 mt-sm-3 mt-3">
             <div class="col-12">
-                <h3 class="text-center main-color m-0">{{ trans('statforeigner.title1') }}</h3>
-                <h3 class="text-center h1-mrsu main-color m-0">{{ trans('statforeigner.title2') }}</h3>
+                <h1 class="text-center h1-mrsu main-color m-0">{{ trans('statforeigner.title1') }}</h1>
+                <h2 class="text-center h1-mrsu main-color m-0">{{ trans('statforeigner.title2') }}</h2>
             </div>
         </div>
     </div>
@@ -231,14 +231,16 @@
                     <span
                         class="m-0 p-0 main-color d-lg-none d-md-inline w-100">{{ trans('statforeigner.update') }}<b>@if(isset($date_update)){{explode(' ', $date_update->date_update)[0]}}@endif</b></span>
 
-                    <button style="white-space: normal;" type="button"
-                            class="files-stat spec-ovz-link btn btn-link text-left d-lg-none d-md-block w-100 p-0 ovz-text"
-                            data-toggle="modal"
-                            data-target="#exampleModalScrollable"
-                        {{--                data-content="{{$item}}"--}}
-                    >
-                        <b><u>{{ trans('statforeigner.download') }}</u></b>
-                    </button>
+                    @if(trans('layout.locale') == 'ru')
+                        <button style="white-space: normal;" type="button"
+                                class="files-stat spec-ovz-link btn btn-link text-left d-lg-none d-md-block w-100 p-0 ovz-text"
+                                data-toggle="modal"
+                                data-target="#exampleModalScrollable"
+                            {{--                data-content="{{$item}}"--}}
+                        >
+                            <b><u>{{ trans('statforeigner.download') }}</u></b>
+                        </button>
+                    @endif
                 @endif
             </div>
         </div>
@@ -283,7 +285,7 @@
                                                                                                     @if(trans('layout.locale')=='ru')
                                                                                                     <p class="m-0 text-uppercase font-weight-bold">{{$faculty->name}}</p>
                                                                                                     <p class="m-0">{{$speciality->code}} <span class=" font-weight-bold">{{$speciality->name}}</span></p>
-                                                                                                        <p class="m-0">{{$specialization->id}}{{$specialization->name}}</p>
+                                                                                                        <p class="m-0">{{$specialization->name}}</p>
                                                                                                     @endif
                                                                                                     @if(trans('layout.locale')=='en')
                                                                                                         <p class="m-0 text-uppercase font-weight-bold">{{$faculty->en_name}}</p>
@@ -372,15 +374,19 @@
                                                                                     <span
                                                                                         class="m-0 p-0 main-color d-lg-inline d-md-none w-100">{{trans('statforeigner.update')}}<b>@if(isset($date_update)){{explode(' ', $date_update->date_update)[0]}}@endif</b></span>
 
-                                                                                    <button style="white-space: normal;"
-                                                                                            type="button"
-                                                                                            class="files-stat spec-ovz-link btn btn-link text-left d-lg-block d-md-none w-100 p-0 ovz-text"
-                                                                                            data-toggle="modal"
-                                                                                            data-target="#exampleModalScrollable"
-                                                                                        {{--                data-content="{{$item}}"--}}
-                                                                                    >
-                                                                                        <b><u>{{trans('statforeigner.download')}}</u></b>
-                                                                                    </button>
+                                                                                    @if(trans('layout.locale') == 'ru')
+                                                                                        <button style="white-space: normal;"
+                                                                                                type="button"
+                                                                                                class="files-stat spec-ovz-link btn btn-link text-left d-lg-block d-md-none w-100 p-0 ovz-text"
+                                                                                                data-toggle="modal"
+                                                                                                data-target="#exampleModalScrollable"
+                                                                                            {{--                data-content="{{$item}}"--}}
+                                                                                        >
+
+                                                                                            <b><u>{{trans('statforeigner.download')}}</u></b>
+
+                                                                                        </button>
+                                                                                    @endif
                                                                                 @endif
                                                                                 <div
                                                                                     class="m-0 p-0 h6 d-lg-block d-md-none d-sm-none d-none"
@@ -538,7 +544,10 @@
                                                                                                     {{$abitur->student->fio}}
                                                                                                 @endif
                                                                                                 @if(trans('layout.locale')=='en')
-                                                                                                        {{$abitur->student->fio_en}}
+                                                                                                    @if(is_null($abitur->student->fio_en) || ctype_space($abitur->student->fio_en) || $abitur->student->fio_en == '')
+                                                                                                        {{$abitur->student->fio}}
+                                                                                                    @endif
+                                                                                                    {{$abitur->student->fio_en}}
                                                                                                 @endif
 
                                                                                             </td>
@@ -672,8 +681,13 @@
         }
 
         function fillSpecialities(faculty) {
-            $('#specialities').append('<optgroup label="' + faculty.name + '">')
             var locale = $('#locale').data('content');
+            if(locale === 'ru') {
+                $('#specialities').append('<optgroup label="' + faculty.name + '">')
+            }
+            if(locale === 'en'){
+                $('#specialities').append('<optgroup label="' + faculty.en_name + '">')
+            }
             $.each(faculty.speciality, (key, spec) => {
                 if(locale === 'ru'){
                     $('#specialities optgroup:last').append('<option value="' + faculty.id + ';' + spec.id + '">' + spec.code + ' ' + spec.name + '</option>')

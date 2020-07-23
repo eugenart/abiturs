@@ -182,7 +182,8 @@ class DownloadFileController extends Controller
             if ($param == "plans_asp") {
                 $directory = "plans/plans_saransk";
                 $res = $this->download($directory, "plans_sar_asp.json");
-                if ($res === 0) {
+                $res1 = $this->download($directory, "plans_sar_ord.json");
+                if ($res === 0 || $res1 === 0) {
                     $result = $this->parsePlansAspMain();
                     if($result){
                         $this->date_update($param);

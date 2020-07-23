@@ -23,6 +23,7 @@ class UserSeeder extends Seeder
 
         $admin1 = User::where('name', 'Kirdyashkina Elina')->first();
         $admin1->roles()->attach($developer);
+        $admin1->roles()->attach($admin);
         $admin1->permissions()->attach($all);
 
         $admin2 = User::where('name', 'Евгений Конаков')->first();

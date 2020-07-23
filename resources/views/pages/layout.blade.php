@@ -43,7 +43,7 @@
 
     @section('style')
     @show
-    <title>Приемная кампания 2020</title>
+    <title>Приемная кампания 2020 МГУ им. Н.П. Огарева</title>
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
         (function (m, e, t, r, i, k, a) {
