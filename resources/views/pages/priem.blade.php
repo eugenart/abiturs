@@ -20,7 +20,11 @@
             <div class="col-xl-9 col-lg-8 col-md-12 col-sm-12 col-12">
                 <div class="row">
                     <div class="col-12">
-                        <h1 style="display:none;">{{ $block->name }}</h1>
+                        @if(mb_strlen($block->name)>=70)
+                            <h1 style="display:none;">{{ $block->infoblock->name }}</h1>
+                        @else
+                            <h1 style="display:none;">{{ $block->name }}</h1>
+                        @endif
                         <h5 class="text-center mrsu-uppertext pt-3 text-primary font-weight-bold main-color">
                             {{ $block->name }}
                         </h5>
