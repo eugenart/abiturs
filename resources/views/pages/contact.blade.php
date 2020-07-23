@@ -32,7 +32,7 @@
                                     <a class= 'main-color' href="tel:88342233381">8 (8342) 23-33-81</a>
                                     <br>
                                     {{ trans('contacts.tel_ord') }}<br>
-                                    <a class= 'main-color' href="tel:88342223230">8 (8342) 22-32-30 </a>({{ trans('contacts.add') }} 1062)
+                                    <a class= 'main-color' href="tel:88342223230">8 (8342) 22-32-30 </a>({{ trans('contacts.add') }} 1081)
                                     <br>
                                     {{ trans('contacts.tel_asp') }}
                                     <br>
