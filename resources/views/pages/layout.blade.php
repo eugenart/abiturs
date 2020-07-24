@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
 
-    <meta property="og:title" content="Приёмная кампания МГУ им. Н.П. Огарева 2020"/>
+    <meta property="og:title" content="Приёмная кампания МГУ им. Н.П. Огарёва 2020"/>
     <meta property="og:description"
-          content="Приёмная кампания МГУ им. Н.П. Огарева 2020. Статистика рпиёма, подбор направления."/>
+          content="Приёмная кампания МГУ им. Н.П. Огарева 2020. Статистика приёма, подбор направления."/>
     <meta property="og:image" content="https://abiturs.mrsu.ru/storage/preview/20200128_163227_image.jpeg"/>
     <meta property="og:type" content="profile"/>
     <meta property="og:url" content="https://abiturs.mrsu.ru/"/>
@@ -43,7 +43,7 @@
 
     @section('style')
     @show
-    <title>Приемная кампания 2020 МГУ им. Н.П. Огарева</title>
+    <title>Приёмная кампания 2020 МГУ им. Н.П. Огарёва</title>
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
         (function (m, e, t, r, i, k, a) {

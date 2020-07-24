@@ -47,9 +47,13 @@ body {
     height: 45px;
 }
 
+.table-stat {
+    margin-bottom: 2rem;
+}
+
 .table-stat thead {
     background-color: #e9eff6;
-    color: #2366a5
+    color: #2366a5;
 }
 
 .legend {

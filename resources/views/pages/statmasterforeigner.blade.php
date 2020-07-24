@@ -419,8 +419,11 @@
                                                                                             <span class="font-weight-bold">{{$chosenStudent->fio}} </span>
                                                                                         @endif
                                                                                         @if(trans('layout.locale')=='en')
-                                                                                            <span class="font-weight-bold">{{$chosenStudent->fio_en}} </span>
-                                                                                            @endif
+                                                                                        @if(is_null($chosenStudent->fio_en) || ctype_space($chosenStudent->fio_en) || $chosenStudent->fio_en == '')
+                                                                                        {{$chosenStudent->fio}}
+                                                                                        @endif
+                                                                                        {{$chosenStudent->fio_en}}
+                                                                                        @endif
 
                                                                                             &mdash;
                                                                                             <a class="main-color underline-label h6"
@@ -542,9 +545,12 @@
                                                                                                 @if(trans('layout.locale')=='ru')
                                                                                                     {{$abitur->student->fio}}
                                                                                                 @endif
-                                                                                                @if(trans('layout.locale')=='en')
-                                                                                                    {{$abitur->student->fio_en}}
-                                                                                                @endif
+                                                                                                    @if(trans('layout.locale')=='en')
+                                                                                                        @if(is_null($abitur->student->fio_en) || ctype_space($abitur->student->fio_en) || $abitur->student->fio_en == '')
+                                                                                                            {{$abitur->student->fio}}
+                                                                                                        @endif
+                                                                                                        {{$abitur->student->fio_en}}
+                                                                                                    @endif
 
                                                                                             </td>
                                                                                             {{--                                                                                    <td>--}}
