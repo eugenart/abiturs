@@ -420,7 +420,10 @@
                                                                                             <span class="font-weight-bold">{{$chosenStudent->fio}} </span>
                                                                                         @endif
                                                                                         @if(trans('layout.locale')=='en')
-                                                                                            <span class="font-weight-bold">{{$chosenStudent->fio_en}} </span>
+                                                                                        @if(is_null($chosenStudent->fio_en) || ctype_space($chosenStudent->fio_en) || $chosenStudent->fio_en == '')
+                                                                                        {{$chosenStudent->fio}}
+                                                                                        @endif
+                                                                                        {{$chosenStudent->fio_en}}
                                                                                         @endif
 
                                                                                         &mdash;
