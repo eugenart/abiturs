@@ -115,7 +115,7 @@ Route::middleware('role:developer')->group(function () {
     Route::get('/ru', 'SessionController@toRu')->name('ses.toRu');
 });
 
-Route::get('/test', 'SessionController@index')->name('test.index');
+//Route::get('/test', 'SessionController@index')->name('test.index');
 
 //Route::post('/test', 'DownloadFileController@index')->name('file.download');
 Route::get('/foreign', 'ForeignController@index')->name('foreign.index');

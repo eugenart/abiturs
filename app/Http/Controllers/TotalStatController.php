@@ -35,12 +35,12 @@ class TotalStatController extends Controller
 
         return view('pages.totalstat',
             ['files_bach' => $files_bach, 'notif_bach' => $notif_bach,
-            'files_master' => $files_master, 'notif_master' => $notif_master,
-            'files_asp' => $files_asp, 'notif_asp' => $notif_asp,
-            'files_spo' => $files_spo, 'notif_spo' => $notif_spo,
-            'files_bach_f' => $files_bach_f, 'notif_bach_f' => $notif_bach_f,
-            'files_master_f' => $files_master_f, 'notif_master_f' => $notif_master_f,
-            'files_asp_f' => $files_asp_f, 'notif_asp_f' => $notif_asp_f
+                'files_master' => $files_master, 'notif_master' => $notif_master,
+                'files_asp' => $files_asp, 'notif_asp' => $notif_asp,
+                'files_spo' => $files_spo, 'notif_spo' => $notif_spo,
+                'files_bach_f' => $files_bach_f, 'notif_bach_f' => $notif_bach_f,
+                'files_master_f' => $files_master_f, 'notif_master_f' => $notif_master_f,
+                'files_asp_f' => $files_asp_f, 'notif_asp_f' => $notif_asp_f
             ]);
     }
 
@@ -58,23 +58,42 @@ class TotalStatController extends Controller
 //            asort($files);
 
             $sort_files = array();
+            $pos1  = array();
+            $pos2  = array();
+            $pos3  = array();
+            $pos4  = array();
             foreach ($files as $file) {
-                $pos1 = stripos($file, 'Очная форма ');
-                $pos2 = stripos($file, 'Очно-заочная форма ');
-                $pos3 = stripos($file, 'Заочная форма ');
-                $pos4 = stripos($file, 'Платная основа');
-
-                if ($pos1 !== false) {
-                    $sort_files[0] = $file;
+                if(stripos($file, 'Очная форма ') !== false){
+                    $pos1[] = $file;
                 }
-                if ($pos2 !== false) {
-                    $sort_files[1] = $file;
+                if(stripos($file, 'Очно-заочная форма ') !== false){
+                    $pos2[] = $file;
                 }
-                if ($pos3 !== false) {
-                    $sort_files[2] = $file;
+                if(stripos($file, 'Заочная форма ') !== false){
+                    $pos3[] = $file;
                 }
-                if ($pos4 !== false) {
-                    $sort_files[3] = $file;
+                if(stripos($file, 'Платная основа') !== false){
+                    $pos4[] = $file;
+                }
+            }
+            foreach ($pos1 as $p1) {
+                if ($p1 !== false) {
+                    $sort_files[] = $p1;
+                }
+            }
+            foreach ($pos2 as $p1) {
+                if ($p1 !== false) {
+                    $sort_files[] = $p1;
+                }
+            }
+            foreach ($pos3 as $p1) {
+                if ($p1 !== false) {
+                    $sort_files[] = $p1;
+                }
+            }
+            foreach ($pos4 as $p1) {
+                if ($p1 !== false) {
+                    $sort_files[] = $p1;
                 }
             }
             ksort($sort_files);
@@ -85,7 +104,8 @@ class TotalStatController extends Controller
         return $sort_files;
     }
 
-    public function download_all_files()
+    public
+    function download_all_files()
     {
         $this->download('statistic_priem/bach');
         $this->download('statistic_priem/master');
@@ -97,7 +117,8 @@ class TotalStatController extends Controller
         $this->download('statistic_priem_foreigner/asp');
     }
 
-    public function download($directory)
+    public
+    function download($directory)
     {
         $host = '194.54.64.15';
         $port = 22;
@@ -217,7 +238,7 @@ class TotalStatController extends Controller
 //                            return 1;
                     }
                 }
-            }else{
+            } else {
                 echo "Файл " . $file . " имеет неверное имя.\n";
             }
         }

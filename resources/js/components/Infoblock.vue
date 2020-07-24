@@ -64,10 +64,12 @@
                                                         <label>Отображать на главной
                                                             странице</label>
                                                     </div>
-<!--                                                    <div class="form-check">-->
-<!--                                                        <input v-model="infoblock.foreigner" type="checkbox">-->
-<!--                                                        <label>Для английской версии</label>-->
-<!--                                                    </div>-->
+
+                                                    <div class="form-check" id="foreigners">
+                                                        <input v-model="infoblock.foreigner" type="checkbox">
+                                                        <label>Для английской версии</label>
+                                                    </div>
+
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="row">
@@ -167,8 +169,7 @@
                     </div>
                 </form>
             </div>
-        </div>
-        <div class="row mt-4">
+
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
@@ -195,7 +196,8 @@
                                             <div class="col-4">
                                                 <p>
                                                     <span class="float-right">
-                                                        <i class="fa fa-copy" style="cursor: pointer" @click="copyInfoblock(block.id)">
+                                                        <i class="fa fa-copy" style="cursor: pointer"
+                                                           @click="copyInfoblock(block.id)">
                                                         </i>
 
                                                         <i class="far fa-eye" style="cursor: pointer"
