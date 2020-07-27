@@ -110,10 +110,10 @@ Route::get('/statistic-foreigner/master', 'StatisticMasterForeignerController@in
 Route::get('/toOvzVer', 'SessionController@toOvzVer')->name('ses.toOvzVer');
 Route::get('/backToMainVer', 'SessionController@backToMainVer')->name('ses.backToMainVer');
 
-Route::middleware('role:developer')->group(function () {
+//Route::middleware('role:developer')->group(function () {
     Route::get('/en', 'SessionController@toEn')->name('ses.toEn');
     Route::get('/ru', 'SessionController@toRu')->name('ses.toRu');
-});
+//});
 
 //Route::get('/test', 'SessionController@index')->name('test.index');
 
