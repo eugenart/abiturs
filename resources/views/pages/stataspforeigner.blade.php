@@ -716,7 +716,12 @@
                     $('#specialities optgroup:last').append('<option value="' + faculty.id + ';' + spec.id + '">' + spec.code + ' ' + spec.name + '</option>')
                 }
                 if(locale === 'en'){
-                    $('#specialities optgroup:last').append('<option value="' + faculty.id + ';' + spec.id + '">' + spec.code + ' ' + spec.en_name + '</option>')
+                    if(spec.en_name === null){
+                        $('#specialities optgroup:last').append('<option value="' + faculty.id + ';' + spec.id + '">' + spec.code + ' ' + spec.name + '</option>')
+                    }
+                    else {
+                        $('#specialities optgroup:last').append('<option value="' + faculty.id + ';' + spec.id + '">' + spec.code + ' ' + spec.en_name + '</option>')
+                    }
                 }
             })
             $('#specialities').append('</optgroup>')

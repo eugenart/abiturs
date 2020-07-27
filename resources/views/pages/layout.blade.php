@@ -82,9 +82,9 @@
         <div class="col-6 justify-content-end d-flex align-items-center">
 
             {{-- Версия для иностранцев--}}
-            @role('developer')
+{{--            @role('developer')--}}
             <a href="{{ trans('layout.href') }}" class="ml-3 mr-4 foreign-link ">{{ trans('layout.lang') }}</a>
-            @endrole
+{{--            @endrole--}}
 
 
             {{--            <img src="{{asset('storage/images/eye-white.png')}}" class="ml-2 mr-4 d-lg-none d-md-block" width="35" height="auto" alt="">--}}
