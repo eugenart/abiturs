@@ -15,8 +15,8 @@
                                 <div class="text-center">{{ trans('contacts.hot_line') }}</div>
                             @endif
                                 @if(trans('layout.locale') == 'en')
-                                    <h3 class="mb-0 text-center main-color contact-main-tel text-decoration-none">
-                                        <a class='main-color' href="tel:+78342247951"> +7 (8342) 24-79-51 </a>
+                                    <h3 class="mb-0 text-center main-color contact-main-tel-en text-decoration-none">
+                                        <a class='main-color' href="tel:+78342247951"> +7 (8342) 24 79 51 </a>
                                     </h3>
                                     <div class="text-center">{{ trans('contacts.hot_line_en') }}</div>
                                 @endif
