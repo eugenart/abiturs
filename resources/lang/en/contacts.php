@@ -13,7 +13,7 @@ return [
 
     'adr_title' => 'Address:',
     'adr1' => '39, Bogdan Khmelnitsky Str., Saransk',
-    'adr2' => 'Educational building № 28',
+    'adr2' => '',
 
     'time_title' => 'Opening hours:',
     'time_monfr' => 'Monday to Friday from 9.00 to 17.00',
