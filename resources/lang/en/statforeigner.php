@@ -1,15 +1,16 @@
 <?php
 return [
     'title1' => 'International applicants',
-    'title2' => 'Bachelor\'s Degree and Speciality',
+    'title2' => 'Bachelor\'s and Specialist Degree',
     'title_asp' => 'Postgraduate and residency',
     'title_master' => 'Masters\'s Degree',
 
     'form_fac' => 'Faculty / Institute',
-    'form_spec' => 'Direction / Specialty',
+    'form_fac_asp' => 'Postgraduate / Residency',
+    'form_spec' => 'Direction / Speciality',
     'form_st_form' => 'Mode of study',
     'form_cancel' => 'Cancel option',
-    'form_fio' => 'Search by name',
+    'form_fio' => 'Search by Full Name',
     'form_search' => 'Search',
 
     'files_title1' => 'Lists in the format .xls',
@@ -36,9 +37,9 @@ return [
 
     'seats' => 'Number of places: ',
     'contest' => 'Contest: ',
-    'man_seat' => 'person/position',
+    'man_seat' => 'person/place',
 
-    'st_form' => 'Training form',
+    'st_form' => 'Mode of study',
     'category' => 'Admission category',
     'adm' => 'Admission basis',
     'prep' => 'Preparation level',
@@ -46,8 +47,8 @@ return [
     'save_params' => 'Save request parameters on your mobile device',
     'seat_cont' => 'position in contest',
 
-    'fio_full' => 'Full name',
-    'fio_cut' => 'Name',
+    'fio_full' => 'Full Name',
+    'fio_cut' => 'Full Name',
     'accept_full' => 'Consent',
     'accept_cut' => 'С',
     'ind_ach' => ') Individual achievement score',

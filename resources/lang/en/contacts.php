@@ -2,6 +2,7 @@
 return [
     'contacts' => 'Contacts',
     'hot_line' => 'Free hotline for all regions of Russia',
+    'hot_line_en' => 'For foreign citizens',
 
     'tel_title' => 'Phones:',
     'tel_foreigner' => 'For foreign citizens:',
@@ -11,10 +12,10 @@ return [
     'tel_asp' => 'On admission to postgraduate school:',
 
     'adr_title' => 'Address:',
-    'adr1' => '44/3, Polezhaeva Str., Saransk',
+    'adr1' => '39, Bogdan Khmelnitsky Str., Saransk',
     'adr2' => 'Educational building № 28',
 
-    'time_title' => 'Mode of operation:',
+    'time_title' => 'Opening hours:',
     'time_monfr' => 'Monday to Friday from 9.00 to 17.00',
     'time_break' => 'Break from 12:00 to 13:00.',
     'time_sat' => 'Saturday from 9.00 to 13.00',
