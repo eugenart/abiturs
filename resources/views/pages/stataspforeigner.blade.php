@@ -176,7 +176,7 @@
                         <select
                             {{--                            style="font-size: 16px !important;"--}}
                             class="selectpicker form-control-sm col-lg-3 col-xl-3 col-md-3 col-12" multiple
-                            title="{{ trans('statforeigner.form_fac') }}" name="faculties[]" id="allfaculties">
+                            title="{{ trans('statforeigner.form_fac_asp') }}" name="faculties[]" id="allfaculties">
                         </select>
                         <select class="selectpicker form-control-sm col-lg-3 col-xl-3 col-md-3 col-12"
                                 data-live-search="true" multiple

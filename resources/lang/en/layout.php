@@ -10,7 +10,7 @@ return [
     'docs' => 'Submission of documents',
     'archive' => 'archive',
 
-    'bach' => 'Bachelor\'s Degree and Speciality',
+    'bach' => 'Bachelor\'s and Specialist Degree',
     'master' => 'Masters\'s Degree',
     'asp' => 'Postgraduate and residency',
     'spo' => 'Secondary vocational education',
