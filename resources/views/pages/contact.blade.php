@@ -167,7 +167,7 @@
 
         $(document).ready(function () {
             $('#contactformen').submit(function (e) {
-                let serializedData = $('#contactform').serialize();
+                let serializedData = $('#contactformen').serialize();
                 e.preventDefault();
                 // собираем данные с формы
                 $.ajax({
