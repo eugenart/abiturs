@@ -76,7 +76,7 @@ class SendMailController extends Controller
 
         if ($request->fio && $request->email && $request->phone && $request->question) {
 
-            $result = $mailSMTP->send('entrance-exam@adm.mrsu.ru', 'Вопрос от абитуриента', $text, $header); // отправляем письмо
+            $result = $mailSMTP->send('dep-inter@adm.mrsu.r', 'Вопрос от абитуриента', $text, $header); // отправляем письмо
 
             if ($result) {
                 $answer[0] = "<i class=\"fa fa-check\"></i>
