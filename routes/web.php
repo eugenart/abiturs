@@ -93,6 +93,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 });
 
 Route::get('/send_mail', 'SendMailController@index');
+Route::get('/send_mail_en', 'SendMailController@english');
 
 Route::get('/contact', 'ContactController@index')->name('contact.index');
 Route::get('/select/bachelor', 'SelectionController@index')->name('selection.index');
