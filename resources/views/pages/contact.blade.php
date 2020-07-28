@@ -163,6 +163,9 @@
                     }
                 });
             });
+        });
+
+        $(document).ready(function () {
             $('#contactformen').submit(function (e) {
                 let serializedData = $('#contactform').serialize();
                 e.preventDefault();
