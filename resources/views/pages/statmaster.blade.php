@@ -218,7 +218,7 @@
             <div class="col-12">
                 @if(isset($studyForms))
                     <span
-                        class="m-0 p-0 main-color d-lg-none d-md-inline w-100">Обновлено: <b>@if(isset($date_update)){{explode(' ', $date_update->date_update)[0]}}@endif</b></span>
+                        class="m-0 p-0 main-color d-lg-none d-md-inline w-100">Обновлено: <b>@if(isset($date_update)){{substr($date_update->date_update, 0, -3)}}@endif</b></span>
 
                     <button style="white-space: normal;" type="button"
                             class="files-stat spec-ovz-link btn btn-link text-left d-lg-none d-md-block w-100 p-0 ovz-text"
@@ -344,7 +344,7 @@
                                                                                 class="col-xl-4 col-lg-4 col-md-12 col-12 d-lg-flex d-md-none d-none flex-column justify-content-around">
                                                                                 @if(isset($studyForms))
                                                                                     <span
-                                                                                        class="m-0 p-0 main-color d-lg-inline d-md-none w-100">Обновлено: <b>@if(isset($date_update)){{explode(' ', $date_update->date_update)[0]}}@endif</b></span>
+                                                                                        class="m-0 p-0 main-color d-lg-inline d-md-none w-100">Обновлено: <b>@if(isset($date_update)){{substr($date_update->date_update, 0, -3)}}@endif</b></span>
 
                                                                                     <button style="white-space: normal;"
                                                                                             type="button"
@@ -476,6 +476,10 @@
                                                                                         Нуждаемость <br> в
                                                                                         общежитии
                                                                                     </th>
+                                                                                    <th class="text-center d-xl-table-cell d-lg-none d-none"
+                                                                                        rowspan="2">
+                                                                                        Примечание
+                                                                                    </th>
                                                                                 </tr>
                                                                                 <tr class="text-center d-lg-table-row d-xl-table-row d-md-table-row d-sm-table-row d-none">
                                                                                     @foreach($admissionBasis->abiturs->first()->score as $i => $sc)
@@ -530,10 +534,11 @@
                                                                                                        style="color: rgba(0,128,0,0.51)"></i>
                                                                                                 @endif
                                                                                             </td>
+                                                                                            <td class="d-xl-table-cell d-lg-none d-none">{{$abitur->notice2}}</td>
                                                                                         </tr>
                                                                                         @if($abitur->yellowline)
                                                                                             <tr style="background-color: yellow;">
-                                                                                                <td colspan="100%"></td>
+                                                                                                <td colspan="100%" class="text-center">Граница проходного балла на текущем этапе зачисления</td>
                                                                                             </tr>
                                                                                         @endif
                                                                                         @endforeach
