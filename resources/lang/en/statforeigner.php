@@ -62,6 +62,8 @@ return [
     'status' => ' Verification status',
     'hostel' => ' Dormitory',
     'hostel2' => '  needs',
+    'notice' => 'Notice',
+    'yellow' => 'Pass mark boundary at the current stage of enrollment',
 
     'notice1' => 'Enter  ',
     'notice2' => ' or select ',

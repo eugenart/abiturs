@@ -70,14 +70,21 @@
                                     <br/> {{ trans('contacts.time_break') }}
                                 </td>
                             </tr>
-                            <tr>
-                                {{--                            <th scope="row"></th>--}}
-                                <td colspan="2">{{ trans('contacts.time_sat') }}</td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid #dee2e6">
-                                {{--                            <th scope="row"></th>--}}
-                                <td colspan="2">{{ trans('contacts.time_sun') }}</td>
-                            </tr>
+
+
+                            @if(trans('layout.locale')== 'ru')
+                                <tr>
+                                    <td colspan="2">{{ trans('contacts.time_sat') }}</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #dee2e6">
+                                    <td colspan="2">{{ trans('contacts.time_sun') }}</td>
+                                </tr>
+                            @endif
+                            @if(trans('layout.locale')== 'en')
+                                <tr style="border-bottom: 1px solid #dee2e6">
+                                    <td colspan="2">{{ trans('contacts.time_sat') }}</td>
+                                </tr>
+                            @endif
                             </tbody>
                         </table>
                     </div>

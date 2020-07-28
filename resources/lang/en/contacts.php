@@ -16,10 +16,10 @@ return [
     'adr2' => '',
 
     'time_title' => 'Opening hours:',
-    'time_monfr' => 'Monday to Friday from 9.00 to 17.00',
+    'time_monfr' => 'Monday to Friday from 8.00 to 17.00',
     'time_break' => 'Break from 12:00 to 13:00.',
-    'time_sat' => 'Saturday from 9.00 to 13.00',
-    'time_sun' => 'Sunday is the day off.',
+    'time_sat' => 'Saturday and sunday are the days off.',
+    'time_sun' => '',
 
     'form_title' => 'Are there any more questions? Write to us',
     'form_fio' => 'Full name *',

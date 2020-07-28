@@ -58,21 +58,21 @@ class TotalStatController extends Controller
 //            asort($files);
 
             $sort_files = array();
-            $pos1  = array();
-            $pos2  = array();
-            $pos3  = array();
-            $pos4  = array();
+            $pos1 = array();
+            $pos2 = array();
+            $pos3 = array();
+            $pos4 = array();
             foreach ($files as $file) {
-                if(stripos($file, 'Очная форма ') !== false){
+                if (stripos($file, 'Очная форма ') !== false) {
                     $pos1[] = $file;
                 }
-                if(stripos($file, 'Очно-заочная форма ') !== false){
+                if (stripos($file, 'Очно-заочная форма ') !== false) {
                     $pos2[] = $file;
                 }
-                if(stripos($file, 'Заочная форма ') !== false){
+                if (stripos($file, 'Заочная форма ') !== false) {
                     $pos3[] = $file;
                 }
-                if(stripos($file, 'Платная основа') !== false){
+                if (stripos($file, 'Платная основа') !== false) {
                     $pos4[] = $file;
                 }
             }
@@ -150,6 +150,7 @@ class TotalStatController extends Controller
             $files[] = $file;
         }
 
+
         if ($dir_delete = scandir(storage_path('app/public/' . $directory))) {
             $files_delete = array();
             foreach ($dir_delete as $file_delete) {
@@ -178,24 +179,46 @@ class TotalStatController extends Controller
 //            $this->info("Can't open the directory");
 //        }
 
+        $drop_files = array();
+        $nums = array();
+        $name_file_drop = array();
         foreach ($files as $file) {
+            $num = preg_replace("/[^0-9]/", '', $file);
+            if (ctype_alpha($file) != true && strlen($num) > 1) {
+                $name_file_drop[] = substr($file, 0, strripos($file, substr(preg_replace("/[^0-9]/", '', $file), 1, 2))). ".pdf";
+            }
+        }
 
+        foreach ($name_file_drop as $file_drop) {
+            foreach ($files as $k => $file) {
+                if($file == $file_drop){
+                    unset($files[$k]);
+                }
+            }
+        }
+
+        foreach ($files as $file) {
             $remote_file_path = "ssh2.sftp://{$stream}/{$remoteDir}/{$file}";
             $arr_names = [
-                'distance' => 'Заочная форма ',
-                'evening' => 'Очно-заочная форма ',
+                't-time' => 'Заочная форма ',
+                'mixed' => 'Очно-заочная форма ',
                 'full-time' => 'Очная форма ',
                 'budget' => 'бюджетная основа',
                 'paid' => 'Платная основа'
             ];
             $new_name = '';
+
             foreach ($arr_names as $k => $name) {
                 $pos1 = stripos($file, $k);
                 if ($pos1 !== false) {
                     $new_name .= $name;
                 }
             }
+
             if ($new_name != '') {
+                if(strlen(preg_replace("/[^0-9]/", '', $file))>1){
+                    $new_name .= " " . substr(substr($file, -14), 0, -4);
+                }
                 $new_name .= '.pdf';
 
 

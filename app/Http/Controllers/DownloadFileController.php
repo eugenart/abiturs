@@ -20,12 +20,24 @@ class DownloadFileController extends Controller
         $date_last = DateUpdate::where('name_file', '=', $name_file)->first();
         if(!empty($date_last)){
             $date_update = DateUpdate::find($date_last->id);
-            $date_update->date_update = Carbon::now();
+            $today = Carbon::today();
+            $max =  Carbon::create($today->year, $today->month, $today->day, 18, 00, 00);
+            if(Carbon::now() > $max){
+                $date_update->date_update = $max;
+            }else{
+                $date_update->date_update = Carbon::now();
+            }
             $date_update->save();
         }else{
             $date_update = new DateUpdate;
             $date_update->name_file = $name_file;
-            $date_update->date_update = Carbon::now();;
+            $today = Carbon::today();
+            $max =  Carbon::create($today->year, $today->month, $today->day, 18, 00, 00);
+            if(Carbon::now() > $max){
+                $date_update->date_update = $max;
+            }else{
+                $date_update->date_update = Carbon::now();
+            }
             $date_update->save();
         }
 

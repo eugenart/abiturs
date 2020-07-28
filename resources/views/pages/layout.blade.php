@@ -72,9 +72,18 @@
         <div class="col-6 pl-2">
             <a href="{{ trans('layout.main') }}"><img src="{{asset('storage/images/iconka_mrsu_white.png')}}"
                                                       class="mrsu-logo-img d-lg-none d-md-block" alt=""></a>
-            <a href="{{ trans('layout.main') }}"><img src="{{asset('storage/images/logo_mrsu.png')}}"
+            <a href="{{ trans('layout.main') }}">
+                @if(trans("layout.locale") == 'ru')
+                <img src="{{asset('storage/images/logo_mrsu.png')}}"
                                                       class="mrsu-logo-img mrsu-logo-blue d-lg-block d-md-none d-sm-none"
-                                                      alt=""></a>
+                                                      alt="">
+                @endif
+                    @if(trans("layout.locale") == 'en')
+                        <img src="{{asset('storage/images/logo_mrsu_en.png')}}"
+                             class="mrsu-logo-img mrsu-logo-blue d-lg-block d-md-none d-sm-none"
+                             alt="">
+                    @endif
+            </a>
             <a href="{{ trans('layout.main') }}"><img src="{{asset('storage/images/logo_mrsu-ovz.png')}}"
                                                       class="mrsu-logo-img-ovz mrsu-logo-blue d-lg-block d-md-none d-sm-none"
                                                       alt=""></a>
