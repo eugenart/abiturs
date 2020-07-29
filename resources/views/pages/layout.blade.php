@@ -74,15 +74,15 @@
                                                       class="mrsu-logo-img d-lg-none d-md-block" alt=""></a>
             <a href="{{ trans('layout.main') }}">
                 @if(trans("layout.locale") == 'ru')
-                <img src="{{asset('storage/images/logo_mrsu.png')}}"
-                                                      class="mrsu-logo-img mrsu-logo-blue d-lg-block d-md-none d-sm-none"
-                                                      alt="">
+                    <img src="{{asset('storage/images/logo_mrsu.png')}}"
+                         class="mrsu-logo-img mrsu-logo-blue d-lg-block d-md-none d-sm-none"
+                         alt="">
                 @endif
-                    @if(trans("layout.locale") == 'en')
-                        <img src="{{asset('storage/images/logo_mrsu_en.png')}}"
-                             class="mrsu-logo-img mrsu-logo-blue d-lg-block d-md-none d-sm-none"
-                             alt="">
-                    @endif
+                @if(trans("layout.locale") == 'en')
+                    <img src="{{asset('storage/images/logo_mrsu_en.png')}}"
+                         class="mrsu-logo-img mrsu-logo-blue d-lg-block d-md-none d-sm-none"
+                         alt="">
+                @endif
             </a>
             <a href="{{ trans('layout.main') }}"><img src="{{asset('storage/images/logo_mrsu-ovz.png')}}"
                                                       class="mrsu-logo-img-ovz mrsu-logo-blue d-lg-block d-md-none d-sm-none"
@@ -91,9 +91,9 @@
         <div class="col-6 justify-content-end d-flex align-items-center">
 
             {{-- Версия для иностранцев--}}
-{{--            @role('developer')--}}
+            {{--            @role('developer')--}}
             <a href="{{ trans('layout.href') }}" class="ml-3 mr-4 foreign-link ">{{ trans('layout.lang') }}</a>
-{{--            @endrole--}}
+            {{--            @endrole--}}
 
 
             {{--            <img src="{{asset('storage/images/eye-white.png')}}" class="ml-2 mr-4 d-lg-none d-md-block" width="35" height="auto" alt="">--}}
@@ -193,10 +193,6 @@
 
                             <a class="nav-link text-white"
                                href="{{route('total.index')}}">{{ trans('layout.stat') }}</a>
-
-                            <a class="nav-link text-white"
-                               href="{{route('order.index')}}">{{ trans('layout.order') }}</a>
-
                             {{--                        <a class="nav-link text-white" href="{{route('totalf.index')}}">Статистика приема иностранных абитуриентов</a>--}}
                         </div>
                     </li>
@@ -236,6 +232,13 @@
                 @if(trans('layout.locale') == 'en')
                     <li class="nav-item active d-flex align-items-center justify-content-center">
                         <a class="nav-link" href="{{route('selectionf.index')}}">{{ trans('layout.for_foreigner') }}
+                            <span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                @endif
+                @if(trans('layout.locale') == 'ru')
+                    <li class="nav-item active d-flex align-items-center justify-content-center">
+                        <a class="nav-link" href="{{route('order.index')}}">{{ trans('layout.order') }}
                             <span
                                 class="sr-only">(current)</span></a>
                     </li>
