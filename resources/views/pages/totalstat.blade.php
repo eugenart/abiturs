@@ -179,7 +179,7 @@
 
                 @if(!empty($files_asp))
                     <h5 class="mrsu-uppertext  text-primary main-color ">
-                        Аспирантура
+                        Аспирантура и ординатура
                     </h5>
                     <hr class="mrsu-bg p-0 m-0">
                     <ul class="files-list col-12">
@@ -218,7 +218,7 @@
 
                     @if(!empty($files_asp_f))
                         <h5 class="mrsu-uppertext  text-primary main-color ">
-                            Аспирантура иностранные абитуриенты
+                            Аспирантура и ординатура иностранные абитуриенты
                         </h5>
                         <hr class="mrsu-bg p-0 m-0">
                         <ul class="files-list col-12">

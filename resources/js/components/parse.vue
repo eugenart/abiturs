@@ -313,6 +313,27 @@
                     </div>
                 </div>
             </div>
+            <div class="card mt-3 mb-3">
+                <div class="card-header font-weight-bold">Приказы</div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-4">
+                            <button class="btn btn-sm btn-success w-100"
+                                    @click="this.parseOrder">Выгрузить приказы
+                            </button>
+                        </div>
+                        <div class="col-8 text-center d-flex justify-content-center align-items-center">
+                            <div v-if="loadingparseOrderStatus" class="lds-ring">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                            <p v-else>{{parseOrderStatus}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -340,6 +361,7 @@
 
                 parseContestsStatus: null,
                 parseStatStatus: null,
+                parseOrderStatus: null,
 
 
                 loadingparseSpecialitiesStatus: false,
@@ -360,6 +382,7 @@
                 loadingparseContestsStatus: false,
 
                 loadingparseStatStatus: false,
+                loadingparseOrderStatus: false,
             }
         },
         computed: {},
@@ -501,6 +524,15 @@
                     .then(response => {
                         this.loadingparseStatStatus = false;
                         this.parseStatStatus = response.data
+                    })
+            },
+
+            parseOrder: function () {
+                this.loadingparseOrderStatus = true;
+                let data = axios.get('/admin/download-orders')
+                    .then(response => {
+                        this.loadingparseOrderStatus = false;
+                        this.parseOrderStatus = response.data
                     })
             }
         },
