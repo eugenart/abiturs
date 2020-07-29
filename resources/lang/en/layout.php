@@ -19,6 +19,7 @@ return [
     'for_foreigner' => 'Selection of educational programs',
 
     'stat' => 'reception statistics',
+    'order' => 'admission orders',
     'main_int' => '/International-applicants',
     'main' => '/',
 ];

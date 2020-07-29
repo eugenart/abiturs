@@ -193,6 +193,10 @@
 
                             <a class="nav-link text-white"
                                href="{{route('total.index')}}">{{ trans('layout.stat') }}</a>
+                            @role('developer')
+                            <a class="nav-link text-white"
+                               href="{{route('order.index')}}">{{ trans('layout.order') }}</a>
+                            @endrole
                             {{--                        <a class="nav-link text-white" href="{{route('totalf.index')}}">Статистика приема иностранных абитуриентов</a>--}}
                         </div>
                     </li>
