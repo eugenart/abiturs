@@ -14,7 +14,7 @@
 
                 @if(empty($files_bach) && empty($files_master) && empty($files_asp) && empty($files_spo))
                     <h5 class="text-center mrsu-uppertext pt-3 text-primary  main-color">
-                       Статистика приема на данный момент не доступна
+                       Статистика приема на данный момент недоступна
                     </h5>
                     @endif
 
