@@ -2,11 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Psy\Exception\ErrorException;
 
 class OrderController extends Controller
 {
+    public static function cmp($a, $b) {
+        if ($a->equalTo($b)) {
+            return 0;
+        }
+        return ($a ->greaterThan($b)) ? -1 : 1;
+    }
+
     public function index()
     {
         //получим все файлы бакалавров
@@ -57,52 +65,31 @@ class OrderController extends Controller
                     continue;
                 $files[] = $file;
             }
-//            $sort_files = array();
-//            $pos1 = array();
-//            $pos2 = array();
-//            $pos3 = array();
-//            $pos4 = array();
-//            foreach ($files as $file) {
-//                if (stripos($file, 'Очная форма ') !== false) {
-//                    $pos1[] = $file;
-//                }
-//                if (stripos($file, 'Очно-заочная форма ') !== false) {
-//                    $pos2[] = $file;
-//                }
-//                if (stripos($file, 'Заочная форма ') !== false) {
-//                    $pos3[] = $file;
-//                }
-//                if (stripos($file, 'Платная основа') !== false) {
-//                    $pos4[] = $file;
-//                }
-//            }
-//            foreach ($pos1 as $p1) {
-//                if ($p1 !== false) {
-//                    $sort_files[] = $p1;
-//                }
-//            }
-//            foreach ($pos2 as $p1) {
-//                if ($p1 !== false) {
-//                    $sort_files[] = $p1;
-//                }
-//            }
-//            foreach ($pos3 as $p1) {
-//                if ($p1 !== false) {
-//                    $sort_files[] = $p1;
-//                }
-//            }
-//            foreach ($pos4 as $p1) {
-//                if ($p1 !== false) {
-//                    $sort_files[] = $p1;
-//                }
-//            }
-//            ksort($sort_files);
+
+            $date_file = array();
+
+            foreach ($files as $file) {
+                $date = substr($file, 18, 10);
+                $day = substr($date, 0, 2);
+                $month = substr($date, 3, 2);
+                $year = substr($date, 6, 4);
+                $date_file[$file] = Carbon::create($year, $month, $day, 00, 00, 00);
+            }
+
+            uasort($date_file, array($this, "cmp"));
+            $sort_file = array();
+            foreach ($date_file as $k => $el){
+                $sort_file[] = $k;
+            }
+            $files = $sort_file;
         } else {
             $notif = "Не удалось открыть директорию с файлами";
         }
-//        var_dump($sort_files);
+
         return $files;
     }
+
+
 
     public
     function download_all_files()
