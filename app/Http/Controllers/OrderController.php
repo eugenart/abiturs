@@ -202,29 +202,29 @@ class OrderController extends Controller
             ];
             $filial = [
                 '1' => '',
-                '2' => 'РИМ, ',
-                '3' => 'КФ, ',
+                '2' => 'РИМ',
+                '3' => 'КФ',
             ];
             $study_form = [
-                'FT' => 'очная форма обучения, ',
-                'MX' => 'очно-заочная форма обучения, ',
-                'PT' => 'заочная форма обучения, ',
+                'FT' => 'очная форма обучения',
+                'MX' => 'очно-заочная форма обучения',
+                'PT' => 'заочная форма обучения',
                 'XX' => '',
             ];
             $adm_basis = [
-                'OP' => 'особое право, ',
-                'CP' => 'целевой приём, ',
-                'BO' => 'бюджетная основа, ',
-                'PV' => 'полное возмещение затрат, ',
+                'OP' => 'особое право',
+                'CP' => 'целевой приём',
+                'BO' => 'бюджетная основа',
+                'PV' => 'полное возмещение затрат',
                 'XX' => '',
             ];
             $category = [
-                'BV' => ' без вступительных испытаний, ',
+                'BV' => 'без вступительных испытаний',
                 'XX' => '',
             ];
             $wave = [
-                '1' => ' 1 волна',
-                '2' => ' 2 волна',
+                '1' => '1 волна',
+                '2' => '2 волна',
                 '0' => '',
             ];
 
@@ -254,10 +254,50 @@ class OrderController extends Controller
                 $new_name .= $order[$orderf];
                 if ($orderf == '1') {
                     if ($foreignerf == '0') {
-                        $new_name .= ' (' . $filial[$filialf] . $study_form[$study_formf] . $adm_basis[$adm_basisf] . $category[$categoryf] . $wave[$wavef] . ')';
+                        if ($filial[$filialf] != '' || $study_form[$study_formf] != '' || $adm_basis[$adm_basisf] != '' || $category[$categoryf] != '' || $wave[$wavef] != '') {
+                            $new_name .= ' (';
+                            if ($filial[$filialf] != '') {
+                                $new_name .= $filial[$filialf] . ', ';
+                            }
+                            if ($study_form[$study_formf] != '') {
+                                $new_name .= $study_form[$study_formf] . ', ';
+                            }
+                            if ($adm_basis[$adm_basisf] != '') {
+                                $new_name .= $adm_basis[$adm_basisf] . ', ';
+                            }
+                            if ($category[$categoryf] != '') {
+                                $new_name .= $category[$categoryf] . ', ';
+                            }
+                            $new_name .= $wave[$wavef];
+                            if (substr($new_name, -2) == ', ') {
+                                $new_name = substr($new_name, 0, -2);
+                            }
+                            $new_name .= ')';
+                        }
                     }
                     if ($foreignerf == '1') {
-                        $new_name .= ' (' . $prep_level_name[$prep_levelf] . $filial[$filialf] . $study_form[$study_formf] . $adm_basis[$adm_basisf] . $category[$categoryf] . $wave[$wavef] . ')';
+                        $new_name .= ' (';
+                        if ($prep_level_name[$prep_levelf] != '') {
+                            $new_name .= $prep_level_name[$prep_levelf] . ', ';
+                        }
+                        if ($filial[$filialf] != '') {
+                            $new_name .= $filial[$filialf] . ', ';
+                        }
+                        if ($study_form[$study_formf] != '') {
+                            $new_name .= $study_form[$study_formf] . ', ';
+                        }
+                        if ($adm_basis[$adm_basisf] != '') {
+                            $new_name .= $adm_basis[$adm_basisf] . ', ';
+                        }
+                        if ($category[$categoryf] != '') {
+                            $new_name .= $category[$categoryf] . ', ';
+                        }
+                        $new_name .= $wave[$wavef];
+                        if (substr($new_name, -2) == ', ') {
+                            $new_name = substr($new_name, 0, -2);
+                        }
+                        $new_name .= ')';
+//                        $new_name .= ' (' . $prep_level_name[$prep_levelf] . $filial[$filialf] . $study_form[$study_formf] . $adm_basis[$adm_basisf] . $category[$categoryf] . $wave[$wavef] . ')';
                     }
                 }
             }
@@ -329,7 +369,7 @@ class OrderController extends Controller
         }
 
         if (count($files) == $count_files) {
-            echo "Приказы успешно загруженны!";
+            echo "Приказы успешно загружены!";
         }
     }
 }
