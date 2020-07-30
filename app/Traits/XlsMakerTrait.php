@@ -66,13 +66,11 @@ trait XlsMakerTrait
             $sheet->setTitle('Списки');
 
 // Вставляем текст в ячейку A1
-            $sheet->setCellValue("A1", 'Полный пофамильный перечень лиц, успешно прошедших вступительные испытания и допущенных к участию в конкурсе на зачисление по каждому направлению подготовки (специальности) очной формы обучения на места в рамках контрольных цифр приема с указанием суммы конкурсных баллов по всем вступительным испытаниям ');
+            $sheet->setCellValue("A1", '');
             $sheet->getStyle('A1')->getFont()->setBold(true);
             $sheet->getStyle('A1')->getFont()->setSize(14);
             $sheet->getRowDimension("1")->setRowHeight(80);
             $sheet->getStyle("A1")->getAlignment()->setWrapText(true);
-
-//
 
 // Объединяем ячейки
             $sheet->mergeCells('A1:M1');
