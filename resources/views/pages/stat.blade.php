@@ -214,7 +214,7 @@
             <div class="col-12">
                 @if(isset($studyForms))
                     <span
-                        class="m-0 p-0 main-color d-lg-none d-md-inline w-100">Обновлено: <b>2020-08-23 17:24</b></span>
+                        class="m-0 p-0 main-color d-lg-none d-md-inline w-100">Обновлено: <b>@if(isset($date_update)){{substr($date_update->date_update, 0, -3)}}@endif</b></span>
 
                     <button style="white-space: normal;" type="button"
                             class="files-stat spec-ovz-link btn btn-link text-left d-lg-none d-md-block w-100 p-0 ovz-text"
@@ -273,7 +273,7 @@
                                                                                                         мест: <span
                                                                                                             class="font-weight-bold">{{$admissionBasis->freeSeatsNumber}}</span>
                                                                                                     </p>
-																									@if($admissionBasis->stage_title != NULL) 
+																									@if($admissionBasis->stage_title != NULL)
 																									<p class="m-0">
                                                                                                         {{$admissionBasis->stage_title}}:
 																										<span class="font-weight-bold">{{$admissionBasis->stage}}</span>
@@ -343,7 +343,7 @@
                                                                                 class="col-xl-4 col-lg-4 col-md-12 col-12 d-lg-flex d-md-none d-none flex-column justify-content-around">
                                                                                 @if(isset($studyForms))
                                                                                     <span
-                                                                                        class="m-0 p-0 main-color d-lg-inline d-md-none w-100">Обновлено: <b>2020-08-23 17:24</b></span>
+                                                                                        class="m-0 p-0 main-color d-lg-none d-md-inline w-100">Обновлено: <b>@if(isset($date_update)){{substr($date_update->date_update, 0, -3)}}@endif</b></span>
 
                                                                                     <button style="white-space: normal;"
                                                                                             type="button"
@@ -501,7 +501,7 @@
                                                                                             <td class="text-center">{{$k + 1}}</td>
                                                                                             <td class="text-left"
                                                                                                 id="stud-{{$abitur->student->id}}-{{$abitur->id_speciality}}">{{$abitur->student->fio}}
-																								
+
 																							</td>
                                                                                             {{--                                                                                    <td>--}}
                                                                                             {{--                                                                                        @if($abitur->original)--}}
