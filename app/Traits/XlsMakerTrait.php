@@ -512,10 +512,18 @@ trait XlsMakerTrait
                                     if ($temp->count()) {
                                         $admissionBasis->abiturs = $temp; //добавляем запись
 										$temp_stage = $temp->first();
-											$stage = $temp_stage->stage;
-											$stage_title = $temp_stage->stage_title;
-											$admissionBasis->stage = substr($stage, 1, -1);
-											$admissionBasis->stage_title = substr($stage_title, 1, -1);
+
+                                        $stage = $temp_stage->stage;
+                                        if($stage[0] == '(') {
+                                            $stage = substr($stage, 1, -1);
+                                        }
+                                        $admissionBasis->stage = $stage;
+
+                                        $stage_title = $temp_stage->stage_title;
+                                        if($stage_title[0] == '(') {
+                                            $stage_title = substr($stage_title, 1, -1);
+                                        }
+                                        $admissionBasis->stage_title = $stage_title;
 
                                         $originalsCount = 0;
                                         foreach ($temp as $student) {
@@ -727,10 +735,18 @@ trait XlsMakerTrait
                                     if ($temp->count()) {
                                         $admissionBasis->abiturs = $temp; //добавляем запись
 										$temp_stage = $temp->first();
-											$stage = $temp_stage->stage;
-											$stage_title = $temp_stage->stage_title;
-											$admissionBasis->stage = substr($stage, 1, -1);
-											$admissionBasis->stage_title = substr($stage_title, 1, -1);
+
+										$stage = $temp_stage->stage;
+                                        if($stage[0] == '(') {
+                                            $stage = substr($stage, 1, -1);
+                                        }
+                                        $admissionBasis->stage = $stage;
+
+                                        $stage_title = $temp_stage->stage_title;
+                                        if($stage_title[0] == '(') {
+                                            $stage_title = substr($stage_title, 1, -1);
+                                        }
+                                        $admissionBasis->stage_title = $stage_title;
 
                                         $originalsCount = 0;
                                         foreach ($temp as $student) {
@@ -941,10 +957,17 @@ trait XlsMakerTrait
                                     if ($temp->count()) {
                                         $admissionBasis->abiturs = $temp; //добавляем запись
 										$temp_stage = $temp->first();
-											$stage = $temp_stage->stage;
-											$stage_title = $temp_stage->stage_title;
-											$admissionBasis->stage = substr($stage, 1, -1);
-											$admissionBasis->stage_title = substr($stage_title, 1, -1);
+                                        $stage = $temp_stage->stage;
+                                        if($stage[0] == '(') {
+                                            $stage = substr($stage, 1, -1);
+                                        }
+                                        $admissionBasis->stage = $stage;
+
+                                        $stage_title = $temp_stage->stage_title;
+                                        if($stage_title[0] == '(') {
+                                            $stage_title = substr($stage_title, 1, -1);
+                                        }
+                                        $admissionBasis->stage_title = $stage_title;
 
                                         $originalsCount = 0;
                                         foreach ($temp as $student) {
@@ -1158,10 +1181,17 @@ trait XlsMakerTrait
                                     if ($temp->count()) {
                                         $admissionBasis->abiturs = $temp; //добавляем запись
 										$temp_stage = $temp->first();
-											$stage = $temp_stage->stage;
-											$stage_title = $temp_stage->stage_title;
-											$admissionBasis->stage = substr($stage, 1, -1);
-											$admissionBasis->stage_title = substr($stage_title, 1, -1);
+                                        $stage = $temp_stage->stage;
+                                        if($stage[0] == '(') {
+                                            $stage = substr($stage, 1, -1);
+                                        }
+                                        $admissionBasis->stage = $stage;
+
+                                        $stage_title = $temp_stage->stage_title;
+                                        if($stage_title[0] == '(') {
+                                            $stage_title = substr($stage_title, 1, -1);
+                                        }
+                                        $admissionBasis->stage_title = $stage_title;
 
                                         $originalsCount = 0;
                                         foreach ($temp as $student) {
@@ -1405,10 +1435,17 @@ trait XlsMakerTrait
                                     if ($temp->count()) {
                                         $admissionBasis->abiturs = $temp; //добавляем запись
 										$temp_stage = $temp->first();
-											$stage = $temp_stage->stage;
-											$stage_title = $temp_stage->stage_title;
-											$admissionBasis->stage = substr($stage, 1, -1);
-											$admissionBasis->stage_title = substr($stage_title, 1, -1);
+                                        $stage = $temp_stage->stage;
+                                        if($stage[0] == '(') {
+                                            $stage = substr($stage, 1, -1);
+                                        }
+                                        $admissionBasis->stage = $stage;
+
+                                        $stage_title = $temp_stage->stage_title;
+                                        if($stage_title[0] == '(') {
+                                            $stage_title = substr($stage_title, 1, -1);
+                                        }
+                                        $admissionBasis->stage_title = $stage_title;
 
                                         $originalsCount = 0;
                                         foreach ($temp as $student) {
@@ -1617,10 +1654,17 @@ trait XlsMakerTrait
                                     if ($temp->count()) {
                                         $admissionBasis->abiturs = $temp; //добавляем запись
 										$temp_stage = $temp->first();
-											$stage = $temp_stage->stage;
-											$stage_title = $temp_stage->stage_title;
-											$admissionBasis->stage = substr($stage, 1, -1);
-											$admissionBasis->stage_title = substr($stage_title, 1, -1);
+                                        $stage = $temp_stage->stage;
+                                        if($stage[0] == '(') {
+                                            $stage = substr($stage, 1, -1);
+                                        }
+                                        $admissionBasis->stage = $stage;
+
+                                        $stage_title = $temp_stage->stage_title;
+                                        if($stage_title[0] == '(') {
+                                            $stage_title = substr($stage_title, 1, -1);
+                                        }
+                                        $admissionBasis->stage_title = $stage_title;
 
                                         $originalsCount = 0;
                                         foreach ($temp as $student) {
@@ -1831,10 +1875,17 @@ trait XlsMakerTrait
                                     if ($temp->count()) {
                                         $admissionBasis->abiturs = $temp; //добавляем запись
 										$temp_stage = $temp->first();
-											$stage = $temp_stage->stage;
-											$stage_title = $temp_stage->stage_title;
-											$admissionBasis->stage = substr($stage, 1, -1);
-											$admissionBasis->stage_title = substr($stage_title, 1, -1);
+                                        $stage = $temp_stage->stage;
+                                        if($stage[0] == '(') {
+                                            $stage = substr($stage, 1, -1);
+                                        }
+                                        $admissionBasis->stage = $stage;
+
+                                        $stage_title = $temp_stage->stage_title;
+                                        if($stage_title[0] == '(') {
+                                            $stage_title = substr($stage_title, 1, -1);
+                                        }
+                                        $admissionBasis->stage_title = $stage_title;
 
                                         $originalsCount = 0;
                                         foreach ($temp as $student) {

@@ -340,7 +340,10 @@ class StatisticController extends Controller
 											$admissionBasis->stage = $stage;
 
 											$stage_title = $temp_stage->stage_title;
-											$admissionBasis->stage_title = substr($stage_title, 1, -1);
+                                            if($stage_title[0] == '(') {
+                                                $stage_title = substr($stage_title, 1, -1);
+                                            }
+											$admissionBasis->stage_title = $stage_title;
 
                                             $originalsCount = 0;
                                             foreach ($temp as $student) {
@@ -582,6 +585,9 @@ class StatisticController extends Controller
                                                 $stage = substr($stage, 1, -1);
                                             }
 											$admissionBasis->stage = $stage;
+                                            if($stage_title[0] == '(') {
+                                                $stage_title = substr($stage_title, 1, -1);
+                                            }
 											$admissionBasis->stage_title = substr($stage_title, 1, -1);
 
                                             $chosenStudents = collect(new Student);
