@@ -588,7 +588,7 @@ class StatisticController extends Controller
                                             if($stage_title[0] == '(') {
                                                 $stage_title = substr($stage_title, 1, -1);
                                             }
-											$admissionBasis->stage_title = substr($stage_title, 1, -1);
+											$admissionBasis->stage_title = $stage_title;
 
                                             $chosenStudents = collect(new Student);
                                             foreach ($id_stud_arr as $id) {
