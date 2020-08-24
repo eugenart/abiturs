@@ -343,7 +343,7 @@
                                                                                 class="col-xl-4 col-lg-4 col-md-12 col-12 d-lg-flex d-md-none d-none flex-column justify-content-around">
                                                                                 @if(isset($studyForms))
                                                                                     <span
-                                                                                        class="m-0 p-0 main-color d-lg-none d-md-inline w-100">Обновлено: <b>@if(isset($date_update)){{substr($date_update->date_update, 0, -3)}}@endif</b></span>
+                                                                                        class="m-0 p-0 main-color d-lg-inline d-md-none w-100">Обновлено: <b>@if(isset($date_update)){{substr($date_update->date_update, 0, -3)}}@endif</b></span>
 
                                                                                     <button style="white-space: normal;"
                                                                                             type="button"
