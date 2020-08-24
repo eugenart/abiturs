@@ -330,13 +330,15 @@ class StatisticController extends Controller
                                         }
                                         if ($temp->count()) {
                                             $admissionBasis->abiturs = $temp; //добавляем запись
-											
+
 											$temp_stage = $temp->first();
-											
+
 											$stage = $temp_stage->stage;
-											$stage = substr($stage, 1, -1);
+											if($stage[0] == '(') {
+                                                $stage = substr($stage, 1, -1);
+                                            }
 											$admissionBasis->stage = $stage;
-											
+
 											$stage_title = $temp_stage->stage_title;
 											$admissionBasis->stage_title = substr($stage_title, 1, -1);
 
@@ -572,13 +574,16 @@ class StatisticController extends Controller
                                         //обозначаем выбранного студента цветом
                                         if ($temp->count() && !$temp2->isEmpty()) {
                                             $admissionBasis->abiturs = $temp; //записываем статистику в специальность
-											
+
 											$temp_stage = $temp->first();
 											$stage = $temp_stage->stage;
 											$stage_title = $temp_stage->stage_title;
-											$admissionBasis->stage = substr($stage, 1, -1);
+                                            if($stage[0] == '(') {
+                                                $stage = substr($stage, 1, -1);
+                                            }
+											$admissionBasis->stage = $stage;
 											$admissionBasis->stage_title = substr($stage_title, 1, -1);
-											
+
                                             $chosenStudents = collect(new Student);
                                             foreach ($id_stud_arr as $id) {
                                                 $serialNumSpec = 0;
