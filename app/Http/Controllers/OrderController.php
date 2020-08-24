@@ -235,7 +235,12 @@ class OrderController extends Controller
 
             $date = substr($datef, 0, 2) . '.' . substr($datef, 2, 2) . '.' . substr($datef, 4, 4);
 
-            $new_name = 'Приказ от ' . $date . ' №' . $num . '-с';
+            if($prep_levelf == '06' || $prep_levelf == '08'){
+                $new_name = 'Приказ от ' . $date . ' №' . $num . '-а';
+            }else{
+                $new_name = 'Приказ от ' . $date . ' №' . $num . '-с';
+            }
+
 
             if (!is_null($orderf)) {
                 $new_name .= $order[$orderf];
