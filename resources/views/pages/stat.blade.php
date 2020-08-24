@@ -28,6 +28,7 @@
                         <div class="row w-100 m-auto pt-3 pb-3">
                             <div class="col-12">
                                 {{--                                                                <a href="{{ asset('storage/files-xls/' . $studyForms->file_xls . '.xls') }}">Скачать файл с данными запроса</a>--}}
+								@if($studyForms->file_xls != '')
                                 <ul class="files-list">
                                     <li>
                                         <div>
@@ -52,6 +53,7 @@
                                         </div>
                                     </li>
                                 </ul>
+								@endif
                                 <h5 class="m-0 text-center">Полные списки поступающих. Бакалавриат и специалитет</h5>
                                 <ul class="files-list">
 
@@ -120,36 +122,32 @@
                                     <div class="d-xl-block d-lg-none d-none col-12"><i
                                             class="fa fa-check-circle "
                                             style="color: rgba(0,128,0,0.51)"></i>
-                                        &mdash; Первое согласие на зачисление
+                                        &mdash; первое согласие на зачисление
                                     </div>
                                     <div class="d-xl-block d-lg-none d-none col-12"><i
                                             class="fa fa-check-circle"
-                                            style="color: rgba(0,128,0,0.51)"></i>
-                                        <i class="fa fa-check-circle"
-                                           style="color: rgba(0,128,0,0.51)"></i>
-                                        &mdash; Второе согласие на зачисление
+                                            style="color: rgba(225,0,0,0.51)"></i>
+                                        &mdash; второе согласие на зачисление
                                     </div>
                                 </div>
                                 <div
                                     class="d-xl-none d-lg-flex d-md-flex d-sm-flex flex-column">
-                                    {{--                                    <span class="d-inline-block w-100"><b>О</b> - оригинал диплома</span>--}}
-                                    <span class="d-inline-block w-100"><b>C</b> - согласие на зачисление:</span>
+                                    {{--                                    <span class="d-inline-block w-100"><b>О</b> &mdash; оригинал диплома</span>--}}
+                                    <span class="d-inline-block w-100"><b>C</b> &mdash; согласие на зачисление:</span>
                                     <ol class="d-inline-block w-100 mb-0 list-unstyled pl-2">
                                         <li><span><i class="fa fa-check-circle "
                                                      style="color: rgba(0,128,0,0.51)"></i>
-                                                                                                            - первое согласие</span>
+                                                                                                            &mdash; первое согласие</span>
                                         </li>
                                         <li><span><i class="fa fa-check-circle"
-                                                     style="color: rgba(0,128,0,0.51)"></i>
-                                                                                                            <i class="fa fa-check-circle"
-                                                                                                               style="color: rgba(0,128,0,0.51)"></i>
-                                                                                                            - второе согласие</span>
+                                                     style="color: rgba(225,0,0,0.51)"></i>
+                                                                                                            &mdash; второе согласие</span>
                                         </li>
                                     </ol>
                                     <span
-                                        class="d-xl-inline-block w-100 d-sm-inline d-none"><b>БИД</b> - балл за индивидуальные достижения</span>
+                                        class="d-xl-inline-block w-100 d-sm-inline d-none"><b>БИД</b> &mdash; балл за индивидуальные достижения</span>
                                     <span
-                                        class="d-inline-block w-100"><b>СКБ</b> - сумма конкурсных баллов</span>
+                                        class="d-inline-block w-100"><b>СКБ</b> &mdash; сумма конкурсных баллов</span>
 
                                 </div>
                             </div>
@@ -216,7 +214,7 @@
             <div class="col-12">
                 @if(isset($studyForms))
                     <span
-                        class="m-0 p-0 main-color d-lg-none d-md-inline w-100">Обновлено: <b>@if(isset($date_update)){{substr($date_update->date_update, 0, -3)}}@endif</b></span>
+                        class="m-0 p-0 main-color d-lg-none d-md-inline w-100">Обновлено: <b>2020-08-23 17:24</b></span>
 
                     <button style="white-space: normal;" type="button"
                             class="files-stat spec-ovz-link btn btn-link text-left d-lg-none d-md-block w-100 p-0 ovz-text"
@@ -275,6 +273,12 @@
                                                                                                         мест: <span
                                                                                                             class="font-weight-bold">{{$admissionBasis->freeSeatsNumber}}</span>
                                                                                                     </p>
+																									@if($admissionBasis->stage_title != NULL) 
+																									<p class="m-0">
+                                                                                                        {{$admissionBasis->stage_title}}:
+																										<span class="font-weight-bold">{{$admissionBasis->stage}}</span>
+                                                                                                    </p>
+																									@endif
                                                                                                     <p class="m-0">
                                                                                                         Конкурс: <span
                                                                                                             class="font-weight-bold">{{$admissionBasis->originalsCount}}</span>
@@ -339,7 +343,7 @@
                                                                                 class="col-xl-4 col-lg-4 col-md-12 col-12 d-lg-flex d-md-none d-none flex-column justify-content-around">
                                                                                 @if(isset($studyForms))
                                                                                     <span
-                                                                                        class="m-0 p-0 main-color d-lg-inline d-md-none w-100">Обновлено: <b>@if(isset($date_update)){{substr($date_update->date_update, 0, -3)}}@endif</b></span>
+                                                                                        class="m-0 p-0 main-color d-lg-inline d-md-none w-100">Обновлено: <b>2020-08-23 17:24</b></span>
 
                                                                                     <button style="white-space: normal;"
                                                                                             type="button"
@@ -496,7 +500,9 @@
                                                                                             @endif
                                                                                             <td class="text-center">{{$k + 1}}</td>
                                                                                             <td class="text-left"
-                                                                                                id="stud-{{$abitur->student->id}}-{{$abitur->id_speciality}}">{{$abitur->student->fio}}</td>
+                                                                                                id="stud-{{$abitur->student->id}}-{{$abitur->id_speciality}}">{{$abitur->student->fio}}
+																								
+																							</td>
                                                                                             {{--                                                                                    <td>--}}
                                                                                             {{--                                                                                        @if($abitur->original)--}}
                                                                                             {{--                                                                                            <i class="fa fa-check-circle"--}}
@@ -504,11 +510,12 @@
                                                                                             {{--                                                                                        @endif--}}
                                                                                             {{--                                                                                    </td>--}}
                                                                                             <td>
-                                                                                                @if($abitur->accept)
-                                                                                                    <i class="fa fa-check-circle"
-                                                                                                       style="color: rgba(0,128,0,0.51)"></i>
-                                                                                                    @if($abitur->acceptCount>0)
+                                                                                                @if($abitur->acceptCount > 0)
+                                                                                                    @if($abitur->acceptCount > 1)
                                                                                                         <i class="fa fa-check-circle"
+                                                                                                           style="color: rgba(225,0,0,0.51)"></i>
+																									@else
+																										<i class="fa fa-check-circle"
                                                                                                            style="color: rgba(0,128,0,0.51)"></i>
                                                                                                     @endif
                                                                                                 @endif

@@ -185,7 +185,8 @@ class TotalStatController extends Controller
         foreach ($files as $file) {
             $num = preg_replace("/[^0-9]/", '', $file);
             if (ctype_alpha($file) != true && strlen($num) > 1) {
-                $name_file_drop[] = substr($file, 0, strripos($file, substr(preg_replace("/[^0-9]/", '', $file), 1, 2))). ".pdf";
+                $name_file_drop[] = substr($file, 0, stripos($file, substr(preg_replace("/[^0-9]/", '', $file), 1, 2))). ".pdf";
+				
             }
         }
 

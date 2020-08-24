@@ -841,6 +841,9 @@ marquee {
 }
 
 @media screen and (max-width: 991px) {
+	.carousel{
+		display: none;
+	}
     .section-content-block {
         display: flex;
         flex-direction: column-reverse;

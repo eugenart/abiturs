@@ -9,7 +9,7 @@ class StatisticMasterForeigner extends Model
     protected $fillable = ['id_student', 'id_faculty', 'id_speciality', 'id_specialization',
         'id_preparationLevel', 'id_admissionBasis', 'id_studyForm', 'id_category', 'accept', 'original',
         'summ', 'indAchievement', 'summContest', 'needHostel', 'notice1', 'notice2',
-        'id_plan', 'is_chosen', 'id_competition', 'foreigner', 'yellowline', 'acceptCount'];
+        'id_plan', 'is_chosen', 'id_competition', 'foreigner', 'yellowline', 'acceptCount','stage', 'stage_title'];
 
     public function student() {
         return $this->belongsTo(StudentMasterForeigner::class, 'id_student');

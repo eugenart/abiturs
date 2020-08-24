@@ -190,6 +190,10 @@ trait XlsMakerTrait
 
                                                                 $sheet->setCellValueByColumnAndRow(0, $c + 4, "Кол-во мест:");
                                                                 $sheet->setCellValueByColumnAndRow(4, $c + 4, $admissionBasis->freeSeatsNumber);
+																if($admissionBasis->stage_title != false){
+																$sheet->setCellValueByColumnAndRow(5, $c + 4, $admissionBasis->stage_title);
+                                                                $sheet->setCellValueByColumnAndRow(8, $c + 4, $admissionBasis->stage);
+																}
 
                                                                 $c = $c + 6;
 
@@ -241,10 +245,10 @@ trait XlsMakerTrait
                                                                     foreach ($admissionBasis->abiturs as $k => $abitur) {
                                                                         $sheet->setCellValueByColumnAndRow(0, $c, $k + 1);
                                                                         $sheet->setCellValueByColumnAndRow(1, $c, $abitur->student->fio);
-                                                                        if ($abitur->accept) {
+                                                                        if ($abitur->acceptCount > 0) {
                                                                             $sheet->setCellValueByColumnAndRow(2, $c, "✔");
                                                                             $sheet->getStyleByColumnAndRow(2, $c)->applyFromArray($bg_green);
-                                                                            if ($abitur->acceptCount > 0) {
+                                                                            if ($abitur->acceptCount > 1) {
                                                                                 $sheet->getStyleByColumnAndRow(2, $c)->applyFromArray($bg_red);
                                                                             }
                                                                         }
@@ -507,6 +511,11 @@ trait XlsMakerTrait
 
                                     if ($temp->count()) {
                                         $admissionBasis->abiturs = $temp; //добавляем запись
+										$temp_stage = $temp->first();
+											$stage = $temp_stage->stage;
+											$stage_title = $temp_stage->stage_title;
+											$admissionBasis->stage = substr($stage, 1, -1);
+											$admissionBasis->stage_title = substr($stage_title, 1, -1);
 
                                         $originalsCount = 0;
                                         foreach ($temp as $student) {
@@ -717,6 +726,11 @@ trait XlsMakerTrait
 
                                     if ($temp->count()) {
                                         $admissionBasis->abiturs = $temp; //добавляем запись
+										$temp_stage = $temp->first();
+											$stage = $temp_stage->stage;
+											$stage_title = $temp_stage->stage_title;
+											$admissionBasis->stage = substr($stage, 1, -1);
+											$admissionBasis->stage_title = substr($stage_title, 1, -1);
 
                                         $originalsCount = 0;
                                         foreach ($temp as $student) {
@@ -926,6 +940,11 @@ trait XlsMakerTrait
 
                                     if ($temp->count()) {
                                         $admissionBasis->abiturs = $temp; //добавляем запись
+										$temp_stage = $temp->first();
+											$stage = $temp_stage->stage;
+											$stage_title = $temp_stage->stage_title;
+											$admissionBasis->stage = substr($stage, 1, -1);
+											$admissionBasis->stage_title = substr($stage_title, 1, -1);
 
                                         $originalsCount = 0;
                                         foreach ($temp as $student) {
@@ -1138,6 +1157,11 @@ trait XlsMakerTrait
 
                                     if ($temp->count()) {
                                         $admissionBasis->abiturs = $temp; //добавляем запись
+										$temp_stage = $temp->first();
+											$stage = $temp_stage->stage;
+											$stage_title = $temp_stage->stage_title;
+											$admissionBasis->stage = substr($stage, 1, -1);
+											$admissionBasis->stage_title = substr($stage_title, 1, -1);
 
                                         $originalsCount = 0;
                                         foreach ($temp as $student) {
@@ -1221,8 +1245,8 @@ trait XlsMakerTrait
 
     public function XlsAsp()
     {
-        $this->queryXlsAsp([1], [3], 1, [7], "Очная форма, бюджет, аспирантура");
-        $this->queryXlsAsp([1], [3], 1, [8], "Очная форма, бюджет, ординатура");
+        $this->queryXlsAsp([1], [3], 1, [6], "Очная форма, бюджет, аспирантура");
+        $this->queryXlsAsp([1], [3], 1, [7], "Очная форма, бюджет, ординатура");
     }
 
     public function XlsSpo()
@@ -1380,6 +1404,11 @@ trait XlsMakerTrait
 
                                     if ($temp->count()) {
                                         $admissionBasis->abiturs = $temp; //добавляем запись
+										$temp_stage = $temp->first();
+											$stage = $temp_stage->stage;
+											$stage_title = $temp_stage->stage_title;
+											$admissionBasis->stage = substr($stage, 1, -1);
+											$admissionBasis->stage_title = substr($stage_title, 1, -1);
 
                                         $originalsCount = 0;
                                         foreach ($temp as $student) {
@@ -1587,6 +1616,11 @@ trait XlsMakerTrait
 
                                     if ($temp->count()) {
                                         $admissionBasis->abiturs = $temp; //добавляем запись
+										$temp_stage = $temp->first();
+											$stage = $temp_stage->stage;
+											$stage_title = $temp_stage->stage_title;
+											$admissionBasis->stage = substr($stage, 1, -1);
+											$admissionBasis->stage_title = substr($stage_title, 1, -1);
 
                                         $originalsCount = 0;
                                         foreach ($temp as $student) {
@@ -1796,6 +1830,11 @@ trait XlsMakerTrait
 
                                     if ($temp->count()) {
                                         $admissionBasis->abiturs = $temp; //добавляем запись
+										$temp_stage = $temp->first();
+											$stage = $temp_stage->stage;
+											$stage_title = $temp_stage->stage_title;
+											$admissionBasis->stage = substr($stage, 1, -1);
+											$admissionBasis->stage_title = substr($stage_title, 1, -1);
 
                                         $originalsCount = 0;
                                         foreach ($temp as $student) {
@@ -1872,7 +1911,7 @@ trait XlsMakerTrait
 
     public function XlsAspForeigner()
     {
-        $this->queryXlsAspForeigner([1], [7], 1, [7], "Очная форма, полное возмещение затрат, аспирантура");
-        $this->queryXlsAspForeigner([1], [7], 1, [8], "Очная форма, полное возмещение затрат, ординатура");
+        $this->queryXlsAspForeigner([1], [7], 1, [6], "Очная форма, полное возмещение затрат, аспирантура");
+        $this->queryXlsAspForeigner([1], [7], 1, [7], "Очная форма, полное возмещение затрат, ординатура");
     }
 }

@@ -688,8 +688,8 @@ class StatisticForeignerController extends Controller
         $faculties = $this->fetchFaculties();
 
 
-        $file_name = $this->createXls($studyForms);
-
+         //$file_name = $this->createXls($studyForms);
+        $file_name = '';
         $studyForms->file_xls = $file_name;
         return $studyForms;
 
