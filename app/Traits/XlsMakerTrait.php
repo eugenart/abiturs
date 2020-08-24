@@ -1245,8 +1245,8 @@ trait XlsMakerTrait
 
     public function XlsAsp()
     {
-        $this->queryXlsAsp([1], [3], 1, [7], "Очная форма, бюджет, аспирантура");
-        $this->queryXlsAsp([1], [3], 1, [8], "Очная форма, бюджет, ординатура");
+        $this->queryXlsAsp([1], [3], 1, [6], "Очная форма, бюджет, аспирантура");
+        $this->queryXlsAsp([1], [3], 1, [7], "Очная форма, бюджет, ординатура");
     }
 
     public function XlsSpo()
@@ -1911,7 +1911,7 @@ trait XlsMakerTrait
 
     public function XlsAspForeigner()
     {
-        $this->queryXlsAspForeigner([1], [7], 1, [7], "Очная форма, полное возмещение затрат, аспирантура");
-        $this->queryXlsAspForeigner([1], [7], 1, [8], "Очная форма, полное возмещение затрат, ординатура");
+        $this->queryXlsAspForeigner([1], [7], 1, [6], "Очная форма, полное возмещение затрат, аспирантура");
+        $this->queryXlsAspForeigner([1], [7], 1, [7], "Очная форма, полное возмещение затрат, ординатура");
     }
 }
