@@ -224,7 +224,9 @@ trait ParserJsonTrait
                                 'id_competition' => intval($idCompetition->id),
                                 'foreigner' => $fac_stat['foreigner'],
                                 'yellowline' => isset($student['yelloyline']) ? true : false,
-                                'acceptCount' => $student['acceptСount']
+                                'acceptCount' => $student['acceptСount'],
+								'stage' => $fac_stat['Stage'],
+								'stage_title' => $fac_stat['StageTitle'],
                             );
                             $studentsStat[] = $stat;
                         } else {
@@ -341,7 +343,9 @@ trait ParserJsonTrait
                                 'id_competition' => intval($idCompetition->id),
                                 'foreigner' => $fac_stat['foreigner'],
                                 'yellowline' => isset($student['yelloyline']) ? true : false,
-                                'acceptCount' => $student['acceptСount']
+                                'acceptCount' => $student['acceptСount'],
+								'stage' => $fac_stat['Stage'],
+								'stage_title' => $fac_stat['StageTitle'],
                             );
                             $studentsStat_f[] = $stat_f;
                         } else {
@@ -575,7 +579,9 @@ trait ParserJsonTrait
                                 'id_competition' => intval($idCompetition->id),
                                 'foreigner' => $fac_stat['foreigner'],
                                 'yellowline' => isset($student['yelloyline']) ? true : false,
-                                'acceptCount' => $student['acceptСount']
+                                'acceptCount' => $student['acceptСount'],
+								'stage' => $fac_stat['Stage'],
+								'stage_title' => $fac_stat['StageTitle'],
                             );
                             $studentsStat[] = $stat;
                         } else {
@@ -693,7 +699,9 @@ trait ParserJsonTrait
                                 'id_competition' => intval($idCompetition->id),
                                 'foreigner' => $fac_stat['foreigner'],
                                 'yellowline' => isset($student['yelloyline']) ? true : false,
-                                'acceptCount' => $student['acceptСount']
+                                'acceptCount' => $student['acceptСount'],
+								'stage' => $fac_stat['Stage'],
+								'stage_title' => $fac_stat['StageTitle'],
                             );
                             $studentsStat_f[] = $stat_f;
                         } else {
@@ -930,7 +938,9 @@ trait ParserJsonTrait
                                 'id_competition' => intval($idCompetition->id),
                                 'foreigner' => $fac_stat['foreigner'],
                                 'yellowline' => isset($student['yelloyline']) ? true : false,
-                                'acceptCount' => $student['acceptСount']
+                                'acceptCount' => $student['acceptСount'],
+								'stage' => $fac_stat['Stage'],
+								'stage_title' => $fac_stat['StageTitle'],
                             );
                             $studentsStat[] = $stat;
                         } else {
@@ -1048,7 +1058,9 @@ trait ParserJsonTrait
                                 'id_competition' => intval($idCompetition->id),
                                 'foreigner' => $fac_stat['foreigner'],
                                 'yellowline' => isset($student['yelloyline']) ? true : false,
-                                'acceptCount' => $student['acceptСount']
+                                'acceptCount' => $student['acceptСount'],
+								'stage' => $fac_stat['Stage'],
+								'stage_title' => $fac_stat['StageTitle'],
                             );
                             $studentsStat_f[] = $stat_f;
                         } else {
@@ -1276,7 +1288,9 @@ trait ParserJsonTrait
                                 'id_competition' => intval($idCompetition->id),
                                 'foreigner' => $fac_stat['foreigner'],
                                 'yellowline' => isset($student['yelloyline']) ? true : false,
-                                'acceptCount' => $student['acceptСount']
+                                'acceptCount' => $student['acceptСount'],
+								'stage' => $fac_stat['Stage'],
+								'stage_title' => $fac_stat['StageTitle'],
                             );
                             $studentsStat[] = $stat;
                         } else {
@@ -2644,7 +2658,8 @@ trait ParserJsonTrait
             $arr_plan_comp_score = array();
             $arr_prices = array();
             $arr_freeseats = array();
-            $count_plan = 0;
+            $count_plan_db = PlanAsp::count();
+            $count_plan = intval($count_plan_db);
 
             $arr_plan_f = array();
             $arr_competition_f = array();
@@ -2652,7 +2667,8 @@ trait ParserJsonTrait
             $arr_plan_comp_score_f = array();
             $arr_prices_f = array();
             $arr_freeseats_f = array();
-            $count_plan_f = 0;
+            $count_plan_db_f = PlanAspForeigner::count();
+            $count_plan_f = intval($count_plan_db);
 
             foreach ($json_data as $k => $element) {
                 if (!$element['Competition']['foreigner']) {

@@ -35,6 +35,7 @@
                         <div class="row w-100 m-auto pt-3 pb-3">
                             <div class="col-12">
                                 {{--                                                                <a href="{{ asset('storage/files-xls/' . $studyForms->file_xls . '.xls') }}">Скачать файл с данными запроса</a>--}}
+								@if($studyForms->file_xls != '')
                                 <ul class="files-list">
                                     <li>
                                         <div>
@@ -59,6 +60,7 @@
                                         </div>
                                     </li>
                                 </ul>
+								@endif
                                 <h5 class="m-0 text-center">{{ trans('statforeigner.files_title2') }}</h5>
                                 <ul class="files-list">
 
@@ -131,9 +133,7 @@
                                     </div>
                                     <div class="d-xl-block d-lg-none d-none col-12"><i
                                             class="fa fa-check-circle"
-                                            style="color: rgba(0,128,0,0.51)"></i>
-                                        <i class="fa fa-check-circle"
-                                           style="color: rgba(0,128,0,0.51)"></i>
+                                            style="color: rgba(225,0,0,0.51)"></i>
                                         {{ trans('statforeigner.legend_accept2') }}
                                     </div>
                                 </div>
@@ -147,9 +147,7 @@
                                                       {{ trans('statforeigner.legend_accept1_mini') }}</span>
                                         </li>
                                         <li><span><i class="fa fa-check-circle"
-                                                     style="color: rgba(0,128,0,0.51)"></i>
-                                                    <i class="fa fa-check-circle"
-                                                       style="color: rgba(0,128,0,0.51)"></i>
+                                                     style="color: rgba(225,0,0,0.51)"></i>
                                                     {{ trans('statforeigner.legend_accept2_mini') }}</span>
                                         </li>
                                     </ol>
@@ -563,11 +561,12 @@
                                                                                             {{--                                                                                        @endif--}}
                                                                                             {{--                                                                                    </td>--}}
                                                                                             <td>
-                                                                                                @if($abitur->accept)
-                                                                                                    <i class="fa fa-check-circle"
-                                                                                                       style="color: rgba(0,128,0,0.51)"></i>
-                                                                                                    @if($abitur->acceptCount>0)
+                                                                                                @if($abitur->acceptCount > 0)
+                                                                                                    @if($abitur->acceptCount > 1)
                                                                                                         <i class="fa fa-check-circle"
+                                                                                                           style="color: rgba(225,0,0,0.51)"></i>
+																									@else
+																										<i class="fa fa-check-circle"
                                                                                                            style="color: rgba(0,128,0,0.51)"></i>
                                                                                                     @endif
                                                                                                 @endif
