@@ -41,7 +41,7 @@ class EditStatStage extends Migration
             $table->string('stage')->nullable();
             $table->string('stage_title')->nullable();
         });
-		
+
     }
 
     /**
@@ -52,32 +52,32 @@ class EditStatStage extends Migration
     public function down()
     {
         Schema::table('statistics', function (Blueprint $table) {
-            $table->string('stage');
-			$table->string('stage_title');
+            $table->drop('stage');
+			$table->drop('stage_title');
         });
 		Schema::table('statistic_asps', function (Blueprint $table) {
-            $table->string('stage');
-			$table->string('stage_title');
+            $table->drop('stage');
+			$table->drop('stage_title');
         });
 		Schema::table('statistic_asp_foreigners', function (Blueprint $table) {
-            $table->string('stage');
-			$table->string('stage_title');
+            $table->drop('stage');
+			$table->drop('stage_title');
         });
 		Schema::table('statistic_foreigners', function (Blueprint $table) {
-            $table->string('stage');
-			$table->string('stage_title');
+            $table->drop('stage');
+			$table->drop('stage_title');
         });
 		Schema::table('statistic_masters', function (Blueprint $table) {
-            $table->string('stage');
-			$table->string('stage_title');
+            $table->drop('stage');
+			$table->drop('stage_title');
         });
 		Schema::table('statistic_master_foreigners', function (Blueprint $table) {
-            $table->string('stage');
-			$table->string('stage_title');
+            $table->drop('stage');
+			$table->drop('stage_title');
         });
 		Schema::table('statistic_spos', function (Blueprint $table) {
-            $table->string('stage');
-			$table->string('stage_title');
+            $table->drop('stage');
+			$table->drop('stage_title');
         });
     }
 }
