@@ -14,12 +14,17 @@ class PageController extends Controller
     {
         $infoblocks = Infoblock::where('activity', true)->where('startPage', true)->orderBy('startPagePriority', 'desc')->where('foreigner', '=', 0)->get();
         $infoblocks_int = Infoblock::where('activity', true)->where('startPage', true)->orderBy('startPagePriority', 'desc')->where('foreigner', '=', 1)->get();
-        $slider = Slider::where('activity', true)->orderBy('priority', 'desc')->get();
+        $slider = Slider::where('activity', true)->orderBy('priority', 'desc')->where('foreigner', false)->get();
+        $slider_i = Slider::where('activity', true)->where('image_ipad', '!=', null)->where('foreigner', false)->orderBy('priority', 'desc')->get();
+        $slider_m = Slider::where('activity', true)->where('image_mobile', '!=', null)->where('foreigner', false)->orderBy('priority', 'desc')->get();
+        $slider_f = Slider::where('activity', true)->orderBy('priority', 'desc')->where('foreigner', true)->get();
+        $slider_i_f = Slider::where('activity', true)->where('image_ipad', '!=', null)->where('foreigner', true)->orderBy('priority', 'desc')->get();
+        $slider_m_f = Slider::where('activity', true)->where('image_mobile', '!=', null)->where('foreigner', true)->orderBy('priority', 'desc')->get();
         $date_now = Carbon::today();
         $date_now = $date_now->toDateString();
 
 //        return view('pages.home', compact('infoblocks', 'slider'));
-        return view('pages.home', ['infoblocks' => $infoblocks, 'infoblocks_int' => $infoblocks_int, 'slider' => $slider, 'date_now' => $date_now]);
+        return view('pages.home', ['infoblocks' => $infoblocks, 'infoblocks_int' => $infoblocks_int, 'slider' => $slider, 'slider_i' => $slider_i, 'slider_m' => $slider_m, 'slider_f' => $slider_f, 'slider_i_f' => $slider_i_f, 'slider_m_f' => $slider_m_f, 'date_now' => $date_now]);
 
     }
 
@@ -62,11 +67,16 @@ class PageController extends Controller
 
                 $infoblocks = Infoblock::where('activity', true)->where('startPage', true)->orderBy('startPagePriority', 'desc')->where('foreigner', '=', 0)->get();
                 $infoblocks_int = Infoblock::where('activity', true)->where('startPage', true)->orderBy('startPagePriority', 'desc')->where('foreigner', '=', 1)->get();
-                $slider = Slider::where('activity', true)->orderBy('priority', 'desc')->get();
+                $slider = Slider::where('activity', true)->orderBy('priority', 'desc')->where('foreigner', false)->get();
+                $slider_i = Slider::where('activity', true)->where('image_ipad', '!=', null)->where('foreigner', false)->orderBy('priority', 'desc')->get();
+                $slider_m = Slider::where('activity', true)->where('image_mobile', '!=', null)->where('foreigner', false)->orderBy('priority', 'desc')->get();
+                $slider_f = Slider::where('activity', true)->orderBy('priority', 'desc')->where('foreigner', true)->get();
+                $slider_i_f = Slider::where('activity', true)->where('image_ipad', '!=', null)->where('foreigner', true)->orderBy('priority', 'desc')->get();
+                $slider_m_f = Slider::where('activity', true)->where('image_mobile', '!=', null)->where('foreigner', true)->orderBy('priority', 'desc')->get();
                 $date_now = Carbon::today();
                 $date_now = $date_now->toDateString();
 //                return view('pages.home', compact('infoblocks', 'slider'));
-                return view('pages.home', ['infoblocks' => $infoblocks, 'infoblocks_int' => $infoblocks_int, 'slider' => $slider, 'date_now' => $date_now]);
+                return view('pages.home', ['infoblocks' => $infoblocks, 'infoblocks_int' => $infoblocks_int, 'slider' => $slider, 'slider_i' => $slider_i, 'slider_m' => $slider_m, 'slider_f' => $slider_f, 'slider_i_f' => $slider_i_f, 'slider_m_f' => $slider_m_f, 'date_now' => $date_now]);
             } else {
                 abort(404);
             }

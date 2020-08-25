@@ -31,7 +31,10 @@ export default {
             formData.append('activityTo', payload.activityTo);
             formData.append('activity', payload.activity);
             formData.append('image', payload.image);
+            formData.append('image_mobile', payload.image_mobile);
+            formData.append('image_ipad', payload.image_ipad);
             formData.append('priority', payload.priority);
+            formData.append('foreigner', payload.foreigner);
             let {data} = await axios.post('/admin/slider', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
@@ -50,7 +53,10 @@ export default {
             formData.append('activityTo', payload.activityTo ? payload.activityTo : '');
             formData.append('activity', payload.activity);
             formData.append('image', payload.image);
+            formData.append('image_mobile', payload.image_mobile);
+            formData.append('image_ipad', payload.image_ipad);
             formData.append('priority', payload.priority);
+            formData.append('foreigner', payload.foreigner);
             let {data} = await axios.post('/admin/slider/' + payload.id, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'

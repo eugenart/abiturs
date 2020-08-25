@@ -225,8 +225,8 @@ trait ParserJsonTrait
                                 'foreigner' => $fac_stat['foreigner'],
                                 'yellowline' => isset($student['yelloyline']) ? true : false,
                                 'acceptCount' => $student['acceptСount'],
-								'stage' => $fac_stat['Stage'],
-								'stage_title' => $fac_stat['StageTitle'],
+								'stage' => isset($fac_stat['Stage']) ? $fac_stat['Stage'] : null,
+								'stage_title' => isset($fac_stat['StageTitle']) ? $fac_stat['StageTitle'] : null,
                             );
                             $studentsStat[] = $stat;
                         } else {
@@ -344,8 +344,8 @@ trait ParserJsonTrait
                                 'foreigner' => $fac_stat['foreigner'],
                                 'yellowline' => isset($student['yelloyline']) ? true : false,
                                 'acceptCount' => $student['acceptСount'],
-								'stage' => $fac_stat['Stage'],
-								'stage_title' => $fac_stat['StageTitle'],
+								'stage' => isset($fac_stat['Stage']) ? $fac_stat['Stage'] : null,
+								'stage_title' => isset($fac_stat['StageTitle']) ? $fac_stat['StageTitle'] : null,
                             );
                             $studentsStat_f[] = $stat_f;
                         } else {
@@ -580,8 +580,8 @@ trait ParserJsonTrait
                                 'foreigner' => $fac_stat['foreigner'],
                                 'yellowline' => isset($student['yelloyline']) ? true : false,
                                 'acceptCount' => $student['acceptСount'],
-								'stage' => $fac_stat['Stage'],
-								'stage_title' => $fac_stat['StageTitle'],
+								'stage' => isset($fac_stat['Stage']) ? $fac_stat['Stage'] : null,
+								'stage_title' => isset($fac_stat['StageTitle']) ? $fac_stat['StageTitle'] : null,
                             );
                             $studentsStat[] = $stat;
                         } else {
@@ -700,8 +700,8 @@ trait ParserJsonTrait
                                 'foreigner' => $fac_stat['foreigner'],
                                 'yellowline' => isset($student['yelloyline']) ? true : false,
                                 'acceptCount' => $student['acceptСount'],
-								'stage' => $fac_stat['Stage'],
-								'stage_title' => $fac_stat['StageTitle'],
+								'stage' => isset($fac_stat['Stage']) ? $fac_stat['Stage'] : null,
+								'stage_title' => isset($fac_stat['StageTitle']) ? $fac_stat['StageTitle'] : null,
                             );
                             $studentsStat_f[] = $stat_f;
                         } else {
@@ -939,8 +939,8 @@ trait ParserJsonTrait
                                 'foreigner' => $fac_stat['foreigner'],
                                 'yellowline' => isset($student['yelloyline']) ? true : false,
                                 'acceptCount' => $student['acceptСount'],
-								'stage' => $fac_stat['Stage'],
-								'stage_title' => $fac_stat['StageTitle'],
+								'stage' => isset($fac_stat['Stage']) ? $fac_stat['Stage'] : null,
+								'stage_title' => isset($fac_stat['StageTitle']) ? $fac_stat['StageTitle'] : null,
                             );
                             $studentsStat[] = $stat;
                         } else {
@@ -1059,8 +1059,8 @@ trait ParserJsonTrait
                                 'foreigner' => $fac_stat['foreigner'],
                                 'yellowline' => isset($student['yelloyline']) ? true : false,
                                 'acceptCount' => $student['acceptСount'],
-								'stage' => $fac_stat['Stage'],
-								'stage_title' => $fac_stat['StageTitle'],
+								'stage' => isset($fac_stat['Stage']) ? $fac_stat['Stage'] : null,
+								'stage_title' => isset($fac_stat['StageTitle']) ? $fac_stat['StageTitle'] : null,
                             );
                             $studentsStat_f[] = $stat_f;
                         } else {
@@ -1289,8 +1289,8 @@ trait ParserJsonTrait
                                 'foreigner' => $fac_stat['foreigner'],
                                 'yellowline' => isset($student['yelloyline']) ? true : false,
                                 'acceptCount' => $student['acceptСount'],
-								'stage' => $fac_stat['Stage'],
-								'stage_title' => $fac_stat['StageTitle'],
+								'stage' => isset($fac_stat['Stage']) ? $fac_stat['Stage'] : null,
+								'stage_title' => isset($fac_stat['StageTitle']) ? $fac_stat['StageTitle'] : null,
                             );
                             $studentsStat[] = $stat;
                         } else {
