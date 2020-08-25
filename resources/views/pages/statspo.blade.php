@@ -45,14 +45,14 @@
                                             @endif
                                         </div>
                                         <div class="file-link-div ">
-											
+
                                             <a href="{{ asset('storage/files-xls/' . $studyForms->file_xls . '.xls') }}"
                                                target="_blank">
                                                 Файл с данными запроса
                                             </a>
                                             <br>
                                             <span>{{round(stat($_SERVER['DOCUMENT_ROOT'] . '/storage/files-xls/' . $studyForms->file_xls . '.xls')[7] / 1024 /1024, 2)}} MB</span>
-											
+
 										</div>
                                     </li>
                                 </ul>
@@ -427,41 +427,36 @@
                                                                                     {{--                                                                                    class="d-xl-none d-lg-inline d-inline">O</span>--}}
                                                                                     {{--                                                                            </th>--}}
                                                                                     <th rowspan="2" class="text-center">
-                                                                                <span
-                                                                                    class="d-xl-inline d-lg-none d-none">Согласие</span>
-                                                                                        <span
-                                                                                            class="d-xl-none d-lg-inline d-inline">С</span>
+                                                                                        <span class="d-xl-inline d-lg-none d-none">Согласие</span>
+                                                                                        <span class="d-xl-none d-lg-inline d-inline">С</span>
                                                                                     </th>
-                                                                                    <th class="d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none"
+                                                                                    <th class="d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell"
                                                                                         colspan="{{count($admissionBasis->abiturs->first()->score) + 1}}">
+
                                                                                         @foreach($admissionBasis->abiturs->first()->score as $i => $sc)
                                                                                             @if($i < count($admissionBasis->abiturs->first()->score) -1)
-                                                                                                <p class="m-0"> {{$sc->priority}}
-                                                                                                    ) {{$sc->subject->name}}</p>
+                                                                                                <p class="m-0"> {{$sc->priority}}){{$sc->subject->name}}</p>
                                                                                             @else
-                                                                                                <p class="m-0"> {{$sc->priority}}
-                                                                                                    ) {{$sc->subject->name}}</p>
-                                                                                                <p class="m-0 d-xl-inline d-lg-none d-none">{{$i + 2}}
-                                                                                                    ) Балл
+                                                                                                <p class="m-0"> {{$sc->priority}}){{$sc->subject->name}}</p>
+                                                                                                <p class="m-0 d-xl-inline d-lg-none d-none">{{$i + 2}})Балл
                                                                                                     за
                                                                                                     индивидуальные
                                                                                                     достижения</p>
-                                                                                                <p class="m-0 d-xl-none d-lg-inline d-inline">{{$i + 2}}
-                                                                                                    ) БИД</p>
+                                                                                                <p class="m-0 d-xl-none d-lg-inline d-inline">{{$i + 2}})БИД</p>
                                                                                             @endif
                                                                                         @endforeach
                                                                                     </th>
-                                                                                    <th class="text-center d-xl-table-cell d-lg-none d-none"
-                                                                                        rowspan="2">Сумма
-                                                                                        баллов
-                                                                                    </th>
-                                                                                    <th class="text-center" rowspan="2">
-                                                                                <span
-                                                                                    class="d-xl-inline d-lg-none d-none">Сумма<br/>
-                                                                                конкурсных<br/> баллов</span>
-                                                                                        <span
-                                                                                            class="d-xl-none d-lg-inline d-inline">СКБ</span>
-                                                                                    </th>
+{{--                                                                                    <th class="text-center d-xl-table-cell d-lg-none d-none"--}}
+{{--                                                                                        rowspan="2">Сумма--}}
+{{--                                                                                        баллов--}}
+{{--                                                                                    </th>--}}
+{{--                                                                                    <th class="text-center" rowspan="2">--}}
+{{--                                                                                <span--}}
+{{--                                                                                    class="d-xl-inline d-lg-none d-none">Сумма<br/>--}}
+{{--                                                                                конкурсных<br/> баллов</span>--}}
+{{--                                                                                        <span--}}
+{{--                                                                                            class="d-xl-none d-lg-inline d-inline">СКБ</span>--}}
+{{--                                                                                    </th>--}}
                                                                                     {{--                                                                                    <th class="text-center d-xl-table-cell d-lg-none d-none"--}}
                                                                                     {{--                                                                                        rowspan="2">Тип--}}
                                                                                     {{--                                                                                        экзамена--}}
@@ -476,11 +471,11 @@
                                                                                         общежитии
                                                                                     </th>
                                                                                     <th class="text-center d-xl-table-cell d-lg-none d-none"
-                                                                                        rowspan="2">
+                                                                                        rowspan="2" >
                                                                                         Примечание
                                                                                     </th>
                                                                                 </tr>
-                                                                                <tr class="text-center d-lg-table-row d-xl-table-row d-md-table-row d-sm-table-row d-none">
+                                                                                <tr class="text-center d-lg-table-row d-xl-table-row d-md-table-row d-sm-table-row">
                                                                                     @foreach($admissionBasis->abiturs->first()->score as $i => $sc)
                                                                                         @if($i < count($admissionBasis->abiturs->first()->score) -1)
                                                                                             <th>{{$sc->priority}}</th>
@@ -519,11 +514,11 @@
                                                                                                 @endif
                                                                                             </td>
                                                                                             @foreach($abitur->score as $ab_sc)
-                                                                                                <td class="d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none">{{$ab_sc->score}}</td>
+                                                                                                <td class="d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell">{{$ab_sc->score}}</td>
                                                                                             @endforeach
-                                                                                            <td class="d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none">{{$abitur->indAchievement}}</td>
-                                                                                            <td class="d-xl-table-cell d-lg-none d-none">{{$abitur->summ}}</td>
-                                                                                            <td>{{$abitur->summContest}}</td>
+                                                                                            <td class="d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell ">{{$abitur->indAchievement}}</td>
+{{--                                                                                            <td class="d-xl-table-cell d-lg-none d-none">{{$abitur->summ}}</td>--}}
+{{--                                                                                            <td>{{$abitur->summContest}}</td>--}}
                                                                                             {{--                                                                                            <td class="d-xl-table-cell d-lg-none d-none">--}}
                                                                                             {{--                                                                                                Конкурс аттестатов--}}
                                                                                             {{--                                                                                            </td>--}}
