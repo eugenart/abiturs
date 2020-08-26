@@ -62,6 +62,8 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
     Route::middleware('role:admin')->group(function () {
         Route::get('/parse', 'ParserController@index')->name('parse.index');
+        Route::get('/times', 'DateUpdateController@index')->name('times.index');
+        Route::post('/times/{id}', 'DateUpdateController@update')->name('times.update');
     });
 
         //специальности специализации

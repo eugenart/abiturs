@@ -125,6 +125,15 @@
                         </li>
                         @endrole
 
+                        @role('admin')
+                        <li class="nav-item">
+                            <a class="nav-link {{ Request::is('admin/times') ? 'active' : null }}" href="{{route('times.index')}}">
+                                <span data-feather="users"></span>
+                                Время выгрузки
+                            </a>
+                        </li>
+                        @endrole
+
                         <li class="nav-item">
                             <a class="nav-link {{ Request::is('admin/slider*') ? 'active' : null }}" href="{{route('slider.index')}}">
                                 <span data-feather="users"></span>

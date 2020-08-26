@@ -25,7 +25,8 @@ class DownloadFileController extends Controller
             if(Carbon::now() > $max){
                 $date_update->date_update = $max;
             }else{
-                $date_update->date_update = Carbon::now();
+                $t = Carbon::now();
+                $date_update->date_update = Carbon::create($t->year, $t->month, $t->day, $t->hour, $t->minute, 00);
             }
             $date_update->save();
         }else{
@@ -36,7 +37,8 @@ class DownloadFileController extends Controller
             if(Carbon::now() > $max){
                 $date_update->date_update = $max;
             }else{
-                $date_update->date_update = Carbon::now();
+                $t = Carbon::now();
+                $date_update->date_update = Carbon::create($t->year, $t->month, $t->day, $t->hour, $t->minute, 00);
             }
             $date_update->save();
         }
