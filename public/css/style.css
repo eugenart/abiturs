@@ -529,7 +529,7 @@ marquee {
 .files-list li {
     border-bottom: 1px solid lightgray;
     min-width: 300px;
-    width: fit-content;
+    width: 100%;
     margin: 10px;
     margin-left: 0;
     padding: 10px;

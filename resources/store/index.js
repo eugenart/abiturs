@@ -4,6 +4,7 @@ import Vuex from 'vuex'
 import block from './block'
 import section from './section'
 import slider from './slider'
+import time from './time'
 
 Vue.use(Vuex)
 
@@ -12,5 +13,6 @@ export default new Vuex.Store({
         block,
         section,
         slider,
+        time
     }
 })
