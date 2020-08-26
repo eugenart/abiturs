@@ -7,6 +7,13 @@
                         <div class="card">
                             <div class="card-header  font-weight-bold">Время выгрузки</div>
                             <div class="card-body">
+                                <div class="card border-success" style="width:fit-content;">
+                                    <div class="card-body">
+                                        <b>Обратите внимание!</b> <br/>
+                                        При выгрузке нового файла списков время будет изменено на текущее время выгрузки.<br/>
+                                        Вы можете изменить время на нужное после окончания выгрузки.
+                                    </div>
+                                </div>
                                 <div v-for="(time, index) in times" :key="time.id">
                                     <form @submit.prevent="updateTime(time)"
                                           class="col-12 p-0"
