@@ -34,8 +34,7 @@
                     <div class="modal-header pb-0 pt-0 modal-header-ovz">
                         <div class="row w-100 m-auto pt-3 pb-3">
                             <div class="col-12">
-                                {{--                                                                <a href="{{ asset('storage/files-xls/' . $studyForms->file_xls . '.xls') }}">Скачать файл с данными запроса</a>--}}
-								@if($studyForms->file_xls != '')
+
                                 <ul class="files-list">
                                     <li>
                                         <div>
@@ -50,17 +49,24 @@
                                             @endif
                                         </div>
                                         <div class="file-link-div ">
-
-                                            <a href="{{ asset('storage/files-xls/' . $studyForms->file_xls . '.xls') }}"
-                                               target="_blank">
-                                                {{ trans('statforeigner.files_query') }}
-                                            </a>
-                                            <br>
-                                            <span>{{round(stat($_SERVER['DOCUMENT_ROOT'] . '/storage/files-xls/' . $studyForms->file_xls . '.xls')[7] / 1024 /1024, 2)}} MB</span>
+                                            @php
+                                                $pointer = &$studyForms;
+                                            @endphp
+                                            <form method="post" action="" id="fileform">
+                                                @csrf
+                                                <div class="p-3 row">
+                                                    <button class="btn btn-link m-0 p-0 col" style="color: #1b4b72;"
+                                                            type="submit" id="btn-submit">Сгенерировать и скачать файл с
+                                                        данными запроса
+                                                    </button>
+                                                    <div class="col text-center d-flex">
+                                                        <div id="loading" class="lds-ring" style="display:none"><div></div><div></div><div></div><div></div></div>
+                                                    </div>
+                                                </div>
+                                            </form>
                                         </div>
                                     </li>
                                 </ul>
-								@endif
                                 <h5 class="m-0 text-center">{{ trans('statforeigner.files_title2') }}</h5>
                                 <ul class="files-list">
 
@@ -629,7 +635,55 @@
 @endsection
 
 @section('js')
+    <script>
+        $(document).ready(function () {
+            $('#fileform').submit(function (e) {
+                // let serializedData = $('#contactform').serialize();
+                e.preventDefault();
+                let mydata = '<?php if (isset($studyForms)) {
+                    echo $studyForms;
+                } ?>';
+                $('#loading').show();
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    url: "/statistic/getfile", // куда отправляем
+                    type: "post", // метод передачи
+                    dataType: "json", // тип передачи данных
+                    contentType: 'application/json',
+                    processData: false,
+                    data: JSON.stringify(mydata),
 
+                    // // после получения ответа сервера
+                    success: function (data) {
+                        console.log(data)
+                        window.location.replace('/storage/files-xls/' + data + '.xls');
+                        $('#loading').hide();
+                    },
+                    error: function (jqXHR, exception) {
+                        console.log('fail');
+                        if (jqXHR.status === 0) {
+                            msg = 'Not connect.\n Verify Network.';
+                        } else if (jqXHR.status == 404) {
+                            msg = 'Requested page not found. [404]';
+                        } else if (jqXHR.status == 500) {
+                            msg = 'Internal Server Error [500].';
+                        } else if (exception === 'parsererror') {
+                            msg = 'Requested JSON parse failed.';
+                        } else if (exception === 'timeout') {
+                            msg = 'Time out error.';
+                        } else if (exception === 'abort') {
+                            msg = 'Ajax request aborted.';
+                        } else {
+                            msg = 'Uncaught Error.\n' + jqXHR.responseText;
+                        }
+                        console.log(msg);
+                    }
+                });
+            });
+        });
+    </script>
     <script>
         $(window).scroll(() => {
             if ($(window).scrollTop()) {

@@ -302,7 +302,19 @@ class StatisticSpoController extends Controller
                                         }
                                         if ($temp->count()) {
                                             $admissionBasis->abiturs = $temp; //добавляем запись
+                                            $temp_stage = $temp->first();
 
+                                            $stage = $temp_stage->stage;
+                                            if($stage[0] == '(') {
+                                                $stage = substr($stage, 1, -1);
+                                            }
+                                            $admissionBasis->stage = $stage;
+
+                                            $stage_title = $temp_stage->stage_title;
+                                            if($stage_title[0] == '(') {
+                                                $stage_title = substr($stage_title, 1, -1);
+                                            }
+                                            $admissionBasis->stage_title = $stage_title;
                                             $originalsCount = 0;
                                             foreach ($temp as $student) {
                                                 if ($student->original == true) {
@@ -541,6 +553,19 @@ class StatisticSpoController extends Controller
                                         //обозначаем выбранного студента цветом
                                         if ($temp->count() && !$temp2->isEmpty()) {
                                             $admissionBasis->abiturs = $temp; //записываем статистику в специальность
+                                            $temp_stage = $temp->first();
+
+                                            $stage = $temp_stage->stage;
+                                            if($stage[0] == '(') {
+                                                $stage = substr($stage, 1, -1);
+                                            }
+                                            $admissionBasis->stage = $stage;
+
+                                            $stage_title = $temp_stage->stage_title;
+                                            if($stage_title[0] == '(') {
+                                                $stage_title = substr($stage_title, 1, -1);
+                                            }
+                                            $admissionBasis->stage_title = $stage_title;
                                             $chosenStudents = collect(new StudentSpo);
                                             foreach ($id_stud_arr as $id) {
                                                 $serialNumSpec = 0;

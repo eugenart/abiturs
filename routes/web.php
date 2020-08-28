@@ -108,6 +108,8 @@ Route::get('/statistic/spo', 'StatisticSpoController@index')->name('statspo.inde
 Route::get('/statistic/total', 'TotalStatController@index')->name('total.index');
 Route::get('/orders', 'OrderController@index')->name('order.index');
 
+Route::post('/statistic/getfile', 'StatisticController@createFileXls')->name('statasp.file');
+
 Route::get('/statistic-foreigner/bachelor', 'StatisticForeignerController@index')->name('statforeigner.index');
 Route::get('/statistic-foreigner/asp', 'StatisticAspForeignerController@index')->name('stataspforeigner.index');
 Route::get('/statistic-foreigner/master', 'StatisticMasterForeignerController@index')->name('statmasterforeigner.index');

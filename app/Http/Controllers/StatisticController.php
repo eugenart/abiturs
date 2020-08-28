@@ -669,12 +669,19 @@ class StatisticController extends Controller
             ->groupBy('study_forms.id')->select('study_forms.*')->get();;
         $faculties = $this->fetchFaculties();
 
-
-        //$file_name = $this->createXls($studyForms);
-		$file_name ='';
-        $studyForms->file_xls = $file_name;
         return $studyForms;
 
+
+    }
+
+    public function createFileXls(Request $request)
+    {
+        $studyForms = $request->all();
+        $studyForms = $studyForms[0];
+        $studyForms = (array)json_decode($studyForms);
+        $collection = StudyForm::hydrate($studyForms);
+        $file_name = $this->createXlsDynamic($collection);
+        return json_encode($file_name);
 
     }
 
