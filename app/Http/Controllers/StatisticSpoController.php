@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\AdmissionBasis;
 use App\Category;
+use App\CompetitionSpo;
 use App\DateUpdate;
 use App\Faculty;
 use App\Freeseats_basesAsp;
 use App\Freeseats_basesSpo;
 use App\PlanAsp;
+use App\PlanCompetition;
 use App\PlanCompetitionAsp;
 use App\PlanCompetitionSpo;
 use App\PlanSpo;
@@ -144,7 +146,7 @@ class StatisticSpoController extends Controller
         //если запросили по факультетам или спец
         if (!empty($search_faculties)) {
             $info_faculties = StatisticSpo::whereIn('id_faculty', $search_faculties)
-                ->select('id_studyForm', 'id_category', 'id_admissionBasis', 'id_preparationLevel', 'id_speciality')
+                ->select('id_studyForm', 'id_category', 'id_admissionBasis', 'id_preparationLevel', 'id_speciality', 'id_competition')
                 ->distinct()
                 ->get();
 
@@ -153,24 +155,38 @@ class StatisticSpoController extends Controller
             $id_adm_arr = array();
             $id_prep_arr = array();
             $id_spec_arr = array();
+            $id_comp_arr = array();
             foreach ($info_faculties as $stat) {
                 $id_forms_arr[] = $stat->id_studyForm;
                 $id_cat_arr[] = $stat->id_category;
                 $id_adm_arr[] = $stat->id_admissionBasis;
                 $id_prep_arr[] = $stat->id_preparationLevel;
                 $id_spec_arr[] = $stat->id_speciality;
+                $id_comp_arr[] = $stat->id_competition;
             }
             $id_forms_arr = array_unique($id_forms_arr, SORT_REGULAR);
             $id_cat_arr = array_unique($id_cat_arr, SORT_REGULAR);
             $id_adm_arr = array_unique($id_adm_arr, SORT_REGULAR);
             $id_prep_arr = array_unique($id_prep_arr, SORT_REGULAR);
+            $id_comp_arr = array_unique($id_comp_arr, SORT_REGULAR);
 
             if (!empty($search_specialities_arr)) {
                 $id_spec_arr = array_intersect($id_spec_arr, $search_specialities_arr);
             }
             $id_spec_arr = array_unique($id_spec_arr, SORT_REGULAR);
             //var_dump($id_spec_arr);
+            $sdf = StatisticSpo::whereIn('id_competition', $id_comp_arr)
+                ->whereIn('id_speciality', $id_spec_arr)
+                ->whereIn('id_category', $id_cat_arr)
+                ->whereIn('id_admissionBasis', $id_adm_arr)
+                ->whereIn('id_preparationLevel', $id_prep_arr)
+                ->select('id_competition')->get();
 
+            $id_comp_arr = array();
+            foreach ($sdf as $stat) {
+                $id_comp_arr[] = $stat->id_competition;
+            }
+            $id_comp_arr = array_unique($id_comp_arr, SORT_REGULAR);
             if (!empty($search_studyForms)) {
                 $studyForms = StudyForm::whereIn('id', $search_studyForms)
                     ->whereIn('id', $id_forms_arr)
@@ -237,6 +253,9 @@ class StatisticSpoController extends Controller
                                 }
 
                                 foreach ($specializations as $kend => $specialization) {
+                                    $competitions = CompetitionSpo::whereIn('id', $id_comp_arr)->get();
+//
+                                    foreach ($competitions as $k6 => $competition) {
                                     $admissionBases = AdmissionBasis::whereIn('id', $id_adm_arr)->get();
                                     //самая костыльная сортировка на свете
                                     $newadm = collect(new AdmissionBasis);
@@ -284,17 +303,20 @@ class StatisticSpoController extends Controller
                                             ->where('id_admissionBasis', '=', $admissionBasis->id)
                                             ->where('id_category', '=', $category->id)
                                             ->where('id_faculty', '=', $faculty->id)
+                                            ->where('id_competition', '=', $competition->id)
                                             ->get();
 
+                                        $id_plan_c = PlanCompetitionSpo::where('id_competition', '=', $competition->id)->first();
                                         $idPlan = PlanSpo::where('id_speciality', '=', $speciality->id)
                                             ->where('id_studyForm', '=', $studyForm->id)
                                             ->where('id_specialization', '=', $spez_id)
                                             ->where('id_faculty', '=', $faculty->id)
+                                            ->where('id', $id_plan_c->id_plan)
                                             ->first();
 
                                         if (!empty($idPlan)) {
 //                                        $freeSeatsNumber = PlanCompetition::where('id_plan', '=', intval($idPlan->id))->first();
-                                            $id_plan_comps = PlanCompetitionSpo::where('id_plan', '=', intval($idPlan->id))->first();
+                                            $id_plan_comps = PlanCompetitionSpo::where('id_competition', '=', intval($competition->id))->first();
                                             if (!empty($id_plan_comps)) {
                                                 $freeSeatsNumber = Freeseats_basesSpo::where('id_plan_comp', '=', intval($id_plan_comps->id))->
                                                 where('id_admissionBasis', '=', intval($admissionBasis->id))->first();
@@ -337,8 +359,13 @@ class StatisticSpoController extends Controller
                                             unset($admissionBases[$k3]);
                                         }
                                     }
-                                    $admissionBases->count() ? $specialization->admissionBases = $admissionBases : null;
-                                    if (empty($specialization->admissionBases)) {
+                                        $admissionBases->count() ? $competition->admissionBases = $admissionBases : null;
+                                        if (empty($competition->admissionBases)) {
+                                            unset($competitions[$k6]);
+                                        }
+                                    }
+                                    $competitions->count() ? $specialization->competitions = $competitions : null; //В любом случае не пустые
+                                    if (empty($specialization->competitions)) {
                                         unset($specializations[$kend]);
                                     }
                                 }
@@ -407,6 +434,7 @@ class StatisticSpoController extends Controller
             $id_prep_arr = array();
             $id_fac_arr = array();
             $id_spec_arr = array();
+            $id_comp_arr = array();
             foreach ($statistic_for_people as $stat) {
                 $id_forms_arr[] = $stat->id_studyForm;
                 $id_cat_arr[] = $stat->id_category;
@@ -414,6 +442,7 @@ class StatisticSpoController extends Controller
                 $id_prep_arr[] = $stat->id_preparationLevel;
                 $id_fac_arr[] = $stat->id_faculty;
                 $id_spec_arr[] = $stat->id_speciality;
+                $id_comp_arr[] = $stat->id_competition;
             }
             $id_forms_arr = array_unique($id_forms_arr, SORT_REGULAR);
             $id_cat_arr = array_unique($id_cat_arr, SORT_REGULAR);
@@ -421,9 +450,21 @@ class StatisticSpoController extends Controller
             $id_prep_arr = array_unique($id_prep_arr, SORT_REGULAR);
             $id_fac_arr = array_unique($id_fac_arr, SORT_REGULAR);
             $id_spec_arr = array_unique($id_spec_arr, SORT_REGULAR);
+            $id_comp_arr = array_unique($id_comp_arr, SORT_REGULAR);
 
             // echo("<pre>" . $id_spec_arr . "</pre>");
+            $sdf = StatisticSpo::whereIn('id_competition', $id_comp_arr)
+                ->whereIn('id_speciality', $id_spec_arr)
+                ->whereIn('id_category', $id_cat_arr)
+                ->whereIn('id_admissionBasis', $id_adm_arr)
+                ->whereIn('id_preparationLevel', $id_prep_arr)
+                ->select('id_competition')->get();
 
+            $id_comp_arr = array();
+            foreach ($sdf as $stat) {
+                $id_comp_arr[] = $stat->id_competition;
+            }
+            $id_comp_arr = array_unique($id_comp_arr, SORT_REGULAR);
             //проходим по каждой категории и ищем нужные нам записи статистики чтобы привести их в правильную структуру для вывода
             $studyForms = StudyForm::whereIn('id', $id_forms_arr)->get();
             foreach ($studyForms as $k5 => $studyForm) {
@@ -480,7 +521,9 @@ class StatisticSpoController extends Controller
                                 }
 
                                 foreach ($specializations as $kend => $specialization) {
-
+                                    $competitions = CompetitionSpo::whereIn('id', $id_comp_arr)->get();
+//
+                                    foreach ($competitions as $k6 => $competition) {
                                     $admissionBases = AdmissionBasis::whereIn('id', $id_adm_arr)->get();
                                     //самая костыльная сортировка на свете
                                     $newadm = collect(new AdmissionBasis);
@@ -528,20 +571,24 @@ class StatisticSpoController extends Controller
                                             ->where('id_faculty', '=', $faculty->id)
                                             ->where('id_speciality', '=', $speciality->id)
                                             ->where('id_specialization', '=', $spez_id)
+                                            ->where('id_competition', '=', $competition->id)
                                             ->get();
                                         $temp2 = $temp->intersect($statistic_for_people);
 //                                    if(!$temp2->isEmpty()) {
 //
 //                                    }
+                                        $id_plan_c = PlanCompetitionSpo::where('id_competition', '=', $competition->id)->first();
+
                                         //нужно проверить содержит ли полученная коллекция нужных студентов
                                         //выбираем свободные места на этой специальности
                                         $idPlan = PlanSpo::where('id_speciality', '=', $speciality->id)
                                             ->where('id_studyForm', '=', $studyForm->id)
                                             ->where('id_specialization', '=', $spez_id)
                                             ->where('id_faculty', '=', $faculty->id)
+                                            ->where('id', $id_plan_c->id_plan)
                                             ->first();
                                         if (!empty($idPlan)) {
-                                            $id_plan_comps = PlanCompetitionSpo::where('id_plan', '=', intval($idPlan->id))->first();
+                                            $id_plan_comps = PlanCompetitionSpo::where('id_competition', '=', intval($competition->id))->first();
                                             if (!empty($id_plan_comps)) {
                                                 $freeSeatsNumber = Freeseats_basesSpo::where('id_plan_comp', '=', intval($id_plan_comps->id))->
                                                 where('id_admissionBasis', '=', intval($admissionBasis->id))->first();
@@ -608,8 +655,13 @@ class StatisticSpoController extends Controller
                                             unset($admissionBases[$k3]);
                                         }
                                     }
-                                    $admissionBases->count() ? $specialization->admissionBases = $admissionBases : null;
-                                    if (empty($specialization->admissionBases)) {
+                                        $admissionBases->count() ? $competition->admissionBases = $admissionBases : null;
+                                        if (empty($competition->admissionBases)) {
+                                            unset($competitions[$k6]);
+                                        }
+                                    }
+                                    $competitions->count() ? $specialization->competitions = $competitions : null; //В любом случае не пустые
+                                    if (empty($specialization->competitions)) {
                                         unset($specializations[$kend]);
                                     }
                                 }

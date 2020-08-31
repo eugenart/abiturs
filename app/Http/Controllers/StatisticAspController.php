@@ -4,15 +4,18 @@ namespace App\Http\Controllers;
 
 use App\AdmissionBasis;
 use App\Category;
+use App\Competition;
 use App\CompetitionAsp;
 use App\DateUpdate;
 use App\Faculty;
 use App\Freeseats_basesAsp;
 use App\PlanAsp;
+use App\PlanCompetition;
 use App\PlanCompetitionAsp;
 use App\PreparationLevel;
 use App\Speciality;
 use App\Specialization;
+use App\Statistic;
 use App\StatisticAsp;
 use App\StudentAsp;
 use App\StudyForm;
@@ -210,12 +213,25 @@ class StatisticAspController extends Controller
             $id_prep_arr = array_unique($id_prep_arr, SORT_REGULAR);
             $id_comp_arr = array_unique($id_comp_arr, SORT_REGULAR);
 
+
             if (!empty($search_specialities_arr)) {
                 $id_spec_arr = array_intersect($id_spec_arr, $search_specialities_arr);
             }
             $id_spec_arr = array_unique($id_spec_arr, SORT_REGULAR);
-            //var_dump($id_spec_arr);
 
+            $sdf = StatisticAsp::whereIn('id_competition', $id_comp_arr)
+                ->whereIn('id_speciality', $id_spec_arr)
+                ->whereIn('id_category', $id_cat_arr)
+                ->whereIn('id_admissionBasis', $id_adm_arr)
+                ->whereIn('id_preparationLevel', $id_prep_arr)
+                ->select('id_competition')->get();
+
+            $id_comp_arr = array();
+            foreach ($sdf as $stat) {
+                $id_comp_arr[] = $stat->id_competition;
+            }
+            $id_comp_arr = array_unique($id_comp_arr, SORT_REGULAR);
+//            return $id_comp_arr;
             if (!empty($search_studyForms)) {
                 $studyForms = StudyForm::whereIn('id', $search_studyForms)
                     ->whereIn('id', $id_forms_arr)
@@ -225,189 +241,198 @@ class StatisticAspController extends Controller
                 $studyForms = StudyForm::whereIn('id', $id_forms_arr)->get();
             }
 
+
             foreach ($studyForms as $k5 => $studyForm) {
-//                $competitions = CompetitionAsp::where('id', $id_comp_arr)->get();
-//                foreach ($competitions as $k6 => $competition) {
-                    $categories = Category::whereIn('id', $id_cat_arr)->get();
-                    foreach ($categories as $k4 => $category) {
+                $categories = Category::whereIn('id', $id_cat_arr)->get();
+                foreach ($categories as $k4 => $category) {
 
-                        $preparationLevels = PreparationLevel::whereIn('id', $id_prep_arr)->get();
-                        foreach ($preparationLevels as $k2 => $preparationLevel) {
-                            //находим нужные нам факультеты их имена
-                            $faculties = Faculty::whereIn('id', $search_faculties)->get();
+                    $preparationLevels = PreparationLevel::whereIn('id', $id_prep_arr)->get();
+                    foreach ($preparationLevels as $k2 => $preparationLevel) {
+                        //находим нужные нам факультеты их имена
+                        $faculties = Faculty::whereIn('id', $search_faculties)->get();
 
-                            foreach ($faculties as $k1 => $faculty) {
-                                //для выбора названий специальностей
-                                $specialities = Speciality::whereIn('id', $id_spec_arr)->get();
+                        foreach ($faculties as $k1 => $faculty) {
+                            //для выбора названий специальностей
+                            $specialities = Speciality::whereIn('id', $id_spec_arr)->get();
 
-                                foreach ($specialities as $k0 => $speciality) {
+                            foreach ($specialities as $k0 => $speciality) {
 
-                                    $specializations = Specialization::where('id_speciality', '=', $speciality->id)->get();
+                                $specializations = Specialization::where('id_speciality', '=', $speciality->id)->get();
 
-                                    if ($specializations->count() == 0) {
-                                        $specializations = collect(new Specialization);
-                                        //добавить в коллеекцию элемент
+                                if ($specializations->count() == 0) {
+                                    $specializations = collect(new Specialization);
+                                    //добавить в коллеекцию элемент
 
-                                        $element = Specialization::where('id', '=', 1)->first();
-                                        $element->id = 0;
-                                        $element->specializationId = '0';
-                                        $element->id_speciality = '0';
-                                        $element->name = '';
+                                    $element = Specialization::where('id', '=', 1)->first();
+                                    $element->id = 0;
+                                    $element->specializationId = '0';
+                                    $element->id_speciality = '0';
+                                    $element->name = '';
 
-                                        $specializations->push($element);
+                                    $specializations->push($element);
 //                                        return $specializations;
-                                    } else {
+                                } else {
 
-                                        $element = Specialization::where('id', '=', 1)->first();
-                                        $element->id = 0;
-                                        $element->specializationId = '0';
-                                        $element->id_speciality = '0';
-                                        $element->name = '';
+                                    $element = Specialization::where('id', '=', 1)->first();
+                                    $element->id = 0;
+                                    $element->specializationId = '0';
+                                    $element->id_speciality = '0';
+                                    $element->name = '';
 
-                                        $specializations->push($element);
+                                    $specializations->push($element);
 //                                        return $specializations;
+                                }
+
+                                foreach ($specializations as $kend => $specialization) {
+                                    $competitions = CompetitionAsp::whereIn('id', $id_comp_arr)->get();
+//
+                                    foreach ($competitions as $k6 => $competition) {
+                                    $admissionBases = AdmissionBasis::whereIn('id', $id_adm_arr)->get();
+                                    //самая костыльная сортировка на свете
+                                    $newadm = collect(new AdmissionBasis);
+                                    foreach ($admissionBases as $k3 => $admissionBasis) {
+                                        if ($admissionBasis->name == "Особое право") {
+                                            $element0 = AdmissionBasis::where('name', '=', "Особое право")->first();
+                                        }
+                                        if ($admissionBasis->name == "Целевой прием") {
+                                            $element1 = AdmissionBasis::where('name', '=', "Целевой прием")->first();
+                                        }
+                                        if ($admissionBasis->name == "Бюджетная основа") {
+                                            $element2 = AdmissionBasis::where('name', '=', "Бюджетная основа")->first();
+                                        }
+                                        if ($admissionBasis->name == "Полное возмещение затрат") {
+                                            $element3 = AdmissionBasis::where('name', '=', "Полное возмещение затрат")->first();
+                                        }
                                     }
 
-                                    foreach ($specializations as $kend => $specialization) {
-                                        $admissionBases = AdmissionBasis::whereIn('id', $id_adm_arr)->get();
-                                        //самая костыльная сортировка на свете
-                                        $newadm = collect(new AdmissionBasis);
-                                        foreach ($admissionBases as $k3 => $admissionBasis) {
-                                            if ($admissionBasis->name == "Особое право") {
-                                                $element0 = AdmissionBasis::where('name', '=', "Особое право")->first();
-                                            }
-                                            if ($admissionBasis->name == "Целевой прием") {
-                                                $element1 = AdmissionBasis::where('name', '=', "Целевой прием")->first();
-                                            }
-                                            if ($admissionBasis->name == "Бюджетная основа") {
-                                                $element2 = AdmissionBasis::where('name', '=', "Бюджетная основа")->first();
-                                            }
-                                            if ($admissionBasis->name == "Полное возмещение затрат") {
-                                                $element3 = AdmissionBasis::where('name', '=', "Полное возмещение затрат")->first();
-                                            }
+                                    if (isset($element0)) {
+                                        $newadm->push($element0);
+                                    }
+                                    if (isset($element1)) {
+                                        $newadm->push($element1);
+                                    }
+                                    if (isset($element2)) {
+                                        $newadm->push($element2);
+                                    }
+                                    if (isset($element3)) {
+                                        $newadm->push($element3);
+                                    }
+
+                                    $admissionBases = $newadm;
+
+                                    foreach ($admissionBases as $k3 => $admissionBasis) {
+
+
+
+                                        if ($specialization->id == 0) {
+                                            $spez_id = null;
+                                        } else {
+                                            $spez_id = $specialization->id;
                                         }
+                                        $temp = StatisticAsp::where('id_studyForm', '=', $studyForm->id)
+                                            ->where('id_speciality', '=', $speciality->id)
+                                            ->where('id_specialization', '=', $spez_id)
+                                            ->where('id_preparationLevel', '=', $preparationLevel->id)
+                                            ->where('id_admissionBasis', '=', $admissionBasis->id)
+                                            ->where('id_category', '=', $category->id)
+                                            ->where('id_faculty', '=', $faculty->id)
+                                            ->where('id_competition', '=', $competition->id)
+                                            ->get();
 
-                                        if (isset($element0)) {
-                                            $newadm->push($element0);
-                                        }
-                                        if (isset($element1)) {
-                                            $newadm->push($element1);
-                                        }
-                                        if (isset($element2)) {
-                                            $newadm->push($element2);
-                                        }
-                                        if (isset($element3)) {
-                                            $newadm->push($element3);
-                                        }
+//                                            $plan_comp = PlanCompetitionAsp::where('id_competition', '=', $competition->id)->first();
+                                        $id_plan_c = PlanCompetitionAsp::where('id_competition', '=', $competition->id)->first();
+//                                            $idPlan = $plan_comp->plan;
+                                        $idPlan = PlanAsp::where('id_speciality', '=', $speciality->id)
+                                            ->where('id_studyForm', '=', $studyForm->id)
+                                            ->where('id_specialization', '=', $spez_id)
+                                            ->where('id_faculty', '=', $faculty->id)
+                                            ->where('id', $id_plan_c->id_plan)
+                                            ->first();
 
-                                        $admissionBases = $newadm;
-
-                                        foreach ($admissionBases as $k3 => $admissionBasis) {
-
-                                            if ($specialization->id == 0) {
-                                                $spez_id = null;
-                                            } else {
-                                                $spez_id = $specialization->id;
-                                            }
-                                            $temp = StatisticAsp::where('id_studyForm', '=', $studyForm->id)
-                                                ->where('id_speciality', '=', $speciality->id)
-                                                ->where('id_specialization', '=', $spez_id)
-                                                ->where('id_preparationLevel', '=', $preparationLevel->id)
-                                                ->where('id_admissionBasis', '=', $admissionBasis->id)
-                                                ->where('id_category', '=', $category->id)
-                                                ->where('id_faculty', '=', $faculty->id)
-                                                ->get();
-
-                                            $idPlan = PlanAsp::where('id_speciality', '=', $speciality->id)
-                                                ->where('id_studyForm', '=', $studyForm->id)
-                                                ->where('id_specialization', '=', $spez_id)
-                                                ->where('id_faculty', '=', $faculty->id)
-                                                ->first();
-
-                                            if (!empty($idPlan)) {
+                                        if (!empty($idPlan)) {
 //                                        $freeSeatsNumber = PlanCompetition::where('id_plan', '=', intval($idPlan->id))->first();
-                                                $id_plan_comps = PlanCompetitionAsp::where('id_plan', '=', intval($idPlan->id))->first();
-                                                if (!empty($id_plan_comps)) {
-                                                    $freeSeatsNumber = Freeseats_basesAsp::where('id_plan_comp', '=', intval($id_plan_comps->id))->
-                                                    where('id_admissionBasis', '=', intval($admissionBasis->id))->first();
+                                            $id_plan_comps = PlanCompetitionAsp::where('id_competition', '=', intval($competition->id))->first();
+                                            if (!empty($id_plan_comps)) {
+                                                $freeSeatsNumber = Freeseats_basesAsp::where('id_plan_comp', '=', intval($id_plan_comps->id))->
+                                                where('id_admissionBasis', '=', intval($admissionBasis->id))->first();
+                                            }
+                                        }
+                                        if ($temp->count()) {
+                                            $admissionBasis->abiturs = $temp; //добавляем запись
+                                            $temp_stage = $temp->first();
+
+                                            $stage = $temp_stage->stage;
+                                            if ($stage[0] == '(') {
+                                                $stage = substr($stage, 1, -1);
+                                            }
+                                            $admissionBasis->stage = $stage;
+
+                                            $stage_title = $temp_stage->stage_title;
+                                            if ($stage_title[0] == '(') {
+                                                $stage_title = substr($stage_title, 1, -1);
+                                            }
+                                            $admissionBasis->stage_title = $stage_title;
+
+                                            $originalsCount = 0;
+                                            foreach ($temp as $student) {
+                                                if ($student->original == true) {
+                                                    $originalsCount += 1;
                                                 }
                                             }
-                                            if ($temp->count()) {
-                                                $admissionBasis->abiturs = $temp; //добавляем запись
-                                                $temp_stage = $temp->first();
-
-                                                $stage = $temp_stage->stage;
-                                                if ($stage[0] == '(') {
-                                                    $stage = substr($stage, 1, -1);
-                                                }
-                                                $admissionBasis->stage = $stage;
-
-                                                $stage_title = $temp_stage->stage_title;
-                                                if ($stage_title[0] == '(') {
-                                                    $stage_title = substr($stage_title, 1, -1);
-                                                }
-                                                $admissionBasis->stage_title = $stage_title;
-
-                                                $originalsCount = 0;
-                                                foreach ($temp as $student) {
-                                                    if ($student->original == true) {
-                                                        $originalsCount += 1;
-                                                    }
-                                                }
-                                                if (!empty($freeSeatsNumber)) {
-                                                    $admissionBasis->freeSeatsNumber = $freeSeatsNumber->value;
-                                                    if ($freeSeatsNumber->value != 0) {
-                                                        $admissionBasis->originalsCount = round(floatval($originalsCount) / $freeSeatsNumber->value, 2);
-                                                    }
-                                                } else {
-                                                    $admissionBasis->originalsCount = null;
-                                                    $admissionBasis->freeSeatsNumber = null;
+                                            if (!empty($freeSeatsNumber)) {
+                                                $admissionBasis->freeSeatsNumber = $freeSeatsNumber->value;
+                                                if ($freeSeatsNumber->value != 0) {
+                                                    $admissionBasis->originalsCount = round(floatval($originalsCount) / $freeSeatsNumber->value, 2);
                                                 }
                                             } else {
-                                                $admissionBasis->abiturs = null;
+                                                $admissionBasis->originalsCount = null;
+                                                $admissionBasis->freeSeatsNumber = null;
                                             }
-                                            if (empty($admissionBasis->abiturs)) {
-                                                unset($admissionBases[$k3]);
-                                            }
+                                        } else {
+                                            $admissionBasis->abiturs = null;
                                         }
-                                        $admissionBases->count() ? $specialization->admissionBases = $admissionBases : null;
-                                        if (empty($specialization->admissionBases)) {
-                                            unset($specializations[$kend]);
+                                        if (empty($admissionBasis->abiturs)) {
+                                            unset($admissionBases[$k3]);
                                         }
                                     }
-
-                                    $specializations->count() ? $speciality->specializations = $specializations : null; //В любом случае не пустые
-                                    if (empty($speciality->specializations)) {
-                                        unset($specialities[$k0]);
+                                    $admissionBases->count() ? $competition->admissionBases = $admissionBases : null;
+                                    if (empty($competition->admissionBases)) {
+                                        unset($competitions[$k6]);
                                     }
                                 }
-                                $specialities->count() ? $faculty->specialities = $specialities : null; //В любом случае не пустые
-                                if (empty($faculty->specialities)) {
-                                    unset($faculties[$k1]);
+                                    $competitions->count() ? $specialization->competitions = $competitions : null; //В любом случае не пустые
+                                    if (empty($specialization->competitions)) {
+                                        unset($specializations[$kend]);
+                                    }
+                                }
+                                $specializations->count() ? $speciality->specializations = $specializations : null; //В любом случае не пустые
+                                if (empty($speciality->specializations)) {
+                                    unset($specialities[$k0]);
                                 }
                             }
-                            $faculties->count() ? $preparationLevel->faculties = $faculties : null;
-                            if (empty($preparationLevel->faculties)) {
-                                unset($preparationLevels[$k2]);
+                            $specialities->count() ? $faculty->specialities = $specialities : null; //В любом случае не пустые
+                            if (empty($faculty->specialities)) {
+                                unset($faculties[$k1]);
                             }
                         }
-                        $preparationLevels->count() ? $category->preparationLevels = $preparationLevels : null;
-                        if (empty($category->preparationLevels)) {
-                            unset($categories[$k4]);
+                        $faculties->count() ? $preparationLevel->faculties = $faculties : null;
+                        if (empty($preparationLevel->faculties)) {
+                            unset($preparationLevels[$k2]);
                         }
                     }
-
-                    $categories->count() ? $studyForm->stat = $categories : null;
-                    if (empty($studyForm->stat)) {
-                        unset($studyForms[$k5]);
+                    $preparationLevels->count() ? $category->preparationLevels = $preparationLevels : null;
+                    if (empty($category->preparationLevels)) {
+                        unset($categories[$k4]);
                     }
-//                }
-//                $competitions->count() ? $studyForm->stat = $competitions : null;
-//                if (empty($studyForm->stat)) {
-//                    unset($studyForms[$k5]);
-//                }
+                }
+
+                $categories->count() ? $studyForm->stat = $categories : null;
+                if (empty($studyForm->stat)) {
+                    unset($studyForms[$k5]);
+                }
             }
         }
+
 // ----------------поиск по имени-------------------
         if (isset($search_fio)) {
             //выбираем всех студентов подходящих по фио
@@ -445,6 +470,7 @@ class StatisticAspController extends Controller
             $id_prep_arr = array();
             $id_fac_arr = array();
             $id_spec_arr = array();
+            $id_comp_arr = array();
             foreach ($statistic_for_people as $stat) {
                 $id_forms_arr[] = $stat->id_studyForm;
                 $id_cat_arr[] = $stat->id_category;
@@ -452,6 +478,7 @@ class StatisticAspController extends Controller
                 $id_prep_arr[] = $stat->id_preparationLevel;
                 $id_fac_arr[] = $stat->id_faculty;
                 $id_spec_arr[] = $stat->id_speciality;
+                $id_comp_arr[] = $stat->id_competition;
             }
             $id_forms_arr = array_unique($id_forms_arr, SORT_REGULAR);
             $id_cat_arr = array_unique($id_cat_arr, SORT_REGULAR);
@@ -459,9 +486,21 @@ class StatisticAspController extends Controller
             $id_prep_arr = array_unique($id_prep_arr, SORT_REGULAR);
             $id_fac_arr = array_unique($id_fac_arr, SORT_REGULAR);
             $id_spec_arr = array_unique($id_spec_arr, SORT_REGULAR);
+            $id_comp_arr = array_unique($id_comp_arr, SORT_REGULAR);
 
             // echo("<pre>" . $id_spec_arr . "</pre>");
+            $sdf = StatisticAsp::whereIn('id_competition', $id_comp_arr)
+                ->whereIn('id_speciality', $id_spec_arr)
+                ->whereIn('id_category', $id_cat_arr)
+                ->whereIn('id_admissionBasis', $id_adm_arr)
+                ->whereIn('id_preparationLevel', $id_prep_arr)
+                ->select('id_competition')->get();
 
+            $id_comp_arr = array();
+            foreach ($sdf as $stat) {
+                $id_comp_arr[] = $stat->id_competition;
+            }
+            $id_comp_arr = array_unique($id_comp_arr, SORT_REGULAR);
             //проходим по каждой категории и ищем нужные нам записи статистики чтобы привести их в правильную структуру для вывода
             $studyForms = StudyForm::whereIn('id', $id_forms_arr)->get();
             foreach ($studyForms as $k5 => $studyForm) {
@@ -487,6 +526,7 @@ class StatisticAspController extends Controller
                                     $element->specializationId = '0';
                                     $element->id_speciality = '0';
                                     $element->name = '';
+                                    $element->en_name = '';
 
                                     $specializations->push($element);
 //                                        return $specializations;
@@ -503,7 +543,9 @@ class StatisticAspController extends Controller
                                 }
 
                                 foreach ($specializations as $kend => $specialization) {
-
+                                    $competitions = CompetitionAsp::whereIn('id', $id_comp_arr)->get();
+//
+                                    foreach ($competitions as $k6 => $competition) {
                                     $admissionBases = AdmissionBasis::whereIn('id', $id_adm_arr)->get();
                                     //самая костыльная сортировка на свете
                                     $newadm = collect(new AdmissionBasis);
@@ -551,20 +593,24 @@ class StatisticAspController extends Controller
                                             ->where('id_faculty', '=', $faculty->id)
                                             ->where('id_speciality', '=', $speciality->id)
                                             ->where('id_specialization', '=', $spez_id)
+                                            ->where('id_competition', '=', $competition->id)
                                             ->get();
                                         $temp2 = $temp->intersect($statistic_for_people);
 //                                    if(!$temp2->isEmpty()) {
 //
 //                                    }
+                                        $id_plan_c = PlanCompetitionAsp::where('id_competition', '=', $competition->id)->first();
+
                                         //нужно проверить содержит ли полученная коллекция нужных студентов
                                         //выбираем свободные места на этой специальности
                                         $idPlan = PlanAsp::where('id_speciality', '=', $speciality->id)
                                             ->where('id_studyForm', '=', $studyForm->id)
                                             ->where('id_specialization', '=', $spez_id)
                                             ->where('id_faculty', '=', $faculty->id)
+                                            ->where('id', $id_plan_c->id_plan)
                                             ->first();
                                         if (!empty($idPlan)) {
-                                            $id_plan_comps = PlanCompetitionAsp::where('id_plan', '=', intval($idPlan->id))->first();
+                                            $id_plan_comps = PlanCompetitionAsp::where('id_competition', '=', intval($competition->id))->first();
                                             if (!empty($id_plan_comps)) {
                                                 $freeSeatsNumber = Freeseats_basesAsp::where('id_plan_comp', '=', intval($id_plan_comps->id))->
                                                 where('id_admissionBasis', '=', intval($admissionBasis->id))->first();
@@ -629,8 +675,13 @@ class StatisticAspController extends Controller
                                             unset($admissionBases[$k3]);
                                         }
                                     }
-                                    $admissionBases->count() ? $specialization->admissionBases = $admissionBases : null;
-                                    if (empty($specialization->admissionBases)) {
+                                        $admissionBases->count() ? $competition->admissionBases = $admissionBases : null;
+                                        if (empty($competition->admissionBases)) {
+                                            unset($competitions[$k6]);
+                                        }
+                                    }
+                                    $competitions->count() ? $specialization->competitions = $competitions : null; //В любом случае не пустые
+                                    if (empty($specialization->competitions)) {
                                         unset($specializations[$kend]);
                                     }
                                 }
