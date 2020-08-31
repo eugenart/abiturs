@@ -294,17 +294,34 @@
                                                                                                     @endif
                                                                                                     @if(trans('layout.locale')=='en')
                                                                                                         <p class="m-0 text-uppercase font-weight-bold">{{$faculty->en_name}}</p>
-                                                                                                        <p class="m-0">{{$speciality->code}} <span class=" font-weight-bold">{{$speciality->en_name}}</span></p>
-                                                                                                        <p class="m-0">{{$specialization->en_name}}</p>
+                                                                                                        <p class="m-0">{{$speciality->code}}
+                                                                                                            <span class=" font-weight-bold">
+                                                                                                                @if($speciality->en_name == NULL)
+                                                                                                                    {{$speciality->name}}
+                                                                                                                @else
+                                                                                                                    {{$speciality->en_name}}
+                                                                                                                @endif
+                                                                                                            </span>
+                                                                                                        </p>
+                                                                                                        <p class="m-0">
+                                                                                                            @if($specialization->en_name == NULL)
+                                                                                                                {{$specialization->name}}
+                                                                                                            @else
+                                                                                                                {{$specialization->en_name}}
+                                                                                                            @endif
+
+                                                                                                        </p>
                                                                                                     @endif
                                                                                                     <p class="m-0">
                                                                                                         {{trans('statforeigner.seats')}}<span
                                                                                                             class="font-weight-bold">{{$admissionBasis->freeSeatsNumber}}</span>
                                                                                                     </p>
                                                                                                     <p class="m-0">
-                                                                                                        {{trans('statforeigner.contest')}}<span
-                                                                                                            class="font-weight-bold">{{$admissionBasis->originalsCount}}</span>
-                                                                                                        {{trans('statforeigner.man_seat')}}
+                                                                                                        {{trans('statforeigner.contest')}}
+                                                                                                        <span class="font-weight-bold">{{$admissionBasis->originalsCount}}</span>
+                                                                                                        @if($admissionBasis->originalsCount != NULL)
+                                                                                                            {{trans('statforeigner.man_seat')}}
+                                                                                                        @endif
                                                                                                     </p>
                                                                                                 </div>
                                                                                             </div>
