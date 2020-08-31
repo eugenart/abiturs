@@ -61,7 +61,12 @@
                                                         данными запроса
                                                     </button>
                                                     <div class="col text-center d-flex">
-                                                        <div id="loading" class="lds-ring" style="display:none"><div></div><div></div><div></div><div></div></div>
+                                                        <div id="loading" class="lds-ring" style="display:none">
+                                                            <div></div>
+                                                            <div></div>
+                                                            <div></div>
+                                                            <div></div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </form>
@@ -200,9 +205,10 @@
                                 @endforeach
                             @endif
                             @if(trans('layout.locale') == 'en')
-                                    @foreach ($studyFormsForInputs as $form)
-                                        <option style="white-space: normal" value="{{$form->id}}">{{$form->en_name}}</option>
-                                    @endforeach
+                                @foreach ($studyFormsForInputs as $form)
+                                    <option style="white-space: normal"
+                                            value="{{$form->id}}">{{$form->en_name}}</option>
+                                @endforeach
                             @endif
                         </select>
                         <div
@@ -216,7 +222,8 @@
                 <div class="col-12 mt-2 mb-2">
                     <div class="row">
                         <div class="col-md-10 col-9">
-                            <input class="form-control form-control-sm" type="search" placeholder="{{ trans('statforeigner.form_fio') }}"
+                            <input class="form-control form-control-sm" type="search"
+                                   placeholder="{{ trans('statforeigner.form_fio') }}"
                                    aria-label="Search" name="fio">
                         </div>
                         <div class="col-md-2 col-3">
@@ -266,350 +273,375 @@
                             @foreach($studyForm->stat as $category)
                                 @if(isset($category->preparationLevels))
                                     @foreach($category->preparationLevels as $preparationLevel)
-{{--                                        @if(isset($admissionBasis->preparationLevels))--}}
-{{--                                            @foreach($admissionBasis->preparationLevels as $preparationLevel)--}}
-                                                @if(isset($preparationLevel->faculties))
-                                                    @foreach($preparationLevel->faculties as $faculty)
-                                                        @if(isset($faculty->specialities))
-                                                            @foreach($faculty->specialities as $speciality)
-                                                                @if(isset($speciality->specializations))
-                                                                    @foreach($speciality->specializations as $specialization)
-                                                                    @if(isset($specialization->admissionBases))
-                                                                    @foreach($specialization->admissionBases as $admissionBasis)
-                                                                        <div class="row mt-1 justify-content-start">
-                                                                            <div
-                                                                                class="col-xl-8 col-lg-8 col-md-12 col-12">
+                                        {{--                                        @if(isset($admissionBasis->preparationLevels))--}}
+                                        {{--                                            @foreach($admissionBasis->preparationLevels as $preparationLevel)--}}
+                                        @if(isset($preparationLevel->faculties))
+                                            @foreach($preparationLevel->faculties as $faculty)
+                                                @if(isset($faculty->specialities))
+                                                    @foreach($faculty->specialities as $speciality)
+                                                        @if(isset($speciality->specializations))
+                                                            @foreach($speciality->specializations as $specialization)
+                                                                @if(isset($specialization->competitions))
+                                                                    @foreach($specialization->competitions as $competition)
+                                                                        @if(isset($competition->admissionBases))
+                                                                            @foreach($competition->admissionBases as $admissionBasis)
                                                                                 <div
-                                                                                    class="exam-info-outer w-100 d-lg-flex flex-lg-row d-sm-flex flex-sm-column d-flex flex-column">
+                                                                                    class="row mt-1 justify-content-start">
                                                                                     <div
-                                                                                        class="exam-info-bottom col-xl-6 col-lg-6 col-12 float-left p-0 d-flex align-items-stretch">
+                                                                                        class="col-xl-8 col-lg-8 col-md-12 col-12">
                                                                                         <div
-                                                                                            class="examInfo-bottom pl-4">
+                                                                                            class="exam-info-outer w-100 d-lg-flex flex-lg-row d-sm-flex flex-sm-column d-flex flex-column">
                                                                                             <div
-                                                                                                class="row d-flex align-items-center justify-content-center h-100">
-                                                                                                <div class="col-12">
-                                                                                                    @if(trans('layout.locale')=='ru')
-                                                                                                    <p class="m-0 text-uppercase font-weight-bold">{{$faculty->name}}</p>
-                                                                                                    <p class="m-0">{{$speciality->code}} <span class=" font-weight-bold">{{$speciality->name}}</span></p>
-                                                                                                        <p class="m-0">{{$specialization->name}}</p>
-                                                                                                    @endif
-                                                                                                    @if(trans('layout.locale')=='en')
-                                                                                                        <p class="m-0 text-uppercase font-weight-bold">{{$faculty->en_name}}</p>
-                                                                                                        <p class="m-0">{{$speciality->code}} <span class=" font-weight-bold">{{$speciality->en_name}}</span></p>
-                                                                                                        <p class="m-0">{{$specialization->en_name}}</p>
-                                                                                                    @endif
-                                                                                                    <p class="m-0">
-                                                                                                        {{trans('statforeigner.seats')}}<span
-                                                                                                            class="font-weight-bold">{{$admissionBasis->freeSeatsNumber}}</span>
-                                                                                                    </p>
-                                                                                                    <p class="m-0">
-                                                                                                        {{trans('statforeigner.contest')}}<span
-                                                                                                            class="font-weight-bold">{{$admissionBasis->originalsCount}}</span>
-                                                                                                        {{trans('statforeigner.man_seat')}}
-                                                                                                    </p>
+                                                                                                class="exam-info-bottom col-xl-6 col-lg-6 col-12 float-left p-0 d-flex align-items-stretch">
+                                                                                                <div
+                                                                                                    class="examInfo-bottom pl-4">
+                                                                                                    <div
+                                                                                                        class="row d-flex align-items-center justify-content-center h-100">
+                                                                                                        <div
+                                                                                                            class="col-12">
+                                                                                                            @if(trans('layout.locale')=='ru')
+                                                                                                                <p class="m-0 text-uppercase font-weight-bold">{{$faculty->name}}</p>
+                                                                                                                <p class="m-0">{{$speciality->code}}
+                                                                                                                    <span
+                                                                                                                        class=" font-weight-bold">{{$speciality->name}}</span>
+                                                                                                                </p>
+                                                                                                                <p class="m-0">{{$specialization->name}}</p>
+                                                                                                            @endif
+                                                                                                            @if(trans('layout.locale')=='en')
+                                                                                                                <p class="m-0 text-uppercase font-weight-bold">{{$faculty->en_name}}</p>
+                                                                                                                <p class="m-0">{{$speciality->code}}
+                                                                                                                    <span
+                                                                                                                        class=" font-weight-bold">{{$speciality->en_name}}</span>
+                                                                                                                </p>
+                                                                                                                <p class="m-0">{{$specialization->en_name}}</p>
+                                                                                                            @endif
+                                                                                                            <p class="m-0">
+                                                                                                                {{trans('statforeigner.seats')}}
+                                                                                                                <span
+                                                                                                                    class="font-weight-bold">{{$admissionBasis->freeSeatsNumber}}</span>
+                                                                                                            </p>
+                                                                                                            <p class="m-0">
+                                                                                                                {{trans('statforeigner.contest')}}
+                                                                                                                <span
+                                                                                                                    class="font-weight-bold">{{$admissionBasis->originalsCount}}</span>
+                                                                                                                {{trans('statforeigner.man_seat')}}
+                                                                                                            </p>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div
+                                                                                                class="col-xl-6 col-lg-6 col-12 float-left p-0">
+                                                                                                <div
+                                                                                                    class="examInfo p-3">
+                                                                                                    <div class="row">
+                                                                                                        <div
+                                                                                                            class="col-12">
+                                                                                                            <table>
+                                                                                                                <tbody>
+                                                                                                                <tr>
+                                                                                                                    <td>{{trans('statforeigner.st_form')}}</td>
+                                                                                                                    <td>
+                                                                                                                        @if(trans('layout.locale')=='ru')
+                                                                                                                            <b class="mrsu-uppertext">{{$studyForm->name}}</b>
+                                                                                                                        @endif
+                                                                                                                        @if(trans('layout.locale')=='en')
+                                                                                                                            <b class="mrsu-uppertext">{{$studyForm->en_name}}</b>
+                                                                                                                        @endif
+
+                                                                                                                    </td>
+                                                                                                                </tr>
+                                                                                                                <tr>
+                                                                                                                    <td>{{trans('statforeigner.category')}}</td>
+                                                                                                                    <td>
+                                                                                                                        @if(trans('layout.locale')=='ru')
+                                                                                                                            <b class="mrsu-uppertext">{{ $category->name }}</b>
+                                                                                                                        @endif
+                                                                                                                        @if(trans('layout.locale')=='en')
+                                                                                                                            <b class="mrsu-uppertext">{{ $category->en_name }}</b>
+                                                                                                                        @endif
+
+                                                                                                                    </td>
+                                                                                                                </tr>
+                                                                                                                <tr>
+                                                                                                                    <td>{{trans('statforeigner.adm')}}</td>
+                                                                                                                    <td>
+                                                                                                                        @if(trans('layout.locale')=='ru')
+                                                                                                                            <b class="mrsu-uppertext">{{ $admissionBasis->name }}</b>
+                                                                                                                        @endif
+                                                                                                                        @if(trans('layout.locale')=='en')
+                                                                                                                            <b class="mrsu-uppertext">{{ $admissionBasis->en_name }}</b>
+                                                                                                                        @endif
+
+                                                                                                                    </td>
+                                                                                                                </tr>
+                                                                                                                <tr>
+                                                                                                                    <td>{{trans('statforeigner.prep')}}</td>
+                                                                                                                    <td>
+                                                                                                                        @if(trans('layout.locale')=='ru')
+                                                                                                                            <b class="mrsu-uppertext">{{$preparationLevel->name}}</b>
+                                                                                                                        @endif
+                                                                                                                        @if(trans('layout.locale')=='en')
+                                                                                                                            <b class="mrsu-uppertext">{{$preparationLevel->en_name}}</b>
+                                                                                                                        @endif
+
+                                                                                                                    </td>
+                                                                                                                </tr>
+                                                                                                                </tbody>
+                                                                                                            </table>
+                                                                                                        </div>
+                                                                                                    </div>
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
                                                                                     <div
-                                                                                        class="col-xl-6 col-lg-6 col-12 float-left p-0">
-                                                                                        <div class="examInfo p-3">
+                                                                                        class="col-xl-4 col-lg-4 col-md-12 col-12 d-lg-flex d-md-none d-none flex-column justify-content-around">
+                                                                                        @if(isset($studyForms))
+                                                                                            <span
+                                                                                                class="m-0 p-0 main-color d-lg-inline d-md-none w-100">{{trans('statforeigner.update')}}<b>@if(isset($date_update)){{substr($date_update->date_update, 0, -3)}}@endif</b></span>
+
+                                                                                            @if(trans('layout.locale') == 'ru')
+                                                                                                <button
+                                                                                                    style="white-space: normal;"
+                                                                                                    type="button"
+                                                                                                    class="files-stat spec-ovz-link btn btn-link text-left d-lg-block d-md-none w-100 p-0 ovz-text"
+                                                                                                    data-toggle="modal"
+                                                                                                    data-target="#exampleModalScrollable"
+                                                                                                    {{--                data-content="{{$item}}"--}}
+                                                                                                >
+
+                                                                                                    <b><u>{{trans('statforeigner.download')}}</u></b>
+
+                                                                                                </button>
+                                                                                            @endif
+                                                                                        @endif
+                                                                                        <div
+                                                                                            class="m-0 p-0 h6 d-lg-block d-md-none d-sm-none d-none"
+                                                                                            style="height: fit-content">
                                                                                             <div class="row">
-                                                                                                <div class="col-12">
-                                                                                                    <table>
-                                                                                                        <tbody>
-                                                                                                        <tr>
-                                                                                                            <td>{{trans('statforeigner.st_form')}}</td>
-                                                                                                            <td>
-                                                                                                                @if(trans('layout.locale')=='ru')
-                                                                                                                    <b class="mrsu-uppertext">{{$studyForm->name}}</b>
-                                                                                                                @endif
-                                                                                                                @if(trans('layout.locale')=='en')
-                                                                                                                    <b class="mrsu-uppertext">{{$studyForm->en_name}}</b>
-                                                                                                                @endif
-
-                                                                                                            </td>
-                                                                                                        </tr>
-                                                                                                        <tr>
-                                                                                                            <td>{{trans('statforeigner.category')}}</td>
-                                                                                                            <td>
-                                                                                                                @if(trans('layout.locale')=='ru')
-                                                                                                                    <b class="mrsu-uppertext">{{ $category->name }}</b>
-                                                                                                                @endif
-                                                                                                                @if(trans('layout.locale')=='en')
-                                                                                                                    <b class="mrsu-uppertext">{{ $category->en_name }}</b>
-                                                                                                                @endif
-
-                                                                                                            </td>
-                                                                                                        </tr>
-                                                                                                        <tr>
-                                                                                                            <td>{{trans('statforeigner.adm')}}</td>
-                                                                                                            <td>
-                                                                                                                @if(trans('layout.locale')=='ru')
-                                                                                                                    <b class="mrsu-uppertext">{{ $admissionBasis->name }}</b>
-                                                                                                                @endif
-                                                                                                                @if(trans('layout.locale')=='en')
-                                                                                                                    <b class="mrsu-uppertext">{{ $admissionBasis->en_name }}</b>
-                                                                                                                @endif
-
-                                                                                                            </td>
-                                                                                                        </tr>
-                                                                                                        <tr>
-                                                                                                            <td>{{trans('statforeigner.prep')}}</td>
-                                                                                                            <td>
-                                                                                                                @if(trans('layout.locale')=='ru')
-                                                                                                                    <b class="mrsu-uppertext">{{$preparationLevel->name}}</b>
-                                                                                                                @endif
-                                                                                                                @if(trans('layout.locale')=='en')
-                                                                                                                    <b class="mrsu-uppertext">{{$preparationLevel->en_name}}</b>
-                                                                                                                @endif
-
-                                                                                                            </td>
-                                                                                                        </tr>
-                                                                                                        </tbody>
-                                                                                                    </table>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div
-                                                                                class="col-xl-4 col-lg-4 col-md-12 col-12 d-lg-flex d-md-none d-none flex-column justify-content-around">
-                                                                                @if(isset($studyForms))
-                                                                                    <span
-                                                                                        class="m-0 p-0 main-color d-lg-inline d-md-none w-100">{{trans('statforeigner.update')}}<b>@if(isset($date_update)){{substr($date_update->date_update, 0, -3)}}@endif</b></span>
-
-                                                                                    @if(trans('layout.locale') == 'ru')
-                                                                                        <button style="white-space: normal;"
-                                                                                                type="button"
-                                                                                                class="files-stat spec-ovz-link btn btn-link text-left d-lg-block d-md-none w-100 p-0 ovz-text"
-                                                                                                data-toggle="modal"
-                                                                                                data-target="#exampleModalScrollable"
-                                                                                            {{--                data-content="{{$item}}"--}}
-                                                                                        >
-
-                                                                                            <b><u>{{trans('statforeigner.download')}}</u></b>
-
-                                                                                        </button>
-                                                                                    @endif
-                                                                                @endif
-                                                                                <div
-                                                                                    class="m-0 p-0 h6 d-lg-block d-md-none d-sm-none d-none"
-                                                                                    style="height: fit-content">
-                                                                                    <div class="row">
-                                                                                        @if (isset($studyForms))
-                                                                                            <div
-                                                                                                class="col-lg-4 pr-0 w-50">
-                                                                                                <img
-                                                                                                    class="d-block float-left"
-                                                                                                    style="width: 100px; height: auto;"
-                                                                                                    src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl={{$actual_link}}&choe=UTF-8"/>
-                                                                                            </div>
-                                                                                            <div
-                                                                                                class="col-lg-8 pl-0 w-50 d-flex justify-content-center align-items-center">
+                                                                                                @if (isset($studyForms))
+                                                                                                    <div
+                                                                                                        class="col-lg-4 pr-0 w-50">
+                                                                                                        <img
+                                                                                                            class="d-block float-left"
+                                                                                                            style="width: 100px; height: auto;"
+                                                                                                            src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl={{$actual_link}}&choe=UTF-8"/>
+                                                                                                    </div>
+                                                                                                    <div
+                                                                                                        class="col-lg-8 pl-0 w-50 d-flex justify-content-center align-items-center">
                                                                                     <span
                                                                                         class="">{{trans('statforeigner.save_params')}}</span>
+                                                                                                    </div>
+                                                                                                @endif
                                                                                             </div>
-                                                                                        @endif
+                                                                                        </div>
+
                                                                                     </div>
+
                                                                                 </div>
+                                                                                @if(isset($admissionBasis->chosenStudents))
+                                                                                    <div class="chosen-student-ovz">
+                                                                                        @foreach($admissionBasis->chosenStudents as $chosenStudent)
+                                                                                            <div class="main-color h6">
+                                                                                                @if(trans('layout.locale')=='ru')
+                                                                                                    <span
+                                                                                                        class="font-weight-bold">{{$chosenStudent->fio}} </span>
+                                                                                                    @endif
+                                                                                                    @if(trans('layout.locale')=='en')
+                                                                                                    @if(is_null($chosenStudent->fio_en) || ctype_space($chosenStudent->fio_en) || $chosenStudent->fio_en == '')
+                                                                                                    {{$chosenStudent->fio}}
+                                                                                                    @endif
+                                                                                                    {{$chosenStudent->fio_en}}
+                                                                                                    @endif
 
-                                                                            </div>
-
-                                                                        </div>
-                                                                        @if(isset($admissionBasis->chosenStudents))
-                                                                            <div class="chosen-student-ovz">
-                                                                                @foreach($admissionBasis->chosenStudents as $chosenStudent)
-                                                                                    <div class="main-color h6">
-                                                                                        @if(trans('layout.locale')=='ru')
-                                                                                            <span class="font-weight-bold">{{$chosenStudent->fio}} </span>
-                                                                                        @endif
-                                                                                        @if(trans('layout.locale')=='en')
-                                                                                        @if(is_null($chosenStudent->fio_en) || ctype_space($chosenStudent->fio_en) || $chosenStudent->fio_en == '')
-                                                                                        {{$chosenStudent->fio}}
-                                                                                        @endif
-                                                                                        {{$chosenStudent->fio_en}}
-                                                                                        @endif
-
-                                                                                        &mdash;
-                                                                                        <a class="main-color underline-label h6"
-                                                                                           href="#stud-{{$chosenStudent->id}}-{{$speciality->id}}">{{trans('statforeigner.seat_cont')}}
-                                                                                            <b>{{$chosenStudent->serialNum}}</b></a>
+                                                                                                    &mdash;
+                                                                                                    <a class="main-color underline-label h6"
+                                                                                                       href="#stud-{{$chosenStudent->id}}-{{$speciality->id}}">{{trans('statforeigner.seat_cont')}}
+                                                                                                        <b>{{$chosenStudent->serialNum}}</b></a>
+                                                                                            </div>
+                                                                                        @endforeach
                                                                                     </div>
-                                                                                @endforeach
-                                                                            </div>
-                                                                        @endif
-                                                                        @if(isset($admissionBasis->abiturs))
-                                                                            <div class="row p-0 m-0">
-                                                                                <div
-                                                                                    class="col-12 d-flex justify-content-end">
-                                                                                    <button data-toggle="modal"
-                                                                                            data-target="#legend"
-                                                                                            class="btn btn-sm btn-link p-0 legend">
-                                                                                        {{trans('statforeigner.legend')}}
-                                                                                    </button>
-                                                                                </div>
-                                                                            </div>
-                                                                            <table
-                                                                                class="table table-bordered table-stat table-ovz table-sm base-exams-table mt-0">
-                                                                                <thead>
-                                                                                <tr style="vertical-align: center">
-                                                                                    <th rowspan="2" class="text-center">
-                                                                                        №
-                                                                                    </th>
-                                                                                    <th rowspan="2" class="text-center">
+                                                                                @endif
+                                                                                @if(isset($admissionBasis->abiturs))
+                                                                                    <div class="row p-0 m-0">
+                                                                                        <div
+                                                                                            class="col-12 d-flex justify-content-end">
+                                                                                            <button data-toggle="modal"
+                                                                                                    data-target="#legend"
+                                                                                                    class="btn btn-sm btn-link p-0 legend">
+                                                                                                {{trans('statforeigner.legend')}}
+                                                                                            </button>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <table
+                                                                                        class="table table-bordered table-stat table-ovz table-sm base-exams-table mt-0">
+                                                                                        <thead>
+                                                                                        <tr style="vertical-align: center">
+                                                                                            <th rowspan="2"
+                                                                                                class="text-center">
+                                                                                                №
+                                                                                            </th>
+                                                                                            <th rowspan="2"
+                                                                                                class="text-center">
                                                                                 <span
                                                                                     class="d-xl-table-cell d-lg-none d-none">{{trans('statforeigner.fio_full')}}</span>
-                                                                                        <span
-                                                                                            class="d-xl-none d-lg-table-cell d-lg-table-cell">{{trans('statforeigner.fio_cut')}}</span>
-                                                                                    </th>
-                                                                                    {{--                                                                            <th rowspan="2" class="text-center">--}}
-                                                                                    {{--                                                                                <span--}}
-                                                                                    {{--                                                                                    class="d-xl-inline d-lg-none d-none">Оригинал</span>--}}
-                                                                                    {{--                                                                                <span--}}
-                                                                                    {{--                                                                                    class="d-xl-none d-lg-inline d-inline">O</span>--}}
-                                                                                    {{--                                                                            </th>--}}
-                                                                                    <th rowspan="2" class="text-center">
+                                                                                                <span
+                                                                                                    class="d-xl-none d-lg-table-cell d-lg-table-cell">{{trans('statforeigner.fio_cut')}}</span>
+                                                                                            </th>
+                                                                                            {{--                                                                            <th rowspan="2" class="text-center">--}}
+                                                                                            {{--                                                                                <span--}}
+                                                                                            {{--                                                                                    class="d-xl-inline d-lg-none d-none">Оригинал</span>--}}
+                                                                                            {{--                                                                                <span--}}
+                                                                                            {{--                                                                                    class="d-xl-none d-lg-inline d-inline">O</span>--}}
+                                                                                            {{--                                                                            </th>--}}
+                                                                                            <th rowspan="2"
+                                                                                                class="text-center">
                                                                                 <span
                                                                                     class="d-xl-inline d-lg-none d-none">{{trans('statforeigner.accept_full')}}</span>
-                                                                                        <span
-                                                                                            class="d-xl-none d-lg-inline d-inline">{{trans('statforeigner.accept_cut')}}</span>
-                                                                                    </th>
-                                                                                    <th class="d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none"
-                                                                                        colspan="{{count($admissionBasis->abiturs->first()->score) + 1}}">
-                                                                                        @foreach($admissionBasis->abiturs->first()->score as $i => $sc)
-                                                                                            @if($i < count($admissionBasis->abiturs->first()->score) -1)
-                                                                                                <p class="m-0"> {{$sc->priority}}
+                                                                                                <span
+                                                                                                    class="d-xl-none d-lg-inline d-inline">{{trans('statforeigner.accept_cut')}}</span>
+                                                                                            </th>
+                                                                                            <th class="d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none"
+                                                                                                colspan="{{count($admissionBasis->abiturs->first()->score) + 1}}">
+                                                                                                @foreach($admissionBasis->abiturs->first()->score as $i => $sc)
+                                                                                                    @if($i < count($admissionBasis->abiturs->first()->score) -1)
+                                                                                                        <p class="m-0"> {{$sc->priority}}
 
 
 
-                                                                                                @if(trans('layout.locale')=='ru')
-                                                                                                        ) {{$sc->subject->name}}</p>
-                                                                                                @endif
-                                                                                                @if(trans('layout.locale')=='en')
-                                                                                                    ) {{$sc->subject->en_name}}</p>
-                                                                                                @endif
-                                                                                            @else
-                                                                                                <p class="m-0"> {{$sc->priority}}
-                                                                                                    @if(trans('layout.locale')=='ru')
-                                                                                                        ) {{$sc->subject->name}}</p>
-                                                                                                @endif
-                                                                                                @if(trans('layout.locale')=='en')
-                                                                                                    ) {{$sc->subject->en_name}}</p>
-                                                                                                @endif
-                                                                                                <p class="m-0 d-xl-inline d-lg-none d-none">{{$i + 2}}
-                                                                                                    {{trans('statforeigner.ind_ach')}}</p>
-                                                                                                <p class="m-0 d-xl-none d-lg-inline d-inline">{{$i + 2}}
-                                                                                                    {{trans('statforeigner.ind_ach_cut')}}</p>
-                                                                                            @endif
-                                                                                        @endforeach
-                                                                                    </th>
-                                                                                    <th class="text-center d-xl-table-cell d-lg-none d-none"
-                                                                                        rowspan="2">{{trans('statforeigner.summ1')}}<br/>{{trans('statforeigner.summ2')}}
-                                                                                    </th>
-                                                                                    <th class="text-center" rowspan="2">
+                                                                                                            @if(trans('layout.locale')=='ru')
+                                                                                                                ) {{$sc->subject->name}}</p>
+                                                                                                    @endif
+                                                                                                    @if(trans('layout.locale')=='en')
+                                                                                                        ) {{$sc->subject->en_name}}</p>
+                                                                                                    @endif
+                                                                                                    @else
+                                                                                                        <p class="m-0"> {{$sc->priority}}
+                                                                                                            @if(trans('layout.locale')=='ru')
+                                                                                                                ) {{$sc->subject->name}}</p>
+                                                                                                    @endif
+                                                                                                    @if(trans('layout.locale')=='en')
+                                                                                                        ) {{$sc->subject->en_name}}</p>
+                                                                                                    @endif
+                                                                                                    <p class="m-0 d-xl-inline d-lg-none d-none">{{$i + 2}}
+                                                                                                        {{trans('statforeigner.ind_ach')}}</p>
+                                                                                                    <p class="m-0 d-xl-none d-lg-inline d-inline">{{$i + 2}}
+                                                                                                        {{trans('statforeigner.ind_ach_cut')}}</p>
+                                                                                                    @endif
+                                                                                                @endforeach
+                                                                                            </th>
+                                                                                            <th class="text-center d-xl-table-cell d-lg-none d-none"
+                                                                                                rowspan="2">{{trans('statforeigner.summ1')}}
+                                                                                                <br/>{{trans('statforeigner.summ2')}}
+                                                                                            </th>
+                                                                                            <th class="text-center"
+                                                                                                rowspan="2">
                                                                                 <span
                                                                                     class="d-xl-inline d-lg-none d-none">{{trans('statforeigner.summ_k1')}}<br/>
                                                                                     {{trans('statforeigner.summ_k2')}}<br/>
                                                                                 {{trans('statforeigner.summ_k3')}}</span>
-                                                                                        <span
-                                                                                            class="d-xl-none d-lg-inline d-inline">{{trans('statforeigner.summ_k4')}}</span>
-                                                                                    </th>
-{{--                                                                                    <th class="text-center d-xl-table-cell d-lg-none d-none"--}}
-{{--                                                                                        rowspan="2">Тип--}}
-{{--                                                                                        экзамена--}}
-{{--                                                                                    </th>--}}
-                                                                                    <th class="text-center d-xl-table-cell d-lg-none d-none"
-                                                                                        rowspan="2">{{trans('statforeigner.status')}}
-                                                                                    </th>
-                                                                                    <th class="text-center d-xl-table-cell d-lg-none d-none"
-                                                                                        rowspan="2">
-                                                                                        {{trans('statforeigner.hostel')}}<br>{{trans('statforeigner.hostel2')}}
-                                                                                    </th>
-                                                                                    <th class="text-center d-xl-table-cell d-lg-none d-none"
-                                                                                        rowspan="2">{{trans('statforeigner.notice')}}
-                                                                                    </th>
-                                                                                </tr>
-                                                                                <tr class="text-center d-lg-table-row d-xl-table-row d-md-table-row d-sm-table-row d-none">
-                                                                                    @foreach($admissionBasis->abiturs->first()->score as $i => $sc)
-                                                                                        @if($i < count($admissionBasis->abiturs->first()->score) -1)
-                                                                                            <th>{{$sc->priority}}</th>
-                                                                                        @else
-                                                                                            <th>{{$sc->priority}}</th>
-                                                                                            <th>{{$i + 2}}</th>
-                                                                                        @endif
-                                                                                    @endforeach
-                                                                                </tr>
-                                                                                </thead>
-                                                                                <tbody>
-                                                                                @foreach($admissionBasis->abiturs as $k => $abitur)
-                                                                                    @if($abitur->is_chosen)
-                                                                                        <tr class="text-center chosen-student">
-                                                                                    @else
-                                                                                        <tr class="text-center">
-                                                                                            @endif
-                                                                                            <td class="text-center">{{$k + 1}}</td>
-                                                                                            <td class="text-left"
-                                                                                                id="stud-{{$abitur->student->id}}-{{$abitur->id_speciality}}">
-                                                                                                @if(trans('layout.locale')=='ru')
-                                                                                                    {{$abitur->student->fio}}
-                                                                                                @endif
-                                                                                                @if(trans('layout.locale')=='en')
-                                                                                                    @if(is_null($abitur->student->fio_en) || ctype_space($abitur->student->fio_en) || $abitur->student->fio_en == '')
-                                                                                                        {{$abitur->student->fio}}
-                                                                                                    @endif
-                                                                                                    {{$abitur->student->fio_en}}
-                                                                                                @endif
-
-                                                                                            </td>
-                                                                                            {{--                                                                                    <td>--}}
-                                                                                            {{--                                                                                        @if($abitur->original)--}}
-                                                                                            {{--                                                                                            <i class="fa fa-check-circle"--}}
-                                                                                            {{--                                                                                               style="color: rgba(0,128,0,0.51)"></i>--}}
-                                                                                            {{--                                                                                        @endif--}}
-                                                                                            {{--                                                                                    </td>--}}
-                                                                                            <td>
-                                                                                                @if($abitur->acceptCount > 0)
-                                                                                                    @if($abitur->acceptCount > 1)
-                                                                                                        <i class="fa fa-check-circle"
-                                                                                                           style="color: rgba(225,0,0,0.51)"></i>
-																									@else
-																										<i class="fa fa-check-circle"
-                                                                                                           style="color: rgba(0,128,0,0.51)"></i>
-                                                                                                    @endif
-                                                                                                @endif
-                                                                                            </td>
-                                                                                            @foreach($abitur->score as $ab_sc)
-                                                                                                <td class="d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none">{{$ab_sc->score}}</td>
-                                                                                            @endforeach
-                                                                                            <td class="d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none">{{$abitur->indAchievement}}</td>
-                                                                                            <td class="d-xl-table-cell d-lg-none d-none">{{$abitur->summ}}</td>
-                                                                                            <td>{{$abitur->summContest}}</td>
-{{--                                                                                            <td class="d-xl-table-cell d-lg-none d-none">--}}
-{{--                                                                                                ЕГЭ--}}
-{{--                                                                                            </td>--}}
-                                                                                            <td class="d-xl-table-cell d-lg-none d-none">{{$abitur->notice1}}</td>
-                                                                                            <td class="d-xl-table-cell d-lg-none d-none">
-                                                                                                @if($abitur->needHostel)
-                                                                                                    <i class="fa fa-check-circle"
-                                                                                                       style="color: rgba(0,128,0,0.51)"></i>
-                                                                                                @endif
-                                                                                            </td>
-                                                                                            <td class="d-xl-table-cell d-lg-none d-none">{{$abitur->notice2}}</td>
+                                                                                                <span
+                                                                                                    class="d-xl-none d-lg-inline d-inline">{{trans('statforeigner.summ_k4')}}</span>
+                                                                                            </th>
+                                                                                            {{--                                                                                    <th class="text-center d-xl-table-cell d-lg-none d-none"--}}
+                                                                                            {{--                                                                                        rowspan="2">Тип--}}
+                                                                                            {{--                                                                                        экзамена--}}
+                                                                                            {{--                                                                                    </th>--}}
+                                                                                            <th class="text-center d-xl-table-cell d-lg-none d-none"
+                                                                                                rowspan="2">{{trans('statforeigner.status')}}
+                                                                                            </th>
+                                                                                            <th class="text-center d-xl-table-cell d-lg-none d-none"
+                                                                                                rowspan="2">
+                                                                                                {{trans('statforeigner.hostel')}}
+                                                                                                <br>{{trans('statforeigner.hostel2')}}
+                                                                                            </th>
+                                                                                            <th class="text-center d-xl-table-cell d-lg-none d-none"
+                                                                                                rowspan="2">{{trans('statforeigner.notice')}}
+                                                                                            </th>
                                                                                         </tr>
-                                                                                        @if($abitur->yellowline)
-                                                                                            <tr style="background-color: yellow;">
-                                                                                                <td colspan="100%" class="text-center">
-                                                                                                    {{trans('statforeigner.yellow')}}</td>
-                                                                                            </tr>
-                                                                                        @endif
-                                                                                        @endforeach
-                                                                                </tbody>
-                                                                            </table>
+                                                                                        <tr class="text-center d-lg-table-row d-xl-table-row d-md-table-row d-sm-table-row d-none">
+                                                                                            @foreach($admissionBasis->abiturs->first()->score as $i => $sc)
+                                                                                                @if($i < count($admissionBasis->abiturs->first()->score) -1)
+                                                                                                    <th>{{$sc->priority}}</th>
+                                                                                                @else
+                                                                                                    <th>{{$sc->priority}}</th>
+                                                                                                    <th>{{$i + 2}}</th>
+                                                                                                @endif
+                                                                                            @endforeach
+                                                                                        </tr>
+                                                                                        </thead>
+                                                                                        <tbody>
+                                                                                        @foreach($admissionBasis->abiturs as $k => $abitur)
+                                                                                            @if($abitur->is_chosen)
+                                                                                                <tr class="text-center chosen-student">
+                                                                                            @else
+                                                                                                <tr class="text-center">
+                                                                                                    @endif
+                                                                                                    <td class="text-center">{{$k + 1}}</td>
+                                                                                                    <td class="text-left"
+                                                                                                        id="stud-{{$abitur->student->id}}-{{$abitur->id_speciality}}">
+                                                                                                        @if(trans('layout.locale')=='ru')
+                                                                                                            {{$abitur->student->fio}}
+                                                                                                        @endif
+                                                                                                        @if(trans('layout.locale')=='en')
+                                                                                                            @if(is_null($abitur->student->fio_en) || ctype_space($abitur->student->fio_en) || $abitur->student->fio_en == '')
+                                                                                                                {{$abitur->student->fio}}
+                                                                                                            @endif
+                                                                                                            {{$abitur->student->fio_en}}
+                                                                                                        @endif
 
+                                                                                                    </td>
+                                                                                                    {{--                                                                                    <td>--}}
+                                                                                                    {{--                                                                                        @if($abitur->original)--}}
+                                                                                                    {{--                                                                                            <i class="fa fa-check-circle"--}}
+                                                                                                    {{--                                                                                               style="color: rgba(0,128,0,0.51)"></i>--}}
+                                                                                                    {{--                                                                                        @endif--}}
+                                                                                                    {{--                                                                                    </td>--}}
+                                                                                                    <td>
+                                                                                                        @if($abitur->acceptCount > 0)
+                                                                                                            @if($abitur->acceptCount > 1)
+                                                                                                                <i class="fa fa-check-circle"
+                                                                                                                   style="color: rgba(225,0,0,0.51)"></i>
+                                                                                                            @else
+                                                                                                                <i class="fa fa-check-circle"
+                                                                                                                   style="color: rgba(0,128,0,0.51)"></i>
+                                                                                                            @endif
+                                                                                                        @endif
+                                                                                                    </td>
+                                                                                                    @foreach($abitur->score as $ab_sc)
+                                                                                                        <td class="d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none">{{$ab_sc->score}}</td>
+                                                                                                    @endforeach
+                                                                                                    <td class="d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none">{{$abitur->indAchievement}}</td>
+                                                                                                    <td class="d-xl-table-cell d-lg-none d-none">{{$abitur->summ}}</td>
+                                                                                                    <td>{{$abitur->summContest}}</td>
+                                                                                                    {{--                                                                                            <td class="d-xl-table-cell d-lg-none d-none">--}}
+                                                                                                    {{--                                                                                                ЕГЭ--}}
+                                                                                                    {{--                                                                                            </td>--}}
+                                                                                                    <td class="d-xl-table-cell d-lg-none d-none">{{$abitur->notice1}}</td>
+                                                                                                    <td class="d-xl-table-cell d-lg-none d-none">
+                                                                                                        @if($abitur->needHostel)
+                                                                                                            <i class="fa fa-check-circle"
+                                                                                                               style="color: rgba(0,128,0,0.51)"></i>
+                                                                                                        @endif
+                                                                                                    </td>
+                                                                                                    <td class="d-xl-table-cell d-lg-none d-none">{{$abitur->notice2}}</td>
+                                                                                                </tr>
+                                                                                                @if($abitur->yellowline)
+                                                                                                    <tr style="background-color: yellow;">
+                                                                                                        <td colspan="100%"
+                                                                                                            class="text-center">
+                                                                                                            {{trans('statforeigner.yellow')}}</td>
+                                                                                                    </tr>
+                                                                                                @endif
+                                                                                                @endforeach
+                                                                                        </tbody>
+                                                                                    </table>
+
+                                                                                @endif
+                                                                                {{--                                                                </ul>--}}
+                                                                            @endforeach
                                                                         @endif
-                                                                        {{--                                                                </ul>--}}
                                                                     @endforeach
                                                                 @endif
                                                             @endforeach
@@ -732,10 +764,10 @@
             var locale = $('#locale').data('content');
             $.each(faculties, (k, faculty) => {
                 if ((faculty.speciality).length) {
-                    if(locale === 'ru'){
+                    if (locale === 'ru') {
                         $('#allfaculties').append('<option style="word-break: break-all;" value="' + faculty.id + '">' + faculty.name + '</option>')
                     }
-                    if(locale === 'en'){
+                    if (locale === 'en') {
                         $('#allfaculties').append('<option style="word-break: break-all;" value="' + faculty.id + '">' + faculty.en_name + '</option>')
                     }
                 }
@@ -745,17 +777,17 @@
 
         function fillSpecialities(faculty) {
             var locale = $('#locale').data('content');
-            if(locale === 'ru') {
+            if (locale === 'ru') {
                 $('#specialities').append('<optgroup label="' + faculty.name + '">')
             }
-            if(locale === 'en'){
+            if (locale === 'en') {
                 $('#specialities').append('<optgroup label="' + faculty.en_name + '">')
             }
             $.each(faculty.speciality, (key, spec) => {
-                if(locale === 'ru'){
+                if (locale === 'ru') {
                     $('#specialities optgroup:last').append('<option value="' + faculty.id + ';' + spec.id + '">' + spec.code + ' ' + spec.name + '</option>')
                 }
-                if(locale === 'en'){
+                if (locale === 'en') {
                     $('#specialities optgroup:last').append('<option value="' + faculty.id + ';' + spec.id + '">' + spec.code + ' ' + spec.en_name + '</option>')
                 }
             })
