@@ -29,7 +29,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
 //        $schedule->command('filesxls:delete')->cron('0 */2 * * *'); // every 2 hours
-        $schedule->command('filesxls:delete')->daily();
+        $schedule->command('filesxls:delete')->hourly();
         $schedule->command('filesContent:delete')->monthlyOn(6, '00:02');
         $schedule->command('filesPreview:delete')->monthlyOn(6, '00:04');
         $schedule->command('dumper:create')->daily();

@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\DateUpdate;
 use App\Traits\ParserXlsTrait;
 use App\Traits\ParserJsonTrait;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\ParserJsonController as ParserJsonController;
 use App\Http\Controllers\ParserController;
@@ -28,6 +30,8 @@ class DownloadFileController extends Controller
                 $t = Carbon::now();
                 $date_update->date_update = Carbon::create($t->year, $t->month, $t->day, $t->hour, $t->minute, 00);
             }
+            $user = User::where('id', '=', Auth::id())->first();
+            $date_update->username = $user->name;
             $date_update->save();
         }else{
             $date_update = new DateUpdate;
@@ -40,6 +44,8 @@ class DownloadFileController extends Controller
                 $t = Carbon::now();
                 $date_update->date_update = Carbon::create($t->year, $t->month, $t->day, $t->hour, $t->minute, 00);
             }
+            $user = User::where('id', '=', Auth::id())->first();
+            $date_update->username = $user->name;
             $date_update->save();
         }
 

@@ -28,7 +28,7 @@
                         <div class="row w-100 m-auto pt-3 pb-3">
                             <div class="col-12">
                                 {{--                                                                <a href="{{ asset('storage/files-xls/' . $studyForms->file_xls . '.xls') }}">Скачать файл с данными запроса</a>--}}
-								@if($studyForms->file_xls != '')
+                                {{--								@if($studyForms->file_xls != '')--}}
                                 <ul class="files-list">
                                     <li>
                                         <div>
@@ -43,17 +43,25 @@
                                             @endif
                                         </div>
                                         <div class="file-link-div ">
-
-                                            <a href="{{ asset('storage/files-xls/' . $studyForms->file_xls . '.xls') }}"
-                                               target="_blank">
-                                                Файл с данными запроса
-                                            </a>
-                                            <br>
-                                            <span>{{round(stat($_SERVER['DOCUMENT_ROOT'] . '/storage/files-xls/' . $studyForms->file_xls . '.xls')[7] / 1024 /1024, 2)}} MB</span>
+                                            @php
+                                                $pointer = &$studyForms;
+                                            @endphp
+                                            <form method="post" action="" id="fileform">
+                                                @csrf
+                                                <div class="p-3 row">
+                                                    <button class="btn btn-link m-0 p-0 col" style="color: #1b4b72;"
+                                                            type="submit" id="btn-submit">Сгенерировать и скачать файл с
+                                                        данными запроса
+                                                    </button>
+                                                    <div class="col text-center d-flex">
+                                                        <div id="loading" class="lds-ring" style="display:none"><div></div><div></div><div></div><div></div></div>
+                                                    </div>
+                                                </div>
+                                            </form>
                                         </div>
                                     </li>
                                 </ul>
-								@endif
+                                {{--								@endif--}}
                                 <h5 class="m-0 text-center">Полные списки поступающих. Бакалавриат и специалитет</h5>
                                 <ul class="files-list">
 
@@ -243,15 +251,15 @@
                             @foreach($studyForm->stat as $category)
                                 @if(isset($category->preparationLevels))
                                     @foreach($category->preparationLevels as $preparationLevel)
-{{--                                        @if(isset($admissionBasis->preparationLevels))--}}
-{{--                                            @foreach($admissionBasis->preparationLevels as $preparationLevel)--}}
-                                                @if(isset($preparationLevel->faculties))
-                                                    @foreach($preparationLevel->faculties as $faculty)
-                                                        @if(isset($faculty->specialities))
-                                                            @foreach($faculty->specialities as $speciality)
-                                                                @if(isset($speciality->specializations))
-                                                                    @foreach($speciality->specializations as $specialization)
-                                                                    @if(isset($specialization->admissionBases))
+                                        {{--                                        @if(isset($admissionBasis->preparationLevels))--}}
+                                        {{--                                            @foreach($admissionBasis->preparationLevels as $preparationLevel)--}}
+                                        @if(isset($preparationLevel->faculties))
+                                            @foreach($preparationLevel->faculties as $faculty)
+                                                @if(isset($faculty->specialities))
+                                                    @foreach($faculty->specialities as $speciality)
+                                                        @if(isset($speciality->specializations))
+                                                            @foreach($speciality->specializations as $specialization)
+                                                                @if(isset($specialization->admissionBases))
                                                                     @foreach($specialization->admissionBases as $admissionBasis)
                                                                         <div class="row mt-1 justify-content-start">
                                                                             <div
@@ -266,19 +274,24 @@
                                                                                                 class="row d-flex align-items-center justify-content-center h-100">
                                                                                                 <div class="col-12">
                                                                                                     <p class="m-0 text-uppercase font-weight-bold">{{$faculty->name}}</p>
-                                                                                                    <p class="m-0">{{$speciality->code}} <span class=" font-weight-bold">{{$speciality->name}}</span></p>
+                                                                                                    <p class="m-0">{{$speciality->code}}
+                                                                                                        <span
+                                                                                                            class=" font-weight-bold">{{$speciality->name}}</span>
+                                                                                                    </p>
                                                                                                     <p class="m-0">{{$specialization->name}}</p>
                                                                                                     <p class="m-0">
                                                                                                         Количество
                                                                                                         мест: <span
                                                                                                             class="font-weight-bold">{{$admissionBasis->freeSeatsNumber}}</span>
                                                                                                     </p>
-																									@if($admissionBasis->stage_title != NULL)
-																									<p class="m-0">
-                                                                                                        {{$admissionBasis->stage_title}}:
-																										<span class="font-weight-bold">{{$admissionBasis->stage}}</span>
-                                                                                                    </p>
-																									@endif
+                                                                                                    @if($admissionBasis->stage_title != NULL)
+                                                                                                        <p class="m-0">
+                                                                                                            {{$admissionBasis->stage_title}}
+                                                                                                            :
+                                                                                                            <span
+                                                                                                                class="font-weight-bold">{{$admissionBasis->stage}}</span>
+                                                                                                        </p>
+                                                                                                    @endif
                                                                                                     <p class="m-0">
                                                                                                         Конкурс: <span
                                                                                                             class="font-weight-bold">{{$admissionBasis->originalsCount}}</span>
@@ -462,10 +475,10 @@
                                                                                         <span
                                                                                             class="d-xl-none d-lg-inline d-inline">СКБ</span>
                                                                                     </th>
-{{--                                                                                    <th class="text-center d-xl-table-cell d-lg-none d-none"--}}
-{{--                                                                                        rowspan="2">Тип--}}
-{{--                                                                                        экзамена--}}
-{{--                                                                                    </th>--}}
+                                                                                    {{--                                                                                    <th class="text-center d-xl-table-cell d-lg-none d-none"--}}
+                                                                                    {{--                                                                                        rowspan="2">Тип--}}
+                                                                                    {{--                                                                                        экзамена--}}
+                                                                                    {{--                                                                                    </th>--}}
                                                                                     <th class="text-center d-xl-table-cell d-lg-none d-none"
                                                                                         rowspan="2">Статус
                                                                                         проверки
@@ -502,7 +515,7 @@
                                                                                             <td class="text-left"
                                                                                                 id="stud-{{$abitur->student->id}}-{{$abitur->id_speciality}}">{{$abitur->student->fio}}
 
-																							</td>
+                                                                                            </td>
                                                                                             {{--                                                                                    <td>--}}
                                                                                             {{--                                                                                        @if($abitur->original)--}}
                                                                                             {{--                                                                                            <i class="fa fa-check-circle"--}}
@@ -514,8 +527,8 @@
                                                                                                     @if($abitur->acceptCount > 1)
                                                                                                         <i class="fa fa-check-circle"
                                                                                                            style="color: rgba(225,0,0,0.51)"></i>
-																									@else
-																										<i class="fa fa-check-circle"
+                                                                                                    @else
+                                                                                                        <i class="fa fa-check-circle"
                                                                                                            style="color: rgba(0,128,0,0.51)"></i>
                                                                                                     @endif
                                                                                                 @endif
@@ -526,9 +539,9 @@
                                                                                             <td class="d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none">{{$abitur->indAchievement}}</td>
                                                                                             <td class="d-xl-table-cell d-lg-none d-none">{{$abitur->summ}}</td>
                                                                                             <td>{{$abitur->summContest}}</td>
-{{--                                                                                            <td class="d-xl-table-cell d-lg-none d-none">--}}
-{{--                                                                                                ЕГЭ--}}
-{{--                                                                                            </td>--}}
+                                                                                            {{--                                                                                            <td class="d-xl-table-cell d-lg-none d-none">--}}
+                                                                                            {{--                                                                                                ЕГЭ--}}
+                                                                                            {{--                                                                                            </td>--}}
                                                                                             <td class="d-xl-table-cell d-lg-none d-none">{{$abitur->notice1}}</td>
                                                                                             <td class="d-xl-table-cell d-lg-none d-none">
                                                                                                 @if($abitur->needHostel)
@@ -540,7 +553,12 @@
                                                                                         </tr>
                                                                                         @if($abitur->yellowline)
                                                                                             <tr style="background-color: yellow;">
-                                                                                                <td colspan="100%" class="text-center">Граница проходного балла на текущем этапе зачисления</td>
+                                                                                                <td colspan="100%"
+                                                                                                    class="text-center">
+                                                                                                    Граница проходного
+                                                                                                    балла на текущем
+                                                                                                    этапе зачисления
+                                                                                                </td>
                                                                                             </tr>
                                                                                         @endif
                                                                                         @endforeach
@@ -577,7 +595,55 @@
 @endsection
 
 @section('js')
+    <script>
+        $(document).ready(function () {
+            $('#fileform').submit(function (e) {
+                // let serializedData = $('#contactform').serialize();
+                e.preventDefault();
+                let mydata = '<?php if (isset($studyForms)) {
+                    echo $studyForms;
+                } ?>';
+                $('#loading').show();
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    url: "/statistic/getfile", // куда отправляем
+                    type: "post", // метод передачи
+                    dataType: "json", // тип передачи данных
+                    contentType: 'application/json',
+                    processData: false,
+                    data: JSON.stringify(mydata),
 
+                    // // после получения ответа сервера
+                    success: function (data) {
+                        console.log(data)
+                        window.location.replace('/storage/files-xls/' + data + '.xls');
+                        $('#loading').hide();
+                    },
+                    error: function (jqXHR, exception) {
+                        console.log('fail');
+                        if (jqXHR.status === 0) {
+                            msg = 'Not connect.\n Verify Network.';
+                        } else if (jqXHR.status == 404) {
+                            msg = 'Requested page not found. [404]';
+                        } else if (jqXHR.status == 500) {
+                            msg = 'Internal Server Error [500].';
+                        } else if (exception === 'parsererror') {
+                            msg = 'Requested JSON parse failed.';
+                        } else if (exception === 'timeout') {
+                            msg = 'Time out error.';
+                        } else if (exception === 'abort') {
+                            msg = 'Ajax request aborted.';
+                        } else {
+                            msg = 'Uncaught Error.\n' + jqXHR.responseText;
+                        }
+                        console.log(msg);
+                    }
+                });
+            });
+        });
+    </script>
     <script>
         $(window).scroll(() => {
             if ($(window).scrollTop()) {
