@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 use App\DateUpdate;
+use Illuminate\Support\Facades\Auth;
 
 class DateUpdateController extends Controller
 {
@@ -28,9 +30,12 @@ class DateUpdateController extends Controller
         if ($request->ajax()) {
 
             $times = DateUpdate::findOrFail($id);
+            $user = User::where('id', '=', Auth::id())->first();
+
             $times->update([
                 'name_file' => $request->name_file,
                 'date_update' => $request->date_update,
+                'username' => $user->name
             ]);
 
             return response()->json([
