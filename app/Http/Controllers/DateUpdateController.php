@@ -11,7 +11,7 @@ class DateUpdateController extends Controller
 {
     public function index(Request $request)
     {
-        $times = DateUpdate::select('*')->whereIn('name_file', ['stat_bach', 'stat_master', 'stat_asp', 'stat_spo'])->get();
+        $times = DateUpdate::select('*')->get();
 
         foreach($times as $time){
             $pieces = explode(" ", $time->date_update);
