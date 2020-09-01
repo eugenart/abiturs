@@ -174,23 +174,27 @@
                                                             @foreach($item->studyForm as $sf)
                                                                 @php
                                                                     $counter = 0;
+                                                                    $id_comp = $sf->freeseats->first()->id_plan_comp;
                                                                 @endphp
+
                                                                 @foreach($sf->freeseats as $fs)
                                                                     @if($sf->freeseats->count() != 1)
-                                                                        @if($fs->admissionBasis->short_name == 'БО')
+                                                                        @if($fs->admissionBasis->short_name == 'БО' )
                                                                             @php
                                                                                 $counter++;
                                                                             @endphp
-                                                                            @if(!$fs->pastContests->contains('year', strval(date ( 'Y' ) - 1)))
-                                                                                <span>-</span>
-                                                                                <br>
-                                                                            @endif
-                                                                            @foreach($fs->pastContests as $pc)
-                                                                                @if($pc->year === strval(date ( 'Y' ) - 1))
-                                                                                    <span>{{$pc->minScore}}</span>
+                                                                            @if($fs->id_plan_comp == $id_comp)
+                                                                                @if(!$fs->pastContests->contains('year', strval(date ( 'Y' ) - 1)))
+                                                                                    <span>-</span>
                                                                                     <br>
                                                                                 @endif
-                                                                            @endforeach
+                                                                                @foreach($fs->pastContests as $pc)
+                                                                                    @if($pc->year === strval(date ( 'Y' ) - 1))
+                                                                                        <span>{{$pc->minScore}}</span>
+                                                                                        <br>
+                                                                                    @endif
+                                                                                @endforeach
+                                                                            @endif
                                                                         @endif
                                                                     @else
                                                                         @php
@@ -221,6 +225,7 @@
                                                             @foreach($item->studyForm as $sf)
                                                                 @php
                                                                     $counter = 0;
+                                                                        $id_comp = $sf->freeseats->first()->id_plan_comp;
                                                                 @endphp
                                                                 @foreach($sf->freeseats as $fs)
                                                                     @if($sf->freeseats->count() != 1)
@@ -228,6 +233,24 @@
                                                                             @php
                                                                                 $counter++;
                                                                             @endphp
+                                                                            @if($fs->id_plan_comp == $id_comp)
+                                                                                @if(!$fs->pastContests->contains('year', strval(date ( 'Y' ) - 2)))
+                                                                                    <span>-</span>
+                                                                                    <br>
+                                                                                @endif
+                                                                                @foreach($fs->pastContests as $pc)
+                                                                                    @if($pc->year === strval(date ( 'Y' ) - 2))
+                                                                                        <span>{{$pc->minScore}}</span>
+                                                                                        <br>
+                                                                                    @endif
+                                                                                @endforeach
+                                                                            @endif
+                                                                        @endif
+                                                                    @else
+                                                                        @php
+                                                                            $counter++;
+                                                                        @endphp
+                                                                        @if($fs->id_plan_comp == $id_comp)
                                                                             @if(!$fs->pastContests->contains('year', strval(date ( 'Y' ) - 2)))
                                                                                 <span>-</span>
                                                                                 <br>
@@ -239,20 +262,6 @@
                                                                                 @endif
                                                                             @endforeach
                                                                         @endif
-                                                                    @else
-                                                                        @php
-                                                                            $counter++;
-                                                                        @endphp
-                                                                        @if(!$fs->pastContests->contains('year', strval(date ( 'Y' ) - 2)))
-                                                                            <span>-</span>
-                                                                            <br>
-                                                                        @endif
-                                                                        @foreach($fs->pastContests as $pc)
-                                                                            @if($pc->year === strval(date ( 'Y' ) - 2))
-                                                                                <span>{{$pc->minScore}}</span>
-                                                                                <br>
-                                                                            @endif
-                                                                        @endforeach
                                                                     @endif
                                                                 @endforeach
                                                                 @if(!$counter)
@@ -268,6 +277,7 @@
                                                             @foreach($item->studyForm as $sf)
                                                                 @php
                                                                     $counter = 0;
+                                                                        $id_comp = $sf->freeseats->first()->id_plan_comp;
                                                                 @endphp
                                                                 @foreach($sf->freeseats as $fs)
                                                                     @if($sf->freeseats->count() != 1)
@@ -275,16 +285,18 @@
                                                                             @php
                                                                                 $counter++;
                                                                             @endphp
-                                                                            @if(!$fs->pastContests->contains('year', strval(date ( 'Y' ) - 3)))
-                                                                                <span>-</span>
-                                                                                <br>
-                                                                            @endif
-                                                                            @foreach($fs->pastContests as $pc)
-                                                                                @if($pc->year === strval(date ( 'Y' ) - 3))
-                                                                                    <span>{{$pc->minScore}}</span>
+                                                                            @if($fs->id_plan_comp == $id_comp)
+                                                                                @if(!$fs->pastContests->contains('year', strval(date ( 'Y' ) - 3)))
+                                                                                    <span>-</span>
                                                                                     <br>
                                                                                 @endif
-                                                                            @endforeach
+                                                                                @foreach($fs->pastContests as $pc)
+                                                                                    @if($pc->year === strval(date ( 'Y' ) - 3))
+                                                                                        <span>{{$pc->minScore}}</span>
+                                                                                        <br>
+                                                                                    @endif
+                                                                                @endforeach
+                                                                            @endif
                                                                         @endif
                                                                     @else
                                                                         @php
@@ -462,6 +474,7 @@
                                                                 @foreach($item->studyForm as $sf)
                                                                     @php
                                                                         $counter = 0;
+                                                                        $id_comp = $sf->freeseats->first()->id_plan_comp;
                                                                     @endphp
                                                                     @foreach($sf->freeseats as $fs)
                                                                         @if($sf->freeseats->count() != 1)
@@ -469,6 +482,24 @@
                                                                                 @php
                                                                                     $counter++;
                                                                                 @endphp
+                                                                                @if($fs->id_plan_comp == $id_comp)
+                                                                                    @if(!$fs->pastContests->contains('year', strval(date ( 'Y' ) - 1)))
+                                                                                        <span>-</span>
+                                                                                        <br>
+                                                                                    @endif
+                                                                                    @foreach($fs->pastContests as $pc)
+                                                                                        @if($pc->year === strval(date ( 'Y' ) - 1))
+                                                                                            <span>{{$pc->minScore}}</span>
+                                                                                            <br>
+                                                                                        @endif
+                                                                                    @endforeach
+                                                                                @endif
+                                                                            @endif
+                                                                        @else
+                                                                            @php
+                                                                                $counter++;
+                                                                            @endphp
+                                                                            @if($fs->id_plan_comp == $id_comp)
                                                                                 @if(!$fs->pastContests->contains('year', strval(date ( 'Y' ) - 1)))
                                                                                     <span>-</span>
                                                                                     <br>
@@ -480,20 +511,6 @@
                                                                                     @endif
                                                                                 @endforeach
                                                                             @endif
-                                                                        @else
-                                                                            @php
-                                                                                $counter++;
-                                                                            @endphp
-                                                                            @if(!$fs->pastContests->contains('year', strval(date ( 'Y' ) - 1)))
-                                                                                <span>-</span>
-                                                                                <br>
-                                                                            @endif
-                                                                            @foreach($fs->pastContests as $pc)
-                                                                                @if($pc->year === strval(date ( 'Y' ) - 1))
-                                                                                    <span>{{$pc->minScore}}</span>
-                                                                                    <br>
-                                                                                @endif
-                                                                            @endforeach
                                                                         @endif
                                                                     @endforeach
                                                                     @if(!$counter)
@@ -509,6 +526,7 @@
                                                                 @foreach($item->studyForm as $sf)
                                                                     @php
                                                                         $counter = 0;
+                                                                        $id_comp = $sf->freeseats->first()->id_plan_comp;
                                                                     @endphp
                                                                     @foreach($sf->freeseats as $fs)
                                                                         @if($sf->freeseats->count() != 1)
@@ -516,6 +534,24 @@
                                                                                 @php
                                                                                     $counter++;
                                                                                 @endphp
+                                                                                @if($fs->id_plan_comp == $id_comp)
+                                                                                    @if(!$fs->pastContests->contains('year', strval(date ( 'Y' ) - 2)))
+                                                                                        <span>-</span>
+                                                                                        <br>
+                                                                                    @endif
+                                                                                    @foreach($fs->pastContests as $pc)
+                                                                                        @if($pc->year === strval(date ( 'Y' ) - 2))
+                                                                                            <span>{{$pc->minScore}}</span>
+                                                                                            <br>
+                                                                                        @endif
+                                                                                    @endforeach
+                                                                                @endif
+                                                                            @endif
+                                                                        @else
+                                                                            @php
+                                                                                $counter++;
+                                                                            @endphp
+                                                                            @if($fs->id_plan_comp == $id_comp)
                                                                                 @if(!$fs->pastContests->contains('year', strval(date ( 'Y' ) - 2)))
                                                                                     <span>-</span>
                                                                                     <br>
@@ -527,20 +563,6 @@
                                                                                     @endif
                                                                                 @endforeach
                                                                             @endif
-                                                                        @else
-                                                                            @php
-                                                                                $counter++;
-                                                                            @endphp
-                                                                            @if(!$fs->pastContests->contains('year', strval(date ( 'Y' ) - 2)))
-                                                                                <span>-</span>
-                                                                                <br>
-                                                                            @endif
-                                                                            @foreach($fs->pastContests as $pc)
-                                                                                @if($pc->year === strval(date ( 'Y' ) - 2))
-                                                                                    <span>{{$pc->minScore}}</span>
-                                                                                    <br>
-                                                                                @endif
-                                                                            @endforeach
                                                                         @endif
                                                                     @endforeach
                                                                     @if(!$counter)
@@ -556,6 +578,7 @@
                                                                 @foreach($item->studyForm as $sf)
                                                                     @php
                                                                         $counter = 0;
+                                                                        $id_comp = $sf->freeseats->first()->id_plan_comp;
                                                                     @endphp
                                                                     @foreach($sf->freeseats as $fs)
 
@@ -564,6 +587,24 @@
                                                                                 @php
                                                                                     $counter++;
                                                                                 @endphp
+                                                                                @if($fs->id_plan_comp == $id_comp)
+                                                                                    @if(!$fs->pastContests->contains('year', strval(date ( 'Y' ) - 3)))
+                                                                                        <span>-</span>
+                                                                                        <br>
+                                                                                    @endif
+                                                                                    @foreach($fs->pastContests as $pc)
+                                                                                        @if($pc->year === strval(date ( 'Y' ) - 3))
+                                                                                            <span>{{$pc->minScore}}</span>
+                                                                                            <br>
+                                                                                        @endif
+                                                                                    @endforeach
+                                                                                @endif
+                                                                            @endif
+                                                                        @else
+                                                                            @php
+                                                                                $counter++;
+                                                                            @endphp
+                                                                            @if($fs->id_plan_comp == $id_comp)
                                                                                 @if(!$fs->pastContests->contains('year', strval(date ( 'Y' ) - 3)))
                                                                                     <span>-</span>
                                                                                     <br>
@@ -575,20 +616,6 @@
                                                                                     @endif
                                                                                 @endforeach
                                                                             @endif
-                                                                        @else
-                                                                            @php
-                                                                                $counter++;
-                                                                            @endphp
-                                                                            @if(!$fs->pastContests->contains('year', strval(date ( 'Y' ) - 3)))
-                                                                                <span>-</span>
-                                                                                <br>
-                                                                            @endif
-                                                                            @foreach($fs->pastContests as $pc)
-                                                                                @if($pc->year === strval(date ( 'Y' ) - 3))
-                                                                                    <span>{{$pc->minScore}}</span>
-                                                                                    <br>
-                                                                                @endif
-                                                                            @endforeach
                                                                         @endif
                                                                     @endforeach
                                                                     @if(!$counter)
@@ -812,9 +839,23 @@
 
                 v.freeseats.sort((a, b) => (a.admissionBasis.name.length > b.admissionBasis.name.length) ? 1 : ((b.admissionBasis.name.length > a.admissionBasis.name.length) ? -1 : 0));
 
+                let id_comp = v.freeseats[0].id_plan_comp
+                console.log(id_comp);
                 $.each(v.freeseats, (key, seat) => {
-                    //templateRecipient += "<tr><td>" + seat.admissionBasis.name + "</td><td>" + seat.value + "</td></tr>"
-                    templateRecipient += "<p class='mb-0 ml-lg-5 ml-xl-5 ml-md-5 ml-sm-3 ml-lg-0 ml-md-2 ml-3 text-left'><span>" + seat.admissionBasis.name + " - </span><b>" + seat.value + "</b></p>"
+                    if (seat.id_plan_comp === id_comp) {
+                        templateRecipient += "<p class='mb-0 ml-lg-5 ml-xl-5 ml-md-5 ml-sm-3 ml-lg-0 ml-md-2 ml-3 text-left'><span>" + seat.admissionBasis.name + " - </span><b>" + seat.value + "</b></p>"
+                    }
+                });
+
+                let ccc = 0;
+                $.each(v.freeseats, (key, seat) => {
+                    if (seat.id_plan_comp != id_comp) {
+                        if (ccc === 0) {
+                            templateRecipient += "<h5 class='text-center mb-0 mt-2'><strong>Дополнительный прием:</strong></h5>"
+                        }
+                        ccc++;
+                        templateRecipient += "<p class='mb-0 ml-lg-5 ml-xl-5 ml-md-5 ml-sm-3 ml-lg-0 ml-md-2 ml-3 text-left'><span>" + seat.admissionBasis.name + " - </span><b>" + seat.value + "</b></p>"
+                    }
                 });
 
                 //templateRecipient += "</tbody></table></div></div>";
@@ -822,7 +863,7 @@
                 templateRecipient += "<div class='col-12 col-lg-6 col-xl-6 col-md-6 col-sm-12 mb-2'>";
                 templateRecipient += "<h5 class='text-center mb-0'><strong>Cтоимость обучения:</strong></h5>"
                 $.each(v.prices, (key, price) => {
-                    if (price.price !== 0) {
+                    if (price.price !== 0 && price.id_plan_comp === id_comp) {
                         templateRecipient += "<p class='mb-0 ml-lg-5 ml-xl-5 ml-md-5 ml-sm-3 ml-lg-0 ml-md-2 ml-3 text-left'><span>" + price.info + " - </span><b>" + price.price + " ₽/год</b></p>"
                     }
                 })
