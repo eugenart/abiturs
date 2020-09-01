@@ -36,25 +36,25 @@
                                 </div>
 
 
-<!--                                <table class="table table-bordered table-sm mt-3">-->
-<!--                                    <thead>-->
-<!--                                    <tr>-->
-<!--                                        <th scope="col">Имя файла</th>-->
-<!--                                        <th scope="col">Время выгрузки</th>-->
-<!--                                        <th scope="col">Пользователь</th>-->
-<!--                                        <th scope="col">Факт. время обновления</th>-->
-<!--                                    </tr>-->
-<!--                                    </thead>-->
-<!--                                    <tbody>-->
+                                <table class="table table-bordered table-sm mt-3" style="display:none;">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Имя файла</th>
+                                        <th scope="col">Время выгрузки</th>
+                                        <th scope="col">Пользователь</th>
+                                        <th scope="col">Факт. время обновления</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
 
-<!--                                    <tr v-for="(time, index) in times" :key="time.id">-->
-<!--                                        <th scope="row">{{time.name_file}}</th>-->
-<!--                                        <td>{{time.date_update.replace('T', ' ')}}</td>-->
-<!--                                        <td>{{time.username}}</td>-->
-<!--                                        <td>{{time.updated_at}}</td>-->
-<!--                                    </tr>-->
-<!--                                    </tbody>-->
-<!--                                </table>-->
+                                    <tr v-for="(time, index) in times" :key="time.id">
+                                        <th scope="row">{{time.name_file}}</th>
+                                        <td>{{time.date_update.replace('T', ' ')}}</td>
+                                        <td>{{time.username}}</td>
+                                        <td>{{time.updated_at}}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
 
                             </div>
                         </div>
