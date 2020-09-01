@@ -60,12 +60,14 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
     Route::post('/download', 'DownloadFileController@index')->name('json.download');
 
+
     Route::middleware('role:admin')->group(function () {
-        Route::get('/parse', 'ParserController@index')->name('parse.index');
         Route::get('/times', 'DateUpdateController@index')->name('times.index');
         Route::post('/times/{id}', 'DateUpdateController@update')->name('times.update');
     });
 
+
+        Route::get('/parse', 'ParserController@index')->name('parse.index');
         //специальности специализации
         Route::get('/parse-specialities', 'ParserController@parseSpecialitiesLocal')->name('parse.parseSpec');
         //дисциплины
