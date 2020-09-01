@@ -2,16 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\AdmissionBasis;
 use App\Faculty;
+use App\Freeseats_bases;
 use App\PastContests;
 use App\Plan;
 use App\PlanCompetition;
+use App\Price;
 use App\Speciality;
 use App\Specialization;
 use App\StudyForm;
 use App\Subject;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use phpDocumentor\Reflection\DocBlock\Tags\Return_;
 
 class SelectionController extends Controller
 {
@@ -28,15 +32,7 @@ class SelectionController extends Controller
         $faculties = Faculty::orderBy('name')->get();
 
         foreach ($faculties as $faculty) {
-//            $faculty->plan = DB::table('plans')
-//                ->join('specialities', 'plans.id_speciality', '=', 'specialities.id')
-//                ->where('id_faculty', '=', $faculty->id)
-//                ->orderBy('specialities.name')
-//                ->select('specialities.name')
-//                ->get();
-
             $faculty->plan = $faculty->plans()->get();
-
         }
         foreach ($faculties as $faculty) {
             $spec_com = array();
@@ -53,13 +49,10 @@ class SelectionController extends Controller
                     $plan->sort_name = $plan->speciality()->select('name')->first();
                     $plan->specialization = $plan->specialization()->select('name', 'id_speciality')->first();
 
-//                    $plan->speciality = Speciality::where('id', '=', $plan->id_speciality)->select('code', 'name')->first();
-//                    $plan->specialization = Specialization::where('id', '=', $plan->id_specialization)->select('name', 'id_speciality')->first();
-
                     //выбираем формы обучения для одной специальности и спецз
                     $SpecForms = Plan::where('id_speciality', '=', $plan->id_speciality)
                         ->where('id_specialization', '=', $plan->id_specialization)
-                        ->select('id_studyForm', 'id', 'years')->get();
+                        ->select('id_studyForm', 'id', 'years', 'planId')->get();
                     $arr_studyForm = array();
 
                     $plan->years = null;
@@ -67,19 +60,39 @@ class SelectionController extends Controller
 
                         $form_temp = StudyForm::where('id', '=', $form->id_studyForm)->select('name')->first();
                         $form_temp->years = $form->years;
-                        $plan_comp_form = PlanCompetition::where('id_plan', '=', $form->id)->first();
-                        $form_temp->freeseats = $plan_comp_form->freeseats()->get();
+
+//                        $plan_comp_form = PlanCompetition::where('id_plan', '=', $form->id)->first();
+//
+//                        $form_temp->freeseats = $plan_comp_form->freeseats()->get();
+
+//                        //competition
+                        $p_c = Plan::where('planId', $form->planId)->select('id')->get();
+                        $pc_arr = array();
+                        foreach ($p_c as $pc_item){
+                            $pc_arr[] = $pc_item->id;
+                        }
+                        $plan_comp_form = PlanCompetition::whereIn('id_plan', $pc_arr)->get();
+                        $pcf_arr = array();
+                        foreach ($plan_comp_form as $pc_item){
+                            $pcf_arr[] = $pc_item->id;
+                        }
+                        $form_temp->freeseats = Freeseats_bases::whereIn('id_plan_comp', $pcf_arr)->get();
+
+                        $id_plan_comp = $form_temp->freeseats->first()->id_plan_comp;
                         foreach ($form_temp->freeseats as $value) {
                             $value->admissionBasis = $value->admissionBasis()->first();
 
-                            $past_contests = PastContests::where('id_speciality', '=', $plan->id_speciality)
-                                ->where('id_studyForm', '=', $form->id_studyForm)
-                                ->where('id_admissionBasis', '=', 3)
-                                ->select('year', 'minScore')
-                                ->get();
-                            $value->pastContests = $past_contests;
+                                $past_contests = PastContests::where('id_speciality', '=', $plan->id_speciality)
+                                    ->where('id_studyForm', '=', $form->id_studyForm)
+                                    ->where('id_admissionBasis', '=', 3)
+                                    ->select('year', 'minScore')
+                                    ->get();
+                                $value->pastContests = $past_contests;
+
                         }
-                        $form_temp->prices = $plan_comp_form->prices()->get();
+
+                        $form_temp->prices = Price::whereIn('id_plan_comp', $pcf_arr)->get();
+//                        return $form_temp->prices ;
                         $arr_studyForm[] = $form_temp;
                     }
                     //сорировка форм обучения
@@ -108,6 +121,7 @@ class SelectionController extends Controller
                         $arr_studyForm_sort[] = $temp_item_z;
                     }
 
+                    //собираем готовый объект
                     $plan->studyForm = $arr_studyForm_sort;
 
                     $plan->plan_comp = $plan->plan_comps()->first(); //связь с компетишн
@@ -125,7 +139,7 @@ class SelectionController extends Controller
             }
         }
 
-        //  return $faculties;
+//          return $faculties;
 
         foreach ($faculties as $faculty) {
             $faculty->plan = $faculty->plan->sortBy('sort_name');
