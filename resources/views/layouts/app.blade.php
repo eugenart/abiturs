@@ -125,6 +125,16 @@
                         </li>
                         @endrole
 
+                        @if(Auth::id() == 5 )
+                        <li class="nav-item">
+                            <a class="nav-link {{ Request::is('admin/parse') ? 'active' : null }}" href="{{route('parse.index')}}">
+                                <span data-feather="users"></span>
+                                Выгрузка данных
+                            </a>
+                        </li>
+                        @endif
+
+
                         @role('admin')
                         <li class="nav-item">
                             <a class="nav-link {{ Request::is('admin/times') ? 'active' : null }}" href="{{route('times.index')}}">

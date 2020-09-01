@@ -14,7 +14,7 @@
                                         Вы можете изменить время на нужное после окончания выгрузки.
                                     </div>
                                 </div>
-                                <div v-for="(time, index) in times" :key="time.id">
+                                <div v-for="(time, index) in times" :key="time.id" v-if="time.name_file === 'stat_bach' || time.name_file === 'stat_master' || time.name_file === 'stat_asp' || time.name_file === 'stat_spo'">
                                     <form @submit.prevent="updateTime(time)"
                                           class="col-12 p-0"
                                           enctype="multipart/form-data" :id="time.id+'Form'">
@@ -34,6 +34,28 @@
                                         </div>
                                     </form>
                                 </div>
+
+
+<!--                                <table class="table table-bordered table-sm mt-3">-->
+<!--                                    <thead>-->
+<!--                                    <tr>-->
+<!--                                        <th scope="col">Имя файла</th>-->
+<!--                                        <th scope="col">Время выгрузки</th>-->
+<!--                                        <th scope="col">Пользователь</th>-->
+<!--                                        <th scope="col">Факт. время обновления</th>-->
+<!--                                    </tr>-->
+<!--                                    </thead>-->
+<!--                                    <tbody>-->
+
+<!--                                    <tr v-for="(time, index) in times" :key="time.id">-->
+<!--                                        <th scope="row">{{time.name_file}}</th>-->
+<!--                                        <td>{{time.date_update.replace('T', ' ')}}</td>-->
+<!--                                        <td>{{time.username}}</td>-->
+<!--                                        <td>{{time.updated_at}}</td>-->
+<!--                                    </tr>-->
+<!--                                    </tbody>-->
+<!--                                </table>-->
+
                             </div>
                         </div>
                     </div>
@@ -51,6 +73,8 @@ export default {
             time: {
                 name_file: null,
                 date_update: null,
+                username: null,
+                updated_at: null
             },
             notice: '',
             id_notice: null
