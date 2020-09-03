@@ -53,73 +53,74 @@ class DownloadFileController extends Controller
 
     public function index(Request $request)
     {
-        $param = $request->param;
+        if (Auth::check()) {
+            $param = $request->param;
 
-        if ($param == "specialities" || $param == "faculties" || $param == "admission_bases") {
-            $directory = "catalogs";
-            if ($param == "specialities") {
-                $res = $this->download($directory, "specialities.xls");
-                if ($res === 0 || $res === 2) {
-                    $res1 = $this->download($directory, "specializations.xls");
-                    if (($res1 === 0 && $res === 0) || ($res === 2 && $res1 === 0) || ($res === 0 && $res1 === 2)) {
-                        $result = $this->parseSpecialities();
-                        if($result){
-                           $this->date_update($param);
+            if ($param == "specialities" || $param == "faculties" || $param == "admission_bases") {
+                $directory = "catalogs";
+                if ($param == "specialities") {
+                    $res = $this->download($directory, "specialities.xls");
+                    if ($res === 0 || $res === 2) {
+                        $res1 = $this->download($directory, "specializations.xls");
+                        if (($res1 === 0 && $res === 0) || ($res === 2 && $res1 === 0) || ($res === 0 && $res1 === 2)) {
+                            $result = $this->parseSpecialities();
+                            if ($result) {
+                                $this->date_update($param);
+                            }
+                            return $result;
+
+                        }
+                    }
+                }
+                if ($param == "faculties") {
+                    $res = $this->download($directory, "faculties.xls");
+                    $res1 = $this->download($directory, "subjects.xls");
+                    if ($res === 0 && $res1 === 0) {
+                        $result = $this->parseSubFac();
+                        if ($result) {
+                            $this->date_update($param);
                         }
                         return $result;
-
+                    } elseif ($res === 0 && $res1 != 0) {
+                        $result = $this->parseFaculties();
+                        if ($result) {
+                            $this->date_update("faculties.xls");
+                        }
+                        return $result;
+                    } elseif ($res != 0 && $res1 === 0) {
+                        $result = $this->parseSubjects();
+                        if ($result) {
+                            $this->date_update("subjects.xls");
+                        }
+                        return $result;
+                    }
+                }
+                if ($param == "admission_bases") {
+                    $res = $this->download($directory, "admission_bases.xls");
+                    if ($res === 0) {
+                        $result = $this->parseAdmissionBases();
+                        if ($result) {
+                            $this->date_update($param);
+                        }
+                        return $result;
                     }
                 }
             }
-            if ($param == "faculties") {
-                $res = $this->download($directory, "faculties.xls");
-                $res1 = $this->download($directory, "subjects.xls");
-                if ($res === 0 && $res1 === 0) {
-                    $result = $this->parseSubFac();
-                    if($result){
-                        $this->date_update($param);
-                    }
-                    return $result;
-                } elseif ($res === 0 && $res1 != 0) {
-                    $result = $this->parseFaculties();
-                    if($result){
-                        $this->date_update("faculties.xls");
-                    }
-                    return $result;
-                } elseif ($res != 0 && $res1 === 0) {
-                    $result = $this->parseSubjects();
-                    if($result){
-                        $this->date_update("subjects.xls");
-                    }
-                    return $result;
-                }
-            }
-            if ($param == "admission_bases") {
-                $res = $this->download($directory, "admission_bases.xls");
+            if ($param == "past_contests") {
+                $directory = "pastContests";
+                $res = $this->download($directory, "past_contests.json");
                 if ($res === 0) {
-                    $result = $this->parseAdmissionBases();
-                    if($result){
+                    $result = $this->parsePastContests();
+                    if ($result) {
                         $this->date_update($param);
                     }
                     return $result;
                 }
             }
-        }
-        if ($param == "past_contests") {
-            $directory = "pastContests";
-            $res = $this->download($directory, "past_contests.json");
-            if ($res === 0) {
-                $result = $this->parsePastContests();
-                if($result){
-                    $this->date_update($param);
-                }
-                return $result;
-            }
-        }
-        if ($param == "stat_bach" || $param == "stat_master" || $param == "stat_asp"
-            || $param == "stat_spo" || $param == "stat_bach_catalogs") {
-            $directory = "statistics";
-            if ($param == "stat_bach_catalogs") {
+            if ($param == "stat_bach" || $param == "stat_master" || $param == "stat_asp"
+                || $param == "stat_spo" || $param == "stat_bach_catalogs") {
+                $directory = "statistics";
+                if ($param == "stat_bach_catalogs") {
 //                $res = $this->download($directory, "stat_bach.json", true);
 //                if ($res === 0 /*|| $res === 2*/) {
 //                    $result = $this->parseCatalogs("stat_bach_catalog.json");
@@ -128,106 +129,106 @@ class DownloadFileController extends Controller
 //                    }
 //                    return $result;
 //                }
-                return 'Каталоги успешно выгруженны!';
-            }
-            if ($param == "stat_bach") {
-                $res = $this->download($directory, "stat_bach.json");
-                if ($res === 0) {
-                    $result = $this->parseStatBachAll();
-                    if($result){
-                        $this->date_update($param);
+                    return 'Каталоги успешно выгруженны!';
+                }
+                if ($param == "stat_bach") {
+                    $res = $this->download($directory, "stat_bach.json");
+                    if ($res === 0) {
+                        $result = $this->parseStatBachAll();
+                        if ($result) {
+                            $this->date_update($param);
+                        }
+                        return $result;
                     }
-                    return $result;
+                }
+                if ($param == "stat_master") {
+                    $res = $this->download($directory, "stat_master.json");
+                    if ($res === 0) {
+                        $result = $this->parseStatMasterAll();
+                        if ($result) {
+                            $this->date_update($param);
+                        }
+                        return $result;
+                    }
+                }
+                if ($param == "stat_asp") {
+                    $res = $this->download($directory, "stat_asp.json");
+                    if ($res === 0) {
+                        $result = $this->parseStatAspAll();
+                        if ($result) {
+                            $this->date_update($param);
+                        }
+                        return $result;
+                    }
+                }
+                if ($param == "stat_spo") {
+                    $res = $this->download($directory, "stat_spo.json");
+                    if ($res === 0) {
+                        $result = $this->parseStatSpoAll();
+                        if ($result) {
+                            $this->date_update($param);
+                        }
+                        return $result;
+                    }
                 }
             }
-            if ($param == "stat_master") {
-                $res = $this->download($directory, "stat_master.json");
-                if ($res === 0) {
-                    $result = $this->parseStatMasterAll();
-                    if($result){
-                        $this->date_update($param);
+            if ($param == "plans_bach" || $param == "plans_master" || $param == "plans_asp" || $param == "plans_spo") {
+                if ($param == "plans_bach") {
+                    $directory = "plans/plans_saransk";
+                    $res = $this->download($directory, "plans_sar_bach.json");
+                    $directory = "plans/plans_rim";
+                    $res1 = $this->download($directory, "plans_rim_bach.json");
+                    //если оба новые, или один из них новый
+                    if (($res === 0 && $res1 === 0) || ($res === 2 && $res1 === 0) || ($res === 0 && $res1 === 2)) {
+                        $result = $this->parsePlansBach();
+                        if ($result) {
+                            $this->date_update($param);
+                        }
+                        return $result;
                     }
-                    return $result;
                 }
-            }
-            if ($param == "stat_asp") {
-                $res = $this->download($directory, "stat_asp.json");
-                if ($res === 0) {
-                    $result = $this->parseStatAspAll();
-                    if($result){
-                        $this->date_update($param);
+                if ($param == "plans_master") {
+                    $directory = "plans/plans_saransk";
+                    $res = $this->download($directory, "plans_sar_master.json");
+                    $directory = "plans/plans_rim";
+                    $res1 = $this->download($directory, "plans_rim_master.json");
+                    if (($res === 0 && $res1 === 0) || ($res === 2 && $res1 === 0) || ($res === 0 && $res1 === 2)) {
+                        $result = $this->parsePlansMaster();
+                        if ($result) {
+                            $this->date_update($param);
+                        }
+                        return $result;
                     }
-                    return $result;
                 }
-            }
-            if ($param == "stat_spo") {
-                $res = $this->download($directory, "stat_spo.json");
-                if ($res === 0) {
-                    $result = $this->parseStatSpoAll();
-                    if($result){
-                        $this->date_update($param);
+                if ($param == "plans_asp") {
+                    $directory = "plans/plans_saransk";
+                    $res = $this->download($directory, "plans_sar_asp.json");
+                    $res1 = $this->download($directory, "plans_sar_ord.json");
+                    if ($res === 0 || $res1 === 0) {
+                        $result = $this->parsePlansAspMain();
+                        if ($result) {
+                            $this->date_update($param);
+                        }
+                        return $result;
                     }
-                    return $result;
+                }
+                if ($param == "plans_spo") {
+                    $directory = "plans/plans_saransk";
+                    $res = $this->download($directory, "plans_sar_spo.json");
+                    $directory = "plans/plans_rim";
+                    $res1 = $this->download($directory, "plans_rim_spo.json");
+                    $directory = "plans/plans_kov";
+                    $res2 = $this->download($directory, "plans_kov_spo.json");
+                    if (!($res === 2 && $res1 === 2 && $res2 === 2)) {
+                        $result = $this->parsePlansSpo();
+                        if ($result) {
+                            $this->date_update($param);
+                        }
+                        return $result;
+                    }
                 }
             }
         }
-        if ($param == "plans_bach" || $param == "plans_master" || $param == "plans_asp" || $param == "plans_spo") {
-            if ($param == "plans_bach") {
-                $directory = "plans/plans_saransk";
-                $res = $this->download($directory, "plans_sar_bach.json");
-                $directory = "plans/plans_rim";
-                $res1 = $this->download($directory, "plans_rim_bach.json");
-                //если оба новые, или один из них новый
-                if (($res === 0 && $res1 === 0) || ($res === 2 && $res1 === 0) || ($res === 0 && $res1 === 2)) {
-                    $result = $this->parsePlansBach();
-                    if($result){
-                        $this->date_update($param);
-                    }
-                    return $result;
-                }
-            }
-            if ($param == "plans_master") {
-                $directory = "plans/plans_saransk";
-                $res = $this->download($directory, "plans_sar_master.json");
-                $directory = "plans/plans_rim";
-                $res1 = $this->download($directory, "plans_rim_master.json");
-                if (($res === 0 && $res1 === 0) || ($res === 2 && $res1 === 0) || ($res === 0 && $res1 === 2)) {
-                    $result = $this->parsePlansMaster();
-                    if($result){
-                        $this->date_update($param);
-                    }
-                    return $result;
-                }
-            }
-            if ($param == "plans_asp") {
-                $directory = "plans/plans_saransk";
-                $res = $this->download($directory, "plans_sar_asp.json");
-                $res1 = $this->download($directory, "plans_sar_ord.json");
-                if ($res === 0 || $res1 === 0) {
-                    $result = $this->parsePlansAspMain();
-                    if($result){
-                        $this->date_update($param);
-                    }
-                    return $result;
-                }
-            }
-            if ($param == "plans_spo") {
-                $directory = "plans/plans_saransk";
-                $res = $this->download($directory, "plans_sar_spo.json");
-                $directory = "plans/plans_rim";
-                $res1 = $this->download($directory, "plans_rim_spo.json");
-                $directory = "plans/plans_kov";
-                $res2 = $this->download($directory, "plans_kov_spo.json");
-                if (!($res === 2 && $res1 === 2 && $res2 === 2)) {
-                    $result = $this->parsePlansSpo();
-                    if($result){
-                        $this->date_update($param);
-                    }
-                    return $result;
-                }
-            }
-        }
-
     }
 
 
