@@ -4,15 +4,17 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Psy\Exception\ErrorException;
 
 class OrderController extends Controller
 {
-    public static function cmp($a, $b) {
+    public static function cmp($a, $b)
+    {
         if ($a->equalTo($b)) {
             return 0;
         }
-        return ($a ->greaterThan($b)) ? -1 : 1;
+        return ($a->greaterThan($b)) ? -1 : 1;
     }
 
     public function index()
@@ -78,7 +80,7 @@ class OrderController extends Controller
 
             uasort($date_file, array($this, "cmp"));
             $sort_file = array();
-            foreach ($date_file as $k => $el){
+            foreach ($date_file as $k => $el) {
                 $sort_file[] = $k;
             }
             $files = $sort_file;
@@ -90,12 +92,12 @@ class OrderController extends Controller
     }
 
 
-
     public
     function download_all_files()
     {
-        $this->download('orders');
-
+        if (Auth::check()) {
+            $this->download('orders');
+        }
 
     }
 
@@ -235,9 +237,9 @@ class OrderController extends Controller
 
             $date = substr($datef, 0, 2) . '.' . substr($datef, 2, 2) . '.' . substr($datef, 4, 4);
 
-            if($prep_levelf == '06' || $prep_levelf == '08'){
+            if ($prep_levelf == '06' || $prep_levelf == '08') {
                 $new_name = 'Приказ от ' . $date . ' №' . $num . '-а';
-            }else{
+            } else {
                 $new_name = 'Приказ от ' . $date . ' №' . $num . '-с';
             }
 
