@@ -397,8 +397,8 @@
                         console.log(response);
                     })
                     .catch(response => {
-                        this.loadingparseSubStatus = false;
-                        this.parseSubStatus = response + '\nВремя авторизованной сессии истекло. Обновите страницу и нажмите кнопку снова.'
+                        this.loadingparseSpecialitiesStatus = false;
+                        this.parseSpecialitiesStatus = response + '\nВремя авторизованной сессии истекло. Обновите страницу и нажмите кнопку снова.'
                         console.log(response);
                     });
             },
@@ -426,8 +426,8 @@
                         this.parseAdmissionBasisStatus = response.data
                     })
                     .catch(response => {
-                        this.loadingparseSubStatus = false;
-                        this.parseSubStatus = response + '\nВремя авторизованной сессии истекло. Обновите страницу и нажмите кнопку снова.'
+                        this.loadingparseAdmissionBasis = false;
+                        this.parseAdmissionBasisStatus = response + '\nВремя авторизованной сессии истекло. Обновите страницу и нажмите кнопку снова.'
                         console.log(response);
                     });
             },
@@ -441,8 +441,8 @@
                         this.parseCatalogsStatus = response.data
                     })
                     .catch(response => {
-                        this.loadingparseSubStatus = false;
-                        this.parseSubStatus = response + '\nВремя авторизованной сессии истекло. Обновите страницу и нажмите кнопку снова.'
+                        this.loadingparseCatalogsStatus = false;
+                        this.parseCatalogsStatus = response + '\nВремя авторизованной сессии истекло. Обновите страницу и нажмите кнопку снова.'
                         console.log(response);
                     });
             },
@@ -456,8 +456,8 @@
                         this.parsePlansBachStatus = response.data
                     })
                     .catch(response => {
-                        this.loadingparseSubStatus = false;
-                        this.parseSubStatus = response + '\nВремя авторизованной сессии истекло. Обновите страницу и нажмите кнопку снова.'
+                        this.loadingparsePlansBachStatus = false;
+                        this.parsePlansBachStatus = response + '\nВремя авторизованной сессии истекло. Обновите страницу и нажмите кнопку снова.'
                         console.log(response);
                     });
             },
@@ -471,8 +471,8 @@
                         this.parsePlansMasterStatus = response.data
                     })
                     .catch(response => {
-                        this.loadingparseSubStatus = false;
-                        this.parseSubStatus = response + '\nВремя авторизованной сессии истекло. Обновите страницу и нажмите кнопку снова.'
+                        this.loadingparsePlansMasterStatus = false;
+                        this.parsePlansMasterStatus = response + '\nВремя авторизованной сессии истекло. Обновите страницу и нажмите кнопку снова.'
                         console.log(response);
                     });
             },
@@ -486,8 +486,8 @@
                         this.parsePlansAspStatus = response.data
                     })
                     .catch(response => {
-                        this.loadingparseSubStatus = false;
-                        this.parseSubStatus = response + '\nВремя авторизованной сессии истекло. Обновите страницу и нажмите кнопку снова.'
+                        this.loadingparsePlansAspStatus = false;
+                        this.parsePlansAspStatus = response + '\nВремя авторизованной сессии истекло. Обновите страницу и нажмите кнопку снова.'
                         console.log(response);
                     });
             },
@@ -501,8 +501,8 @@
                         this.parsePlansSpoStatus = response.data
                     })
                     .catch(response => {
-                        this.loadingparseSubStatus = false;
-                        this.parseSubStatus = response + '\nВремя авторизованной сессии истекло. Обновите страницу и нажмите кнопку снова.'
+                        this.loadingparsePlansSpoStatus = false;
+                        this.parsePlansSpoStatus = response + '\nВремя авторизованной сессии истекло. Обновите страницу и нажмите кнопку снова.'
                         console.log(response);
                     });
             },
@@ -515,8 +515,8 @@
                         this.parseStudentsStatus = response.data
                     })
                     .catch(response => {
-                        this.loadingparseSubStatus = false;
-                        this.parseSubStatus = response + '\nВремя авторизованной сессии истекло. Обновите страницу и нажмите кнопку снова.'
+                        this.loadingparseStudentsStatus = false;
+                        this.parseStudentsStatus = response + '\nВремя авторизованной сессии истекло. Обновите страницу и нажмите кнопку снова.'
                         console.log(response);
                     });
             },
@@ -529,8 +529,8 @@
                         this.parseStudentsMasterStatus = response.data
                     })
                     .catch(response => {
-                        this.loadingparseSubStatus = false;
-                        this.parseSubStatus = response + '\nВремя авторизованной сессии истекло. Обновите страницу и нажмите кнопку снова.'
+                        this.loadingparseStudentsMasterStatus = false;
+                        this.parseStudentsMasterStatus = response + '\nВремя авторизованной сессии истекло. Обновите страницу и нажмите кнопку снова.'
                         console.log(response);
                     });
             },
@@ -543,8 +543,8 @@
                         this.parseStudentsAspStatus = response.data
                     })
                     .catch(response => {
-                        this.loadingparseSubStatus = false;
-                        this.parseSubStatus = response + '\nВремя авторизованной сессии истекло. Обновите страницу и нажмите кнопку снова.'
+                        this.loadingparseStudentsAspStatus = false;
+                        this.parseStudentsAspStatus = response + '\nВремя авторизованной сессии истекло. Обновите страницу и нажмите кнопку снова.'
                         console.log(response);
                     });
             },
@@ -557,8 +557,8 @@
                         this.parseStudentsSpoStatus = response.data
                     })
                     .catch(response => {
-                        this.loadingparseSubStatus = false;
-                        this.parseSubStatus = response + '\nВремя авторизованной сессии истекло. Обновите страницу и нажмите кнопку снова.'
+                        this.loadingparseStudentsSpoStatus = false;
+                        this.parseStudentsSpoStatus = response + '\nВремя авторизованной сессии истекло. Обновите страницу и нажмите кнопку снова.'
                         console.log(response);
                     });
             },
@@ -571,8 +571,8 @@
                         this.parseContestsStatus = response.data
                     })
                     .catch(response => {
-                        this.loadingparseSubStatus = false;
-                        this.parseSubStatus = response + '\nВремя авторизованной сессии истекло. Обновите страницу и нажмите кнопку снова.'
+                        this.loadingparseContestsStatus = false;
+                        this.parseContestsStatus = response + '\nВремя авторизованной сессии истекло. Обновите страницу и нажмите кнопку снова.'
                         console.log(response);
                     });
             },
@@ -585,8 +585,8 @@
                         this.parseStatStatus = response.data
                     })
                     .catch(response => {
-                        this.loadingparseSubStatus = false;
-                        this.parseSubStatus = response + '\nВремя авторизованной сессии истекло. Обновите страницу и нажмите кнопку снова.'
+                        this.loadingparseStatStatus = false;
+                        this.parseStatStatus = response + '\nВремя авторизованной сессии истекло. Обновите страницу и нажмите кнопку снова.'
                         console.log(response);
                     });
             },
@@ -599,8 +599,8 @@
                         this.parseOrderStatus = response.data
                     })
                     .catch(response => {
-                        this.loadingparseSubStatus = false;
-                        this.parseSubStatus = response + '\nВремя авторизованной сессии истекло. Обновите страницу и нажмите кнопку снова.'
+                        this.loadingparseOrderStatus = false;
+                        this.parseOrderStatus = response + '\nВремя авторизованной сессии истекло. Обновите страницу и нажмите кнопку снова.'
                         console.log(response);
                     });
             }
