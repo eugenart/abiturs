@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Psy\Exception\ErrorException;
 
 class TotalStatController extends Controller
@@ -107,14 +108,16 @@ class TotalStatController extends Controller
     public
     function download_all_files()
     {
-        $this->download('statistic_priem/bach');
-        $this->download('statistic_priem/master');
-        $this->download('statistic_priem/asp');
-        $this->download('statistic_priem/spo');
+        if (Auth::check()) {
+            $this->download('statistic_priem/bach');
+            $this->download('statistic_priem/master');
+            $this->download('statistic_priem/asp');
+            $this->download('statistic_priem/spo');
 
-        $this->download('statistic_priem_foreigner/bach');
-        $this->download('statistic_priem_foreigner/master');
-        $this->download('statistic_priem_foreigner/asp');
+            $this->download('statistic_priem_foreigner/bach');
+            $this->download('statistic_priem_foreigner/master');
+            $this->download('statistic_priem_foreigner/asp');
+        }
     }
 
     public
@@ -185,14 +188,14 @@ class TotalStatController extends Controller
         foreach ($files as $file) {
             $num = preg_replace("/[^0-9]/", '', $file);
             if (ctype_alpha($file) != true && strlen($num) > 1) {
-                $name_file_drop[] = substr($file, 0, stripos($file, substr(preg_replace("/[^0-9]/", '', $file), 1, 2))). ".pdf";
-				
+                $name_file_drop[] = substr($file, 0, stripos($file, substr(preg_replace("/[^0-9]/", '', $file), 1, 2))) . ".pdf";
+
             }
         }
 
         foreach ($name_file_drop as $file_drop) {
             foreach ($files as $k => $file) {
-                if($file == $file_drop){
+                if ($file == $file_drop) {
                     unset($files[$k]);
                 }
             }
@@ -217,7 +220,7 @@ class TotalStatController extends Controller
             }
 
             if ($new_name != '') {
-                if(strlen(preg_replace("/[^0-9]/", '', $file))>1){
+                if (strlen(preg_replace("/[^0-9]/", '', $file)) > 1) {
                     $new_name .= " " . substr(substr($file, -14), 0, -4);
                 }
                 $new_name .= '.pdf';
