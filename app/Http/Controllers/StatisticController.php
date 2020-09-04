@@ -512,12 +512,13 @@ class StatisticController extends Controller
 //CHANGE
 
                                             if (empty($idPlan)) {
-                                                $idPlan = $names_arr['Plan']::where('id_speciality', '=', $speciality->id)
-                                                    ->where('id_studyForm', '=', $studyForm->id)
-//                                                ->where('id_specialization', '=', $spez_id)
-                                                    ->where('id_faculty', '=', $faculty->id)
-                                                    ->where('id', $id_plan_c->id_plan)
-                                                    ->first();
+                                                if (!empty($id_plan_c)) {
+                                                    $idPlan = $names_arr['Plan']::where('id_speciality', '=', $speciality->id)
+                                                        ->where('id_studyForm', '=', $studyForm->id)
+                                                        ->where('id_faculty', '=', $faculty->id)
+                                                        ->where('id', $id_plan_c->id_plan)
+                                                        ->first();
+                                                }
                                             }
 
                                             if (isset($idPlan)) {
@@ -620,25 +621,26 @@ class StatisticController extends Controller
                 $notification = 'По вашему запросу найдено слишком много совпадений. Пожалуйста, уточните запрос.';
                 return;
             }
+
             if ($id_students->count() == 0) {
                 $notification = 'По вашему запросу ничего не найдено.';
                 return;
             }
 
 
-            //делаем из этого массив id
+//делаем из этого массив id
             $id_stud_arr = array();
             foreach ($id_students as $student) {
                 $id_stud_arr[] = $student->id;
             }
             $id_stud_arr = array_map('intval', $id_stud_arr);
 
-            //выбираем всю статистику где id студентов как нам нужно
+//выбираем всю статистику где id студентов как нам нужно
             $statistic_for_people = $names_arr['Statistic']::whereIn('id_student', $id_stud_arr)->get();
-            //echo("<pre>" . $statistic_for_people . "</pre>");
+//echo("<pre>" . $statistic_for_people . "</pre>");
 
-            //записей максимум 5-6 если человек ввел фамилию и имя
-            //создаем массивы по каждой категории
+//записей максимум 5-6 если человек ввел фамилию и имя
+//создаем массивы по каждой категории
             $id_forms_arr = array();
             $id_cat_arr = array();
             $id_adm_arr = array();
@@ -663,7 +665,7 @@ class StatisticController extends Controller
             $id_spec_arr = array_unique($id_spec_arr, SORT_REGULAR);
             $id_comp_arr = array_unique($id_comp_arr, SORT_REGULAR);
 
-            // echo("<pre>" . $id_spec_arr . "</pre>");
+// echo("<pre>" . $id_spec_arr . "</pre>");
             $sdf = $names_arr['Statistic']::whereIn('id_competition', $id_comp_arr)
                 ->whereIn('id_speciality', $id_spec_arr)
                 ->whereIn('id_category', $id_cat_arr)
@@ -676,7 +678,7 @@ class StatisticController extends Controller
                 $id_comp_arr[] = $stat->id_competition;
             }
             $id_comp_arr = array_unique($id_comp_arr, SORT_REGULAR);
-            //проходим по каждой категории и ищем нужные нам записи статистики чтобы привести их в правильную структуру для вывода
+//проходим по каждой категории и ищем нужные нам записи статистики чтобы привести их в правильную структуру для вывода
             $studyForms = StudyForm::whereIn('id', $id_forms_arr)->get();
             foreach ($studyForms as $k5 => $studyForm) {
                 $categories = Category::whereIn('id', $id_cat_arr)->get();
@@ -898,7 +900,7 @@ class StatisticController extends Controller
             }
         }
 
-        //Выборка для инпутов
+//Выборка для инпутов
         $studyFormsForInputs = DB::table('study_forms')->join($names_arr['name_table'], 'study_forms.id', '=', $names_arr['name_table'] . '.id_studyForm')
             ->groupBy('study_forms.id')->select('study_forms.*')->get();;
         $faculties = $this->fetchFaculties($names_arr);
@@ -908,7 +910,8 @@ class StatisticController extends Controller
 
     }
 
-    public function createFileXls(Request $request)
+    public
+    function createFileXls(Request $request)
     {
         $studyForms = $request->all();
         $studyForms = $studyForms[0];
@@ -919,7 +922,8 @@ class StatisticController extends Controller
 
     }
 
-    public function fetchFaculties($names_arr)
+    public
+    function fetchFaculties($names_arr)
     {
         $faculties = Faculty::orderBy('name')->get();
         foreach ($faculties as $k => $faculty) {
