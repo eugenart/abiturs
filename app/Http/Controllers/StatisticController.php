@@ -44,7 +44,37 @@ class StatisticController extends Controller
             "Заочная форма, особое право",
             "Заочная форма, целевое обучение",
             "Заочная форма, бюджет",
-            "Заочная форма, полное возмещение затрат"
+            "Заочная форма, полное возмещение затрат",
+
+            "Очная форма, особое право, аспирантура",
+            "Очная форма, целевое обучение, аспирантура",
+            "Очная форма, бюджет, аспирантура",
+            "Очная форма, полное возмещение затрат, аспирантура",
+
+            "Очно-заочная форма, особое право, аспирантура",
+            "Очно-заочная форма, целевое обучение, аспирантура",
+            "Очно-заочная форма, бюджет, аспирантура",
+            "Очно-заочная форма, полное возмещение затрат, аспирантура",
+
+            "Заочная форма, особое право, аспирантура",
+            "Заочная форма, целевое обучение, аспирантура",
+            "Заочная форма, бюджет, аспирантура",
+            "Заочная форма, полное возмещение затрат, аспирантура",
+
+            "Очная форма, особое право, ординатура",
+            "Очная форма, целевое обучение, ординатура",
+            "Очная форма, бюджет, ординатура",
+            "Очная форма, полное возмещение затрат, ординатура",
+
+            "Очно-заочная форма, особое право, ординатура",
+            "Очно-заочная форма, целевое обучение, ординатура",
+            "Очно-заочная форма, бюджет, ординатура",
+            "Очно-заочная форма, полное возмещение затрат, ординатура",
+
+            "Заочная форма, особое право, ординатура",
+            "Заочная форма, целевое обучение, ординатура",
+            "Заочная форма, бюджет, ординатура",
+            "Заочная форма, полное возмещение затрат, ординатура",
         );
 
         $flipped_order = array_flip($order);
@@ -58,10 +88,138 @@ class StatisticController extends Controller
         return $leftPos >= $rightPos;
     }
 
-    public function index(Request $request)
+    public function makeModelsNames($modelName)
+    {
+        $names_arr = array();
+        if ($modelName == 'Statistic') {
+            $names_arr['Statistic'] = 'App\Statistic';
+            $names_arr['Competition'] = 'App\Competition';
+            $names_arr['PlanCompetition'] = 'App\PlanCompetition';
+            $names_arr['Plan'] = 'App\Plan';
+            $names_arr['Freeseats'] = 'App\Freeseats_bases';
+            $names_arr['folder'] = 'bach';
+            $names_arr['date'] = 'stat_bach';
+            $names_arr['name_table'] = 'statistics';
+            $names_arr['page'] = 'pages.stat';
+        }
+        if ($modelName == 'StatisticMaster') {
+            $names_arr['Statistic'] = 'App\StatisticMaster';
+            $names_arr['Competition'] = 'App\CompetitionMaster';
+            $names_arr['PlanCompetition'] = 'App\PlanCompetitionMaster';
+            $names_arr['Plan'] = 'App\PlanMaster';
+            $names_arr['Freeseats'] = 'App\Freeseats_basesMaster';
+            $names_arr['folder'] = 'master';
+            $names_arr['date'] = 'stat_master';
+            $names_arr['name_table'] = 'statistic_masters';
+            $names_arr['page'] = 'pages.statmaster';
+        }
+        if ($modelName == 'StatisticAsp') {
+            $names_arr['Statistic'] = 'App\StatisticAsp';
+            $names_arr['Competition'] = 'App\CompetitionAsp';
+            $names_arr['PlanCompetition'] = 'App\PlanCompetitionAsp';
+            $names_arr['Plan'] = 'App\PlanAsp';
+            $names_arr['Freeseats'] = 'App\Freeseats_basesAsp';
+            $names_arr['folder'] = 'asp';
+            $names_arr['date'] = 'stat_asp';
+            $names_arr['name_table'] = 'statistic_asps';
+            $names_arr['page'] = 'pages.statasp';
+        }
+        if ($modelName == 'StatisticSpo') {
+            $names_arr['Statistic'] = 'App\StatisticSpo';
+            $names_arr['Competition'] = 'App\CompetitionSpo';
+            $names_arr['PlanCompetition'] = 'App\PlanCompetitionSpo';
+            $names_arr['Plan'] = 'App\PlanSpo';
+            $names_arr['Freeseats'] = 'App\Freeseats_basesSpo';
+            $names_arr['folder'] = 'spo';
+            $names_arr['date'] = 'stat_spo';
+            $names_arr['name_table'] = 'statistic_spos';
+            $names_arr['page'] = 'pages.statspo';
+        }
+
+        if ($modelName == 'StatisticForeigner') {
+            $names_arr['Statistic'] = 'App\StatisticForeigner';
+            $names_arr['Competition'] = 'App\CompetitionForeigner';
+            $names_arr['PlanCompetition'] = 'App\PlanCompetitionForeigner';
+            $names_arr['Plan'] = 'App\PlanForeigner';
+            $names_arr['Freeseats'] = 'App\Freeseats_basesForeigner';
+            $names_arr['folder'] = 'bachf';
+            $names_arr['date'] = 'stat_bach';
+            $names_arr['name_table'] = 'statistic_foreigners';
+            $names_arr['page'] = 'pages.statforeigner';
+        }
+        if ($modelName == 'StatisticMasterForeigner') {
+            $names_arr['Statistic'] = 'App\StatisticMasterForeigner';
+            $names_arr['Competition'] = 'App\CompetitionMasterForeigner';
+            $names_arr['PlanCompetition'] = 'App\PlanCompetitionMasterForeigner';
+            $names_arr['Plan'] = 'App\PlanMasterForeigner';
+            $names_arr['Freeseats'] = 'App\Freeseats_basesMasterForeigner';
+            $names_arr['folder'] = 'masterf';
+            $names_arr['date'] = 'stat_master';
+            $names_arr['name_table'] = 'statistic_master_foreigners';
+            $names_arr['page'] = 'pages.statmasterforeigner';
+        }
+        if ($modelName == 'StatisticAspForeigner') {
+            $names_arr['Statistic'] = 'App\StatisticAspForeigner';
+            $names_arr['Competition'] = 'App\CompetitionAspForeigner';
+            $names_arr['PlanCompetition'] = 'App\PlanCompetitionAspForeigner';
+            $names_arr['Plan'] = 'App\PlanAspForeigner';
+            $names_arr['Freeseats'] = 'App\Freeseats_basesAspForeigner';
+            $names_arr['folder'] = 'aspf';
+            $names_arr['date'] = 'stat_asp';
+            $names_arr['name_table'] = 'statistic_asp_foreigners';
+            $names_arr['page'] = 'pages.stataspforeigner';
+        }
+//        var_export($names_arr);
+        return $names_arr;
+    }
+
+
+    public function bachelor(Request $request)
+    {
+        $names_arr = $this->makeModelsNames('Statistic');
+        return $this->query($request, $names_arr);
+    }
+
+    public function master(Request $request)
+    {
+        $names_arr = $this->makeModelsNames('StatisticMaster');
+        return $this->query($request, $names_arr);
+    }
+
+    public function asp(Request $request)
+    {
+        $names_arr = $this->makeModelsNames('StatisticAsp');
+        return $this->query($request, $names_arr);
+    }
+
+    public function spo(Request $request)
+    {
+        $names_arr = $this->makeModelsNames('StatisticSpo');
+        return $this->query($request, $names_arr);
+    }
+
+    public function bachf(Request $request)
+    {
+        $names_arr = $this->makeModelsNames('StatisticForeigner');
+        return $this->query($request, $names_arr);
+    }
+
+    public function masterf(Request $request)
+    {
+        $names_arr = $this->makeModelsNames('StatisticMasterForeigner');
+        return $this->query($request, $names_arr);
+    }
+
+    public function aspf(Request $request)
+    {
+        $names_arr = $this->makeModelsNames('StatisticAspForeigner');
+        return $this->query($request, $names_arr);
+    }
+
+
+    public function query(Request $request, $names_arr)
     {
 
-        //return $request;
         $search_fio = null;
         $search_faculties = [];
         $search_specialities = [];
@@ -80,55 +238,62 @@ class StatisticController extends Controller
         }
 
         if (isset($search_fio) || !empty($search_faculties)) {
-            $studyForms = $this->search($search_fio, $search_faculties, $search_specialities, $search_studyForms, $notification);
+            $studyForms = $this->search($search_fio, $search_faculties, $search_specialities, $search_studyForms, $notification, $names_arr);
         }
 
         //получим все названия файлов xls
         $files_xls = array();
         $notification_files = "";
-        if ($dir = scandir(storage_path('app/public/files-xls-stat/bach'))) {
+//CHANGE
+        if ($dir = scandir(storage_path('app/public/files-xls-stat/' . $names_arr['folder']))) {
             $files_xls = array();
             foreach ($dir as $file) {
                 if ($file == "." || $file == "..")
                     continue;
                 $files_xls[] = $file;
             }
-            // arsort($files_xls);
             usort($files_xls, array($this, 'sortByPredefinedOrder'));
         } else {
             $notification_files = "Не удалось открыть директорию с файлами";
         }
 
+//CHANGE
+        $date_update = DateUpdate::where('name_file', '=', $names_arr['date'])->first();
 
-        $date_update = DateUpdate::where('name_file', '=', 'stat_bach')->first();
-        $faculties = $this->fetchFaculties();
-        $studyFormsForInputs = DB::table('study_forms')->join('statistics', 'study_forms.id', '=', 'statistics.id_studyForm')
+        $faculties = $this->fetchFaculties($names_arr);
+//CHANGE
+        $studyFormsForInputs = DB::table('study_forms')->join($names_arr['name_table'], 'study_forms.id', '=', $names_arr['name_table'] . '.id_studyForm')
             ->groupBy('study_forms.id')->select('study_forms.*')->get();;
 
-//        return $studyForms;
+
         if (isset($studyForms)) {
             $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
             if ($studyForms->count() != 0) {
-                return view('pages.stat', ['studyForms' => $studyForms, 'faculties' => $faculties,
+//CHANGE
+                return view($names_arr['page'], ['studyForms' => $studyForms, 'faculties' => $faculties,
                     'studyFormsForInputs' => $studyFormsForInputs, 'actual_link' => $actual_link, 'date_update' => $date_update,
                     'files_xls' => $files_xls, 'notification_files' => $notification_files]);
             } else {
                 if (isset($faculties) && isset($studyFormsForInputs)) {
                     if (($faculties->count() != 0) && ($studyFormsForInputs->count() != 0)) {
                         $notification = "По Вашему запросу ничего не найдено";
-                        return view('pages.stat', ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs, 'notification' => $notification]);
+//CHANGE
+                        return view($names_arr['page'], ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs, 'notification' => $notification]);
                     } else {
                         $faculties = collect(new Faculty);
                         $studyFormsForInputs = collect(new StudyForm);
                         $notification = "Прием документов начнется после 20 июня";
-                        return view('pages.stat', ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs,
+//CHANGE
+
+                        return view($names_arr['page'], ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs,
                             'notification_green' => $notification]);
                     }
                 } else {
                     $faculties = collect(new Faculty);
                     $studyFormsForInputs = collect(new StudyForm);
                     $notification = "Прием документов начнется после 20 июня";
-                    return view('pages.stat', ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs,
+//CHANGE
+                    return view($names_arr['page'], ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs,
                         'notification_green' => $notification]);
                 }
 
@@ -136,23 +301,26 @@ class StatisticController extends Controller
         } else {
             if (isset($faculties) && isset($studyFormsForInputs)) {
                 if (($faculties->count() != 0) && ($studyFormsForInputs->count() != 0)) {
+//CHANGE
                     if (isset($notification)) {
-                        return view('pages.stat', ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs, 'notification' => $notification]);
+                        return view($names_arr['page'], ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs, 'notification' => $notification]);
                     } else {
-                        return view('pages.stat', compact('faculties'), compact('studyFormsForInputs'));
+                        return view($names_arr['page'], compact('faculties'), compact('studyFormsForInputs'));
                     }
                 } else {
                     $faculties = collect(new Faculty);
                     $studyFormsForInputs = collect(new StudyForm);
                     $notification = "Прием документов начнется после 20 июня";
-                    return view('pages.stat', ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs,
+//CHANGE
+                    return view($names_arr['page'], ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs,
                         'notification_green' => $notification]);
                 }
             } else {
                 $faculties = collect(new Faculty);
                 $studyFormsForInputs = collect(new StudyForm);
                 $notification = "Прием документов начнется после 20 июня";
-                return view('pages.stat', ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs,
+//CHANGE
+                return view($names_arr['page'], ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs,
                     'notification_green' => $notification]);
             }
         }
@@ -160,8 +328,7 @@ class StatisticController extends Controller
 
     }
 
-
-    public function search($search_fio, $search_faculties, $search_specialities, $search_studyForms, &$notification)
+    public function search($search_fio, $search_faculties, $search_specialities, $search_studyForms, &$notification, $names_arr)
     {
 //----------------поиск по категориям-------------------
         $search_specialities_arr = array();
@@ -177,7 +344,8 @@ class StatisticController extends Controller
 
         //если запросили по факультетам или спец
         if (!empty($search_faculties)) {
-            $info_faculties = Statistic::whereIn('id_faculty', $search_faculties)
+//CHANGE
+            $info_faculties = $names_arr['Statistic']::whereIn('id_faculty', $search_faculties)
                 ->select('id_studyForm', 'id_category', 'id_admissionBasis', 'id_preparationLevel', 'id_speciality', 'id_competition')
                 ->distinct()
                 ->get();
@@ -207,7 +375,8 @@ class StatisticController extends Controller
             }
             $id_spec_arr = array_unique($id_spec_arr, SORT_REGULAR);
             //var_dump($id_spec_arr);
-            $sdf = Statistic::whereIn('id_competition', $id_comp_arr)
+//CHANGE
+            $sdf = $names_arr['Statistic']::whereIn('id_competition', $id_comp_arr)
                 ->whereIn('id_speciality', $id_spec_arr)
                 ->whereIn('id_category', $id_cat_arr)
                 ->whereIn('id_admissionBasis', $id_adm_arr)
@@ -219,6 +388,7 @@ class StatisticController extends Controller
                 $id_comp_arr[] = $stat->id_competition;
             }
             $id_comp_arr = array_unique($id_comp_arr, SORT_REGULAR);
+
             if (!empty($search_studyForms)) {
                 $studyForms = StudyForm::whereIn('id', $search_studyForms)
                     ->whereIn('id', $id_forms_arr)
@@ -271,7 +441,8 @@ class StatisticController extends Controller
                                 }
 
                                 foreach ($specializations as $kend => $specialization) {
-                                    $competitions = Competition::whereIn('id', $id_comp_arr)->get();
+//CHANGE
+                                    $competitions = $names_arr['Competition']::whereIn('id', $id_comp_arr)->get();
 //
                                     foreach ($competitions as $k6 => $competition) {
                                         $admissionBases = AdmissionBasis::whereIn('id', $id_adm_arr)->get();
@@ -314,7 +485,8 @@ class StatisticController extends Controller
                                             } else {
                                                 $spez_id = $specialization->id;
                                             }
-                                            $temp = Statistic::where('id_studyForm', '=', $studyForm->id)
+//CHANGE
+                                            $temp = $names_arr['Statistic']::where('id_studyForm', '=', $studyForm->id)
                                                 ->where('id_speciality', '=', $speciality->id)
                                                 ->where('id_specialization', '=', $spez_id)
                                                 ->where('id_preparationLevel', '=', $preparationLevel->id)
@@ -324,17 +496,23 @@ class StatisticController extends Controller
                                                 ->where('id_competition', '=', $competition->id)
                                                 ->get();
 
-                                            $id_plan_c = PlanCompetition::where('id_competition', '=', $competition->id)->first();
+//CHANGE
+                                            $id_plan_c = $names_arr['PlanCompetition']::where('id_competition', '=', $competition->id)->first();
 
-                                            $idPlan = Plan::where('id_speciality', '=', $speciality->id)
-                                                ->where('id_studyForm', '=', $studyForm->id)
-                                                ->where('id_specialization', '=', $spez_id)
-                                                ->where('id_faculty', '=', $faculty->id)
-                                                ->where('id', $id_plan_c->id_plan)
-                                                ->first();
+//CHANGE
+                                            if (!empty($id_plan_c)) {
+                                                $idPlan = $names_arr['Plan']::where('id_speciality', '=', $speciality->id)
+                                                    ->where('id_studyForm', '=', $studyForm->id)
+                                                    ->where('id_specialization', '=', $spez_id)
+                                                    ->where('id_faculty', '=', $faculty->id)
+                                                    ->where('id', $id_plan_c->id_plan)
+                                                    ->first();
+                                            }
+
+//CHANGE
 
                                             if (empty($idPlan)) {
-                                                $idPlan = Plan::where('id_speciality', '=', $speciality->id)
+                                                $idPlan = $names_arr['Plan']::where('id_speciality', '=', $speciality->id)
                                                     ->where('id_studyForm', '=', $studyForm->id)
 //                                                ->where('id_specialization', '=', $spez_id)
                                                     ->where('id_faculty', '=', $faculty->id)
@@ -342,16 +520,14 @@ class StatisticController extends Controller
                                                     ->first();
                                             }
 
-
-                                            if (!empty($idPlan)) {
-//                                            $admissionBasis->idplan = $idPlan->id;
-//                                        $freeSeatsNumber = PlanCompetition::where('id_plan', '=', intval($idPlan->id))->first();
-//                                                $id_plan_comps = PlanCompetition::where('id_plan', '=', intval($idPlan->id))->first();
-                                                $id_plan_comps = PlanCompetition::where('id_competition', '=', intval($competition->id))->first();
-                                                if (!empty($id_plan_comps)) {
-//                                                $admissionBasis->idplancomp = $id_plan_comps->id;
-                                                    $freeSeatsNumber = Freeseats_bases::where('id_plan_comp', '=', intval($id_plan_comps->id))->
-                                                    where('id_admissionBasis', '=', intval($admissionBasis->id))->first();
+                                            if (isset($idPlan)) {
+                                                if (!empty($idPlan)) {
+                                                    $id_plan_comps = $names_arr['PlanCompetition']::where('id_competition', '=', intval($competition->id))->first();
+                                                    if (!empty($id_plan_comps)) {
+//CHANGE
+                                                        $freeSeatsNumber = $names_arr['Freeseats']::where('id_plan_comp', '=', intval($id_plan_comps->id))->
+                                                        where('id_admissionBasis', '=', intval($admissionBasis->id))->first();
+                                                    }
                                                 }
                                             }
                                             if ($temp->count()) {
@@ -434,6 +610,7 @@ class StatisticController extends Controller
 // ----------------поиск по имени-------------------
         if (isset($search_fio)) {
             //выбираем всех студентов подходящих по фио
+//CHANGE
             $id_students = Student::where('fio', 'LIKE', '%' . $search_fio . '%')
                 ->select('id', 'fio')
                 ->get();
@@ -457,7 +634,7 @@ class StatisticController extends Controller
             $id_stud_arr = array_map('intval', $id_stud_arr);
 
             //выбираем всю статистику где id студентов как нам нужно
-            $statistic_for_people = Statistic::whereIn('id_student', $id_stud_arr)->get();
+            $statistic_for_people = $names_arr['Statistic']::whereIn('id_student', $id_stud_arr)->get();
             //echo("<pre>" . $statistic_for_people . "</pre>");
 
             //записей максимум 5-6 если человек ввел фамилию и имя
@@ -487,7 +664,7 @@ class StatisticController extends Controller
             $id_comp_arr = array_unique($id_comp_arr, SORT_REGULAR);
 
             // echo("<pre>" . $id_spec_arr . "</pre>");
-            $sdf = Statistic::whereIn('id_competition', $id_comp_arr)
+            $sdf = $names_arr['Statistic']::whereIn('id_competition', $id_comp_arr)
                 ->whereIn('id_speciality', $id_spec_arr)
                 ->whereIn('id_category', $id_cat_arr)
                 ->whereIn('id_admissionBasis', $id_adm_arr)
@@ -540,7 +717,7 @@ class StatisticController extends Controller
                                 }
 
                                 foreach ($specializations as $kend => $specialization) {
-                                    $competitions = Competition::whereIn('id', $id_comp_arr)->get();
+                                    $competitions = $names_arr['Competition']::whereIn('id', $id_comp_arr)->get();
 //
                                     foreach ($competitions as $k6 => $competition) {
                                         $admissionBases = AdmissionBasis::whereIn('id', $id_adm_arr)->get();
@@ -583,7 +760,7 @@ class StatisticController extends Controller
                                                 $spez_id = $specialization->id;
                                             }
 
-                                            $temp = Statistic::where('id_studyForm', '=', $studyForm->id)
+                                            $temp = $names_arr['Statistic']::where('id_studyForm', '=', $studyForm->id)
                                                 ->where('id_preparationLevel', '=', $preparationLevel->id)
                                                 ->where('id_admissionBasis', '=', $admissionBasis->id)
                                                 ->where('id_category', '=', $category->id)
@@ -596,11 +773,11 @@ class StatisticController extends Controller
 //                                    if(!$temp2->isEmpty()) {
 //
 //                                    }
-                                            $id_plan_c = PlanCompetition::where('id_competition', '=', $competition->id)->first();
+                                            $id_plan_c = $names_arr['PlanCompetition']::where('id_competition', '=', $competition->id)->first();
 
                                             //нужно проверить содержит ли полученная коллекция нужных студентов
                                             //выбираем свободные места на этой специальности
-                                            $idPlan = Plan::where('id_speciality', '=', $speciality->id)
+                                            $idPlan = $names_arr['Plan']::where('id_speciality', '=', $speciality->id)
                                                 ->where('id_studyForm', '=', $studyForm->id)
                                                 ->where('id_specialization', '=', $spez_id)
                                                 ->where('id_faculty', '=', $faculty->id)
@@ -608,7 +785,7 @@ class StatisticController extends Controller
                                                 ->first();
 
                                             if (empty($idPlan)) {
-                                                $idPlan = Plan::where('id_speciality', '=', $speciality->id)
+                                                $idPlan = $names_arr['Plan']::where('id_speciality', '=', $speciality->id)
                                                     ->where('id_studyForm', '=', $studyForm->id)
 //                                                ->where('id_specialization', '=', $spez_id)
                                                     ->where('id_faculty', '=', $faculty->id)
@@ -617,9 +794,9 @@ class StatisticController extends Controller
                                             }
 
                                             if (!empty($idPlan)) {
-                                                $id_plan_comps = PlanCompetition::where('id_competition', '=', intval($competition->id))->first();
+                                                $id_plan_comps = $names_arr['PlanCompetition']::where('id_competition', '=', intval($competition->id))->first();
                                                 if (!empty($id_plan_comps)) {
-                                                    $freeSeatsNumber = Freeseats_bases::where('id_plan_comp', '=', intval($id_plan_comps->id))->
+                                                    $freeSeatsNumber = $names_arr['Freeseats']::where('id_plan_comp', '=', intval($id_plan_comps->id))->
                                                     where('id_admissionBasis', '=', intval($admissionBasis->id))->first();
                                                 }
                                             }
@@ -722,9 +899,9 @@ class StatisticController extends Controller
         }
 
         //Выборка для инпутов
-        $studyFormsForInputs = DB::table('study_forms')->join('statistics', 'study_forms.id', '=', 'statistics.id_studyForm')
+        $studyFormsForInputs = DB::table('study_forms')->join($names_arr['name_table'], 'study_forms.id', '=', $names_arr['name_table'] . '.id_studyForm')
             ->groupBy('study_forms.id')->select('study_forms.*')->get();;
-        $faculties = $this->fetchFaculties();
+        $faculties = $this->fetchFaculties($names_arr);
 
         return $studyForms;
 
@@ -742,11 +919,11 @@ class StatisticController extends Controller
 
     }
 
-    public function fetchFaculties()
+    public function fetchFaculties($names_arr)
     {
         $faculties = Faculty::orderBy('name')->get();
         foreach ($faculties as $k => $faculty) {
-            $id_specialities = Statistic::where('id_faculty', '=', $faculty->id)
+            $id_specialities = $names_arr['Statistic']::where('id_faculty', '=', $faculty->id)
                 ->select('id_speciality')
                 ->get();
 
@@ -758,7 +935,7 @@ class StatisticController extends Controller
             $specialities = Speciality::whereIn('id', $id_spec_arr)->get();
 
             foreach ($specialities as $speciality) {
-                $id_studyForms = Plan::where('id_speciality', '=', $speciality->id)
+                $id_studyForms = $names_arr['Plan']::where('id_speciality', '=', $speciality->id)
                     ->select('id_studyForm')
                     ->get();
 
