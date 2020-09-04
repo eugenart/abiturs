@@ -52,12 +52,6 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::post('/slider/{id}', 'SliderController@update')->name('slider.update');
     Route::delete('/slider/{id}', 'SliderController@destroy')->name('slider.destroy');
 
-//    Route::get('/subjects', 'SubjectController@index')->name('subjects.index');
-//    Route::get('/speciality', 'SpecialityController@index')->name('speciality.index');
-//    Route::get('/minscore', 'TrainingAreaController@index')->name('minscore.index');
-//    Route::get('/price', 'TrainingAreaController@price')->name('price.index');
-//    Route::get('/test', 'XlsMakerController@index')->name('xls.create');
-
     Route::post('/download', 'DownloadFileController@index')->name('json.download');
 
 
@@ -69,6 +63,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
         Route::get('/parse', 'ParserController@index')->name('parse.index');
         //специальности специализации
+
         Route::get('/parse-specialities', 'ParserController@parseSpecialitiesLocal')->name('parse.parseSpec');
         //дисциплины
         Route::get('/parse-subjects', 'ParserController@parseSubjectsLocal')->name('parse.parseSub');
@@ -101,20 +96,22 @@ Route::get('/send_mail', 'SendMailController@index');
 Route::get('/send_mail_en', 'SendMailController@english');
 
 Route::get('/contact', 'ContactController@index')->name('contact.index');
+
 Route::get('/select/bachelor', 'SelectionController@index')->name('selection.index');
 Route::get('/select/foreigner', 'SelectionForeignerController@index')->name('selectionf.index');
-Route::get('/statistic/bachelor', 'StatisticController@index')->name('stat.index');
-Route::get('/statistic/master', 'StatisticMasterController@index')->name('statmaster.index');
-Route::get('/statistic/aspirant', 'StatisticAspController@index')->name('statasp.index');
-Route::get('/statistic/spo', 'StatisticSpoController@index')->name('statspo.index');
+
+Route::get('/statistic/bachelor', 'StatisticController@bachelor')->name('stat.index');
+Route::get('/statistic/master', 'StatisticController@master')->name('statmaster.index');
+Route::get('/statistic/aspirant', 'StatisticController@asp')->name('statasp.index');
+Route::get('/statistic/spo', 'StatisticController@spo')->name('statspo.index');
 Route::get('/statistic/total', 'TotalStatController@index')->name('total.index');
 Route::get('/orders', 'OrderController@index')->name('order.index');
 
 Route::post('/statistic/getfile', 'StatisticController@createFileXls')->name('statasp.file');
 
-Route::get('/statistic-foreigner/bachelor', 'StatisticForeignerController@index')->name('statforeigner.index');
-Route::get('/statistic-foreigner/asp', 'StatisticAspForeignerController@index')->name('stataspforeigner.index');
-Route::get('/statistic-foreigner/master', 'StatisticMasterForeignerController@index')->name('statmasterforeigner.index');
+Route::get('/statistic-foreigner/bachelor', 'StatisticController@bachf')->name('statforeigner.index');
+Route::get('/statistic-foreigner/asp', 'StatisticController@aspf')->name('stataspforeigner.index');
+Route::get('/statistic-foreigner/master', 'StatisticController@masterf')->name('statmasterforeigner.index');
 
 Route::get('/toOvzVer', 'SessionController@toOvzVer')->name('ses.toOvzVer');
 Route::get('/backToMainVer', 'SessionController@backToMainVer')->name('ses.backToMainVer');
