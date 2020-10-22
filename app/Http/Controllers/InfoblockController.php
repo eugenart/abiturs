@@ -20,7 +20,7 @@ class InfoblockController extends Controller
     // 6. котроллер
     public function index(Request $request)
     {
-        $infoblocks = Infoblock::all();
+        $infoblocks = Infoblock::where('archive', '=', 0)->get();
 
         if ($request->ajax()) {
             return response()->json($infoblocks, 200);
