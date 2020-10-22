@@ -14,7 +14,8 @@
 
                 @if(empty($files_bach) && empty($files_master) && empty($files_asp) && empty($files_spo))
                     <h5 class="text-center mrsu-uppertext pt-3 text-primary  main-color">
-                        Приказы о зачислении на данный момент недоступны
+                        Приказы о зачислении на данный момент недоступны <br/>
+                        <a class="text-primary main-color" style="text-decoration: underline;" href="{{route('archive.index')}}">Архив приказов</a>
                     </h5>
                 @endif
 

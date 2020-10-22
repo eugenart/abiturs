@@ -35,11 +35,12 @@
 
                     <div>
                         <a  href="https://mrsu.ru/ru/abit/entry.php" target="_blank">
-                            <h5 class="header-acord m-0 pb-2 pt-2 mrsu-uppertext text-primary main-color">
+                            <h5 class="header-acord m-0 ml-3 pb-2 pt-2 mrsu-uppertext text-primary main-color">
                                 Архив 2010-2019
                             </h5>
                         </a>
                     </div>
+
             </div>
         </div>
     </div>
