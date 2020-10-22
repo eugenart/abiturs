@@ -142,6 +142,7 @@
                                     <a class="nav-link text-white" href="{{url($page->url)}}">{{ $page->name }}</a>
                                 @endif
                             @endforeach
+                            <a class="nav-link text-white" href="{{route('archive.index')}}">Архив</a>
                         </div>
                     </li>
                 @endif
@@ -252,13 +253,13 @@
                        href="https://p.mrsu.ru/Account/Register">{{ trans('layout.docs') }}<span
                             class="sr-only">(current)</span></a>
                 </li>
-                @if(trans('layout.locale') == 'ru')
-                    <li class="nav-item active d-flex align-items-center justify-content-center">
-                        <a class="nav-link" target="_blank"
-                           href="https://mrsu.ru/ru/abit/entry.php">{{ trans('layout.archive') }}<span
-                                class="sr-only">(current)</span></a>
-                    </li>
-                @endif
+{{--                @if(trans('layout.locale') == 'ru')--}}
+{{--                    <li class="nav-item active d-flex align-items-center justify-content-center">--}}
+{{--                        <a class="nav-link" target="_blank"--}}
+{{--                           href="https://mrsu.ru/ru/abit/entry.php">{{ trans('layout.archive') }}<span--}}
+{{--                                class="sr-only">(current)</span></a>--}}
+{{--                    </li>--}}
+{{--                @endif--}}
             </ul>
         </div>
     </div>

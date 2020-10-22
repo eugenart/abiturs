@@ -12,8 +12,8 @@ class PageController extends Controller
 {
     public function index(Request $request)
     {
-        $infoblocks = Infoblock::where('activity', true)->where('startPage', true)->orderBy('startPagePriority', 'desc')->where('foreigner', '=', 0)->get();
-        $infoblocks_int = Infoblock::where('activity', true)->where('startPage', true)->orderBy('startPagePriority', 'desc')->where('foreigner', '=', 1)->get();
+        $infoblocks = Infoblock::where('activity', true)->where('startPage', true)->orderBy('startPagePriority', 'desc')->where('foreigner', '=', 0)->where('archive', '=', 0)->get();
+        $infoblocks_int = Infoblock::where('activity', true)->where('startPage', true)->orderBy('startPagePriority', 'desc')->where('foreigner', '=', 1)->where('archive', '=', 0)->get();
         $slider = Slider::where('activity', true)->orderBy('priority', 'desc')->where('foreigner', false)->get();
         $slider_i = Slider::where('activity', true)->where('image_ipad', '!=', null)->where('foreigner', false)->orderBy('priority', 'desc')->get();
         $slider_m = Slider::where('activity', true)->where('image_mobile', '!=', null)->where('foreigner', false)->orderBy('priority', 'desc')->get();
@@ -65,8 +65,8 @@ class PageController extends Controller
                     }
                 }
 
-                $infoblocks = Infoblock::where('activity', true)->where('startPage', true)->orderBy('startPagePriority', 'desc')->where('foreigner', '=', 0)->get();
-                $infoblocks_int = Infoblock::where('activity', true)->where('startPage', true)->orderBy('startPagePriority', 'desc')->where('foreigner', '=', 1)->get();
+                $infoblocks = Infoblock::where('activity', true)->where('startPage', true)->orderBy('startPagePriority', 'desc')->where('foreigner', '=', 0)->where('archive', '=', 0)->get();
+                $infoblocks_int = Infoblock::where('activity', true)->where('startPage', true)->orderBy('startPagePriority', 'desc')->where('foreigner', '=', 1)->where('archive', '=', 0)->get();
                 $slider = Slider::where('activity', true)->orderBy('priority', 'desc')->where('foreigner', false)->get();
                 $slider_i = Slider::where('activity', true)->where('image_ipad', '!=', null)->where('foreigner', false)->orderBy('priority', 'desc')->get();
                 $slider_m = Slider::where('activity', true)->where('image_mobile', '!=', null)->where('foreigner', false)->orderBy('priority', 'desc')->get();

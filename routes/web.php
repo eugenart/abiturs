@@ -54,6 +54,8 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
     Route::post('/download', 'DownloadFileController@index')->name('json.download');
 
+    Route::get('/archive', 'ArchiveController@index_admin')->name('archive.indexadmin');
+
 
     Route::middleware('role:admin')->group(function () {
         Route::get('/times', 'DateUpdateController@index')->name('times.index');
@@ -116,6 +118,7 @@ Route::get('/statistic-foreigner/master', 'StatisticController@masterf')->name('
 Route::get('/toOvzVer', 'SessionController@toOvzVer')->name('ses.toOvzVer');
 Route::get('/backToMainVer', 'SessionController@backToMainVer')->name('ses.backToMainVer');
 
+Route::get('/archive', 'ArchiveController@index')->name('archive.index');
 //Route::middleware('role:developer')->group(function () {
     Route::get('/en', 'SessionController@toEn')->name('ses.toEn');
     Route::get('/ru', 'SessionController@toRu')->name('ses.toRu');
