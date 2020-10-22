@@ -150,6 +150,12 @@
                                 Слайдер
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ Request::is('admin/archive') ? 'active' : null }}" href="{{route('archive.indexadmin')}}">
+                                <span data-feather="users"></span>
+                                Архивы
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </nav>

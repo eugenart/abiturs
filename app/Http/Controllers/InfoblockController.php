@@ -56,6 +56,7 @@ class InfoblockController extends Controller
                     'image' => $fileName ? $fileName : null,
                     'news' => $request->news ? $request->news : array(),
                     'foreigner' => in_array($request->foreigner, ['true', 1]) ? 1 : 0,
+                    'archive' => 0,
                 ]);
                 return response()->json([
                     'message' => "Infoblock was created",
@@ -94,7 +95,7 @@ class InfoblockController extends Controller
                     'image' => $fileName ? $fileName : null,
                     'news' => $request->news ? $request->news : array(),
                     'foreigner' => in_array($request->foreigner, ['true', 1]) ? 1 : 0,
-
+                    'archive' => 0,
                 ]);
 
                 if ($old_url != $infoblock->url) {
@@ -178,6 +179,7 @@ class InfoblockController extends Controller
             'image' => $fileName,
             'news' => $infoblock_orig->news,
             'foreigner' => $infoblock_orig->foreigner,
+            'archive' => 0,
         ]);
 
         if ($infoblock_orig->sections->count() !== 0) {

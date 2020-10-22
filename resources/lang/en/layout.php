@@ -3,7 +3,7 @@ return [
     'locale' => 'en',
     'lang' => 'Ru',
     'href' => '/ru',
-    'levels' => 'For international applicants',
+    'levels' => 'admissions campaign',
     'lists' => 'lists of applicants',
     'select' => 'select Educational program',
     'contacts' => 'contacts',
