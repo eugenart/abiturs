@@ -10,23 +10,40 @@ use Illuminate\Http\Request;
 class ArchiveController extends Controller
 {
     public function index(Request $request) {
-//        $arc = ArchiveInfoblock::all()->groupBy('id_archive');
-//        foreach ($arc as $arci){
-//            $arci->name = Archive::where('id', '=',  $arci)->first();
-//            foreach ($arci as $item) {
-//                $item->infoblock = Infoblock::where('id', '=', $item->id_infoblock)->first();
-//            }
-//        }
         $arc = Archive::all();
         foreach ( $arc as $item) {
             $item->idforblock = 'archive'. $item->id;
             $item->collapsed = 'collapsed'. $item->id;
         }
-
         return view('pages.archive', ['archives' => $arc]);
 
     }
     public function index_admin(Request $request) {
-        return view('structure.archive');
+
+        $infoblocks = Infoblock::where('archive', '=', 1)->get();
+        foreach ($infoblocks as $i){
+            $i->archive_ob = $i->archives()->first();
+        }
+
+        if ($request->ajax()) {
+            return response()->json($infoblocks, 200);
+        }
+
+
+        return view('structure.archive', compact('infoblocks'));
+    }
+    public function get_archives(Request $request) {
+
+        $archives = Archive::all();
+        foreach ($archives as $a){
+            $a->infoblocks = $a->infoblocks()->get();
+        }
+
+//        if ($request->ajax()) {
+            return response()->json($archives, 200);
+//        }
+
+
+//        return view('structure.archive', compact('$archives'));
     }
 }

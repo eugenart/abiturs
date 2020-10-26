@@ -237,12 +237,15 @@
                                 class="sr-only">(current)</span></a>
                     </li>
                 @endif
-                @if(trans('layout.locale') == 'ru')
-                    <li class="nav-item active d-flex align-items-center justify-content-center">
-                        <a class="nav-link" href="{{route('order.index')}}">{{ trans('layout.order') }}
-                            <span
-                                class="sr-only">(current)</span></a>
-                    </li>
+
+                @if($count_orders > 0)
+                    @if(trans('layout.locale') == 'ru')
+                        <li class="nav-item active d-flex align-items-center justify-content-center">
+                            <a class="nav-link" href="{{route('order.index')}}">{{ trans('layout.order') }}
+                                <span
+                                    class="sr-only">(current)</span></a>
+                        </li>
+                    @endif
                 @endif
                 <li class="nav-item active d-flex align-items-center justify-content-center">
                     <a class="nav-link" href="{{route('contact.index')}}">{{ trans('layout.contacts') }}<span
@@ -253,13 +256,13 @@
                        href="https://p.mrsu.ru/Account/Register">{{ trans('layout.docs') }}<span
                             class="sr-only">(current)</span></a>
                 </li>
-{{--                @if(trans('layout.locale') == 'ru')--}}
-{{--                    <li class="nav-item active d-flex align-items-center justify-content-center">--}}
-{{--                        <a class="nav-link" target="_blank"--}}
-{{--                           href="https://mrsu.ru/ru/abit/entry.php">{{ trans('layout.archive') }}<span--}}
-{{--                                class="sr-only">(current)</span></a>--}}
-{{--                    </li>--}}
-{{--                @endif--}}
+                {{--                @if(trans('layout.locale') == 'ru')--}}
+                {{--                    <li class="nav-item active d-flex align-items-center justify-content-center">--}}
+                {{--                        <a class="nav-link" target="_blank"--}}
+                {{--                           href="https://mrsu.ru/ru/abit/entry.php">{{ trans('layout.archive') }}<span--}}
+                {{--                                class="sr-only">(current)</span></a>--}}
+                {{--                    </li>--}}
+                {{--                @endif--}}
             </ul>
         </div>
     </div>

@@ -95,7 +95,7 @@ class InfoblockController extends Controller
                     'image' => $fileName ? $fileName : null,
                     'news' => $request->news ? $request->news : array(),
                     'foreigner' => in_array($request->foreigner, ['true', 1]) ? 1 : 0,
-                    'archive' => 0,
+                    'archive' => in_array($request->archive, ['true', 1]) ? 1 : 0,
                 ]);
 
                 if ($old_url != $infoblock->url) {

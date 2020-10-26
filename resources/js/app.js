@@ -30,7 +30,7 @@ Vue.component('price', require('./components/price').default);
 Vue.component('times', require('./components/times').default);
 Vue.component('parse', require('./components/parse').default);
 Vue.component('parseNotAdmin', require('./components/parseNotAdmin').default);
-
+Vue.component('archive', require('./components/Archive').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

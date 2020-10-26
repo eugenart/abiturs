@@ -55,6 +55,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::post('/download', 'DownloadFileController@index')->name('json.download');
 
     Route::get('/archive', 'ArchiveController@index_admin')->name('archive.indexadmin');
+    Route::get('/get-archives', 'ArchiveController@get_archives')->name('archive.get');
 
 
     Route::middleware('role:admin')->group(function () {
