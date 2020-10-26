@@ -374,7 +374,7 @@ class StatisticController extends Controller
                 $id_spec_arr = array_intersect($id_spec_arr, $search_specialities_arr);
             }
             $id_spec_arr = array_unique($id_spec_arr, SORT_REGULAR);
-            //var_dump($id_spec_arr);
+
 //CHANGE
             $sdf = $names_arr['Statistic']::whereIn('id_competition', $id_comp_arr)
                 ->whereIn('id_speciality', $id_spec_arr)

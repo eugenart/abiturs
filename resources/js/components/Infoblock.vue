@@ -187,7 +187,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-4" v-for="(block, index) in blocks">
-                                <div class="card infoblock-сard-text">
+                                <div class="card mb-3 infoblock-сard-text">
                                     <div class="card-header">
                                         <div class="row">
                                             <div class="col-8">
@@ -295,6 +295,7 @@
                     image: null,
                     news: [],
                     foreigner: false,
+                    archive: false,
                 },
                 isBlockUpdate: false,
                 currentInfoblock: {},

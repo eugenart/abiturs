@@ -13,4 +13,7 @@ class Infoblock extends Model
     public function sections() {
         return $this->hasMany(Section::class, 'infoblockID');
     }
+    public function archives() {
+        return $this->belongsToMany('App\Archive', 'archive_infoblocks', 'id_infoblock', 'id_archive');
+    }
 }

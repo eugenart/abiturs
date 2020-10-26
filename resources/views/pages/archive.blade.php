@@ -27,7 +27,9 @@
 
                         <ul class="files-list col-12">
                             @foreach($arc->infoblocks as $inf)
-                                <li><a class="text-primary main-color" href="{{url($inf->url)}}"><i class="fas fa-chevron-circle-right"></i> {{$inf->name}}</a></li>
+                                @if($inf->activity && $inf->foreigner == 0)
+                                    <li><a class="text-primary main-color" href="{{url($inf->url)}}"><i class="fas fa-chevron-circle-right"></i>{{mb_substr($inf->name, 0, mb_strlen($inf->name)-5)}}</a></li>
+                                @endif
                             @endforeach
                         </ul>
                     </div>
@@ -36,7 +38,7 @@
                     <div>
                         <a  href="https://mrsu.ru/ru/abit/entry.php" target="_blank">
                             <h5 class="header-acord m-0 ml-3 pb-2 pt-2 mrsu-uppertext text-primary main-color">
-                                Архив 2010-2019
+                                С 2010 по 2019 год
                             </h5>
                         </a>
                     </div>

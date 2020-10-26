@@ -1,6 +1,7 @@
 export default {
     state: {
         blocks: [],
+        archives: [],
     },
     mutations: {
         ADD_BLOCK(state, payload) {
@@ -21,6 +22,9 @@ export default {
 
         SET_BLOCKS: (state, payload) => {
             state.blocks = payload;
+        },
+        SET_ARCHIVES: (state, payload) => {
+            state.archives = payload;
         }
     },
     actions: {
@@ -40,6 +44,7 @@ export default {
                 formData.append('news[]', v);
             })
             formData.append('foreigner', payload.foreigner);
+            formData.append('archive', payload.archive);
             formData.append('image', payload.image)
             let {data} = await axios.post('/admin/infoblock', formData, {
                 headers: {
@@ -66,6 +71,7 @@ export default {
                 formData.append('news[]', v);
             })
             formData.append('foreigner', payload.foreigner);
+            formData.append('archive', payload.archive);
             let {data} = await axios.post('/admin/infoblock/' + payload.id, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
@@ -84,6 +90,16 @@ export default {
             async (context, payload) => {
                 let {data} = await axios.get('/admin/infoblocks');
                 context.commit('SET_BLOCKS', data)
+            },
+        GET_ARCHIVE_BLOCKS:
+            async (context, payload) => {
+                let {data} = await axios.get('/admin/archive');
+                context.commit('SET_BLOCKS', data)
+            },
+        GET_ARCHIVES:
+            async (context, payload) => {
+                let {data} = await axios.get('/admin/get-archives');
+                context.commit('SET_ARCHIVES', data)
             },
         COPY_BLOCK:
             async (context, payload) => {
@@ -107,6 +123,9 @@ export default {
     getters: {
         BLOCKS: state => {
             return state.blocks
+        },
+        ARCHIVES: state => {
+            return state.archives
         }
     }
 }
