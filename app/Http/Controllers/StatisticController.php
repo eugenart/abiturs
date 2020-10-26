@@ -286,7 +286,7 @@ class StatisticController extends Controller
 //CHANGE
 
                         return view($names_arr['page'], ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs,
-                            'notification_green' => $notification]);
+                            'notification_green' => trans('statforeigner.notification_green')]);
                     }
                 } else {
                     $faculties = collect(new Faculty);
@@ -294,7 +294,7 @@ class StatisticController extends Controller
                     $notification = "Приём документом начнётся 20 июня 2021 года";
 //CHANGE
                     return view($names_arr['page'], ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs,
-                        'notification_green' => $notification]);
+                        'notification_green' => trans('statforeigner.notification_green')]);
                 }
 
             }
@@ -310,7 +310,7 @@ class StatisticController extends Controller
                 } else {
                     $faculties = collect(new Faculty);
                     $studyFormsForInputs = collect(new StudyForm);
-                    $notification = "Приём документом начнётся 20 июня 2021 года";
+                    $notification = trans('statforeigner.notification_green');
 //CHANGE
                     return view($names_arr['page'], ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs,
                         'notification_green' => $notification]);
