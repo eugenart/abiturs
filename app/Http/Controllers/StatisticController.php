@@ -282,7 +282,7 @@ class StatisticController extends Controller
                     } else {
                         $faculties = collect(new Faculty);
                         $studyFormsForInputs = collect(new StudyForm);
-                        $notification = "Прием документов начнется после 20 июня";
+                        $notification = "Приём документом начнётся 20 июня 2021 года";
 //CHANGE
 
                         return view($names_arr['page'], ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs,
@@ -291,7 +291,7 @@ class StatisticController extends Controller
                 } else {
                     $faculties = collect(new Faculty);
                     $studyFormsForInputs = collect(new StudyForm);
-                    $notification = "Прием документов начнется после 20 июня";
+                    $notification = "Приём документом начнётся 20 июня 2021 года";
 //CHANGE
                     return view($names_arr['page'], ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs,
                         'notification_green' => $notification]);
@@ -310,7 +310,7 @@ class StatisticController extends Controller
                 } else {
                     $faculties = collect(new Faculty);
                     $studyFormsForInputs = collect(new StudyForm);
-                    $notification = "Прием документов начнется после 20 июня";
+                    $notification = "Приём документом начнётся 20 июня 2021 года";
 //CHANGE
                     return view($names_arr['page'], ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs,
                         'notification_green' => $notification]);
@@ -318,7 +318,7 @@ class StatisticController extends Controller
             } else {
                 $faculties = collect(new Faculty);
                 $studyFormsForInputs = collect(new StudyForm);
-                $notification = "Прием документов начнется после 20 июня";
+                $notification = "Приём документом начнётся 20 июня 2021 года";
 //CHANGE
                 return view($names_arr['page'], ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs,
                     'notification_green' => $notification]);
