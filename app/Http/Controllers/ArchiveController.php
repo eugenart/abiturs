@@ -14,6 +14,7 @@ class ArchiveController extends Controller
         foreach ( $arc as $item) {
             $item->idforblock = 'archive'. $item->id;
             $item->collapsed = 'collapsed'. $item->id;
+
         }
         return view('pages.archive', ['archives' => $arc]);
 
