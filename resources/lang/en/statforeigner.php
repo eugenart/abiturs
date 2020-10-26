@@ -69,4 +69,6 @@ return [
     'notice2' => ' or select ',
     'notice3' => 'a faculty/institute',
     'notice4' => ' to display your applicants lists',
+
+    'notification_green' => 'Admission of documents will begin on June 20, 2021',
 ];
