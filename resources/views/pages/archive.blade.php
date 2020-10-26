@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row mt-lg-5 mt-xl-5 mt-md-3 mt-sm-3 mt-3">
             <div class="col-12">
-                <h1 class="text-center h1-mrsu main-color m-0">Архив</h1>
+                <h1 class="text-center h1-mrsu main-color m-0">{{ trans('archive.title') }}</h1>
             </div>
         </div>
     </div>
@@ -17,7 +17,13 @@
                            data-target="#{{$arc->collapsed}}"
                            aria-expanded="true" aria-controls="{{$arc->collapsed}}">
                             <h5 class="header-acord m-0 pb-2 pt-2 mrsu-uppertext text-primary main-color">
-                                <i class="fas fa-angle-down rotate-icon"></i> {{$arc->name}}
+                                <i class="fas fa-angle-down rotate-icon"></i>
+                                @if(trans('layout.locale') == 'ru')
+                                    {{$arc->name}}
+                                @endif
+                                @if(trans('layout.locale') == 'en')
+                                    {{$arc->en_name}}
+                                @endif
                             </h5>
                         </a>
                     </div>
@@ -27,8 +33,18 @@
 
                         <ul class="files-list col-12">
                             @foreach($arc->infoblocks as $inf)
-                                @if($inf->activity && $inf->foreigner == 0)
-                                    <li><a class="text-primary main-color" href="{{url($inf->url)}}"><i class="fas fa-chevron-circle-right"></i>{{mb_substr($inf->name, 0, mb_strlen($inf->name)-5)}}</a></li>
+                                @if(trans('layout.locale') == 'ru')
+                                    @if($inf->activity && $inf->foreigner == 0)
+                                        <li><a class="text-primary main-color" href="{{url($inf->url)}}"><i class="fas fa-chevron-circle-right"> </i>&nbsp;{{mb_substr($inf->name, 0, mb_strlen($inf->name)-5)}}</a></li>
+                                    @endif
+                                @endif
+                                @if(trans('layout.locale') == 'en')
+                                    @if($inf->activity && $inf->foreigner == 1)
+                                        <li><a class="text-primary main-color" href="{{url($inf->url)}}"><i class="fas fa-chevron-circle-right"> </i>&nbsp;{{mb_substr($inf->name, 0, mb_strlen($inf->name)-5)}}</a></li>
+                                    @endif
+                                    @if($inf->activity && !(mb_stripos($inf->name, 'приказы') === false))
+                                        <li><a class="text-primary main-color" href="{{url($inf->url)}}"><i class="fas fa-chevron-circle-right"> </i>&nbsp;Orders on admission</a></li>
+                                    @endif
                                 @endif
                             @endforeach
                         </ul>
@@ -38,7 +54,12 @@
                     <div>
                         <a  href="https://mrsu.ru/ru/abit/entry.php" target="_blank">
                             <h5 class="header-acord m-0 ml-3 pb-2 pt-2 mrsu-uppertext text-primary main-color">
-                                С 2010 по 2019 год
+                                @if(trans('layout.locale') == 'ru')
+                                    С 2010 по 2019 год
+                                @endif
+                                @if(trans('layout.locale') == 'en')
+                                    2010 - 2019 years
+                                @endif
                             </h5>
                         </a>
                     </div>

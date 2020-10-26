@@ -161,6 +161,7 @@
                                     <a class="nav-link text-white" href="{{url($page->url)}}">{{ $page->name }}</a>
                                 @endif
                             @endforeach
+                            <a class="nav-link text-white" href="{{route('archive.index')}}">Archive</a>
                         </div>
                     </li>
                 @endif
