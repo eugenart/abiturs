@@ -134,10 +134,8 @@
                                                 @foreach($faculty->plan as $item)
                                                     <tr class="nps-tr search-tr"
                                                         data-exams="{{ implode(',', $item->subjects) }}">
-                                                        <td rowspan="{{count($item->scores) }}"
-                                                            class="bold-border-imp"
-                                                            {{--                                                            style="border-bottom: 2px solid #2366a5 !important;"--}}
-                                                        >
+                                                        <td rowspan="@if(count($item->changeable_subs)!=0){{count($item->scores)-1 }} @else {{count($item->scores)}} @endif"
+                                                            class="bold-border-imp">
                                                             <button style="white-space: normal;" type="button"
                                                                     class=" spec-ovz-link btn btn-link text-left d-block w-100 p-0 ovz-text"
                                                                     data-toggle="modal"
@@ -150,15 +148,38 @@
                                                                 @endif
                                                             </button>
                                                         </td>
+                                                        {{-- Имя предмета и баллы--}}
+                                                        @php $chable_true_ege = false; @endphp
                                                         @foreach($item->scores as $k => $score)
                                                             @if (!strpos($score->subject->name, 'достижение'))
                                                                 @if($k == 0)
-                                                                    <td>{{$score->subject->name}}</td>
-                                                                    <td class="text-center">{{$score->minScore}}</td>
+                                                                    @if(in_array($score, $item->changeable_subs))
+                                                                        <td>
+                                                                            @foreach($item->changeable_subs as $k1 => $chable)
+                                                                                {{$chable->subject->name}}
+                                                                                @if($k1 == 0)
+                                                                                    /
+                                                                                @endif
+                                                                            @endforeach
+                                                                        </td>
+                                                                        <td class="text-center">
+                                                                            @foreach($item->changeable_subs as $k1 => $chable)
+                                                                                {{$chable->minScore}}
+                                                                                @if($k1 == 0)
+                                                                                    /
+                                                                                @endif
+                                                                            @endforeach
+                                                                        </td>
+                                                                        @php $chable_true_ege = true; @endphp
+                                                                    @else
+                                                                        <td> {{$score->subject->name}}</td>
+                                                                        <td class="text-center">{{$score->minScore}}</td>
+                                                                    @endif
                                                                 @endif
                                                             @endif
                                                         @endforeach
-                                                        <td rowspan="{{count($item->scores) }}"
+
+                                                        <td rowspan="@if(count($item->changeable_subs)!=0){{count($item->scores)-1 }} @else {{count($item->scores)}} @endif"
                                                             class="text-center d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none bold-border-imp"
                                                             {{--                                                            style="border-bottom:2px solid #2366a5 !important;"--}}
                                                         >
@@ -167,10 +188,8 @@
                                                                 <br>
                                                             @endforeach
                                                         </td>
-                                                        <td rowspan="{{count($item->scores)}}"
-                                                            class="text-center d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none bold-border-imp"
-                                                            {{--                                                            style="border-bottom:2px solid #2366a5 !important;"--}}
-                                                        >
+                                                        <td rowspan="@if(count($item->changeable_subs)!=0){{count($item->scores)-1 }} @else {{count($item->scores)}} @endif"
+                                                            class="text-center d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none bold-border-imp">
                                                             @foreach($item->studyForm as $sf)
                                                                 @php
                                                                     $counter = 0;
@@ -218,10 +237,8 @@
                                                                 @endif
                                                             @endforeach
                                                         </td>
-                                                        <td rowspan="{{count($item->scores) }}"
-                                                            class="text-center d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none bold-border-imp"
-                                                            {{--                                                            style="border-bottom:2px solid #2366a5 !important;"--}}
-                                                        >
+                                                        <td rowspan="@if(count($item->changeable_subs)!=0){{count($item->scores)-1 }} @else {{count($item->scores)}} @endif"
+                                                            class="text-center d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none bold-border-imp">
                                                             @foreach($item->studyForm as $sf)
                                                                 @php
                                                                     $counter = 0;
@@ -270,10 +287,8 @@
                                                                 @endif
                                                             @endforeach
                                                         </td>
-                                                        <td rowspan="{{count($item->scores) }}"
-                                                            class="text-center d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none bold-border-right-imp"
-                                                            {{--                                                            style="border-bottom:2px solid #2366a5 !important; border-right:2px solid #2366a5 !important;"--}}
-                                                        >
+                                                        <td rowspan="@if(count($item->changeable_subs)!=0){{count($item->scores)-1 }} @else {{count($item->scores)}} @endif"
+                                                            class="text-center d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none bold-border-right-imp">
                                                             @foreach($item->studyForm as $sf)
                                                                 @php
                                                                     $counter = 0;
@@ -320,29 +335,80 @@
                                                                 @endif
                                                             @endforeach
                                                         </td>
-
                                                     </tr>
+
                                                     @foreach($item->scores as $k => $score)
                                                         @if (!strpos($score->subject->name, 'достижение'))
                                                             @if($k !== 0 && $k !== (count($item->scores)-1))
+                                                                @if(in_array($score, $item->changeable_subs))
+                                                                    @if(!$chable_true_ege)
+                                                                        {{--Если предмет на выбор но еще не был выведен--}}
+                                                                <tr class="nps-tr search-tr"
+                                                                    data-exams="{{ implode(',', $item->subjects) }}">
+                                                                    <td>
+                                                                        @foreach ( $item->changeable_subs as $k1 => $chable)
+                                                                            {{$chable->subject->name}}
+                                                                            @if($k1 == 0)
+                                                                                /
+                                                                            @endif
+                                                                        @endforeach
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                        @foreach ( $item->changeable_subs as $k1 => $chable)
+                                                                            {{$chable->minScore}}
+                                                                            @if($k1 == 0)
+                                                                                /
+                                                                            @endif
+                                                                        @endforeach
+                                                                    </td>
+                                                                </tr>
+                                                                        @php $chable_true_ege = true; @endphp
+                                                                    @endif{{--Если предмет на выбор но уже был выведен то ничего--}}
+                                                                @else{{--Если предмет не на выбор--}}
                                                                 <tr class="nps-tr search-tr"
                                                                     data-exams="{{ implode(',', $item->subjects) }}">
                                                                     <td>{{$score->subject->name}}</td>
-                                                                    <td class="text-center">{{$score->minScore}}</td>
+                                                                    <td class="text-center"> {{$score->minScore}}</td>
                                                                 </tr>
+                                                                @endif
                                                             @elseif ($k == (count($item->scores)-1))
+                                                                @if(in_array($score, $item->changeable_subs))
+                                                                    @if(!$chable_true)
+                                                                        {{--Если предмет на выбор но еще не был выведен--}}
+                                                                        <tr class="nps-tr search-tr"
+                                                                            data-exams="{{ implode(',', $item->subjects) }}">
+                                                                            <td class="bold-border-imp">
+                                                                                @foreach ( $item->changeable_subs as $k1 => $chable)
+                                                                                    {{$chable->subject->name}}
+                                                                                    @if($k1 == 0)
+                                                                                        /
+                                                                                    @endif
+                                                                                @endforeach
+                                                                            </td>
+                                                                            <td class="text-center bold-border-imp">
+                                                                                @foreach ( $item->changeable_subs as $k1 => $chable)
+                                                                                    {{$chable->minScore}}
+                                                                                    @if($k1 == 0)
+                                                                                        /
+                                                                                    @endif
+                                                                                @endforeach
+                                                                            </td>
+                                                                        </tr>
+                                                                        @php $chable_true = true; @endphp
+                                                                    @endif{{--Если предмет на выбор но уже был выведен то ничего--}}
+                                                                @else{{--Если предмет не на выбор--}}
                                                                 <tr class="nps-tr search-tr"
                                                                     data-exams="{{ implode(',', $item->subjects) }}">
-                                                                    <td class="bold-border-imp"
-                                                                        {{--                                                                        style="border-bottom: 2px solid #2366a5 !important;"--}}
-                                                                    >{{$score->subject->name}}</td>
-                                                                    <td
-                                                                        {{--                                                                        style="border-bottom: 2px solid #2366a5 !important;;"--}}
-                                                                        class="text-center bold-border-imp">{{$score->minScore}}</td>
+                                                                    <td class="bold-border-imp">{{$score->subject->name}}</td>
+                                                                    <td class="text-center bold-border-imp">{{$score->minScore}}</td>
                                                                 </tr>
+                                                                @endif
+
                                                             @endif
                                                         @endif
                                                     @endforeach
+
+
                                                 @endforeach
                                                 </tbody>
                                             </table>
@@ -434,7 +500,7 @@
                                                     @foreach($faculty->plan as $item)
                                                         <tr class="nps-tr search-tr-by-faculties"
                                                             data-exams="{{ implode(',', $item->subjects) }}">
-                                                            <td rowspan="{{count($item->scores)}}"
+                                                            <td rowspan="@if(count($item->changeable_subs)!=0){{count($item->scores)-1 }} @else {{count($item->scores)}} @endif"
                                                                 class="bold-border-imp"
                                                                 {{--                                                                style="border-bottom: 2px solid #2366a5 !important;"--}}
                                                             >
@@ -449,15 +515,39 @@
                                                                     @endif
                                                                 </button>
                                                             </td>
+
+                                                            {{-- Имя предмета и баллы--}}
+                                                            @php $chable_true = false; @endphp
                                                             @foreach($item->scores as $k => $score)
                                                                 @if (!strpos($score->subject->name, 'достижение'))
                                                                     @if($k == 0)
-                                                                        <td>{{$score->subject->name}}</td>
-                                                                        <td class="text-center">{{$score->minScore}}</td>
+                                                                        @if(in_array($score, $item->changeable_subs))
+                                                                            <td>
+                                                                                @foreach($item->changeable_subs as $k1 => $chable)
+                                                                                    {{$chable->subject->name}}
+                                                                                    @if($k1 == 0)
+                                                                                        /
+                                                                                    @endif
+                                                                                @endforeach
+                                                                            </td>
+                                                                            <td class="text-center">
+                                                                                @foreach($item->changeable_subs as $k1 => $chable)
+                                                                                    {{$chable->minScore}}
+                                                                                    @if($k1 == 0)
+                                                                                        /
+                                                                                    @endif
+                                                                                @endforeach
+                                                                            </td>
+                                                                            @php $chable_true = true; @endphp
+                                                                        @else
+                                                                            <td> {{$score->subject->name}}</td>
+                                                                            <td class="text-center">{{$score->minScore}}</td>
+                                                                        @endif
                                                                     @endif
                                                                 @endif
                                                             @endforeach
-                                                            <td rowspan="{{count($item->scores)}}"
+
+                                                            <td rowspan="@if(count($item->changeable_subs)!=0){{count($item->scores)-1 }} @else {{count($item->scores)}} @endif"
                                                                 class="text-center d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none bold-border-imp"
                                                                 {{--                                                                style="border-bottom:2px solid #2366a5 !important;"--}}
                                                             >
@@ -467,7 +557,7 @@
                                                                     <br>
                                                                 @endforeach
                                                             </td>
-                                                            <td rowspan="{{count($item->scores)}}"
+                                                            <td rowspan="@if(count($item->changeable_subs)!=0){{count($item->scores)-1 }} @else {{count($item->scores)}} @endif"
                                                                 class="text-center d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none bold-border-imp"
                                                                 {{--                                                                style="border-bottom:2px solid #2366a5 !important;"--}}
                                                             >
@@ -519,7 +609,7 @@
                                                                     @endif
                                                                 @endforeach
                                                             </td>
-                                                            <td rowspan="{{count($item->scores)}}"
+                                                            <td rowspan="@if(count($item->changeable_subs)!=0){{count($item->scores)-1 }} @else {{count($item->scores)}} @endif"
                                                                 class="text-center d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none bold-border-imp"
                                                                 {{--                                                                style="border-bottom:2px solid #2366a5 !important;"--}}
                                                             >
@@ -571,7 +661,7 @@
                                                                     @endif
                                                                 @endforeach
                                                             </td>
-                                                            <td rowspan="{{count($item->scores)}}"
+                                                            <td rowspan="@if(count($item->changeable_subs)!=0){{count($item->scores)-1 }} @else {{count($item->scores)}} @endif"
                                                                 class="text-center d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none bold-border-right-imp"
                                                                 {{--                                                                style="border-bottom:2px solid #2366a5 !important; border-right:2px solid #2366a5 !important;"--}}
                                                             >
@@ -629,21 +719,69 @@
                                                         @foreach($item->scores as $k => $score)
                                                             @if (!strpos($score->subject->name, 'достижение'))
                                                                 @if($k !== 0 && $k !== (count($item->scores) - 1))
+                                                                    @if(in_array($score, $item->changeable_subs))
+                                                                        @if(!$chable_true)
+                                                                            {{--Если предмет на выбор но еще не был выведен--}}
+                                                                            <tr class="nps-tr search-tr-by-facluties"
+                                                                                data-exams="{{ implode(',', $item->subjects) }}">
+                                                                                <td>
+                                                                                    @foreach ( $item->changeable_subs as $k1 => $chable)
+                                                                                        {{$chable->subject->name}}
+                                                                                        @if($k1 == 0)
+                                                                                            /
+                                                                                        @endif
+                                                                                    @endforeach
+                                                                                </td>
+                                                                                <td class="text-center">
+                                                                                    @foreach ( $item->changeable_subs as $k1 => $chable)
+                                                                                        {{$chable->minScore}}
+                                                                                        @if($k1 == 0)
+                                                                                            /
+                                                                                        @endif
+                                                                                    @endforeach
+                                                                                </td>
+                                                                            </tr>
+                                                                            @php $chable_true = true; @endphp
+                                                                        @endif{{--Если предмет на выбор но уже был выведен то ничего--}}
+                                                                    @else{{--Если предмет не на выбор--}}
                                                                     <tr class="nps-tr search-tr-by-facluties"
                                                                         data-exams="{{ implode(',', $item->subjects) }}">
                                                                         <td>{{$score->subject->name}}</td>
-                                                                        <td class="text-center">{{$score->minScore}}</td>
+                                                                        <td class="text-center"> {{$score->minScore}}</td>
                                                                     </tr>
+                                                                    @endif
                                                                 @elseif ($k == (count($item->scores) - 1))
-                                                                    <tr class="nps-tr search-tr-by-facluties"
-                                                                        data-exams="{{ implode(',', $item->subjects) }}">
-                                                                        <td class="bold-border-imp"
-                                                                            {{--                                                                            style="border-bottom: 2px solid #2366a5 !important;"--}}
-                                                                        >{{$score->subject->name}}</td>
-                                                                        <td
-                                                                            {{--                                                                            style="border-bottom: 2px solid #2366a5 !important;;"--}}
-                                                                            class="text-center bold-border-imp">{{$score->minScore}}</td>
-                                                                    </tr>
+                                                                    @if(in_array($score, $item->changeable_subs))
+                                                                        @if(!$chable_true)
+                                                                            {{--Если предмет на выбор но еще не был выведен--}}
+                                                                            <tr class="nps-tr search-tr-by-facluties"
+                                                                                data-exams="{{ implode(',', $item->subjects) }}">
+                                                                                <td class="bold-border-imp">
+                                                                                    @foreach ( $item->changeable_subs as $k1 => $chable)
+                                                                                        {{$chable->subject->name}}
+                                                                                        @if($k1 == 0)
+                                                                                            /
+                                                                                        @endif
+                                                                                    @endforeach
+                                                                                </td>
+                                                                                <td class="text-center bold-border-imp">
+                                                                                    @foreach ( $item->changeable_subs as $k1 => $chable)
+                                                                                        {{$chable->minScore}}
+                                                                                        @if($k1 == 0)
+                                                                                            /
+                                                                                        @endif
+                                                                                    @endforeach
+                                                                                </td>
+                                                                            </tr>
+                                                                            @php $chable_true = true; @endphp
+                                                                        @endif{{--Если предмет на выбор но уже был выведен то ничего--}}
+                                                                    @else{{--Если предмет не на выбор--}}
+                                                                        <tr class="nps-tr search-tr-by-facluties"
+                                                                            data-exams="{{ implode(',', $item->subjects) }}">
+                                                                            <td class="bold-border-imp">{{$score->subject->name}}</td>
+                                                                            <td class="text-center bold-border-imp">{{$score->minScore}}</td>
+                                                                        </tr>
+                                                                    @endif
                                                                 @endif
                                                             @endif
                                                         @endforeach
@@ -705,7 +843,10 @@
                 let showDiv = false;
                 $.each($(searchDiv).find('.search-tr'), function (i, item) {
                     let exams = $(item).data("exams").split(',');
-                    if (exams.length <= chosenExams.length && chosenExams.length > 0) {
+                    // console.log(exams)
+                    console.log(chosenExams)
+                    // console.log(include(exams, chosenExams))
+                    if (/*exams.length <= chosenExams.length &&*/ chosenExams.length >= 1) {
                         if (include(exams, chosenExams)) {
                             $(item).show();
                             showDiv = true;
@@ -721,11 +862,24 @@
         }
 
         function include(array1, array2) {
-            let count = 0;
+            let count = 0; //количество совпадений массивов
             $.each(array1, function (k, v) {
                 $.inArray(v, array2) !== -1 ? count += 1 : null;
             });
-            return (count === array1.length);
+            //если выбраны только русиш и матан
+            if($.inArray("Русский язык", array2) !== -1 && $.inArray("Математика", array2) !== -1 && array2.length === 2){
+                return (count===array1.length);
+            }
+            //если не выбран ни русский ни матан
+            else if ($.inArray("Русский язык", array2) === -1 && $.inArray("Математика", array2) === -1){
+                return (count>0);
+            }
+            //если русский и математика и еще чо нибудь
+            else if ($.inArray("Русский язык", array2) !== -1 && $.inArray("Математика", array2) !== -1 && array2.length > 2){
+                return (count>2 || count===array1.length);
+            }
+            // return (count === array1.length);
+
         }
 
         function addToChosenFaculties(faculty) {
@@ -867,7 +1021,9 @@
                         templateRecipient += "<p class='mb-0 ml-lg-5 ml-xl-5 ml-md-5 ml-sm-3 ml-lg-0 ml-md-2 ml-3 text-left'><span>" + price.info + " - </span><b>" + price.price + " ₽/год</b></p>"
                     }
                 })
+                templateRecipient += "<p class='mb-0 ml-lg-5 ml-xl-5 ml-md-5 ml-sm-3 ml-lg-0 ml-md-2 ml-3 text-left'><a class='text-white' style='text-decoration:underline;' href='{{url('/Bakalavriat-i-spetsialitet-2020-Stoimosti-obucheniya')}}'>Стоимость обучения за 2020 год</a></p>";
                 templateRecipient += "</div></div><div class='col-12'><hr class='w-100 bg-white' /></div>";
+
 
                 modal.find('#forms').append(templateRecipient)
             })

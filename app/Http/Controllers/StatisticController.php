@@ -276,25 +276,25 @@ class StatisticController extends Controller
             } else {
                 if (isset($faculties) && isset($studyFormsForInputs)) {
                     if (($faculties->count() != 0) && ($studyFormsForInputs->count() != 0)) {
-                        $notification = "По Вашему запросу ничего не найдено";
+                        $notification = trans('statforeigner.notification_not_found');
 //CHANGE
                         return view($names_arr['page'], ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs, 'notification' => $notification]);
                     } else {
                         $faculties = collect(new Faculty);
                         $studyFormsForInputs = collect(new StudyForm);
-                        $notification = "Приём документом начнётся 20 июня 2021 года";
+                        $notification = trans('statforeigner.notification_green');
 //CHANGE
 
                         return view($names_arr['page'], ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs,
-                            'notification_green' => trans('statforeigner.notification_green')]);
+                            'notification_green' => $notification]);
                     }
                 } else {
                     $faculties = collect(new Faculty);
                     $studyFormsForInputs = collect(new StudyForm);
-                    $notification = "Приём документом начнётся 20 июня 2021 года";
+                    $notification = trans('statforeigner.notification_green');
 //CHANGE
                     return view($names_arr['page'], ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs,
-                        'notification_green' => trans('statforeigner.notification_green')]);
+                        'notification_green' => $notification]);
                 }
 
             }
@@ -318,7 +318,7 @@ class StatisticController extends Controller
             } else {
                 $faculties = collect(new Faculty);
                 $studyFormsForInputs = collect(new StudyForm);
-                $notification = "Приём документом начнётся 20 июня 2021 года";
+                $notification = trans('statforeigner.notification_green');
 //CHANGE
                 return view($names_arr['page'], ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs,
                     'notification_green' => $notification]);
@@ -618,12 +618,12 @@ class StatisticController extends Controller
 
 
             if ($id_students->count() > 9) {
-                $notification = 'По вашему запросу найдено слишком много совпадений. Пожалуйста, уточните запрос.';
+                $notification =  trans('statforeigner.notification_specify');
                 return;
             }
 
             if ($id_students->count() == 0) {
-                $notification = 'По вашему запросу ничего не найдено.';
+                $notification = trans('statforeigner.notification_not_found');
                 return;
             }
 

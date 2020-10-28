@@ -132,9 +132,14 @@ class SelectionController extends Controller
                         $arr_id_ind[] = $id_ind_item['id'];
                     }
                     $plan->scores = $plan->plan_comp->scores()->whereNotIn('id_subject', $arr_id_ind)->get();
+                    $changeable_subs = array();
                     foreach ($plan->scores as $value) {
                         $value->subject = $value->subject()->first();
+                        if($value->changeable){
+                            $changeable_subs[]= $value;
+                        }
                     }
+                    $plan->changeable_subs = $changeable_subs;
                 }
             }
         }

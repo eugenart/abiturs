@@ -1462,11 +1462,16 @@ trait ParserJsonTrait
                     //связь предметов-оценок с объедением плана-исптания
                     foreach ($element['subjects'] as $subjectItem) {
                         $id_subject = Subject::where('subjectId', '=', $subjectItem['subjectId'])->first();
+                        $changable = false;
+                        if(isset( $subjectItem['change'])){
+                            $changable = $subjectItem['change'];
+                        }
                         if (!empty($id_subject)) {
                             $subject = array(
                                 'id_plan_comp' => $count_plan, // так же если не делать уникальной таблицу планов
                                 'id_subject' => intval($id_subject->id),
-                                'minScore' => $subjectItem['minScore']
+                                'minScore' => $subjectItem['minScore'],
+                                'changeable' => $changable
                             );
                             $arr_plan_comp_score[] = $subject;
                         } else {
@@ -1555,11 +1560,16 @@ trait ParserJsonTrait
                     //связь предметов-оценок с объедением плана-исптания
                     foreach ($element['subjects'] as $subjectItem) {
                         $id_subject = Subject::where('subjectId', '=', $subjectItem['subjectId'])->first();
+                        $changable = false;
+                        if(isset( $subjectItem['change'])){
+                            $changable = $subjectItem['change'];
+                        }
                         if (!empty($id_subject)) {
                             $subject_f = array(
                                 'id_plan_comp' => $count_plan_f, // так же если не делать уникальной таблицу планов
                                 'id_subject' => intval($id_subject->id),
-                                'minScore' => $subjectItem['minScore']
+                                'minScore' => $subjectItem['minScore'],
+                                'changeable' => $changable
                             );
                             $arr_plan_comp_score_f[] = $subject_f;
                         } else {
@@ -1717,11 +1727,16 @@ trait ParserJsonTrait
                     //связь предметов-оценок с объедением плана-исптания
                     foreach ($element['subjects'] as $subjectItem) {
                         $id_subject = Subject::where('subjectId', '=', $subjectItem['subjectId'])->first();
+                        $changable = false;
+                        if(isset( $subjectItem['change'])){
+                            $changable = $subjectItem['change'];
+                        }
                         if (!empty($id_subject)) {
                             $subject = array(
                                 'id_plan_comp' => $count_plan, // так же если не делать уникальной таблицу планов
                                 'id_subject' => intval($id_subject->id),
-                                'minScore' => $subjectItem['minScore']
+                                'minScore' => $subjectItem['minScore'],
+                                'changeable' => $changable
                             );
                             $arr_plan_comp_score[] = $subject;
                         } else {
@@ -1812,11 +1827,15 @@ trait ParserJsonTrait
                     //связь предметов-оценок с объедением плана-исптания
                     foreach ($element['subjects'] as $subjectItem) {
                         $id_subject = Subject::where('subjectId', '=', $subjectItem['subjectId'])->first();
+                        if(isset( $subjectItem['change'])){
+                            $changable = $subjectItem['change'];
+                        }
                         if (!empty($id_subject)) {
                             $subject_f = array(
                                 'id_plan_comp' => $count_plan_f, // так же если не делать уникальной таблицу планов
                                 'id_subject' => intval($id_subject->id),
-                                'minScore' => $subjectItem['minScore']
+                                'minScore' => $subjectItem['minScore'],
+                                'changeable' => $changable
                             );
                             $arr_plan_comp_score_f[] = $subject_f;
                         } else {
