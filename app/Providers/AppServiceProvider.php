@@ -53,7 +53,27 @@ class AppServiceProvider extends ServiceProvider
                 }
             }
             $count_orders = count($files);
-            $view->with(['pages' => $infoblocks, 'infoblocks_int' => $infoblocks_int, 'count_orders' => $count_orders]);
+
+            $direcories = [
+                '/asp',
+                '/bach',
+                '/master',
+                '/spo'
+            ];
+            //подсчет файлов что лежат на сервере
+            $files = array();
+            foreach ($direcories as $directory) {
+                if ($dir = scandir(storage_path('app/public/statistic_priem' . $directory))) {
+                    foreach ($dir as $file) {
+                        if ($file == "." || $file == "..")
+                            continue;
+                        $files[] = $file;
+                    }
+                }
+            }
+            $count_stats = count($files);
+
+            $view->with(['pages' => $infoblocks, 'infoblocks_int' => $infoblocks_int, 'count_orders' => $count_orders, 'count_stats' => $count_stats]);
         });
     }
 }
