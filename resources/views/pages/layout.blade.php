@@ -192,10 +192,10 @@
                                 <a class="nav-link text-white"
                                    href="{{route('stataspforeigner.index')}}">{{ trans('layout.asp') }}</a>
                             </div>
-
-                            <a class="nav-link text-white"
-                               href="{{route('total.index')}}">{{ trans('layout.stat') }}</a>
-                            {{--                        <a class="nav-link text-white" href="{{route('totalf.index')}}">Статистика приема иностранных абитуриентов</a>--}}
+                            @if($count_stats > 0)
+                                <a class="nav-link text-white"
+                                   href="{{route('total.index')}}">{{ trans('layout.stat') }}</a>
+                            @endif
                         </div>
                     </li>
                 @endif
