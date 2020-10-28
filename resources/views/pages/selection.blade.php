@@ -843,7 +843,10 @@
                 let showDiv = false;
                 $.each($(searchDiv).find('.search-tr'), function (i, item) {
                     let exams = $(item).data("exams").split(',');
-                    if (exams.length <= chosenExams.length && chosenExams.length > 0) {
+                    // console.log(exams)
+                    console.log(chosenExams)
+                    // console.log(include(exams, chosenExams))
+                    if (/*exams.length <= chosenExams.length &&*/ chosenExams.length >= 1) {
                         if (include(exams, chosenExams)) {
                             $(item).show();
                             showDiv = true;
@@ -859,11 +862,24 @@
         }
 
         function include(array1, array2) {
-            let count = 0;
+            let count = 0; //количество совпадений массивов
             $.each(array1, function (k, v) {
                 $.inArray(v, array2) !== -1 ? count += 1 : null;
             });
-            return (count === array1.length);
+            //если выбраны только русиш и матан
+            if($.inArray("Русский язык", array2) !== -1 && $.inArray("Математика", array2) !== -1 && array2.length === 2){
+                return (count===array1.length);
+            }
+            //если не выбран ни русский ни матан
+            else if ($.inArray("Русский язык", array2) === -1 && $.inArray("Математика", array2) === -1){
+                return (count>0);
+            }
+            //если русский и математика и еще чо нибудь
+            else if ($.inArray("Русский язык", array2) !== -1 && $.inArray("Математика", array2) !== -1 && array2.length > 2){
+                return (count>2 || count===array1.length);
+            }
+            // return (count === array1.length);
+
         }
 
         function addToChosenFaculties(faculty) {
