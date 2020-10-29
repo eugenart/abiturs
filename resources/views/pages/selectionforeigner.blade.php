@@ -154,24 +154,50 @@
                                                                     @endif
                                                                 </button>
                                                             </td>
+
+{{-- Имя предмета и баллы--}}
+                                                            @php $chable_true = false; @endphp
                                                             @foreach($item->scores as $k => $score)
                                                                 @if (!strpos($score->subject->name, 'достижение'))
                                                                     @if($k == 0)
-                                                                        @if(trans('layout.locale') == 'ru')
-                                                                            <td>{{$score->subject->name}}</td>
+                                                                        @if(in_array($score, $item->changeable_subs))
+                                                                            <td>
+                                                                                @foreach($item->changeable_subs as $k1 => $chable)
+                                                                                    @if(trans('layout.locale') == 'ru')
+                                                                                        {{$chable->subject->name}}
+                                                                                    @endif
+                                                                                    @if(trans('layout.locale') == 'en')
+                                                                                        {{$chable->subject->en_name}}
+                                                                                    @endif
+                                                                                    @if($k1 == 0)
+                                                                                        /
+                                                                                    @endif
+                                                                                @endforeach
+                                                                            </td>
+                                                                            <td class="text-center">
+                                                                                @foreach($item->changeable_subs as $k1 => $chable)
+                                                                                    {{$chable->minScore}}
+                                                                                    @if($k1 == 0)
+                                                                                        /
+                                                                                    @endif
+                                                                                @endforeach
+                                                                            </td>
+                                                                            @php $chable_true = true; @endphp
+                                                                        @else
+                                                                            @if(trans('layout.locale') == 'ru')
+                                                                                <td>{{$score->subject->name}}</td>
+                                                                            @endif
+                                                                            @if(trans('layout.locale') == 'en')
+                                                                                <td>{{$score->subject->en_name}}</td>
+                                                                            @endif
+                                                                            <td class="text-center">{{$score->minScore}}</td>
                                                                         @endif
-                                                                        @if(trans('layout.locale') == 'en')
-                                                                            <td>{{$score->subject->en_name}}</td>
-                                                                        @endif
-
-                                                                        <td class="text-center">{{$score->minScore}}</td>
                                                                     @endif
                                                                 @endif
                                                             @endforeach
+
                                                             <td rowspan="{{count($item->scores)}}"
-                                                                class="text-center d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none bold-border-imp"
-                                                                {{--                                                                style="border-bottom:2px solid #2366a5 !important;"--}}
-                                                            >
+                                                                class="text-center d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none bold-border-imp">
                                                                 @foreach($item->studyForm as $sf)
                                                                     <span style="white-space: nowrap"
                                                                           class="text-center">
@@ -186,178 +212,99 @@
                                                                     <br>
                                                                 @endforeach
                                                             </td>
-{{--                                                            <td rowspan="{{count($item->scores)}}"--}}
-{{--                                                                class="text-center d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none bold-border-imp"--}}
-{{--                                                                --}}{{--                                                                style="border-bottom:2px solid #2366a5 !important;"--}}
-{{--                                                            >--}}
-{{--                                                                @foreach($item->studyForm as $sf)--}}
-{{--                                                                    @php--}}
-{{--                                                                        $counter = 0;--}}
-{{--                                                                    @endphp--}}
-{{--                                                                    @foreach($sf->freeseats as $fs)--}}
-{{--                                                                        @if($sf->freeseats->count() != 1)--}}
-{{--                                                                            @if($fs->admissionBasis->short_name == 'БО')--}}
-{{--                                                                                @php--}}
-{{--                                                                                    $counter++;--}}
-{{--                                                                                @endphp--}}
-{{--                                                                                @if(!$fs->pastContests->contains('year', strval(date ( 'Y' ) - 1)))--}}
-{{--                                                                                    <span>-</span>--}}
-{{--                                                                                    <br>--}}
-{{--                                                                                @endif--}}
-{{--                                                                                @foreach($fs->pastContests as $pc)--}}
-{{--                                                                                    @if($pc->year === strval(date ( 'Y' ) - 1))--}}
-{{--                                                                                        <span>{{$pc->minScore}}</span>--}}
-{{--                                                                                        <br>--}}
-{{--                                                                                    @endif--}}
-{{--                                                                                @endforeach--}}
-{{--                                                                            @endif--}}
-{{--                                                                        @else--}}
-{{--                                                                            @php--}}
-{{--                                                                                $counter++;--}}
-{{--                                                                            @endphp--}}
-{{--                                                                            @if(!$fs->pastContests->contains('year', strval(date ( 'Y' ) - 1)))--}}
-{{--                                                                                <span>-</span>--}}
-{{--                                                                                <br>--}}
-{{--                                                                            @endif--}}
-{{--                                                                            @foreach($fs->pastContests as $pc)--}}
-{{--                                                                                @if($pc->year === strval(date ( 'Y' ) - 1))--}}
-{{--                                                                                    <span>{{$pc->minScore}}</span>--}}
-{{--                                                                                    <br>--}}
-{{--                                                                                @endif--}}
-{{--                                                                            @endforeach--}}
-{{--                                                                        @endif--}}
-{{--                                                                    @endforeach--}}
-{{--                                                                    @if(!$counter)--}}
-{{--                                                                        <span>-</span>--}}
-{{--                                                                        <br>--}}
-{{--                                                                    @endif--}}
-{{--                                                                @endforeach--}}
-{{--                                                            </td>--}}
-{{--                                                            <td rowspan="{{count($item->scores)}}"--}}
-{{--                                                                class="text-center d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none bold-border-imp"--}}
-{{--                                                                --}}{{--                                                                style="border-bottom:2px solid #2366a5 !important;"--}}
-{{--                                                            >--}}
-{{--                                                                @foreach($item->studyForm as $sf)--}}
-{{--                                                                    @php--}}
-{{--                                                                        $counter = 0;--}}
-{{--                                                                    @endphp--}}
-{{--                                                                    @foreach($sf->freeseats as $fs)--}}
-{{--                                                                        @if($sf->freeseats->count() != 1)--}}
-{{--                                                                            @if($fs->admissionBasis->short_name == 'БО')--}}
-{{--                                                                                @php--}}
-{{--                                                                                    $counter++;--}}
-{{--                                                                                @endphp--}}
-{{--                                                                                @if(!$fs->pastContests->contains('year', strval(date ( 'Y' ) - 2)))--}}
-{{--                                                                                    <span>-</span>--}}
-{{--                                                                                    <br>--}}
-{{--                                                                                @endif--}}
-{{--                                                                                @foreach($fs->pastContests as $pc)--}}
-{{--                                                                                    @if($pc->year === strval(date ( 'Y' ) - 2))--}}
-{{--                                                                                        <span>{{$pc->minScore}}</span>--}}
-{{--                                                                                        <br>--}}
-{{--                                                                                    @endif--}}
-{{--                                                                                @endforeach--}}
-{{--                                                                            @endif--}}
-{{--                                                                        @else--}}
-{{--                                                                            @php--}}
-{{--                                                                                $counter++;--}}
-{{--                                                                            @endphp--}}
-{{--                                                                            @if(!$fs->pastContests->contains('year', strval(date ( 'Y' ) - 2)))--}}
-{{--                                                                                <span>-</span>--}}
-{{--                                                                                <br>--}}
-{{--                                                                            @endif--}}
-{{--                                                                            @foreach($fs->pastContests as $pc)--}}
-{{--                                                                                @if($pc->year === strval(date ( 'Y' ) - 2))--}}
-{{--                                                                                    <span>{{$pc->minScore}}</span>--}}
-{{--                                                                                    <br>--}}
-{{--                                                                                @endif--}}
-{{--                                                                            @endforeach--}}
-{{--                                                                        @endif--}}
-{{--                                                                    @endforeach--}}
-{{--                                                                    @if(!$counter)--}}
-{{--                                                                        <span>-</span>--}}
-{{--                                                                        <br>--}}
-{{--                                                                    @endif--}}
-{{--                                                                @endforeach--}}
-{{--                                                            </td>--}}
-{{--                                                            <td rowspan="{{count($item->scores)}}"--}}
-{{--                                                                class="text-center d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none bold-border-right-imp"--}}
-{{--                                                                --}}{{--                                                                style="border-bottom:2px solid #2366a5 !important; border-right:2px solid #2366a5 !important;"--}}
-{{--                                                            >--}}
-{{--                                                                @foreach($item->studyForm as $sf)--}}
-{{--                                                                    @php--}}
-{{--                                                                        $counter = 0;--}}
-{{--                                                                    @endphp--}}
-{{--                                                                    @foreach($sf->freeseats as $fs)--}}
-
-{{--                                                                        @if($sf->freeseats->count() != 1)--}}
-{{--                                                                            @if($fs->admissionBasis->short_name == 'БО')--}}
-{{--                                                                                @php--}}
-{{--                                                                                    $counter++;--}}
-{{--                                                                                @endphp--}}
-{{--                                                                                @if(!$fs->pastContests->contains('year', strval(date ( 'Y' ) - 3)))--}}
-{{--                                                                                    <span>-</span>--}}
-{{--                                                                                    <br>--}}
-{{--                                                                                @endif--}}
-{{--                                                                                @foreach($fs->pastContests as $pc)--}}
-{{--                                                                                    @if($pc->year === strval(date ( 'Y' ) - 3))--}}
-{{--                                                                                        <span>{{$pc->minScore}}</span>--}}
-{{--                                                                                        <br>--}}
-{{--                                                                                    @endif--}}
-{{--                                                                                @endforeach--}}
-{{--                                                                            @endif--}}
-{{--                                                                        @else--}}
-{{--                                                                            @php--}}
-{{--                                                                                $counter++;--}}
-{{--                                                                            @endphp--}}
-{{--                                                                            @if(!$fs->pastContests->contains('year', strval(date ( 'Y' ) - 3)))--}}
-{{--                                                                                <span>-</span>--}}
-{{--                                                                                <br>--}}
-{{--                                                                            @endif--}}
-{{--                                                                            @foreach($fs->pastContests as $pc)--}}
-{{--                                                                                @if($pc->year === strval(date ( 'Y' ) - 3))--}}
-{{--                                                                                    <span>{{$pc->minScore}}</span>--}}
-{{--                                                                                    <br>--}}
-{{--                                                                                @endif--}}
-{{--                                                                            @endforeach--}}
-{{--                                                                        @endif--}}
-{{--                                                                    @endforeach--}}
-{{--                                                                    @if(!$counter)--}}
-{{--                                                                        <span>-</span>--}}
-{{--                                                                        <br>--}}
-{{--                                                                    @endif--}}
-{{--                                                                @endforeach--}}
-{{--                                                            </td>--}}
                                                         </tr>
 
                                                         @foreach($item->scores as $k => $score)
                                                             @if (!strpos($score->subject->name, 'достижение'))
                                                                 @if($k !== 0 && $k !== (count($item->scores) - 1))
-                                                                    <tr class="nps-tr search-tr-by-facluties"
-                                                                        data-exams="{{ implode(',', $item->subjects) }}">
-                                                                        @if(trans('layout.locale') == 'ru')
-                                                                            <td>{{$score->subject->name}}</td>
-                                                                        @endif
-                                                                        @if(trans('layout.locale') == 'en')
-                                                                            <td>{{$score->subject->en_name}}</td>
-                                                                        @endif
-                                                                        <td class="text-center">{{$score->minScore}}</td>
-                                                                    </tr>
-                                                                @elseif ($k == (count($item->scores) - 1))
-                                                                    <tr class="nps-tr search-tr-by-facluties"
-                                                                        data-exams="{{ implode(',', $item->subjects) }}">
-                                                                        <td class="bold-border-imp">
-                                                                        @if(trans('layout.locale') == 'ru')
-                                                                            {{$score->subject->name}}
-                                                                        @endif
-                                                                        @if(trans('layout.locale') == 'en')
-                                                                            {{$score->subject->en_name}}
+
+                                                                    @if(in_array($score, $item->changeable_subs))
+                                                                        @if(!$chable_true)
+                                                                            {{--Если предмет на выбор но еще не был выведен--}}
+                                                                            <tr class="nps-tr search-tr-by-facluties" data-exams="{{ implode(',', $item->subjects) }}">
+                                                                                <td>
+                                                                                    @foreach ( $item->changeable_subs as $k1 => $chable)
+
+                                                                                        @if(trans('layout.locale') == 'ru')
+                                                                                            {{$chable->subject->name}}
+                                                                                        @endif
+                                                                                        @if(trans('layout.locale') == 'en')
+                                                                                            {{$chable->subject->en_name}}
+                                                                                        @endif
+
+                                                                                        @if($k1 == 0)
+                                                                                            /
+                                                                                        @endif
+                                                                                    @endforeach
+                                                                                </td>
+                                                                                <td class="text-center">
+                                                                                    @foreach ( $item->changeable_subs as $k1 => $chable)
+                                                                                        {{$chable->minScore}}
+                                                                                        @if($k1 == 0)
+                                                                                            /
+                                                                                        @endif
+                                                                                    @endforeach
+                                                                                </td>
+                                                                            </tr>
+                                                                            @php $chable_true = true; @endphp
+                                                                        @endif{{--Если предмет на выбор но уже был выведен то ничего--}}
+                                                                    @else{{--Если предмет не на выбор--}}
+                                                                        <tr class="nps-tr search-tr-by-facluties" data-exams="{{ implode(',', $item->subjects) }}">
+                                                                            @if(trans('layout.locale') == 'ru')
+                                                                                <td>{{$score->subject->name}}</td>
                                                                             @endif
-                                                                        </td>
-                                                                        <td
-                                                                            {{--                                                                            style="border-bottom: 2px solid #2366a5 !important;;"--}}
-                                                                            class="text-center bold-border-imp">{{$score->minScore}}</td>
-                                                                    </tr>
+                                                                            @if(trans('layout.locale') == 'en')
+                                                                                <td>{{$score->subject->en_name}}</td>
+                                                                            @endif
+                                                                            <td class="text-center">{{$score->minScore}}</td>
+                                                                        </tr>
+                                                                    @endif
+
+                                                                @elseif ($k == (count($item->scores) - 1))
+
+                                                                    @if(in_array($score, $item->changeable_subs))
+                                                                        @if(!$chable_true)
+                                                                            {{--Если предмет на выбор но еще не был выведен--}}
+                                                                            <tr class="nps-tr search-tr-by-facluties" data-exams="{{ implode(',', $item->subjects) }}">
+                                                                                <td class="bold-border-imp">
+                                                                                    @foreach ( $item->changeable_subs as $k1 => $chable)
+                                                                                        @if(trans('layout.locale') == 'ru')
+                                                                                            {{$chable->subject->name}}
+                                                                                        @endif
+                                                                                        @if(trans('layout.locale') == 'en')
+                                                                                             {{$chable->subject->en_name}}
+                                                                                        @endif
+
+                                                                                        @if($k1 == 0)
+                                                                                            /
+                                                                                        @endif
+                                                                                    @endforeach
+                                                                                </td>
+                                                                                <td class="text-center bold-border-imp">
+                                                                                    @foreach ( $item->changeable_subs as $k1 => $chable)
+                                                                                        {{$chable->minScore}}
+                                                                                        @if($k1 == 0)
+                                                                                            /
+                                                                                        @endif
+                                                                                    @endforeach
+                                                                                </td>
+                                                                            </tr>
+                                                                            @php $chable_true = true; @endphp
+                                                                        @endif{{--Если предмет на выбор но уже был выведен то ничего--}}
+                                                                    @else{{--Если предмет не на выбор--}}
+                                                                        <tr class="nps-tr search-tr-by-facluties" data-exams="{{ implode(',', $item->subjects) }}">
+                                                                            <td class="bold-border-imp">
+                                                                                @if(trans('layout.locale') == 'ru')
+                                                                                    {{$score->subject->name}}
+                                                                                @endif
+                                                                                @if(trans('layout.locale') == 'en')
+                                                                                    {{$score->subject->en_name}}
+                                                                                @endif
+                                                                            </td>
+                                                                            <td class="text-center bold-border-imp">{{$score->minScore}}</td>
+                                                                        </tr>
+                                                                    @endif
+
                                                                 @endif
                                                             @endif
                                                         @endforeach
