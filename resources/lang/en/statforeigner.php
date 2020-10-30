@@ -70,7 +70,7 @@ return [
     'notice3' => 'a faculty/institute',
     'notice4' => ' to display your applicants lists',
 
-    'notification_green' => 'Admission of documents will begin on June 20, 2021',
+    'notification_green' => 'Admission of documents will begin on June 19, 2021',
     'notification_not_found' => 'No results were found for your search',
     'notification_specify' => 'Too many matches were found for your request. Please specify your request.',
 ];
