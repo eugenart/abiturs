@@ -744,11 +744,11 @@
                                                                             @php $chable_true = true; @endphp
                                                                         @endif{{--Если предмет на выбор но уже был выведен то ничего--}}
                                                                     @else{{--Если предмет не на выбор--}}
-                                                                    <tr class="nps-tr search-tr-by-facluties"
-                                                                        data-exams="{{ implode(',', $item->subjects) }}">
-                                                                        <td>{{$score->subject->name}}</td>
-                                                                        <td class="text-center"> {{$score->minScore}}</td>
-                                                                    </tr>
+                                                                        <tr class="nps-tr search-tr-by-facluties"
+                                                                            data-exams="{{ implode(',', $item->subjects) }}">
+                                                                            <td>{{$score->subject->name}}</td>
+                                                                            <td class="text-center"> {{$score->minScore}}</td>
+                                                                        </tr>
                                                                     @endif
                                                                 @elseif ($k == (count($item->scores) - 1))
                                                                     @if(in_array($score, $item->changeable_subs))
@@ -843,9 +843,9 @@
                 let showDiv = false;
                 $.each($(searchDiv).find('.search-tr'), function (i, item) {
                     let exams = $(item).data("exams").split(',');
-                    // console.log(exams)
+                    console.log(exams)
                     console.log(chosenExams)
-                    // console.log(include(exams, chosenExams))
+                    console.log(include(exams, chosenExams))
                     if (/*exams.length <= chosenExams.length &&*/ chosenExams.length >= 1) {
                         if (include(exams, chosenExams)) {
                             $(item).show();
@@ -877,6 +877,9 @@
             //если русский и математика и еще чо нибудь
             else if ($.inArray("Русский язык", array2) !== -1 && $.inArray("Математика", array2) !== -1 && array2.length > 2){
                 return (count>2 || count===array1.length);
+            }
+            else if($.inArray("Русский язык", array2) !== -1 && $.inArray("Математика", array2) === -1 && array2.length > 2){
+                return (count===array1.length);
             }
             // return (count === array1.length);
 
