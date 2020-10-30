@@ -1,15 +1,47 @@
 @import url('https://fonts.googleapis.com/css?family=PT+Sans:400,700&display=swap');
 @import url('https://fonts.googleapis.com/css?family=PT+Sans:400,700&display=swap');
-/*html {*/
-/*    margin-left: calc(100vw - 100%);*/
-/*    margin-right: 0;*/
-/*    overflow: auto*/
-/*}*/
+html {
+     margin-left: calc(100vw - 100%);
+     margin-right: 0;
+    overflow: auto;
+}
 body {
     font-family: 'PT Sans', sans-serif;
     outline: none !important;
     --main-color: #2366a5;
     --table-color:#e9eff6;
+}
+
+::-webkit-scrollbar-button {
+    background-image:url('');
+    background-repeat:no-repeat;
+    width:4px;
+    height:0px
+}
+
+::-webkit-scrollbar-track {
+    background-color:transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius:0;
+    border-radius: 0;
+    background-color: var(--main-color);
+    /*box-shadow:0px 1px 1px #fff inset;*/
+    background-image:url('https://yraaa.ru/_pu/24/59610063.png');
+    background-position:center;
+    background-repeat:no-repeat;
+}
+
+::-webkit-resizer{
+    background-image:url('');
+    background-repeat:no-repeat;
+    width:7px;
+    height:0px
+}
+
+::-webkit-scrollbar{
+    width: 9px;
 }
 a:hover{
 
