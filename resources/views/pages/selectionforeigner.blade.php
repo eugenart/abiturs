@@ -12,7 +12,7 @@
          aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered mt-5" role="document">
             <div class="modal-content">
-                <button type="button" class="close-btn" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="btn close-btn" data-dismiss="modal" aria-label="Close">
                     <i class="fa fa-times fa-2x"></i>
                 </button>
                 <div class="row w-100 m-0 p-0">

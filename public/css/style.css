@@ -43,9 +43,13 @@ body {
 ::-webkit-scrollbar{
     width: 9px;
 }
-a:hover{
+#exampleModalScrollable .close-btn:active{
+    border:none;
+    color:var(--main-color);
+    box-shadow:none;
 
 }
+
 #square {
     position: fixed;
     bottom: 20px;
