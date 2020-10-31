@@ -125,7 +125,7 @@
                                                     @foreach($faculty->plan as $item)
                                                         <tr class="nps-tr search-tr-by-faculties"
                                                             data-exams="{{ implode(',', $item->subjects) }}">
-                                                            <td rowspan="{{count($item->scores)}}"
+                                                            <td rowspan="@if(count($item->changeable_subs)!=0){{count($item->scores)-1 }} @else {{count($item->scores)}} @endif"
                                                                 class="bold-border-imp"
                                                                 {{--                                                                style="border-bottom: 2px solid #2366a5 !important;"--}}
                                                             >
@@ -196,7 +196,7 @@
                                                                 @endif
                                                             @endforeach
 
-                                                            <td rowspan="{{count($item->scores)}}"
+                                                            <td rowspan="@if(count($item->changeable_subs)!=0){{count($item->scores)-1 }} @else {{count($item->scores)}} @endif"
                                                                 class="text-center d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none bold-border-imp">
                                                                 @foreach($item->studyForm as $sf)
                                                                     <span style="white-space: nowrap"
