@@ -1464,7 +1464,7 @@ trait ParserJsonTrait
                         $id_subject = Subject::where('subjectId', '=', $subjectItem['subjectId'])->first();
                         $changable = false;
                         if(isset( $subjectItem['change'])){
-                            $changable = $subjectItem['change'];
+                            $changable = $subjectItem['change'] == "True"?1:0;
                         }
                         if (!empty($id_subject)) {
                             $subject = array(
@@ -1562,7 +1562,7 @@ trait ParserJsonTrait
                         $id_subject = Subject::where('subjectId', '=', $subjectItem['subjectId'])->first();
                         $changable = false;
                         if(isset( $subjectItem['change'])){
-                            $changable = $subjectItem['change'];
+                            $changable = $subjectItem['change']== "True"?1:0;
                         }
                         if (!empty($id_subject)) {
                             $subject_f = array(
@@ -1729,7 +1729,7 @@ trait ParserJsonTrait
                         $id_subject = Subject::where('subjectId', '=', $subjectItem['subjectId'])->first();
                         $changable = false;
                         if(isset( $subjectItem['change'])){
-                            $changable = $subjectItem['change'];
+                            $changable = $subjectItem['change']== "True"?1:0;
                         }
                         if (!empty($id_subject)) {
                             $subject = array(
@@ -1828,7 +1828,7 @@ trait ParserJsonTrait
                     foreach ($element['subjects'] as $subjectItem) {
                         $id_subject = Subject::where('subjectId', '=', $subjectItem['subjectId'])->first();
                         if(isset( $subjectItem['change'])){
-                            $changable = $subjectItem['change'];
+                            $changable = $subjectItem['change']== "True"?1:0;
                         }
                         if (!empty($id_subject)) {
                             $subject_f = array(

@@ -158,7 +158,7 @@
                                                                             @foreach($item->changeable_subs as $k1 => $chable)
                                                                                 {{$chable->subject->name}}
                                                                                 @if($k1 == 0)
-                                                                                    /
+                                                                                    &nbsp;/
                                                                                 @endif
                                                                             @endforeach
                                                                         </td>
@@ -166,7 +166,7 @@
                                                                             @foreach($item->changeable_subs as $k1 => $chable)
                                                                                 {{$chable->minScore}}
                                                                                 @if($k1 == 0)
-                                                                                    /
+                                                                                    &nbsp;/
                                                                                 @endif
                                                                             @endforeach
                                                                         </td>
@@ -349,7 +349,7 @@
                                                                         @foreach ( $item->changeable_subs as $k1 => $chable)
                                                                             {{$chable->subject->name}}
                                                                             @if($k1 == 0)
-                                                                                /
+                                                                                &nbsp;/
                                                                             @endif
                                                                         @endforeach
                                                                     </td>
@@ -357,7 +357,7 @@
                                                                         @foreach ( $item->changeable_subs as $k1 => $chable)
                                                                             {{$chable->minScore}}
                                                                             @if($k1 == 0)
-                                                                                /
+                                                                                &nbsp;/
                                                                             @endif
                                                                         @endforeach
                                                                     </td>
@@ -373,7 +373,7 @@
                                                                 @endif
                                                             @elseif ($k == (count($item->scores)-1))
                                                                 @if(in_array($score, $item->changeable_subs))
-                                                                    @if(!$chable_true)
+                                                                    @if(!$chable_true_ege)
                                                                         {{--Если предмет на выбор но еще не был выведен--}}
                                                                         <tr class="nps-tr search-tr"
                                                                             data-exams="{{ implode(',', $item->subjects) }}">
@@ -381,7 +381,7 @@
                                                                                 @foreach ( $item->changeable_subs as $k1 => $chable)
                                                                                     {{$chable->subject->name}}
                                                                                     @if($k1 == 0)
-                                                                                        /
+                                                                                        &nbsp;/
                                                                                     @endif
                                                                                 @endforeach
                                                                             </td>
@@ -389,12 +389,12 @@
                                                                                 @foreach ( $item->changeable_subs as $k1 => $chable)
                                                                                     {{$chable->minScore}}
                                                                                     @if($k1 == 0)
-                                                                                        /
+                                                                                        &nbsp;/
                                                                                     @endif
                                                                                 @endforeach
                                                                             </td>
                                                                         </tr>
-                                                                        @php $chable_true = true; @endphp
+                                                                        @php $chable_true_ege = true; @endphp
                                                                     @endif{{--Если предмет на выбор но уже был выведен то ничего--}}
                                                                 @else{{--Если предмет не на выбор--}}
                                                                 <tr class="nps-tr search-tr"
@@ -526,7 +526,7 @@
                                                                                 @foreach($item->changeable_subs as $k1 => $chable)
                                                                                     {{$chable->subject->name}}
                                                                                     @if($k1 == 0)
-                                                                                        /
+                                                                                        &nbsp;/
                                                                                     @endif
                                                                                 @endforeach
                                                                             </td>
@@ -534,7 +534,7 @@
                                                                                 @foreach($item->changeable_subs as $k1 => $chable)
                                                                                     {{$chable->minScore}}
                                                                                     @if($k1 == 0)
-                                                                                        /
+                                                                                        &nbsp;/
                                                                                     @endif
                                                                                 @endforeach
                                                                             </td>
@@ -724,19 +724,27 @@
                                                                             {{--Если предмет на выбор но еще не был выведен--}}
                                                                             <tr class="nps-tr search-tr-by-facluties"
                                                                                 data-exams="{{ implode(',', $item->subjects) }}">
-                                                                                <td>
+                                                                                @if($k == (count($item->scores) - 2))
+                                                                                    <td class="bold-border-imp">
+                                                                                @else
+                                                                                    <td>
+                                                                                @endif
                                                                                     @foreach ( $item->changeable_subs as $k1 => $chable)
                                                                                         {{$chable->subject->name}}
                                                                                         @if($k1 == 0)
-                                                                                            /
+                                                                                                &nbsp;/
                                                                                         @endif
                                                                                     @endforeach
                                                                                 </td>
-                                                                                <td class="text-center">
+                                                                                    @if($k == (count($item->scores) - 2))
+                                                                                        <td class="text-center bold-border-imp">
+                                                                                    @else
+                                                                                        <td  class="text-center">
+                                                                                    @endif
                                                                                     @foreach ( $item->changeable_subs as $k1 => $chable)
                                                                                         {{$chable->minScore}}
                                                                                         @if($k1 == 0)
-                                                                                            /
+                                                                                            &nbsp;/
                                                                                         @endif
                                                                                     @endforeach
                                                                                 </td>
