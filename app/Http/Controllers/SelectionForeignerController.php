@@ -155,7 +155,12 @@ class SelectionForeignerController extends Controller
 
 //
 //         return $faculties;
-        return view('pages.selectionforeigner')->with('subjects', $subjects)->with('faculties', $faculties);
+
+        $year = 2021;
+//
+//         return $faculties;
+
+        return view('pages.selectionforeigner', ['subjects' => $subjects, 'faculties' => $faculties, 'year'=>$year]);
 
     }
 }
