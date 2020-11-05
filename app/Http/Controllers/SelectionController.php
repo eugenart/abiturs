@@ -165,10 +165,10 @@ class SelectionController extends Controller
             $faculty->subjects = $fsubjs;
         }
 
-
+        $year = 2021;
 //
 //         return $faculties;
-        return view('pages.selection')->with('subjects', $subjects)->with('faculties', $faculties);
 
+        return view('pages.selection', ['subjects' => $subjects, 'faculties' => $faculties, 'year'=>$year]);
     }
 }
