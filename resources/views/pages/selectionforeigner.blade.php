@@ -324,32 +324,68 @@
                                     @endforeach
                                 </div>
                             </div>
-                            <div class="col-12 col-xl-3 col-lg-12 col-sm-12">
-                                <h4 class="mb-3 text-xl-left text-lg-center text-md-center text-sm-center text-md-center main-color text-center">
-                                    {{ trans('selection.faculties') }}</h4>
-                                <div class="row text-uppercase mb-5">
-                                    @foreach($faculties as $faculty)
-                                        @if(count($faculty->plan))
-                                            <div class="col-12 col-xl-12 col-lg-4 col-md-4 col-sm-4">
-                                                <div class="form-group form-check check-faculties">
-                                                    <input type="checkbox" class="form-check-input"
-                                                           id="optionFaculties{{ $loop->index }}"
-                                                           onclick="addToChosenFaculties('{{ $faculty->name }}')">
-                                                    <label class="form-check-label ml-2 underline-label"
-                                                           for="optionFaculties{{ $loop->index }}">
-                                                        @if(trans('layout.locale') == 'ru')
-                                                            {{$faculty->name}}
-                                                        @endif
-                                                        @if(trans('layout.locale') == 'en')
-                                                            {{$faculty->en_name}}
-                                                        @endif
-                                                    </label>
+                            <div id="right-menu" class="col-12 col-xl-3 col-lg-12 col-sm-12">
+                                <div class="right-menu-big">
+                                    <h4 class="right-menu-title text-xl-left text-lg-center text-md-center text-sm-center text-md-center main-color text-center">
+                                        {{ trans('selection.faculties') }}</h4>
+                                    </h4>
+                                    <div class="right-menu-checkbox-group row text-uppercase">
+                                        @foreach($faculties as $faculty)
+                                            @if(count($faculty->plan))
+                                                <div
+                                                    class="col-12 col-xl-12 col-lg-4 col-md-4 col-sm-4 checkbox-column">
+                                                    <div class="form-group form-check check-faculties">
+                                                        <input type="checkbox"
+                                                               class="form-check-input right-menu-checkbox"
+                                                               id="optionFaculties{{ $loop->index }}"
+                                                               onclick="addToChosenFaculties('{{ $faculty->name }}')">
+                                                        <label
+                                                            class="form-check-label ml-2 underline-label right-menu-label"
+                                                            for="optionFaculties{{ $loop->index }}">{{ $faculty->name }}</label>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        @endif
-                                    @endforeach
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                </div>
+                                <div class="right-menu-small">
+
+                                    <div class="right-menu-checkbox-group-down">
+                                        <div>
+                                            <a class="btn btn-primary collapsed" data-toggle="collapse" href="#collapseExample"
+                                               role="button" aria-expanded="false" aria-controls="collapseExample">
+                                                <i class="fas fa-angle-down rotate-icon"></i> Фильтр
+                                            </a>
+                                        </div>
+
+                                        <div class="collapse right-menu-small-collapse" id="collapseExample">
+                                            @foreach($faculties as $faculty)
+                                                @if(count($faculty->plan))
+                                                    <div class="col-12 d-flex justify-content-center align-item-center flex-column checkbox-column">
+                                                        <div class="form-group form-check check-faculties">
+                                                            <input type="checkbox"
+                                                                   class="form-check-input right-menu-small-checkbox"
+                                                                   id="optionFaculties{{ $loop->index }}s"
+                                                                   onclick="addToChosenFaculties('{{ $faculty->name }}')">
+                                                            <label
+                                                                class="form-check-label ml-2 underline-label right-menu-small-label d-flex"
+                                                                for="optionFaculties{{ $loop->index }}s">
+                                                                @if(trans('layout.locale') == 'ru')
+                                                                    {{$faculty->name}}
+                                                                @endif
+                                                                @if(trans('layout.locale') == 'en')
+                                                                    {{$faculty->en_name}}
+                                                                @endif
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -425,6 +461,30 @@
             return (n + "").split("").reverse().join("").replace(/(\d{3})/g, "$1 ").split("").reverse().join("").replace(/^ /, "");
         }
 
+        $('.right-menu-big').click(function () {
+            if ($('.right-menu-checkbox').is(':checked')) {
+                if ($('.right-menu-checkbox:checked').length === 1) {
+                    console.log($('.right-menu-checkbox:checked').length)
+                    $('body,html').animate({
+                        scrollTop: 0
+                    }, 400);
+                }
+                // $('#dropdownMenuLink').html("Выбранно "+chosenFaculties.length+" элемента");
+            } else {
+                // $('#dropdownMenuLink').html("Выбрать... ");
+            }
+        });
+        $('.right-menu-small-label').click(function () {
+
+            console.log( $('.right-menu-small-label').html())
+            console.log('s1=' + $('body,html').scrollTop())
+            var s = $('body,html').scrollTop();
+            $('body,html').animate({
+                scrollTop: s
+            }, 100);
+            console.log('s2=' + $('body,html').scrollTop())
+
+        });
 
         $('#exampleModalScrollable').on('show.bs.modal', function (event) {
            var locale = $('#locale').data('content');

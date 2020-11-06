@@ -56,7 +56,7 @@
 
         <div class="row mt-lg-4 mt-xl-4 mt-md-3 mt-sm-3 mt-3">
             <div class="col-12 p-0">
-                <ul class="nav nav-pills mb-3 d-flex justify-content-center" id="pills-tab" role="tablist">
+                <ul class="nav nav-pills mb-3 d-flex justify-content-center switch-panel" id="pills-tab" role="tablist">
                     <li class="nav-item swith-priem">
                         <a class="nav-link border-priem active text-uppercase btn btn-lg" id="pills-profile-tab"
                            data-toggle="pill"
@@ -71,13 +71,13 @@
                 </ul>
             </div>
         </div>
-        <div class="row">
+        <div class="row" >
             <div class="col-12">
                 <div class="tab-content" id="pills-tabContent">
                     <div class="tab-pane fade " id="pills-home" role="tabpanel"
                          aria-labelledby="pills-home-tab">
-                        <div class="row mt-2 d-flex flex-xl-row flex-column-reverse flex-sm-column-reverse">
-                            <div class="col-12 col-xl-9 col-sm-12 pl-0 pr-0">
+                        <div class="row mt-2 d-flex flex-xl-row flex-column-reverse flex-sm-column-reverse" >
+                            <div class="col-12 col-xl-9 col-sm-12 pl-0 pr-0" >
                                 @foreach($faculties as $faculty)
                                     @if(count($faculty->plan))
                                         <div class="col-12 mb-5 search-div"
@@ -85,19 +85,19 @@
                                             <h4><a href="{{$faculty->link}}" target="_blank" class="main-color"
                                                    style="text-decoration: underline">{{$faculty->name}}</a>
                                             </h4>
-                                            <table style="width: 100% !important;"
+                                            <table style="width: 100% !important; "
                                                    class="table table-sm table-scores w-100 table-b-border table-ovz-select">
                                                 <thead>
                                                 <tr>
                                                     <th width="40%" rowspan="3" style="vertical-align: middle">
                                                         Направление
-                                                        подготовки / Специальность
+                                                        подготовки
                                                     </th>
                                                     <th width="20%" rowspan="3" style="vertical-align: middle">
                                                         Вступительные
-                                                        испытания в порядке
+                                                        испытания <br/><span class="small-text-thead text-lowercase">в порядке
                                                         приоритетности для
-                                                        ранжирования
+                                                        ранжирования</span>
                                                     </th>
                                                     <th width="10%" rowspan="3" style="vertical-align: middle"
                                                         class="d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none">
@@ -115,18 +115,18 @@
                                                     </th>
                                                     <th colspan="4" width="20%"
                                                         class="d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none">
-                                                        Статистика проходных баллов <br> (бюджет, общий конкурс)
+                                                        Статистика проходных баллов <br> <span class="small-text-thead text-lowercase">(бюджет, общий конкурс)</span>
                                                     </th>
                                                 </tr>
                                                 <tr class="d-lg-table-row d-xl-table-row d-md-table-row d-sm-table-row d-none">
                                                     <th
-                                                        style="vertical-align: middle">{{strval(date ( 'Y' ) - 1)}}
+                                                        style="vertical-align: middle">{{strval($year - 1)}}
                                                     </th>
                                                     <th
-                                                        style="vertical-align: middle">{{strval(date ( 'Y' ) - 2)}}
+                                                        style="vertical-align: middle">{{strval($year - 2)}}
                                                     </th>
                                                     <th class=""
-                                                        style="vertical-align: middle">{{strval(date ( 'Y' ) - 3)}}
+                                                        style="vertical-align: middle">{{strval($year - 3)}}
                                                     </th>
                                                 </tr>
                                                 </thead>
@@ -158,7 +158,7 @@
                                                                             @foreach($item->changeable_subs as $k1 => $chable)
                                                                                 {{$chable->subject->name}}
                                                                                 @if($k1 == 0)
-                                                                                    &nbsp;/
+                                                                                    /
                                                                                 @endif
                                                                             @endforeach
                                                                         </td>
@@ -166,7 +166,7 @@
                                                                             @foreach($item->changeable_subs as $k1 => $chable)
                                                                                 {{$chable->minScore}}
                                                                                 @if($k1 == 0)
-                                                                                    &nbsp;/
+                                                                                    /
                                                                                 @endif
                                                                             @endforeach
                                                                         </td>
@@ -203,12 +203,12 @@
                                                                                 $counter++;
                                                                             @endphp
                                                                             @if($fs->id_plan_comp == $id_comp)
-                                                                                @if(!$fs->pastContests->contains('year', strval(date ( 'Y' ) - 1)))
+                                                                                @if(!$fs->pastContests->contains('year', strval($year - 1)))
                                                                                     <span>-</span>
                                                                                     <br>
                                                                                 @endif
                                                                                 @foreach($fs->pastContests as $pc)
-                                                                                    @if($pc->year === strval(date ( 'Y' ) - 1))
+                                                                                    @if($pc->year === strval($year - 1))
                                                                                         <span>{{$pc->minScore}}</span>
                                                                                         <br>
                                                                                     @endif
@@ -219,12 +219,12 @@
                                                                         @php
                                                                             $counter++;
                                                                         @endphp
-                                                                        @if(!$fs->pastContests->contains('year', strval(date ( 'Y' ) - 1)))
+                                                                        @if(!$fs->pastContests->contains('year', strval($year - 1)))
                                                                             <span>-</span>
                                                                             <br>
                                                                         @endif
                                                                         @foreach($fs->pastContests as $pc)
-                                                                            @if($pc->year === strval(date ( 'Y' ) - 1))
+                                                                            @if($pc->year === strval($year - 1))
                                                                                 <span>{{$pc->minScore}}</span>
                                                                                 <br>
                                                                             @endif
@@ -251,12 +251,12 @@
                                                                                 $counter++;
                                                                             @endphp
                                                                             @if($fs->id_plan_comp == $id_comp)
-                                                                                @if(!$fs->pastContests->contains('year', strval(date ( 'Y' ) - 2)))
+                                                                                @if(!$fs->pastContests->contains('year', strval($year - 2)))
                                                                                     <span>-</span>
                                                                                     <br>
                                                                                 @endif
                                                                                 @foreach($fs->pastContests as $pc)
-                                                                                    @if($pc->year === strval(date ( 'Y' ) - 2))
+                                                                                    @if($pc->year === strval($year - 2))
                                                                                         <span>{{$pc->minScore}}</span>
                                                                                         <br>
                                                                                     @endif
@@ -268,12 +268,12 @@
                                                                             $counter++;
                                                                         @endphp
                                                                         @if($fs->id_plan_comp == $id_comp)
-                                                                            @if(!$fs->pastContests->contains('year', strval(date ( 'Y' ) - 2)))
+                                                                            @if(!$fs->pastContests->contains('year', strval($year - 2)))
                                                                                 <span>-</span>
                                                                                 <br>
                                                                             @endif
                                                                             @foreach($fs->pastContests as $pc)
-                                                                                @if($pc->year === strval(date ( 'Y' ) - 2))
+                                                                                @if($pc->year === strval($year - 2))
                                                                                     <span>{{$pc->minScore}}</span>
                                                                                     <br>
                                                                                 @endif
@@ -301,12 +301,12 @@
                                                                                 $counter++;
                                                                             @endphp
                                                                             @if($fs->id_plan_comp == $id_comp)
-                                                                                @if(!$fs->pastContests->contains('year', strval(date ( 'Y' ) - 3)))
+                                                                                @if(!$fs->pastContests->contains('year', strval($year - 3)))
                                                                                     <span>-</span>
                                                                                     <br>
                                                                                 @endif
                                                                                 @foreach($fs->pastContests as $pc)
-                                                                                    @if($pc->year === strval(date ( 'Y' ) - 3))
+                                                                                    @if($pc->year === strval($year - 3))
                                                                                         <span>{{$pc->minScore}}</span>
                                                                                         <br>
                                                                                     @endif
@@ -317,12 +317,12 @@
                                                                         @php
                                                                             $counter++;
                                                                         @endphp
-                                                                        @if(!$fs->pastContests->contains('year', strval(date ( 'Y' ) - 3)))
+                                                                        @if(!$fs->pastContests->contains('year', strval($year - 3)))
                                                                             <span>-</span>
                                                                             <br>
                                                                         @endif
                                                                         @foreach($fs->pastContests as $pc)
-                                                                            @if($pc->year === strval(date ( 'Y' ) - 3))
+                                                                            @if($pc->year === strval($year - 3))
                                                                                 <span>{{$pc->minScore}}</span>
                                                                                 <br>
                                                                             @endif
@@ -343,34 +343,34 @@
                                                                 @if(in_array($score, $item->changeable_subs))
                                                                     @if(!$chable_true_ege)
                                                                         {{--Если предмет на выбор но еще не был выведен--}}
-                                                                <tr class="nps-tr search-tr"
-                                                                    data-exams="{{ implode(',', $item->subjects) }}">
-                                                                    @if($k == (count($item->scores) - 2))
-                                                                        <td class="bold-border-imp">
-                                                                    @else
-                                                                        <td>
-                                                                    @endif
-                                                                        @foreach ( $item->changeable_subs as $k1 => $chable)
-                                                                            {{$chable->subject->name}}
-                                                                            @if($k1 == 0)
-                                                                                &nbsp;/
-                                                                            @endif
-                                                                        @endforeach
-                                                                    </td>
-                                                                        @if($k == (count($item->scores) - 2))
-                                                                            <td class="text-center bold-border-imp">
-                                                                        @else
-                                                                            <td class="text-center">
-                                                                        @endif
+                                                                        <tr class="nps-tr search-tr"
+                                                                            data-exams="{{ implode(',', $item->subjects) }}">
+                                                                            @if($k == (count($item->scores) - 2))
+                                                                                <td class="bold-border-imp">
+                                                                            @else
+                                                                                <td>
+                                                                                    @endif
+                                                                                    @foreach ( $item->changeable_subs as $k1 => $chable)
+                                                                                        {{$chable->subject->name}}
+                                                                                        @if($k1 == 0)
+                                                                                            /
+                                                                                        @endif
+                                                                                    @endforeach
+                                                                                </td>
+                                                                                @if($k == (count($item->scores) - 2))
+                                                                                    <td class="text-center bold-border-imp">
+                                                                                @else
+                                                                                    <td class="text-center">
+                                                                                        @endif
 
-                                                                        @foreach ( $item->changeable_subs as $k1 => $chable)
-                                                                            {{$chable->minScore}}
-                                                                            @if($k1 == 0)
-                                                                                &nbsp;/
-                                                                            @endif
-                                                                        @endforeach
-                                                                    </td>
-                                                                </tr>
+                                                                                        @foreach ( $item->changeable_subs as $k1 => $chable)
+                                                                                            {{$chable->minScore}}
+                                                                                            @if($k1 == 0)
+                                                                                                /
+                                                                                            @endif
+                                                                                        @endforeach
+                                                                                    </td>
+                                                                        </tr>
                                                                         @php $chable_true_ege = true; @endphp
                                                                     @endif{{--Если предмет на выбор но уже был выведен то ничего--}}
                                                                 @else{{--Если предмет не на выбор--}}
@@ -390,7 +390,7 @@
                                                                                 @foreach ( $item->changeable_subs as $k1 => $chable)
                                                                                     {{$chable->subject->name}}
                                                                                     @if($k1 == 0)
-                                                                                        &nbsp;/
+                                                                                        /
                                                                                     @endif
                                                                                 @endforeach
                                                                             </td>
@@ -398,7 +398,7 @@
                                                                                 @foreach ( $item->changeable_subs as $k1 => $chable)
                                                                                     {{$chable->minScore}}
                                                                                     @if($k1 == 0)
-                                                                                        &nbsp;/
+                                                                                        /
                                                                                     @endif
                                                                                 @endforeach
                                                                             </td>
@@ -426,21 +426,49 @@
                                 @endforeach
 
                             </div>
-                            <div class="col-12 col-xl-3 col-lg-12 col-sm-12">
-                                <h4 class="mb-3 text-xl-left text-lg-center text-md-center text-sm-center main-color text-md-center text-center">
-                                    Мои ЕГЭ</h4>
-                                <div class="row text-uppercase mb-5">
-                                    @foreach($subjects as $subject)
-                                        <div class="col-12 col-xl-12 col-lg-4 col-md-4 col-sm-4">
-                                            <div class="form-group form-check check-subjects">
-                                                <input type="checkbox" class="form-check-input"
-                                                       id="option{{ $loop->index }}"
-                                                       onclick="addToChosenExams('{{ $subject->name }}')">
-                                                <label class="form-check-label ml-2 underline-label"
-                                                       for="option{{ $loop->index }}">{{ $subject->name }}</label>
-                                            </div>
+                            <div id="right-menu" class="col-12 col-xl-3 col-lg-12 col-sm-12">
+                                <div class="right-menu-big">
+                                    <h4 class="right-menu-title mb-3 text-xl-left text-lg-center text-md-center text-sm-center main-color text-md-center text-center">
+                                        Мои ЕГЭ
+                                    </h4>
+                                    <div class="right-menu-checkbox-group row text-uppercase">
+                                        @foreach($subjects as $subject)
+                                                <div class="col-12 col-xl-12 col-lg-4 col-md-4 col-sm-4 checkbox-column">
+                                                    <div class="form-group form-check check-subjects">
+                                                        <input type="checkbox"
+                                                               class="form-check-input right-menu-checkbox"
+                                                               id="option{{ $loop->index }}"
+                                                               onclick="addToChosenExams('{{ $subject->name }}')">
+                                                        <label
+                                                            class="form-check-label ml-2 underline-label right-menu-label "
+                                                            for="option{{ $loop->index }}">{{ $subject->name }}</label>
+                                                    </div>
+                                                </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                                <div class="right-menu-small">
+                                    <div class="right-menu-checkbox-group-down">
+                                        <h4 class="right-menu-title mb-3 text-xl-left text-lg-center text-md-center text-sm-center main-color text-md-center text-center">
+                                            Мои ЕГЭ
+                                        </h4>
+                                        <div class="right-menu-small-ege-collapse">
+                                            @foreach($subjects as $subject)
+                                                    <div class="col-12 d-flex justify-content-center align-item-center flex-column checkbox-column">
+                                                        <div class="form-group form-check check-subjects">
+                                                            <input type="checkbox"
+                                                                   class="form-check-input right-menu-small-ege-checkbox"
+                                                                   id="option{{ $loop->index }}s"
+                                                                   onclick="addToChosenExams('{{ $subject->name }}')">
+                                                            <label
+                                                                class="form-check-label ml-2 underline-label right-menu-small-ege-label d-flex"
+                                                                for="option{{ $loop->index }}s">{{ $subject->name }}</label>
+                                                        </div>
+                                                    </div>
+
+                                            @endforeach
                                         </div>
-                                    @endforeach
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -466,13 +494,13 @@
                                                     <tr>
                                                         <th width="40%" rowspan="3" style="vertical-align: middle">
                                                             Направление
-                                                            подготовки / Специальность
+                                                            подготовки
                                                         </th>
                                                         <th width="20%" rowspan="3" style="vertical-align: middle">
                                                             Вступительные
-                                                            испытания в порядке
-                                                            приоритетности для
-                                                            ранжирования
+                                                            испытания <br/> <span class="small-text-thead text-lowercase">в порядке
+                                                        приоритетности для
+                                                        ранжирования</span>
                                                         </th>
                                                         <th width="10%" rowspan="3" style="vertical-align: middle"
                                                             class="d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none">
@@ -490,18 +518,18 @@
                                                         </th>
                                                         <th colspan="4" width="20%"
                                                             class="d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none">
-                                                            Статистика проходных баллов <br> (бюджет, общий конкурс)
+                                                            Статистика проходных баллов <br> <span class="small-text-thead text-lowercase">(бюджет, общий конкурс)</span>
                                                         </th>
                                                     </tr>
                                                     <tr class="d-lg-table-row d-xl-table-row d-md-table-row d-sm-table-row d-none">
                                                         <th
-                                                            style="vertical-align: middle">{{strval(date ( 'Y' ) - 1)}}
+                                                            style="vertical-align: middle">{{strval($year - 1)}}
                                                         </th>
                                                         <th
-                                                            style="vertical-align: middle">{{strval(date ( 'Y' ) - 2)}}
+                                                            style="vertical-align: middle">{{strval($year - 2)}}
                                                         </th>
                                                         <th class="bold-border-right-imp"
-                                                            style="vertical-align: middle">{{strval(date ( 'Y' ) - 3)}}
+                                                            style="vertical-align: middle">{{strval($year - 3)}}
                                                         </th>
                                                     </tr>
                                                     </thead>
@@ -535,7 +563,7 @@
                                                                                 @foreach($item->changeable_subs as $k1 => $chable)
                                                                                     {{$chable->subject->name}}
                                                                                     @if($k1 == 0)
-                                                                                        &nbsp;/
+                                                                                        /
                                                                                     @endif
                                                                                 @endforeach
                                                                             </td>
@@ -543,7 +571,7 @@
                                                                                 @foreach($item->changeable_subs as $k1 => $chable)
                                                                                     {{$chable->minScore}}
                                                                                     @if($k1 == 0)
-                                                                                        &nbsp;/
+                                                                                        /
                                                                                     @endif
                                                                                 @endforeach
                                                                             </td>
@@ -582,12 +610,12 @@
                                                                                     $counter++;
                                                                                 @endphp
                                                                                 @if($fs->id_plan_comp == $id_comp)
-                                                                                    @if(!$fs->pastContests->contains('year', strval(date ( 'Y' ) - 1)))
+                                                                                    @if(!$fs->pastContests->contains('year', strval($year - 1)))
                                                                                         <span>-</span>
                                                                                         <br>
                                                                                     @endif
                                                                                     @foreach($fs->pastContests as $pc)
-                                                                                        @if($pc->year === strval(date ( 'Y' ) - 1))
+                                                                                        @if($pc->year === strval($year - 1))
                                                                                             <span>{{$pc->minScore}}</span>
                                                                                             <br>
                                                                                         @endif
@@ -599,12 +627,12 @@
                                                                                 $counter++;
                                                                             @endphp
                                                                             @if($fs->id_plan_comp == $id_comp)
-                                                                                @if(!$fs->pastContests->contains('year', strval(date ( 'Y' ) - 1)))
+                                                                                @if(!$fs->pastContests->contains('year', strval($year - 1)))
                                                                                     <span>-</span>
                                                                                     <br>
                                                                                 @endif
                                                                                 @foreach($fs->pastContests as $pc)
-                                                                                    @if($pc->year === strval(date ( 'Y' ) - 1))
+                                                                                    @if($pc->year === strval($year - 1))
                                                                                         <span>{{$pc->minScore}}</span>
                                                                                         <br>
                                                                                     @endif
@@ -634,12 +662,12 @@
                                                                                     $counter++;
                                                                                 @endphp
                                                                                 @if($fs->id_plan_comp == $id_comp)
-                                                                                    @if(!$fs->pastContests->contains('year', strval(date ( 'Y' ) - 2)))
+                                                                                    @if(!$fs->pastContests->contains('year', strval($year - 2)))
                                                                                         <span>-</span>
                                                                                         <br>
                                                                                     @endif
                                                                                     @foreach($fs->pastContests as $pc)
-                                                                                        @if($pc->year === strval(date ( 'Y' ) - 2))
+                                                                                        @if($pc->year === strval($year - 2))
                                                                                             <span>{{$pc->minScore}}</span>
                                                                                             <br>
                                                                                         @endif
@@ -651,12 +679,12 @@
                                                                                 $counter++;
                                                                             @endphp
                                                                             @if($fs->id_plan_comp == $id_comp)
-                                                                                @if(!$fs->pastContests->contains('year', strval(date ( 'Y' ) - 2)))
+                                                                                @if(!$fs->pastContests->contains('year', strval($year - 2)))
                                                                                     <span>-</span>
                                                                                     <br>
                                                                                 @endif
                                                                                 @foreach($fs->pastContests as $pc)
-                                                                                    @if($pc->year === strval(date ( 'Y' ) - 2))
+                                                                                    @if($pc->year === strval($year - 2))
                                                                                         <span>{{$pc->minScore}}</span>
                                                                                         <br>
                                                                                     @endif
@@ -687,12 +715,12 @@
                                                                                     $counter++;
                                                                                 @endphp
                                                                                 @if($fs->id_plan_comp == $id_comp)
-                                                                                    @if(!$fs->pastContests->contains('year', strval(date ( 'Y' ) - 3)))
+                                                                                    @if(!$fs->pastContests->contains('year', strval($year - 3)))
                                                                                         <span>-</span>
                                                                                         <br>
                                                                                     @endif
                                                                                     @foreach($fs->pastContests as $pc)
-                                                                                        @if($pc->year === strval(date ( 'Y' ) - 3))
+                                                                                        @if($pc->year === strval($year - 3))
                                                                                             <span>{{$pc->minScore}}</span>
                                                                                             <br>
                                                                                         @endif
@@ -704,12 +732,12 @@
                                                                                 $counter++;
                                                                             @endphp
                                                                             @if($fs->id_plan_comp == $id_comp)
-                                                                                @if(!$fs->pastContests->contains('year', strval(date ( 'Y' ) - 3)))
+                                                                                @if(!$fs->pastContests->contains('year', strval($year - 3)))
                                                                                     <span>-</span>
                                                                                     <br>
                                                                                 @endif
                                                                                 @foreach($fs->pastContests as $pc)
-                                                                                    @if($pc->year === strval(date ( 'Y' ) - 3))
+                                                                                    @if($pc->year === strval($year - 3))
                                                                                         <span>{{$pc->minScore}}</span>
                                                                                         <br>
                                                                                     @endif
@@ -737,35 +765,35 @@
                                                                                     <td class="bold-border-imp">
                                                                                 @else
                                                                                     <td>
-                                                                                @endif
-                                                                                    @foreach ( $item->changeable_subs as $k1 => $chable)
-                                                                                        {{$chable->subject->name}}
-                                                                                        @if($k1 == 0)
-                                                                                                &nbsp;/
                                                                                         @endif
-                                                                                    @endforeach
-                                                                                </td>
+                                                                                        @foreach ( $item->changeable_subs as $k1 => $chable)
+                                                                                            {{$chable->subject->name}}
+                                                                                            @if($k1 == 0)
+                                                                                                /
+                                                                                            @endif
+                                                                                        @endforeach
+                                                                                    </td>
                                                                                     @if($k == (count($item->scores) - 2))
                                                                                         <td class="text-center bold-border-imp">
                                                                                     @else
-                                                                                        <td  class="text-center">
-                                                                                    @endif
-                                                                                    @foreach ( $item->changeable_subs as $k1 => $chable)
-                                                                                        {{$chable->minScore}}
-                                                                                        @if($k1 == 0)
-                                                                                            &nbsp;/
-                                                                                        @endif
-                                                                                    @endforeach
-                                                                                </td>
+                                                                                        <td class="text-center">
+                                                                                            @endif
+                                                                                            @foreach ( $item->changeable_subs as $k1 => $chable)
+                                                                                                {{$chable->minScore}}
+                                                                                                @if($k1 == 0)
+                                                                                                    /
+                                                                                                @endif
+                                                                                            @endforeach
+                                                                                        </td>
                                                                             </tr>
                                                                             @php $chable_true = true; @endphp
                                                                         @endif{{--Если предмет на выбор но уже был выведен то ничего--}}
                                                                     @else{{--Если предмет не на выбор--}}
-                                                                        <tr class="nps-tr search-tr-by-facluties"
-                                                                            data-exams="{{ implode(',', $item->subjects) }}">
-                                                                            <td>{{$score->subject->name}}</td>
-                                                                            <td class="text-center"> {{$score->minScore}}</td>
-                                                                        </tr>
+                                                                    <tr class="nps-tr search-tr-by-facluties"
+                                                                        data-exams="{{ implode(',', $item->subjects) }}">
+                                                                        <td>{{$score->subject->name}}</td>
+                                                                        <td class="text-center"> {{$score->minScore}}</td>
+                                                                    </tr>
                                                                     @endif
                                                                 @elseif ($k == (count($item->scores) - 1))
                                                                     @if(in_array($score, $item->changeable_subs))
@@ -793,11 +821,11 @@
                                                                             @php $chable_true = true; @endphp
                                                                         @endif{{--Если предмет на выбор но уже был выведен то ничего--}}
                                                                     @else{{--Если предмет не на выбор--}}
-                                                                        <tr class="nps-tr search-tr-by-facluties"
-                                                                            data-exams="{{ implode(',', $item->subjects) }}">
-                                                                            <td class="bold-border-imp">{{$score->subject->name}}</td>
-                                                                            <td class="text-center bold-border-imp">{{$score->minScore}}</td>
-                                                                        </tr>
+                                                                    <tr class="nps-tr search-tr-by-facluties"
+                                                                        data-exams="{{ implode(',', $item->subjects) }}">
+                                                                        <td class="bold-border-imp">{{$score->subject->name}}</td>
+                                                                        <td class="text-center bold-border-imp">{{$score->minScore}}</td>
+                                                                    </tr>
                                                                     @endif
                                                                 @endif
                                                             @endif
@@ -810,23 +838,58 @@
                                     @endforeach
                                 </div>
                             </div>
-                            <div class="col-12 col-xl-3 col-lg-12 col-sm-12">
-                                <h4 class="mb-3 text-xl-left text-lg-center text-md-center text-sm-center text-md-center main-color text-center">
-                                    Факультеты и институты</h4>
-                                <div class="row text-uppercase mb-5">
-                                    @foreach($faculties as $faculty)
-                                        @if(count($faculty->plan))
-                                            <div class="col-12 col-xl-12 col-lg-4 col-md-4 col-sm-4">
-                                                <div class="form-group form-check check-faculties">
-                                                    <input type="checkbox" class="form-check-input"
-                                                           id="optionFaculties{{ $loop->index }}"
-                                                           onclick="addToChosenFaculties('{{ $faculty->name }}')">
-                                                    <label class="form-check-label ml-2 underline-label"
-                                                           for="optionFaculties{{ $loop->index }}">{{ $faculty->name }}</label>
+                            <div id="right-menu" class="col-12 col-xl-3 col-lg-12 col-sm-12">
+                                <div class="right-menu-big">
+                                    <h4 class="right-menu-title text-xl-left text-lg-center text-md-center text-sm-center text-md-center main-color text-center">
+                                        Факультеты и институты
+                                    </h4>
+                                    <div class="right-menu-checkbox-group row text-uppercase">
+                                        @foreach($faculties as $faculty)
+                                            @if(count($faculty->plan))
+                                                <div
+                                                    class="col-12 col-xl-12 col-lg-4 col-md-4 col-sm-4 checkbox-column">
+                                                    <div class="form-group form-check check-faculties">
+                                                        <input type="checkbox"
+                                                               class="form-check-input right-menu-checkbox"
+                                                               id="optionFaculties{{ $loop->index }}"
+                                                               onclick="addToChosenFaculties('{{ $faculty->name }}')">
+                                                        <label
+                                                            class="form-check-label ml-2 underline-label right-menu-label d-flex"
+                                                            for="optionFaculties{{ $loop->index }}">{{ $faculty->name }}</label>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        @endif
-                                    @endforeach
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                </div>
+                                <div class="right-menu-small">
+
+                                    <div class="right-menu-checkbox-group-down">
+                                        <div>
+                                            <a class="btn btn-primary collapsed" data-toggle="collapse" href="#collapseExample"
+                                               role="button" aria-expanded="false" aria-controls="collapseExample">
+                                                <i class="fas fa-angle-down rotate-icon"></i> Фильтр
+                                            </a>
+                                        </div>
+
+                                        <div class="collapse right-menu-small-collapse" id="collapseExample">
+                                            @foreach($faculties as $faculty)
+                                                @if(count($faculty->plan))
+                                                    <div class="col-12 d-flex justify-content-center align-item-center flex-column checkbox-column">
+                                                        <div class="form-group form-check check-faculties">
+                                                            <input type="checkbox"
+                                                                   class="form-check-input right-menu-small-checkbox"
+                                                                   id="optionFaculties{{ $loop->index }}s"
+                                                                   onclick="addToChosenFaculties('{{ $faculty->name }}')">
+                                                            <label
+                                                                class="form-check-label ml-2 underline-label right-menu-small-label d-flex"
+                                                                for="optionFaculties{{ $loop->index }}s">{{ $faculty->name }}</label>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -860,9 +923,9 @@
                 let showDiv = false;
                 $.each($(searchDiv).find('.search-tr'), function (i, item) {
                     let exams = $(item).data("exams").split(',');
-                    console.log(exams)
-                    console.log(chosenExams)
-                    console.log(include(exams, chosenExams))
+                    // console.log(exams)
+                    // console.log(chosenExams)
+                    // console.log(include(exams, chosenExams))
                     if (/*exams.length <= chosenExams.length &&*/ chosenExams.length >= 1) {
                         if (include(exams, chosenExams)) {
                             $(item).show();
@@ -884,19 +947,18 @@
                 $.inArray(v, array2) !== -1 ? count += 1 : null;
             });
             //если выбраны только русиш и матан
-            if($.inArray("Русский язык", array2) !== -1 && $.inArray("Математика", array2) !== -1 && array2.length === 2){
-                return (count===array1.length);
+            if ($.inArray("Русский язык", array2) !== -1 && $.inArray("Математика", array2) !== -1 && array2.length === 2) {
+                return (count === array1.length);
             }
             //если не выбран ни русский ни матан
-            else if ($.inArray("Русский язык", array2) === -1 && $.inArray("Математика", array2) === -1){
-                return (count>0);
+            else if ($.inArray("Русский язык", array2) === -1 && $.inArray("Математика", array2) === -1) {
+                return (count > 0);
             }
             //если русский и математика и еще чо нибудь
-            else if ($.inArray("Русский язык", array2) !== -1 && $.inArray("Математика", array2) !== -1 && array2.length > 2){
-                return (count>2 || count===array1.length);
-            }
-            else if($.inArray("Русский язык", array2) !== -1 && $.inArray("Математика", array2) === -1 && array2.length > 2){
-                return (count===array1.length);
+            else if ($.inArray("Русский язык", array2) !== -1 && $.inArray("Математика", array2) !== -1 && array2.length > 2) {
+                return (count > 2 || count === array1.length);
+            } else if ($.inArray("Русский язык", array2) !== -1 && $.inArray("Математика", array2) === -1 && array2.length > 2) {
+                return (count === array1.length);
             }
             // return (count === array1.length);
 
@@ -923,7 +985,30 @@
             return (n + "").split("").reverse().join("").replace(/(\d{3})/g, "$1 ").split("").reverse().join("").replace(/^ /, "");
         }
 
+        $('.right-menu-big').click(function () {
+            if ($('.right-menu-checkbox').is(':checked')) {
+                if ($('.right-menu-checkbox:checked').length === 1) {
+                    console.log($('.right-menu-checkbox:checked').length)
+                    $('body,html').animate({
+                        scrollTop: 0
+                    }, 400);
+                }
+                // $('#dropdownMenuLink').html("Выбранно "+chosenFaculties.length+" элемента");
+            } else {
+                // $('#dropdownMenuLink').html("Выбрать... ");
+            }
+        });
+        $('.right-menu-small-label').click(function () {
 
+            console.log( $('.right-menu-small-label').html())
+                console.log('s1=' + $('body,html').scrollTop())
+                    var s = $('body,html').scrollTop();
+                    $('body,html').animate({
+                        scrollTop: s
+                    }, 100);
+                console.log('s2=' + $('body,html').scrollTop())
+
+        });
         $('#exampleModalScrollable').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget) // Button that triggered the modal
             var recipient = button.data('content') // Extract info from data-* attributes
@@ -1047,6 +1132,8 @@
 
                 modal.find('#forms').append(templateRecipient)
             })
+
+
             //
 
             //template.format(recipient.intramural.name, recipient.intramural.year, recipient.intramural.budget, recipient.intramural.price)
@@ -1062,7 +1149,7 @@
             } else {
                 $('#square').fadeOut()
             }
-        })
+        });
 
         $('#square').click(function () {
             $('body,html').animate({
@@ -1070,5 +1157,7 @@
             }, 400);
             return false;
         });
+
+
     </script>
 @endsection
