@@ -354,7 +354,13 @@
                                         <div>
                                             <a class="btn btn-primary collapsed" data-toggle="collapse" href="#collapseExample"
                                                role="button" aria-expanded="false" aria-controls="collapseExample">
-                                                <i class="fas fa-angle-down rotate-icon"></i> Фильтр
+                                                <i class="fas fa-angle-down rotate-icon"></i>
+                                                @if(trans('layout.locale') == 'ru')
+                                                    Фильтр
+                                                @endif
+                                                @if(trans('layout.locale') == 'en')
+                                                    Filter
+                                                @endif
                                             </a>
                                         </div>
 
