@@ -341,7 +341,13 @@
                                                                onclick="addToChosenFaculties('{{ $faculty->name }}')">
                                                         <label
                                                             class="form-check-label ml-2 underline-label right-menu-label"
-                                                            for="optionFaculties{{ $loop->index }}">{{ $faculty->name }}</label>
+                                                            for="optionFaculties{{ $loop->index }}">
+                                                            @if(trans('layout.locale') == 'ru')
+                                                                {{$faculty->name}}
+                                                            @endif
+                                                            @if(trans('layout.locale') == 'en')
+                                                                {{$faculty->en_name}}
+                                                            @endif</label>
                                                     </div>
                                                 </div>
                                             @endif
