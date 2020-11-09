@@ -131,7 +131,7 @@
                                                 <tbody>
                                                 @foreach($faculty->plan as $item)
                                                     <tr class="nps-tr search-tr"
-                                                        data-exams="{{ implode(',', $item->subjects) }}">
+                                                        data-exams="{{ implode(',', $item->subjects) }}" data-exams_ch="{{ implode(',', $item->subjects_ch) }}">
                                                         <td rowspan="@if(count($item->changeable_subs)!=0){{count($item->scores)-1 }} @else {{count($item->scores)}} @endif"
                                                             class="bold-border-imp">
                                                             <button style="white-space: normal;" type="button"
@@ -342,7 +342,7 @@
                                                                     @if(!$chable_true_ege)
                                                                         {{--Если предмет на выбор но еще не был выведен--}}
                                                                         <tr class="nps-tr search-tr"
-                                                                            data-exams="{{ implode(',', $item->subjects) }}">
+                                                                            data-exams="{{ implode(',', $item->subjects) }}" data-exams_ch="{{ implode(',', $item->subjects_ch) }}">
                                                                             @if($k == (count($item->scores) - 2))
                                                                                 <td class="bold-border-imp">
                                                                             @else
@@ -373,7 +373,7 @@
                                                                     @endif{{--Если предмет на выбор но уже был выведен то ничего--}}
                                                                 @else{{--Если предмет не на выбор--}}
                                                                 <tr class="nps-tr search-tr"
-                                                                    data-exams="{{ implode(',', $item->subjects) }}">
+                                                                    data-exams="{{ implode(',', $item->subjects) }}" data-exams_ch="{{ implode(',', $item->subjects_ch) }}">
                                                                     <td>{{$score->subject->name}}</td>
                                                                     <td class="text-center"> {{$score->minScore}}</td>
                                                                 </tr>
@@ -383,7 +383,7 @@
                                                                     @if(!$chable_true_ege)
                                                                         {{--Если предмет на выбор но еще не был выведен--}}
                                                                         <tr class="nps-tr search-tr"
-                                                                            data-exams="{{ implode(',', $item->subjects) }}">
+                                                                            data-exams="{{ implode(',', $item->subjects) }}" data-exams_ch="{{ implode(',', $item->subjects_ch) }}">
                                                                             <td class="bold-border-imp">
                                                                                 @foreach ( $item->changeable_subs as $k1 => $chable)
                                                                                     {{$chable->subject->name}}
@@ -405,7 +405,7 @@
                                                                     @endif{{--Если предмет на выбор но уже был выведен то ничего--}}
                                                                 @else{{--Если предмет не на выбор--}}
                                                                 <tr class="nps-tr search-tr"
-                                                                    data-exams="{{ implode(',', $item->subjects) }}">
+                                                                    data-exams="{{ implode(',', $item->subjects) }}" data-exams_ch="{{ implode(',', $item->subjects_ch) }}">
                                                                     <td class="bold-border-imp">{{$score->subject->name}}</td>
                                                                     <td class="text-center bold-border-imp">{{$score->minScore}}</td>
                                                                 </tr>
@@ -532,7 +532,7 @@
                                                     <tbody>
                                                     @foreach($faculty->plan as $item)
                                                         <tr class="nps-tr search-tr-by-faculties"
-                                                            data-exams="{{ implode(',', $item->subjects) }}">
+                                                            data-exams="{{ implode(',', $item->subjects) }}" data-exams_ch="{{ implode(',', $item->subjects_ch) }}">
                                                             <td rowspan="@if(count($item->changeable_subs)!=0){{count($item->scores)-1 }} @else {{count($item->scores)}} @endif"
                                                                 class="bold-border-imp"
                                                                 {{--                                                                style="border-bottom: 2px solid #2366a5 !important;"--}}
@@ -756,7 +756,7 @@
                                                                         @if(!$chable_true)
                                                                             {{--Если предмет на выбор но еще не был выведен--}}
                                                                             <tr class="nps-tr search-tr-by-facluties"
-                                                                                data-exams="{{ implode(',', $item->subjects) }}">
+                                                                                data-exams="{{ implode(',', $item->subjects) }}" data-exams_ch="{{ implode(',', $item->subjects_ch) }}">
                                                                                 @if($k == (count($item->scores) - 2))
                                                                                     <td class="bold-border-imp">
                                                                                 @else
@@ -786,7 +786,7 @@
                                                                         @endif{{--Если предмет на выбор но уже был выведен то ничего--}}
                                                                     @else{{--Если предмет не на выбор--}}
                                                                     <tr class="nps-tr search-tr-by-facluties"
-                                                                        data-exams="{{ implode(',', $item->subjects) }}">
+                                                                        data-exams="{{ implode(',', $item->subjects) }}" data-exams_ch="{{ implode(',', $item->subjects_ch) }}">
                                                                         <td>{{$score->subject->name}}</td>
                                                                         <td class="text-center"> {{$score->minScore}}</td>
                                                                     </tr>
@@ -796,7 +796,7 @@
                                                                         @if(!$chable_true)
                                                                             {{--Если предмет на выбор но еще не был выведен--}}
                                                                             <tr class="nps-tr search-tr-by-facluties"
-                                                                                data-exams="{{ implode(',', $item->subjects) }}">
+                                                                                data-exams="{{ implode(',', $item->subjects) }}" data-exams_ch="{{ implode(',', $item->subjects_ch) }}">
                                                                                 <td class="bold-border-imp">
                                                                                     @foreach ( $item->changeable_subs as $k1 => $chable)
                                                                                         {{$chable->subject->name}}
@@ -818,7 +818,7 @@
                                                                         @endif{{--Если предмет на выбор но уже был выведен то ничего--}}
                                                                     @else{{--Если предмет не на выбор--}}
                                                                     <tr class="nps-tr search-tr-by-facluties"
-                                                                        data-exams="{{ implode(',', $item->subjects) }}">
+                                                                        data-exams="{{ implode(',', $item->subjects) }}" data-exams_ch="{{ implode(',', $item->subjects_ch) }}">
                                                                         <td class="bold-border-imp">{{$score->subject->name}}</td>
                                                                         <td class="text-center bold-border-imp">{{$score->minScore}}</td>
                                                                     </tr>
@@ -919,11 +919,21 @@
                 let showDiv = false;
                 $.each($(searchDiv).find('.search-tr'), function (i, item) {
                     let exams = $(item).data("exams").split(',');
-                    // console.log(exams)
-                    // console.log(chosenExams)
-                    // console.log(include(exams, chosenExams))
-                    if (/*exams.length <= chosenExams.length &&*/ chosenExams.length >= 1) {
-                        if (include(exams, chosenExams)) {
+                    let exams_ch = $(item).data("exams_ch").split(',');
+
+                    // console.log(exams_ch)
+
+                    if (exams.length <= chosenExams.length && chosenExams.length >= 2) {
+                        let required = include(exams, chosenExams); //полное попадание
+
+                        let changeable;
+                        if (exams_ch.length > 1) {
+                            changeable = include_ch(exams_ch, chosenExams); //хотя бы 1
+                            console.log('hey')
+                        }else{
+                            changeable = true;
+                        }
+                        if (required && changeable) {
                             $(item).show();
                             showDiv = true;
                         } else {
@@ -936,28 +946,19 @@
                 showDiv ? $(searchDiv).show() : $(searchDiv).hide();
             });
         }
-
-        function include(array1, array2) {
+        function include_ch(exams, choosenExams) {
             let count = 0; //количество совпадений массивов
-            $.each(array1, function (k, v) {
-                $.inArray(v, array2) !== -1 ? count += 1 : null;
+            $.each(exams, function (k, v) {
+                $.inArray(v, choosenExams) !== -1 ? count += 1 : null;
             });
-            //если выбраны только русиш и матан
-            if ($.inArray("Русский язык", array2) !== -1 && $.inArray("Математика", array2) !== -1 && array2.length === 2) {
-                return (count === array1.length);
-            }
-            //если не выбран ни русский ни матан
-            else if ($.inArray("Русский язык", array2) === -1 && $.inArray("Математика", array2) === -1) {
-                return (count > 0);
-            }
-            //если русский и математика и еще чо нибудь
-            else if ($.inArray("Русский язык", array2) !== -1 && $.inArray("Математика", array2) !== -1 && array2.length > 2) {
-                return (count > 2 || count === array1.length);
-            } else if ($.inArray("Русский язык", array2) !== -1 && $.inArray("Математика", array2) === -1 && array2.length > 2) {
-                return (count === array1.length);
-            }
-            // return (count === array1.length);
-
+            return (count >= 1);
+        }
+        function include(exams, choosenExams) {
+            let count = 0; //количество совпадений массивов
+            $.each(exams, function (k, v) {
+                $.inArray(v, choosenExams) !== -1 ? count += 1 : null;
+            });
+            return (count === exams.length);
         }
 
         function addToChosenFaculties(faculty) {
