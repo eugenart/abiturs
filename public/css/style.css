@@ -927,7 +927,7 @@ marquee {
 
 
 /*мобилки*/
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1199px) {
     .right-menu-big {
         display: none;
     }
@@ -978,19 +978,22 @@ marquee {
         text-decoration: none;
         padding-right: 10%;
         color: #656363;
-        background-color: #efefef;
+        /*background-color: #efefef;*/
     }
 
     .checkbox-column {
         background-color: #efefef;
         border-bottom: 2px solid #ffffff;
-        height: 2.2em;
-        padding-bottom: 0.1em;
+        height: fit-content;
+        /*padding-bottom: 0.1em;*/
+        padding: 6px 2%;
     }
 
     .check-faculties, .check-subjects {
         margin-bottom: 0;
         padding:0;
+        height:fit-content;
+        font-size: .75rem;
     }
 
     .right-menu-small-checkbox, .right-menu-small-ege-checkbox {
@@ -1007,7 +1010,7 @@ marquee {
         /*border-radius: 100%;*/
         border-radius: 10%;
         left: -2%;
-        top: 0%;
+        top: 0;
         transition: border 0.7s ease;
     }
 
@@ -1030,7 +1033,7 @@ marquee {
     }
 }
 
-@media screen and (min-width: 697px) and (max-width: 1200px) {
+@media screen and (min-width: 697px) and (max-width: 1199px) {
     .right-menu-small {
         width: 680px;
     }
@@ -1093,10 +1096,6 @@ marquee {
     .search-div-by-faculties table, .search-div-by-faculties button,
     .search-div table, .search-div button {
         font-size: .75rem !important;
-    }
-
-    .check-faculties, .check-subjects {
-        font-size: .75rem;
     }
 
     .swith-priem a {

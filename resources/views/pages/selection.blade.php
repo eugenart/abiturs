@@ -95,9 +95,7 @@
                                                     </th>
                                                     <th width="20%" rowspan="3" style="vertical-align: middle">
                                                         Вступительные
-                                                        испытания <br/><span class="small-text-thead text-lowercase">в порядке
-                                                        приоритетности для
-                                                        ранжирования</span>
+                                                        испытания <br/><span class="small-text-thead text-lowercase">(в приоритетном порядке)</span>
                                                     </th>
                                                     <th width="10%" rowspan="3" style="vertical-align: middle"
                                                         class="d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none">
@@ -498,9 +496,7 @@
                                                         </th>
                                                         <th width="20%" rowspan="3" style="vertical-align: middle">
                                                             Вступительные
-                                                            испытания <br/> <span class="small-text-thead text-lowercase">в порядке
-                                                        приоритетности для
-                                                        ранжирования</span>
+                                                            испытания <br/> <span class="small-text-thead text-lowercase">(в приоритетном порядке)</span>
                                                         </th>
                                                         <th width="10%" rowspan="3" style="vertical-align: middle"
                                                             class="d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none">
