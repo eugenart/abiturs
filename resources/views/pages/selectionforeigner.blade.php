@@ -91,6 +91,7 @@
                                                         </th>
                                                         <th width="20%" rowspan="3" style="vertical-align: middle">
                                                             {{ trans('selection.subjects') }}
+                                                            <br/><span class="small-text-thead text-lowercase">{{ trans('selection.subjects_s') }}</span>
                                                         </th>
                                                         <th width="10%" rowspan="3" style="vertical-align: middle"
                                                             class="d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none">
