@@ -151,14 +151,23 @@ class SelectionController extends Controller
             $fsubjs = array();
             foreach ($faculty->plan as $plan) {
                 $subjs = array();
+                $subjs_s = array();
                 $plan->faculty = $faculty->name;
                 foreach ($plan->scores as $value) {
                     if (!strpos($value->subject->name, 'достижение') and !strpos($value->subject->name, 'испытание')) {
-                        $subjs[] = $value->subject->name;
+                        if($value->changeable == 0) {
+                            $subjs[] = $value->subject->name;
+                        }
+                        else if($value->changeable == 1){
+                            $subjs_s[] = $value->subject->name;
+                        }
                         $fsubjs[] = $value->subject->name;
                     }
                 }
+
                 $plan->subjects = $subjs;
+                $plan->subjects_ch = $subjs_s;
+
             }
             $fsubjs = array_unique($fsubjs);
             $fsubjs = array_values($fsubjs);
@@ -167,7 +176,7 @@ class SelectionController extends Controller
 
         $year = 2021;
 //
-//         return $faculties;
+//        return $faculties;
 
         return view('pages.selection', ['subjects' => $subjects, 'faculties' => $faculties, 'year'=>$year]);
     }
