@@ -838,6 +838,9 @@ marquee {
 .small-text-thead{
     font-size: 0.8em;
 }
+.cleansing .btn {
+    width:100%;
+}
 /*правое меню в подборе*/
 @media screen and (min-width: 1200px) and (max-height: 900px) and (min-height: 695px) {
     .right-menu-label {
@@ -885,6 +888,8 @@ marquee {
 
     .right-menu-checkbox {
         width: 0;
+        height: 0;
+        display: none;
     }
 
     .right-menu-label::before {
@@ -998,6 +1003,8 @@ marquee {
 
     .right-menu-small-checkbox, .right-menu-small-ege-checkbox {
         width: 0;
+        height: 0;
+        display: none;
     }
 
     .right-menu-small-label::before, .right-menu-small-ege-label::before {
