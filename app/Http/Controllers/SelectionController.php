@@ -13,6 +13,7 @@ use App\Speciality;
 use App\Specialization;
 use App\StudyForm;
 use App\Subject;
+use App\SupDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use phpDocumentor\Reflection\DocBlock\Tags\Return_;
@@ -174,7 +175,9 @@ class SelectionController extends Controller
             $faculty->subjects = $fsubjs;
         }
 
-        $year = 2021;
+        $supd = SupDetail::where('id', 1)->first();
+        $year = $supd->year_of_company;
+
 //
 //        return $faculties;
 

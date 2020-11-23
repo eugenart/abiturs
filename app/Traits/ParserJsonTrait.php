@@ -87,6 +87,10 @@ trait ParserJsonTrait
         ini_set('memory_limit', '1024M');
         try {
             $filejson = file_get_contents(storage_path('app/public/files/statistics/' . $file));
+
+            $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
+            fwrite($logs,  ' parseCatalogs()');
+
             $json_arr = json_decode($filejson, true);
             $json_data = $json_arr['data'];
 
@@ -132,13 +136,17 @@ trait ParserJsonTrait
             Category::insert($categories);
 
         } catch (ErrorException $e) {
-            echo "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: ";
+            echo "С новым файлом что-то не так.  Ошибка: ";
             echo $e->getMessage();
+            fwrite($logs," С новым файлом что-то не так.  Ошибка: " );
+            fwrite($logs, $e->getMessage() );
+            fclose($logs);
             die();
         }
 
+        fwrite($logs,  ' Формы обучения, категории, уровни подготовки успешно выгружены!');
+        fclose($logs);
         return 'Формы обучения, категории, уровни подготовки успешно выгружены!';
-
 
     }
 
@@ -150,8 +158,12 @@ trait ParserJsonTrait
             $json_arr = json_decode($filejson, true);
             $json_data = $json_arr['data'];
 
+            $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
+            fwrite($logs,  ' parseStatBach();');
+
             Student::truncate(); //надо бы перенести его, но я пока не хочу ломать код
             StudentForeigner::truncate(); //надо бы перенести его, но я пока не хочу ломать код
+            fwrite($logs, ' Students tables truncated;');
 
             $scores = array();
             $students = array();
@@ -178,7 +190,7 @@ trait ParserJsonTrait
                     $idAdmissionBasis = AdmissionBasis::where('baseId', '=', $fac_stat['IdBasis'])->first();
                     $idStudyForm = StudyForm::where('name', '=', $fac_stat['trainingForm'])->first();
 
-                    //если все данные нашлись в бдspecializationName
+                    //если все данные нашлись в бд specializationName
 
                     foreach ($fac_stat['List'] as $student) {
                         //находим id студента в предыдущих специальностях
@@ -255,6 +267,7 @@ trait ParserJsonTrait
                             if (empty($idPreparationLevel)) {
                                 $mes .= ' $idPreparationLevel = ' . $student['preparationLevel'] . ',';
                             }
+
                             throw new ErrorException($mes);
                         }
 
@@ -271,6 +284,7 @@ trait ParserJsonTrait
                                 $scores[] = $score;
                             } else {
                                 $mes = 'Не найден параметр. ' . ' idSubject = ' . $score_item['subjectId'];
+
                                 throw new ErrorException($mes);
                             }
                         }
@@ -279,6 +293,7 @@ trait ParserJsonTrait
                     $students = array_unique($students, SORT_REGULAR);
                     Student::insert($students);
                 } else {
+
                     $students_f = array(); //чистим массив студетов
                     //выбираем из базы нужные айдишники
                     $idPlan = PlanForeigner::where('planId', '=', $fac_stat['planId'])->first();
@@ -374,6 +389,7 @@ trait ParserJsonTrait
                             if (empty($idPreparationLevel)) {
                                 $mes .= ' $idPreparationLevel = ' . $student['preparationLevel'] . ',';
                             }
+
                             throw new ErrorException($mes);
                         }
 
@@ -390,6 +406,7 @@ trait ParserJsonTrait
                                 $scores_f[] = $score_f;
                             } else {
                                 $mes = 'Не найден параметр. ' . ' idSubject = ' . $score_item['subjectId'];
+
                                 throw new ErrorException($mes);
                             }
                         }
@@ -424,8 +441,12 @@ trait ParserJsonTrait
                 ScoreForeigner::insert($chunk);
             }
         } catch (ErrorException $e) {
-            echo "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: ";
+            echo "С новым файлом что-то не так. Ошибка: ";
             echo $e->getMessage();
+            $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
+            fwrite($logs,  " С новым файлом что-то не так. Ошибка: ");
+            fwrite($logs, $e->getMessage(). PHP_EOL);
+            fclose($logs);
             die();
         }
     }
@@ -437,6 +458,10 @@ trait ParserJsonTrait
         $this->parseStatBach();
         $this->XlsBach();
         $this->XlsBachForeigner();
+
+        $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
+        fwrite($logs, ' Информация об абитуриентах (бакалавриат,специалитет) успешно выгружена!' );
+        fclose($logs);
 
         return 'Информация об абитуриентах (бакалавриат,специалитет) успешно выгружена!';
     }
@@ -490,8 +515,14 @@ trait ParserJsonTrait
                 Category::insert($categories);
             }
         } catch (ErrorException $e) {
-            echo "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: ";
+            echo "С новым файлом что-то не так.  Ошибка: ";
             echo $e->getMessage();
+
+            $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
+            fwrite($logs,  " С новым файлом что-то не так.  Ошибка: ");
+            fwrite($logs,  $e->getMessage());
+            fclose($logs);
+
             die();
         }
     }
@@ -507,6 +538,9 @@ trait ParserJsonTrait
 
             StudentMaster::truncate();
             StudentMasterForeigner::truncate();
+
+            $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
+            fwrite($logs, ' Students tables truncated; ');
 
             $scores = array();
             $students = array();
@@ -585,7 +619,7 @@ trait ParserJsonTrait
                             );
                             $studentsStat[] = $stat;
                         } else {
-                            $mes = 'Не найден параметр.';
+                            $mes = ' Не найден параметр.';
                             if (empty($idPlan)) {
                                 $mes .= ' idPlan = ' . $fac_stat['planId'] . ',';
                             }
@@ -610,6 +644,7 @@ trait ParserJsonTrait
                             if (empty($idPreparationLevel)) {
                                 $mes .= ' $idPreparationLevel = ' . $student['preparationLevel'] . ',';
                             }
+
                             throw new ErrorException($mes);
                         }
 
@@ -626,6 +661,7 @@ trait ParserJsonTrait
                                 $scores[] = $score;
                             } else {
                                 $mes = 'Не найден параметр. ' . ' idSubject = ' . $score_item['subjectId'];
+
                                 throw new ErrorException($mes);
                             }
                         }
@@ -730,6 +766,7 @@ trait ParserJsonTrait
                             if (empty($idPreparationLevel)) {
                                 $mes .= ' $idPreparationLevel = ' . $student['preparationLevel'] . ',';
                             }
+
                             throw new ErrorException($mes);
                         }
 
@@ -746,6 +783,7 @@ trait ParserJsonTrait
                                 $scores_f[] = $score_f;
                             } else {
                                 $mes = 'Не найден параметр. ' . ' idSubject = ' . $score_item['subjectId'];
+
                                 throw new ErrorException($mes);
                             }
                         }
@@ -782,8 +820,12 @@ trait ParserJsonTrait
             }
 
         } catch (ErrorException $e) {
-            echo "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: ";
+            echo "С новым файлом что-то не так. Ошибка: ";
             echo $e->getMessage();
+            $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
+            fwrite($logs,  " С новым файлом что-то не так.  Ошибка: ");
+            fwrite($logs,  $e->getMessage());
+            fclose($logs);
             die();
         }
 
@@ -797,6 +839,10 @@ trait ParserJsonTrait
         $this->parseStatMaster();
         $this->XlsMaster();
         $this->XlsMasterForeigner();
+
+        $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
+        fwrite($logs, ' Информация об абитуриентах (магистратура) успешно выгружена!' );
+        fclose($logs);
 
         return 'Информация об абитуриентах (магистратура) успешно выгружена!';
     }
@@ -849,8 +895,12 @@ trait ParserJsonTrait
                 Category::insert($categories);
             }
         } catch (ErrorException $e) {
-            echo "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: ";
+            echo "С новым файлом что-то не так.  Ошибка: ";
             echo $e->getMessage();
+            $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
+            fwrite($logs,  " С новым файлом что-то не так. Ошибка: ");
+            fwrite($logs,  $e->getMessage());
+            fclose($logs);
             die();
         }
     }
@@ -865,7 +915,8 @@ trait ParserJsonTrait
 
             StudentAsp::truncate();
             StudentAspForeigner::truncate();
-
+            $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
+            fwrite($logs, ' Students tables truncated; ');
 
             $scores = array();
             $students = array();
@@ -969,6 +1020,7 @@ trait ParserJsonTrait
                             if (empty($idPreparationLevel)) {
                                 $mes .= ' $idPreparationLevel = ' . $student['preparationLevel'] . ',';
                             }
+
                             throw new ErrorException($mes);
                         }
 
@@ -985,6 +1037,7 @@ trait ParserJsonTrait
                                 $scores[] = $score;
                             } else {
                                 $mes = 'Не найден параметр. ' . ' idSubject = ' . $score_item['subjectId'];
+
                                 throw new ErrorException($mes);
                             }
                         }
@@ -1089,6 +1142,7 @@ trait ParserJsonTrait
                             if (empty($idPreparationLevel)) {
                                 $mes .= ' $idPreparationLevel = ' . $student['preparationLevel'] . ',';
                             }
+
                             throw new ErrorException($mes);
                         }
 
@@ -1105,6 +1159,7 @@ trait ParserJsonTrait
                                 $scores_f[] = $score_f;
                             } else {
                                 $mes = 'Не найден параметр. ' . ' idSubject = ' . $score_item['subjectId'];
+
                                 throw new ErrorException($mes);
                             }
                         }
@@ -1142,8 +1197,12 @@ trait ParserJsonTrait
             }
 
         } catch (ErrorException $e) {
-            echo "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: ";
+            echo "С новым файлом что-то не так.  Ошибка: ";
             echo $e->getMessage();
+            $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
+            fwrite($logs,  " С новым файлом что-то не так.  Ошибка: ");
+            fwrite($logs,  $e->getMessage());
+            fclose($logs);
             die();
         }
     }
@@ -1157,6 +1216,10 @@ trait ParserJsonTrait
         $this->parseStatAsp();
         $this->XlsAsp();
         $this->XlsAspForeigner();
+
+        $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
+        fwrite($logs,  'Информация об абитуриентах (аспирантура) успешно выгружена!');
+        fclose($logs);
 
         return 'Информация об абитуриентах (аспирантура) успешно выгружена!';
     }
@@ -1207,8 +1270,14 @@ trait ParserJsonTrait
                 Category::insert($categories);
             }
         } catch (ErrorException $e) {
-            echo "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: ";
+            echo "С новым файлом что-то не так.  Ошибка: ";
             echo $e->getMessage();
+
+            $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
+            fwrite($logs,  "С новым файлом что-то не так. Ошибка: ");
+            fwrite($logs,  $e->getMessage().'\n');
+            fclose($logs);
+
             die();
         }
     }
@@ -1222,7 +1291,8 @@ trait ParserJsonTrait
             $json_data = $json_arr['data'];
 
             StudentSpo::truncate();
-
+            $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
+            fwrite($logs, 'Students tables truncated; ');
             $scores = array();
             $students = array();
             $studentsStat = array();
@@ -1319,6 +1389,8 @@ trait ParserJsonTrait
                             if (empty($idPreparationLevel)) {
                                 $mes .= ' $idPreparationLevel = ' . $student['preparationLevel'] . ',';
                             }
+
+
                             throw new ErrorException($mes);
                         }
 
@@ -1335,6 +1407,7 @@ trait ParserJsonTrait
                                 $scores[] = $score;
                             } else {
                                 $mes = 'Не найден параметр. ' . ' idSubject = ' . $score_item['subjectId'];
+
                                 throw new ErrorException($mes);
                             }
                         }
@@ -1359,8 +1432,13 @@ trait ParserJsonTrait
                 ScoreSpo::insert($chunk);
             }
         } catch (ErrorException $e) {
-            echo "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: ";
+            echo "С новым файлом что-то не так. Ошибка: ";
             echo $e->getMessage();
+            $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
+            fwrite($logs, " С новым файлом что-то не так. Ошибка: ");
+            fwrite($logs, $e->getMessage(). PHP_EOL);
+
+            fclose($logs);
             die();
         }
     }
@@ -1372,6 +1450,10 @@ trait ParserJsonTrait
         $this->parseCatalogsSpo();
         $this->parseStatSpo();
         $this->XlsSpo();
+
+        $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
+        fwrite($logs, ' Информация об абитуриентах (СПО) успешно выгружена!');
+        fclose($logs);
 
         return 'Информация об абитуриентах (СПО) успешно выгружена!';
     }
@@ -1427,7 +1509,7 @@ trait ParserJsonTrait
 
                         );
                     } else {
-                        $mes = 'Не найден параметр.';
+                        $mes = ' Не найден параметр.';
                         if (empty($id_faculty)) {
                             $mes .= ' id_faculty' . $element['Plan']['facultyId'] . ',';
                         }
@@ -1475,7 +1557,8 @@ trait ParserJsonTrait
                             );
                             $arr_plan_comp_score[] = $subject;
                         } else {
-                            $mes = 'Не найден параметр.' . ' id_subject = ' . $subjectItem['subjectId'];
+                            $mes = ' Не найден параметр.' . ' id_subject = ' . $subjectItem['subjectId'];
+
                             throw new ErrorException($mes);
                         }
                     }
@@ -1500,7 +1583,8 @@ trait ParserJsonTrait
                             );
                             $arr_freeseats[] = $freeseat;
                         } else {
-                            $mes = 'Не найден параметр.' . 'id_admissionBasis = ' . $basisItem['IdBasis'];
+                            $mes = ' Не найден параметр.' . 'id_admissionBasis = ' . $basisItem['IdBasis'];
+
                             throw new ErrorException($mes);
                         }
                     }
@@ -1525,7 +1609,7 @@ trait ParserJsonTrait
 
                         );
                     } else {
-                        $mes = 'Не найден параметр.';
+                        $mes = ' Не найден параметр.';
                         if (empty($id_faculty)) {
                             $mes .= ' id_faculty' . $element['Plan']['facultyId'] . ',';
                         }
@@ -1573,7 +1657,8 @@ trait ParserJsonTrait
                             );
                             $arr_plan_comp_score_f[] = $subject_f;
                         } else {
-                            $mes = 'Не найден параметр.' . ' id_subject = ' . $subjectItem['subjectId'];
+                            $mes = ' Не найден параметр.' . ' id_subject = ' . $subjectItem['subjectId'];
+
                             throw new ErrorException($mes);
                         }
                     }
@@ -1599,7 +1684,8 @@ trait ParserJsonTrait
                             );
                             $arr_freeseats_f[] = $freeseat_f;
                         } else {
-                            $mes = 'Не найден параметр.' . 'id_admissionBasis = ' . $basisItem['IdBasis'];
+                            $mes = ' Не найден параметр.' . 'id_admissionBasis = ' . $basisItem['IdBasis'];
+
                             throw new ErrorException($mes);
                         }
                     }
@@ -1635,6 +1721,10 @@ trait ParserJsonTrait
         } catch (ErrorException $e) {
             echo "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: ";
             echo $e->getMessage();
+            $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
+            fwrite($logs,  "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: ");
+            fwrite($logs,  $e->getMessage().'\n');
+            fclose($logs);
             die();
         }
 
@@ -1741,6 +1831,7 @@ trait ParserJsonTrait
                             $arr_plan_comp_score[] = $subject;
                         } else {
                             $mes = 'Не найден параметр.' . ' id_subject = ' . $subjectItem['subjectId'];
+
                             throw new ErrorException($mes);
                         }
                     }
@@ -1767,6 +1858,7 @@ trait ParserJsonTrait
                             $arr_freeseats[] = $freeseat;
                         } else {
                             $mes = 'Не найден параметр.' . 'id_admissionBasis = ' . $basisItem['IdBasis'];
+
                             throw new ErrorException($mes);
                         }
                     }
@@ -1840,6 +1932,7 @@ trait ParserJsonTrait
                             $arr_plan_comp_score_f[] = $subject_f;
                         } else {
                             $mes = 'Не найден параметр.' . ' id_subject = ' . $subjectItem['subjectId'];
+
                             throw new ErrorException($mes);
                         }
                     }
@@ -1866,6 +1959,7 @@ trait ParserJsonTrait
                             $arr_freeseats_f[] = $freeseat_f;
                         } else {
                             $mes = 'Не найден параметр.' . 'id_admissionBasis = ' . $basisItem['IdBasis'];
+
                             throw new ErrorException($mes);
                         }
                     }
@@ -1888,6 +1982,10 @@ trait ParserJsonTrait
         } catch (ErrorException $e) {
             echo "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: ";
             echo $e->getMessage();
+            $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
+            fwrite($logs, " С новым файлом что-то не так. Данные не будут обновленны. Ошибка: ");
+            fwrite($logs, $e->getMessage(). PHP_EOL);
+            fclose($logs);
             die();
         }
     }
@@ -1899,6 +1997,12 @@ trait ParserJsonTrait
         if ($this->parsePlansBachSpecSar() === 1) {
             $this->parsePlansBachSpecRuz(); //отдельно запускать нельзя, только в такой последовательности
         }
+        $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
+
+        fwrite($logs,  ' Планы, цены за обучение и количество мест бакалавриата и специалитета успешно выгружены!');
+
+        fclose($logs);
+
         return 'Планы, цены за обучение и количество мест бакалавриата и специалитета успешно выгружены!';
     }
 //------------------------КОНЕЦ парсинг планов Бакалавров--------------------------------
@@ -2154,6 +2258,10 @@ trait ParserJsonTrait
         } catch (ErrorException $e) {
             echo "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: ";
             echo $e->getMessage();
+            $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
+            fwrite($logs, "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: " );
+            fwrite($logs, $e->getMessage(). PHP_EOL );
+            fclose($logs);
             die();
         }
     }
@@ -2396,6 +2504,10 @@ trait ParserJsonTrait
         } catch (ErrorException $e) {
             echo "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: ";
             echo $e->getMessage();
+            $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
+            fwrite($logs, "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: " );
+            fwrite($logs, $e->getMessage(). PHP_EOL );
+            fclose($logs);
             die();
         }
     }
@@ -2407,6 +2519,9 @@ trait ParserJsonTrait
         if ($this->parsePlansMasterSar() === 1) {
             $this->parsePlansMasterRuz(); //отдельно запускать нельзя, только в такой последовательности
         }
+        $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
+        fwrite($logs, ' Планы, цены за обучение и количество мест магистратуры успешно выгружены!');
+        fclose($logs);
         return 'Планы, цены за обучение и количество мест магистратуры успешно выгружены!';
     }
 //------------------------КОНЕЦ парсинг планов Магистров--------------------------------
@@ -2658,6 +2773,10 @@ trait ParserJsonTrait
         } catch (ErrorException $e) {
             echo "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: ";
             echo $e->getMessage();
+            $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
+            fwrite($logs, "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: " );
+            fwrite($logs, $e->getMessage(). PHP_EOL );
+            fclose($logs);
             die();
         }
     }
@@ -2896,6 +3015,10 @@ trait ParserJsonTrait
         } catch (ErrorException $e) {
             echo "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: ";
             echo $e->getMessage();
+            $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
+            fwrite($logs, "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: " );
+            fwrite($logs, $e->getMessage(). PHP_EOL );
+            fclose($logs);
             die();
         }
     }
@@ -2906,7 +3029,9 @@ trait ParserJsonTrait
 
         $this->parsePlansAsp();
         $this->parsePlansOrd();
-
+        $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
+        fwrite($logs, ' Планы, цены за обучение и количество мест аспирантуры успешно выгружены!' );
+        fclose($logs);
         return 'Планы, цены за обучение и количество мест аспирантуры успешно выгружены!';
     }
 //------------------------КОНЕЦ парсинг планов Аспиранты--------------------------------
@@ -3045,6 +3170,10 @@ trait ParserJsonTrait
         } catch (ErrorException $e) {
             echo "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: ";
             echo $e->getMessage();
+            $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
+            fwrite($logs, "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: " );
+            fwrite($logs, $e->getMessage(). PHP_EOL );
+            fclose($logs);
             die();
         }
     }
@@ -3176,6 +3305,10 @@ trait ParserJsonTrait
         } catch (ErrorException $e) {
             echo "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: ";
             echo $e->getMessage();
+            $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
+            fwrite($logs, "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: " );
+            fwrite($logs, $e->getMessage(). PHP_EOL );
+            fclose($logs);
             die();
         }
     }
@@ -3306,6 +3439,10 @@ trait ParserJsonTrait
         } catch (ErrorException $e) {
             echo "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: ";
             echo $e->getMessage();
+            $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
+            fwrite($logs, "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: " );
+            fwrite($logs, $e->getMessage(). PHP_EOL );
+            fclose($logs);
             die();
         }
     }
@@ -3323,8 +3460,15 @@ trait ParserJsonTrait
         } catch (Exception $e) {
             echo "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: ";
             echo $e->getMessage();
+            $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
+            fwrite($logs, "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: " );
+            fwrite($logs, $e->getMessage(). PHP_EOL );
+            fclose($logs);
             die();
         }
+        $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
+        fwrite($logs, ' Планы, цены за обучение и количество мест СПО успешно выгружены!' );
+        fclose($logs);
         return 'Планы, цены за обучение и количество мест СПО успешно выгружены!';
     }
 //------------------------КОНЕЦ парсинг планов СПО--------------------------------
@@ -3376,12 +3520,18 @@ trait ParserJsonTrait
             }
             PastContests::truncate();
             PastContests::insert($arr_contests);
-
+            $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
+            fwrite($logs, ' Статистика предыдущих лет успешно выгружена!' );
+            fclose($logs);
             return 'Статистика предыдущих лет успешно выгружена!';
 
         } catch (ErrorException $e) {
             echo "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: ";
             echo $e->getMessage();
+            $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
+            fwrite($logs, "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: " );
+            fwrite($logs, $e->getMessage(). PHP_EOL );
+            fclose($logs);
             die();
         }
     }

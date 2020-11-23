@@ -929,7 +929,6 @@
                         let changeable;
                         if (exams_ch.length > 1) {
                             changeable = include_ch(exams_ch, chosenExams); //хотя бы 1
-                            console.log('hey')
                         }else{
                             changeable = true;
                         }

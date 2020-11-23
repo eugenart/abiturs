@@ -1,6 +1,7 @@
 export default {
     state: {
         times: [],
+        yearOfCompany: null,
     },
     mutations: {
 
@@ -10,7 +11,9 @@ export default {
         },
 
         SET_TIMES: (state, payload) => {
-            state.times = payload;
+            state.times = payload.times;
+            state.yearOfCompany = payload.yearOfCompany;
+
         }
     },
     actions: {
@@ -29,8 +32,10 @@ export default {
         GET_TIMES:
             async (context, payload) => {
                 let {data} = await axios.get('/admin/times');
+               //console.log(data)
                 context.commit('SET_TIMES', data)
-            }
+            },
+
     },
     getters: {
         TIMES: state => {

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\SupDetail;
 use App\User;
 use Illuminate\Http\Request;
 use App\DateUpdate;
@@ -18,11 +19,14 @@ class DateUpdateController extends Controller
             $time->date_update = $pieces[0] . 'T' . $pieces[1];
         }
 
+        $supd = SupDetail::where('id', 1)->first();
+        $year = $supd->year_of_company;
+
         if ($request->ajax()) {
-            return response()->json($times, 200);
+            return response()->json(['times' => $times, 'yearOfCompany' => $year], 200);
         }
 
-        return view('structure.time', compact('times'));
+        return view('structure.time', ['times' => $times, 'yearOfCompany'=>$year]);
     }
 
     public function update(Request $request, $id)

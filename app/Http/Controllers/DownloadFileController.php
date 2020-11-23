@@ -241,25 +241,41 @@ class DownloadFileController extends Controller
 
         $remoteDir = '/home/icmrsu/' . $directory;
         $localDir = storage_path('app/public/files/') . $directory;
-//        $localDir = '/var/www/html/abiturs/storage/app/public/files/'. $directory;
-//        $localDir = 'E:\Open Server 5.3.5\OSPanel\domains\abiturs\storage\app\public\files\\' . $directory;
 
+        $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
+        fwrite($logs, date("Y-m-d H:i:s "));
+        fwrite($logs, $file_name);
 
-        if (!function_exists("ssh2_connect"))
+        if (!function_exists("ssh2_connect")) {
+            fwrite($logs, ' Функция ssh2_connect не найдена');
+            fclose($logs);
             die('Функция ssh2_connect не найдена');
+        }
 
-        if (!$connection = ssh2_connect($host, $port))
+        if (!$connection = ssh2_connect($host, $port)) {
+            fwrite($logs, ' Невозможно произвести соединение');
+            fclose($logs);
             die('Невозможно произвести соединение');
+        }
 
-        if (!ssh2_auth_password($connection, $username, $password))
+        if (!ssh2_auth_password($connection, $username, $password)) {
+            fwrite($logs, ' Невозможно авторизоваться');
+            fclose($logs);
             die('Невозможно авторизоваться');
+        }
 
-        if (!$stream = ssh2_sftp($connection))
+        if (!$stream = ssh2_sftp($connection)) {
+            fwrite($logs, ' Невозможно создать поток соединения');
+            fclose($logs);
             die('Невозможно создать поток соединения');
+        }
 
-
-        if (!$dir = scandir("ssh2.sftp://{$stream}{$remoteDir}"))
+        if (!$dir = scandir("ssh2.sftp://{$stream}{$remoteDir}")){
+            fwrite($logs, ' Невозможно открыть директорию');
+            fclose($logs);
             die('Невозможно открыть директорию');
+        }
+
 
         $files = array();
         foreach ($dir as $file) {
@@ -283,15 +299,21 @@ class DownloadFileController extends Controller
             if (file_exists($remote_file_path) && file_exists($local_file_path)) {
                 if (filesize($remote_file_path) == filesize($local_file_path)
                     && md5_file($remote_file_path) == md5_file($local_file_path)) {
+                    fwrite($logs,  " Файлы " . $file . " совпадают.\n");
+                    fclose($logs);
                     echo "Файлы " . $file . " совпадают.\n";
                     return 2;
                 } else {
                     if (!$remote = @fopen("ssh2.sftp://{$stream}/{$remoteDir}/{$file}", 'r')) {
+                        fwrite($logs,  " Невозможно открыть файл на удаленном сервере: $file\n");
+                        fclose($logs);
                         die("Невозможно открыть файл на удаленном сервере: $file\n");
                     }
 
                     if (!$local = @fopen($localDir . '/' . $local_file, 'w')) {
                         fclose($remote);
+                        fwrite($logs,  " Невозможно создать файл на локальном сервере: $file\n");
+                        fclose($logs);
                         die("Невозможно создать файл на локальном сервере: $file\n");
                     }
                     $read = 0;
@@ -300,22 +322,27 @@ class DownloadFileController extends Controller
                     while ($read < $filesize && ($buffer = fread($remote, $filesize - $read))) {
                         $read += strlen($buffer);
                         if (fwrite($local, $buffer) === FALSE) {
+                            fwrite($logs,  " Невозможно записать локальный файл: $file\n");
                             echo "Невозможно записать локальный файл: $file\n";
                             fclose($local);
                             fclose($remote);
+                            fclose($logs);
                             break;
                         }
                     }
                     if (file_exists($remote_file_path) && file_exists($local_file_path)) {
                         if (filesize($remote_file_path) == filesize($local_file_path)
                             && md5_file($remote_file_path) == md5_file($local_file_path)) {
+                            fwrite($logs,  " Файл " . $file . " успешно загружен.\n");
                             echo "Файл " . $file . " успешно загружен.\n";
                             fclose($local);
                             fclose($remote);
+                            fclose($logs);
                             return 0;
                         } else {
                             fclose($local);
                             fclose($remote);
+                            fclose($logs);
                             return 1;
                         }
                     }
@@ -323,11 +350,15 @@ class DownloadFileController extends Controller
                 }
             } elseif (file_exists($remote_file_path) && !file_exists($local_file_path)) {
                 if (!$remote = @fopen("ssh2.sftp://{$stream}/{$remoteDir}/{$file}", 'r')) {
+                    fwrite($logs,  " Невозможно открыть файл на удаленном сервере: $file\n");
+                    fclose($logs);
                     die("Невозможно открыть файл на удаленном сервере: $file\n");
                 }
 
                 if (!$local = @fopen($localDir . '/' . $local_file, 'w')) {
                     fclose($remote);
+                    fwrite($logs,  " Невозможно создать файл на локальном сервере: $file\n");
+                    fclose($logs);
                     die("Невозможно создать файл на локальном сервере: $file\n");
                 }
                 $read = 0;
@@ -335,15 +366,19 @@ class DownloadFileController extends Controller
                 while ($read < $filesize && ($buffer = fread($remote, $filesize - $read))) {
                     $read += strlen($buffer);
                     if (fwrite($local, $buffer) === FALSE) {
+                        fwrite($logs, " Невозможно записать локальный файл: $file\n" );
                         echo "Невозможно записать локальный файл: $file\n";
                         fclose($local);
                         fclose($remote);
+                        fclose($logs);
                         break;
                     }
                 }
                 if (file_exists($remote_file_path) && file_exists($local_file_path)) {
                     if (filesize($remote_file_path) == filesize($local_file_path)
                         && md5_file($remote_file_path) == md5_file($local_file_path)) {
+                        fwrite($logs, " Файл " . $file . " успешно загружен.\n" );
+                        fclose($logs);
                         echo "Файл " . $file . " успешно загружен.\n";
                         fclose($local);
                         fclose($remote);
@@ -351,12 +386,15 @@ class DownloadFileController extends Controller
                     } else {
                         fclose($local);
                         fclose($remote);
+                        fclose($logs);
                         return 1;
                     }
                 }
             }
         } else {
+            fwrite($logs, " Файл " . $file_name . " отсутвует на удаленном сервере");
             echo "Файл " . $file_name . " отсутвует на удаленном сервере";
+            fclose($logs);
             return 1;
         }
     }
