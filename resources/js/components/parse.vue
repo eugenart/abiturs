@@ -388,6 +388,24 @@
         },
         computed: {},
         methods: {
+            err_define: function(err_code){
+                let ans ='';
+                switch(err_code) {
+                    case '404':
+                        ans = '. Не найден route к функции.'
+                        break;
+                    case '405':
+                        ans = '. Неверный метод обращения.'
+                        break;
+                    case '419':
+                        ans = '. Время авторизованной сессии истекло. Обновите страницу и нажмите кнопку снова.'
+                        break;
+                    case '500':
+                        ans = '. Ошибка сервера.'
+                        break;
+                }
+                return ans;
+            },
             parseSpecialities: function () {
                 this.loadingparseSpecialitiesStatus = true;
                 let data = axios.post('/admin/download', 'param=specialities')
@@ -398,7 +416,10 @@
                     })
                     .catch(response => {
                         this.loadingparseSpecialitiesStatus = false;
-                        this.parseSpecialitiesStatus = response + '\nВремя авторизованной сессии истекло. Обновите страницу и нажмите кнопку снова.'
+                        let err_code = ' '+response
+                        err_code = err_code.substr(-3)
+                        let err = this.err_define(err_code)
+                        this.parseSpecialitiesStatus = response + err
                         console.log(response);
                     });
             },
@@ -413,7 +434,10 @@
                     })
                     .catch(response => {
                         this.loadingparseSubStatus = false;
-                        this.parseSubStatus = response + '\nВремя авторизованной сессии истекло. Обновите страницу и нажмите кнопку снова.'
+                        let err_code = ' '+response
+                        err_code = err_code.substr(-3)
+                        let err = this.err_define(err_code)
+                        this.parseSubStatus = response + err
                         console.log(response);
                     });
             },
@@ -427,7 +451,10 @@
                     })
                     .catch(response => {
                         this.loadingparseAdmissionBasis = false;
-                        this.parseAdmissionBasisStatus = response + '\nВремя авторизованной сессии истекло. Обновите страницу и нажмите кнопку снова.'
+                        let err_code = ' '+response
+                        err_code = err_code.substr(-3)
+                        let err = this.err_define(err_code)
+                        this.parseAdmissionBasisStatus = response + err
                         console.log(response);
                     });
             },
@@ -442,7 +469,10 @@
                     })
                     .catch(response => {
                         this.loadingparseCatalogsStatus = false;
-                        this.parseCatalogsStatus = response + '\nВремя авторизованной сессии истекло. Обновите страницу и нажмите кнопку снова.'
+                        let err_code = ' '+response
+                        err_code = err_code.substr(-3)
+                        let err = this.err_define(err_code)
+                        this.parseCatalogsStatus = response + err
                         console.log(response);
                     });
             },
@@ -457,7 +487,10 @@
                     })
                     .catch(response => {
                         this.loadingparsePlansBachStatus = false;
-                        this.parsePlansBachStatus = response + '\nВремя авторизованной сессии истекло. Обновите страницу и нажмите кнопку снова.'
+                        let err_code = ' '+response
+                        err_code = err_code.substr(-3)
+                        let err = this.err_define(err_code)
+                        this.parsePlansBachStatus = response + err
                         console.log(response);
                     });
             },
@@ -472,7 +505,10 @@
                     })
                     .catch(response => {
                         this.loadingparsePlansMasterStatus = false;
-                        this.parsePlansMasterStatus = response + '\nВремя авторизованной сессии истекло. Обновите страницу и нажмите кнопку снова.'
+                        let err_code = ' '+response
+                        err_code = err_code.substr(-3)
+                        let err = this.err_define(err_code)
+                        this.parsePlansMasterStatus = response + err
                         console.log(response);
                     });
             },
@@ -487,7 +523,10 @@
                     })
                     .catch(response => {
                         this.loadingparsePlansAspStatus = false;
-                        this.parsePlansAspStatus = response + '\nВремя авторизованной сессии истекло. Обновите страницу и нажмите кнопку снова.'
+                        let err_code = ' '+response
+                        err_code = err_code.substr(-3)
+                        let err = this.err_define(err_code)
+                        this.parsePlansAspStatus = response + err
                         console.log(response);
                     });
             },
@@ -502,7 +541,10 @@
                     })
                     .catch(response => {
                         this.loadingparsePlansSpoStatus = false;
-                        this.parsePlansSpoStatus = response + '\nВремя авторизованной сессии истекло. Обновите страницу и нажмите кнопку снова.'
+                        let err_code = ' '+response
+                        err_code = err_code.substr(-3)
+                        let err = this.err_define(err_code)
+                        this.parsePlansSpoStatus = response + err
                         console.log(response);
                     });
             },
@@ -516,7 +558,10 @@
                     })
                     .catch(response => {
                         this.loadingparseStudentsStatus = false;
-                        this.parseStudentsStatus = response + '\nВремя авторизованной сессии истекло. Обновите страницу и нажмите кнопку снова.'
+                        let err_code = ' '+response
+                        err_code = err_code.substr(-3)
+                        let err = this.err_define(err_code)
+                        this.parseStudentsStatus = response + err
                         console.log(response);
                     });
             },
@@ -530,7 +575,10 @@
                     })
                     .catch(response => {
                         this.loadingparseStudentsMasterStatus = false;
-                        this.parseStudentsMasterStatus = response + '\nВремя авторизованной сессии истекло. Обновите страницу и нажмите кнопку снова.'
+                        let err_code = ' '+response
+                        err_code = err_code.substr(-3)
+                        let err = this.err_define(err_code)
+                        this.parseStudentsMasterStatus = response + err
                         console.log(response);
                     });
             },
@@ -544,7 +592,10 @@
                     })
                     .catch(response => {
                         this.loadingparseStudentsAspStatus = false;
-                        this.parseStudentsAspStatus = response + '\nВремя авторизованной сессии истекло. Обновите страницу и нажмите кнопку снова.'
+                        let err_code = ' '+response
+                        err_code = err_code.substr(-3)
+                        let err = this.err_define(err_code)
+                        this.parseStudentsAspStatus = response + err
                         console.log(response);
                     });
             },
@@ -558,7 +609,10 @@
                     })
                     .catch(response => {
                         this.loadingparseStudentsSpoStatus = false;
-                        this.parseStudentsSpoStatus = response + '\nВремя авторизованной сессии истекло. Обновите страницу и нажмите кнопку снова.'
+                        let err_code = ' '+response
+                        err_code = err_code.substr(-3)
+                        let err = this.err_define(err_code)
+                        this.parseStudentsSpoStatus = response + err
                         console.log(response);
                     });
             },
@@ -572,7 +626,10 @@
                     })
                     .catch(response => {
                         this.loadingparseContestsStatus = false;
-                        this.parseContestsStatus = response + '\nВремя авторизованной сессии истекло. Обновите страницу и нажмите кнопку снова.'
+                        let err_code = ' '+response
+                        err_code = err_code.substr(-3)
+                        let err = this.err_define(err_code)
+                        this.parseContestsStatus = response + err
                         console.log(response);
                     });
             },
@@ -586,7 +643,10 @@
                     })
                     .catch(response => {
                         this.loadingparseStatStatus = false;
-                        this.parseStatStatus = response + '\nВремя авторизованной сессии истекло. Обновите страницу и нажмите кнопку снова.'
+                        let err_code = ' '+response
+                        err_code = err_code.substr(-3)
+                        let err = this.err_define(err_code)
+                        this.parseStatStatus = response + err
                         console.log(response);
                     });
             },
@@ -600,7 +660,10 @@
                     })
                     .catch(response => {
                         this.loadingparseOrderStatus = false;
-                        this.parseOrderStatus = response + '\nВремя авторизованной сессии истекло. Обновите страницу и нажмите кнопку снова.'
+                        let err_code = ' '+response
+                        err_code = err_code.substr(-3)
+                        let err = this.err_define(err_code)
+                        this.parseOrderStatus = response + err
                         console.log(response);
                     });
             }

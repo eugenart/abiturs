@@ -19,6 +19,8 @@ trait ParserXlsTrait
     {
         require_once(__DIR__ . '/../Http/Controllers/Classes/PHPExcel.php');
 
+        $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
+
         //Парсим Специальности
         try {
             $xlsSpec = PHPExcel_IOFactory::load(storage_path('app/public/files/catalogs/specialities.xls'));
@@ -34,7 +36,7 @@ trait ParserXlsTrait
                 //Удаляем записи из обоих таблиц
                 Specialization::truncate();
                 Speciality::truncate();
-
+                fwrite($logs, ' tables truncated');
                 //Добавляем записи Специальностей
                 for ($i = 3; $i < count($sheetSpec); $i++) {
                     if (!is_null($sheetSpec[$i][2]) && !is_null($sheetSpec[$i][0]) && !is_null($sheetSpec[$i][1])) {
@@ -49,6 +51,7 @@ trait ParserXlsTrait
                     }
                 }
             } else {
+                fwrite($logs, ' Файл имеет неверную структуру');
                 throw new ErrorException('Файл имеет неверную структуру');
             }
             // Парсим Специализации
@@ -88,18 +91,20 @@ trait ParserXlsTrait
             echo $e->getMessage();
             die();
         }
-//        return json_encode('Специальности и специализации успешно выгружены!');
+
+        fwrite($logs, ' Специальности и специализации успешно выгружены!');
+        fclose($logs);
         return 'Специальности и специализации успешно выгружены!';
 
     }
 
-    public
-    function parseSubjects()
+    public function parseSubjects()
     {
         require_once(__DIR__ . '/../Http/Controllers/Classes/PHPExcel.php');
-
+        $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
         //Удаляем записи из таблиц
         Subject::truncate();
+        fwrite($logs, ' table truncated');
         // Парсим Специализации
         $xlsSpz = PHPExcel_IOFactory::load(storage_path('app/public/files/catalogs/subjects.xls'));
         // Первый лист
@@ -118,17 +123,19 @@ trait ParserXlsTrait
                 'en_name' => $sheetSpz[$i][2]
             ));
         }
+        fwrite($logs,  ' Дисциплины успешно выгружены!');
+        fclose($logs);
         return 'Дисциплины успешно выгружены!';
     }
 
-    public
-    function parseFaculties()
+    public function parseFaculties()
     {
 
         require_once(__DIR__ . '/../Http/Controllers/Classes/PHPExcel.php');
-
+        $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
         //Удаляем записи из таблиц
         Faculty::truncate();
+        fwrite($logs, ' table truncated');
         // Парсим Специализации
         $xlsSpz = PHPExcel_IOFactory::load(storage_path('app/public/files/catalogs/faculties.xls'));
         // Первый лист
@@ -147,24 +154,29 @@ trait ParserXlsTrait
             ));
         }
         Artisan::call('db:seed --class=FacultyTableSeeder');
+        fwrite($logs,  ' Факультеты успешно выгружены!');
+        fclose($logs);
+
         return 'Факультеты успешно выгружены!';
     }
 
-    public
-    function parseSubFac()
+    public function parseSubFac()
     {
         $this->parseSubjects();
         $this->parseFaculties();
+        $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
+        fwrite($logs,  ' Факультеты и дисциплины успешно выгружены!');
+        fclose($logs);
         return 'Факультеты и дисциплины успешно выгружены!';
     }
 
-    public
-    function parseAdmissionBases()
+    public function parseAdmissionBases()
     {
         require_once(__DIR__ . '/../Http/Controllers/Classes/PHPExcel.php');
-
+        $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
         //Удаляем записи из таблиц
         AdmissionBasis::truncate();
+        fwrite($logs, ' table truncated');
         // Парсим Специализации
         $xlsSpz = PHPExcel_IOFactory::load(storage_path('app/public/files/catalogs/admission_bases.xls'));
         // Первый лист
@@ -182,7 +194,8 @@ trait ParserXlsTrait
                 'en_name' => $sheetSpz[$i][3],
             ));
         }
-
+        fwrite($logs,  ' Основания для поступления успешно выгружены!');
+        fclose($logs);
         return 'Основания для поступления успешно выгружены!';
     }
 

@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
 
-    <meta property="og:title" content="Приёмная кампания МГУ им. Н.П. Огарёва 2020"/>
+    <meta property="og:title" content="Приёмная кампания МГУ им. Н.П. Огарёва {{$year}}"/>
     <meta property="og:description"
-          content="Приёмная кампания МГУ им. Н.П. Огарева 2020. Статистика приёма, подбор направления."/>
+          content="Приёмная кампания МГУ им. Н.П. Огарева {{$year}}. Статистика приёма, подбор направления."/>
     <meta property="og:image" content="https://abiturs.mrsu.ru/storage/preview/20200128_163227_image.jpeg"/>
     <meta property="og:type" content="profile"/>
     <meta property="og:url" content="https://abiturs.mrsu.ru/"/>
 
     <meta name="keywords"
-          content="Приемная кампания, МГУ Огарева, МГУ им. Н.П. Огарева, приемная комиссия, приемная комиссия 2020"/>
-    <meta name="subject" content="Приемная кампания МГУ им. Н.П. Огарева 2020">
+          content="Приемная кампания, МГУ Огарева, МГУ им. Н.П. Огарева, приемная комиссия, приемная комиссия {{$year}}"/>
+    <meta name="subject" content="Приемная кампания МГУ им. Н.П. Огарева {{$year}}">
     <meta name="author" content="Арташкин Евгений, Элина Кирдяшкина">
     <meta name="robots" content="index,follow"/>
-    <meta name="description" content="Приемная кампания МГУ им. Н.П. Огарева 2020"/>
+    <meta name="description" content="Приемная кампания МГУ им. Н.П. Огарева {{$year}}"/>
     <meta name="url" content="https://abiturs.mrsu.ru/">
     <meta name="identifier-URL" content="https://abiturs.mrsu.ru/">
     <meta name="viewport"
@@ -43,7 +43,7 @@
 
     @section('style')
     @show
-    <title>Приёмная кампания 2020 МГУ им. Н.П. Огарёва</title>
+    <title>Приёмная кампания {{$year}} МГУ им. Н.П. Огарёва</title>
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
         (function (m, e, t, r, i, k, a) {

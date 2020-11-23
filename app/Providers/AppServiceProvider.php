@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Infoblock;
+use App\SupDetail;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
@@ -73,7 +74,10 @@ class AppServiceProvider extends ServiceProvider
             }
             $count_stats = count($files);
 
-            $view->with(['pages' => $infoblocks, 'infoblocks_int' => $infoblocks_int, 'count_orders' => $count_orders, 'count_stats' => $count_stats]);
+            $supd = SupDetail::where('id', 1)->first();
+            $year = $supd->year_of_company;
+
+            $view->with(['pages' => $infoblocks, 'infoblocks_int' => $infoblocks_int, 'count_orders' => $count_orders, 'count_stats' => $count_stats, 'year' => $year]);
         });
     }
 }

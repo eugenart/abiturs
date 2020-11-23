@@ -156,6 +156,12 @@
                                 Архивы
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ Request::is('admin/cleansing') ? 'active' : null }}" href="{{route('cleansing.index')}}">
+                                <span data-feather="users"></span>
+                                Очищение данных
+                            </a>
+                        </li>
 
                     </ul>
                 </div>

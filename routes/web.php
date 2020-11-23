@@ -61,6 +61,14 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::middleware('role:admin')->group(function () {
         Route::get('/times', 'DateUpdateController@index')->name('times.index');
         Route::post('/times/{id}', 'DateUpdateController@update')->name('times.update');
+
+        Route::get('/cleansing', 'CleansingController@index')->name('cleansing.index');
+        Route::post('/cleansing-orders', 'CleansingController@clean_orders')->name('cleansing.orders');
+        Route::post('/cleansing-stats', 'CleansingController@clean_stats')->name('cleansing.stats');
+        Route::post('/cleansing-statBach', 'CleansingController@clean_table_stat_bach')->name('cleansing.statBach');
+        Route::post('/cleansing-statMaster', 'CleansingController@clean_table_stat_master')->name('cleansing.statMaster');
+        Route::post('/cleansing-statAsp', 'CleansingController@clean_table_stat_asp')->name('cleansing.statAsp');
+        Route::post('/cleansing-statSpo', 'CleansingController@clean_table_stat_spo')->name('cleansing.statSpo');
     });
 
 

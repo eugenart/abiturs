@@ -10,6 +10,7 @@ use App\PlanCompetitionForeigner;
 use App\PlanForeigner;
 use App\StudyForm;
 use App\Subject;
+use App\SupDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -156,7 +157,8 @@ class SelectionForeignerController extends Controller
 //
 //         return $faculties;
 
-        $year = 2021;
+        $supd = SupDetail::where('id', 1)->first();
+        $year = $supd->year_of_company;
 //
 //         return $faculties;
 
