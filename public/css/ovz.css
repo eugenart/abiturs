@@ -1411,7 +1411,9 @@ div.logo {
     justify-content: flex-start;
     align-items: center;
 }
-
+.mrsu-logo-img{
+    display:none;
+}
 div.logo img {
     width: 80px;
 }
@@ -1480,7 +1482,7 @@ a.logo {
 }
 
 .lk a {
-    color: #fff;
+    color: #000000;
 }
 
 @media screen and (max-width: 640px) {
