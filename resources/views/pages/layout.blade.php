@@ -81,7 +81,11 @@
                         <a href="http://new.mrsu.ru/" class="logo">
                             <div class="logo">
                                 <div class="logo-img">
-                                    <img src="{{asset('storage/images/mrsu2021/logo_without_border.png')}}" alt="">
+
+                                        <img src="{{asset('storage/images/mrsu2021/logo_without_border.png')}}"  class="mrsu-logo-img" alt="">
+
+                                        <img src="{{asset('storage/images/mrsu2021/logo_without_border_black.png')}}" class="mrsu-logo-img-ovz"alt="">
+
                                 </div>
                                 <div class="logo-text">
                                     {{ trans('layout.mrsu_1') }}<br>{{ trans('layout.mrsu_2') }}
@@ -126,9 +130,9 @@
                                                     <a href="/" class="logo">
                                                         <div class="logo">
                                                             <div class="logo-img">
-                                                                <img
-                                                                    src="{{asset('storage/images/mrsu2021/logo_without_border.png')}}"
-                                                                    alt="">
+                                                                <img src="{{asset('storage/images/mrsu2021/logo_without_border.png')}}"  class="mrsu-logo-img" alt="">
+
+                                                                <img src="{{asset('storage/images/mrsu2021/logo_without_border_black.png')}}" class="mrsu-logo-img-ovz"alt="">
                                                             </div>
                                                             <div class="logo-text">
                                                                 {{ trans('layout.mrsu_1') }}<br>{{ trans('layout.mrsu_2') }}
@@ -288,21 +292,47 @@
                                                     </div>
                                                     <div
                                                         class="col-lg-6 col-md-6 col-sm-6 mb-4 social col_two padding__with__header__icon">
-                                                        <a href=""><img class="size__image__footer"
+                                                        <a href="https://vk.com/mrsu13">
+
+                                                            <img class="size__image__footer mrsu-logo-img"
                                                                         src="{{asset('storage/images/mrsu2021/VKW.svg')}}"
-                                                                        alt=""></a>
-                                                        <a href=""><img class="size__image__footer"
+                                                                        alt="">
+                                                            <img class="size__image__footer mrsu-logo-img-ovz"
+                                                                        src="{{asset('storage/images/mrsu2021/VK.svg')}}"
+                                                                        alt="">
+                                                        </a>
+                                                        <a href="https://www.facebook.com/MordovskijUniversitet">
+                                                            <img class="size__image__footer mrsu-logo-img"
                                                                         src="{{asset('storage/images/mrsu2021/FacebookW.svg')}}"
-                                                                        alt=""></a>
-                                                        <a href=""><img class="size__image__footer"
+                                                                        alt="">
+                                                            <img class="size__image__footer mrsu-logo-img-ovz"
+                                                                 src="{{asset('storage/images/mrsu2021/Facebook.svg')}}"
+                                                                 alt="">
+                                                        </a>
+                                                        <a href="https://twitter.com/Ogarev_mrsu">
+                                                            <img class="size__image__footer mrsu-logo-img"
                                                                         src="{{asset('storage/images/mrsu2021/TwitterW.svg')}}"
-                                                                        alt=""></a>
-                                                        <a href=""><img class="size__image__footer"
+                                                                        alt="">
+                                                            <img class="size__image__footer mrsu-logo-img-ovz"
+                                                                 src="{{asset('storage/images/mrsu2021/Twitter.svg')}}"
+                                                                 alt="">
+                                                        </a>
+                                                        <a href="https://www.instagram.com/ogarev_mrsu/">
+                                                            <img class="size__image__footer mrsu-logo-img"
                                                                         src="{{asset('storage/images/mrsu2021/InstagramW.svg')}}"
-                                                                        alt=""></a>
-                                                        <a href=""><img class="size__image__footer"
+                                                                        alt="">
+                                                            <img class="size__image__footer mrsu-logo-img-ovz"
+                                                                 src="{{asset('storage/images/mrsu2021/Instagram.svg')}}"
+                                                                 alt="">
+                                                        </a>
+                                                        <a href="https://www.youtube.com/user/OgarevTV">
+                                                            <img class="size__image__footer mrsu-logo-img"
                                                                         src="{{asset('storage/images/mrsu2021/YoutubeW.svg')}}"
-                                                                        alt=""></a>
+                                                                        alt="">
+                                                            <img class="size__image__footer mrsu-logo-img-ovz"
+                                                                 src="{{asset('storage/images/mrsu2021/Youtube.svg')}}"
+                                                                 alt="">
+                                                        </a>
                                                     </div>
                                                 </div>
                                             </div>
