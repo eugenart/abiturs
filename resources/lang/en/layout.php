@@ -52,6 +52,11 @@ return [
 
     //education
     'e1' => 'Educational programs',
+    'e6' => 'Secondary vocational education',
+    'e7' => 'Bachelor\'s, Specialist, Master\'s Degree',
+    'e8' => 'Postgraduate studies',
+    'e9' => 'Residency',
+    'e10' => 'Additional',
     'e2' => 'Electronic information educational environment',
     'e3' => 'Initial accreditation of specialists',
     'e4' => 'Electronic educational resources',
@@ -103,6 +108,10 @@ return [
     'd6' => 'Services',
     'd7' => 'IBS Documents',
     'd8' => 'Licenses, certificates, certificates',
+    'd9' => 'License to conduct educational activities',
+    'd10' => 'Certificate of state accreditation',
+    'd11' => 'Certificate of state accreditation (until 05/21/2019)',
+    'd12' => 'Certificate of conformity of the quality management system',
 
     // rector's page
     'r1' => "Rector's greeting",

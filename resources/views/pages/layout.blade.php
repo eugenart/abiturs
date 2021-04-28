@@ -177,6 +177,11 @@
                                                         <label for="checksubmenu2" class="checksubmenu"></label>
                                                         <ul class="hamburger__submenu">
                                                             <li><a href="http://new.mrsu.ru/ru/education/">{{ trans('layout.e1') }}</a></li>
+                                                            <li><a href="http://new.mrsu.ru/ru/education/pre-university/">{{ trans('layout.e6') }}</a></li>
+                                                            <li><a href="http://new.mrsu.ru/ru/education/graduate/">{{ trans('layout.e7') }}</a></li>
+                                                            <li><a href="http://new.mrsu.ru/ru/education/asp/">{{ trans('layout.e8') }}</a></li>
+                                                            <li><a href="http://new.mrsu.ru/ru/education/ord/">{{ trans('layout.e9') }}</a></li>
+                                                            <li><a href="http://new.mrsu.ru/ru/education/dop/">{{ trans('layout.e10') }}</a></li>
                                                             <li><a href="http://p.mrsu.ru/">{{ trans('layout.e2') }}</a></li>
                                                             <li><a href="https://www.mrsu.ru/ru/edu/first_akkr.php?ID=2967">{{ trans('layout.e3') }}</a></li>
                                                             <li><a href="http://openedo.mrsu.ru/enrol/index.php?id=37">{{ trans('layout.e4') }}</a></li>
@@ -258,6 +263,10 @@
                                                             <li><a href="http://new.mrsu.ru/ru/university/documentation/sec/uslugi/">{{ trans('layout.d6') }}</a></li>
                                                             <li><a href="http://new.mrsu.ru/ru/university/documentation/sec/dokumenty-ibs/">{{ trans('layout.d7') }}</a></li>
                                                             <li><a href="http://new.mrsu.ru/ru/university/documentation/sec/litsenziya-na-pravo-vedeniya-obrazovatelnoy-deyatelnosti/">{{ trans('layout.d8') }}</a></li>
+                                                            <li><a href="http://new.mrsu.ru/ru/university/documentation/sec/litsenziya-na-pravo-vedeniya-obrazovatelnoy-deyatelnosti/">{{ trans('layout.d9') }}</a></li>
+                                                            <li><a href="http://new.mrsu.ru/ru/university/documentation/sec/svidetelstvo-o-gosudarstvennoy-akkreditatsii/">{{ trans('layout.d10') }}</a></li>
+                                                            <li><a href="http://new.mrsu.ru/ru/university/documentation/sec/svidetelstvo-o-gosudarstvennoy-akkreditatsii-do-21-05-2019/">{{ trans('layout.d11') }}</a></li>
+                                                            <li><a href="http://new.mrsu.ru/ru/university/documentation/sec/sertifikat-sootvetstviya-sistemy-menedzhmenta-kachestva-/">{{ trans('layout.d12') }}</a></li>
                                                         </ul>
                                                     </li>
                                                     <li>
