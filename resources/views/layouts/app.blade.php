@@ -79,6 +79,7 @@
             <nav class="col-md-2 d-none d-md-block sidebar">
                 <div class="sidebar-sticky">
                     <ul class="nav flex-column mt-5">
+
                         <li class="nav-item">
                             <a class="nav-link  {{ Request::is('admin/infoblock*') ? 'active' : null }}"
                                href="{{route('infoblock.index')}}">
@@ -134,7 +135,21 @@
                         </li>
                         @endif
 
-
+                        <li class="nav-item">
+                            <a class="nav-link {{ Request::is('admin/slider*') ? 'active' : null }}" href="{{route('slider.index')}}">
+                                <span data-feather="users"></span>
+                                Слайдер
+                            </a>
+                        </li>
+                        <li class="nav-item" style="margin-top:0.5em; margin-bottom: 0.5em; border-top:1px solid rgb(0, 123, 255, 0.5);"></li>
+                        @role('admin')
+{{--                        <li class="nav-item " >--}}
+{{--                            <a class="nav-link {{ Request::is('admin/year') ? 'active' : null }}" href="{{route('year.index')}}">--}}
+{{--                                <span data-feather="users"></span>--}}
+{{--                                Год приемной кампании--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+                        @endrole
                         @role('admin')
                         <li class="nav-item">
                             <a class="nav-link {{ Request::is('admin/times') ? 'active' : null }}" href="{{route('times.index')}}">
@@ -143,13 +158,6 @@
                             </a>
                         </li>
                         @endrole
-
-                        <li class="nav-item">
-                            <a class="nav-link {{ Request::is('admin/slider*') ? 'active' : null }}" href="{{route('slider.index')}}">
-                                <span data-feather="users"></span>
-                                Слайдер
-                            </a>
-                        </li>
                         <li class="nav-item">
                             <a class="nav-link {{ Request::is('admin/archive') ? 'active' : null }}" href="{{route('archive.indexadmin')}}">
                                 <span data-feather="users"></span>

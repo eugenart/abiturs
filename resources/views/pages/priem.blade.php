@@ -3,7 +3,7 @@
     <link rel="stylesheet" href="{{asset('css/vue2editor.css')}}">
 @endsection
 @section('page')
-    <div class="container-fluid p-lg-5 p-xl-5 p-md-3 p-sm-3 p-3">
+    <div class="container-fluid py-lg-5 py-xl-5 py-md-3 py-sm-3 py-3">
         @if (count($block->infoblock->news))
             <div class="row">
                 <div class="col-12">
