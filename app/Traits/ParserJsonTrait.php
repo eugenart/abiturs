@@ -1579,6 +1579,7 @@ trait ParserJsonTrait
                             $freeseat = array(
                                 'id_plan_comp' => $count_plan, // так же если не делать уникальной таблицу планов
                                 'id_admissionBasis' => intval($id_admissionBasis->id),
+                                'organization' => $basisItem['Organization'],
                                 'value' => $basisItem['value']
                             );
                             $arr_freeseats[] = $freeseat;
@@ -1680,6 +1681,7 @@ trait ParserJsonTrait
                             $freeseat_f = array(
                                 'id_plan_comp' => $count_plan_f, // так же если не делать уникальной таблицу планов
                                 'id_admissionBasis' => intval($id_admissionBasis->id),
+                                'organization' => $basisItem['Organization'],
                                 'value' => $basisItem['value']
                             );
                             $arr_freeseats_f[] = $freeseat_f;
@@ -1853,6 +1855,7 @@ trait ParserJsonTrait
                             $freeseat = array(
                                 'id_plan_comp' => $count_plan, // так же если не делать уникальной таблицу планов
                                 'id_admissionBasis' => intval($id_admissionBasis->id),
+                                'organization' => $basisItem['Organization'],
                                 'value' => $basisItem['value']
                             );
                             $arr_freeseats[] = $freeseat;
@@ -1954,6 +1957,7 @@ trait ParserJsonTrait
                             $freeseat_f = array(
                                 'id_plan_comp' => $count_plan_f, // так же если не делать уникальной таблицу планов
                                 'id_admissionBasis' => intval($id_admissionBasis->id),
+                                'organization' => $basisItem['Organization'],
                                 'value' => $basisItem['value']
                             );
                             $arr_freeseats_f[] = $freeseat_f;
@@ -2120,6 +2124,7 @@ trait ParserJsonTrait
                             $freeseat = array(
                                 'id_plan_comp' => $count_plan, // так же если не делать уникальной таблицу планов
                                 'id_admissionBasis' => intval($id_admissionBasis->id),
+                                'organization' => $basisItem['Organization'],
                                 'value' => $basisItem['value']
                             );
                             $arr_freeseats[] = $freeseat;

@@ -80,6 +80,8 @@ class SelectionController extends Controller
                         $form_temp->freeseats = Freeseats_bases::whereIn('id_plan_comp', $pcf_arr)->get();
 
                         $id_plan_comp = $form_temp->freeseats->first()->id_plan_comp;
+                        $plan->basis_organization = $form_temp->freeseats->first()->organization;
+
                         foreach ($form_temp->freeseats as $value) {
                             $value->admissionBasis = $value->admissionBasis()->first();
 

@@ -130,6 +130,7 @@
                                                 </thead>
                                                 <tbody>
                                                 @foreach($faculty->plan as $item)
+
                                                     <tr class="nps-tr search-tr"
                                                         data-exams="{{ implode(',', $item->subjects) }}" data-exams_ch="{{ implode(',', $item->subjects_ch) }}">
                                                         <td rowspan="@if(count($item->changeable_subs)!=0){{count($item->scores)-1 }} @else {{count($item->scores)}} @endif"
@@ -142,7 +143,6 @@
                                                                 {{$item->speciality->code}}<br>
                                                                 <b><u>{{$item->speciality->name}}</u></b>@if($item->specialization)
                                                                     <br>{{$item->specialization->name}}
-
                                                                 @endif
                                                             </button>
                                                         </td>
@@ -200,7 +200,7 @@
                                                                             @php
                                                                                 $counter++;
                                                                             @endphp
-                                                                            @if($fs->id_plan_comp == $id_comp)
+{{--                                                                            @if($fs->id_plan_comp == $id_comp)--}}
                                                                                 @if(!$fs->pastContests->contains('year', strval($year - 1)))
                                                                                     <span>-</span>
                                                                                     <br>
@@ -211,7 +211,7 @@
                                                                                         <br>
                                                                                     @endif
                                                                                 @endforeach
-                                                                            @endif
+{{--                                                                            @endif--}}
                                                                         @endif
                                                                     @else
                                                                         @php
@@ -248,7 +248,7 @@
                                                                             @php
                                                                                 $counter++;
                                                                             @endphp
-                                                                            @if($fs->id_plan_comp == $id_comp)
+{{--                                                                            @if($fs->id_plan_comp == $id_comp)--}}
                                                                                 @if(!$fs->pastContests->contains('year', strval($year - 2)))
                                                                                     <span>-</span>
                                                                                     <br>
@@ -259,13 +259,13 @@
                                                                                         <br>
                                                                                     @endif
                                                                                 @endforeach
-                                                                            @endif
+{{--                                                                            @endif--}}
                                                                         @endif
                                                                     @else
                                                                         @php
                                                                             $counter++;
                                                                         @endphp
-                                                                        @if($fs->id_plan_comp == $id_comp)
+{{--                                                                        @if($fs->id_plan_comp == $id_comp)--}}
                                                                             @if(!$fs->pastContests->contains('year', strval($year - 2)))
                                                                                 <span>-</span>
                                                                                 <br>
@@ -276,7 +276,7 @@
                                                                                     <br>
                                                                                 @endif
                                                                             @endforeach
-                                                                        @endif
+{{--                                                                        @endif--}}
                                                                     @endif
                                                                 @endforeach
                                                                 @if(!$counter)
@@ -298,7 +298,7 @@
                                                                             @php
                                                                                 $counter++;
                                                                             @endphp
-                                                                            @if($fs->id_plan_comp == $id_comp)
+{{--                                                                            @if($fs->id_plan_comp == $id_comp)--}}
                                                                                 @if(!$fs->pastContests->contains('year', strval($year - 3)))
                                                                                     <span>-</span>
                                                                                     <br>
@@ -309,7 +309,7 @@
                                                                                         <br>
                                                                                     @endif
                                                                                 @endforeach
-                                                                            @endif
+{{--                                                                            @endif--}}
                                                                         @endif
                                                                     @else
                                                                         @php
@@ -605,7 +605,7 @@
                                                                                 @php
                                                                                     $counter++;
                                                                                 @endphp
-                                                                                @if($fs->id_plan_comp == $id_comp)
+{{--                                                                                @if($fs->id_plan_comp == $id_comp)--}}
                                                                                     @if(!$fs->pastContests->contains('year', strval($year - 1)))
                                                                                         <span>-</span>
                                                                                         <br>
@@ -616,13 +616,13 @@
                                                                                             <br>
                                                                                         @endif
                                                                                     @endforeach
-                                                                                @endif
+{{--                                                                                @endif--}}
                                                                             @endif
                                                                         @else
                                                                             @php
                                                                                 $counter++;
                                                                             @endphp
-                                                                            @if($fs->id_plan_comp == $id_comp)
+{{--                                                                            @if($fs->id_plan_comp == $id_comp)--}}
                                                                                 @if(!$fs->pastContests->contains('year', strval($year - 1)))
                                                                                     <span>-</span>
                                                                                     <br>
@@ -633,7 +633,7 @@
                                                                                         <br>
                                                                                     @endif
                                                                                 @endforeach
-                                                                            @endif
+{{--                                                                            @endif--}}
                                                                         @endif
                                                                     @endforeach
                                                                     @if(!$counter)
@@ -657,7 +657,7 @@
                                                                                 @php
                                                                                     $counter++;
                                                                                 @endphp
-                                                                                @if($fs->id_plan_comp == $id_comp)
+{{--                                                                                @if($fs->id_plan_comp == $id_comp)--}}
                                                                                     @if(!$fs->pastContests->contains('year', strval($year - 2)))
                                                                                         <span>-</span>
                                                                                         <br>
@@ -668,13 +668,13 @@
                                                                                             <br>
                                                                                         @endif
                                                                                     @endforeach
-                                                                                @endif
+{{--                                                                                @endif--}}
                                                                             @endif
                                                                         @else
                                                                             @php
                                                                                 $counter++;
                                                                             @endphp
-                                                                            @if($fs->id_plan_comp == $id_comp)
+{{--                                                                            @if($fs->id_plan_comp == $id_comp)--}}
                                                                                 @if(!$fs->pastContests->contains('year', strval($year - 2)))
                                                                                     <span>-</span>
                                                                                     <br>
@@ -685,7 +685,7 @@
                                                                                         <br>
                                                                                     @endif
                                                                                 @endforeach
-                                                                            @endif
+{{--                                                                            @endif--}}
                                                                         @endif
                                                                     @endforeach
                                                                     @if(!$counter)
@@ -695,9 +695,7 @@
                                                                 @endforeach
                                                             </td>
                                                             <td rowspan="@if(count($item->changeable_subs)!=0){{count($item->scores)-1 }} @else {{count($item->scores)}} @endif"
-                                                                class="text-center d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none bold-border-right-imp"
-                                                                {{--                                                                style="border-bottom:2px solid #2366a5 !important; border-right:2px solid #2366a5 !important;"--}}
-                                                            >
+                                                                class="text-center d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none bold-border-right-imp" >
                                                                 @foreach($item->studyForm as $sf)
                                                                     @php
                                                                         $counter = 0;
@@ -710,7 +708,7 @@
                                                                                 @php
                                                                                     $counter++;
                                                                                 @endphp
-                                                                                @if($fs->id_plan_comp == $id_comp)
+{{--                                                                                @if($fs->id_plan_comp == $id_comp)--}}
                                                                                     @if(!$fs->pastContests->contains('year', strval($year - 3)))
                                                                                         <span>-</span>
                                                                                         <br>
@@ -721,13 +719,13 @@
                                                                                             <br>
                                                                                         @endif
                                                                                     @endforeach
-                                                                                @endif
+{{--                                                                                @endif--}}
                                                                             @endif
                                                                         @else
                                                                             @php
                                                                                 $counter++;
                                                                             @endphp
-                                                                            @if($fs->id_plan_comp == $id_comp)
+{{--                                                                            @if($fs->id_plan_comp == $id_comp)--}}
                                                                                 @if(!$fs->pastContests->contains('year', strval($year - 3)))
                                                                                     <span>-</span>
                                                                                     <br>
@@ -738,7 +736,7 @@
                                                                                         <br>
                                                                                     @endif
                                                                                 @endforeach
-                                                                            @endif
+{{--                                                                            @endif--}}
                                                                         @endif
                                                                     @endforeach
                                                                     @if(!$counter)
@@ -1090,7 +1088,7 @@
                     "<div class='row d-flex justify-content-cetner'>" +
                     "<div class='col-12 d-flex align-items-center justify-content-center flex-column'>" +
                     "<h5><strong>" + v.name + " форма, " + v.years + " " + year + "</strong></h5>" +
-                    "</div><div class='col-12 col-lg-6 col-xl-6 col-md-6 col-sm-12 mb-2'><h5 class='text-center mb-0'><strong>Количество мест:</strong></h5>"
+                    "</div><div class='col-12 col-lg-6 col-xl-6 col-md-6 col-sm-12 mb-2'><h5 class='text-left ml-lg-5 ml-xl-5 ml-md-5 ml-sm-3 ml-lg-0 ml-md-2 ml-3mb-0 '><strong>Количество мест:</strong></h5>"
 
                 v.freeseats.sort((a, b) => (a.admissionBasis.name.length > b.admissionBasis.name.length) ? 1 : ((b.admissionBasis.name.length > a.admissionBasis.name.length) ? -1 : 0));
 
@@ -1098,16 +1096,16 @@
                 console.log(id_comp);
                 $.each(v.freeseats, (key, seat) => {
                     if (seat.id_plan_comp === id_comp) {
-                        templateRecipient += "<p class='mb-0 ml-lg-5 ml-xl-5 ml-md-5 ml-sm-3 ml-lg-0 ml-md-2 ml-3 text-left'><span>" + seat.admissionBasis.name + " - </span><b>" + seat.value + "</b></p>"
+                        templateRecipient += "<p class='mb-0   ml-lg-5 ml-xl-5 ml-md-5 ml-sm-3 ml-lg-0 ml-md-2 ml-3  text-left'><span>" + seat.admissionBasis.name + " - </span><b>" + seat.value + "</b></p>"
                     }
                 });
 
                 let ccc = 0;
                 $.each(v.freeseats, (key, seat) => {
                     if (seat.id_plan_comp != id_comp) {
-                        if (ccc === 0) {
-                            templateRecipient += "<h5 class='text-center mb-0 mt-2'><strong>Дополнительный прием:</strong></h5>"
-                        }
+                        // if (ccc === 0) {
+                            templateRecipient += "<h5 class='text-left mb-0 mt-2 ml-lg-5 ml-xl-5 ml-md-5 ml-sm-3 ml-lg-0 ml-md-2 ml-3'><strong>"+seat.organization+":</strong></h5>"
+                        // }
                         ccc++;
                         templateRecipient += "<p class='mb-0 ml-lg-5 ml-xl-5 ml-md-5 ml-sm-3 ml-lg-0 ml-md-2 ml-3 text-left'><span>" + seat.admissionBasis.name + " - </span><b>" + seat.value + "</b></p>"
                     }
@@ -1116,7 +1114,7 @@
                 //templateRecipient += "</tbody></table></div></div>";
                 templateRecipient += "</div>";
                 templateRecipient += "<div class='col-12 col-lg-6 col-xl-6 col-md-6 col-sm-12 mb-2'>";
-                templateRecipient += "<h5 class='text-center mb-0'><strong>Cтоимость обучения:</strong></h5>"
+                templateRecipient += "<h5 class='text-left mb-0 ml-lg-5 ml-xl-5 ml-md-5 ml-sm-3 ml-lg-0 ml-md-2 ml-3'><strong>Cтоимость обучения:</strong></h5>"
                 $.each(v.prices, (key, price) => {
                     if (price.price !== 0 && price.id_plan_comp === id_comp) {
                         templateRecipient += "<p class='mb-0 ml-lg-5 ml-xl-5 ml-md-5 ml-sm-3 ml-lg-0 ml-md-2 ml-3 text-left'><span>" + price.info + " - </span><b>" + price.price + " ₽/год</b></p>"
