@@ -69,6 +69,10 @@
     <!-- /Yandex.Metrika counter -->
 </head>
 <body>
+<div class="preloader">
+	<div class="preloader-5">
+	</div>
+</div>
 <header class="background">
     <div class="blue-background">
         <div class="container container__mrsu">
@@ -81,7 +85,11 @@
                         <a href="https://mrsu.ru/" class="logo">
                             <div class="logo">
                                 <div class="logo-img">
-                                    <img src="{{asset('storage/images/mrsu2021/logo_without_border.png')}}" alt="">
+
+                                        <img src="{{asset('storage/images/mrsu2021/logo_without_border.png')}}"  class="mrsu-logo-img" alt="">
+
+                                        <img src="{{asset('storage/images/mrsu2021/logo_without_border_black.png')}}" class="mrsu-logo-img-ovz"alt="">
+
                                 </div>
                                 <div class="logo-text">
                                     {{ trans('layout.mrsu_1') }}<br>{{ trans('layout.mrsu_2') }}
@@ -126,9 +134,9 @@
                                                     <a href="/" class="logo">
                                                         <div class="logo">
                                                             <div class="logo-img">
-                                                                <img
-                                                                    src="{{asset('storage/images/mrsu2021/logo_without_border.png')}}"
-                                                                    alt="">
+                                                                <img src="{{asset('storage/images/mrsu2021/logo_without_border.png')}}"  class="mrsu-logo-img" alt="">
+
+                                                                <img src="{{asset('storage/images/mrsu2021/logo_without_border_black.png')}}" class="mrsu-logo-img-ovz"alt="">
                                                             </div>
                                                             <div class="logo-text">
                                                                 {{ trans('layout.mrsu_1') }}<br>{{ trans('layout.mrsu_2') }}
@@ -173,6 +181,11 @@
                                                         <label for="checksubmenu2" class="checksubmenu"></label>
                                                         <ul class="hamburger__submenu">
                                                             <li><a href="https://mrsu.ru/ru/education/">{{ trans('layout.e1') }}</a></li>
+                                                            <li><a href="https://mrsu.ru/ru/education/pre-university/">{{ trans('layout.e6') }}</a></li>
+                                                            <li><a href="https://mrsu.ru/ru/education/graduate/">{{ trans('layout.e7') }}</a></li>
+                                                            <li><a href="https://mrsu.ru/ru/education/asp/">{{ trans('layout.e8') }}</a></li>
+                                                            <li><a href="https://mrsu.ru/ru/education/ord/">{{ trans('layout.e9') }}</a></li>
+                                                            <li><a href="https://mrsu.ru/ru/education/dop/">{{ trans('layout.e10') }}</a></li>
                                                             <li><a href="http://p.mrsu.ru/">{{ trans('layout.e2') }}</a></li>
                                                             <li><a href="https://www.mrsu.ru/ru/edu/first_akkr.php?ID=2967">{{ trans('layout.e3') }}</a></li>
                                                             <li><a href="http://openedo.mrsu.ru/enrol/index.php?id=37">{{ trans('layout.e4') }}</a></li>
@@ -254,6 +267,10 @@
                                                             <li><a href="https://mrsu.ru/ru/university/documentation/sec/uslugi/">{{ trans('layout.d6') }}</a></li>
                                                             <li><a href="https://mrsu.ru/ru/university/documentation/sec/dokumenty-ibs/">{{ trans('layout.d7') }}</a></li>
                                                             <li><a href="https://mrsu.ru/ru/university/documentation/sec/litsenziya-na-pravo-vedeniya-obrazovatelnoy-deyatelnosti/">{{ trans('layout.d8') }}</a></li>
+                                                            <li><a href="https://mrsu.ru/ru/university/documentation/sec/litsenziya-na-pravo-vedeniya-obrazovatelnoy-deyatelnosti/">{{ trans('layout.d9') }}</a></li>
+                                                            <li><a href="https://mrsu.ru/ru/university/documentation/sec/svidetelstvo-o-gosudarstvennoy-akkreditatsii/">{{ trans('layout.d10') }}</a></li>
+                                                            <li><a href="https://mrsu.ru/ru/university/documentation/sec/svidetelstvo-o-gosudarstvennoy-akkreditatsii-do-21-05-2019/">{{ trans('layout.d11') }}</a></li>
+                                                            <li><a href="https://mrsu.ru/ru/university/documentation/sec/sertifikat-sootvetstviya-sistemy-menedzhmenta-kachestva-/">{{ trans('layout.d12') }}</a></li>
                                                         </ul>
                                                     </li>
                                                     <li>
@@ -288,21 +305,47 @@
                                                     </div>
                                                     <div
                                                         class="col-lg-6 col-md-6 col-sm-6 mb-4 social col_two padding__with__header__icon">
-                                                        <a href=""><img class="size__image__footer"
+                                                        <a href="https://vk.com/mrsu13">
+
+                                                            <img class="size__image__footer mrsu-logo-img"
                                                                         src="{{asset('storage/images/mrsu2021/VKW.svg')}}"
-                                                                        alt=""></a>
-                                                        <a href=""><img class="size__image__footer"
+                                                                        alt="">
+                                                            <img class="size__image__footer mrsu-logo-img-ovz"
+                                                                        src="{{asset('storage/images/mrsu2021/VK.svg')}}"
+                                                                        alt="">
+                                                        </a>
+                                                        <a href="https://www.facebook.com/MordovskijUniversitet">
+                                                            <img class="size__image__footer mrsu-logo-img"
                                                                         src="{{asset('storage/images/mrsu2021/FacebookW.svg')}}"
-                                                                        alt=""></a>
-                                                        <a href=""><img class="size__image__footer"
+                                                                        alt="">
+                                                            <img class="size__image__footer mrsu-logo-img-ovz"
+                                                                 src="{{asset('storage/images/mrsu2021/Facebook.svg')}}"
+                                                                 alt="">
+                                                        </a>
+                                                        <a href="https://twitter.com/Ogarev_mrsu">
+                                                            <img class="size__image__footer mrsu-logo-img"
                                                                         src="{{asset('storage/images/mrsu2021/TwitterW.svg')}}"
-                                                                        alt=""></a>
-                                                        <a href=""><img class="size__image__footer"
+                                                                        alt="">
+                                                            <img class="size__image__footer mrsu-logo-img-ovz"
+                                                                 src="{{asset('storage/images/mrsu2021/Twitter.svg')}}"
+                                                                 alt="">
+                                                        </a>
+                                                        <a href="https://www.instagram.com/ogarev_mrsu/">
+                                                            <img class="size__image__footer mrsu-logo-img"
                                                                         src="{{asset('storage/images/mrsu2021/InstagramW.svg')}}"
-                                                                        alt=""></a>
-                                                        <a href=""><img class="size__image__footer"
+                                                                        alt="">
+                                                            <img class="size__image__footer mrsu-logo-img-ovz"
+                                                                 src="{{asset('storage/images/mrsu2021/Instagram.svg')}}"
+                                                                 alt="">
+                                                        </a>
+                                                        <a href="https://www.youtube.com/user/OgarevTV">
+                                                            <img class="size__image__footer mrsu-logo-img"
                                                                         src="{{asset('storage/images/mrsu2021/YoutubeW.svg')}}"
-                                                                        alt=""></a>
+                                                                        alt="">
+                                                            <img class="size__image__footer mrsu-logo-img-ovz"
+                                                                 src="{{asset('storage/images/mrsu2021/Youtube.svg')}}"
+                                                                 alt="">
+                                                        </a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -472,10 +515,7 @@
 {{--    </div>--}}
 </nav>
 
-{{--<div class="preloader">--}}
-    <!-- Элементы прелоадера -->
-{{--    <div class="preloader-5"></div>--}}
-{{--</div>--}}
+
 <div class="contentpage">
 @section('page')
 @show
@@ -602,7 +642,7 @@
                                                               src="{{asset('storage/images/mrsu2021/9H.svg')}}"></div>
                             </td>
                             <td>
-                                <div class="pos-text"><a href="tel:88002221317">+7 (800) 222-13-17</a></div>
+                                <div class="pos-text"><a href="tel:88002221377">+7 (800) 222-13-77</a></div>
                             </td>
                         </tr>
                         <!-- <tr> -->
