@@ -313,7 +313,9 @@ a:not(.collapsed) .rotate-icon {
         transform: rotate(360deg);
     }
 }
-
+.freeseats-title{
+    margin-left: 3.5rem;
+}
 
 .main-nav ul li:hover {
     background-color: #d4d6dd;
@@ -1033,9 +1035,8 @@ marquee {
     }
 
     .right-menu-small {
-        display: block;
-        margin: 0 auto;
-        padding: 0;
+        display: flex;
+        justify-content: center;
     }
 
     .right-menu-checkbox-group-down {
@@ -1135,14 +1136,14 @@ marquee {
     }
 }
 
-@media screen and (min-width: 697px) and (max-width: 1199px) {
-    .right-menu-small {
+@media screen and (min-width: 728px) and (max-width: 1199px) {
+    .right-menu-checkbox-group-down .btn {
         width: 680px;
     }
 }
 
-@media screen and (max-width: 697px) {
-    .right-menu-small {
+@media screen and (max-width: 727px) {
+    .right-menu-checkbox-group-down .btn {
         width: 340px;
     }
 
@@ -1405,9 +1406,6 @@ marquee {
 }
 .infoblock-card  p{
     padding-bottom: 5px;
-}
-body {
-    background: url('/storage/images/mrsu2021/treugolniki_dop.png') 50% repeat-y;
 }
 
 /*-------------------- хедер начало --------------------*/
