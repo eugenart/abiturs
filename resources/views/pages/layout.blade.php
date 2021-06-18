@@ -27,7 +27,7 @@
 
     <link rel="stylesheet"
           href="{{asset('css/bootstrap-select.min.css')}}">
-    <link rel="shortcut icon" href="{{asset('storage/images/iconka_mrsu.png')}}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{asset('storage/images/faviconMRSU.svg')}}" type="image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
@@ -505,11 +505,11 @@
                     <a class="nav-link" href="{{route('contact.index')}}">{{ trans('layout.contacts') }}<span
                             class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item active d-flex align-items-center justify-content-center">
+                {{--<li class="nav-item active d-flex align-items-center justify-content-center">
                     <a class="nav-link" target="_blank"
                        href="https://p.mrsu.ru/Account/Register">{{ trans('layout.docs') }}<span
                             class="sr-only">(current)</span></a>
-                </li>
+                </li>--}}
             </ul>
         </div>
 {{--    </div>--}}

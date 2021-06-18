@@ -1922,6 +1922,7 @@ trait ParserJsonTrait
                     //связь предметов-оценок с объедением плана-исптания
                     foreach ($element['subjects'] as $subjectItem) {
                         $id_subject = Subject::where('subjectId', '=', $subjectItem['subjectId'])->first();
+						$changable = false;
                         if(isset( $subjectItem['change'])){
                             $changable = $subjectItem['change']== "True"?1:0;
                         }
