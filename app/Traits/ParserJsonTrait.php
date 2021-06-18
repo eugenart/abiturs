@@ -199,7 +199,7 @@ trait ParserJsonTrait
                             $stud = array(
                                 'studentId' => $student['studentId'],
                                 'fio' => mb_convert_case(mb_strtolower($student['fio']), MB_CASE_TITLE),
-                                'snils' => $student['snils'],
+                                'snils' => preg_replace('/[^0-9]/', '', $student['snils']),
                                 'snils2' => $student['snils2'],
                             );
                             $students[] = $stud;
@@ -323,7 +323,7 @@ trait ParserJsonTrait
                                 'studentId' => $student['studentId'],
                                 'fio' => mb_convert_case(mb_strtolower($student['fio']), MB_CASE_TITLE),
                                 'fio_en' => $fio_en,
-                                'snils' => $student['snils'],
+                                'snils' => preg_replace('/[^0-9]/', '', $student['snils']),
                                 'snils2' => $student['snils2'],
                             );
                             $students_f[] = $stud_f;
@@ -580,7 +580,7 @@ trait ParserJsonTrait
                             $stud = array(
                                 'studentId' => $student['studentId'],
                                 'fio' => mb_convert_case(mb_strtolower($student['fio']), MB_CASE_TITLE),
-                                'snils' => $student['snils'],
+                                'snils' => preg_replace('/[^0-9]/', '', $student['snils']),
                                 'snils2' => $student['snils2'],
                             );
                             $students[] = $stud;
@@ -704,7 +704,7 @@ trait ParserJsonTrait
                                 'studentId' => $student['studentId'],
                                 'fio' => mb_convert_case(mb_strtolower($student['fio']), MB_CASE_TITLE),
                                 'fio_en' => $fio_en,
-                                'snils' => $student['snils'],
+                                'snils' => preg_replace('/[^0-9]/', '', $student['snils']),
                                 'snils2' => $student['snils2'],
                             );
                             $students_f[] = $stud_f;
@@ -960,7 +960,7 @@ trait ParserJsonTrait
                             $stud = array(
                                 'studentId' => $student['studentId'],
                                 'fio' => mb_convert_case(mb_strtolower($student['fio']), MB_CASE_TITLE),
-                                'snils' => $student['snils'],
+                                'snils' => preg_replace('/[^0-9]/', '', $student['snils']),
                                 'snils2' => $student['snils2'],
                             );
                             $students[] = $stud;
@@ -1084,7 +1084,7 @@ trait ParserJsonTrait
                                 'studentId' => $student['studentId'],
                                 'fio' => mb_convert_case(mb_strtolower($student['fio']), MB_CASE_TITLE),
                                 'fio_en' => $fio_en,
-                                'snils' => $student['snils'],
+                                'snils' => preg_replace('/[^0-9]/', '', $student['snils']),
                                 'snils2' => $student['snils2'],
                             );
                             $students_f[] = $stud_f;
@@ -1333,7 +1333,7 @@ trait ParserJsonTrait
                             $stud = array(
                                 'studentId' => $student['studentId'],
                                 'fio' => mb_convert_case(mb_strtolower($student['fio']), MB_CASE_TITLE),
-                                'snils' => $student['snils'],
+                                'snils' => preg_replace('/[^0-9]/', '', $student['snils']),
                                 'snils2' => $student['snils2'],
                             );
                             $students[] = $stud;

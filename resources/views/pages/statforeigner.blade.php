@@ -503,26 +503,23 @@
                                                                                                     class="d-xl-none d-lg-inline d-inline">{{trans('statforeigner.accept_cut')}}</span>
                                                                                             </th>
                                                                                             <th class="d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none"
-                                                                                                colspan="{{count($admissionBasis->abiturs->first()->score) + 1}}">
-                                                                                                @foreach($admissionBasis->abiturs->first()->score as $i => $sc)
-                                                                                                    @if($i < count($admissionBasis->abiturs->first()->score) -1)
-                                                                                                        <p class="m-0"> {{$sc->priority}}
-
-
-
+                                                                                                colspan="{{count($admissionBasis->subs) + 1}}">
+                                                                                                @foreach($admissionBasis->subs as $i => $sc)
+                                                                                                    @if($i < count($admissionBasis->subs) -1)
+                                                                                                        <p class="m-0"> {{$i+1}}
                                                                                                             @if(trans('layout.locale')=='ru')
-                                                                                                                ) {{$sc->subject->name}}</p>
+                                                                                                                ) {{$sc}}</p>
                                                                                                     @endif
                                                                                                     @if(trans('layout.locale')=='en')
-                                                                                                        ) {{$sc->subject->en_name}}</p>
+                                                                                                        ) {{$admissionBasis->subs_en[$i]}}</p>
                                                                                                     @endif
                                                                                                     @else
-                                                                                                        <p class="m-0"> {{$sc->priority}}
+                                                                                                        <p class="m-0"> {{$i+1}}
                                                                                                             @if(trans('layout.locale')=='ru')
-                                                                                                                ) {{$sc->subject->name}}</p>
+                                                                                                                ) {{$sc}}</p>
                                                                                                     @endif
                                                                                                     @if(trans('layout.locale')=='en')
-                                                                                                        ) {{$sc->subject->en_name}}</p>
+                                                                                                        ) {{$admissionBasis->subs_en[$i]}}</p>
                                                                                                     @endif
                                                                                                     <p class="m-0 d-xl-inline d-lg-none d-none">{{$i + 2}}
                                                                                                         {{trans('statforeigner.ind_ach')}}</p>
