@@ -269,7 +269,7 @@ class StatisticController extends Controller
         if (isset($studyForms)) {
             $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
             if ($studyForms->count() != 0) {
-//CHANGE
+//успешный вывод
                 return view($names_arr['page'], ['studyForms' => $studyForms, 'faculties' => $faculties,
                     'studyFormsForInputs' => $studyFormsForInputs, 'actual_link' => $actual_link, 'date_update' => $date_update,
                     'files_xls' => $files_xls, 'notification_files' => $notification_files]);
@@ -611,9 +611,11 @@ class StatisticController extends Controller
 // ----------------поиск по имени-------------------
         if (isset($search_fio)) {
             //выбираем всех студентов подходящих по фио
-//CHANGE
-            $id_students = Student::where('fio', 'LIKE', '%' . $search_fio . '%')
-                ->select('id', 'fio')
+//СНИЛС
+            $search_fio = preg_replace('/[^0-9]/', '', $search_fio); //удаляем все кроме цифр
+//            preg_replace('~\D+~','', $string);
+            $id_students = Student::where('snils', 'LIKE', '%' . $search_fio . '%') //ищем по полю без тире
+                ->select('id', 'snils2') //показываем форматированный
                 ->get();
 
 

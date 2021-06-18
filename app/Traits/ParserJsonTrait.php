@@ -198,7 +198,9 @@ trait ParserJsonTrait
                         if (empty($idStudent)) { //студента в базе нет - записываем
                             $stud = array(
                                 'studentId' => $student['studentId'],
-                                'fio' => mb_convert_case(mb_strtolower($student['fio']), MB_CASE_TITLE)
+                                'fio' => mb_convert_case(mb_strtolower($student['fio']), MB_CASE_TITLE),
+                                'snils' => $student['snils'],
+                                'snils2' => $student['snils2'],
                             );
                             $students[] = $stud;
                             $count_idStudent++;
@@ -320,7 +322,9 @@ trait ParserJsonTrait
                             $stud_f = array(
                                 'studentId' => $student['studentId'],
                                 'fio' => mb_convert_case(mb_strtolower($student['fio']), MB_CASE_TITLE),
-                                'fio_en' => $fio_en
+                                'fio_en' => $fio_en,
+                                'snils' => $student['snils'],
+                                'snils2' => $student['snils2'],
                             );
                             $students_f[] = $stud_f;
                             $count_idStudent_f++;
@@ -576,6 +580,8 @@ trait ParserJsonTrait
                             $stud = array(
                                 'studentId' => $student['studentId'],
                                 'fio' => mb_convert_case(mb_strtolower($student['fio']), MB_CASE_TITLE),
+                                'snils' => $student['snils'],
+                                'snils2' => $student['snils2'],
                             );
                             $students[] = $stud;
                             $count_idStudent++;
@@ -697,7 +703,9 @@ trait ParserJsonTrait
                             $stud_f = array(
                                 'studentId' => $student['studentId'],
                                 'fio' => mb_convert_case(mb_strtolower($student['fio']), MB_CASE_TITLE),
-                                'fio_en' => $fio_en
+                                'fio_en' => $fio_en,
+                                'snils' => $student['snils'],
+                                'snils2' => $student['snils2'],
                             );
                             $students_f[] = $stud_f;
                             $count_idStudent_f++;
@@ -952,6 +960,8 @@ trait ParserJsonTrait
                             $stud = array(
                                 'studentId' => $student['studentId'],
                                 'fio' => mb_convert_case(mb_strtolower($student['fio']), MB_CASE_TITLE),
+                                'snils' => $student['snils'],
+                                'snils2' => $student['snils2'],
                             );
                             $students[] = $stud;
                             $count_idStudent++;
@@ -1073,7 +1083,9 @@ trait ParserJsonTrait
                             $stud_f = array(
                                 'studentId' => $student['studentId'],
                                 'fio' => mb_convert_case(mb_strtolower($student['fio']), MB_CASE_TITLE),
-                                'fio_en' => $fio_en
+                                'fio_en' => $fio_en,
+                                'snils' => $student['snils'],
+                                'snils2' => $student['snils2'],
                             );
                             $students_f[] = $stud_f;
                             $count_idStudent_f++;
@@ -1321,6 +1333,8 @@ trait ParserJsonTrait
                             $stud = array(
                                 'studentId' => $student['studentId'],
                                 'fio' => mb_convert_case(mb_strtolower($student['fio']), MB_CASE_TITLE),
+                                'snils' => $student['snils'],
+                                'snils2' => $student['snils2'],
                             );
                             $students[] = $stud;
                             $count_idStudent++;
