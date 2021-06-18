@@ -12,6 +12,7 @@ use App\Freeseats_bases;
 use App\Plan;
 use App\PlanCompetition;
 use App\PreparationLevel;
+use App\Score;
 use App\Speciality;
 use App\Specialization;
 use App\Statistic;
@@ -95,7 +96,9 @@ class StatisticController extends Controller
             $names_arr['Statistic'] = 'App\Statistic';
             $names_arr['Competition'] = 'App\Competition';
             $names_arr['PlanCompetition'] = 'App\PlanCompetition';
+            $names_arr['PlanCompScore'] = 'App\PlanCompScore';
             $names_arr['Plan'] = 'App\Plan';
+            $names_arr['Score'] = 'App\Score';
             $names_arr['Freeseats'] = 'App\Freeseats_bases';
             $names_arr['folder'] = 'bach';
             $names_arr['date'] = 'stat_bach';
@@ -107,6 +110,7 @@ class StatisticController extends Controller
             $names_arr['Competition'] = 'App\CompetitionMaster';
             $names_arr['PlanCompetition'] = 'App\PlanCompetitionMaster';
             $names_arr['Plan'] = 'App\PlanMaster';
+            $names_arr['Score'] = 'App\ScoreMaster';
             $names_arr['Freeseats'] = 'App\Freeseats_basesMaster';
             $names_arr['folder'] = 'master';
             $names_arr['date'] = 'stat_master';
@@ -118,6 +122,7 @@ class StatisticController extends Controller
             $names_arr['Competition'] = 'App\CompetitionAsp';
             $names_arr['PlanCompetition'] = 'App\PlanCompetitionAsp';
             $names_arr['Plan'] = 'App\PlanAsp';
+            $names_arr['Score'] = 'App\ScoreAsp';
             $names_arr['Freeseats'] = 'App\Freeseats_basesAsp';
             $names_arr['folder'] = 'asp';
             $names_arr['date'] = 'stat_asp';
@@ -129,6 +134,7 @@ class StatisticController extends Controller
             $names_arr['Competition'] = 'App\CompetitionSpo';
             $names_arr['PlanCompetition'] = 'App\PlanCompetitionSpo';
             $names_arr['Plan'] = 'App\PlanSpo';
+            $names_arr['Score'] = 'App\ScoreSpo';
             $names_arr['Freeseats'] = 'App\Freeseats_basesSpo';
             $names_arr['folder'] = 'spo';
             $names_arr['date'] = 'stat_spo';
@@ -141,6 +147,7 @@ class StatisticController extends Controller
             $names_arr['Competition'] = 'App\CompetitionForeigner';
             $names_arr['PlanCompetition'] = 'App\PlanCompetitionForeigner';
             $names_arr['Plan'] = 'App\PlanForeigner';
+            $names_arr['Score'] = 'App\ScoreForeigner';
             $names_arr['Freeseats'] = 'App\Freeseats_basesForeigner';
             $names_arr['folder'] = 'bachf';
             $names_arr['date'] = 'stat_bach';
@@ -152,6 +159,8 @@ class StatisticController extends Controller
             $names_arr['Competition'] = 'App\CompetitionMasterForeigner';
             $names_arr['PlanCompetition'] = 'App\PlanCompetitionMasterForeigner';
             $names_arr['Plan'] = 'App\PlanMasterForeigner';
+
+            $names_arr['Score'] = 'App\ScoreMasterForeigner';
             $names_arr['Freeseats'] = 'App\Freeseats_basesMasterForeigner';
             $names_arr['folder'] = 'masterf';
             $names_arr['date'] = 'stat_master';
@@ -163,6 +172,7 @@ class StatisticController extends Controller
             $names_arr['Competition'] = 'App\CompetitionAspForeigner';
             $names_arr['PlanCompetition'] = 'App\PlanCompetitionAspForeigner';
             $names_arr['Plan'] = 'App\PlanAspForeigner';
+            $names_arr['Score'] = 'App\ScoreAspForeigner';
             $names_arr['Freeseats'] = 'App\Freeseats_basesAspForeigner';
             $names_arr['folder'] = 'aspf';
             $names_arr['date'] = 'stat_asp';
@@ -273,6 +283,7 @@ class StatisticController extends Controller
                 return view($names_arr['page'], ['studyForms' => $studyForms, 'faculties' => $faculties,
                     'studyFormsForInputs' => $studyFormsForInputs, 'actual_link' => $actual_link, 'date_update' => $date_update,
                     'files_xls' => $files_xls, 'notification_files' => $notification_files]);
+//                return $studyForms;
             } else {
                 if (isset($faculties) && isset($studyFormsForInputs)) {
                     if (($faculties->count() != 0) && ($studyFormsForInputs->count() != 0)) {
@@ -533,6 +544,33 @@ class StatisticController extends Controller
                                             }
                                             if ($temp->count()) {
                                                 $admissionBasis->abiturs = $temp; //добавляем запись
+                                                $arr_subs = array();
+                                                $arr_subs_en = array();
+                                                $str = '';
+                                                $str_en = '';
+                                                $change = false;
+                                                $subs = $names_arr['PlanCompScore']::where('id_plan_comp', '=', $id_plan_comps->id)->get();
+                                                foreach ($subs as $key => $sub){
+                                                    if($sub->changeable == 1 && !$change){
+                                                        $change = true;
+                                                        $str = $sub->subject->name . '/';
+                                                        $str_en = $sub->subject->en_name . '/';
+                                                    }
+                                                    else if($sub->changeable == 1 && $change){
+                                                        $str .= $sub->subject->name;
+                                                        $str_en .= $sub->subject->en_name;
+                                                        $arr_subs[] = $str;
+                                                        $arr_subs_en[] = $str_en;
+                                                    }
+                                                    else if($sub->subject->subjectId != '000000015'){
+                                                        $arr_subs[] = $sub->subject->name;
+                                                        $arr_subs_en[] = $sub->subject->en_name;
+                                                    }
+                                                }
+                                                $admissionBasis->subs = $arr_subs;
+                                                $admissionBasis->subs_en = $arr_subs_en;
+
+
 
                                                 $temp_stage = $temp->first();
 
@@ -810,6 +848,31 @@ class StatisticController extends Controller
                                             //обозначаем выбранного студента цветом
                                             if ($temp->count() && !$temp2->isEmpty()) {
                                                 $admissionBasis->abiturs = $temp; //записываем статистику в специальность
+                                                $arr_subs = array();
+                                                $arr_subs_en = array();
+                                                $str = '';
+                                                $str_en = '';
+                                                $change = false;
+                                                $subs = $names_arr['PlanCompScore']::where('id_plan_comp', '=', $id_plan_comps->id)->get();
+                                                foreach ($subs as $key => $sub){
+                                                    if($sub->changeable == 1 && !$change){
+                                                        $change = true;
+                                                        $str = $sub->subject->name . '/';
+                                                        $str_en = $sub->subject->en_name . '/';
+                                                    }
+                                                    else if($sub->changeable == 1 && $change){
+                                                        $str .= $sub->subject->name;
+                                                        $str_en .= $sub->subject->en_name;
+                                                        $arr_subs[] = $str;
+                                                        $arr_subs_en[] = $str_en;
+                                                    }
+                                                    else if($sub->subject->subjectId != '000000015'){
+                                                        $arr_subs[] = $sub->subject->name;
+                                                        $arr_subs_en[] = $sub->subject->en_name;
+                                                    }
+                                                }
+                                                $admissionBasis->subs = $arr_subs;
+                                                $admissionBasis->subs_en = $arr_subs_en;
 
                                                 $temp_stage = $temp->first();
                                                 $stage = $temp_stage->stage;
@@ -907,7 +970,10 @@ class StatisticController extends Controller
             ->groupBy('study_forms.id')->select('study_forms.*')->get();;
         $faculties = $this->fetchFaculties($names_arr);
 
+
         return $studyForms;
+
+
 
 
     }

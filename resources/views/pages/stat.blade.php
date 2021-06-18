@@ -468,14 +468,15 @@
                                                                                                     class="d-xl-none d-lg-inline d-inline">С</span>
                                                                                             </th>
                                                                                             <th class="d-lg-table-cell d-xl-table-cell d-md-table-cell d-sm-table-cell d-none"
-                                                                                                colspan="{{count($admissionBasis->abiturs->first()->score) + 1}}">
-                                                                                                @foreach($admissionBasis->abiturs->first()->score as $i => $sc)
-                                                                                                    @if($i < count($admissionBasis->abiturs->first()->score) -1)
-                                                                                                        <p class="m-0"> {{$sc->priority}}
-                                                                                                            ) {{$sc->subject->name}}</p>
+                                                                                                colspan="{{count($admissionBasis->subs) + 1}}">
+
+                                                                                                @foreach($admissionBasis->subs as $i => $sc)
+                                                                                                    @if($i < count($admissionBasis->subs) -1)
+                                                                                                        <p class="m-0"> {{$i+1}}
+                                                                                                            ) {{$sc}}</p>
                                                                                                     @else
-                                                                                                        <p class="m-0"> {{$sc->priority}}
-                                                                                                            ) {{$sc->subject->name}}</p>
+                                                                                                        <p class="m-0"> {{$i+1}}
+                                                                                                            ) {{$sc}}</p>
                                                                                                         <p class="m-0 d-xl-inline d-lg-none d-none">{{$i + 2}}
                                                                                                             ) Балл
                                                                                                             за
@@ -485,6 +486,7 @@
                                                                                                             ) БИД</p>
                                                                                                     @endif
                                                                                                 @endforeach
+
                                                                                             </th>
                                                                                             <th class="text-center d-xl-table-cell d-lg-none d-none"
                                                                                                 rowspan="2">Сумма
