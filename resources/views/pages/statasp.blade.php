@@ -209,7 +209,7 @@
                 <div class="col-12 mt-2 mb-2">
                     <div class="row">
                         <div class="col-md-10 col-9">
-                            <input class="form-control form-control-sm" type="search" placeholder="Поиск по ФИО"
+                            <input class="form-control form-control-sm" type="search" placeholder="Поиск по СНИЛС"
                                    aria-label="Search" name="fio">
                         </div>
                         <div class="col-md-2 col-3">
@@ -404,7 +404,7 @@
                                                                                         @foreach($admissionBasis->chosenStudents as $chosenStudent)
                                                                                             <div class="main-color h6">
                                                                                 <span
-                                                                                    class="font-weight-bold">{{$chosenStudent->fio}} </span>
+                                                                                    class="font-weight-bold">{{$chosenStudent->snils2}} </span>
                                                                                                 &mdash;
                                                                                                 <a class="main-color underline-label h6"
                                                                                                    href="#stud-{{$chosenStudent->id}}-{{$speciality->id}}">конкурсное
@@ -436,10 +436,9 @@
                                                                                             <th rowspan="2"
                                                                                                 class="text-center">
                                                                                 <span
-                                                                                    class="d-xl-table-cell d-lg-none d-none">Фамилия,
-                                                                                имя, отчество</span>
+                                                                                    class="d-xl-table-cell d-lg-none d-none">Номер СНИЛС</span>
                                                                                                 <span
-                                                                                                    class="d-xl-none d-lg-table-cell d-lg-table-cell">ФИО</span>
+                                                                                                    class="d-xl-none d-lg-table-cell d-lg-table-cell">СНИЛС</span>
                                                                                             </th>
                                                                                             {{--                                                                            <th rowspan="2" class="text-center">--}}
                                                                                             {{--                                                                                <span--}}
@@ -520,7 +519,7 @@
                                                                                                     @endif
                                                                                                     <td class="text-center">{{$k + 1}}</td>
                                                                                                     <td class="text-left"
-                                                                                                        id="stud-{{$abitur->student->id}}-{{$abitur->id_speciality}}">{{$abitur->student->fio}}</td>
+                                                                                                        id="stud-{{$abitur->student->id}}-{{$abitur->id_speciality}}">{{$abitur->student->snils2}}</td>
                                                                                                     {{--                                                                                    <td>--}}
                                                                                                     {{--                                                                                        @if($abitur->original)--}}
                                                                                                     {{--                                                                                            <i class="fa fa-check-circle"--}}
@@ -617,7 +616,7 @@
 
                 @else
                     @if(!isset($notification_green))
-                        <div class="text-center m-4 h4">Введите <b>ФИО</b> или выберите <b>факультет/институт</b> для
+                        <div class="text-center m-4 h4">Введите <b>СНИЛС</b> или выберите <b>факультет/институт</b> для
                             вывода списков поступающих
                         </div>
                     @endif
