@@ -17,7 +17,8 @@ class Kernel extends ConsoleKernel
         '\App\Console\Commands\FilesXlsDelete',
         '\App\Console\Commands\FilesContentDelete',
         '\App\Console\Commands\FilesPreviewDelete',
-        '\App\Console\Commands\DumperCommand'
+        '\App\Console\Commands\DumperCommand',
+        '\App\Console\Commands\ParsingLists'
     ];
 
     /**
@@ -33,8 +34,9 @@ class Kernel extends ConsoleKernel
         $schedule->command('filesContent:delete')->monthlyOn(6, '00:02');
         $schedule->command('filesPreview:delete')->monthlyOn(6, '00:04');
         $schedule->command('dumper:create')->daily();
-        // $schedule->command('inspire')
-        //          ->hourly();
+        //$schedule->command('parsing:begin')->dailyAt('17:00')->appendOutputTo(storage_path('app/logs/schedule_parse_log.txt'))->emailOutputTo('kirdyashkinaei@mrsu.ru');;
+
+
     }
 
     /**
