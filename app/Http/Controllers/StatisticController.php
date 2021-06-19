@@ -94,6 +94,7 @@ class StatisticController extends Controller
         $names_arr = array();
         if ($modelName == 'Statistic') {
             $names_arr['Statistic'] = 'App\Statistic';
+            $names_arr['Student'] = 'App\Student';
             $names_arr['Competition'] = 'App\Competition';
             $names_arr['PlanCompetition'] = 'App\PlanCompetition';
             $names_arr['PlanCompScore'] = 'App\PlanCompScore';
@@ -107,6 +108,7 @@ class StatisticController extends Controller
         }
         if ($modelName == 'StatisticMaster') {
             $names_arr['Statistic'] = 'App\StatisticMaster';
+            $names_arr['Student'] = 'App\StudentMaster';
             $names_arr['Competition'] = 'App\CompetitionMaster';
             $names_arr['PlanCompetition'] = 'App\PlanCompetitionMaster';
             $names_arr['PlanCompScore'] = 'App\PlanCompScoreMaster';
@@ -120,6 +122,7 @@ class StatisticController extends Controller
         }
         if ($modelName == 'StatisticAsp') {
             $names_arr['Statistic'] = 'App\StatisticAsp';
+            $names_arr['Student'] = 'App\StudentAsp';
             $names_arr['Competition'] = 'App\CompetitionAsp';
             $names_arr['PlanCompetition'] = 'App\PlanCompetitionAsp';
             $names_arr['PlanCompScore'] = 'App\PlanCompScoreAsp';
@@ -133,9 +136,9 @@ class StatisticController extends Controller
         }
         if ($modelName == 'StatisticSpo') {
             $names_arr['Statistic'] = 'App\StatisticSpo';
+            $names_arr['Student'] = 'App\StudentSpo';
             $names_arr['Competition'] = 'App\CompetitionSpo';
             $names_arr['PlanCompetition'] = 'App\PlanCompetitionSpo';
-
             $names_arr['PlanCompScore'] = 'App\PlanCompScoreSpo';
             $names_arr['Plan'] = 'App\PlanSpo';
             $names_arr['Score'] = 'App\ScoreSpo';
@@ -148,9 +151,9 @@ class StatisticController extends Controller
 
         if ($modelName == 'StatisticForeigner') {
             $names_arr['Statistic'] = 'App\StatisticForeigner';
+            $names_arr['Student'] = 'App\StudentForeigner';
             $names_arr['Competition'] = 'App\CompetitionForeigner';
             $names_arr['PlanCompetition'] = 'App\PlanCompetitionForeigner';
-
             $names_arr['PlanCompScore'] = 'App\PlanCompScoreForeigner';
             $names_arr['Plan'] = 'App\PlanForeigner';
             $names_arr['Score'] = 'App\ScoreForeigner';
@@ -162,10 +165,10 @@ class StatisticController extends Controller
         }
         if ($modelName == 'StatisticMasterForeigner') {
             $names_arr['Statistic'] = 'App\StatisticMasterForeigner';
+            $names_arr['Student'] = 'App\StudentMasterForeigner';
             $names_arr['Competition'] = 'App\CompetitionMasterForeigner';
             $names_arr['PlanCompetition'] = 'App\PlanCompetitionMasterForeigner';
             $names_arr['Plan'] = 'App\PlanMasterForeigner';
-
             $names_arr['PlanCompScore'] = 'App\PlanCompScoreMasterForeigner';
             $names_arr['Score'] = 'App\ScoreMasterForeigner';
             $names_arr['Freeseats'] = 'App\Freeseats_basesMasterForeigner';
@@ -176,9 +179,9 @@ class StatisticController extends Controller
         }
         if ($modelName == 'StatisticAspForeigner') {
             $names_arr['Statistic'] = 'App\StatisticAspForeigner';
+            $names_arr['Student'] = 'App\StudentAspForeigner';
             $names_arr['Competition'] = 'App\CompetitionAspForeigner';
             $names_arr['PlanCompetition'] = 'App\PlanCompetitionAspForeigner';
-
             $names_arr['PlanCompScore'] = 'App\PlanCompScoreAspForeigner';
             $names_arr['Plan'] = 'App\PlanAspForeigner';
             $names_arr['Score'] = 'App\ScoreAspForeigner';
@@ -661,7 +664,7 @@ class StatisticController extends Controller
 //СНИЛС
 //            $search_fio = preg_replace('/[^0-9]/', '', $search_fio); //удаляем все кроме цифр
 //            preg_replace('~\D+~','', $string);
-            $id_students = Student::where('fio', 'LIKE', '%' . $search_fio . '%') //ищем по полю без тире
+            $id_students = $names_arr['Student']::where('fio', 'LIKE', '%' . $search_fio . '%') //ищем по полю без тире
                 ->select('id', 'fio') //показываем форматированный
                 ->get();
 
