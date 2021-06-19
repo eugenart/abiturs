@@ -109,6 +109,7 @@ class StatisticController extends Controller
             $names_arr['Statistic'] = 'App\StatisticMaster';
             $names_arr['Competition'] = 'App\CompetitionMaster';
             $names_arr['PlanCompetition'] = 'App\PlanCompetitionMaster';
+            $names_arr['PlanCompScore'] = 'App\PlanCompScoreMaster';
             $names_arr['Plan'] = 'App\PlanMaster';
             $names_arr['Score'] = 'App\ScoreMaster';
             $names_arr['Freeseats'] = 'App\Freeseats_basesMaster';
@@ -121,6 +122,7 @@ class StatisticController extends Controller
             $names_arr['Statistic'] = 'App\StatisticAsp';
             $names_arr['Competition'] = 'App\CompetitionAsp';
             $names_arr['PlanCompetition'] = 'App\PlanCompetitionAsp';
+            $names_arr['PlanCompScore'] = 'App\PlanCompScoreAsp';
             $names_arr['Plan'] = 'App\PlanAsp';
             $names_arr['Score'] = 'App\ScoreAsp';
             $names_arr['Freeseats'] = 'App\Freeseats_basesAsp';
@@ -133,6 +135,8 @@ class StatisticController extends Controller
             $names_arr['Statistic'] = 'App\StatisticSpo';
             $names_arr['Competition'] = 'App\CompetitionSpo';
             $names_arr['PlanCompetition'] = 'App\PlanCompetitionSpo';
+
+            $names_arr['PlanCompScore'] = 'App\PlanCompScoreSpo';
             $names_arr['Plan'] = 'App\PlanSpo';
             $names_arr['Score'] = 'App\ScoreSpo';
             $names_arr['Freeseats'] = 'App\Freeseats_basesSpo';
@@ -146,6 +150,8 @@ class StatisticController extends Controller
             $names_arr['Statistic'] = 'App\StatisticForeigner';
             $names_arr['Competition'] = 'App\CompetitionForeigner';
             $names_arr['PlanCompetition'] = 'App\PlanCompetitionForeigner';
+
+            $names_arr['PlanCompScore'] = 'App\PlanCompScoreForeigner';
             $names_arr['Plan'] = 'App\PlanForeigner';
             $names_arr['Score'] = 'App\ScoreForeigner';
             $names_arr['Freeseats'] = 'App\Freeseats_basesForeigner';
@@ -160,6 +166,7 @@ class StatisticController extends Controller
             $names_arr['PlanCompetition'] = 'App\PlanCompetitionMasterForeigner';
             $names_arr['Plan'] = 'App\PlanMasterForeigner';
 
+            $names_arr['PlanCompScore'] = 'App\PlanCompScoreMasterForeigner';
             $names_arr['Score'] = 'App\ScoreMasterForeigner';
             $names_arr['Freeseats'] = 'App\Freeseats_basesMasterForeigner';
             $names_arr['folder'] = 'masterf';
@@ -171,6 +178,8 @@ class StatisticController extends Controller
             $names_arr['Statistic'] = 'App\StatisticAspForeigner';
             $names_arr['Competition'] = 'App\CompetitionAspForeigner';
             $names_arr['PlanCompetition'] = 'App\PlanCompetitionAspForeigner';
+
+            $names_arr['PlanCompScore'] = 'App\PlanCompScoreAspForeigner';
             $names_arr['Plan'] = 'App\PlanAspForeigner';
             $names_arr['Score'] = 'App\ScoreAspForeigner';
             $names_arr['Freeseats'] = 'App\Freeseats_basesAspForeigner';
