@@ -659,11 +659,13 @@
                         templateRecipient += "<p class='mb-0 ml-lg-5 ml-xl-5 ml-md-5 ml-sm-3 ml-lg-0 ml-md-2 ml-3 text-left'><span>" + price_info + " - </span><b>" + price.price + str_price + "</b></p>"
                     }
                 })
-                if(locale === 'ru') {
-                    templateRecipient += "<p class='mb-0 ml-lg-5 ml-xl-5 ml-md-5 ml-sm-3 ml-lg-0 ml-md-2 ml-3 text-left'><a class='text-white' style='text-decoration:underline;' href='{{url('/Bakalavriat-i-spetsialitet-2020-Stoimosti-obucheniya')}}'>Стоимость обучения за 2020 год</a></p>";
-                }
-                if(locale === 'en') {
-                    templateRecipient += "<p class='mb-0 ml-lg-5 ml-xl-5 ml-md-5 ml-sm-3 ml-lg-0 ml-md-2 ml-3 text-left'><a class='text-white' style='text-decoration:underline;' href='{{url('/Bakalavriat-i-spetsialitet-2020-Stoimosti-obucheniya')}}'>Tuition fee for 2020</a></p>";
+                if(v.prices.length === 0) {
+                    if (locale === 'ru') {
+                        templateRecipient += "<p class='mb-0 ml-lg-5 ml-xl-5 ml-md-5 ml-sm-3 ml-lg-0 ml-md-2 ml-3 text-left'><a class='text-white' style='text-decoration:underline;' href='{{url('/Bakalavriat-i-spetsialitet-2020-Stoimosti-obucheniya')}}'>Стоимость обучения за 2020 год</a></p>";
+                    }
+                    if (locale === 'en') {
+                        templateRecipient += "<p class='mb-0 ml-lg-5 ml-xl-5 ml-md-5 ml-sm-3 ml-lg-0 ml-md-2 ml-3 text-left'><a class='text-white' style='text-decoration:underline;' href='{{url('/Bakalavriat-i-spetsialitet-2020-Stoimosti-obucheniya')}}'>Tuition fee for 2020</a></p>";
+                    }
                 }
                 templateRecipient += "</div></div><div class='col-12'><hr class='w-100 bg-white' /></div>";
 
