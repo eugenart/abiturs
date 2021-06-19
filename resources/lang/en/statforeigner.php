@@ -10,7 +10,7 @@ return [
     'form_spec' => 'Direction / Speciality',
     'form_st_form' => 'Mode of study',
     'form_cancel' => 'Cancel option',
-    'form_fio' => 'Search by Id number',
+    'form_fio' => 'Search by Full name',
     'form_search' => 'Search',
 
     'files_title1' => 'Lists in the format .xls',
@@ -47,8 +47,8 @@ return [
     'save_params' => 'Save request parameters on your mobile device',
     'seat_cont' => 'position in contest',
 
-    'fio_full' => 'Id number',
-    'fio_cut' => 'Id number',
+    'fio_full' => 'Full name',
+    'fio_cut' => 'Full name',
     'accept_full' => 'Consent',
     'accept_cut' => 'С',
     'ind_ach' => ') Individual achievement score',

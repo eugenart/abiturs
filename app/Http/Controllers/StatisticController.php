@@ -650,10 +650,10 @@ class StatisticController extends Controller
         if (isset($search_fio)) {
             //выбираем всех студентов подходящих по фио
 //СНИЛС
-            $search_fio = preg_replace('/[^0-9]/', '', $search_fio); //удаляем все кроме цифр
+//            $search_fio = preg_replace('/[^0-9]/', '', $search_fio); //удаляем все кроме цифр
 //            preg_replace('~\D+~','', $string);
-            $id_students = Student::where('snils', 'LIKE', '%' . $search_fio . '%') //ищем по полю без тире
-                ->select('id', 'snils2') //показываем форматированный
+            $id_students = Student::where('fio', 'LIKE', '%' . $search_fio . '%') //ищем по полю без тире
+                ->select('id', 'fio') //показываем форматированный
                 ->get();
 
 

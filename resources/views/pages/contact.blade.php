@@ -37,7 +37,7 @@
                                         {{ trans('contacts.tel_kov') }} <br>
                                         <a class='main-color' href="tel:88345342910">8 (8345) 34-29-10</a>
                                         <br>
-                                        {{ trans('contacts.tel_paid') }}<br>
+                                      {{--  {{ trans('contacts.tel_paid') }}<br>
                                         <a class='main-color' href="tel:88342244804">8 (8342) 24-48-04</a>
                                         <br>
                                         <a class='main-color' href="tel:88342233381">8 (8342) 23-33-81</a>
@@ -52,7 +52,7 @@
                                         <br>
                                         <a class='main-color' href="tel:88342270723">8 (8342) 27-07-23</a>
                                         <br>
-                                        <a class='main-color' href="tel:88342270725">8 (8342) 27-07-25</a>
+                                        <a class='main-color' href="tel:88342270725">8 (8342) 27-07-25</a>--}}
                                     </td>
                                 </tr>
                             @endif
