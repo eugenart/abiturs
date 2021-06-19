@@ -1120,8 +1120,11 @@
                         templateRecipient += "<p class='mb-0 ml-lg-5 ml-xl-5 ml-md-5 ml-sm-3 ml-lg-0 ml-md-2 ml-3 text-left'><span>" + price.info + " - </span><b>" + price.price + " ₽/год</b></p>"
                     }
                 })
-                templateRecipient += "<p class='mb-0 ml-lg-5 ml-xl-5 ml-md-5 ml-sm-3 ml-lg-0 ml-md-2 ml-3 text-left'><a class='text-white' style='text-decoration:underline;' href='{{url('/Bakalavriat-i-spetsialitet-2020-Stoimosti-obucheniya')}}'>Стоимость обучения за 2020 год</a></p>";
-                templateRecipient += "</div></div><div class='col-12'><hr class='w-100 bg-white' /></div>";
+
+                if(v.prices.length === 0) {
+                    templateRecipient += "<p class='mb-0 ml-lg-5 ml-xl-5 ml-md-5 ml-sm-3 ml-lg-0 ml-md-2 ml-3 text-left'><a class='text-white' style='text-decoration:underline;' href='{{url('/Bakalavriat-i-spetsialitet-2020-Stoimosti-obucheniya')}}'>Стоимость обучения за 2020 год</a></p>";
+                }
+                    templateRecipient += "</div></div><div class='col-12'><hr class='w-100 bg-white' /></div>";
 
 
                 modal.find('#forms').append(templateRecipient)
