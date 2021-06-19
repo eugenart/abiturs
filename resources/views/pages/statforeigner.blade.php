@@ -446,13 +446,13 @@
                                                                                             <div class="main-color h6">
                                                                                                 @if(trans('layout.locale')=='ru')
                                                                                                     <span
-                                                                                                        class="font-weight-bold">{{$chosenStudent->snils2}} </span>
+                                                                                                        class="font-weight-bold">{{$chosenStudent->fio}} </span>
                                                                                                     @endif
                                                                                                     @if(trans('layout.locale')=='en')
-{{--                                                                                                    @if(is_null($chosenStudent->fio_en) || ctype_space($chosenStudent->fio_en) || $chosenStudent->fio_en == '')--}}
-                                                                                                    {{$chosenStudent->snils2}}
-{{--                                                                                                    @endif--}}
-{{--                                                                                                    {{$chosenStudent->fio_en}}--}}
+                                                                                                    @if(is_null($chosenStudent->fio_en) || ctype_space($chosenStudent->fio_en) || $chosenStudent->fio_en == '')
+                                                                                                    {{$chosenStudent->fio}}
+                                                                                                    @endif
+                                                                                                    {{$chosenStudent->fio_en}}
                                                                                                     @endif
 
                                                                                                     &mdash;
@@ -579,13 +579,13 @@
                                                                                                     <td class="text-left"
                                                                                                         id="stud-{{$abitur->student->id}}-{{$abitur->id_speciality}}">
                                                                                                         @if(trans('layout.locale')=='ru')
-                                                                                                            {{$abitur->student->snils2}}
+                                                                                                            {{$abitur->student->fio}}
                                                                                                         @endif
                                                                                                         @if(trans('layout.locale')=='en')
-{{--                                                                                                            @if(is_null($abitur->student->fio_en) || ctype_space($abitur->student->fio_en) || $abitur->student->fio_en == '')--}}
-                                                                                                                {{$abitur->student->snils2}}
-{{--                                                                                                            @endif--}}
-{{--                                                                                                            {{$abitur->student->fio_en}}--}}
+                                                                                                            @if(is_null($abitur->student->fio_en) || ctype_space($abitur->student->fio_en) || $abitur->student->fio_en == '')
+                                                                                                                {{$abitur->student->fio}}
+                                                                                                            @endif
+                                                                                                            {{$abitur->student->fio_en}}
                                                                                                         @endif
 
                                                                                                     </td>
