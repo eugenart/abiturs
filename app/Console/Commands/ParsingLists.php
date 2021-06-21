@@ -55,39 +55,30 @@ class ParsingLists extends Command
             //загрузить новые файлы с сервера
             $param = "stat_bach";
             $res = $this->download_file($directory, "stat_bach.json");
+            $this->date_update($param); //обновляем после загрузки файла не смотря ни на что
             if ($res === 0) {
                 $result = $this->parseStatBachAll();
-                if ($result) {
-                    $this->date_update($param);
-                }
             }
-
 
             $param = "stat_master";
             $res = $this->download_file($directory, "stat_master.json");
+            $this->date_update($param);
             if ($res === 0) {
                 $result = $this->parseStatMasterAll();
-                if ($result) {
-                    $this->date_update($param);
-                }
             }
 
             $param = "stat_asp";
             $res = $this->download_file($directory, "stat_asp.json");
+            $this->date_update($param);
             if ($res === 0) {
                 $result = $this->parseStatAspAll();
-                if ($result) {
-                    $this->date_update($param);
-                }
             }
 
             $param = "stat_spo";
             $res = $this->download_file($directory, "stat_spo.json");
+            $this->date_update($param);
             if ($res === 0) {
                 $result = $this->parseStatSpoAll();
-                if ($result) {
-                    $this->date_update($param);
-                }
             }
             unlink(storage_path('app/public/files/statistics/lighthouse.json')); //удаляем файл у себя
             return 1; //возвращаем 1 не потому что ошибка а чтобы работал метод emailOutputOnFailure
