@@ -44,44 +44,52 @@ class ParsingLists extends Command
      */
     public function handle()
     {
-        //загрузить новые файлы с сервера
         $directory = "statistics";
 
-        $param = "stat_bach";
-        $res = $this->download_file($directory, "stat_bach.json");
-        if ($res === 0) {
-            $result = $this->parseStatBachAll();
-            if ($result) {
-                $this->date_update($param);
+        //проверить есть ли файл проверка
+        $res_check = $this->download_file($directory, "lighthouse.json");
+
+        if($res_check === 0) {
+
+            //загрузить новые файлы с сервера
+            $param = "stat_bach";
+            $res = $this->download_file($directory, "stat_bach.json");
+            if ($res === 0) {
+                $result = $this->parseStatBachAll();
+                if ($result) {
+                    $this->date_update($param);
+                }
             }
-        }
 
 
-        $param = "stat_master";
-        $res = $this->download_file($directory, "stat_master.json");
-        if ($res === 0) {
-            $result = $this->parseStatMasterAll();
-            if ($result) {
-                $this->date_update($param);
+            $param = "stat_master";
+            $res = $this->download_file($directory, "stat_master.json");
+            if ($res === 0) {
+                $result = $this->parseStatMasterAll();
+                if ($result) {
+                    $this->date_update($param);
+                }
             }
-        }
 
-        $param = "stat_asp";
-        $res = $this->download_file($directory, "stat_asp.json");
-        if ($res === 0) {
-            $result = $this->parseStatAspAll();
-            if ($result) {
-                $this->date_update($param);
+            $param = "stat_asp";
+            $res = $this->download_file($directory, "stat_asp.json");
+            if ($res === 0) {
+                $result = $this->parseStatAspAll();
+                if ($result) {
+                    $this->date_update($param);
+                }
             }
-        }
 
-        $param = "stat_spo";
-        $res = $this->download_file($directory, "stat_spo.json");
-        if ($res === 0) {
-            $result = $this->parseStatSpoAll();
-            if ($result) {
-                $this->date_update($param);
+            $param = "stat_spo";
+            $res = $this->download_file($directory, "stat_spo.json");
+            if ($res === 0) {
+                $result = $this->parseStatSpoAll();
+                if ($result) {
+                    $this->date_update($param);
+                }
             }
+            unlink(storage_path('app/public/files/statistics/lighthouse.json')); //удаляем файл у себя
+
         }
 
     }
@@ -99,7 +107,11 @@ class ParsingLists extends Command
                 $date_update->date_update = Carbon::create($t->year, $t->month, $t->day, $t->hour, $t->minute, 00);
             }
             $user = User::where('id', '=', Auth::id())->first();
-            $date_update->username = $user->name;
+            if($user != NULL) {
+                $date_update->username = $user->name;
+            }else{
+                $date_update->username = 'schedule';
+            }
             $date_update->save();
         }else{
             $date_update = new DateUpdate;
@@ -113,7 +125,11 @@ class ParsingLists extends Command
                 $date_update->date_update = Carbon::create($t->year, $t->month, $t->day, $t->hour, $t->minute, 00);
             }
             $user = User::where('id', '=', Auth::id())->first();
-            $date_update->username = $user->name;
+            if($user != NULL) {
+                $date_update->username = $user->name;
+            }else{
+                $date_update->username = 'schedule';
+            }
             $date_update->save();
         }
         echo 'Дата обновления изменена \n';
@@ -222,6 +238,9 @@ class ParsingLists extends Command
                             && md5_file($remote_file_path) == md5_file($local_file_path)) {
                             fwrite($logs,  " Файл " . $file . " успешно загружен.\n");
                             echo "Файл " . $file . " успешно загружен.\n";
+                            if($file_name == 'lighthouse.json'){
+                                unlink($remote_file_path);
+                            }
                             fclose($local);
                             fclose($remote);
                             fclose($logs);
@@ -267,6 +286,9 @@ class ParsingLists extends Command
                         fwrite($logs, " Файл " . $file . " успешно загружен.\n" );
                         fclose($logs);
                         echo "Файл " . $file . " успешно загружен.\n";
+                        if($file_name == 'lighthouse.json'){
+                            unlink($remote_file_path);
+                        }
                         fclose($local);
                         fclose($remote);
                         return 0;
