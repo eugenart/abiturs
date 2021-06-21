@@ -507,19 +507,15 @@
                                                                                                 @foreach($admissionBasis->subs as $i => $sc)
                                                                                                     @if($i < count($admissionBasis->subs) -1)
                                                                                                         <p class="m-0"> {{$i+1}}
-                                                                                                            @if(trans('layout.locale')=='ru')
-                                                                                                                ) {{$sc}}</p>
+                                                                                                            @if(trans('layout.locale')=='ru')) {{$sc}}</p>
                                                                                                     @endif
-                                                                                                    @if(trans('layout.locale')=='en')
-                                                                                                        ) {{$admissionBasis->subs_en[$i]}}</p>
+                                                                                                    @if(trans('layout.locale')=='en')) {{$admissionBasis->subs_en[$i]}}</p>
                                                                                                     @endif
                                                                                                     @else
                                                                                                         <p class="m-0"> {{$i+1}}
-                                                                                                            @if(trans('layout.locale')=='ru')
-                                                                                                                ) {{$sc}}</p>
+                                                                                                            @if(trans('layout.locale')=='ru')) {{$sc}}</p>
                                                                                                     @endif
-                                                                                                    @if(trans('layout.locale')=='en')
-                                                                                                        ) {{$admissionBasis->subs_en[$i]}}</p>
+                                                                                                    @if(trans('layout.locale')=='en')) {{$admissionBasis->subs_en[$i]}}</p>
                                                                                                     @endif
                                                                                                     <p class="m-0 d-xl-inline d-lg-none d-none">{{$i + 2}}
                                                                                                         {{trans('statforeigner.ind_ach')}}</p>

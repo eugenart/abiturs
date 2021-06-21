@@ -472,18 +472,14 @@
 
                                                                                                 @foreach($admissionBasis->subs as $i => $sc)
                                                                                                     @if($i < count($admissionBasis->subs) -1)
-                                                                                                        <p class="m-0"> {{$i+1}}
-                                                                                                            ) {{$sc}}</p>
+                                                                                                        <p class="m-0"> {{$i+1}}) {{$sc}}</p>
                                                                                                     @else
-                                                                                                        <p class="m-0"> {{$i+1}}
-                                                                                                            ) {{$sc}}</p>
-                                                                                                        <p class="m-0 d-xl-inline d-lg-none d-none">{{$i + 2}}
-                                                                                                            ) Балл
+                                                                                                        <p class="m-0"> {{$i+1}}) {{$sc}}</p>
+                                                                                                        <p class="m-0 d-xl-inline d-lg-none d-none">{{$i + 2}}) Балл
                                                                                                             за
                                                                                                             индивидуальные
                                                                                                             достижения</p>
-                                                                                                        <p class="m-0 d-xl-none d-lg-inline d-inline">{{$i + 2}}
-                                                                                                            ) БИД</p>
+                                                                                                        <p class="m-0 d-xl-none d-lg-inline d-inline">{{$i + 2}}) БИД</p>
                                                                                                     @endif
                                                                                                 @endforeach
 
