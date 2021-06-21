@@ -45,13 +45,13 @@ class ParsingLists extends Command
     public function handle()
     {
         $directory = "statistics";
-        echo PHP_EOL . date("Y-m-d H:i:s ") . PHP_EOL;
+
 
         //проверить есть ли файл проверка
         $res_check = $this->download_file($directory, "lighthouse.json");
 
         if($res_check === 0) {
-
+            echo PHP_EOL . date("Y-m-d H:i:s ") . PHP_EOL;
             //загрузить новые файлы с сервера
             $param = "stat_bach";
             $res = $this->download_file($directory, "stat_bach.json");
