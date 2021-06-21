@@ -45,6 +45,7 @@ class ParsingLists extends Command
     public function handle()
     {
         $directory = "statistics";
+        echo PHP_EOL . date("Y-m-d H:i:s ") . PHP_EOL;
 
         //проверить есть ли файл проверка
         $res_check = $this->download_file($directory, "lighthouse.json");
@@ -132,7 +133,7 @@ class ParsingLists extends Command
             }
             $date_update->save();
         }
-        echo 'Дата обновления изменена \n';
+        echo 'Дата обновления изменена'. PHP_EOL;
     }
 
     public function download_file($directory, $file_name, $catalog = false)
@@ -146,35 +147,35 @@ class ParsingLists extends Command
         $localDir = storage_path('app/public/files/') . $directory;
 
         $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
-        fwrite($logs, date("Y-m-d H:i:s "));
+        fwrite($logs, PHP_EOL . date("Y-m-d H:i:s ") . PHP_EOL);
         fwrite($logs, $file_name);
 
         if (!function_exists("ssh2_connect")) {
-            fwrite($logs, ' Функция ssh2_connect не найдена');
+            fwrite($logs, ' Функция ssh2_connect не найдена'.PHP_EOL);
             fclose($logs);
             die('Функция ssh2_connect не найдена');
         }
 
         if (!$connection = ssh2_connect($host, $port)) {
-            fwrite($logs, ' Невозможно произвести соединение');
+            fwrite($logs, ' Невозможно произвести соединение'.PHP_EOL);
             fclose($logs);
             die('Невозможно произвести соединение');
         }
 
         if (!ssh2_auth_password($connection, $username, $password)) {
-            fwrite($logs, ' Невозможно авторизоваться');
+            fwrite($logs, ' Невозможно авторизоваться'.PHP_EOL);
             fclose($logs);
             die('Невозможно авторизоваться');
         }
 
         if (!$stream = ssh2_sftp($connection)) {
-            fwrite($logs, ' Невозможно создать поток соединения');
+            fwrite($logs, ' Невозможно создать поток соединения'.PHP_EOL);
             fclose($logs);
             die('Невозможно создать поток соединения');
         }
 
         if (!$dir = scandir("ssh2.sftp://{$stream}{$remoteDir}")){
-            fwrite($logs, ' Невозможно открыть директорию');
+            fwrite($logs, ' Невозможно открыть директорию'.PHP_EOL);
             fclose($logs);
             die('Невозможно открыть директорию');
         }
@@ -202,22 +203,22 @@ class ParsingLists extends Command
             if (file_exists($remote_file_path) && file_exists($local_file_path)) {
                 if (filesize($remote_file_path) == filesize($local_file_path)
                     && md5_file($remote_file_path) == md5_file($local_file_path)) {
-                    fwrite($logs,  " Файлы " . $file . " совпадают.\n");
+                    fwrite($logs,  " Файлы " . $file . " совпадают.".PHP_EOL);
                     fclose($logs);
-                    echo "Файлы " . $file . " совпадают.\n";
+                    echo "Файлы " . $file . " совпадают." . PHP_EOL;
                     return 2;
                 } else {
                     if (!$remote = @fopen("ssh2.sftp://{$stream}/{$remoteDir}/{$file}", 'r')) {
-                        fwrite($logs,  " Невозможно открыть файл на удаленном сервере: $file\n");
+                        fwrite($logs,  " Невозможно открыть файл на удаленном сервере: $file".PHP_EOL);
                         fclose($logs);
                         die("Невозможно открыть файл на удаленном сервере: $file\n");
                     }
 
                     if (!$local = @fopen($localDir . '/' . $local_file, 'w')) {
                         fclose($remote);
-                        fwrite($logs,  " Невозможно создать файл на локальном сервере: $file\n");
+                        fwrite($logs,  " Невозможно создать файл на локальном сервере: $file".PHP_EOL);
                         fclose($logs);
-                        die("Невозможно создать файл на локальном сервере: $file\n");
+                        die("Невозможно создать файл на локальном сервере: $file".PHP_EOL);
                     }
                     $read = 0;
 
@@ -225,8 +226,8 @@ class ParsingLists extends Command
                     while ($read < $filesize && ($buffer = fread($remote, $filesize - $read))) {
                         $read += strlen($buffer);
                         if (fwrite($local, $buffer) === FALSE) {
-                            fwrite($logs,  " Невозможно записать локальный файл: $file\n");
-                            echo "Невозможно записать локальный файл: $file\n";
+                            fwrite($logs,  " Невозможно записать локальный файл: $file".PHP_EOL);
+                            echo "Невозможно записать локальный файл: $file" . PHP_EOL;
                             fclose($local);
                             fclose($remote);
                             fclose($logs);
@@ -236,8 +237,8 @@ class ParsingLists extends Command
                     if (file_exists($remote_file_path) && file_exists($local_file_path)) {
                         if (filesize($remote_file_path) == filesize($local_file_path)
                             && md5_file($remote_file_path) == md5_file($local_file_path)) {
-                            fwrite($logs,  " Файл " . $file . " успешно загружен.\n");
-                            echo "Файл " . $file . " успешно загружен.\n";
+                            fwrite($logs,  " Файл " . $file . " успешно загружен.".PHP_EOL);
+                            echo "Файл " . $file . " успешно загружен." . PHP_EOL;
                             if($file_name == 'lighthouse.json'){
                                 unlink($remote_file_path);
                             }
@@ -256,14 +257,14 @@ class ParsingLists extends Command
                 }
             } elseif (file_exists($remote_file_path) && !file_exists($local_file_path)) {
                 if (!$remote = @fopen("ssh2.sftp://{$stream}/{$remoteDir}/{$file}", 'r')) {
-                    fwrite($logs,  " Невозможно открыть файл на удаленном сервере: $file\n");
+                    fwrite($logs,  " Невозможно открыть файл на удаленном сервере: $file".PHP_EOL);
                     fclose($logs);
                     die("Невозможно открыть файл на удаленном сервере: $file\n");
                 }
 
                 if (!$local = @fopen($localDir . '/' . $local_file, 'w')) {
                     fclose($remote);
-                    fwrite($logs,  " Невозможно создать файл на локальном сервере: $file\n");
+                    fwrite($logs,  " Невозможно создать файл на локальном сервере: $file".PHP_EOL);
                     fclose($logs);
                     die("Невозможно создать файл на локальном сервере: $file\n");
                 }
@@ -272,8 +273,8 @@ class ParsingLists extends Command
                 while ($read < $filesize && ($buffer = fread($remote, $filesize - $read))) {
                     $read += strlen($buffer);
                     if (fwrite($local, $buffer) === FALSE) {
-                        fwrite($logs, " Невозможно записать локальный файл: $file\n" );
-                        echo "Невозможно записать локальный файл: $file\n";
+                        fwrite($logs, " Невозможно записать локальный файл: $file".PHP_EOL );
+                        echo "Невозможно записать локальный файл: $file" . PHP_EOL;
                         fclose($local);
                         fclose($remote);
                         fclose($logs);
@@ -283,9 +284,9 @@ class ParsingLists extends Command
                 if (file_exists($remote_file_path) && file_exists($local_file_path)) {
                     if (filesize($remote_file_path) == filesize($local_file_path)
                         && md5_file($remote_file_path) == md5_file($local_file_path)) {
-                        fwrite($logs, " Файл " . $file . " успешно загружен.\n" );
+                        fwrite($logs, " Файл " . $file . " успешно загружен.".PHP_EOL );
                         fclose($logs);
-                        echo "Файл " . $file . " успешно загружен.\n";
+                        echo "Файл " . $file . " успешно загружен." . PHP_EOL;
                         if($file_name == 'lighthouse.json'){
                             unlink($remote_file_path);
                         }
@@ -301,8 +302,8 @@ class ParsingLists extends Command
                 }
             }
         } else {
-            fwrite($logs, " Файл " . $file_name . " отсутвует на удаленном сервере");
-            echo "Файл " . $file_name . " отсутвует на удаленном сервере";
+            fwrite($logs, " Файл " . $file_name . " отсутвует на удаленном сервере". PHP_EOL);
+            echo "Файл " . $file_name . " отсутвует на удаленном сервере" . PHP_EOL;
             fclose($logs);
             return 1;
         }

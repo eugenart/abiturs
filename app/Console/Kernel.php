@@ -34,7 +34,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('filesContent:delete')->monthlyOn(6, '00:02');
         $schedule->command('filesPreview:delete')->monthlyOn(6, '00:04');
         $schedule->command('dumper:create')->daily();
-        $schedule->command('parsing:begin')->everyFiveMinutes()->appendOutputTo(storage_path('app/logs/schedule_parse_log.txt'));
+        $schedule->command('parsing:begin')->everyFiveMinutes()->appendOutputTo(storage_path() .'/app/public/logs/schedule_parse_log.log');
 
 
     }
