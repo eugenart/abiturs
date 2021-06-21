@@ -305,17 +305,26 @@ class StatisticController extends Controller
                     } else {
                         $faculties = collect(new Faculty);
                         $studyFormsForInputs = collect(new StudyForm);
-                        $notification = trans('statforeigner.notification_green');
-//CHANGE
 
+//на время пока аспирантуры нет
+                        if($names_arr['page'] == 'pages.statasp' || $names_arr['page'] == 'pages.stataspforeigner'){
+                            $notification = trans('statforeigner.notification_green_asp');
+                        }else{
+                            $notification = trans('statforeigner.notification_green');
+                        }
                         return view($names_arr['page'], ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs,
                             'notification_green' => $notification]);
                     }
                 } else {
                     $faculties = collect(new Faculty);
                     $studyFormsForInputs = collect(new StudyForm);
-                    $notification = trans('statforeigner.notification_green');
-//CHANGE
+
+//на время пока аспирантуры нет
+                    if($names_arr['page'] == 'pages.statasp' || $names_arr['page'] == 'pages.stataspforeigner'){
+                        $notification = trans('statforeigner.notification_green_asp');
+                    }else{
+                        $notification = trans('statforeigner.notification_green');
+                    }
                     return view($names_arr['page'], ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs,
                         'notification_green' => $notification]);
                 }
@@ -333,7 +342,11 @@ class StatisticController extends Controller
                 } else {
                     $faculties = collect(new Faculty);
                     $studyFormsForInputs = collect(new StudyForm);
-                    $notification = trans('statforeigner.notification_green');
+                    if($names_arr['page'] == 'pages.statasp' || $names_arr['page'] == 'pages.stataspforeigner'){
+                        $notification = trans('statforeigner.notification_green_asp');
+                    }else{
+                        $notification = trans('statforeigner.notification_green');
+                    }
 //CHANGE
                     return view($names_arr['page'], ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs,
                         'notification_green' => $notification]);
@@ -341,7 +354,11 @@ class StatisticController extends Controller
             } else {
                 $faculties = collect(new Faculty);
                 $studyFormsForInputs = collect(new StudyForm);
-                $notification = trans('statforeigner.notification_green');
+                if($names_arr['page'] == 'pages.statasp' || $names_arr['page'] == 'pages.stataspforeigner'){
+                    $notification = trans('statforeigner.notification_green_asp');
+                }else{
+                    $notification = trans('statforeigner.notification_green');
+                }
 //CHANGE
                 return view($names_arr['page'], ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs,
                     'notification_green' => $notification]);
