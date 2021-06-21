@@ -30,11 +30,11 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
 //        $schedule->command('filesxls:delete')->cron('0 */2 * * *'); // every 2 hours
-        $schedule->command('filesxls:delete')->hourly();
-        $schedule->command('filesContent:delete')->monthlyOn(6, '00:02');
-        $schedule->command('filesPreview:delete')->monthlyOn(6, '00:04');
-        $schedule->command('dumper:create')->daily();
-        $schedule->command('parsing:begin')->everyFiveMinutes()->sendOutputTo(storage_path() .'/app/public/logs/schedule_parse_log.log')->emailOutputTo('kirdyashkinaei@mrsu.ru');
+        $schedule->command('filesxls:delete')->hourly()->appendOutputTo(storage_path() .'/app/public/logs/schedule_log.log');
+        $schedule->command('filesContent:delete')->monthlyOn(6, '00:02')->appendOutputTo(storage_path() .'/app/public/logs/schedule_log.log');
+        $schedule->command('filesPreview:delete')->monthlyOn(6, '00:04')->appendOutputTo(storage_path() .'/app/public/logs/schedule_log.log');
+        $schedule->command('dumper:create')->daily()->appendOutputTo(storage_path() .'/app/public/logs/schedule_log.log');
+        $schedule->command('parsing:begin')->everyFiveMinutes()->sendOutputTo(storage_path() .'/app/public/logs/schedule_parse_log.log')->emailOutputOnFailure('kirdyashkinaei@mrsu.ru');
 
 
     }
