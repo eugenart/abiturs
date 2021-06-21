@@ -520,14 +520,9 @@
                                                                                                 @foreach($admissionBasis->abiturs->first()->score as $i => $sc)
                                                                                                     @if($i < count($admissionBasis->abiturs->first()->score) -1)
                                                                                                         <p class="m-0"> {{$sc->priority}}
-
-
-
-                                                                                                            @if(trans('layout.locale')=='ru')
-                                                                                                                ) {{$sc->subject->name}}</p>
+                                                                                                            @if(trans('layout.locale')=='ru')) {{$sc->subject->name}}</p>
                                                                                                     @endif
-                                                                                                    @if(trans('layout.locale')=='en')
-                                                                                                        ) {{$sc->subject->en_name}}</p>
+                                                                                                    @if(trans('layout.locale')=='en')) {{$sc->subject->en_name}}</p>
                                                                                                     @endif
                                                                                                     @else
                                                                                                         <p class="m-0"> {{$sc->priority}}
