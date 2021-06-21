@@ -303,7 +303,7 @@ class ParsingLists extends Command
             }
         } else {
             fwrite($logs, " Файл " . $file_name . " отсутвует на удаленном сервере". PHP_EOL);
-            echo "Файл " . $file_name . " отсутвует на удаленном сервере" . PHP_EOL;
+//            echo "Файл " . $file_name . " отсутвует на удаленном сервере" . PHP_EOL;
             fclose($logs);
             return 1;
         }
