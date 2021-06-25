@@ -81,7 +81,7 @@
 
                     <div class="column">
                         <div class="logo">
-                            <a href="/" class="logo">
+                            <a href="https://mrsu.ru/" class="logo">
                                 <div class="logo-img">
                                     <img src="{{asset('storage/images/mrsu2021/logo_without_border.png')}}"  class="mrsu-logo-img" alt="">
 
