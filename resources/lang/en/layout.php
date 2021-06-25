@@ -78,6 +78,7 @@ return [
     'i3' => 'Conditions of admission',
     'i4' => 'Health insurance for international students',
     'i5' => 'International foundations for scholarships and grants',
+    'i6' => 'Participation in Associations',
 
     // student
     'st1' => 'Living conditions',

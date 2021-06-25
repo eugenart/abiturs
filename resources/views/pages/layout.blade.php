@@ -256,6 +256,7 @@
                                                             <li><a href="https://mrsu.ru/ru/international/projects/">{{ trans('layout.i2') }}</a></li>
                                                             <li><a href="https://abiturs.mrsu.ru/Inostrannim-abiturientam">{{ trans('layout.i3') }}</a></li>
                                                             <li><a href="https://mrsu.ru/ru/international/insurance/">{{ trans('layout.i4') }}</a></li>
+                                                            <li><a href="https://mrsu.ru/ru/international/assoc/">{{ trans('layout.i6') }}</a></li>
 {{--                                                            <li><a href="https://mrsu.ru/ru/international/grants/">{{ trans('layout.i5') }}</a></li>--}}
                                                         </ul>
                                                     </li>
