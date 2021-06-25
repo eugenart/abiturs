@@ -171,9 +171,12 @@
                                                     <div class="second-row__two">
                                                         <a href="https://p.mrsu.ru/" class="rows_flex"><img src="{{asset('storage/images/mrsu2021/user-alt.svg')}}"><div class="ls_cab">{{trans('layout.lk')}}</div></a>
 
-                                                        <a href="" class="rows_flex">
+                                                        <a href="{{route('ses.toOvzVer')}}" id="ovz_version" class="rows_flex">
                                                             <img  src="{{asset('storage/images/mrsu2021/eye.svg')}}">
                                                             <div class="version_slab mrsu-logo-img">{{trans('layout.see')}}</div>
+
+                                                        </a>
+                                                        <a href="{{route('ses.backToMainVer')}}" id="main_version" class="rows_flex">
                                                             <div class="version_slab mrsu-logo-img-ovz">{{trans('layout.see_ovz')}}</div>
                                                         </a>
 
