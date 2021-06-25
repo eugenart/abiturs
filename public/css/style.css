@@ -1506,7 +1506,7 @@ div.logo img {
 }
 .logo-text {
     display: flex;
-    /*justify-content: center!important;*/
+    justify-content: flex-start!important;
     align-items: center!important;
 }
 a.logo {
