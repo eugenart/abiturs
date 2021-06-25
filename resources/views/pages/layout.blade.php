@@ -68,7 +68,7 @@
     </noscript>
     <!-- /Yandex.Metrika counter -->
 </head>
-<body>
+<body id="body">
 <div class="preloader">
 	<div class="preloader-5">
 	</div>
@@ -76,26 +76,23 @@
 <header class="background">
     <div class="blue-background">
         <div class="container container__mrsu">
-            <div class="head">
+            <div class="head container-fluid">
                 <div class="row autowidth">
-                    <div class="lk">
-                        <a href="https://p.mrsu.ru/"><i class="fas fa-user-alt"></i></a>
-                    </div>
+
                     <div class="column">
-                        <a href="https://mrsu.ru/" class="logo">
-                            <div class="logo">
+                        <div class="logo">
+                            <a href="/" class="logo">
                                 <div class="logo-img">
+                                    <img src="{{asset('storage/images/mrsu2021/logo_without_border.png')}}"  class="mrsu-logo-img" alt="">
 
-                                        <img src="{{asset('storage/images/mrsu2021/logo_without_border.png')}}"  class="mrsu-logo-img" alt="">
-
-                                        <img src="{{asset('storage/images/mrsu2021/logo_without_border_black.png')}}" class="mrsu-logo-img-ovz"alt="">
-
+                                    <img src="{{asset('storage/images/mrsu2021/logo_without_border_black.png')}}" class="mrsu-logo-img-ovz" alt="">
                                 </div>
                                 <div class="logo-text">
-                                    {{ trans('layout.mrsu_1') }}<br>{{ trans('layout.mrsu_2') }}
+                                    {{trans('layout.mrsu_1')}}<br>{{trans('layout.mrsu_2')}}
                                 </div>
-                            </div>
-                        </a>
+                                <div class="logo-text__small">{{trans('layout.menu-mrsu')}}</div>
+                            </a>
+                        </div>
                     </div>
                     <div class="column menu">
                         <div class="nav">
@@ -115,41 +112,83 @@
 
                         <div class="buttons">
                             <div class="see" id="ovz_version">
-                                <a href="{{route('ses.toOvzVer')}}"><i class="far fa-eye"></i></a>
+
+                                <a href="{{route('ses.toOvzVer')}}"><i><img src="{{asset('storage/images/mrsu2021/eye.svg')}}"></i></a>
                             </div>
                             <div class="see" id="main_version">
-                                <a href="{{route('ses.backToMainVer')}}"><i class="far fa-eye"></i></a>
+                                <a href="{{route('ses.backToMainVer')}}"><i><img src="{{asset('storage/images/mrsu2021/eye-slash-regular.svg')}}"></i></a>
                             </div>
+
                             <div class="lang-box">
 
-                                <div class="hamburger-menu">
-                                    <input id="menu__toggle" type="checkbox"/>
-                                    <label class="menu__btn" for="menu__toggle">
-                                        <span></span>
-                                    </label>
-                                    <div class="menu__box">
+                                <div class="hamburger-menu" id="humb">
+
+                                    <div class="menuBittom_position">
+											<span class="menuButton" onclick="openNav()">
+												<img class="sizeOpen mrsu-logo-img" alt='Меню' src="{{asset('storage/images/mrsu2021/menuButton.svg')}}">
+                                                <img class="sizeOpen mrsu-logo-img-ovz" alt='Меню' src="{{asset('storage/images/mrsu2021/menuButton_ovz.svg')}}">
+											</span>
+                                    </div>
+
+                                    <div class="menu__box" id="myInformation">
                                         <div class="container container__mrsu">
                                             <div class="row hamburger__head autowidth">
                                                 <div class="column">
-                                                    <a href="/" class="logo">
-                                                        <div class="logo">
+                                                    <div class="logo">
+                                                        <a href="/" class="logo">
                                                             <div class="logo-img">
                                                                 <img src="{{asset('storage/images/mrsu2021/logo_without_border.png')}}"  class="mrsu-logo-img" alt="">
 
-                                                                <img src="{{asset('storage/images/mrsu2021/logo_without_border_black.png')}}" class="mrsu-logo-img-ovz"alt="">
+                                                                <img src="{{asset('storage/images/mrsu2021/logo_without_border_black.png')}}" class="mrsu-logo-img-ovz" alt="">
                                                             </div>
                                                             <div class="logo-text">
-                                                                {{ trans('layout.mrsu_1') }}<br>{{ trans('layout.mrsu_2') }}
+                                                                {{trans('layout.mrsu_1')}}<br>{{trans('layout.mrsu_2')}}
                                                             </div>
-                                                        </div>
-                                                    </a>
+                                                            <div class="logo-text__small">{{trans('layout.menu-mrsu')}}</div>
+                                                        </a>
+                                                    </div>
                                                 </div>
                                                 <div class="column hamburger__search">
-                                                    <form action="#">
-                                                        <span>Поиск: </span>
-                                                        <input type="text" name="search">
-                                                        <button type="submit"><i class="fas fa-search"></i></button>
+                                                    <form action="https://mrsu.ru/ru/search/">
+                                                        <div class="hum_height"></div>
+                                                        <span>{{trans('layout.search')}}</span>
+                                                        <input type="text" name="q">
                                                     </form>
+                                                </div>
+                                                <span class="padding_close_nav">
+														<span id="myCloseInformation" onclick="closeNav()">
+															<img class="sizeClose mrsu-logo-img" alt='Закрыть меню' src="{{asset('storage/images/mrsu2021/close.svg')}}">
+                                                            <img class="sizeClose mrsu-logo-img-ovz" alt='Закрыть меню' src="{{asset('storage/images/mrsu2021/close_ovz.svg')}}">
+														</span>
+													</span>
+                                            </div>
+                                            <div class="lk">
+                                                <a href="https://p.mrsu.ru/"><i class=""><img src="<{{asset('storage/images/mrsu2021/user-alt.svg')}}"></i></a>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="second-row__two">
+                                                        <a href="https://p.mrsu.ru/" class="rows_flex"><img src="{{asset('storage/images/mrsu2021/user-alt.svg')}}"><div class="ls_cab">{{trans('layout.lk')}}</div></a>
+
+                                                        <a href="" class="rows_flex">
+                                                            <img  src="{{asset('storage/images/mrsu2021/eye.svg')}}">
+                                                            <div class="version_slab mrsu-logo-img">{{trans('layout.see')}}</div>
+                                                            <div class="version_slab mrsu-logo-img-ovz">{{trans('layout.see_ovz')}}</div>
+                                                        </a>
+
+                                                        <div class="topmenuTwo">{{trans('layout.lang_self')}}
+                                                            <ul class="submenuTwo">
+                                                                <li><a href="{{ trans('layout.href') }}">{{trans('layout.lang')}}</a></li>
+                                                            </ul>
+                                                        </div>
+
+                                                        <div class="topmenu_mobile">{{trans('layout.lang_self')}}
+                                                            <ul class="submenu_mobile">
+                                                                <li><a href="{{ trans('layout.href') }}">{{trans('layout.lang')}}</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
 
@@ -170,7 +209,6 @@
                                                             <li><a href="https://mrsu.ru/sveden/common/">{{ trans('layout.u-7') }}</a></li>
                                                             <li><a href="https://fund.mrsu.ru/">{{ trans('layout.u-8') }}</a></li>
                                                             <li><a href="https://mrsu.ru/ru/university/anticorr">{{ trans('layout.u-9') }}</a></li>
-                                                            <li><a href="https://mrsu.ru/ru/university/documentation/">{{ trans('layout.u-10') }}</a></li>
                                                             <li><a href="https://mrsu.ru/ru/university/contacts/">{{ trans('layout.u-11') }}</a></li>
                                                         </ul>
                                                     </li>
@@ -218,7 +256,7 @@
                                                             <li><a href="https://mrsu.ru/ru/international/projects/">{{ trans('layout.i2') }}</a></li>
                                                             <li><a href="https://abiturs.mrsu.ru/Inostrannim-abiturientam">{{ trans('layout.i3') }}</a></li>
                                                             <li><a href="https://mrsu.ru/ru/international/insurance/">{{ trans('layout.i4') }}</a></li>
-                                                            <li><a href="https://mrsu.ru/ru/international/grants/">{{ trans('layout.i5') }}</a></li>
+{{--                                                            <li><a href="https://mrsu.ru/ru/international/grants/">{{ trans('layout.i5') }}</a></li>--}}
                                                         </ul>
                                                     </li>
                                                     <li>
@@ -279,18 +317,13 @@
                                                                class="checksubmenuhide">
                                                         <label for="checksubmenu8" class="checksubmenu"></label>
                                                         <ul class="hamburger__submenu">
-                                                            <li><a href="#">{{ trans('layout.r1') }}</a></li>
-                                                            <li><a href="#">{{ trans('layout.r2') }}</a></li>
-                                                            <li><a href="#">{{ trans('layout.r3') }}</a></li>
-                                                            <li><a href="#">{{ trans('layout.r4') }}</a></li>
-                                                            <li><a href="#">{{ trans('layout.r5') }}</a></li>
-                                                            <li><a href="#">{{ trans('layout.r6') }}</a></li>
-                                                            <li><a href="#">{{ trans('layout.r7') }}</a></li>
-                                                            <li><a href="#">{{ trans('layout.r8') }}</a></li>
-                                                            <li><a href="#">{{ trans('layout.r9') }}</a></li>
-                                                            <li><a href="#">{{ trans('layout.r10') }}</a></li>
-                                                            <li><a href="#">{{ trans('layout.r11') }}</a></li>
-                                                            <li><a href="#">{{ trans('layout.r12') }}</a></li>
+                                                            <li><a href="https://mrsu.ru/ru/rector/">{{ trans('layout.r1') }}</a></li>
+                                                            <li><a href="https://mrsu.ru/ru/rector/about/">{{ trans('layout.r2') }}</a></li>
+                                                            <li><a href="https://mrsu.ru/ru/rector/news/">{{ trans('layout.r3') }}</a></li>
+                                                            <li><a href="https://mrsu.ru/ru/rector/vpriem/">{{ trans('layout.r9') }}</a></li>
+                                                            <li><a href="https://mrsu.ru/ru/rector/priem/">{{ trans('layout.r10') }}</a></li>
+                                                            <li><a href="https://mrsu.ru/ru/university/anticorr/">{{ trans('layout.r11') }}</a></li>
+                                                            <li><a href="https://mrsu.ru/ru/rector/contacts/">{{ trans('layout.r12') }}</a></li>
                                                         </ul>
                                                     </li>
                                                 </ul>
@@ -344,6 +377,12 @@
                                                                         alt="">
                                                             <img class="size__image__footer mrsu-logo-img-ovz"
                                                                  src="{{asset('storage/images/mrsu2021/Youtube.svg')}}"
+                                                                 alt="">
+                                                        </a>
+                                                        <a href="https://t.me/mrsu13">
+                                                            <img class="size__image__footer mrsu-logo-img" src="{{asset('storage/images/mrsu2021/TelegramW.svg')}}" alt="">
+                                                            <img class="size__image__footer mrsu-logo-img-ovz"
+                                                                 src="{{asset('storage/images/mrsu2021/Telegram.svg')}}"
                                                                  alt="">
                                                         </a>
                                                     </div>
@@ -685,6 +724,9 @@
                 <a href="https://www.youtube.com/user/OgarevTV"><img class="size__image__footer"
                                                                      src="{{asset('storage/images/mrsu2021/Youtube.svg')}}"
                                                                      alt=""></a>
+                <a href="https://t.me/mrsu13"><img class="size__image__footer"
+                                                                     src="{{asset('storage/images/mrsu2021/Telegram.svg')}}"
+                                                                     alt=""></a>
             </div>
         </div>
     </div>
@@ -699,6 +741,7 @@
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
 <script src="{{asset('js/bootstrap-select.js')}}"></script>
 <script src="{{asset('js/defaults-ru_RU.min.js')}}"></script>
+<script src="{{asset('js/sendvich.js')}}"></script>
 <script>
     window.onload = function() {
         document.querySelector('.preloader').classList.add("preloader-remove");

@@ -130,6 +130,10 @@ return [
     'menu-mrsu' => "Mordovia State University",
     'menu-footer' => 'When using text information, photo and video materials, a link to the site is required',
 
+    'search' => 'Search:',
+    'lk'=>'Account',
+    'see'=>'For visually impaired',
+    'see_ovz'=>'Normal site version',
 
     //футер
     'c1_title' => "Main building",
