@@ -1087,7 +1087,7 @@
                     "<div class=''>" +
                     "<div class='row d-flex justify-content-cetner'>" +
                     "<div class='col-12 d-flex align-items-center justify-content-center flex-column'>" +
-                    "<h5><strong>" + v.name + " форма, " + v.years + " " + year + "</strong></h5>" +
+                    "<h5><strong>" + v.name + " форма " + /*v.years + " " + year + */"</strong></h5>" +
                     "</div><div class='col-12 col-lg-6 col-xl-6 col-md-6 col-sm-12 mb-2'><h5 class='text-left ml-lg-5 ml-xl-5 ml-md-5 ml-sm-3 ml-lg-0 ml-md-2 ml-3mb-0 '><strong>Количество мест:</strong></h5>"
 
                 v.freeseats.sort((a, b) => (a.admissionBasis.name.length > b.admissionBasis.name.length) ? 1 : ((b.admissionBasis.name.length > a.admissionBasis.name.length) ? -1 : 0));
