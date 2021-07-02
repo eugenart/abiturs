@@ -615,7 +615,7 @@
                 }
 
                 if(locale === 'en'){
-                    str1 = "<h5><strong>" + v.en_name + ", " +/* v.years + " " + "year" + */"</strong></h5>";
+                    str1 = "<h5><strong>" + v.en_name + " " +/* v.years + " " + "year" + */"</strong></h5>";
                     str2 = "Number of places:";
                     str_price = " ₽/year";
                 }
