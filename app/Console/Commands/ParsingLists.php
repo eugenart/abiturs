@@ -49,10 +49,10 @@ class ParsingLists extends Command
 
         //проверить есть ли файл проверка
         $res_check = $this->download_file($directory, "lighthouse.json");
-        unlink(storage_path('app/public/files/statistics/lighthouse.json')); //удаляем файл у себя
+
 
         if($res_check === 0) {
-
+            unlink(storage_path('app/public/files/statistics/lighthouse.json')); //удаляем файл у себя
             //загрузить новые файлы с сервера
             $param = "stat_bach";
             $res = $this->download_file($directory, "stat_bach.json");
