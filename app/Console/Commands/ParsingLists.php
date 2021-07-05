@@ -49,6 +49,7 @@ class ParsingLists extends Command
 
         //проверить есть ли файл проверка
         $res_check = $this->download_file($directory, "lighthouse.json");
+        unlink(storage_path('app/public/files/statistics/lighthouse.json')); //удаляем файл у себя
 
         if($res_check === 0) {
 
@@ -57,30 +58,31 @@ class ParsingLists extends Command
             $res = $this->download_file($directory, "stat_bach.json");
             $this->date_update($param); //обновляем после загрузки файла не смотря ни на что
             if ($res === 0) {
-                $result = $this->parseStatBachAll();
+                $this->parseStatBachAll();
             }
 
             $param = "stat_master";
             $res = $this->download_file($directory, "stat_master.json");
             $this->date_update($param);
             if ($res === 0) {
-                $result = $this->parseStatMasterAll();
+                $this->parseStatMasterAll();
             }
 
             $param = "stat_asp";
             $res = $this->download_file($directory, "stat_asp.json");
             $this->date_update($param);
             if ($res === 0) {
-                $result = $this->parseStatAspAll();
+                $this->parseStatAspAll();
             }
 
             $param = "stat_spo";
             $res = $this->download_file($directory, "stat_spo.json");
             $this->date_update($param);
             if ($res === 0) {
-                $result = $this->parseStatSpoAll();
+                $this->parseStatSpoAll();
             }
-            unlink(storage_path('app/public/files/statistics/lighthouse.json')); //удаляем файл у себя
+
+
             return 1; //возвращаем 1 не потому что ошибка а чтобы работал метод emailOutputOnFailure
         }else{
             return 0;
