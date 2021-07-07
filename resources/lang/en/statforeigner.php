@@ -71,7 +71,7 @@ return [
     'notice4' => ' to display your applicants lists',
 
     'notification_green' => ' ',
-    'notification_green_asp' => 'Acceptance of documents will begin on July 19, 2021',
+    'notification_green_asp' => 'Acceptance of documents for postgraduate programs will begin July 19, 2021, for residency programs will begin July 5, 2021',
     'notification_not_found' => 'No results were found for your search',
     'notification_specify' => 'Too many matches were found for your request. Please specify your request.',
 ];
