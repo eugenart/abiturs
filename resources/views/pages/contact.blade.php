@@ -84,15 +84,19 @@
                                 <th scope="row" class="text-right"><span
                                         class="font-weight-bold main-color">{{ trans('contacts.adr_title') }}</span>
                                 </th>
-                                <td>{{ trans('contacts.adr1') }} <br> {{ trans('contacts.adr2') }}</td>
+                                <td>{{ trans('contacts.adr1') }} <br> {{ trans('contacts.adr2') }}<br><br>
+                                    {{ trans('contacts.adr_asp1') }} <br> {{ trans('contacts.adr_asp2') }}
+                                </td>
+
                             </tr>
                             <tr>
-                                <th scope="row" rowspan="3" class="text-right" style="border-bottom: 1px solid #dee2e6"><span
+                                <th scope="row" rowspan="4" class="text-right" style="border-bottom: 1px solid #dee2e6"><span
                                         class="main-color font-weight-bold">{{ trans('contacts.time_title') }}</span>
                                 </th>
                                 <td colspan="2">{{ trans('contacts.time_monfr') }}
                                     <br/> {{ trans('contacts.time_break') }}
                                 </td>
+
                             </tr>
 
 
@@ -109,6 +113,16 @@
                                     <td colspan="2">{{ trans('contacts.time_sat') }}</td>
                                 </tr>
                             @endif
+                            <tr style="border-bottom: 1px solid #dee2e6">
+                                <td colspan="2">
+                                    {{ trans('contacts.time_asp') }}<br>
+                                    {{ trans('contacts.time_asp1') }}<br>
+                                    {{ trans('contacts.time_asp2') }}<br>
+                                    {{ trans('contacts.time_asp3') }}<br>
+
+                                </td>
+                            </tr>
+
                             </tbody>
                         </table>
                     </div>
