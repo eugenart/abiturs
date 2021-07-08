@@ -89,7 +89,7 @@ trait ParserJsonTrait
             $filejson = file_get_contents(storage_path('app/public/files/statistics/' . $file));
 
             $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
-            fwrite($logs,  ' parseCatalogs()');
+            fwrite($logs, ' parseCatalogs()');
 
             $json_arr = json_decode($filejson, true);
             $json_data = $json_arr['data'];
@@ -138,13 +138,13 @@ trait ParserJsonTrait
         } catch (ErrorException $e) {
             echo "Error: ";
             echo $e->getMessage();
-            fwrite($logs,"Error: " );
-            fwrite($logs, $e->getMessage() );
+            fwrite($logs, "Error: ");
+            fwrite($logs, $e->getMessage());
             fclose($logs);
             return -1;
         }
 
-        fwrite($logs,  ' Формы обучения, категории, уровни подготовки успешно выгружены!');
+        fwrite($logs, ' Формы обучения, категории, уровни подготовки успешно выгружены!');
         fclose($logs);
         return 'Формы обучения, категории, уровни подготовки успешно выгружены!';
 
@@ -159,20 +159,119 @@ trait ParserJsonTrait
             $json_data = $json_arr['data'];
 
             $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
-            fwrite($logs,  'function parseStatBach()');
-            echo 'function parseStatBach(){'.PHP_EOL;
+            fwrite($logs, 'function parseStatBach()');
+            echo 'function parseStatBach(){' . PHP_EOL;
+
+            //ПРОВЕРКА
+            $mes = NULL;
+            foreach ($json_data as $k => $fac_stat) {
+                if (!$fac_stat['foreigner']) {
+                    $idPlan = Plan::where('planId', '=', $fac_stat['planId'])->first();
+                    $idFaculty = Faculty::where('facultyId', '=', $fac_stat['facultyId'])->first();
+                    $idSpeciality = Speciality::where('specialityId', '=', $fac_stat['trainingAreasId'])->first();
+                    $idSpecialization = Specialization::where('specializationId', '=', $fac_stat['specializationID'])->first();
+                    if (empty($idSpecialization)) {
+                        $idSpecialization = Specialization::where('name', '=', $fac_stat['specializationName'])->first();
+                    }
+                    $idCompetition = Competition::where('competitionId', '=', $fac_stat['CompetitionId'])->first();
+                    $idAdmissionBasis = AdmissionBasis::where('baseId', '=', $fac_stat['IdBasis'])->first();
+                    $idStudyForm = StudyForm::where('name', '=', $fac_stat['trainingForm'])->first();
+
+
+                    if (empty($idPlan) || empty($idFaculty) || empty($idSpeciality) || empty($idCompetition)
+                        || empty($idAdmissionBasis) || empty($idStudyForm)) {
+                        $mes .= ' Не найден параметр.';
+                        if (empty($idPlan)) {
+                            $mes .= ' idPlan = ' . $fac_stat['planId'] . ',' . PHP_EOL;
+                        }
+                        if (empty($idFaculty)) {
+                            $mes .= ' idFaculty = ' . $fac_stat['facultyId'] . ',' . PHP_EOL;
+                        }
+                        if (empty($idSpeciality)) {
+                            $mes .= ' $idSpeciality = ' . $fac_stat['trainingAreasId'] . ',' . PHP_EOL;
+                        }
+                        if (empty($idCompetition)) {
+                            $mes .= ' $idCompetition = ' . $fac_stat['CompetitionId'] . ',' . PHP_EOL;
+                        }
+                        if (empty($idAdmissionBasis)) {
+                            $mes .= ' $idAdmissionBasis = ' . $fac_stat['IdBasis'] . ',' . PHP_EOL;
+                        }
+                        if (empty($idStudyForm)) {
+                            $mes .= ' $idStudyForm = ' . $fac_stat['trainingForm'] . ',' . PHP_EOL;
+                        }
+
+                    }
+
+                    foreach ($fac_stat['List'] as $student) {
+                        foreach ($student['score'] as $score_item) {
+                            $idSubject = Subject::where('subjectId', '=', $score_item['subjectId'])->first();
+                            if (empty($idSubject)) {
+                                $mes .= 'Не найден параметр. ' . ' idSubject = ' . $score_item['subjectId'] . PHP_EOL;
+                            }
+                        }
+                    }
+                } else {
+                    $idPlan = PlanForeigner::where('planId', '=', $fac_stat['planId'])->first();
+                    $idFaculty = Faculty::where('facultyId', '=', $fac_stat['facultyId'])->first();
+                    $idSpeciality = Speciality::where('specialityId', '=', $fac_stat['trainingAreasId'])->first();
+                    $idSpecialization = Specialization::where('specializationId', '=', $fac_stat['specializationID'])->first();
+                    if (empty($idSpecialization)) {
+                        $idSpecialization = Specialization::where('name', '=', $fac_stat['specializationName'])->first();
+                    }
+                    $idCompetition = CompetitionForeigner::where('competitionId', '=', $fac_stat['CompetitionId'])->first();
+                    $idAdmissionBasis = AdmissionBasis::where('baseId', '=', $fac_stat['IdBasis'])->first();
+                    $idStudyForm = StudyForm::where('name', '=', $fac_stat['trainingForm'])->first();
+
+                    if (empty($idPlan) || empty($idFaculty) || empty($idSpeciality) || empty($idCompetition)
+                        || empty($idAdmissionBasis) || empty($idStudyForm)) {
+                        $mes .= ' Не найден параметр.';
+                        if (empty($idPlan)) {
+                            $mes .= ' idPlan = ' . $fac_stat['planId'] . ',' . PHP_EOL;
+                        }
+                        if (empty($idFaculty)) {
+                            $mes .= ' idFaculty = ' . $fac_stat['facultyId'] . ',' . PHP_EOL;
+                        }
+                        if (empty($idSpeciality)) {
+                            $mes .= ' $idSpeciality = ' . $fac_stat['trainingAreasId'] . ',' . PHP_EOL;
+                        }
+                        if (empty($idCompetition)) {
+                            $mes .= ' $idCompetition = ' . $fac_stat['CompetitionId'] . ',' . PHP_EOL;
+                        }
+                        if (empty($idAdmissionBasis)) {
+                            $mes .= ' $idAdmissionBasis = ' . $fac_stat['IdBasis'] . ',' . PHP_EOL;
+                        }
+                        if (empty($idStudyForm)) {
+                            $mes .= ' $idStudyForm = ' . $fac_stat['trainingForm'] . ',' . PHP_EOL;
+                        }
+
+                    }
+                    foreach ($fac_stat['List'] as $student) {
+                        foreach ($student['score'] as $score_item) {
+                            $idSubject = Subject::where('subjectId', '=', $score_item['subjectId'])->first();
+                            if (empty($idSubject)) {
+                                $mes .= 'Не найден параметр. ' . ' idSubject = ' . $score_item['subjectId'] . PHP_EOL;
+                            }
+                        }
+                    }
+                }
+
+
+            }
+            if ($mes != NULL) {
+                throw new ErrorException($mes);
+            }
+
 
             Student::truncate(); //надо бы перенести его, но я пока не хочу ломать код
             StudentForeigner::truncate(); //надо бы перенести его, но я пока не хочу ломать код
             fwrite($logs, ' Students tables truncated;');
-            echo '  Students tables truncated'.PHP_EOL;
+            echo '  Students tables truncated' . PHP_EOL;
             $scores = array();
-            $students = array();
+
             $studentsStat = array();
             $count_idStudent = 0;
 
             $scores_f = array();
-            $students_f = array();
             $studentsStat_f = array();
             $count_idStudent_f = 0;
 
@@ -184,17 +283,17 @@ trait ParserJsonTrait
                     $idFaculty = Faculty::where('facultyId', '=', $fac_stat['facultyId'])->first();
                     $idSpeciality = Speciality::where('specialityId', '=', $fac_stat['trainingAreasId'])->first();
                     $idSpecialization = Specialization::where('specializationId', '=', $fac_stat['specializationID'])->first();
-                    if(empty($idSpecialization)) {
+                    if (empty($idSpecialization)) {
                         $idSpecialization = Specialization::where('name', '=', $fac_stat['specializationName'])->first();
                     }
                     $idCompetition = Competition::where('competitionId', '=', $fac_stat['CompetitionId'])->first();
                     $idAdmissionBasis = AdmissionBasis::where('baseId', '=', $fac_stat['IdBasis'])->first();
                     $idStudyForm = StudyForm::where('name', '=', $fac_stat['trainingForm'])->first();
 
-                    //если все данные нашлись в бд specializationName
 
+                    //если все данные нашлись в бд specializationName
                     foreach ($fac_stat['List'] as $student) {
-                        //находим id студента в предыдущих специальностях
+                        //находим id студента если он уже подал куда то еще
                         $idStudent = Student::where('studentId', '=', $student['studentId'])->first();
                         if (empty($idStudent)) { //студента в базе нет - записываем
                             $stud = array(
@@ -240,8 +339,8 @@ trait ParserJsonTrait
                                 'foreigner' => $fac_stat['foreigner'],
                                 'yellowline' => isset($student['yelloyline']) ? true : false,
                                 'acceptCount' => $student['acceptСount'],
-								'stage' => isset($fac_stat['Stage']) ? $fac_stat['Stage'] : null,
-								'stage_title' => isset($fac_stat['StageTitle']) ? $fac_stat['StageTitle'] : null,
+                                'stage' => isset($fac_stat['Stage']) ? $fac_stat['Stage'] : null,
+                                'stage_title' => isset($fac_stat['StageTitle']) ? $fac_stat['StageTitle'] : null,
                             );
                             $studentsStat[] = $stat;
                         } else {
@@ -295,6 +394,7 @@ trait ParserJsonTrait
                     //Записываем в БД студентов для этой специализации
                     $students = array_unique($students, SORT_REGULAR);
                     Student::insert($students);
+
                 } else {
 
                     $students_f = array(); //чистим массив студетов
@@ -317,7 +417,7 @@ trait ParserJsonTrait
                         $idStudent = StudentForeigner::where('studentId', '=', $student['studentId'])->first();
                         if (empty($idStudent)) { //студента в базе нет - записываем
                             $fio_en = null;
-                            if(isset($student['fio_en'])){
+                            if (isset($student['fio_en'])) {
                                 $fio_en = mb_convert_case(mb_strtolower($student['fio_en']), MB_CASE_TITLE);
                             }
                             $stud_f = array(
@@ -364,8 +464,8 @@ trait ParserJsonTrait
                                 'foreigner' => $fac_stat['foreigner'],
                                 'yellowline' => isset($student['yelloyline']) ? true : false,
                                 'acceptCount' => $student['acceptСount'],
-								'stage' => isset($fac_stat['Stage']) ? $fac_stat['Stage'] : null,
-								'stage_title' => isset($fac_stat['StageTitle']) ? $fac_stat['StageTitle'] : null,
+                                'stage' => isset($fac_stat['Stage']) ? $fac_stat['Stage'] : null,
+                                'stage_title' => isset($fac_stat['StageTitle']) ? $fac_stat['StageTitle'] : null,
                             );
                             $studentsStat_f[] = $stat_f;
                         } else {
@@ -447,10 +547,10 @@ trait ParserJsonTrait
             }
         } catch (ErrorException $e) {
             echo "Error: ";
-            echo $e->getMessage(). PHP_EOL;
+            echo $e->getMessage() . PHP_EOL;
             $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
-            fwrite($logs,  "Error: ");
-            fwrite($logs, $e->getMessage(). PHP_EOL);
+            fwrite($logs, "Error: ");
+            fwrite($logs, $e->getMessage() . PHP_EOL);
             fclose($logs);
             return -1;
         }
@@ -459,15 +559,25 @@ trait ParserJsonTrait
     public function parseStatBachAll()
     {
         set_time_limit(1200);
-        $this->parseStatBach();
-        $this->XlsBach();
-        $this->XlsBachForeigner();
+        $result = $this->parseStatBach();
+        if ($result != -1) {
+            $this->XlsBach();
+            $this->XlsBachForeigner();
+        }
 
         $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
-        fwrite($logs, ' Информация об абитуриентах (бакалавриат,специалитет) успешно выгружена!' );
-        fclose($logs);
-        echo '  Бакалавариат выгружен'. PHP_EOL .'}'. PHP_EOL;
-        return 'Информация об абитуриентах (бакалавриат,специалитет) успешно выгружена!';
+        if ($result != -1) {
+            fwrite($logs, ' Информация об абитуриентах (бакалавриат,специалитет) успешно выгружена!');
+            fclose($logs);
+            echo '  Бакалавариат выгружен' . PHP_EOL . '}' . PHP_EOL;
+            return 'Информация об абитуриентах (бакалавриат,специалитет) успешно выгружена!' . PHP_EOL;
+        } else {
+            fwrite($logs, 'Информация не будет обновлена.');
+            fclose($logs);
+            echo '  Информация не будет обновлена.' . PHP_EOL . '}' . PHP_EOL;
+            return 'Информация не будет обновлена.';
+        }
+
     }
 //------------------------КОНЕЦ парсинг статистики Бакалавры--------------------------------
 
@@ -479,7 +589,7 @@ trait ParserJsonTrait
             $filejson = file_get_contents(storage_path('app/public/files/statistics/stat_master.json'));
             $json_arr = json_decode($filejson, true);
             $json_data = $json_arr['data'];
-            echo 'function parseCatalogsMaster()'.PHP_EOL;
+            echo 'function parseCatalogsMaster()' . PHP_EOL;
             $prepLevels = array();
             $categories = array();
 
@@ -520,11 +630,11 @@ trait ParserJsonTrait
             }
         } catch (ErrorException $e) {
             echo "  Error: ";
-            echo $e->getMessage().PHP_EOL;
+            echo $e->getMessage() . PHP_EOL;
 
             $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
-            fwrite($logs,  " Error: ");
-            fwrite($logs,  $e->getMessage());
+            fwrite($logs, " Error: ");
+            fwrite($logs, $e->getMessage());
             fclose($logs);
 
             return -1;
@@ -539,7 +649,107 @@ trait ParserJsonTrait
 
             $json_arr = json_decode($filejson, true);
             $json_data = $json_arr['data'];
-            echo 'function parseStatMaster(){'.PHP_EOL;
+            echo 'function parseStatMaster(){' . PHP_EOL;
+
+            //ПРОВЕРКА
+            $mes = NULL;
+            foreach ($json_data as $k => $fac_stat) {
+                if (!$fac_stat['foreigner']) {
+                    $idPlan = PlanMaster::where('planId', '=', $fac_stat['planId'])->first();
+                    $idFaculty = Faculty::where('facultyId', '=', $fac_stat['facultyId'])->first();
+                    $idSpeciality = Speciality::where('specialityId', '=', $fac_stat['trainingAreasId'])->first();
+                    $idSpecialization = Specialization::where('specializationId', '=', $fac_stat['specializationID'])->first();
+                    if (empty($idSpecialization)) {
+                        $idSpecialization = Specialization::where('name', '=', $fac_stat['specializationName'])->first();
+                    }
+                    $idCompetition = CompetitionMaster::where('competitionId', '=', $fac_stat['CompetitionId'])->first();
+                    $idAdmissionBasis = AdmissionBasis::where('baseId', '=', $fac_stat['IdBasis'])->first();
+                    $idStudyForm = StudyForm::where('name', '=', $fac_stat['trainingForm'])->first();
+
+
+                    if (empty($idPlan) || empty($idFaculty) || empty($idSpeciality) || empty($idCompetition)
+                        || empty($idAdmissionBasis) || empty($idStudyForm)) {
+                        $mes .= ' Не найден параметр.';
+                        if (empty($idPlan)) {
+                            $mes .= ' idPlan = ' . $fac_stat['planId'] . ',' . PHP_EOL;
+                        }
+                        if (empty($idFaculty)) {
+                            $mes .= ' idFaculty = ' . $fac_stat['facultyId'] . ',' . PHP_EOL;
+                        }
+                        if (empty($idSpeciality)) {
+                            $mes .= ' $idSpeciality = ' . $fac_stat['trainingAreasId'] . ',' . PHP_EOL;
+                        }
+                        if (empty($idCompetition)) {
+                            $mes .= ' $idCompetition = ' . $fac_stat['CompetitionId'] . ',' . PHP_EOL;
+                        }
+                        if (empty($idAdmissionBasis)) {
+                            $mes .= ' $idAdmissionBasis = ' . $fac_stat['IdBasis'] . ',' . PHP_EOL;
+                        }
+                        if (empty($idStudyForm)) {
+                            $mes .= ' $idStudyForm = ' . $fac_stat['trainingForm'] . ',' . PHP_EOL;
+                        }
+
+                    }
+
+                    foreach ($fac_stat['List'] as $student) {
+                        foreach ($student['score'] as $score_item) {
+                            $idSubject = Subject::where('subjectId', '=', $score_item['subjectId'])->first();
+                            if (empty($idSubject)) {
+                                $mes .= 'Не найден параметр. ' . ' idSubject = ' . $score_item['subjectId'] . PHP_EOL;
+                            }
+                        }
+                    }
+                } else {
+                    $idPlan = PlanMasterForeigner::where('planId', '=', $fac_stat['planId'])->first();
+                    $idFaculty = Faculty::where('facultyId', '=', $fac_stat['facultyId'])->first();
+                    $idSpeciality = Speciality::where('specialityId', '=', $fac_stat['trainingAreasId'])->first();
+                    $idSpecialization = Specialization::where('specializationId', '=', $fac_stat['specializationID'])->first();
+                    if (empty($idSpecialization)) {
+                        $idSpecialization = Specialization::where('name', '=', $fac_stat['specializationName'])->first();
+                    }
+                    $idCompetition = CompetitionMasterForeigner::where('competitionId', '=', $fac_stat['CompetitionId'])->first();
+                    $idAdmissionBasis = AdmissionBasis::where('baseId', '=', $fac_stat['IdBasis'])->first();
+                    $idStudyForm = StudyForm::where('name', '=', $fac_stat['trainingForm'])->first();
+
+                    if (empty($idPlan) || empty($idFaculty) || empty($idSpeciality) || empty($idCompetition)
+                        || empty($idAdmissionBasis) || empty($idStudyForm)) {
+                        $mes .= ' Не найден параметр.';
+                        if (empty($idPlan)) {
+                            $mes .= ' idPlan = ' . $fac_stat['planId'] . ',' . PHP_EOL;
+                        }
+                        if (empty($idFaculty)) {
+                            $mes .= ' idFaculty = ' . $fac_stat['facultyId'] . ',' . PHP_EOL;
+                        }
+                        if (empty($idSpeciality)) {
+                            $mes .= ' $idSpeciality = ' . $fac_stat['trainingAreasId'] . ',' . PHP_EOL;
+                        }
+                        if (empty($idCompetition)) {
+                            $mes .= ' $idCompetition = ' . $fac_stat['CompetitionId'] . ',' . PHP_EOL;
+                        }
+                        if (empty($idAdmissionBasis)) {
+                            $mes .= ' $idAdmissionBasis = ' . $fac_stat['IdBasis'] . ',' . PHP_EOL;
+                        }
+                        if (empty($idStudyForm)) {
+                            $mes .= ' $idStudyForm = ' . $fac_stat['trainingForm'] . ',' . PHP_EOL;
+                        }
+
+                    }
+                    foreach ($fac_stat['List'] as $student) {
+                        foreach ($student['score'] as $score_item) {
+                            $idSubject = Subject::where('subjectId', '=', $score_item['subjectId'])->first();
+                            if (empty($idSubject)) {
+                                $mes .= 'Не найден параметр. ' . ' idSubject = ' . $score_item['subjectId'] . PHP_EOL;
+                            }
+                        }
+                    }
+                }
+
+
+            }
+            if ($mes != NULL) {
+                throw new ErrorException($mes);
+            }
+
 
             StudentMaster::truncate();
             StudentMasterForeigner::truncate();
@@ -622,8 +832,8 @@ trait ParserJsonTrait
                                 'foreigner' => $fac_stat['foreigner'],
                                 'yellowline' => isset($student['yelloyline']) ? true : false,
                                 'acceptCount' => $student['acceptСount'],
-								'stage' => isset($fac_stat['Stage']) ? $fac_stat['Stage'] : null,
-								'stage_title' => isset($fac_stat['StageTitle']) ? $fac_stat['StageTitle'] : null,
+                                'stage' => isset($fac_stat['Stage']) ? $fac_stat['Stage'] : null,
+                                'stage_title' => isset($fac_stat['StageTitle']) ? $fac_stat['StageTitle'] : null,
                             );
                             $studentsStat[] = $stat;
                         } else {
@@ -678,7 +888,7 @@ trait ParserJsonTrait
                     //Записываем в БД студентов для этой специализации
                     $students = array_unique($students, SORT_REGULAR);
                     StudentMaster::insert($students);
-                }else {
+                } else {
                     $students_f = array(); //чистим массив студетов
                     //выбираем из базы нужные айдишники
                     $idPlan = PlanMasterForeigner::where('planId', '=', $fac_stat['planId'])->first();
@@ -699,7 +909,7 @@ trait ParserJsonTrait
                         $idStudent = StudentMasterForeigner::where('studentId', '=', $student['studentId'])->first();
                         if (empty($idStudent)) { //студента в базе нет - записываем
                             $fio_en = null;
-                            if(isset($student['fio_en'])){
+                            if (isset($student['fio_en'])) {
                                 $fio_en = mb_convert_case(mb_strtolower($student['fio_en']), MB_CASE_TITLE);
                             }
                             $stud_f = array(
@@ -746,8 +956,8 @@ trait ParserJsonTrait
                                 'foreigner' => $fac_stat['foreigner'],
                                 'yellowline' => isset($student['yelloyline']) ? true : false,
                                 'acceptCount' => $student['acceptСount'],
-								'stage' => isset($fac_stat['Stage']) ? $fac_stat['Stage'] : null,
-								'stage_title' => isset($fac_stat['StageTitle']) ? $fac_stat['StageTitle'] : null,
+                                'stage' => isset($fac_stat['Stage']) ? $fac_stat['Stage'] : null,
+                                'stage_title' => isset($fac_stat['StageTitle']) ? $fac_stat['StageTitle'] : null,
                             );
                             $studentsStat_f[] = $stat_f;
                         } else {
@@ -831,10 +1041,10 @@ trait ParserJsonTrait
 
         } catch (ErrorException $e) {
             echo "  Error: ";
-            echo $e->getMessage() .PHP_EOL;
+            echo $e->getMessage() . PHP_EOL;
             $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
-            fwrite($logs,  " Error: ");
-            fwrite($logs,  $e->getMessage());
+            fwrite($logs, " Error: ");
+            fwrite($logs, $e->getMessage());
             fclose($logs);
             return -1;
         }
@@ -846,15 +1056,24 @@ trait ParserJsonTrait
         set_time_limit(1200);
 
         $this->parseCatalogsMaster();
-        $this->parseStatMaster();
-        $this->XlsMaster();
-        $this->XlsMasterForeigner();
+        $result = $this->parseStatMaster();
+        if ($result != -1) {
+            $this->XlsMaster();
+            $this->XlsMasterForeigner();
+        }
 
         $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
-        fwrite($logs, ' Информация об абитуриентах (магистратура) успешно выгружена!' );
-        fclose($logs);
-        echo '  Магистратура выгружена' .PHP_EOL . '}'.PHP_EOL;
-        return 'Информация об абитуриентах (магистратура) успешно выгружена!';
+        if ($result != -1) {
+            fwrite($logs, ' Информация об абитуриентах (магистратура) успешно выгружена!');
+            fclose($logs);
+            echo '  Магистратура выгружена' . PHP_EOL . '}' . PHP_EOL;
+            return 'Информация об абитуриентах (магистратура) успешно выгружена!';
+        } else {
+            fwrite($logs, 'Информация не будет обновлена.');
+            fclose($logs);
+            echo '  Информация не будет обновлена.' . PHP_EOL . '}' . PHP_EOL;
+            return 'Информация не будет обновлена.';
+        }
     }
 //------------------------КОНЕЦ парсинг статистики Магистры--------------------------------
 
@@ -866,7 +1085,7 @@ trait ParserJsonTrait
             $filejson = file_get_contents(storage_path('app/public/files/statistics/stat_asp.json'));
             $json_arr = json_decode($filejson, true);
             $json_data = $json_arr['data'];
-            echo 'parseCatalogsAsp()'.PHP_EOL;
+            echo 'parseCatalogsAsp()' . PHP_EOL;
             $prepLevels = array();
             $categories = array();
 
@@ -906,10 +1125,10 @@ trait ParserJsonTrait
             }
         } catch (ErrorException $e) {
             echo "  Error: ";
-            echo $e->getMessage().PHP_EOL;
+            echo $e->getMessage() . PHP_EOL;
             $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
-            fwrite($logs,  " Error: ");
-            fwrite($logs,  $e->getMessage());
+            fwrite($logs, " Error: ");
+            fwrite($logs, $e->getMessage());
             fclose($logs);
             return -1;
         }
@@ -923,12 +1142,112 @@ trait ParserJsonTrait
             $json_arr = json_decode($filejson, true);
             $json_data = $json_arr['data'];
 
-            echo 'parseStatAsp(){'.PHP_EOL;
+            echo 'parseStatAsp(){' . PHP_EOL;
+
+            //ПРОВЕРКА
+            $mes = NULL;
+            foreach ($json_data as $k => $fac_stat) {
+                if (!$fac_stat['foreigner']) {
+                    $idPlan = PlanAsp::where('planId', '=', $fac_stat['planId'])->first();
+                    $idFaculty = Faculty::where('facultyId', '=', $fac_stat['facultyId'])->first();
+                    $idSpeciality = Speciality::where('specialityId', '=', $fac_stat['trainingAreasId'])->first();
+                    $idSpecialization = Specialization::where('specializationId', '=', $fac_stat['specializationID'])->first();
+                    if (empty($idSpecialization)) {
+                        $idSpecialization = Specialization::where('name', '=', $fac_stat['specializationName'])->first();
+                    }
+                    $idCompetition = CompetitionAsp::where('competitionId', '=', $fac_stat['CompetitionId'])->first();
+                    $idAdmissionBasis = AdmissionBasis::where('baseId', '=', $fac_stat['IdBasis'])->first();
+                    $idStudyForm = StudyForm::where('name', '=', $fac_stat['trainingForm'])->first();
+
+
+                    if (empty($idPlan) || empty($idFaculty) || empty($idSpeciality) || empty($idCompetition)
+                        || empty($idAdmissionBasis) || empty($idStudyForm)) {
+                        $mes .= ' Не найден параметр.';
+                        if (empty($idPlan)) {
+                            $mes .= ' idPlan = ' . $fac_stat['planId'] . ',' . PHP_EOL;
+                        }
+                        if (empty($idFaculty)) {
+                            $mes .= ' idFaculty = ' . $fac_stat['facultyId'] . ',' . PHP_EOL;
+                        }
+                        if (empty($idSpeciality)) {
+                            $mes .= ' $idSpeciality = ' . $fac_stat['trainingAreasId'] . ',' . PHP_EOL;
+                        }
+                        if (empty($idCompetition)) {
+                            $mes .= ' $idCompetition = ' . $fac_stat['CompetitionId'] . ',' . PHP_EOL;
+                        }
+                        if (empty($idAdmissionBasis)) {
+                            $mes .= ' $idAdmissionBasis = ' . $fac_stat['IdBasis'] . ',' . PHP_EOL;
+                        }
+                        if (empty($idStudyForm)) {
+                            $mes .= ' $idStudyForm = ' . $fac_stat['trainingForm'] . ',' . PHP_EOL;
+                        }
+
+                    }
+
+                    foreach ($fac_stat['List'] as $student) {
+                        foreach ($student['score'] as $score_item) {
+                            $idSubject = Subject::where('subjectId', '=', $score_item['subjectId'])->first();
+                            if (empty($idSubject)) {
+                                $mes .= 'Не найден параметр. ' . ' idSubject = ' . $score_item['subjectId'] . PHP_EOL;
+                            }
+                        }
+                    }
+                } else {
+                    $idPlan = PlanAspForeigner::where('planId', '=', $fac_stat['planId'])->first();
+                    $idFaculty = Faculty::where('facultyId', '=', $fac_stat['facultyId'])->first();
+                    $idSpeciality = Speciality::where('specialityId', '=', $fac_stat['trainingAreasId'])->first();
+                    $idSpecialization = Specialization::where('specializationId', '=', $fac_stat['specializationID'])->first();
+                    if (empty($idSpecialization)) {
+                        $idSpecialization = Specialization::where('name', '=', $fac_stat['specializationName'])->first();
+                    }
+                    $idCompetition = CompetitionAspForeigner::where('competitionId', '=', $fac_stat['CompetitionId'])->first();
+                    $idAdmissionBasis = AdmissionBasis::where('baseId', '=', $fac_stat['IdBasis'])->first();
+                    $idStudyForm = StudyForm::where('name', '=', $fac_stat['trainingForm'])->first();
+
+                    if (empty($idPlan) || empty($idFaculty) || empty($idSpeciality) || empty($idCompetition)
+                        || empty($idAdmissionBasis) || empty($idStudyForm)) {
+                        $mes .= ' Не найден параметр.';
+                        if (empty($idPlan)) {
+                            $mes .= ' idPlan = ' . $fac_stat['planId'] . ',' . PHP_EOL;
+                        }
+                        if (empty($idFaculty)) {
+                            $mes .= ' idFaculty = ' . $fac_stat['facultyId'] . ',' . PHP_EOL;
+                        }
+                        if (empty($idSpeciality)) {
+                            $mes .= ' $idSpeciality = ' . $fac_stat['trainingAreasId'] . ',' . PHP_EOL;
+                        }
+                        if (empty($idCompetition)) {
+                            $mes .= ' $idCompetition = ' . $fac_stat['CompetitionId'] . ',' . PHP_EOL;
+                        }
+                        if (empty($idAdmissionBasis)) {
+                            $mes .= ' $idAdmissionBasis = ' . $fac_stat['IdBasis'] . ',' . PHP_EOL;
+                        }
+                        if (empty($idStudyForm)) {
+                            $mes .= ' $idStudyForm = ' . $fac_stat['trainingForm'] . ',' . PHP_EOL;
+                        }
+
+                    }
+                    foreach ($fac_stat['List'] as $student) {
+                        foreach ($student['score'] as $score_item) {
+                            $idSubject = Subject::where('subjectId', '=', $score_item['subjectId'])->first();
+                            if (empty($idSubject)) {
+                                $mes .= 'Не найден параметр. ' . ' idSubject = ' . $score_item['subjectId'] . PHP_EOL;
+                            }
+                        }
+                    }
+                }
+
+
+            }
+            if ($mes != NULL) {
+                throw new ErrorException($mes);
+            }
+
             StudentAsp::truncate();
             StudentAspForeigner::truncate();
             $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
             fwrite($logs, ' Students tables truncated; ');
-            echo '  Students tables truncated;'.PHP_EOL;
+            echo '  Students tables truncated;' . PHP_EOL;
 
             $scores = array();
             $students = array();
@@ -1004,8 +1323,8 @@ trait ParserJsonTrait
                                 'foreigner' => $fac_stat['foreigner'],
                                 'yellowline' => isset($student['yelloyline']) ? true : false,
                                 'acceptCount' => $student['acceptСount'],
-								'stage' => isset($fac_stat['Stage']) ? $fac_stat['Stage'] : null,
-								'stage_title' => isset($fac_stat['StageTitle']) ? $fac_stat['StageTitle'] : null,
+                                'stage' => isset($fac_stat['Stage']) ? $fac_stat['Stage'] : null,
+                                'stage_title' => isset($fac_stat['StageTitle']) ? $fac_stat['StageTitle'] : null,
                             );
                             $studentsStat[] = $stat;
                         } else {
@@ -1060,7 +1379,7 @@ trait ParserJsonTrait
                     //Записываем в БД студентов для этой специализации
                     $students = array_unique($students, SORT_REGULAR);
                     StudentAsp::insert($students);
-                }else {
+                } else {
                     $students_f = array(); //чистим массив студетов
                     //выбираем из базы нужные айдишники
                     $idPlan = PlanAspForeigner::where('planId', '=', $fac_stat['planId'])->first();
@@ -1081,7 +1400,7 @@ trait ParserJsonTrait
                         $idStudent = StudentAspForeigner::where('studentId', '=', $student['studentId'])->first();
                         if (empty($idStudent)) { //студента в базе нет - записываем
                             $fio_en = null;
-                            if(isset($student['fio_en'])){
+                            if (isset($student['fio_en'])) {
                                 $fio_en = mb_convert_case(mb_strtolower($student['fio_en']), MB_CASE_TITLE);
                             }
                             $stud_f = array(
@@ -1128,8 +1447,8 @@ trait ParserJsonTrait
                                 'foreigner' => $fac_stat['foreigner'],
                                 'yellowline' => isset($student['yelloyline']) ? true : false,
                                 'acceptCount' => $student['acceptСount'],
-								'stage' => isset($fac_stat['Stage']) ? $fac_stat['Stage'] : null,
-								'stage_title' => isset($fac_stat['StageTitle']) ? $fac_stat['StageTitle'] : null,
+                                'stage' => isset($fac_stat['Stage']) ? $fac_stat['Stage'] : null,
+                                'stage_title' => isset($fac_stat['StageTitle']) ? $fac_stat['StageTitle'] : null,
                             );
                             $studentsStat_f[] = $stat_f;
                         } else {
@@ -1214,10 +1533,10 @@ trait ParserJsonTrait
 
         } catch (ErrorException $e) {
             echo "  Error: ";
-            echo $e->getMessage().PHP_EOL;
+            echo $e->getMessage() . PHP_EOL;
             $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
-            fwrite($logs,  " Error: ");
-            fwrite($logs,  $e->getMessage());
+            fwrite($logs, " Error: ");
+            fwrite($logs, $e->getMessage());
             fclose($logs);
             return -1;
         }
@@ -1229,15 +1548,24 @@ trait ParserJsonTrait
         set_time_limit(1200);
 
         $this->parseCatalogsAsp();
-        $this->parseStatAsp();
-        $this->XlsAsp();
-        $this->XlsAspForeigner();
+        $result = $this->parseStatAsp();
+        if ($result != -1) {
+            $this->XlsAsp();
+            $this->XlsAspForeigner();
+        }
 
         $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
-        fwrite($logs,  'Информация об абитуриентах (аспирантура) успешно выгружена!');
-        fclose($logs);
-        echo '  Аспирантура выгружена'.PHP_EOL. '}' .PHP_EOL;
-        return 'Информация об абитуриентах (аспирантура) успешно выгружена!';
+        if ($result != -1) {
+            fwrite($logs, 'Информация об абитуриентах (аспирантура) успешно выгружена!');
+            fclose($logs);
+            echo '  Аспирантура выгружена' . PHP_EOL . '}' . PHP_EOL;
+            return 'Информация об абитуриентах (аспирантура) успешно выгружена!';
+        } else {
+            fwrite($logs, 'Информация не будет обновлена.');
+            fclose($logs);
+            echo '  Информация не будет обновлена.' . PHP_EOL . '}' . PHP_EOL;
+            return 'Информация не будет обновлена.';
+        }
     }
 //------------------------КОНЕЦ парсинг статистики Аспиранты--------------------------------
 
@@ -1249,7 +1577,7 @@ trait ParserJsonTrait
             $filejson = file_get_contents(storage_path('app/public/files/statistics/stat_spo.json'));
             $json_arr = json_decode($filejson, true);
             $json_data = $json_arr['data'];
-            echo 'parseCatalogsSpo()'.PHP_EOL;
+            echo 'function parseCatalogsSpo()' . PHP_EOL;
             $prepLevels = array();
             $categories = array();
 
@@ -1290,8 +1618,8 @@ trait ParserJsonTrait
             echo $e->getMessage();
 
             $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
-            fwrite($logs,  "Error: ");
-            fwrite($logs,  $e->getMessage().'\n');
+            fwrite($logs, "Error: ");
+            fwrite($logs, $e->getMessage() . '\n');
             fclose($logs);
 
             return -1;
@@ -1305,12 +1633,67 @@ trait ParserJsonTrait
             $filejson = file_get_contents(storage_path('app/public/files/statistics/stat_spo.json'));
             $json_arr = json_decode($filejson, true);
             $json_data = $json_arr['data'];
-            echo 'parseStatSpo(){'.PHP_EOL;
+            echo 'parseStatSpo(){' . PHP_EOL;
+
+            //ПРОВЕРКА
+            $mes = NULL;
+            foreach ($json_data as $k => $fac_stat) {
+
+                $idPlan = PlanSpo::where('planId', '=', $fac_stat['planId'])->first();
+                $idFaculty = Faculty::where('facultyId', '=', $fac_stat['facultyId'])->first();
+                $idSpeciality = Speciality::where('specialityId', '=', $fac_stat['trainingAreasId'])->first();
+                $idSpecialization = Specialization::where('specializationId', '=', $fac_stat['specializationID'])->first();
+                if (empty($idSpecialization)) {
+                    $idSpecialization = Specialization::where('name', '=', $fac_stat['specializationName'])->first();
+                }
+                $idCompetition = CompetitionSpo::where('competitionId', '=', $fac_stat['CompetitionId'])->first();
+                $idAdmissionBasis = AdmissionBasis::where('baseId', '=', $fac_stat['IdBasis'])->first();
+                $idStudyForm = StudyForm::where('name', '=', $fac_stat['trainingForm'])->first();
+
+
+                if (empty($idPlan) || empty($idFaculty) || empty($idSpeciality) || empty($idCompetition)
+                    || empty($idAdmissionBasis) || empty($idStudyForm)) {
+                    $mes .= ' Не найден параметр.';
+                    if (empty($idPlan)) {
+                        $mes .= ' idPlan = ' . $fac_stat['planId'] . ',' . PHP_EOL;
+                    }
+                    if (empty($idFaculty)) {
+                        $mes .= ' idFaculty = ' . $fac_stat['facultyId'] . ',' . PHP_EOL;
+                    }
+                    if (empty($idSpeciality)) {
+                        $mes .= ' $idSpeciality = ' . $fac_stat['trainingAreasId'] . ',' . PHP_EOL;
+                    }
+                    if (empty($idCompetition)) {
+                        $mes .= ' $idCompetition = ' . $fac_stat['CompetitionId'] . ',' . PHP_EOL;
+                    }
+                    if (empty($idAdmissionBasis)) {
+                        $mes .= ' $idAdmissionBasis = ' . $fac_stat['IdBasis'] . ',' . PHP_EOL;
+                    }
+                    if (empty($idStudyForm)) {
+                        $mes .= ' $idStudyForm = ' . $fac_stat['trainingForm'] . ',' . PHP_EOL;
+                    }
+
+                }
+
+                foreach ($fac_stat['List'] as $student) {
+                    foreach ($student['score'] as $score_item) {
+                        $idSubject = Subject::where('subjectId', '=', $score_item['subjectId'])->first();
+                        if (empty($idSubject)) {
+                            $mes .= 'Не найден параметр. ' . ' idSubject = ' . $score_item['subjectId'] . PHP_EOL;
+                        }
+                    }
+                }
+
+
+            }
+            if ($mes != NULL) {
+                throw new ErrorException($mes);
+            }
 
             StudentSpo::truncate();
             $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
             fwrite($logs, 'Students tables truncated; ');
-            echo 'Students tables truncated;'.PHP_EOL;
+            echo 'Students tables truncated;' . PHP_EOL;
 
             $scores = array();
             $students = array();
@@ -1380,8 +1763,8 @@ trait ParserJsonTrait
                                 'foreigner' => $fac_stat['foreigner'],
                                 'yellowline' => isset($student['yelloyline']) ? true : false,
                                 'acceptCount' => $student['acceptСount'],
-								'stage' => isset($fac_stat['Stage']) ? $fac_stat['Stage'] : null,
-								'stage_title' => isset($fac_stat['StageTitle']) ? $fac_stat['StageTitle'] : null,
+                                'stage' => isset($fac_stat['Stage']) ? $fac_stat['Stage'] : null,
+                                'stage_title' => isset($fac_stat['StageTitle']) ? $fac_stat['StageTitle'] : null,
                             );
                             $studentsStat[] = $stat;
                         } else {
@@ -1454,10 +1837,10 @@ trait ParserJsonTrait
             }
         } catch (ErrorException $e) {
             echo "  Error: ";
-            echo $e->getMessage(). PHP_EOL;
+            echo $e->getMessage() . PHP_EOL;
             $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
             fwrite($logs, " Error: ");
-            fwrite($logs, $e->getMessage(). PHP_EOL);
+            fwrite($logs, $e->getMessage() . PHP_EOL);
 
             fclose($logs);
             return -1;
@@ -1469,14 +1852,23 @@ trait ParserJsonTrait
         set_time_limit(1200);
 
         $this->parseCatalogsSpo();
-        $this->parseStatSpo();
-        $this->XlsSpo();
+        $result = $this->parseStatSpo();
+        if($result != -1) {
+            $this->XlsSpo();
+        }
 
         $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
-        fwrite($logs, ' Информация об абитуриентах (СПО) успешно выгружена!');
-        fclose($logs);
-        echo '  СПО выгружена'.PHP_EOL. '}' .PHP_EOL;
-        return 'Информация об абитуриентах (СПО) успешно выгружена!';
+        if($result != -1) {
+            fwrite($logs, ' Информация об абитуриентах (СПО) успешно выгружена!');
+            fclose($logs);
+            echo '  СПО выгружена' . PHP_EOL . '}' . PHP_EOL;
+            return 'Информация об абитуриентах (СПО) успешно выгружена!';
+        } else {
+            fwrite($logs, 'Информация не будет обновлена.');
+            fclose($logs);
+            echo '  Информация не будет обновлена.' . PHP_EOL . '}' . PHP_EOL;
+            return 'Информация не будет обновлена.';
+        }
     }
 //------------------------КОНЕЦ парсинг статистики СПО--------------------------------
 
@@ -1566,8 +1958,8 @@ trait ParserJsonTrait
                     foreach ($element['subjects'] as $subjectItem) {
                         $id_subject = Subject::where('subjectId', '=', $subjectItem['subjectId'])->first();
                         $changable = false;
-                        if(isset( $subjectItem['change'])){
-                            $changable = $subjectItem['change'] == "True"?1:0;
+                        if (isset($subjectItem['change'])) {
+                            $changable = $subjectItem['change'] == "True" ? 1 : 0;
                         }
                         if (!empty($id_subject)) {
                             $subject = array(
@@ -1667,8 +2059,8 @@ trait ParserJsonTrait
                     foreach ($element['subjects'] as $subjectItem) {
                         $id_subject = Subject::where('subjectId', '=', $subjectItem['subjectId'])->first();
                         $changable = false;
-                        if(isset( $subjectItem['change'])){
-                            $changable = $subjectItem['change']== "True"?1:0;
+                        if (isset($subjectItem['change'])) {
+                            $changable = $subjectItem['change'] == "True" ? 1 : 0;
                         }
                         if (!empty($id_subject)) {
                             $subject_f = array(
@@ -1745,8 +2137,8 @@ trait ParserJsonTrait
             echo "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: ";
             echo $e->getMessage();
             $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
-            fwrite($logs,  "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: ");
-            fwrite($logs,  $e->getMessage().'\n');
+            fwrite($logs, "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: ");
+            fwrite($logs, $e->getMessage() . '\n');
             fclose($logs);
             return -1;
         }
@@ -1841,8 +2233,8 @@ trait ParserJsonTrait
                     foreach ($element['subjects'] as $subjectItem) {
                         $id_subject = Subject::where('subjectId', '=', $subjectItem['subjectId'])->first();
                         $changable = false;
-                        if(isset( $subjectItem['change'])){
-                            $changable = $subjectItem['change']== "True"?1:0;
+                        if (isset($subjectItem['change'])) {
+                            $changable = $subjectItem['change'] == "True" ? 1 : 0;
                         }
                         if (!empty($id_subject)) {
                             $subject = array(
@@ -1943,9 +2335,9 @@ trait ParserJsonTrait
                     //связь предметов-оценок с объедением плана-исптания
                     foreach ($element['subjects'] as $subjectItem) {
                         $id_subject = Subject::where('subjectId', '=', $subjectItem['subjectId'])->first();
-						$changable = false;
-                        if(isset( $subjectItem['change'])){
-                            $changable = $subjectItem['change']== "True"?1:0;
+                        $changable = false;
+                        if (isset($subjectItem['change'])) {
+                            $changable = $subjectItem['change'] == "True" ? 1 : 0;
                         }
                         if (!empty($id_subject)) {
                             $subject_f = array(
@@ -2010,7 +2402,7 @@ trait ParserJsonTrait
             echo $e->getMessage();
             $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
             fwrite($logs, " С новым файлом что-то не так. Данные не будут обновленны. Ошибка: ");
-            fwrite($logs, $e->getMessage(). PHP_EOL);
+            fwrite($logs, $e->getMessage() . PHP_EOL);
             fclose($logs);
             return -1;
         }
@@ -2025,7 +2417,7 @@ trait ParserJsonTrait
         }
         $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
 
-        fwrite($logs,  ' Планы, цены за обучение и количество мест бакалавриата и специалитета успешно выгружены!');
+        fwrite($logs, ' Планы, цены за обучение и количество мест бакалавриата и специалитета успешно выгружены!');
 
         fclose($logs);
 
@@ -2154,7 +2546,7 @@ trait ParserJsonTrait
                             throw new ErrorException($mes);
                         }
                     }
-                }else {
+                } else {
                     $id_faculty = Faculty::where('facultyId', '=', $element['Plan']['facultyId'])->first();
                     $id_studyForm = StudyForm::where('name', '=', $element['Plan']['trainingForm'])->first();
                     $id_speciality = Speciality::where('specialityId', '=', $element['Plan']['trainingAreasId'])->first();
@@ -2285,8 +2677,8 @@ trait ParserJsonTrait
             echo "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: ";
             echo $e->getMessage();
             $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
-            fwrite($logs, "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: " );
-            fwrite($logs, $e->getMessage(). PHP_EOL );
+            fwrite($logs, "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: ");
+            fwrite($logs, $e->getMessage() . PHP_EOL);
             fclose($logs);
             return -1;
         }
@@ -2415,7 +2807,7 @@ trait ParserJsonTrait
                             throw new ErrorException($mes);
                         }
                     }
-                }else {
+                } else {
                     $id_faculty = Faculty::where('facultyId', '=', $element['Plan']['facultyId'])->first();
                     $id_studyForm = StudyForm::where('name', '=', $element['Plan']['trainingForm'])->first();
                     $id_speciality = Speciality::where('specialityId', '=', $element['Plan']['trainingAreasId'])->first();
@@ -2531,8 +2923,8 @@ trait ParserJsonTrait
             echo "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: ";
             echo $e->getMessage();
             $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
-            fwrite($logs, "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: " );
-            fwrite($logs, $e->getMessage(). PHP_EOL );
+            fwrite($logs, "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: ");
+            fwrite($logs, $e->getMessage() . PHP_EOL);
             fclose($logs);
             return -1;
         }
@@ -2800,8 +3192,8 @@ trait ParserJsonTrait
             echo "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: ";
             echo $e->getMessage();
             $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
-            fwrite($logs, "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: " );
-            fwrite($logs, $e->getMessage(). PHP_EOL );
+            fwrite($logs, "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: ");
+            fwrite($logs, $e->getMessage() . PHP_EOL);
             fclose($logs);
             return -1;
         }
@@ -3042,8 +3434,8 @@ trait ParserJsonTrait
             echo "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: ";
             echo $e->getMessage();
             $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
-            fwrite($logs, "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: " );
-            fwrite($logs, $e->getMessage(). PHP_EOL );
+            fwrite($logs, "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: ");
+            fwrite($logs, $e->getMessage() . PHP_EOL);
             fclose($logs);
             return -1;
         }
@@ -3056,7 +3448,7 @@ trait ParserJsonTrait
         $this->parsePlansAsp();
         $this->parsePlansOrd();
         $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
-        fwrite($logs, ' Планы, цены за обучение и количество мест аспирантуры успешно выгружены!' );
+        fwrite($logs, ' Планы, цены за обучение и количество мест аспирантуры успешно выгружены!');
         fclose($logs);
         return 'Планы, цены за обучение и количество мест аспирантуры успешно выгружены!';
     }
@@ -3197,8 +3589,8 @@ trait ParserJsonTrait
             echo "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: ";
             echo $e->getMessage();
             $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
-            fwrite($logs, "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: " );
-            fwrite($logs, $e->getMessage(). PHP_EOL );
+            fwrite($logs, "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: ");
+            fwrite($logs, $e->getMessage() . PHP_EOL);
             fclose($logs);
             return -1;
         }
@@ -3332,8 +3724,8 @@ trait ParserJsonTrait
             echo "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: ";
             echo $e->getMessage();
             $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
-            fwrite($logs, "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: " );
-            fwrite($logs, $e->getMessage(). PHP_EOL );
+            fwrite($logs, "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: ");
+            fwrite($logs, $e->getMessage() . PHP_EOL);
             fclose($logs);
             return -1;
         }
@@ -3466,8 +3858,8 @@ trait ParserJsonTrait
             echo "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: ";
             echo $e->getMessage();
             $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
-            fwrite($logs, "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: " );
-            fwrite($logs, $e->getMessage(). PHP_EOL );
+            fwrite($logs, "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: ");
+            fwrite($logs, $e->getMessage() . PHP_EOL);
             fclose($logs);
             return -1;
         }
@@ -3487,13 +3879,13 @@ trait ParserJsonTrait
             echo "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: ";
             echo $e->getMessage();
             $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
-            fwrite($logs, "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: " );
-            fwrite($logs, $e->getMessage(). PHP_EOL );
+            fwrite($logs, "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: ");
+            fwrite($logs, $e->getMessage() . PHP_EOL);
             fclose($logs);
             return -1;
         }
         $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
-        fwrite($logs, ' Планы, цены за обучение и количество мест СПО успешно выгружены!' );
+        fwrite($logs, ' Планы, цены за обучение и количество мест СПО успешно выгружены!');
         fclose($logs);
         return 'Планы, цены за обучение и количество мест СПО успешно выгружены!';
     }
@@ -3547,7 +3939,7 @@ trait ParserJsonTrait
             PastContests::truncate();
             PastContests::insert($arr_contests);
             $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
-            fwrite($logs, ' Статистика предыдущих лет успешно выгружена!' );
+            fwrite($logs, ' Статистика предыдущих лет успешно выгружена!');
             fclose($logs);
             return 'Статистика предыдущих лет успешно выгружена!';
 
@@ -3555,8 +3947,8 @@ trait ParserJsonTrait
             echo "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: ";
             echo $e->getMessage();
             $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
-            fwrite($logs, "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: " );
-            fwrite($logs, $e->getMessage(). PHP_EOL );
+            fwrite($logs, "С новым файлом что-то не так. Данные не будут обновленны. Ошибка: ");
+            fwrite($logs, $e->getMessage() . PHP_EOL);
             fclose($logs);
             return -1;
         }
