@@ -40,7 +40,7 @@ function onClickAction(evt) {
 
 function clickLinks() {
 	// Находим на странице кнопку и попап
-	console.log(list);
+	//console.log(list);
 
   list.forEach(a => {
     a.onclick = onClickAction;

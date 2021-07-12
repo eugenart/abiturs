@@ -292,10 +292,11 @@ class StatisticController extends Controller
             $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
             if ($studyForms->count() != 0) {
 //успешный вывод
+//                                return $studyForms;
                 return view($names_arr['page'], ['studyForms' => $studyForms, 'faculties' => $faculties,
                     'studyFormsForInputs' => $studyFormsForInputs, 'actual_link' => $actual_link, 'date_update' => $date_update,
                     'files_xls' => $files_xls, 'notification_files' => $notification_files]);
-//                return $studyForms;
+
             } else {
                 if (isset($faculties) && isset($studyFormsForInputs)) {
                     if (($faculties->count() != 0) && ($studyFormsForInputs->count() != 0)) {
@@ -1010,11 +1011,13 @@ class StatisticController extends Controller
     public
     function createFileXls(Request $request)
     {
+
         $studyForms = $request->all();
         $studyForms = $studyForms[0];
         $studyForms = (array)json_decode($studyForms);
         $collection = StudyForm::hydrate($studyForms);
         $file_name = $this->createXlsDynamic($collection);
+        //var_dump($file_name);
         return json_encode($file_name);
 
     }
