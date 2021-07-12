@@ -216,6 +216,58 @@
                                                         </ul>
                                                     </li>
                                                     <li>
+                                                        <a class="menu__item" href="https://mrsu.ru/ru/university/institute/">{{ trans('layout.inst') }}</a>
+                                                        <input type="checkbox" name="menu_item" id="checksubmenu1"
+                                                               class="checksubmenuhide">
+                                                        <label for="checksubmenu1" class="checksubmenu"></label>
+                                                        <ul class="hamburger__submenu">
+                                                            <li><a href="https://mrsu.ru/ru/university/institute/agr/">{{ trans('layout.i-1') }}</a></li>
+                                                            <li><a href="https://mrsu.ru/ru/university/institute/ime/">{{ trans('layout.i-2') }}</a></li>
+                                                            <li><a href="https://mrsu.ru/ru/university/institute/inc/">{{ trans('layout.i-3') }}</a></li>
+                                                            <li><a href="https://mrsu.ru/ru/university/institute/ifh/">{{ trans('layout.i-4') }}</a></li>
+                                                            <li><a href="https://mrsu.ru/ru/university/institute/ielis/">{{ trans('layout.i-5') }}</a></li>
+                                                            <li><a href="https://mrsu.ru/ru/university/institute/isi/">{{ trans('layout.i-6') }}</a></li>
+                                                            <li><a href="https://mrsu.ru/ru/university/institute/med/">{{ trans('layout.i-7') }}</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>
+                                                        <a class="menu__item" href="https://mrsu.ru/ru/university/faculty/">{{ trans('layout.fac') }}</a>
+                                                        <input type="checkbox" name="menu_item" id="checksubmenu1"
+                                                               class="checksubmenuhide">
+                                                        <label for="checksubmenu1" class="checksubmenu"></label>
+                                                        <ul class="hamburger__submenu">
+                                                            <li><a href="https://mrsu.ru/ru/university/faculty/asf/">{{ trans('layout.f-1') }}</a></li>
+                                                            <li><a href="https://mrsu.ru/ru/university/faculty/geo/">{{ trans('layout.f-2') }}</a></li>
+                                                            <li><a href="https://mrsu.ru/ru/university/faculty/bio/">{{ trans('layout.f-3') }}</a></li>
+                                                            <li><a href="https://mrsu.ru/ru/university/faculty/fdp/">{{ trans('layout.f-4') }}</a></li>
+                                                            <li><a href="https://mrsu.ru/ru/university/faculty/fdo/">{{ trans('layout.f-5') }}</a></li>
+                                                            <li><a href="https://mrsu.ru/ru/university/faculty/fia/">{{ trans('layout.f-6') }}</a></li>
+                                                            <li><a href="https://mrsu.ru/ru/university/faculty/fmiit/">{{ trans('layout.f-7') }}</a></li>
+                                                            <li><a href="https://mrsu.ru/ru/university/faculty/fil/">{{ trans('layout.f-8') }}</a></li>
+                                                            <li><a href="https://mrsu.ru/ru/university/faculty/econom/">{{ trans('layout.f-9') }}</a></li>
+                                                            <li><a href="https://mrsu.ru/ru/university/faculty/yur/">{{ trans('layout.f-10') }}</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>
+                                                        <a class="menu__item" href="https://mrsu.ru/ru/university/branch/">{{ trans('layout.branch') }}</a>
+                                                        <input type="checkbox" name="menu_item" id="checksubmenu1"
+                                                               class="checksubmenuhide">
+                                                        <label for="checksubmenu1" class="checksubmenu"></label>
+                                                        <ul class="hamburger__submenu">
+                                                            <li><a href="https://mrsu.ru/ru/university/branch/kov/">{{ trans('layout.fil-1') }}</a></li>
+                                                            <li><a href="https://mrsu.ru/ru/university/branch/ruz/">{{ trans('layout.fil-2') }}</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>
+                                                        <a class="menu__item" href="https://mrsu.ru/ru/university/branch/">{{ trans('layout.depart') }}</a>
+                                                        <input type="checkbox" name="menu_item" id="checksubmenu1"
+                                                               class="checksubmenuhide">
+                                                        <label for="checksubmenu1" class="checksubmenu"></label>
+                                                        <ul class="hamburger__submenu">
+
+                                                        </ul>
+                                                    </li>
+                                                    <li>
                                                         <a class="menu__item" href="https://mrsu.ru/ru/education/">{{ trans('layout.edu') }}</a>
                                                         <input type="checkbox" name="menu_item" id="checksubmenu2"
                                                                class="checksubmenuhide">
@@ -289,10 +341,11 @@
                                                         <ul class="hamburger__submenu">
                                                             <li><a href="https://abiturs.mrsu.ru/Bakalavriat-i-spetsialitet">{{ trans('layout.a1') }}</a></li>
                                                             <li><a href="https://mrsu.ru/ru/university/depart/priemnaya-komissiya/">{{ trans('layout.a2') }}</a></li>
-                                                            <li><a href="https://abiturs.mrsu.ru/Bakalavriat-i-spetsialitet">{{ trans('layout.a3') }}</a></li>
-                                                            <li><a href="https://mrsu.ru/ru/student/accommodations/">{{ trans('layout.a4') }}</a></li>
+                                                            <li><a href="https://abiturs.mrsu.ru/Bakalavriat-i-spetsialitet-Pamyatka-abiturienta">{{ trans('layout.a3') }}</a></li>
+                                                            <li><a href="https://abiturs.mrsu.ru/statistic/bachelor">{{ trans('layout.a4') }}</a></li>
                                                             <li><a href="https://abiturs.mrsu.ru/select/bachelor">{{ trans('layout.a5') }}</a></li>
-                                                            <li><a href="https://abiturs.mrsu.ru/contact">{{ trans('layout.a6') }}</a></li>
+                                                            <li><a href="https://abiturs.mrsu.ru/select/bachelor">{{ trans('layout.a6') }}</a></li>
+                                                            <li><a href="https://abiturs.mrsu.ru/contact">{{ trans('layout.a7') }}</a></li>
                                                         </ul>
                                                     </li>
                                                     <li>
