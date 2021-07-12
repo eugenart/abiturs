@@ -35,6 +35,10 @@ return [
     'abit' => 'Applicant',
     'documents' => 'Documents',
     'rector' => 'Rector\'s page',
+    'inst' => 'Institutions',
+    'fac' => 'Faculties',
+    'branch' => 'Branches',
+    'depart' => 'Departs',
 
     //правое меню
     //университет
@@ -49,7 +53,29 @@ return [
     'u-9' => 'Anti-corruption',
     'u-10' => 'Documents',
     'u-11' => 'Contacts',
+    //институты
+    'i-1' => 'Agriculture Institute',
+    'i-2' => 'Institute Of Mechanics And Power Engineering',
+    'i-3' => 'Institute Of National And Folk Culture',
+    'i-4' => 'Physics And Chemistry Institute',
+    'i-5' => 'Institute Of Electrical Engineering And Light Engineering',
+    'i-6' => 'History And Sociology Institute',
+    'i-7' => 'Medicine Institute',
 
+    //факультеты
+    'f-1' => 'Architecture And Construction Engineering Faculty',
+    'f-2' => 'Geography Faculty',
+    'f-3' => 'Biotechnology And Biology Faculty',
+    'f-4' => 'Faculty of pre-university training and secondary vocational education',
+    'f-5' => 'Faculty of Further Education',
+    'f-6' => 'Faculty Of Foreign Languages',
+    'f-7' => 'Faculty Of Mathematics And Information Technologies',
+    'f-8' => 'Faculty Of Philology',
+    'f-9' => 'Faculty Of Economics',
+    'f-10' => 'Law Faculty',
+    //филиалы
+    'fil-1' => 'Kovilkino Branch',
+    'fil-2' => 'Institute Of Machine Engineering (Ruzaevka City Affiliated Branch)',
     //education
     'e1' => 'Educational programs',
     'e6' => 'Secondary vocational education',
@@ -96,9 +122,10 @@ return [
     'a1' => 'Admission rules 2021',
     'a2' => 'Admissions office',
     'a3' => 'Memo for the applicant',
-    'a4' => 'Living and learning conditions',
+    'a4' => 'Lists of applocants',
     'a5' => 'Selection of educational programs',
-    'a6' => 'Your questions',
+    'a6' => 'Tuition fee',
+    'a7' => 'Your questions',
 
     //documentation
     'd1' => 'Organizational documents',

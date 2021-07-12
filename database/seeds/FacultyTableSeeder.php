@@ -11,11 +11,11 @@ class FacultyTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('faculties')->where('facultyId', '000000003')->update(['link' => 'https://www.mrsu.ru/ru/i_faculty/detail.php?ID=3483']);//Аграрный институт
+        DB::table('faculties')->where('facultyId', '000000003')->update(['link' => 'https://mrsu.ru/ru/university/institute/agr/']);//Аграрный институт
         DB::table('faculties')->where('facultyId', '000000004')->update(['link' => 'http://www.isi.mrsu.ru/']);//Историко-социологический институт
         DB::table('faculties')->where('facultyId', '000000005')->update(['link' => 'http://phys-chem.mrsu.ru/']);//Институт физики и химии
-        DB::table('faculties')->where('facultyId', '000000006')->update(['link' => 'https://www.mrsu.ru/ru/i_faculty/detail.php?ID=2492']);//Институт механики и энергетики
-        DB::table('faculties')->where('facultyId', '000000007')->update(['link' => 'https://www.mrsu.ru/ru/i_faculty/detail.php?ID=3493']);//Медицинский институт
+        DB::table('faculties')->where('facultyId', '000000006')->update(['link' => 'https://mrsu.ru/ru/university/institute/ime/']);//Институт механики и энергетики
+        DB::table('faculties')->where('facultyId', '000000007')->update(['link' => 'https://mrsu.ru/ru/university/institute/med/']);//Медицинский институт
         DB::table('faculties')->where('facultyId', '000000008')->update(['link' => 'http://ink.mrsu.ru/']);//Институт национальной культуры
         DB::table('faculties')->where('facultyId', '000000009')->update(['link' => 'http://asf.mrsu.ru/']);//Архитектурно-строительный факультет
         DB::table('faculties')->where('facultyId', '000000010')->update(['link' => 'http://bio.mrsu.ru/ru/']);//Факультет биотехнологии и биологии
