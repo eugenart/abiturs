@@ -645,7 +645,7 @@
 
                     // // после получения ответа сервера
                     success: function (data) {
-                        // console.log(data)
+                         //console.log(data)
                         window.location.replace('/storage/files-xls/' + data + '.xls');
                         $('#loading').hide();
                     },
