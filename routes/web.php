@@ -107,7 +107,7 @@ Route::get('/send_mail', 'SendMailController@index');
 Route::get('/send_mail_en', 'SendMailController@english');
 Route::get('/send_mail_mrsu', 'SendMailController@mrsu');
 Route::get('/contact', 'ContactController@index')->name('contact.index');
-Route::get('/contact/appeal', 'MrsuController@index')->name('mrsu.index');
+//Route::get('/contact/appeal', 'MrsuController@index')->name('mrsu.index');
 
 Route::get('/select/bachelor', 'SelectionController@index')->name('selection.index');
 Route::get('/select/foreigner', 'SelectionForeignerController@index')->name('selectionf.index');
