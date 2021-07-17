@@ -302,9 +302,12 @@ trait ParserJsonTrait
                                 'snils' => preg_replace('/[^0-9]/', '', $student['snils']),
                                 'snils2' => $student['snils2'],
                             );
+
                             $students[] = $stud;
-                            $count_idStudent++;
-                            $id_stud = $count_idStudent; //id студента равен счетчику записи в базу
+                            //$count_idStudent++;
+                            Student::insert($stud);
+                            $idStudent = Student::where('studentId', '=', $student['studentId'])->first();
+                            $id_stud = intval($idStudent->id); //id студента равен счетчику записи в базу
                         } else { //студент в БД есть  - не записываем, берем его id из БД
                             $id_stud = intval($idStudent->id); //id студента равен найденному в БД значению
                         }
@@ -392,8 +395,9 @@ trait ParserJsonTrait
                         }
                     }
                     //Записываем в БД студентов для этой специализации
-                    $students = array_unique($students, SORT_REGULAR);
-                    Student::insert($students);
+                    //$students = array_unique($students, SORT_REGULAR);
+                    //var_dump($students);
+                   // Student::insert($students);
 
                 } else {
 
@@ -561,8 +565,8 @@ trait ParserJsonTrait
         set_time_limit(1200);
         $result = $this->parseStatBach();
         if ($result != -1) {
-            $this->XlsBach();
-            $this->XlsBachForeigner();
+            //$this->XlsBach();
+           // $this->XlsBachForeigner();
         }
 
         $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
