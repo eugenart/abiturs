@@ -264,7 +264,16 @@
                                                                class="checksubmenuhide">
                                                         <label for="checksubmenu1" class="checksubmenu"></label>
                                                         <ul class="hamburger__submenu">
-
+                                                            <li><a href="https://mrsu.ru/ru/university/depart/priemnaya-komissiya/">{{ trans('layout.d-1') }}</a></li>
+                                                            <li><a href="https://mrsu.ru/ru/university/depart/upravlenie-podgotovki-kadrov-vysshey-kvalifikacii/">{{ trans('layout.d-2') }}</a></li>
+                                                            <li><a href="https://mrsu.ru/ru/university/depart/umu/">{{ trans('layout.d-3') }}</a></li>
+                                                            <li><a href="https://mrsu.ru/ru/university/depart/otdel-menedzhmenta-kachestva-obrazovatelnoy-deyatelnosti/">{{ trans('layout.d-4') }}</a></li>
+                                                            <li><a href="https://mrsu.ru/ru/university/depart/upravlenie-mezhdunarodnyh-svyazey/">{{ trans('layout.d-5') }}</a></li>
+                                                            <li><a href="https://mrsu.ru/ru/university/depart/otdel-socialnogo-razvitiya-i-inklyuzivnogo/">{{ trans('layout.d-6') }}</a></li>
+                                                            <li><a href="https://mrsu.ru/ru/university/depart/upravlenie-buhgalterskogo-ucheta-i-finansovogo/">{{ trans('layout.d-7') }}</a></li>
+                                                            <li><a href="https://mrsu.ru/ru/university/depart/upravlenie-nauchnyh-issledovaniy/">{{ trans('layout.d-8') }}</a></li>
+                                                            <li><a href="https://mrsu.ru/ru/university/depart/finansovo-ekonomicheskoe-upravlenie/">{{ trans('layout.d-9') }}</a></li>
+                                                            <li><a href="https://mrsu.ru/ru/university/depart/nauchnaya-biblioteka-im-m-m-bahtina/">{{ trans('layout.d-10') }}</a></li>
                                                         </ul>
                                                     </li>
                                                     <li>
