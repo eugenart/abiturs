@@ -48,11 +48,11 @@ class ParsingLists extends Command
         echo PHP_EOL . date("Y-m-d H:i:s ") . PHP_EOL;
 
         //проверить есть ли файл проверка
-        $res_check = $this->download_file($directory, "check.json");
+        $res_check = $this->download_file($directory, "lighthouse.json");
 
 
         if($res_check === 0) {
-            unlink(storage_path('app/public/files/statistics/check.json')); //удаляем файл у себя
+            unlink(storage_path('app/public/files/statistics/lighthouse.json')); //удаляем файл у себя
             //загрузить новые файлы с сервера
             $param = "stat_bach";
             $res = $this->download_file($directory, "stat_bach.json");
@@ -200,7 +200,7 @@ class ParsingLists extends Command
                     && md5_file($remote_file_path) == md5_file($local_file_path)) {
                     fwrite($logs,  " Файлы " . $file . " совпадают.".PHP_EOL);
                     fclose($logs);
-                    echo PHP_EOL. "Файлы " . $file . " совпадают." . PHP_EOL;
+                    echo "Файлы " . $file . " совпадают." . PHP_EOL;
                     return 2;
                 } else {
                     if (!$remote = @fopen("ssh2.sftp://{$stream}/{$remoteDir}/{$file}", 'r')) {
@@ -281,7 +281,7 @@ class ParsingLists extends Command
                         && md5_file($remote_file_path) == md5_file($local_file_path)) {
                         fwrite($logs, " Файл " . $file . " успешно загружен.".PHP_EOL );
                         fclose($logs);
-                        echo PHP_EOL. "Файл " . $file . " успешно загружен." . PHP_EOL;
+                        echo "Файл " . $file . " успешно загружен." . PHP_EOL;
                         if($file_name == 'lighthouse.json'){
                             unlink($remote_file_path);
                         }
