@@ -37,6 +37,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('parsing:begin')->everyTenMinutes()->sendOutputTo(storage_path() .'/app/public/logs/schedule_parse_log.log')->emailOutputOnFailure('kirdyashkinaei@mrsu.ru');
 
 
+
     }
 
     /**
