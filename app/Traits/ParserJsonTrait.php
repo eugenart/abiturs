@@ -304,10 +304,11 @@ trait ParserJsonTrait
                             );
 
                             $students[] = $stud;
-                            //$count_idStudent++;
-                            Student::insert($stud);
-                            $idStudent = Student::where('studentId', '=', $student['studentId'])->first();
-                            $id_stud = intval($idStudent->id); //id студента равен счетчику записи в базу
+                            $count_idStudent++;
+//                            Student::insert($stud);
+//                            $idStudent = Student::where('studentId', '=', $student['studentId'])->first();
+//                            $id_stud = intval($idStudent->id);
+                            $id_stud = $count_idStudent;//id студента равен счетчику записи в базу
                         } else { //студент в БД есть  - не записываем, берем его id из БД
                             $id_stud = intval($idStudent->id); //id студента равен найденному в БД значению
                         }
@@ -395,9 +396,9 @@ trait ParserJsonTrait
                         }
                     }
                     //Записываем в БД студентов для этой специализации
-                    //$students = array_unique($students, SORT_REGULAR);
+                    $students = array_unique($students, SORT_REGULAR);
                     //var_dump($students);
-                   // Student::insert($students);
+                     Student::insert($students);
 
                 } else {
 
@@ -565,8 +566,8 @@ trait ParserJsonTrait
         set_time_limit(1200);
         $result = $this->parseStatBach();
         if ($result != -1) {
-            //$this->XlsBach();
-           // $this->XlsBachForeigner();
+            $this->XlsBach();
+            $this->XlsBachForeigner();
         }
 
         $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
@@ -1857,12 +1858,12 @@ trait ParserJsonTrait
 
         $this->parseCatalogsSpo();
         $result = $this->parseStatSpo();
-        if($result != -1) {
+        if ($result != -1) {
             $this->XlsSpo();
         }
 
         $logs = fopen(storage_path('app/public/logs/parse_logs.txt'), 'a');
-        if($result != -1) {
+        if ($result != -1) {
             fwrite($logs, ' Информация об абитуриентах (СПО) успешно выгружена!');
             fclose($logs);
             echo '  СПО выгружена' . PHP_EOL . '}' . PHP_EOL;
