@@ -231,6 +231,7 @@
         <div class="row mt-lg-4 mt-xl-4 mt-md-3 mt-sm-3 mt-3">
             <div class="col-12">
                 @if(isset($studyForms))
+
                     <span
                         class="m-0 p-0 main-color d-lg-none d-md-inline w-100">Обновлено: <b>@if(isset($date_update)){{substr($date_update->date_update, 0, -3)}}@endif</b></span>
 
@@ -375,9 +376,12 @@
                                                                                     <div
                                                                                         class="col-xl-4 col-lg-4 col-md-12 col-12 d-lg-flex d-md-none d-none flex-column justify-content-around">
                                                                                         @if(isset($studyForms))
-                                                                                            <span
-                                                                                                class="m-0 p-0 main-color d-lg-inline d-md-none w-100">Обновлено: <b>@if(isset($date_update)){{substr($date_update->date_update, 0, -3)}}@endif</b></span>
-
+                                                                                            @if($studyForm->name == "Очная")
+{{--                                                                                                $category $preparationLevel $admissionBasis--}}
+                                                                                                <span class="m-0 p-0 main-color d-lg-inline d-md-none w-100">Обновлено: <b>2021-07-29 16:00</b></span>
+                                                                                            @else
+                                                                                                <span class="m-0 p-0 main-color d-lg-inline d-md-none w-100">Обновлено: <b>@if(isset($date_update)){{substr($date_update->date_update, 0, -3)}}@endif</b></span>
+                                                                                            @endif
                                                                                             <button
                                                                                                 style="white-space: normal;"
                                                                                                 type="button"
