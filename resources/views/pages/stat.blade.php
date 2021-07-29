@@ -378,7 +378,7 @@
                                                                                         @if(isset($studyForms))
                                                                                             @if($studyForm->name == "Очная")
 {{--                                                                                                $category $preparationLevel $admissionBasis--}}
-                                                                                                <span class="m-0 p-0 main-color d-lg-inline d-md-none w-100">Обновлено: <b>2021-07-29 16:00</b></span>
+                                                                                                <span class="m-0 p-0 main-color d-lg-inline d-md-none w-100">Обновлено: <b>2021-07-29 14:40</b></span>
                                                                                             @else
                                                                                                 <span class="m-0 p-0 main-color d-lg-inline d-md-none w-100">Обновлено: <b>@if(isset($date_update)){{substr($date_update->date_update, 0, -3)}}@endif</b></span>
                                                                                             @endif
