@@ -3075,8 +3075,10 @@ trait ParserJsonTrait
             $arr_freeseats_f = array();
             $count_plan_f = 0;
 
+
             foreach ($json_data as $k => $element) {
                 if (!$element['Competition']['foreigner']) {
+
                     $id_faculty = Faculty::where('facultyId', '=', $element['Plan']['facultyId'])->first();
                     $id_studyForm = StudyForm::where('name', '=', $element['Plan']['trainingForm'])->first();
                     $id_speciality = Speciality::where('specialityId', '=', $element['Plan']['trainingAreasId'])->first();
@@ -3212,6 +3214,10 @@ trait ParserJsonTrait
                     $arr_plan_f[] = $plan_f;
                     $arr_competition_f[] = $competition_f;
                     $count_plan_f++; //если не делать юник для планов которые повторяются то id плана и компетишина равны
+
+
+
+
                     //массив связей плана и испытания
                     $plan_comp_f = array(
                         'id_plan' => $count_plan_f,
@@ -3328,7 +3334,7 @@ trait ParserJsonTrait
             $arr_prices_f = array();
             $arr_freeseats_f = array();
             $count_plan_db_f = PlanAspForeigner::count();
-            $count_plan_f = intval($count_plan_db);
+            $count_plan_f = intval($count_plan_db_f);
 
             foreach ($json_data as $k => $element) {
                 if (!$element['Competition']['foreigner']) {
