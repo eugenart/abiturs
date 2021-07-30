@@ -691,13 +691,20 @@ class StatisticController extends Controller
 // ----------------поиск по имени-------------------
         if (isset($search_fio)) {
             //выбираем всех студентов подходящих по фио
-//СНИЛС
-//            $search_fio = preg_replace('/[^0-9]/', '', $search_fio); //удаляем все кроме цифр
-//            preg_replace('~\D+~','', $string);
-            $id_students = $names_arr['Student']::where('fio', 'LIKE', '%' . $search_fio . '%') //ищем по полю без тире
-                ->select('id', 'fio') //показываем форматированный
-                ->get();
 
+            //узнаем снилс ищут или фио
+            $search_snils = preg_replace('/[^0-9]/', '', $search_fio);//удаляем все кроме цифр
+            if($search_snils == ""){
+                //ищут фио
+                $id_students = $names_arr['Student']::where('fio', 'LIKE', '%' . $search_fio . '%')
+                    ->select('id', 'fio', 'snils2') //показываем форматированный
+                    ->get();
+            }else{
+                //ищут снилс
+                $id_students = $names_arr['Student']::where('snils', 'LIKE', '%' . $search_snils . '%') //ищем по полю без тире
+                ->select('id', 'fio', 'snils2') //показываем форматированный
+                ->get();
+            }
 
             if ($id_students->count() > 9) {
                 $notification =  trans('statforeigner.notification_specify');
@@ -718,7 +725,12 @@ class StatisticController extends Controller
             $id_stud_arr = array_map('intval', $id_stud_arr);
 
 //выбираем всю статистику где id студентов как нам нужно
-            $statistic_for_people = $names_arr['Statistic']::whereIn('id_student', $id_stud_arr)->get();
+            if($search_snils == ""){
+                $statistic_for_people = $names_arr['Statistic']::whereIn('id_student', $id_stud_arr)->where('snils_show', false)->get();
+            }else{
+                $statistic_for_people = $names_arr['Statistic']::whereIn('id_student', $id_stud_arr)->where('snils_show', true)->get();
+            }
+
 //echo("<pre>" . $statistic_for_people . "</pre>");
 
 //записей максимум 5-6 если человек ввел фамилию и имя

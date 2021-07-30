@@ -285,7 +285,12 @@ trait XlsMakerTrait
                                                                             //основная часть таблицы
                                                                             foreach ($admissionBasis->abiturs as $k => $abitur) {
                                                                                 $sheet->setCellValueByColumnAndRow(0, $c, $k + 1);
-                                                                                $sheet->setCellValueByColumnAndRow(1, $c, $abitur->student->fio);
+                                                                                if($abitur->snils_show == true){
+                                                                                    $sheet->setCellValueByColumnAndRow(1, $c, $abitur->student->snils2);
+                                                                                }else{
+                                                                                    $sheet->setCellValueByColumnAndRow(1, $c, $abitur->student->fio);
+                                                                                }
+
                                                                                 if ($abitur->acceptCount > 0) {
                                                                                     $sheet->setCellValueByColumnAndRow(2, $c, "✔");
                                                                                     $sheet->getStyleByColumnAndRow(2, $c)->applyFromArray($bg_green);
@@ -617,7 +622,12 @@ trait XlsMakerTrait
                                                                                 //основная часть таблицы
                                                                                 foreach ($admissionBasis->abiturs as $k => $abitur) {
                                                                                     $sheet->setCellValueByColumnAndRow(0, $c, $k + 1);
-                                                                                    $sheet->setCellValueByColumnAndRow(1, $c, $abitur->student->fio);
+                                                                                    if($abitur->snils_show == true){
+                                                                                        $sheet->setCellValueByColumnAndRow(1, $c, $abitur->student->snils2);
+                                                                                    }else{
+                                                                                        $sheet->setCellValueByColumnAndRow(1, $c, $abitur->student->fio);
+                                                                                    }
+
                                                                                     if ($abitur->acceptCount > 0) {
                                                                                         $sheet->setCellValueByColumnAndRow(2, $c, "✔");
                                                                                         $sheet->getStyleByColumnAndRow(2, $c)->applyFromArray($bg_green);

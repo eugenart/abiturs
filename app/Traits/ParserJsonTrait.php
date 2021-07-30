@@ -318,7 +318,14 @@ trait ParserJsonTrait
                     foreach ($fac_stat['List'] as $student) {
                         //находим id студента если он уже подал куда то еще
                         $idStudent = Student::where('studentId', '=', $student['studentId'])->first();
+
+
                         if (empty($idStudent)) { //студента в базе нет - записываем
+                            if(isset($student['snilsshow'])){
+                                $snilsshow = $student['snilsshow'];
+                            }else{
+                                $snilsshow = false;
+                            }
                             $stud = array(
                                 'studentId' => $student['studentId'],
                                 'fio' => mb_convert_case(mb_strtolower($student['fio']), MB_CASE_TITLE),
@@ -368,6 +375,7 @@ trait ParserJsonTrait
                                 'acceptCount' => $student['acceptСount'],
                                 'stage' => isset($fac_stat['Stage']) ? $fac_stat['Stage'] : null,
                                 'stage_title' => isset($fac_stat['StageTitle']) ? $fac_stat['StageTitle'] : null,
+                                'snils_show' => $snilsshow,
                             );
                             $studentsStat[] = $stat;
                         } else {
@@ -470,12 +478,18 @@ trait ParserJsonTrait
                             if (isset($student['fio_en'])) {
                                 $fio_en = mb_convert_case(mb_strtolower($student['fio_en']), MB_CASE_TITLE);
                             }
+                            if(isset($student['snilsshow'])){
+                                $snilsshow = $student['snilsshow'];
+                            }else{
+                                $snilsshow = false;
+                            }
                             $stud_f = array(
                                 'studentId' => $student['studentId'],
                                 'fio' => mb_convert_case(mb_strtolower($student['fio']), MB_CASE_TITLE),
                                 'fio_en' => $fio_en,
                                 'snils' => preg_replace('/[^0-9]/', '', $student['snils']),
                                 'snils2' => $student['snils2'],
+
                             );
                             $students_f[] = $stud_f;
                             $count_idStudent_f++;
@@ -516,6 +530,7 @@ trait ParserJsonTrait
                                 'acceptCount' => $student['acceptСount'],
                                 'stage' => isset($fac_stat['Stage']) ? $fac_stat['Stage'] : null,
                                 'stage_title' => isset($fac_stat['StageTitle']) ? $fac_stat['StageTitle'] : null,
+                                'snils_show' => $snilsshow,
                             );
                             $studentsStat_f[] = $stat_f;
                         } else {
@@ -848,6 +863,11 @@ trait ParserJsonTrait
                         //находим id студента в предыдущих специальностях
                         $idStudent = StudentMaster::where('studentId', '=', $student['studentId'])->first();
                         if (empty($idStudent)) { //студента в базе нет - записываем
+                            if(isset($student['snilsshow'])){
+                                $snilsshow = $student['snilsshow'];
+                            }else{
+                                $snilsshow = false;
+                            }
                             $stud = array(
                                 'studentId' => $student['studentId'],
                                 'fio' => mb_convert_case(mb_strtolower($student['fio']), MB_CASE_TITLE),
@@ -893,6 +913,7 @@ trait ParserJsonTrait
                                 'acceptCount' => $student['acceptСount'],
                                 'stage' => isset($fac_stat['Stage']) ? $fac_stat['Stage'] : null,
                                 'stage_title' => isset($fac_stat['StageTitle']) ? $fac_stat['StageTitle'] : null,
+                                'snils_show' => $snilsshow,
                             );
                             $studentsStat[] = $stat;
                         } else {
@@ -971,6 +992,11 @@ trait ParserJsonTrait
                             if (isset($student['fio_en'])) {
                                 $fio_en = mb_convert_case(mb_strtolower($student['fio_en']), MB_CASE_TITLE);
                             }
+                            if(isset($student['snilsshow'])){
+                                $snilsshow = $student['snilsshow'];
+                            }else{
+                                $snilsshow = false;
+                            }
                             $stud_f = array(
                                 'studentId' => $student['studentId'],
                                 'fio' => mb_convert_case(mb_strtolower($student['fio']), MB_CASE_TITLE),
@@ -1017,6 +1043,7 @@ trait ParserJsonTrait
                                 'acceptCount' => $student['acceptСount'],
                                 'stage' => isset($fac_stat['Stage']) ? $fac_stat['Stage'] : null,
                                 'stage_title' => isset($fac_stat['StageTitle']) ? $fac_stat['StageTitle'] : null,
+                                'snils_show' => $snilsshow,
                             );
                             $studentsStat_f[] = $stat_f;
                         } else {
@@ -1339,6 +1366,11 @@ trait ParserJsonTrait
                         //находим id студента в предыдущих специальностях
                         $idStudent = StudentAsp::where('studentId', '=', $student['studentId'])->first();
                         if (empty($idStudent)) { //студента в базе нет - записываем
+                            if(isset($student['snilsshow'])){
+                                $snilsshow = $student['snilsshow'];
+                            }else{
+                                $snilsshow = false;
+                            }
                             $stud = array(
                                 'studentId' => $student['studentId'],
                                 'fio' => mb_convert_case(mb_strtolower($student['fio']), MB_CASE_TITLE),
@@ -1384,6 +1416,7 @@ trait ParserJsonTrait
                                 'acceptCount' => $student['acceptСount'],
                                 'stage' => isset($fac_stat['Stage']) ? $fac_stat['Stage'] : null,
                                 'stage_title' => isset($fac_stat['StageTitle']) ? $fac_stat['StageTitle'] : null,
+                                'snils_show' => $snilsshow,
                             );
                             $studentsStat[] = $stat;
                         } else {
@@ -1462,6 +1495,11 @@ trait ParserJsonTrait
                             if (isset($student['fio_en'])) {
                                 $fio_en = mb_convert_case(mb_strtolower($student['fio_en']), MB_CASE_TITLE);
                             }
+                            if(isset($student['snilsshow'])){
+                                $snilsshow = $student['snilsshow'];
+                            }else{
+                                $snilsshow = false;
+                            }
                             $stud_f = array(
                                 'studentId' => $student['studentId'],
                                 'fio' => mb_convert_case(mb_strtolower($student['fio']), MB_CASE_TITLE),
@@ -1508,6 +1546,7 @@ trait ParserJsonTrait
                                 'acceptCount' => $student['acceptСount'],
                                 'stage' => isset($fac_stat['Stage']) ? $fac_stat['Stage'] : null,
                                 'stage_title' => isset($fac_stat['StageTitle']) ? $fac_stat['StageTitle'] : null,
+                                'snils_show' => $snilsshow,
                             );
                             $studentsStat_f[] = $stat_f;
                         } else {
@@ -1779,6 +1818,11 @@ trait ParserJsonTrait
                         //находим id студента в предыдущих специальностях
                         $idStudent = StudentSpo::where('studentId', '=', $student['studentId'])->first();
                         if (empty($idStudent)) { //студента в базе нет - записываем
+                            if(isset($student['snilsshow'])){
+                                $snilsshow = $student['snilsshow'];
+                            }else{
+                                $snilsshow = false;
+                            }
                             $stud = array(
                                 'studentId' => $student['studentId'],
                                 'fio' => mb_convert_case(mb_strtolower($student['fio']), MB_CASE_TITLE),
@@ -1824,6 +1868,7 @@ trait ParserJsonTrait
                                 'acceptCount' => $student['acceptСount'],
                                 'stage' => isset($fac_stat['Stage']) ? $fac_stat['Stage'] : null,
                                 'stage_title' => isset($fac_stat['StageTitle']) ? $fac_stat['StageTitle'] : null,
+                                'snils_show' => $snilsshow,
                             );
                             $studentsStat[] = $stat;
                         } else {

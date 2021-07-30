@@ -58,7 +58,7 @@ class ParsingLists extends Command
             $param = "stat_bach";
             $res = $this->download_file($directory, "stat_bach.json");
 
-            $this->date_update($param); //обновляем ДО загрузки файла не смотря ни на что
+            //$this->date_update($param); //обновляем ДО загрузки файла не смотря ни на что
             if ($res === 0) {
                 $this->parseStatBachAll();
             }

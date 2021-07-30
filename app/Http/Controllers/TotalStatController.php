@@ -111,6 +111,7 @@ class TotalStatController extends Controller
         if (Auth::check()) {
             $this->download('statistic_priem/bach');
             unlink(storage_path('app/public/statistic_priem/bach/Очно-заочная форма бюджетная основа.pdf'));
+            unlink(storage_path('app/public/statistic_priem/bach/Очная форма бюджетная основа.pdf'));
             $this->download('statistic_priem/master');
             $this->download('statistic_priem/asp');
             $this->download('statistic_priem/spo');
