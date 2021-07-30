@@ -443,14 +443,25 @@
                                                                                         @foreach($admissionBasis->chosenStudents as $chosenStudent)
                                                                                             <div class="main-color h6">
                                                                                                 @if(trans('layout.locale')=='ru')
-                                                                                                    <span
-                                                                                                        class="font-weight-bold">{{$chosenStudent->fio}} </span>
+                                                                                                    @if($admissionBasis->abiturs->first()->snils_show == true)
+                                                                                                        <span class="font-weight-bold">{{$chosenStudent->snils2}} </span>
+                                                                                                    @else
+                                                                                                        <span  class="font-weight-bold">{{$chosenStudent->fio}} </span>
+                                                                                                        @endif
                                                                                                     @endif
                                                                                                     @if(trans('layout.locale')=='en')
                                                                                                     @if(is_null($chosenStudent->fio_en) || ctype_space($chosenStudent->fio_en) || $chosenStudent->fio_en == '')
-                                                                                                    {{$chosenStudent->fio}}
+                                                                                                        @if($admissionBasis->abiturs->first()->snils_show == true)
+                                                                                                        {{$chosenStudent->snils2}}
+                                                                                                        @else
+                                                                                                        {{$chosenStudent->fio}}
+                                                                                                        @endif
                                                                                                     @endif
-                                                                                                    {{$chosenStudent->fio_en}}
+                                                                                                        @if($admissionBasis->abiturs->first()->snils_show == true)
+                                                                                                        {{$chosenStudent->snils2}}
+                                                                                                        @else
+                                                                                                        {{$chosenStudent->fio_en}}
+                                                                                                        @endif
                                                                                                     @endif
 
                                                                                                     &mdash;
@@ -573,13 +584,25 @@
                                                                                                     <td class="text-left"
                                                                                                         id="stud-{{$abitur->student->id}}-{{$abitur->id_speciality}}">
                                                                                                         @if(trans('layout.locale')=='ru')
-                                                                                                            {{$abitur->student->fio}}
+                                                                                                            @if($abitur->snils_show == true)
+                                                                                                                {{$abitur->student->snils2}}
+                                                                                                            @else
+                                                                                                                {{$abitur->student->fio}}
+                                                                                                            @endif
                                                                                                         @endif
                                                                                                         @if(trans('layout.locale')=='en')
                                                                                                             @if(is_null($abitur->student->fio_en) || ctype_space($abitur->student->fio_en) || $abitur->student->fio_en == '')
-                                                                                                                {{$abitur->student->fio}}
+                                                                                                                    @if($abitur->snils_show == true)
+                                                                                                                        {{$abitur->student->snils2}}
+                                                                                                                    @else
+                                                                                                                        {{$abitur->student->fio}}
+                                                                                                                    @endif
                                                                                                             @endif
-                                                                                                            {{$abitur->student->fio_en}}
+                                                                                                                @if($abitur->snils_show == true)
+                                                                                                                    {{$abitur->student->snils2}}
+                                                                                                                @else
+                                                                                                                    {{$abitur->student->fio_en}}
+                                                                                                                @endif
                                                                                                         @endif
 
                                                                                                     </td>

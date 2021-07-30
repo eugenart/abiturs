@@ -213,7 +213,7 @@
                 <div class="col-12 mt-2 mb-2">
                     <div class="row">
                         <div class="col-md-10 col-9">
-                            <input class="form-control form-control-sm" type="search" placeholder="Поиск по ФИО"
+                            <input class="form-control form-control-sm" type="search" placeholder="Поиск по ФИО или СНИЛС"
                                    aria-label="Search" name="fio">
                         </div>
                         <div class="col-md-2 col-3">
@@ -376,12 +376,13 @@
                                                                                     <div
                                                                                         class="col-xl-4 col-lg-4 col-md-12 col-12 d-lg-flex d-md-none d-none flex-column justify-content-around">
                                                                                         @if(isset($studyForms))
-                                                                                            @if($studyForm->name == "Очная")
-{{--                                                                                                $category $preparationLevel $admissionBasis--}}
-                                                                                                <span class="m-0 p-0 main-color d-lg-inline d-md-none w-100">Обновлено: <b>2021-07-29 14:40</b></span>
+                                                                                            @if  ($admissionBasis->dateUp != NULL)
+                                                                                                <span class="m-0 p-0 main-color d-lg-inline d-md-none w-100">Обновлено: <b>{{$admissionBasis->dateUp}}</b></span>
                                                                                             @else
                                                                                                 <span class="m-0 p-0 main-color d-lg-inline d-md-none w-100">Обновлено: <b>@if(isset($date_update)){{substr($date_update->date_update, 0, -3)}}@endif</b></span>
                                                                                             @endif
+
+
                                                                                             <button
                                                                                                 style="white-space: normal;"
                                                                                                 type="button"
@@ -421,8 +422,12 @@
                                                                                     <div class="chosen-student-ovz">
                                                                                         @foreach($admissionBasis->chosenStudents as $chosenStudent)
                                                                                             <div class="main-color h6">
-                                                                                <span
-                                                                                    class="font-weight-bold">{{$chosenStudent->fio}} </span>
+
+                                                                                                @if($admissionBasis->abiturs->first()->snils_show == true)
+                                                                                                    <span class="font-weight-bold">{{$chosenStudent->snils2}} </span>
+                                                                                                @else
+                                                                                                    <span class="font-weight-bold">{{$chosenStudent->fio}} </span>
+                                                                                                @endif
                                                                                                 &mdash;
                                                                                                 <a class="main-color underline-label h6"
                                                                                                    href="#stud-{{$chosenStudent->id}}-{{$speciality->id}}">конкурсное
@@ -453,10 +458,16 @@
                                                                                             </th>
                                                                                             <th rowspan="2"
                                                                                                 class="text-center">
-                                                                                <span
-                                                                                    class="d-xl-table-cell d-lg-none d-none">Фамилия, имя, отчество</span>
-                                                                                                <span
-                                                                                                    class="d-xl-none d-lg-table-cell d-lg-table-cell">ФИО</span>
+
+                                                                                            @if($admissionBasis->abiturs->first()->snils_show == true)
+                                                                                                    <span class="d-xl-table-cell d-lg-none d-none">СНИЛС</span>
+                                                                                                    <span class="d-xl-none d-lg-table-cell d-lg-table-cell">СНИЛС</span>
+                                                                                            @else
+                                                                                                    <span class="d-xl-table-cell d-lg-none d-none">Фамилия, имя, отчество</span>
+                                                                                                    <span class="d-xl-none d-lg-table-cell d-lg-table-cell">ФИО</span>
+                                                                                            @endif
+
+
                                                                                             </th>
                                                                                             {{--                                                                            <th rowspan="2" class="text-center">--}}
                                                                                             {{--                                                                                <span--}}
@@ -476,14 +487,18 @@
 
                                                                                                 @foreach($admissionBasis->subs as $i => $sc)
                                                                                                     @if($i < count($admissionBasis->subs) -1)
-                                                                                                        <p class="m-0"> {{$i+1}}) {{$sc}}</p>
+                                                                                                        <p class="m-0"> {{$i+1}}
+                                                                                                            ) {{$sc}}</p>
                                                                                                     @else
-                                                                                                        <p class="m-0"> {{$i+1}}) {{$sc}}</p>
-                                                                                                        <p class="m-0 d-xl-inline d-lg-none d-none">{{$i + 2}}) Балл
+                                                                                                        <p class="m-0"> {{$i+1}}
+                                                                                                            ) {{$sc}}</p>
+                                                                                                        <p class="m-0 d-xl-inline d-lg-none d-none">{{$i + 2}}
+                                                                                                            ) Балл
                                                                                                             за
                                                                                                             индивидуальные
                                                                                                             достижения</p>
-                                                                                                        <p class="m-0 d-xl-none d-lg-inline d-inline">{{$i + 2}}) БИД</p>
+                                                                                                        <p class="m-0 d-xl-none d-lg-inline d-inline">{{$i + 2}}
+                                                                                                            ) БИД</p>
                                                                                                     @endif
                                                                                                 @endforeach
 
@@ -538,10 +553,17 @@
                                                                                                 <tr class="text-center">
                                                                                                     @endif
                                                                                                     <td class="text-center">{{$k + 1}}</td>
-                                                                                                    <td class="text-left"
-                                                                                                        id="stud-{{$abitur->student->id}}-{{$abitur->id_speciality}}">{{$abitur->student->fio}}
 
-                                                                                                    </td>
+                                                                                                        <td class="text-left" id="stud-{{$abitur->student->id}}-{{$abitur->id_speciality}}">
+
+                                                                                                            @if($abitur->snils_show == true)
+                                                                                                                 {{$abitur->student->snils2}}
+                                                                                                            @else
+                                                                                                                {{$abitur->student->fio}}
+                                                                                                            @endif
+                                                                                                        </td>
+
+
                                                                                                     {{--                                                                                    <td>--}}
                                                                                                     {{--                                                                                        @if($abitur->original)--}}
                                                                                                     {{--                                                                                            <i class="fa fa-check-circle"--}}
@@ -649,7 +671,7 @@
 
                     // // после получения ответа сервера
                     success: function (data) {
-                         //console.log(data)
+                        //console.log(data)
                         window.location.replace('/storage/files-xls/' + data + '.xls');
                         $('#loading').hide();
                     },
