@@ -376,11 +376,18 @@
                                                                                     <div
                                                                                         class="col-xl-4 col-lg-4 col-md-12 col-12 d-lg-flex d-md-none d-none flex-column justify-content-around">
                                                                                         @if(isset($studyForms))
-                                                                                            @if($studyForm->name == "Очная")
-{{--                                                                                                $category $preparationLevel $admissionBasis--}}
-                                                                                                <span class="m-0 p-0 main-color d-lg-inline d-md-none w-100">Обновлено: <b>2021-07-29 14:40</b></span>
+                                                                                            {{--                                                                                            @if($studyForm->name == "Очная")--}}
+                                                                                            {{--                                                                                                $category $preparationLevel $admissionBasis--}}
+                                                                                            {{--                                                                                                <span class="m-0 p-0 main-color d-lg-inline d-md-none w-100">Обновлено: <b>2021-07-29 16:40</b></span>--}}
+                                                                                            {{--                                                                                            @else--}}
+                                                                                            {{--                                                                                                <span class="m-0 p-0 main-color d-lg-inline d-md-none w-100">Обновлено: <b>@if(isset($date_update)){{substr($date_update->date_update, 0, -3)}}@endif</b></span>--}}
+                                                                                            {{--                                                                                            @endif--}}
+                                                                                            @if($admissionBasis->dateUp != NULL)
+                                                                                                <span
+                                                                                                    class="m-0 p-0 main-color d-lg-inline d-md-none w-100">Обновлено: <b>{{$admissionBasis->dateUp}}</b></span>
                                                                                             @else
-                                                                                                <span class="m-0 p-0 main-color d-lg-inline d-md-none w-100">Обновлено: <b>@if(isset($date_update)){{substr($date_update->date_update, 0, -3)}}@endif</b></span>
+                                                                                                <span
+                                                                                                    class="m-0 p-0 main-color d-lg-inline d-md-none w-100">Обновлено: <b>@if(isset($date_update)){{substr($date_update->date_update, 0, -3)}}@endif</b></span>
                                                                                             @endif
                                                                                             <button
                                                                                                 style="white-space: normal;"
@@ -476,14 +483,18 @@
 
                                                                                                 @foreach($admissionBasis->subs as $i => $sc)
                                                                                                     @if($i < count($admissionBasis->subs) -1)
-                                                                                                        <p class="m-0"> {{$i+1}}) {{$sc}}</p>
+                                                                                                        <p class="m-0"> {{$i+1}}
+                                                                                                            ) {{$sc}}</p>
                                                                                                     @else
-                                                                                                        <p class="m-0"> {{$i+1}}) {{$sc}}</p>
-                                                                                                        <p class="m-0 d-xl-inline d-lg-none d-none">{{$i + 2}}) Балл
+                                                                                                        <p class="m-0"> {{$i+1}}
+                                                                                                            ) {{$sc}}</p>
+                                                                                                        <p class="m-0 d-xl-inline d-lg-none d-none">{{$i + 2}}
+                                                                                                            ) Балл
                                                                                                             за
                                                                                                             индивидуальные
                                                                                                             достижения</p>
-                                                                                                        <p class="m-0 d-xl-none d-lg-inline d-inline">{{$i + 2}}) БИД</p>
+                                                                                                        <p class="m-0 d-xl-none d-lg-inline d-inline">{{$i + 2}}
+                                                                                                            ) БИД</p>
                                                                                                     @endif
                                                                                                 @endforeach
 
@@ -649,7 +660,7 @@
 
                     // // после получения ответа сервера
                     success: function (data) {
-                         //console.log(data)
+                        //console.log(data)
                         window.location.replace('/storage/files-xls/' + data + '.xls');
                         $('#loading').hide();
                     },

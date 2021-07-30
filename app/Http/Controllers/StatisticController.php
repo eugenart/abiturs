@@ -466,6 +466,7 @@ class StatisticController extends Controller
                                     $element->specializationId = '0';
                                     $element->id_speciality = '0';
                                     $element->name = '';
+                                    $element->en_name = '';
 
                                     $specializations->push($element);
 //                                        return $specializations;
@@ -476,6 +477,7 @@ class StatisticController extends Controller
                                     $element->specializationId = '0';
                                     $element->id_speciality = '0';
                                     $element->name = '';
+                                    $element->en_name = '';
 
                                     $specializations->push($element);
 //                                        return $specializations;
@@ -520,6 +522,8 @@ class StatisticController extends Controller
                                         $admissionBases = $newadm;
 
                                         foreach ($admissionBases as $k3 => $admissionBasis) {
+
+
 
                                             if ($specialization->id == 0) {
                                                 $spez_id = null;
@@ -615,6 +619,14 @@ class StatisticController extends Controller
                                                     $stage_title = substr($stage_title, 1, -1);
                                                 }
                                                 $admissionBasis->stage_title = $stage_title;
+
+                                                $dateUp = DateUpdate::where('id_plan',$idPlan->id)->where('id_competition', intval($competition->id))->where('id_admissionBasis', $admissionBasis->id)
+                                                    ->where('id_studyForm', $studyForm->id)->first();
+                                                if(isset($dateUp)) {
+                                                    $admissionBasis->dateUp = $dateUp->date_update;
+                                                }else{
+                                                    $admissionBasis->dateUp = NULL;
+                                                }
 
                                                 $originalsCount = 0;
                                                 foreach ($temp as $student) {
@@ -773,6 +785,7 @@ class StatisticController extends Controller
                                     $element->specializationId = '0';
                                     $element->id_speciality = '0';
                                     $element->name = '';
+                                    $element->en_name = '';
 
                                     $specializations->push($element);
 //                                        return $specializations;
@@ -783,6 +796,7 @@ class StatisticController extends Controller
                                     $element->specializationId = '0';
                                     $element->id_speciality = '0';
                                     $element->name = '';
+                                    $element->en_name = '';
 
                                     $specializations->push($element);
 //                                        return $specializations;
