@@ -242,7 +242,12 @@ trait XlsMakerTrait
                                                                             //шапка таблицы
                                                                             $sheet->setCellValueByColumnAndRow(0, $c, "№ п/п");
                                                                             $sheet->mergeCellsByColumnAndRow(0, $c, 0, $c + 1);
-                                                                            $sheet->setCellValueByColumnAndRow(1, $c, "Фамилия, имя, отчество");
+                                                                            if($admissionBasis->abiturs->first()->snils_show == true){
+                                                                                $sheet->setCellValueByColumnAndRow(1, $c, "СНИЛС");
+                                                                            }else{
+                                                                                $sheet->setCellValueByColumnAndRow(1, $c, "Фамилия, имя, отчество");
+                                                                            }
+
                                                                             $sheet->mergeCellsByColumnAndRow(1, $c, 1, $c + 1);
                                                                             $sheet->setCellValueByColumnAndRow(2, $c, "Согласие на зачисление");
                                                                             $sheet->mergeCellsByColumnAndRow(2, $c, 2, $c + 1);
@@ -563,7 +568,11 @@ trait XlsMakerTrait
                                                                                 //шапка таблицы
                                                                                 $sheet->setCellValueByColumnAndRow(0, $c, "№ п/п");
                                                                                 $sheet->mergeCellsByColumnAndRow(0, $c, 0, $c + 1);
-                                                                                $sheet->setCellValueByColumnAndRow(1, $c, "Фамилия, имя, отчество");
+                                                                                if($admissionBasis->abiturs->first()->snils_show == true){
+                                                                                    $sheet->setCellValueByColumnAndRow(1, $c, "СНИЛС");
+                                                                                }else{
+                                                                                    $sheet->setCellValueByColumnAndRow(1, $c, "Фамилия, имя, отчество");
+                                                                                }
                                                                                 $sheet->mergeCellsByColumnAndRow(1, $c, 1, $c + 1);
                                                                                 $sheet->setCellValueByColumnAndRow(2, $c, "Согласие на зачисление");
                                                                                 $sheet->mergeCellsByColumnAndRow(2, $c, 2, $c + 1);
