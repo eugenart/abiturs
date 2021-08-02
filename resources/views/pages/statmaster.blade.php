@@ -211,7 +211,7 @@
                 <div class="col-12 mt-2 mb-2">
                     <div class="row">
                         <div class="col-md-10 col-9">
-                            <input class="form-control form-control-sm" type="search" placeholder="Поиск по ФИО или СНИЛС"
+                            <input class="form-control form-control-sm" type="search" placeholder="Поиск по ФИО или СНИЛС / ID"
                                    aria-label="Search" name="fio">
                         </div>
                         <div class="col-md-2 col-3">
@@ -443,8 +443,8 @@
                                                                                             <th rowspan="2"
                                                                                                 class="text-center">
                                                                                                 @if($admissionBasis->abiturs->first()->snils_show == true)
-                                                                                                    <span class="d-xl-table-cell d-lg-none d-none">СНИЛС</span>
-                                                                                                    <span class="d-xl-none d-lg-table-cell d-lg-table-cell">СНИЛС</span>
+                                                                                                    <span class="d-xl-table-cell d-lg-none d-none">СНИЛС / ID абитуриента</span>
+                                                                                                    <span class="d-xl-none d-lg-table-cell d-lg-table-cell">СНИЛС / ID</span>
                                                                                                 @else
                                                                                                     <span class="d-xl-table-cell d-lg-none d-none">Фамилия, имя, отчество</span>
                                                                                                     <span class="d-xl-none d-lg-table-cell d-lg-table-cell">ФИО</span>
