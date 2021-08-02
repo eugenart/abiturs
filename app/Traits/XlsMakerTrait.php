@@ -243,7 +243,7 @@ trait XlsMakerTrait
                                                                             $sheet->setCellValueByColumnAndRow(0, $c, "№ п/п");
                                                                             $sheet->mergeCellsByColumnAndRow(0, $c, 0, $c + 1);
                                                                             if($admissionBasis->abiturs->first()->snils_show == true){
-                                                                                $sheet->setCellValueByColumnAndRow(1, $c, "СНИЛС");
+                                                                                $sheet->setCellValueByColumnAndRow(1, $c, "СНИЛС/ ID абитуриента");
                                                                             }else{
                                                                                 $sheet->setCellValueByColumnAndRow(1, $c, "Фамилия, имя, отчество");
                                                                             }
@@ -569,7 +569,7 @@ trait XlsMakerTrait
                                                                                 $sheet->setCellValueByColumnAndRow(0, $c, "№ п/п");
                                                                                 $sheet->mergeCellsByColumnAndRow(0, $c, 0, $c + 1);
                                                                                 if($admissionBasis->abiturs->first()->snils_show == true){
-                                                                                    $sheet->setCellValueByColumnAndRow(1, $c, "СНИЛС");
+                                                                                    $sheet->setCellValueByColumnAndRow(1, $c, "СНИЛС / ID абитуриента");
                                                                                 }else{
                                                                                     $sheet->setCellValueByColumnAndRow(1, $c, "Фамилия, имя, отчество");
                                                                                 }
@@ -778,6 +778,7 @@ trait XlsMakerTrait
         }
 
 
+
         $id_forms_arr = array();
         $id_cat_arr = array();
         $id_adm_arr = array();
@@ -785,6 +786,7 @@ trait XlsMakerTrait
         $id_spec_arr = array();
         $id_comp_arr = array();
         $id_fac_arr = array();
+
         foreach ($info_faculties as $stat) {
             $id_forms_arr[] = $stat->id_studyForm;
             $id_cat_arr[] = $stat->id_category;
@@ -1033,6 +1035,8 @@ trait XlsMakerTrait
         $this->queryXls([1], [3], 1, null, "Очная форма, бюджет", 'Statistic');
         $this->queryXls([1], [6], 1, null, "Очная форма, особое право", 'Statistic');
         $this->queryXls([1], [8, 9, 10], 1, null, "Очная форма, целевое обучение", 'Statistic');
+
+       // $this->queryXls([2], [3], 1, null, "Очная форма, без вступительных испытаний", 'Statistic');
 
         $this->queryXls([1], [3], 3, null, "Заочная форма, бюджет", 'Statistic');
         $this->queryXls([1], [6], 3, null, "Заочная форма, особое право", 'Statistic');

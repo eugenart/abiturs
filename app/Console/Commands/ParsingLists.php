@@ -48,11 +48,11 @@ class ParsingLists extends Command
         echo PHP_EOL . date("Y-m-d H:i:s ") . PHP_EOL;
 
         //проверить есть ли файл проверка
-        $res_check = $this->download_file($directory, "check.json");
+        $res_check = $this->download_file($directory, "lighthouse.json");
 
 
         if($res_check === 0) {
-            unlink(storage_path('app/public/files/statistics/check.json')); //удаляем файл у себя
+            unlink(storage_path('app/public/files/statistics/lighthouse.json')); //удаляем файл у себя
             //загрузить новые файлы с сервера
 
             $param = "stat_bach";
