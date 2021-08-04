@@ -56,12 +56,12 @@ class ParsingLists extends Command
             //загрузить новые файлы с сервера
 
             $param = "stat_bach";
-            $res = $this->download_file($directory, "stat_bach.json");
+//            $res = $this->download_file($directory, "stat_bach.json");
 
-            $this->date_update($param); //обновляем ДО загрузки файла не смотря ни на что
-            if ($res === 0) {
-                $this->parseStatBachAll();
-            }
+//            $this->date_update($param); //обновляем ДО загрузки файла не смотря ни на что
+//            if ($res === 0) {
+//                $this->parseStatBachAll();
+//            }
 
             $param = "stat_master";
             $res = $this->download_file($directory, "stat_master.json");
