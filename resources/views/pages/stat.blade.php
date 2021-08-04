@@ -8,7 +8,7 @@
         @if (count($news))
             <div class="row">
                 <div class="col-12">
-                    <marquee behavior="" direction="" class="mt-2">
+                    <marquee behavior="" direction="" class="mt-2" style="color:#f11818;">
                         @foreach($news as $item)
                         {{$loop->first ? "• " : null}}
                         {{$item}} &bull;
