@@ -3,6 +3,21 @@
     <div id="square">
         <i class="fa fa-arrow-up"></i>
     </div>
+{{--    {{var_dump($news)}}--}}
+    <div class="container-fluid pt-lg-3 pt-xl-3 pt-md-3 pt-sm-3 pt-3">
+        @if (count($news))
+            <div class="row">
+                <div class="col-12">
+                    <marquee behavior="" direction="" class="mt-2">
+                        @foreach($news as $item)
+                        {{$loop->first ? "• " : null}}
+                        {{$item}} &bull;
+                        @endforeach
+                    </marquee>
+                </div>
+            </div>
+        @endif
+    </div>
     <div class="container">
         <div class="row mt-lg-5 mt-xl-5 mt-md-3 mt-sm-3 mt-3">
             <div class="col-12">

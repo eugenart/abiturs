@@ -9,10 +9,12 @@ use App\CompetitionAsp;
 use App\DateUpdate;
 use App\Faculty;
 use App\Freeseats_bases;
+use App\Infoblock;
 use App\Plan;
 use App\PlanCompetition;
 use App\PreparationLevel;
 use App\Score;
+use App\Section;
 use App\Speciality;
 use App\Specialization;
 use App\Statistic;
@@ -105,6 +107,7 @@ class StatisticController extends Controller
             $names_arr['date'] = 'stat_bach';
             $names_arr['name_table'] = 'statistics';
             $names_arr['page'] = 'pages.stat';
+
         }
         if ($modelName == 'StatisticMaster') {
             $names_arr['Statistic'] = 'App\StatisticMaster';
@@ -266,7 +269,7 @@ class StatisticController extends Controller
         //получим все названия файлов xls
         $files_xls = array();
         $notification_files = "";
-//CHANGE
+
         if ($dir = scandir(storage_path('app/public/files-xls-stat/' . $names_arr['folder']))) {
             $files_xls = array();
             foreach ($dir as $file) {
@@ -279,13 +282,22 @@ class StatisticController extends Controller
             $notification_files = "Не удалось открыть директорию с файлами";
         }
 
-//CHANGE
+
         $date_update = DateUpdate::where('name_file', '=', $names_arr['date'])->first();
 
         $faculties = $this->fetchFaculties($names_arr);
-//CHANGE
+
         $studyFormsForInputs = DB::table('study_forms')->join($names_arr['name_table'], 'study_forms.id', '=', $names_arr['name_table'] . '.id_studyForm')
-            ->groupBy('study_forms.id')->select('study_forms.*')->get();;
+            ->groupBy('study_forms.id')->select('study_forms.*')->get();
+
+        //получение бегущей строки.
+        //Magistratura Srednee-professionalinoe-obrazovanie
+        $news = array();
+        if($names_arr['folder'] == 'bach'){
+            $infoblock = Infoblock::where('url', 'Bakalavriat-i-spetsialitet')->first();
+            $news = $infoblock->news;
+        }
+
 
 
         if (isset($studyForms)) {
@@ -295,14 +307,14 @@ class StatisticController extends Controller
 //                                return $studyForms;
                 return view($names_arr['page'], ['studyForms' => $studyForms, 'faculties' => $faculties,
                     'studyFormsForInputs' => $studyFormsForInputs, 'actual_link' => $actual_link, 'date_update' => $date_update,
-                    'files_xls' => $files_xls, 'notification_files' => $notification_files]);
+                    'files_xls' => $files_xls, 'notification_files' => $notification_files, 'news' => $news]);
 
             } else {
                 if (isset($faculties) && isset($studyFormsForInputs)) {
                     if (($faculties->count() != 0) && ($studyFormsForInputs->count() != 0)) {
                         $notification = trans('statforeigner.notification_not_found');
-//CHANGE
-                        return view($names_arr['page'], ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs, 'notification' => $notification]);
+
+                        return view($names_arr['page'], ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs, 'notification' => $notification, 'news' => $news]);
                     } else {
                         $faculties = collect(new Faculty);
                         $studyFormsForInputs = collect(new StudyForm);
@@ -314,7 +326,7 @@ class StatisticController extends Controller
                             $notification = trans('statforeigner.notification_green');
                         }
                         return view($names_arr['page'], ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs,
-                            'notification_green' => $notification]);
+                            'notification_green' => $notification, 'news' => $news]);
                     }
                 } else {
                     $faculties = collect(new Faculty);
@@ -327,7 +339,7 @@ class StatisticController extends Controller
                         $notification = trans('statforeigner.notification_green');
                     }
                     return view($names_arr['page'], ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs,
-                        'notification_green' => $notification]);
+                        'notification_green' => $notification, 'news' => $news]);
                 }
 
             }
@@ -336,9 +348,10 @@ class StatisticController extends Controller
                 if (($faculties->count() != 0) && ($studyFormsForInputs->count() != 0)) {
 //CHANGE
                     if (isset($notification)) {
-                        return view($names_arr['page'], ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs, 'notification' => $notification]);
+                        return view($names_arr['page'], ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs, 'notification' => $notification, 'news' => $news]);
                     } else {
-                        return view($names_arr['page'], compact('faculties'), compact('studyFormsForInputs'));
+//                        return view($names_arr['page'], compact('faculties'), compact('studyFormsForInputs'));
+                        return view($names_arr['page'], ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs,'news' => $news]);
                     }
                 } else {
                     $faculties = collect(new Faculty);
@@ -350,7 +363,7 @@ class StatisticController extends Controller
                     }
 //CHANGE
                     return view($names_arr['page'], ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs,
-                        'notification_green' => $notification]);
+                        'notification_green' => $notification, 'news' => $news]);
                 }
             } else {
                 $faculties = collect(new Faculty);
@@ -362,7 +375,7 @@ class StatisticController extends Controller
                 }
 //CHANGE
                 return view($names_arr['page'], ['faculties' => $faculties, 'studyFormsForInputs' => $studyFormsForInputs,
-                    'notification_green' => $notification]);
+                    'notification_green' => $notification, 'news' => $news]);
             }
         }
 
