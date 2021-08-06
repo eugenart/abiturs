@@ -226,15 +226,19 @@ trait XlsMakerTrait
                                                                         $sheet->mergeCellsByColumnAndRow(9, $c, 12, $c);
                                                                         $sheet->mergeCellsByColumnAndRow(9, $c + 1, 12, $c + 1);
                                                                         $sheet->mergeCellsByColumnAndRow(9, $c + 2, 12, $c + 2);
-
-                                                                        $sheet->setCellValueByColumnAndRow(0, $c + 4, "Кол-во мест:");
-                                                                        $sheet->setCellValueByColumnAndRow(4, $c + 4, $admissionBasis->freeSeatsNumber);
-                                                                        if ($admissionBasis->stage != false && $admissionBasis->stage != NULL) {
+                                                                        if($admissionBasis->stage_title == NULL || $admissionBasis->stage_title == false) {
+                                                                            $sheet->setCellValueByColumnAndRow(0, $c + 4, "Кол-во мест:");
+                                                                            $sheet->setCellValueByColumnAndRow(4, $c + 4, $admissionBasis->freeSeatsNumber);
+                                                                        }else{
+                                                                            $sheet->setCellValueByColumnAndRow(0, $c + 4, $admissionBasis->stage_title);
+                                                                            $sheet->setCellValueByColumnAndRow(4, $c + 4, $admissionBasis->stage);
+                                                                        }
+                                                                       /* if ($admissionBasis->stage != false && $admissionBasis->stage != NULL) {
                                                                             if ($admissionBasis->stage_title != false && $admissionBasis->stage_title != NULL) {
                                                                                 $sheet->setCellValueByColumnAndRow(5, $c + 4, $admissionBasis->stage_title);
                                                                                 $sheet->setCellValueByColumnAndRow(8, $c + 4, $admissionBasis->stage);
                                                                             }
-                                                                        }
+                                                                        }*/
 
                                                                         $c = $c + 6;
 
