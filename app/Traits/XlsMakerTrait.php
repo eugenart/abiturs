@@ -957,9 +957,9 @@ trait XlsMakerTrait
                                             $temp_stage = $temp->first();
 
                                             $stage = $temp_stage->stage;
-                                            if ($stage[0] == '(') {
+                                            /*if ($stage[0] == '(') {
                                                 $stage = substr($stage, 1, -1);
-                                            }
+                                            }*/
                                             $admissionBasis->stage = $stage;
 
                                             $stage_title = $temp_stage->stage_title;
