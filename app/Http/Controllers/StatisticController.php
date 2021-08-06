@@ -649,7 +649,9 @@ class StatisticController extends Controller
                                                 }
                                                 if (!empty($freeSeatsNumber)) {
                                                     $admissionBasis->freeSeatsNumber = $freeSeatsNumber->value;
-                                                    if ($freeSeatsNumber->value != 0) {
+                                                    if($stage != NULL){
+                                                        $admissionBasis->originalsCount = round(floatval(count($temp)) / $stage, 2);
+                                                    }elseif ($freeSeatsNumber->value != 0) {
                                                         $admissionBasis->originalsCount = round(floatval(count($temp)) / $freeSeatsNumber->value, 2);
                                                     }
                                                 } else {
