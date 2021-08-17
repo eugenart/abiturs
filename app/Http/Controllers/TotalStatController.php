@@ -113,6 +113,7 @@ class TotalStatController extends Controller
             unlink(storage_path('app/public/statistic_priem/bach/Очно-заочная форма бюджетная основа.pdf'));
             unlink(storage_path('app/public/statistic_priem/bach/Очная форма бюджетная основа.pdf'));
             $this->download('statistic_priem/master');
+            unlink(storage_path('app/public/statistic_priem/master/Очная форма бюджетная основа.pdf'));
             $this->download('statistic_priem/asp');
             $this->download('statistic_priem/spo');
 
