@@ -52,7 +52,7 @@
                 @endforeach
 
                     <div>
-                        <a  href="https://mrsu.ru/ru/abit/entry.php" target="_blank">
+                        <a  href="https://old.mrsu.ru/ru/abit/entry.php" target="_blank">
                             <h5 class="header-acord m-0 ml-3 pb-2 pt-2 mrsu-uppertext text-primary main-color">
                                 @if(trans('layout.locale') == 'ru')
                                     С 2010 по 2019 год

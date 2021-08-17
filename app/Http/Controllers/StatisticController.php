@@ -948,9 +948,9 @@ class StatisticController extends Controller
                                                 $temp_stage = $temp->first();
                                                 $stage = $temp_stage->stage;
                                                 $stage_title = $temp_stage->stage_title;
-                                                if ($stage[0] == '(') {
+                                               /* if ($stage[0] == '(') {
                                                     $stage = substr($stage, 1, -1);
-                                                }
+                                                }*/
                                                 $admissionBasis->stage = $stage;
                                                 if ($stage_title[0] == '(') {
                                                     $stage_title = substr($stage_title, 1, -1);
