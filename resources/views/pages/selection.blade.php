@@ -1097,21 +1097,22 @@
                 $.each(v.freeseats, (key, seat) => {
                     if (seat.id_plan_comp === id_comp) {
                         if(seat.organization){
-                            templateRecipient += "<h5 class='text-left mb-0 mt-2 ml-lg-5 ml-xl-5 ml-md-5 ml-sm-3 ml-lg-0 ml-md-2 ml-3' style='text-decoration:underline; font-weight: normal; font-size: 16px;'><strong>"+seat.organization+":</strong></h5>"
+                            templateRecipient += "<h5 class='text-left mb-0 mt-2 ml-lg-5 ml-xl-5 ml-md-5 ml-sm-3 ml-lg-0 ml-md-2 ml-3' style='font-weight: normal; font-size: 16px;'><strong>"+seat.organization+":</strong></h5>"
                         }
-                        templateRecipient += "<p class='mb-0   ml-lg-5 ml-xl-5 ml-md-5 ml-sm-3 ml-lg-0 ml-md-2 ml-3  text-left'><span>" + seat.admissionBasis.name + " - </span><b>" + seat.value + ";</b></p>"
-
+                        templateRecipient += "<p class='mb-0   ml-lg-5 ml-xl-5 ml-md-5 ml-sm-3 ml-lg-0 ml-md-2 ml-3  text-left'><span>" + seat.admissionBasis.name + " - </span><b>" + seat.value + "</b></p>"
+                        templateRecipient += "<hr class='mb-0  ml-lg-5 ml-xl-5 ml-md-5 ml-sm-3 ml-lg-0 ml-md-2 ml-3 mb-0 mt-1' style='border-color: #6696b7;'>"
                     }
                 });
 
                 let ccc = 0;
                 $.each(v.freeseats, (key, seat) => {
                     if (seat.id_plan_comp != id_comp) {
-                        // if (ccc === 0) {
-                            templateRecipient += "<h5 class='text-left mb-0 mt-2 ml-lg-5 ml-xl-5 ml-md-5 ml-sm-3 ml-lg-0 ml-md-2 ml-3' style='text-decoration:underline;'><strong>Дополнительный прием:</strong></h5>"
-                        // }
+                         if (ccc === 0) {
+                            templateRecipient += "<h5 class='text-left mb-0 mt-2 ml-lg-5 ml-xl-5 ml-md-5 ml-sm-3 ml-lg-0 ml-md-2 ml-3' ><strong>Дополнительный прием:</strong></h5>"
+                        }
                         ccc++;
-                        templateRecipient += "<p class='mb-0 ml-lg-5 ml-xl-5 ml-md-5 ml-sm-3 ml-lg-0 ml-md-2 ml-3 text-left'><span>" + seat.admissionBasis.name + " - </span><b>" + seat.value + ";</b></p>"
+                        templateRecipient += "<p class='mb-0 ml-lg-5 ml-xl-5 ml-md-5 ml-sm-3 ml-lg-0 ml-md-2 ml-3 text-left'><span>" + seat.admissionBasis.name + " - </span><b>" + seat.value + "</b></p>"
+                        templateRecipient += "<hr class='mb-0  ml-lg-5 ml-xl-5 ml-md-5 ml-sm-3 ml-lg-0 ml-md-2 ml-3 mb-0 mt-1' style='border-color: #6696b7;'>"
                     }
                 });
 
