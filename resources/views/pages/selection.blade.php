@@ -1079,8 +1079,10 @@
             if (temp_item_z) {
                 sortedForms.push(temp_item_z)
             }
-            console.log(recipient.studyForm, sortedForms)
+            // console.log(recipient.studyForm, sortedForms)
+
             $.each(sortedForms, (k, v) => {
+                console.log(v.freeseats[0])
                 let number = v.years.toString().slice(-1)
                 let year = years[number];
                 let templateRecipient =
@@ -1092,9 +1094,17 @@
 
                 v.freeseats.sort((a, b) => (a.admissionBasis.name.length > b.admissionBasis.name.length) ? 1 : ((b.admissionBasis.name.length > a.admissionBasis.name.length) ? -1 : 0));
 
-                let id_comp = v.freeseats[0].id_plan_comp
-                console.log(id_comp);
+                let idplancoms = [];
                 $.each(v.freeseats, (key, seat) => {
+                    idplancoms.push(seat.id_plan_comp);
+                });
+
+                let id_comp = Math.min.apply(Math,idplancoms);
+               //let id_comp = v.freeseats[0].id_plan_comp
+                console.log('id_comp =' + id_comp);
+
+                $.each(v.freeseats, (key, seat) => {
+                    console.log(seat.id_plan_comp);
                     if (seat.id_plan_comp === id_comp) {
                         if(seat.organization){
                             templateRecipient += "<h5 class='text-left mb-0 mt-2 ml-lg-5 ml-xl-5 ml-md-5 ml-sm-3 ml-lg-0 ml-md-2 ml-3' style='font-weight: normal; font-size: 16px;'><strong>"+seat.organization+":</strong></h5>"
@@ -1106,6 +1116,7 @@
 
                 let ccc = 0;
                 $.each(v.freeseats, (key, seat) => {
+                    console.log(seat.id_plan_comp);
                     if (seat.id_plan_comp != id_comp) {
                          if (ccc === 0) {
                             templateRecipient += "<h5 class='text-left mb-0 mt-2 ml-lg-5 ml-xl-5 ml-md-5 ml-sm-3 ml-lg-0 ml-md-2 ml-3' ><strong>Дополнительный прием:</strong></h5>"
