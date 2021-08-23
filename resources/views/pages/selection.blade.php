@@ -1105,7 +1105,8 @@
 
                 $.each(v.freeseats, (key, seat) => {
                     console.log(seat.id_plan_comp);
-                    if (seat.id_plan_comp === id_comp) {
+                    //if (seat.id_plan_comp === id_comp) {
+                    if (seat.dop === false) {
                         if(seat.organization){
                             templateRecipient += "<h5 class='text-left mb-0 mt-2 ml-lg-5 ml-xl-5 ml-md-5 ml-sm-3 ml-lg-0 ml-md-2 ml-3' style='font-weight: normal; font-size: 16px;'><strong>"+seat.organization+":</strong></h5>"
                         }
@@ -1117,7 +1118,7 @@
                 let ccc = 0;
                 $.each(v.freeseats, (key, seat) => {
                     console.log(seat.id_plan_comp);
-                    if (seat.id_plan_comp != id_comp) {
+                    if (seat.dop === true) {
                          if (ccc === 0) {
                             templateRecipient += "<h5 class='text-left mb-0 mt-2 ml-lg-5 ml-xl-5 ml-md-5 ml-sm-3 ml-lg-0 ml-md-2 ml-3' ><strong>Дополнительный прием:</strong></h5>"
                         }
