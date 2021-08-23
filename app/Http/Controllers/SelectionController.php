@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\AdmissionBasis;
+use App\Competition;
 use App\Faculty;
 use App\Freeseats_bases;
 use App\PastContests;
@@ -82,9 +83,18 @@ class SelectionController extends Controller
                         $id_plan_comp = $form_temp->freeseats->first()->id_plan_comp;
                         $plan->basis_organization = $form_temp->freeseats->first()->organization;
 
+
+
+
                         foreach ($form_temp->freeseats as $value) {
                             $value->admissionBasis = $value->admissionBasis()->first();
-
+                            $comp_name = Competition::where('id', $value->id_plan_comp)->first();
+                            $value->comp_name = $comp_name->competitionName;
+                            if(stripos($comp_name->competitionName, '_доп_')){
+                                $value->dop = true;
+                            }else{
+                                $value->dop = false;
+                            }
                                 $past_contests = PastContests::where('id_speciality', '=', $plan->id_speciality)
                                     ->where('id_studyForm', '=', $form->id_studyForm)
                                     ->where('id_admissionBasis', '=', 3)
