@@ -1054,6 +1054,8 @@ trait XlsMakerTrait
     {
         $this->queryXls([1], [3], 1, null, "Очная форма, бюджет", 'StatisticMaster');
         $this->queryXls([1], [8, 9, 10], 1, null, "Очная форма, целевое обучение", 'StatisticMaster');
+        $this->queryXls([1], [8, 9, 10], 2, null, "Очно-заочная форма, целевое обучение", 'StatisticMaster');
+        $this->queryXls([1], [8, 9, 10], 3, null, "Заочная форма, целевое обучение", 'StatisticMaster');
         $this->queryXls([1], [3], 3, null, "Заочная форма, бюджет", 'StatisticMaster');
         $this->queryXls([1], [3], 2, null, "Очно-заочная форма, бюджет", 'StatisticMaster');
     }
