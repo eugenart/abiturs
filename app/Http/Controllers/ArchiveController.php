@@ -14,14 +14,13 @@ class ArchiveController extends Controller
         foreach ( $arc as $item) {
             $item->idforblock = 'archive'. $item->id;
             $item->collapsed = 'collapsed'. $item->id;
-
         }
         return view('pages.archive', ['archives' => $arc]);
-
     }
+
     public function index_admin(Request $request) {
 
-        $infoblocks = Infoblock::where('archive', '=', 1)->get();
+        $infoblocks = Infoblock::where('archive', '=', 1)->orderBy('menuPriority', 'desc')->get();
         foreach ($infoblocks as $i){
             $i->archive_ob = $i->archives()->first();
         }
@@ -35,16 +34,33 @@ class ArchiveController extends Controller
     }
     public function get_archives(Request $request) {
 
-        $archives = Archive::all();
+        $archives = Archive::orderBy('id', 'desc')->get();
         foreach ($archives as $a){
             $a->infoblocks = $a->infoblocks()->get();
         }
 
-//        if ($request->ajax()) {
+        if ($request->ajax()) {
             return response()->json($archives, 200);
-//        }
+        }
 
 
-//        return view('structure.archive', compact('$archives'));
+        return view('structure.archive', compact('archives'));
+    }
+
+    public function store(Request $request, $id) {
+
+        if ($request->ajax()) {
+                $archive = Archive::orderBy('id', 'desc')->first();
+                $inf_arch = new ArchiveInfoblock;
+                $inf_arch->id_archive = $archive->id;
+                $inf_arch->id_infoblock = $id;
+                $inf_arch->save();
+            return response()->json([
+                'message' => "Infoblock was updated",
+                'inf_arch' => $inf_arch
+            ], 200);
+        }
+
+        return response()->json(['message' => 'Oops'], 404);
     }
 }

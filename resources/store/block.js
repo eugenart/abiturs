@@ -85,6 +85,11 @@ export default {
                 await axios.delete('/admin/infoblock/' + payload);
                 context.commit('REMOVE_BLOCK', payload)
             },
+        ARCHIVE_BLOCK:
+            async (context, payload, index) => {
+
+                await axios.post('/admin/infoblock/archive/' + payload);
+            },
 
         GET_BLOCKS:
             async (context, payload) => {
@@ -117,7 +122,8 @@ export default {
                 console.log(data.infoblock)
 
                context.commit('ADD_BLOCK', data.infoblock);
-            }
+            },
+
 
     },
     getters: {

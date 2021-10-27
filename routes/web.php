@@ -36,7 +36,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::post('/infoblock/{id}', 'InfoblockController@update')->name('infoblock.update');
     Route::delete('/infoblock/{id}', 'InfoblockController@destroy')->name('infoblock.destroy');
     Route::post('/infoblock/copy/{copy_id}', 'InfoblockController@copy')->name('infoblock.copy');
-
+    Route::post('/infoblock/archive/{id}', 'ArchiveController@store')->name('infoblock.archive');
 
     Route::get('/sections', 'SectionController@index')->name('section.index');
     Route::post('/section', 'SectionController@store')->name('section.store');

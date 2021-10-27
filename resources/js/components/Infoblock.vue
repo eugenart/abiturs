@@ -186,7 +186,7 @@
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-4" v-for="(block, index) in blocks">
+                            <div class="col-4" v-for="(block, index) in blocks" >
                                 <div class="card mb-3 infoblock-сard-text">
                                     <div class="card-header">
                                         <div class="row">
@@ -198,6 +198,9 @@
                                                     <span class="float-right">
                                                         <i class="fa fa-copy" style="cursor: pointer"
                                                            @click="copyInfoblock(block.id)">
+                                                        </i>
+                                                        <i class="fa fa-archive" style="cursor: pointer"
+                                                           @click="archiveInfoblock(block)">
                                                         </i>
 
                                                         <i class="far fa-eye" style="cursor: pointer"
@@ -316,9 +319,20 @@
         computed: {
 
             blocks() {
-                return this.$store.getters.BLOCKS
-            }
+                function compare(a, b) {
+                            if (a.menuPriority > b.menuPriority)
+                                return -1;
+                            if (a.menuPriority < b.menuPriority)
+                                return 1;
+                            return 0;
+                        }
+                function archive(a) {
+                    if (a.archive === 0)
+                        return true;
 
+                }
+                return this.$store.getters.BLOCKS.sort(compare).filter(archive)
+            },
         },
 
         methods: {
@@ -336,7 +350,15 @@
                 this.infoblock = block
                 this.updateInfoblock()
             },
+            archiveInfoblock(block) {
+                block.archive = !block.archive
+                block.activity = true
+                this.infoblock = block
+                // console.log(block.id)
+                this.$store.dispatch('ARCHIVE_BLOCK', block.id);
+                this.updateInfoblock()
 
+            },
             checkForm(e) {
                 if (this.infoblock.name || this.infoblock.url || this.infoblock.menuPriority || this.infoblock.startPagePriority) {
                     this.formStatus = 'Не все обязательные поля заполнены'
@@ -434,10 +456,14 @@
                 this.$store.dispatch('COPY_BLOCK', bId);
             },
 
+            scrollToTop() {
+                window.scrollTo(0,0);
+            },
             changeInfoblock(block) {
                 this.infoblock = block
                 this.previewUrl = '../../storage/preview/' + this.infoblock.image
                 this.isBlockUpdate = true
+                this.scrollToTop()
                 $('#infoblockForm').show()
             },
 
