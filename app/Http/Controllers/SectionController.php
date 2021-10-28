@@ -13,7 +13,8 @@ class SectionController extends Controller
     {
         $sections = Section::all();
         foreach ($sections as $section) {
-            $section->block_name = Infoblock::findOrFail($section->infoblockID)->name;
+            $inf = Infoblock::where('id', $section->infoblockID)->first();
+            $section->block_name = $inf->name;
         }
         if ($request->ajax()) {
             return response()->json($sections, 200);

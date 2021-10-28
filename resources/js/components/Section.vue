@@ -30,8 +30,9 @@
                                                 <div class="form-group col-6" v-show='!isFolder'>
                                                     <label class="badge">Ссылка на подраздел</label>
                                                     <input v-model="section.url" type="text"
-                                                           class="form-control form-control-sm" required
-                                                           @keyup="transliterate">
+                                                           class="form-control form-control-sm" required>
+<!--                                                           @keyup="transliterate"-->
+
                                                 </div>
                                             </div>
                                         </b-tab>
@@ -295,7 +296,19 @@
         computed: {
 
             blocks() {
-                return this.$store.getters.BLOCKS
+                function compare(a, b) {
+                    if (a.menuPriority > b.menuPriority)
+                        return -1;
+                    if (a.menuPriority < b.menuPriority)
+                        return 1;
+                    return 0;
+                }
+                function archive(a) {
+                    if (a.archive === 0)
+                        return true;
+
+                }
+                return this.$store.getters.BLOCKS.sort(compare).filter(archive)
             },
 
             sections() {
@@ -407,10 +420,13 @@
                 this.$store.dispatch('SAVE_SECTION', this.section);
                 this.clearCurrentSection();
             },
-
+            scrollToTop() {
+                window.scrollTo(0,0);
+            },
             changeSection(section) {
                 this.section = section;
                 this.isSectionUpdate = true
+                this.scrollToTop()
                 $('#infoblockForm').show()
             },
 
