@@ -34,7 +34,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('filesContent:delete')->monthlyOn(6, '00:02')->appendOutputTo(storage_path() .'/app/public/logs/schedule_log.log');
         $schedule->command('filesPreview:delete')->monthlyOn(6, '00:04')->appendOutputTo(storage_path() .'/app/public/logs/schedule_log.log');
         $schedule->command('dumper:create')->daily()->appendOutputTo(storage_path() .'/app/public/logs/schedule_log.log');
-        $schedule->command('parsing:begin')->everyTenMinutes()->sendOutputTo(storage_path() .'/app/public/logs/schedule_parse_log.log')->emailOutputOnFailure('kirdyashkinaei@mrsu.ru');
+//        $schedule->command('parsing:begin')->everyTenMinutes()->sendOutputTo(storage_path() .'/app/public/logs/schedule_parse_log.log')->emailOutputOnFailure('kirdyashkinaei@mrsu.ru');
 
 
 
