@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class ArchiveController extends Controller
 {
     public function index(Request $request) {
-        $arc = Archive::all();
+        $arc = Archive::orderBy('name', 'desc')->get();
         foreach ( $arc as $item) {
             $item->idforblock = 'archive'. $item->id;
             $item->collapsed = 'collapsed'. $item->id;
