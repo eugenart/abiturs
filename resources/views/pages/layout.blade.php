@@ -583,15 +583,18 @@
                         </a>
                         <div class="dropdown-menu main-color" aria-labelledby="navbarDropdown">
                             <a class="nav-link "
-                               href="{{route('selection.index')}}">{{ trans('layout.bach') }}</a>
+                               href="">{{ trans('layout.bach') }}</a>
+{{--                            {{route('selection.index')}}--}}
                             <a class="nav-link "
-                               href="{{route('selectionf.index')}}">{{ trans('layout.for_foreigner') }}</a>
+                               href="">{{ trans('layout.for_foreigner') }}</a>
+{{--                            {{route('selectionf.index')}}--}}
                         </div>
                     </li>
                 @endif
                 @if(trans('layout.locale') == 'en')
                     <li class="nav-item active d-flex align-items-center justify-content-center">
-                        <a class="nav-link" href="{{route('selectionf.index')}}">{{ trans('layout.for_foreigner') }}
+                        <a class="nav-link" href="">{{ trans('layout.for_foreigner') }}
+{{--                            {{route('selectionf.index')}}--}}
                             <span
                                 class="sr-only">(current)</span></a>
                     </li>
