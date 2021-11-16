@@ -37,6 +37,9 @@
                                         {{ trans('contacts.tel_kov') }} <br>
                                         <a class='main-color' href="tel:88345342910">8 (8345) 34-29-10</a>
                                         <br>
+                                        {{ trans('contacts.tel_ruz') }} <br>
+                                        <a class='main-color' href="tel:88342222996">8 (8342) 22-29-96</a>
+                                        <br>
 {{--                                        Добавочные номера:<br>--}}
 {{--                                        1217 - Подача документов в электронном виде	<br>--}}
 {{--                                        1064 - Заключение договоров на оплату обучения<br>--}}
@@ -101,9 +104,9 @@
 
 
                             @if(trans('layout.locale')== 'ru')
-                                <tr>
-                                    <td colspan="2">{{ trans('contacts.time_sat') }}</td>
-                                </tr>
+{{--                                <tr>--}}
+{{--                                    <td colspan="2">{{ trans('contacts.time_sat') }}</td>--}}
+{{--                                </tr>--}}
                                 <tr style="border-bottom: 1px solid #dee2e6">
                                     <td colspan="2">{{ trans('contacts.time_sun') }}</td>
                                 </tr>
@@ -118,7 +121,7 @@
                                     {{ trans('contacts.time_asp') }}<br>
                                     {{ trans('contacts.time_asp1') }}<br>
                                     {{ trans('contacts.time_asp2') }}<br>
-                                    {{ trans('contacts.time_asp3') }}<br>
+{{--                                    {{ trans('contacts.time_asp3') }}<br>--}}
 
                                 </td>
                             </tr>

@@ -7,6 +7,7 @@ return [
     'tel_title' => 'Phones:',
     'tel_foreigner' => 'For foreign citizens:',
     'tel_kov' => 'Kovylkino branch:',
+    'tel_ruz' => 'Institute Of Machine Engineering (Ruzaevka City Affiliated Branch):',
     'tel_paid' => 'Consultation on the conclusion of paid contracts and tuition fees:',
     'tel_ord' => 'On questions of admission to residency:',
     'tel_asp' => 'On admission to postgraduate school:',
@@ -27,7 +28,7 @@ return [
     'time_asp' => 'Admission for postgraduate and residency programs: ',
     'time_asp1' => 'Monday to Friday from 8.00 to 17.00',
     'time_asp2' => 'Break from 12:00 to 13:00.',
-    'time_asp3' => 'Saturday from 8.00 to 12.00',
+    'time_asp3' => 'Saturday and sunday are the days off.',
 
     'form_title' => 'Are there any more questions? Write to us',
     'form_fio' => 'Full name *',
