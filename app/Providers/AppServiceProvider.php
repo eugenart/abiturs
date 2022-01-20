@@ -28,10 +28,11 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
-        view()->composer('pages.layout', function($view){
-            $infoblocks = Infoblock::where('activity', true)->where('menu', true)->orderBy('menuPriority', 'desc')->where('foreigner', '=', 0)->where('archive', '=', 0)->get();
+        view()->composer('pages.layout', function ($view) {
+            $infoblocks = Infoblock::where('activity', true)->where('menu', true)->orderBy('menuPriority', 'desc')->where('foreigner', '=', 0)->where('archive', '=', 0)->where('mainMenu', '=', 0)->get();
             $infoblocks_int = Infoblock::where('activity', true)->where('menu', true)->orderBy('menuPriority', 'desc')->where('foreigner', '=', 1)->where('archive', '=', 0)->get();
 
+            $infoblockMainMenu = Infoblock::where('activity', true)->where('menu', true)->orderBy('menuPriority', 'desc')->where('foreigner', '=', 0)->where('archive', '=', 0)->where('mainMenu', '=', 1)->get();
             $direcories = [
                 '/asp',
                 '/bach',
@@ -77,7 +78,12 @@ class AppServiceProvider extends ServiceProvider
             $supd = SupDetail::where('id', 1)->first();
             $year = $supd->year_of_company;
 
-            $view->with(['pages' => $infoblocks, 'infoblocks_int' => $infoblocks_int, 'count_orders' => $count_orders, 'count_stats' => $count_stats, 'year' => $year]);
+            $view->with(['pages' => $infoblocks,
+                'infoblocks_int' => $infoblocks_int,
+                'count_orders' => $count_orders,
+                'count_stats' => $count_stats,
+                'year' => $year,
+                'infMainMenu' => $infoblockMainMenu]);
         });
     }
 }

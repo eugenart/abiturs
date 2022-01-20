@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Infoblock extends Model
 {
-    protected $fillable = ['name', 'url', 'menu', 'menuPriority', 'startPage', 'startPagePriority', 'activity', 'activityFrom', 'activityTo', 'image', 'news', 'foreigner', 'archive'];
+    protected $fillable = ['name', 'url', 'menu', 'menuPriority', 'startPage', 'startPagePriority', 'activity', 'activityFrom', 'activityTo',
+        'image', 'news', 'foreigner', 'archive', 'mainMenu', 'mainMenuSort'];
 
     protected $casts = ['news' => 'array'];
 

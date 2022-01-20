@@ -600,6 +600,23 @@
                     </li>
                 @endif
 
+                @if(count($infMainMenu) >0)
+                    @foreach($infMainMenu as $page)
+                        @if(trans('layout.locale') == 'ru')
+                            @if ((($date_now > $page->activityFrom || $date_now == $page->activityFrom) &&
+                               ($date_now < $page->activityTo || $date_now == $page->activityTo))
+                               || (is_null($page->activityFrom) && is_null($page->activityTo)))
+                                    <li class="nav-item active d-flex align-items-center justify-content-center">
+                                        <a class="nav-link" href="{{url($page->url)}}">{{ $page->name }}
+                                            <span class="sr-only">(current)</span></a>
+                                    </li>
+
+                            @endif
+
+                        @endif
+                    @endforeach
+                @endif
+
                 @if($count_orders > 0)
                     @if(trans('layout.locale') == 'ru')
                         <li class="nav-item active d-flex align-items-center justify-content-center">
@@ -613,11 +630,11 @@
                     <a class="nav-link" href="{{route('contact.index')}}">{{ trans('layout.contacts') }}<span
                             class="sr-only">(current)</span></a>
                 </li>
-{{--                <li class="nav-item active d-flex align-items-center justify-content-center">--}}
-{{--                    <a class="nav-link" target="_blank"--}}
-{{--                       href="https://p.mrsu.ru/Account/Register">{{ trans('layout.docs') }}<span--}}
-{{--                            class="sr-only">(current)</span></a>--}}
-{{--                </li>--}}
+               <li class="nav-item active d-flex align-items-center justify-content-center">
+                   <a class="nav-link" target="_blank"
+                       href="https://p.mrsu.ru/Account/Register">{{ trans('layout.docs') }}<span
+                            class="sr-only">(current)</span></a>
+               </li>
             </ul>
         </div>
 {{--    </div>--}}
